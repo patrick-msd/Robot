@@ -1,0 +1,13 @@
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.PowerSupply.Nextys.DcDcConverter\bin\x64\Debug\net7.0\RC.PowerSupply.Nextys.DcDcConverter.deps.json
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.PowerSupply.Nextys.DcDcConverter\bin\x64\Debug\net7.0\RC.PowerSupply.Nextys.DcDcConverter.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.PowerSupply.Nextys.DcDcConverter\bin\x64\Debug\net7.0\RC.PowerSupply.Nextys.DcDcConverter.pdb
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.PowerSupply.Nextys.DcDcConverter\obj\x64\Debug\net7.0\RC.PowerSupply.Nextys.DcDcConverter.csproj.AssemblyReference.cache
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.PowerSupply.Nextys.DcDcConverter\obj\x64\Debug\net7.0\RC.PowerSupply.Nextys.DcDcConverter.GeneratedMSBuildEditorConfig.editorconfig
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.PowerSupply.Nextys.DcDcConverter\obj\x64\Debug\net7.0\RC.PowerSupply.Nextys.DcDcConverter.AssemblyInfoInputs.cache
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.PowerSupply.Nextys.DcDcConverter\obj\x64\Debug\net7.0\RC.PowerSupply.Nextys.DcDcConverter.AssemblyInfo.cs
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.PowerSupply.Nextys.DcDcConverter\obj\x64\Debug\net7.0\RC.PowerSupply.Nextys.DcDcConverter.csproj.CoreCompileInputs.cache
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.PowerSupply.Nextys.DcDcConverter\obj\x64\Debug\net7.0\RC.PowerSupply.Nextys.DcDcConverter.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.PowerSupply.Nextys.DcDcConverter\obj\x64\Debug\net7.0\refint\RC.PowerSupply.Nextys.DcDcConverter.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.PowerSupply.Nextys.DcDcConverter\obj\x64\Debug\net7.0\RC.PowerSupply.Nextys.DcDcConverter.pdb
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.PowerSupply.Nextys.DcDcConverter\obj\x64\Debug\net7.0\ref\RC.PowerSupply.Nextys.DcDcConverter.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.PowerSupply.Nextys.DcDcConverter\obj\x64\Debug\net7.0\RC.PowerSupply.Nextys.DcDcConverter.sourcelink.json

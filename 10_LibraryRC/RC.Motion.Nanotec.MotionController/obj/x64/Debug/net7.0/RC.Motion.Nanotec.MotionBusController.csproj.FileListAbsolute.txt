@@ -1,0 +1,12 @@
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\bin\x64\Debug\net7.0\RC.Motion.Nanotec.MotionBusController.deps.json
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\bin\x64\Debug\net7.0\RC.Motion.Nanotec.MotionBusController.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\bin\x64\Debug\net7.0\RC.Motion.Nanotec.MotionBusController.pdb
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\RC.Motion.Nanotec.MotionBusController.GeneratedMSBuildEditorConfig.editorconfig
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\RC.Motion.Nanotec.MotionBusController.AssemblyInfoInputs.cache
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\RC.Motion.Nanotec.MotionBusController.AssemblyInfo.cs
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\RC.Motion.Nanotec.MotionBusController.csproj.CoreCompileInputs.cache
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\RC.Motion.Nanotec.MotionBusController.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\refint\RC.Motion.Nanotec.MotionBusController.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\RC.Motion.Nanotec.MotionBusController.pdb
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\ref\RC.Motion.Nanotec.MotionBusController.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\RC.Motion.Nanotec.MotionBusController.sourcelink.json

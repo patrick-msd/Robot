@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>C:\Git\MSD\Robot\10_LibraryRC\RC.Robot.Doosan.Control.CPP\bin\x64\Debug\RC.Lib.Robot.Doosan.CPP.runtimeconfig.json</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Git\MSD\Robot\10_LibraryRC\RC.Robot.Doosan.Control.CPP\bin\x64\Debug\RC.Lib.Robot.Doosan.CPP.dll</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles />
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>

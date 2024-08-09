@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "lnsgdIPB4Uw=",
+  "success": true,
+  "projectFilePath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Controller.RobotElectronics.Gpio\\RC.Lib.Control.RobotElectronics.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\msdit\\.nuget\\packages\\serilog\\4.0.1\\serilog.4.0.1.nupkg.sha512",
+    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.22621.31\\microsoft.windows.sdk.net.ref.10.0.22621.31.nupkg.sha512"
+  ],
+  "logs": []
+}

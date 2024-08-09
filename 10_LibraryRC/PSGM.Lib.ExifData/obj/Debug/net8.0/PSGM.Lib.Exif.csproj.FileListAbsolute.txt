@@ -1,0 +1,12 @@
+C:\Git\MSD\Robot\10_LibraryRC\PSGM.Lib.Exif\bin\Debug\net8.0\PSGM.Lib.Exif.deps.json
+C:\Git\MSD\Robot\10_LibraryRC\PSGM.Lib.Exif\bin\Debug\net8.0\PSGM.Lib.Exif.dll
+C:\Git\MSD\Robot\10_LibraryRC\PSGM.Lib.Exif\bin\Debug\net8.0\PSGM.Lib.Exif.pdb
+C:\Git\MSD\Robot\10_LibraryRC\PSGM.Lib.Exif\obj\Debug\net8.0\PSGM.Lib.Exif.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git\MSD\Robot\10_LibraryRC\PSGM.Lib.Exif\obj\Debug\net8.0\PSGM.Lib.Exif.AssemblyInfoInputs.cache
+C:\Git\MSD\Robot\10_LibraryRC\PSGM.Lib.Exif\obj\Debug\net8.0\PSGM.Lib.Exif.AssemblyInfo.cs
+C:\Git\MSD\Robot\10_LibraryRC\PSGM.Lib.Exif\obj\Debug\net8.0\PSGM.Lib.Exif.csproj.CoreCompileInputs.cache
+C:\Git\MSD\Robot\10_LibraryRC\PSGM.Lib.Exif\obj\Debug\net8.0\PSGM.Lib.Exif.sourcelink.json
+C:\Git\MSD\Robot\10_LibraryRC\PSGM.Lib.Exif\obj\Debug\net8.0\PSGM.Lib.Exif.dll
+C:\Git\MSD\Robot\10_LibraryRC\PSGM.Lib.Exif\obj\Debug\net8.0\refint\PSGM.Lib.Exif.dll
+C:\Git\MSD\Robot\10_LibraryRC\PSGM.Lib.Exif\obj\Debug\net8.0\PSGM.Lib.Exif.pdb
+C:\Git\MSD\Robot\10_LibraryRC\PSGM.Lib.Exif\obj\Debug\net8.0\ref\PSGM.Lib.Exif.dll

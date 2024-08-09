@@ -1,0 +1,4 @@
+Add *.propos files in the Visual Studio Property SManager.
+Files: C:\Program Files (x86)\Intel RealSense SDK 2.0
+
+...

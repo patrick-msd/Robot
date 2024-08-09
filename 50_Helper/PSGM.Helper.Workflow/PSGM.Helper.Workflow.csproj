@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Minio" Version="6.0.3" />
+    <PackageReference Include="OpenCvSharp4" Version="4.10.0.20240616" />
+    <PackageReference Include="OpenCvSharp4.Extensions" Version="4.10.0.20240616" />
+    <PackageReference Include="OpenCvSharp4.Windows" Version="4.10.0.20240616" />
+    <PackageReference Include="Serilog" Version="4.0.1" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.7" />
+    <PackageReference Include="System.Management" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\10_LibraryRC\PSGM.Lib.ExifData\PSGM.Lib.ExifData.csproj" />
+    <ProjectReference Include="..\..\10_LibraryRC\RC.Vision.SVSVistek.Camera\RC.Lib.Vision.SVSVistek.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbJob\PSGM.Model.DbJob.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbMachine\PSGM.Model.DbMachine.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbMain\PSGM.Model.DbMain.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbSoftware\PSGM.Model.DbSoftware.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbStorage\PSGM.Model.DbStorage.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbUser\PSGM.Model.DbUser.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbWorkflow\PSGM.Model.DbWorkflow.csproj" />
+    <ProjectReference Include="..\PSGM.Helper\PSGM.Helper.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,15 @@
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Vision.Intel.RealSense\bin\x64\Debug\net7.0-windows\RC.Vision.Intel.RealSense.deps.json
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Vision.Intel.RealSense\bin\x64\Debug\net7.0-windows\RC.Vision.Intel.RealSense.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Vision.Intel.RealSense\bin\x64\Debug\net7.0-windows\RC.Vision.Intel.RealSense.pdb
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Vision.Intel.RealSense\bin\x64\Debug\net7.0-windows\Intel.Realsense.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Vision.Intel.RealSense\obj\x64\Debug\net7.0-windows\RC.Vision.Intel.RealSense.csproj.AssemblyReference.cache
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Vision.Intel.RealSense\obj\x64\Debug\net7.0-windows\RC.Vision.Intel.RealSense.GeneratedMSBuildEditorConfig.editorconfig
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Vision.Intel.RealSense\obj\x64\Debug\net7.0-windows\RC.Vision.Intel.RealSense.AssemblyInfoInputs.cache
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Vision.Intel.RealSense\obj\x64\Debug\net7.0-windows\RC.Vision.Intel.RealSense.AssemblyInfo.cs
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Vision.Intel.RealSense\obj\x64\Debug\net7.0-windows\RC.Vision.Intel.RealSense.csproj.CoreCompileInputs.cache
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Vision.Intel.RealSense\obj\x64\Debug\net7.0-windows\RC.Vision.Intel.RealSense.csproj.CopyComplete
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Vision.Intel.RealSense\obj\x64\Debug\net7.0-windows\RC.Vision.Intel.RealSense.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Vision.Intel.RealSense\obj\x64\Debug\net7.0-windows\refint\RC.Vision.Intel.RealSense.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Vision.Intel.RealSense\obj\x64\Debug\net7.0-windows\RC.Vision.Intel.RealSense.pdb
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Vision.Intel.RealSense\obj\x64\Debug\net7.0-windows\ref\RC.Vision.Intel.RealSense.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Vision.Intel.RealSense\obj\x64\Debug\net7.0-windows\RC.Vision.Intel.RealSense.sourcelink.json

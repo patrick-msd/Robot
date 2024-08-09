@@ -1,0 +1,12 @@
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\bin\x64\Debug\net7.0\RC.Motion.Nanotec.MotionController.deps.json
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\bin\x64\Debug\net7.0\RC.Motion.Nanotec.MotionController.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\bin\x64\Debug\net7.0\RC.Motion.Nanotec.MotionController.pdb
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\RC.Motion.Nanotec.MotionController.csproj.AssemblyReference.cache
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\RC.Motion.Nanotec.MotionController.GeneratedMSBuildEditorConfig.editorconfig
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\RC.Motion.Nanotec.MotionController.AssemblyInfoInputs.cache
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\RC.Motion.Nanotec.MotionController.AssemblyInfo.cs
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\RC.Motion.Nanotec.MotionController.csproj.CoreCompileInputs.cache
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\RC.Motion.Nanotec.MotionController.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\refint\RC.Motion.Nanotec.MotionController.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\RC.Motion.Nanotec.MotionController.pdb
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net7.0\ref\RC.Motion.Nanotec.MotionController.dll

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Robot>
+    <Doosan>
+      <MotionControllerDevices>
+        <ApplicationDeviceName />
+        <ApplicationDeviceLocation />
+        <InitialzeDeviceAtSplashscreen>true</InitialzeDeviceAtSplashscreen>
+        <AutoStartDeviceAtSplashscreen>false</AutoStartDeviceAtSplashscreen>
+        <HomeingDeviceAtSplashscreen>false</HomeingDeviceAtSplashscreen>
+        <AxisDirectionX>1</AxisDirectionX>
+        <AxisDirectionY>1</AxisDirectionY>
+        <AxisDirectionZ>1</AxisDirectionZ>
+        <AxisDirectionA>1</AxisDirectionA>
+        <AxisDirectionB>1</AxisDirectionB>
+        <AxisDirectionC>1</AxisDirectionC>
+        <DeviceName />
+        <DeviceManufacturer />
+        <DeviceSerialnumber />
+        <TcpIpIsDefault>false</TcpIpIsDefault>
+        <Etnernet>
+          <IpAddress>192.168.137.50</IpAddress>
+          <Port>12345</Port>
+        </Etnernet>
+      </MotionControllerDevices>
+      <MotionControllerDevices>
+        <ApplicationDeviceName />
+        <ApplicationDeviceLocation />
+        <InitialzeDeviceAtSplashscreen>true</InitialzeDeviceAtSplashscreen>
+        <AutoStartDeviceAtSplashscreen>false</AutoStartDeviceAtSplashscreen>
+        <HomeingDeviceAtSplashscreen>false</HomeingDeviceAtSplashscreen>
+        <AxisDirectionX>1</AxisDirectionX>
+        <AxisDirectionY>1</AxisDirectionY>
+        <AxisDirectionZ>1</AxisDirectionZ>
+        <AxisDirectionA>1</AxisDirectionA>
+        <AxisDirectionB>1</AxisDirectionB>
+        <AxisDirectionC>1</AxisDirectionC>
+        <DeviceName />
+        <DeviceManufacturer />
+        <DeviceSerialnumber />
+        <TcpIpIsDefault>false</TcpIpIsDefault>
+        <Etnernet>
+          <IpAddress>192.168.137.51</IpAddress>
+          <Port>12345</Port>
+        </Etnernet>
+      </MotionControllerDevices>
+    </Doosan>
+  </Robot>
+</ApplicationSettings>

@@ -1,0 +1,5 @@
+C:\Git\MSD\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0-windows\RC.Lib.Vision.SVSVistek.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git\MSD\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0-windows\RC.Lib.Vision.SVSVistek.AssemblyInfoInputs.cache
+C:\Git\MSD\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0-windows\RC.Lib.Vision.SVSVistek.AssemblyInfo.cs
+C:\Git\MSD\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0-windows\RC.Lib.Vision.SVSVistek.csproj.CoreCompileInputs.cache
+C:\Git\MSD\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0-windows\RC.Lib.Vision.SVSVistek.sourcelink.json

@@ -1,0 +1,108 @@
+﻿<Window x:Class="RC.Vision.SVSVistek.Sample.UIMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RC.Vision.SVSVistek.Sample"
+        mc:Ignorable="d"
+        Height="800" Width="1500" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Grid>
+        <Button Content="Discovery" HorizontalAlignment="Left" Height="36" Margin="10,10,0,0" VerticalAlignment="Top" Width="126" Click="CamerasDiscovery"/>
+        <Button Content="Start acquision" HorizontalAlignment="Left" Height="36" Margin="10,51,0,0" VerticalAlignment="Top" Width="126" Click="CamerasStartAcquision"/>
+
+        <Button Content="Save Picture" HorizontalAlignment="Left" Height="36" Margin="10,164,0,0" VerticalAlignment="Top" Width="126" Click="SavePicture"/>
+        <RichTextBox x:Name="rtbLogger" Background="Black" Foreground="LightGray" FontFamily="Cascadia Mono, Consolas, Courier New, monospace" VerticalScrollBarVisibility="Auto" Margin="141,10,10,10" TextChanged="rtbLogger_TextChanged"/>
+
+
+
+
+        <!--  <Button Content="Connect to CAM 2" HorizontalAlignment="Left" Height="36" Margin="156,94,0,0" VerticalAlignment="Top" Width="126" Click="ConnectCam2"/>
+        <Button Content="Start CAM 2" HorizontalAlignment="Left" Height="36" Margin="156,135,0,0" VerticalAlignment="Top" Width="126" Click="StartCam2" />
+        <Button Content="Stop CAM 2" HorizontalAlignment="Left" Height="36" Margin="156,177,0,0" VerticalAlignment="Top" Width="126" Click="StopCam2"/>
+        <Button Content="Take Picture CAM2" HorizontalAlignment="Left" Height="36" Margin="156,573,0,0" VerticalAlignment="Top" Width="126" Click="TakePicture2"/>-->
+
+        <Button Content="Set Values" HorizontalAlignment="Left" Height="36" Margin="10,274,0,0" VerticalAlignment="Top" Width="126" Click="SetValues"/>
+        <Button Content="Close" HorizontalAlignment="Left" Height="36" Margin="10,92,0,0" VerticalAlignment="Top" Width="126" Click="CamerasClose"/>
+        <Button Content="Get Values" HorizontalAlignment="Left" Height="36" Margin="10,315,0,0" VerticalAlignment="Top" Width="126" Click="GetValues"/>
+        <Button Content="Take Picture" HorizontalAlignment="Left" Height="36" Margin="10,205,0,0" VerticalAlignment="Top" Width="126" Click="TakePicture1"/>
+
+        <!-- Camera 2 
+        <Label Content="Cam 2" HorizontalAlignment="Left" Margin="700,10,0,0" VerticalAlignment="Top"/>
+        <ScrollViewer Margin="700,44,85,311">
+            <StackPanel>
+                <TextBlock Text="Device Vendor Name:" FontWeight="Bold" />
+                <TextBlock x:Name="DeviceVendorName1" />
+                <TextBlock Text="Device Model Name:" FontWeight="Bold" />
+                <TextBlock x:Name="DeviceModelName1" />
+                <TextBlock Text="Device Manufacturer Info:" FontWeight="Bold" />
+                <TextBlock x:Name="DeviceManufacturerInfo1"/>
+                <TextBlock Text="Device Version:" FontWeight="Bold" />
+                <TextBlock x:Name="DeviceVersion1" />
+                <TextBlock Text="Device Firmware Version:" FontWeight="Bold" />
+                <TextBlock x:Name="DeviceFirmwareVersion1" />
+                <TextBlock Text="Device Serial Number:" FontWeight="Bold" />
+                <TextBlock x:Name="DeviceSerialNumber1" />
+                <TextBlock Text="Device User ID:" FontWeight="Bold" />
+                <TextBlock x:Name="DeviceUserID1" />
+                <TextBlock Text="Temperature:" FontWeight="Bold" />
+                <TextBlock x:Name="DeviceTemperature1" />
+                <TextBlock Text="Sensor Width:" FontWeight="Bold" />
+                <TextBlock x:Name="SensorWidth1" />
+                <TextBlock Text="Sensor Height:" FontWeight="Bold" />
+                <TextBlock x:Name="SensorHeight1" />
+                <TextBlock Text="Offset X:" FontWeight="Bold" />
+                <TextBox x:Name="OffsetX1" />
+                <TextBlock Text="Offset Y:" FontWeight="Bold" />
+                <TextBox x:Name="OffsetY1" />
+                <TextBlock Text="Width:" FontWeight="Bold" />
+                <TextBox x:Name="Width1" />
+                <TextBlock Text="Height:" FontWeight="Bold" />
+                <TextBox x:Name="Height1" />
+                <TextBlock Text="Max Width:" FontWeight="Bold" />
+                <TextBlock x:Name="MaxWidth1" />
+                <TextBlock Text="Max Height:" FontWeight="Bold" />
+                <TextBlock x:Name="MaxHeight1" />
+                <TextBlock Text="Sensor Pixel Size:" FontWeight="Bold" />
+                <ComboBox x:Name="SensorPixelSize1" SelectedValuePath="Content">
+                    <ComboBoxItem Content="SensorBppAuto" />
+                    <ComboBoxItem Content="SensorBpp12" />
+                    <ComboBoxItem Content="SensorBpp14" />
+                    <ComboBoxItem Content="SensorBpp16" />
+                </ComboBox>
+                <TextBlock Text="Pixel Size:" FontWeight="Bold" />
+                <TextBlock x:Name="PixelSize1" />
+                <TextBlock Text="Pixel Format:" FontWeight="Bold" />
+                <ComboBox x:Name="PixelFormat1" SelectedValuePath="Content">
+                    <ComboBoxItem Content="Mono8" />
+                    <ComboBoxItem Content="Mono12Packed" />
+                    <ComboBoxItem Content="Mono16" />
+
+                    <ComboBoxItem Content="BayerGB8" />
+                    <ComboBoxItem Content="BayerGB12Packed" />
+                    <ComboBoxItem Content="BayerGB16" />
+
+                    <ComboBoxItem Content="BayerBG8" />
+                    <ComboBoxItem Content="BayerBG12Packed" />
+                    <ComboBoxItem Content="BayerBG16" />
+                </ComboBox>
+                <TextBlock Text="Pixel Color Filter:" FontWeight="Bold" />
+                <TextBlock x:Name="PixelColorFilter1" />
+                <TextBlock Text="Pixel Dynamic Range Min:" FontWeight="Bold" />
+                <TextBlock x:Name="PixelDynamicRangeMin1" />
+                <TextBlock Text="Pixel Dynamic Range Max:" FontWeight="Bold" />
+                <TextBlock x:Name="PixelDynamicRangeMax1" />
+                <TextBlock Text="Binning Horizontal:" FontWeight="Bold" />
+                <TextBox x:Name="BinningHorizontal1" />
+                <TextBlock Text="Binning Vertical:" FontWeight="Bold" />
+                <TextBox x:Name="BinningVertical1" />
+                <TextBlock Text="Reverse X" FontWeight="Bold" />
+                <CheckBox  x:Name="ReverseX1" />
+
+            </StackPanel>
+        </ScrollViewer>-->
+
+
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,207 @@
+﻿<Window x:Class="RC.Motion.Nanotec.Sample.UIMainWindow_Operation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RC.Motion.Nanotec.Sample"
+        mc:Ignorable="d"
+        Title="UIMainWindows_Operation" Height="616" Width="942">
+    <Grid>
+        <GroupBox Header="Control" Margin="0,0,612,310">
+            <Canvas>
+                <Button Content="Power on" Canvas.Left="10" Canvas.Top="7" HorizontalAlignment="Center" VerticalAlignment="Top" Width="156" Click="PowerOn_Click"/>
+                <Button Content="Power off" Canvas.Left="10" Canvas.Top="30" Width="156" HorizontalAlignment="Center" VerticalAlignment="Top" Click="PowerOff_Click"/>
+                <Button Content="Quickstop" Canvas.Left="10" Canvas.Top="53" Width="156" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Quickstop_Click"/>
+                <!-- <Button Content="Halt" Canvas.Left="10" Canvas.Top="76" Width="156" HorizontalAlignment="Center" VerticalAlignment="Top"/> -->
+            </Canvas>
+
+        </GroupBox>
+        <GroupBox Header="Mode" Margin="188,0,429,310">
+            <Canvas>
+                <Label x:Name="ActivateMode" Content="Activate Mode: " Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" Width="166" Height="56" FontSize="10"/>
+            </Canvas>
+        </GroupBox>
+        <!--
+        
+            <GroupBox Header="Settings" Margin="376,0,5,309" RenderTransformOrigin="0.5,0.5">
+
+                <GroupBox.RenderTransform>
+                    <TransformGroup>
+                     <ScaleTransform/>
+                     <SkewTransform AngleY="0.237"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="0.379"/>
+                    </TransformGroup>
+                </GroupBox.RenderTransform>
+                <Canvas>
+
+                    <Button Content="Apply" Canvas.Left="82" Canvas.Top="17" HorizontalAlignment="Left" VerticalAlignment="Top" Width="43" Click="Button_Click_Apply"/>
+                    <Button Content="Refresh" Canvas.Left="82" Canvas.Top="63" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <Button Content="Save" Canvas.Left="220" Canvas.Top="17" HorizontalAlignment="Left" VerticalAlignment="Top" Width="42"/>
+                    <Button Content="Restart" Canvas.Left="220" Canvas.Top="63" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                    </Canvas>
+            </GroupBox>
+        -->
+        <TabControl HorizontalAlignment="Left" Height="371" Margin="6,129,0,0" VerticalAlignment="Top" Width="897" SelectionChanged="TabControl_SelectionChanged">
+            <TabItem Header="Profile Position">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="137*"/>
+                        <ColumnDefinition Width="641*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Mode Controls" HorizontalAlignment="Left" Margin="5,3,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Button Content="new set-point" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Click="PositionSet_Click"/>
+                    <Label Content="Move command" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <StackPanel Name="Move" Margin="113,14,0,13" Grid.Column="1">
+                        <RadioButton GroupName="MoveItem" x:Name="Immediately" Content="Target position approached immediately" IsChecked="True" />
+                        <RadioButton GroupName="MoveItem" x:Name="BeforeNextSet" Content="Velocity will change before next set point"/>
+                        <RadioButton GroupName="MoveItem" x:Name="AfterNextSet" Content="Velocity will change after next set point"/>
+                    </StackPanel>
+                    <Label Content="Target Position" HorizontalAlignment="Left" Margin="11,69,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="10,74,501,-9" Grid.ColumnSpan="2"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="213,74,9,-8" Grid.Column="1">
+                        <Canvas>
+                            <Label Content="Acceleration and Velocity Limits" Canvas.Left="10" FontWeight="Bold"/>
+                            <StackPanel Name="MotionProfilePosition" Canvas.Left="139" Canvas.Top="26">
+                                <RadioButton x:Name="TrapezoidalRampPos" GroupName="MotionPos" Content="trapezoidal ramp" IsChecked="True"/>
+                                <RadioButton GroupName="MotionPos" Content="jerk limited ramp"/>
+                            </StackPanel>
+                            <Label Content="Motion profile type" Canvas.Left="22" Canvas.Top="27" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                            <TextBox Canvas.Left="100" x:Name="ProfileVelocity" TextWrapping="Wrap" Text="500" Canvas.Top="82" Width="60" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                            <TextBox Canvas.Left="100" x:Name="ProfileAccel" TextWrapping="Wrap" Text="500" Canvas.Top="105" Width="60" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox Canvas.Left="266" x:Name="EndVelocity" TextWrapping="Wrap" Text="0" Canvas.Top="82" Width="60"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox Canvas.Left="266" x:Name="ProfileDecel" TextWrapping="Wrap" Text="500" Canvas.Top="105" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBox Canvas.Left="266" x:Name="QuickStopDecel" TextWrapping="Wrap" Text="5000" Canvas.Top="133" Width="60"  HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                            <TextBox Canvas.Left="266" x:Name="MaxDecel" TextWrapping="Wrap" Text="5000" Canvas.Top="164" Width="60" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                            <TextBox Canvas.Left="100" x:Name="MaxAccel" TextWrapping="Wrap" Text="5000" Canvas.Top="164" Width="60" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label Content="Profile velocity" Canvas.Left="6" Canvas.Top="77" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label Content="Profile accel." Canvas.Left="6" Canvas.Top="103" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                            <Label Content="End velocity" Canvas.Left="184" Canvas.Top="77" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label Content="Profile decel." Canvas.Left="184" Canvas.Top="103" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                            <Label Content="Quick stop decel." Canvas.Left="161" Canvas.Top="129" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label Content="Max accel." Canvas.Top="159" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="28"/>
+                            <Label Content="Max decel." Canvas.Top="159" Canvas.Left="196" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Canvas>
+                    </Border>
+                    <TextBox x:Name="TargetPosition" HorizontalAlignment="Left" Margin="15,95,0,0" TextWrapping="Wrap" Text="900" VerticalAlignment="Top" Width="120"/>
+                    <CheckBox x:Name="relativePosition" Grid.Column="1" Content="Relative Position Mode" HorizontalAlignment="Left" Margin="419,15,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="MinPosRange" HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Grid.Column="1" Margin="15,116,0,0"/>
+                    <TextBox x:Name="MaxPosRange" HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Margin="15,138,0,0" Grid.Column="1"/>
+                    <TextBox x:Name="MinPos" HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Margin="15,161,0,0" Grid.Column="1"/>
+                    <TextBox x:Name="MaxPos" HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Margin="15,183,0,0" Grid.Column="1"/>
+                    <Label Content="Max position range limit" HorizontalAlignment="Left" Margin="10,133,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="142"/>
+                    <Label Content="Min position limit" HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="142"/>
+                    <Label Content="Min position range limit" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="140"/>
+                    <Label Content="Max position limit" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="142"/>
+                    <TextBox x:Name="HomeOffset" HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Margin="15,217,0,0" Grid.Column="1"/>
+                    <Label Content="Home offset" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="142"/>
+                    <CheckBox x:Name="PolarityInverted" Content="Polarity Inverted" HorizontalAlignment="Left" Margin="15,244,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Profil Velocity">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="108*"/>
+                        <ColumnDefinition Width="281*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="TargetVelocity" HorizontalAlignment="Left" Margin="128,32,0,0" TextWrapping="Wrap" Text="30" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                    <Label Content="Target velocity" HorizontalAlignment="Left" Margin="21,28,0,0" VerticalAlignment="Top"/>
+                    <StackPanel Name="MotionProfile" Margin="224,10,-190,17" Grid.Column="1">
+                        <RadioButton x:Name="TrapezoidalRampVelocity" GroupName="MotionItem" Content="trapezoidal ramp" IsChecked="True"/>
+                        <RadioButton GroupName="MotionItem" Content="jerk limited ramp"/>
+                    </StackPanel>
+                    <Label Content="Motion profile type&#xD;&#xA;" HorizontalAlignment="Left" Margin="107,10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Button x:Name="SetVelocity" Content="set velocity" HorizontalAlignment="Left" Margin="24,10,0,0" VerticalAlignment="Top" Click="SetVelocity_Click"/>
+                    <TextBox x:Name="VelProfileAccel" HorizontalAlignment="Left" Margin="128,56,0,0" TextWrapping="Wrap" Text="500" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                    <Label Content="Profile accel." HorizontalAlignment="Left" Margin="21,52,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="VelProfileDecel" HorizontalAlignment="Center" Margin="0,56,0,0" TextWrapping="Wrap" Text="500" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Label Content="Profile decel." HorizontalAlignment="Left" Margin="109,52,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="VelQuickstioDecel" HorizontalAlignment="Center" Margin="0,82,0,0" TextWrapping="Wrap" Text="5000" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Label Content="Quickstop decel." HorizontalAlignment="Left" Margin="109,78,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="VelMaxAccel" HorizontalAlignment="Left" Margin="128,120,0,0" TextWrapping="Wrap" Text="5000" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                    <Label Content="Max accel" HorizontalAlignment="Left" Margin="25,116,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="VelMaxDecel" HorizontalAlignment="Center" Margin="0,120,0,0" TextWrapping="Wrap" Text="5000" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Label Content="Max decel." HorizontalAlignment="Left" Margin="109,116,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="VelWindow" HorizontalAlignment="Left" Margin="128,177,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                    <Label Content="Velocity window" HorizontalAlignment="Left" Margin="25,173,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="VelWindowTime" HorizontalAlignment="Center" Margin="0,177,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Label Content="Velocity window time (ms)" HorizontalAlignment="Left" Margin="62,173,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <CheckBox x:Name="VelPolarityInverted" Content="Polarity Inverted" HorizontalAlignment="Left" Margin="401,180,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <StackPanel Name="VelMotorDriveSubmode" Margin="224,220,-190,17" Grid.Column="1">
+                        <RadioButton x:Name="VelBasedRamp" GroupName="motorDrive" Content="Velocity based ramp" IsChecked="True"/>
+                        <RadioButton GroupName="motorDrive" Content="Position based ramp"/>
+                    </StackPanel>
+                    <Label Content="Motor drive submode select" HorizontalAlignment="Left" Margin="64,220,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Profile Torque">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="77*"/>
+                        <ColumnDefinition Width="312*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Target torque" HorizontalAlignment="Left" Margin="32,55,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TargetTorque" HorizontalAlignment="Left" Margin="122,60,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                    <Label Content="%*Nominal current" HorizontalAlignment="Left" Margin="86,55,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Max torque" HorizontalAlignment="Left" Margin="278,55,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="MaxTorque" HorizontalAlignment="Left" Margin="354,60,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Label Content="%*Nominal current" HorizontalAlignment="Left" Margin="471,55,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Torque slope" HorizontalAlignment="Left" Margin="32,98,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TorqueSlope" HorizontalAlignment="Left" Margin="122,103,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                    <Label Content="%*Nominal current" HorizontalAlignment="Left" Margin="86,98,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <StackPanel Name="TorqueMotorDriveSubmode" Margin="441,103,-561,134" Grid.Column="1">
+                        <RadioButton x:Name="TorqueMode" GroupName="torqueMotorDrive" Content="Torque mode" IsChecked="True"/>
+                        <RadioButton GroupName="torqueMotorDrive" Content="Velocity mode"/>
+                    </StackPanel>
+                    <Label Content="Motor drive submode select" HorizontalAlignment="Left" Margin="277,100,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Nominal current (mA)" HorizontalAlignment="Left" Margin="32,167,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="NominalCurrent" HorizontalAlignment="Left" Margin="16,172,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Button Content="Apply" HorizontalAlignment="Left" Margin="39,23,0,0" VerticalAlignment="Top" Width="61" Click="Torque_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Homing" Height="20" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="24*"/>
+                        <ColumnDefinition Width="12*"/>
+                        <ColumnDefinition Width="75*"/>
+                        <ColumnDefinition Width="278*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Start Homing" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Button_Click_Homing" Grid.ColumnSpan="3"/>
+                    <TextBox x:Name="HomingSpeedZero" HorizontalAlignment="Left" Margin="78,48,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="127" Text="30" Grid.Column="3"/>
+                    <TextBox x:Name="HomingSpeedSwitch" HorizontalAlignment="Left" Margin="83,48,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="127" Text="500" Grid.Column="2" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="HomingAcceleration" HorizontalAlignment="Left" Margin="10,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"  Text="5000" Grid.ColumnSpan="3"/>
+
+                    <TextBox x:Name="HomingMinCurrent" HorizontalAlignment="Left" Margin="266,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"  Text="100" Grid.Column="3"/>
+                    <TextBox x:Name="HomingBlockTime" HorizontalAlignment="Left" Margin="266,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"  Text="200" Grid.Column="3"/>
+
+                    <Label Content="Homing acceleration" HorizontalAlignment="Left" Margin="5,31,0,0" VerticalAlignment="Top" FontSize="9" Grid.ColumnSpan="3"/>
+                    <Label Content="Speed during search for switch" HorizontalAlignment="Left" Margin="78,31,0,0" VerticalAlignment="Top" FontSize="9" Grid.Column="2" Grid.ColumnSpan="2"/>
+                    <Label Content="Speed during search for zero" HorizontalAlignment="Left" Margin="73,31,0,0" VerticalAlignment="Top" FontSize="9" Grid.Column="3"/>
+
+                    <Label Content="Min current for block detection (mA)" HorizontalAlignment="Left" Margin="261,31,0,0" VerticalAlignment="Top" FontSize="9" Grid.Column="3"/>
+                    <Label Content="Block detection Time (ms)" HorizontalAlignment="Left" Margin="261,71,0,0" VerticalAlignment="Top" FontSize="9" Grid.Column="3"/>
+                    <StackPanel Name="AllModes" Margin="10,80,0,0" Grid.ColumnSpan="4">
+                        <RadioButton GroupName="Mode" Content="current position" IsChecked="True"/>
+                        <RadioButton GroupName="Mode" Content="block negative"/>
+                        <RadioButton GroupName="Mode" Content="block positive"/>
+                        <RadioButton GroupName="Mode" Content="switch negative"/>
+                        <RadioButton GroupName="Mode" Content="switch positive"/>
+                        <RadioButton GroupName="Mode" Content="next encoder index to the left"/>
+                        <RadioButton GroupName="Mode" Content="next encoder index to the right"/>
+                        <RadioButton GroupName="Mode" Content="encoder index after hitting switch negative"/>
+                        <RadioButton GroupName="Mode" Content="encoder index after hitting switch positive"/>
+                        <RadioButton GroupName="Mode" Content="encoder index after hitting block negative"/>
+                        <RadioButton GroupName="Mode" Content="encoder index after hitting block positive"/>
+                    </StackPanel>
+
+
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

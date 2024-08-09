@@ -1,0 +1,16 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(516,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  C:\Git\ReadCoop\readcoop_isaac_singlesolution\01_Library\Robot\Doosan\Release\x64\DRFLWin64.dll
+  C:\Git\ReadCoop\readcoop_isaac_singlesolution\01_Library\Robot\Doosan\Release\x64\DRFLWin64.lib
+  C:\Git\ReadCoop\readcoop_isaac_singlesolution\01_Library\Robot\Doosan\Release\x64\PocoFoundation.lib
+  C:\Git\ReadCoop\readcoop_isaac_singlesolution\01_Library\Robot\Doosan\Release\x64\PocoFoundation64.dll
+  C:\Git\ReadCoop\readcoop_isaac_singlesolution\01_Library\Robot\Doosan\Release\x64\PocoNet.lib
+  C:\Git\ReadCoop\readcoop_isaac_singlesolution\01_Library\Robot\Doosan\Release\x64\PocoNet64.dll
+          6 file(s) copied.
+  pch.cpp
+  AssemblyInfo.cpp
+  ControlEx.cpp
+  Generating Code...
+C:\Users\msdit\Downloads\pch.cpp(1,10): error C1083: Cannot open precompiled header file: 'int\Debug\x64\RC.Lib.Robot.Doosan.CPP.pch': No such file or directory
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control.CPP\AssemblyInfo.cpp(1,10): error C1083: Cannot open precompiled header file: 'int\Debug\x64\RC.Lib.Robot.Doosan.CPP.pch': No such file or directory
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control.CPP\ControlEx.cpp(1,10): error C1083: Cannot open precompiled header file: 'int\Debug\x64\RC.Lib.Robot.Doosan.CPP.pch': No such file or directory

@@ -1,0 +1,185 @@
+﻿<Window x:Name="winUIMainWindows" x:Class="RC.PowerSupply.Nextys.Sample.UIMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RC.PowerSupply.Nextys.Sample"
+        mc:Ignorable="d"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen"
+        Topmost="True"
+        Title="DC/DC Converter Main Window"
+        Loaded="winUIMainWindows_Loaded"
+        Closing="winUIMainWindows_Closing">
+    <Grid Width="310" Height="340">
+        <Label x:Name="lblSerialPort" Content="Serial Port:" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Width="95"/>
+        <ComboBox x:Name="cmbSerialPort" HorizontalAlignment="Left" Margin="110,16,0,0" VerticalAlignment="Top" Width="190">
+            <ComboBoxItem Content="COM1"/>
+            <ComboBoxItem Content="COM2"/>
+            <ComboBoxItem Content="COM3"/>
+            <ComboBoxItem Content="COM4"/>
+            <ComboBoxItem Content="COM5"/>
+            <ComboBoxItem Content="COM6"/>
+            <ComboBoxItem Content="COM7"/>
+            <ComboBoxItem Content="COM8"/>
+            <ComboBoxItem Content="COM9"/>
+            <ComboBoxItem Content="COM10"/>
+            <ComboBoxItem Content="COM11"/>
+            <ComboBoxItem Content="COM12"/>
+            <ComboBoxItem Content="COM13"/>
+            <ComboBoxItem Content="COM14"/>
+            <ComboBoxItem Content="COM15"/>
+            <ComboBoxItem Content="COM16"/>
+            <ComboBoxItem Content="COM17"/>
+            <ComboBoxItem Content="COM18"/>
+            <ComboBoxItem Content="COM19"/>
+            <ComboBoxItem Content="COM20"/>
+            <ComboBoxItem Content="COM21"/>
+            <ComboBoxItem Content="COM22"/>
+            <ComboBoxItem Content="COM23"/>
+            <ComboBoxItem Content="COM24"/>
+            <ComboBoxItem Content="COM25"/>
+            <ComboBoxItem Content="COM26"/>
+            <ComboBoxItem Content="COM27"/>
+            <ComboBoxItem Content="COM28"/>
+            <ComboBoxItem Content="COM29"/>
+            <ComboBoxItem Content="COM30"/>
+            <ComboBoxItem Content="COM31"/>
+            <ComboBoxItem Content="COM32"/>
+            <ComboBoxItem Content="COM33"/>
+            <ComboBoxItem Content="COM34"/>
+            <ComboBoxItem Content="COM35"/>
+            <ComboBoxItem Content="COM36"/>
+            <ComboBoxItem Content="COM37"/>
+            <ComboBoxItem Content="COM38"/>
+            <ComboBoxItem Content="COM39"/>
+            <ComboBoxItem Content="COM40"/>
+            <ComboBoxItem Content="COM41"/>
+            <ComboBoxItem Content="COM42"/>
+            <ComboBoxItem Content="COM43"/>
+            <ComboBoxItem Content="COM44"/>
+            <ComboBoxItem Content="COM45"/>
+            <ComboBoxItem Content="COM46"/>
+            <ComboBoxItem Content="COM47"/>
+            <ComboBoxItem Content="COM48"/>
+            <ComboBoxItem Content="COM49"/>
+            <ComboBoxItem Content="COM50"/>
+            <ComboBoxItem Content="COM51"/>
+            <ComboBoxItem Content="COM52"/>
+            <ComboBoxItem Content="COM53"/>
+            <ComboBoxItem Content="COM54"/>
+            <ComboBoxItem Content="COM55"/>
+            <ComboBoxItem Content="COM56"/>
+            <ComboBoxItem Content="COM57"/>
+            <ComboBoxItem Content="COM58"/>
+            <ComboBoxItem Content="COM59"/>
+            <ComboBoxItem Content="COM60"/>
+            <ComboBoxItem Content="COM61"/>
+            <ComboBoxItem Content="COM62"/>
+            <ComboBoxItem Content="COM63"/>
+            <ComboBoxItem Content="COM64"/>
+            <ComboBoxItem Content="COM65"/>
+            <ComboBoxItem Content="COM66"/>
+            <ComboBoxItem Content="COM67"/>
+            <ComboBoxItem Content="COM68"/>
+            <ComboBoxItem Content="COM69"/>
+            <ComboBoxItem Content="COM70"/>
+            <ComboBoxItem Content="COM71"/>
+            <ComboBoxItem Content="COM72"/>
+            <ComboBoxItem Content="COM73"/>
+            <ComboBoxItem Content="COM74"/>
+            <ComboBoxItem Content="COM75"/>
+            <ComboBoxItem Content="COM76"/>
+            <ComboBoxItem Content="COM77"/>
+            <ComboBoxItem Content="COM78"/>
+            <ComboBoxItem Content="COM79"/>
+            <ComboBoxItem Content="COM80"/>
+            <ComboBoxItem Content="COM81"/>
+            <ComboBoxItem Content="COM82"/>
+            <ComboBoxItem Content="COM83"/>
+            <ComboBoxItem Content="COM84"/>
+            <ComboBoxItem Content="COM85"/>
+            <ComboBoxItem Content="COM86"/>
+            <ComboBoxItem Content="COM87"/>
+            <ComboBoxItem Content="COM88"/>
+            <ComboBoxItem Content="COM89"/>
+            <ComboBoxItem Content="COM90"/>
+            <ComboBoxItem Content="COM91"/>
+            <ComboBoxItem Content="COM92"/>
+            <ComboBoxItem Content="COM93"/>
+            <ComboBoxItem Content="COM94"/>
+            <ComboBoxItem Content="COM95"/>
+            <ComboBoxItem Content="COM96"/>
+            <ComboBoxItem Content="COM97"/>
+            <ComboBoxItem Content="COM98"/>
+            <ComboBoxItem Content="COM99"/>
+            <ComboBoxItem IsSelected="True" Content="COM100"/>
+            <ComboBoxItem Content="COM101"/>
+            <ComboBoxItem Content="COM102"/>
+            <ComboBoxItem Content="COM103"/>
+            <ComboBoxItem Content="COM104"/>
+            <ComboBoxItem Content="COM105"/>
+            <ComboBoxItem Content="COM106"/>
+            <ComboBoxItem Content="COM107"/>
+            <ComboBoxItem Content="COM108"/>
+            <ComboBoxItem Content="COM109"/>
+            <ComboBoxItem Content="COM110"/>
+            <ComboBoxItem Content="COM111"/>
+            <ComboBoxItem Content="COM112"/>
+            <ComboBoxItem Content="COM113"/>
+            <ComboBoxItem Content="COM114"/>
+            <ComboBoxItem Content="COM115"/>
+            <ComboBoxItem Content="COM116"/>
+            <ComboBoxItem Content="COM117"/>
+            <ComboBoxItem Content="COM118"/>
+            <ComboBoxItem Content="COM119"/>
+            <ComboBoxItem Content="COM120"/>
+            <ComboBoxItem Content="COM121"/>
+            <ComboBoxItem Content="COM122"/>
+            <ComboBoxItem Content="COM123"/>
+            <ComboBoxItem Content="COM124"/>
+            <ComboBoxItem Content="COM125"/>
+        </ComboBox>
+
+        <Label x:Name="lblBaudRate" Content="Baud Rate:" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="95"/>
+        <TextBox x:Name="txtBaudRate" HorizontalAlignment="Left" Margin="110,49,0,0" TextWrapping="Wrap" Text="38400" VerticalAlignment="Top" Width="190"/>
+
+        <Label x:Name="lblParity" Content="Parity:" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="95"/>
+        <ComboBox x:Name="cmbParity" HorizontalAlignment="Left" Margin="110,78,0,0" VerticalAlignment="Top" Width="190">
+            <ComboBoxItem Content="None"/>
+            <ComboBoxItem Content="Odd"/>
+            <ComboBoxItem IsSelected="True" Content="Even"/>
+            <ComboBoxItem Content="Mark"/>
+            <ComboBoxItem Content="Space"/>
+        </ComboBox>
+
+        <Label x:Name="lblStopBit" Content="Stop Bit:" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Width="95"/>
+        <ComboBox x:Name="cmbStopBit" HorizontalAlignment="Left" Margin="110,109,0,0" VerticalAlignment="Top" Width="190">
+            <ComboBoxItem Content="None"/>
+            <ComboBoxItem IsSelected="True" Content="One"/>
+            <ComboBoxItem Content="Two"/>
+            <ComboBoxItem Content="One Point Five"/>
+        </ComboBox>
+
+        <Label x:Name="lblHandshake" Content="Handshake:" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" Width="95"/>
+        <ComboBox x:Name="cmbHandshake" HorizontalAlignment="Left" Margin="110,141,0,0" VerticalAlignment="Top" Width="190">
+            <ComboBoxItem IsSelected="True" Content="None"/>
+            <ComboBoxItem Content="RequestToSend"/>
+            <ComboBoxItem Content="RequestToSendXOnXOff"/>
+            <ComboBoxItem Content="XOnXOff"/>
+        </ComboBox>
+
+        <Label x:Name="lblReadTimeout" Content="Read Timeout:" HorizontalAlignment="Left" Margin="10,169,0,0" VerticalAlignment="Top" Width="95"/>
+        <TextBox x:Name="txtReadTimeout" HorizontalAlignment="Left" Margin="110,173,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="190"/>
+
+        <Label x:Name="lblWriteTimeout" Content="Write Timeout:" HorizontalAlignment="Left" Margin="10,197,0,0" VerticalAlignment="Top" Width="95"/>
+        <TextBox x:Name="txtWriteTimeout" HorizontalAlignment="Left" Margin="110,201,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="190"/>
+
+        <Label x:Name="lblMonitoring" Content="Monitoring int.:" HorizontalAlignment="Left" Margin="10,225,0,0" VerticalAlignment="Top" Width="95"/>
+        <TextBox x:Name="txtMonitoring" HorizontalAlignment="Left" Margin="110,229,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="190"/>
+
+
+        <Button x:Name="btnOpenPort" Content="Open Port" HorizontalAlignment="Center" Margin="0,258,0,0" VerticalAlignment="Top" Click="Button_Click" Height="59" Width="290"/>
+
+    </Grid>
+</Window>

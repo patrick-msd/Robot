@@ -1,0 +1,13 @@
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper\bin\Debug\net8.0\PSGM.Helper.deps.json
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper\bin\Debug\net8.0\PSGM.Helper.dll
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper\bin\Debug\net8.0\PSGM.Helper.pdb
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper\obj\Debug\net8.0\PSGM.Helper.csproj.AssemblyReference.cache
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper\obj\Debug\net8.0\PSGM.Helper.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper\obj\Debug\net8.0\PSGM.Helper.AssemblyInfoInputs.cache
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper\obj\Debug\net8.0\PSGM.Helper.AssemblyInfo.cs
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper\obj\Debug\net8.0\PSGM.Helper.csproj.CoreCompileInputs.cache
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper\obj\Debug\net8.0\PSGM.Helper.sourcelink.json
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper\obj\Debug\net8.0\PSGM.Helper.dll
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper\obj\Debug\net8.0\refint\PSGM.Helper.dll
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper\obj\Debug\net8.0\PSGM.Helper.pdb
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper\obj\Debug\net8.0\ref\PSGM.Helper.dll

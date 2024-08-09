@@ -1,0 +1,12 @@
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Controller.RobotElectronics.Gpio\bin\x64\Debug\net8.0-windows10.0.22621.0\RC.Controller.RobotElectronics.Gpio.deps.json
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Controller.RobotElectronics.Gpio\bin\x64\Debug\net8.0-windows10.0.22621.0\RC.Controller.RobotElectronics.Gpio.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Controller.RobotElectronics.Gpio\bin\x64\Debug\net8.0-windows10.0.22621.0\RC.Controller.RobotElectronics.Gpio.pdb
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Controller.RobotElectronics.Gpio\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Controller.RobotElectronics.Gpio.GeneratedMSBuildEditorConfig.editorconfig
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Controller.RobotElectronics.Gpio\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Controller.RobotElectronics.Gpio.AssemblyInfoInputs.cache
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Controller.RobotElectronics.Gpio\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Controller.RobotElectronics.Gpio.AssemblyInfo.cs
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Controller.RobotElectronics.Gpio\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Controller.RobotElectronics.Gpio.csproj.CoreCompileInputs.cache
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Controller.RobotElectronics.Gpio\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Controller.RobotElectronics.Gpio.sourcelink.json
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Controller.RobotElectronics.Gpio\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Controller.RobotElectronics.Gpio.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Controller.RobotElectronics.Gpio\obj\x64\Debug\net8.0-windows10.0.22621.0\refint\RC.Controller.RobotElectronics.Gpio.dll
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Controller.RobotElectronics.Gpio\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Controller.RobotElectronics.Gpio.pdb
+D:\Git\ReadCoop\readcoop_-_isaac_-_singlesolution\10_LibraryRC\RC.Controller.RobotElectronics.Gpio\obj\x64\Debug\net8.0-windows10.0.22621.0\ref\RC.Controller.RobotElectronics.Gpio.dll

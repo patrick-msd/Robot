@@ -1,0 +1,17 @@
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\bin\x64\Debug\net8.0-windows10.0.22621.0\Ijwhost.dll
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\bin\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Robot.Doosan.Control.deps.json
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\bin\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Robot.Doosan.Control.dll
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\bin\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Robot.Doosan.Control.pdb
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\bin\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Robot.Doosan.CPP.dll
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\bin\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Robot.Doosan.CPP.pdb
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Robot.Doosan.Control.csproj.AssemblyReference.cache
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Robot.Doosan.Control.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Robot.Doosan.Control.AssemblyInfoInputs.cache
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Robot.Doosan.Control.AssemblyInfo.cs
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Robot.Doosan.Control.csproj.CoreCompileInputs.cache
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Robot.Doosan.Control.sourcelink.json
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.R.FD06DF72.Up2Date
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Robot.Doosan.Control.dll
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\obj\x64\Debug\net8.0-windows10.0.22621.0\refint\RC.Lib.Robot.Doosan.Control.dll
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Robot.Doosan.Control.pdb
+C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\obj\x64\Debug\net8.0-windows10.0.22621.0\ref\RC.Lib.Robot.Doosan.Control.dll

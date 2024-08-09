@@ -1,0 +1,17 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(516,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (int\Debug\x64\) contains files shared from another project (RC.Lib.Robot.Doosan.Control.vcxproj, RC.Robot.Doosan.Control.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  C:\Git\ReadCoop\readcoop_isaac_singlesolution\01_Library\Robot\Doosan\Release\x64\DRFLWin64.dll
+  C:\Git\ReadCoop\readcoop_isaac_singlesolution\01_Library\Robot\Doosan\Release\x64\DRFLWin64.lib
+  C:\Git\ReadCoop\readcoop_isaac_singlesolution\01_Library\Robot\Doosan\Release\x64\PocoFoundation.lib
+  C:\Git\ReadCoop\readcoop_isaac_singlesolution\01_Library\Robot\Doosan\Release\x64\PocoFoundation64.dll
+  C:\Git\ReadCoop\readcoop_isaac_singlesolution\01_Library\Robot\Doosan\Release\x64\PocoNet.lib
+  C:\Git\ReadCoop\readcoop_isaac_singlesolution\01_Library\Robot\Doosan\Release\x64\PocoNet64.dll
+          6 file(s) copied.
+  pch.cpp
+  AssemblyInfo.cpp
+  ControlEx.cpp
+  Generating Code...
+  .NETCoreApp,Version=v7.0.AssemblyAttributes.cpp
+  AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  RC.Robot.Doosan.Control.vcxproj -> C:\Git\ReadCoop\readcoop_isaac_singlesolution\10_LibraryRC\RC.Robot.Doosan.Control\bin\x64\Debug\RC.Lib.Robot.Doosan.dll

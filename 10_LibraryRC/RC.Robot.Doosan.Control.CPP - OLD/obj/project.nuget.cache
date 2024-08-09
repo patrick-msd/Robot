@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "W0MKYfwhvvTmG4bXEiAC6EX/mdY5ZjQCI71vSrmJNsQQeSiy4pr2IviMe1mcKOvT5AhZ5oTNsdEHlsdy1BmN8A==",
+  "success": true,
+  "projectFilePath": "C:\\Git\\ReadCoop\\readcoop_isaac_singlesolution\\10_LibraryRC\\RC.Robot.Doosan.Control.CPP\\RC.Robot.Doosan.Control.CPP.vcxproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.22621.31\\microsoft.windows.sdk.net.ref.10.0.22621.31.nupkg.sha512"
+  ],
+  "logs": []
+}

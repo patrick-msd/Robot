@@ -1,0 +1,25 @@
+﻿<Window x:Class="RC.Control.RobotElectronics.Sample.UIMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RC.Control.RobotElectronics.Sample"
+        mc:Ignorable="d"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen"
+        Topmost="True"
+        Title="DC/DC Converter Main Window"
+        Loaded="winUIMainWindows_Loaded"
+        Closing="winUIMainWindows_Closing">
+    <Grid Height="176" Width="315">
+        <Label x:Name="lblSerialPort" Content="IP-Addresss:" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Width="95"/>
+        <ComboBox x:Name="cmbSerialPort" HorizontalAlignment="Left" Margin="110,16,0,0" VerticalAlignment="Top" Width="190">
+            <ComboBoxItem IsSelected="True" Content="Select ..."/>
+        </ComboBox>
+        <Label x:Name="lblBaudRate" Content="IP-Address:" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="95"/>
+        <TextBox x:Name="txtBaudRate" HorizontalAlignment="Left" Margin="110,49,0,0" TextWrapping="Wrap" Text="select from Dropdown menu ..." VerticalAlignment="Top" Width="190"/>
+        <Label x:Name="lblReadTimeout" Content="Port:" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Width="95"/>
+        <TextBox x:Name="txtReadTimeout" HorizontalAlignment="Left" Margin="110,72,0,0" TextWrapping="Wrap" Text="17123" VerticalAlignment="Top" Width="190"/>
+        <Button x:Name="btnOpenPort" Content="Open Port" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top" Click="Button_Click" Height="59" Width="290"/>
+    </Grid>
+</Window>
