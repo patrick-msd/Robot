@@ -1,0 +1,22 @@
+﻿<Window x:Class="PSGM.Test_PDF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PSGM.Test_PDF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="Ignore Doublepage Sensor" HorizontalAlignment="Left" Height="50" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" Click="Button_IgnoreDoublepageSensor"/>
+        <Button Content="Replace Image #1-50 (DB)" HorizontalAlignment="Left" Height="50" Margin="10,65,0,0" VerticalAlignment="Top" Width="280" Click="Button_ReplaceImage"/>
+        <Button Content="Prepared Page" HorizontalAlignment="Left" Height="50" Margin="10,120,0,0" VerticalAlignment="Top" Width="280" Click="Button_PreparedPage"/>
+        <Button Content="Finish Scan" HorizontalAlignment="Left" Height="50" Margin="10,175,0,0" VerticalAlignment="Top" Width="280" Click="Button_FinishScan"/>
+        <Button Content="Start new Scan (DB)" HorizontalAlignment="Left" Height="50" Margin="10,359,0,0" VerticalAlignment="Top" Width="280" Click="Button_FinishScan"/>
+        <ComboBox HorizontalAlignment="Left" Margin="10,274,0,0" VerticalAlignment="Top" Width="280"/>
+        <Label Content="Company:" HorizontalAlignment="Left" Margin="10,243,0,0" VerticalAlignment="Top" Width="280"/>
+        <ComboBox HorizontalAlignment="Left" Margin="10,332,0,0" VerticalAlignment="Top" Width="280"/>
+        <Label Content="Project:" HorizontalAlignment="Left" Margin="10,301,0,0" VerticalAlignment="Top" Width="280"/>
+
+
+    </Grid>
+</Window>

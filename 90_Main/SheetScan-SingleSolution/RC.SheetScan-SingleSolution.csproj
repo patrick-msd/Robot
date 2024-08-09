@@ -1,0 +1,72 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+    <RootNamespace>RC.Scan_SingleSolution</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64</Platforms>
+    <SupportedOSPlatformVersion>10.0.22621.0</SupportedOSPlatformVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\10_LibraryRC\RC.Controller.RobotElectronics.Gpio\RC.Lib.Control.RobotElectronics.csproj" />
+    <ProjectReference Include="..\..\10_LibraryRC\RC.Motion.Nanotec.MotionController\RC.Lib.Motion.Nanotec.csproj" />
+    <ProjectReference Include="..\..\10_LibraryRC\RC.PowerSupply.Nextys.DcDcConverter\RC.Lib.PowerSupply.Nextys.csproj" />
+    <ProjectReference Include="..\..\10_LibraryRC\RC.Robot.Doosan.Control.CPP\RC.Robot.Doosan.Control.CPP.vcxproj" />
+    <ProjectReference Include="..\..\10_LibraryRC\RC.Robot.Doosan.Control\RC.Lib.Robot.Doosan.csproj" />
+    <ProjectReference Include="..\..\10_LibraryRC\RC.Vision.Intel.RealSense\RC.Vision.Intel.RealSense.csproj" />
+    <ProjectReference Include="..\..\10_LibraryRC\RC.Vision.SVSVistek.Camera\RC.Lib.Vision.SVSVistek.csproj" />
+    <ProjectReference Include="..\..\50_Helper\PSGM.Helper.Workflow\PSGM.Helper.Workflow.csproj" />
+    <ProjectReference Include="..\..\50_Helper\PSGM.Helper\PSGM.Helper.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DBJob\PSGM.Model.DbJob.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DBMachine\PSGM.Model.DbMachine.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DBMain\PSGM.Model.DbMain.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DBSoftware\PSGM.Model.DbSoftware.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DBStorage\PSGM.Model.DbStorage.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DBUser\PSGM.Model.DbUser.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Emgu.CV" Version="4.9.0.5494" />
+    <PackageReference Include="Emgu.CV.Bitmap" Version="4.9.0.5494" />
+    <PackageReference Include="Emgu.CV.runtime.windows" Version="4.9.0.5494" />
+    <PackageReference Include="Emgu.CV.UI" Version="4.9.0.5494" />
+    <PackageReference Include="Minio" Version="6.0.3" />
+    <PackageReference Include="SendGrid" Version="9.29.3" />
+    <PackageReference Include="Serilog" Version="4.0.1" />
+    <PackageReference Include="Serilog.Enrichers.Thread" Version="4.0.0" />
+    <PackageReference Include="Serilog.Sinks.Debug" Version="3.0.0" />
+    <PackageReference Include="Serilog.Sinks.Grafana.Loki" Version="8.3.0" />
+    <PackageReference Include="Serilog.Sinks.RichTextBox.Wpf" Version="1.1.0" />
+    <PackageReference Include="System.IO.Ports" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Intel.RealSense">
+      <HintPath>..\..\01_Library\Vision\Intel\RealSense\Release\x64\Intel.Realsense.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="UISplashScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="UISplashScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="50_Helper\" />
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="XCOPY &quot;$(SolutionDir)01_Library\Motion\Nanotec\Release\$(Platform)\*&quot; &quot;$(OutDir)\&quot; /Y /S&#xD;&#xA;XCOPY &quot;$(SolutionDir)01_Library\Robot\Doosan\Release\$(Platform)\*&quot; &quot;$(OutDir)&quot; /Y /S" />
+  </Target>
+
+</Project>

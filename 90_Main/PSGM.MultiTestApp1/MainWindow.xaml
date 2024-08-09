@@ -1,0 +1,64 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PSGM.MultiTestApp1"
+        xmlns:Wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf" x:Class="PSGM.MultiTestApp1.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1024" Width="2048">
+    <Grid>
+        <GroupBox HorizontalAlignment="Left" Height="600" Width="280" Header="Database" Margin="10,10,0,0" VerticalAlignment="Top">
+            <StackPanel>
+                <Button x:Name="btnDbCreateUser" Content="Create User" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnDbCreateUser_Click"/>
+                <Button x:Name="btnDbCreateMachine" Content="Create Machine" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnDbCreateMachine_Click"/>
+                <Button x:Name="btnDbCreateWorkflow" Content="Create Workflow" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" Click="btnDbCreateWorkflow_Click"/>
+                <Button x:Name="btnDbCreateOrganizationAndProject" Content="Create Organization and Project" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnDbCreateOrganizationAndProject_Click"/>
+                <Button x:Name="btnConnectToStorageDatabase" Content="Connect to storage database" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnConnectToStorageDatabase_Click"/>
+                <Button x:Name="btnDbCreateStorage" Content="Create Storage" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnSetupStorageAndStorageDb_Click"/>
+
+                <Button x:Name="btnDbReadInfo" Content="Read Organization and Project from DB" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,50,0,0" VerticalAlignment="Top" Click="btnDbReadInfo_Click"/>
+                <ComboBox x:Name="cmbProjects" Width="250" Margin="1,10,0,0" VerticalAlignment="Top"/>
+                <ComboBox x:Name="cmbOrganization" Width="250" Margin="1,10,0,0" VerticalAlignment="Top"/>
+                <ComboBox x:Name="cmbDirectory" Width="250" Margin="1,10,0,0" VerticalAlignment="Top"/>
+
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox HorizontalAlignment="Left" Height="600" Width="280" Header="Storage" Margin="300,10,0,0" VerticalAlignment="Top" >
+            <StackPanel>
+                <Button x:Name="btnSetupStorage" Content="Setup Storages (Bucket)" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnSetupStorage_Click"/>
+                <Button x:Name="btnUploadFilesToBucket" Content="Upload files to bucket S3-Data" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnUploadFilesToBucket_Click"/>
+
+
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox HorizontalAlignment="Left" Height="600" Width="280" Header="Vision 2D" Margin="590,10,0,0" VerticalAlignment="Top" >
+            <StackPanel>
+                <Button x:Name="btnVisionHDR" Content="HDR" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnVisionHDR_Click"/>
+                
+
+            </StackPanel>
+        </GroupBox>
+
+        <DataGrid x:Name="grdFolder" AutoGenerateColumns="False" Margin="10,615,1468,216" >
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Size" Binding="{Binding Size}" />
+                <DataGridTextColumn Header="Last Modified" Binding="{Binding LastModified}" />
+                <!--Add more columns as needed -->
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid x:Name="grdFile" AutoGenerateColumns="False" Margin="10,797,10,10" >
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Size" Binding="{Binding Size, StringFormat={}{0:N3}}" />
+                <DataGridTextColumn Header="Last Modified" Binding="{Binding LastModified, StringFormat={}{0:dd.MM.yyyy - HH:mm:ss.ffff}}" />
+                <!--Add more columns as needed -->
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
