@@ -24,3 +24,16 @@ C:\Git\MSD\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0\RC
 C:\Git\MSD\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0\refint\RC.Lib.Vision.SVSVistek.dll
 C:\Git\MSD\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0\RC.Lib.Vision.SVSVistek.pdb
 C:\Git\MSD\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0\ref\RC.Lib.Vision.SVSVistek.dll
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\bin\x64\Debug\net8.0\RC.Lib.Vision.SVSVistek.deps.json
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\bin\x64\Debug\net8.0\RC.Lib.Vision.SVSVistek.dll
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\bin\x64\Debug\net8.0\RC.Lib.Vision.SVSVistek.pdb
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0\RC.Lib.Vision.SVSVistek.csproj.AssemblyReference.cache
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0\RC.Lib.Vision.SVSVistek.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0\RC.Lib.Vision.SVSVistek.AssemblyInfoInputs.cache
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0\RC.Lib.Vision.SVSVistek.AssemblyInfo.cs
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0\RC.Lib.Vision.SVSVistek.csproj.CoreCompileInputs.cache
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0\RC.Lib.Vision.SVSVistek.sourcelink.json
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0\RC.Lib.Vision.SVSVistek.dll
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0\refint\RC.Lib.Vision.SVSVistek.dll
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0\RC.Lib.Vision.SVSVistek.pdb
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Vision.SVSVistek.Camera\obj\x64\Debug\net8.0\ref\RC.Lib.Vision.SVSVistek.dll

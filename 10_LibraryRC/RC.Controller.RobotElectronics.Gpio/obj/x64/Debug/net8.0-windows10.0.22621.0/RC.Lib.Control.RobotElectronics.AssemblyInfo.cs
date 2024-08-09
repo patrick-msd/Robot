@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RC.Lib.Control.RobotElectronics")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1aef8bb8c342b3a489253cb87e7d3f61ab47c1dd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+99486e7a566d8cb3246945b670fd3acdeb9a4e23")]
 [assembly: System.Reflection.AssemblyProductAttribute("RC.Lib.Control.RobotElectronics")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RC.Lib.Control.RobotElectronics")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

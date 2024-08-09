@@ -70,11 +70,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Robot.Doosan.Control\\RC.Lib.Robot.Doosan.csproj",
+      "projectUniqueName": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Robot.Doosan.Control\\RC.Lib.Robot.Doosan.csproj",
       "projectName": "RC.Lib.Robot.Doosan",
-      "projectPath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Robot.Doosan.Control\\RC.Lib.Robot.Doosan.csproj",
+      "projectPath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Robot.Doosan.Control\\RC.Lib.Robot.Doosan.csproj",
       "packagesPath": "C:\\Users\\msdit\\.nuget\\packages\\",
-      "outputPath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Robot.Doosan.Control\\obj\\",
+      "outputPath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Robot.Doosan.Control\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -96,8 +96,8 @@
         "net8.0-windows10.0.22621": {
           "targetAlias": "net8.0-windows10.0.22621.0",
           "projectReferences": {
-            "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Robot.Doosan.Control.CPP\\RC.Robot.Doosan.Control.CPP.vcxproj": {
-              "projectPath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Robot.Doosan.Control.CPP\\RC.Robot.Doosan.Control.CPP.vcxproj"
+            "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Robot.Doosan.Control.CPP\\RC.Robot.Doosan.Control.CPP.vcxproj": {
+              "projectPath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Robot.Doosan.Control.CPP\\RC.Robot.Doosan.Control.CPP.vcxproj"
             }
           }
         }

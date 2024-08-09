@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jD7IufenVsE=",
+  "dgSpecHash": "tXtQf064//0=",
   "success": true,
-  "projectFilePath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Vision.Intel.RealSense.Sample\\RC.Vision.Intel.RealSense.Sample.csproj",
+  "projectFilePath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Vision.Intel.RealSense.Sample\\RC.Vision.Intel.RealSense.Sample.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\msdit\\.nuget\\packages\\emgu.cv\\4.9.0.5494\\emgu.cv.4.9.0.5494.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\emgu.cv.bitmap\\4.9.0.5494\\emgu.cv.bitmap.4.9.0.5494.nupkg.sha512",

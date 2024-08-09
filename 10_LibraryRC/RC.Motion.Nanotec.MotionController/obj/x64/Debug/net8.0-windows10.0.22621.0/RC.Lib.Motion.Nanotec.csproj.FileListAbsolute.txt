@@ -24,3 +24,16 @@ C:\Git\MSD\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\n
 C:\Git\MSD\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net8.0-windows10.0.22621.0\refint\RC.Lib.Motion.Nanotec.dll
 C:\Git\MSD\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Motion.Nanotec.pdb
 C:\Git\MSD\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net8.0-windows10.0.22621.0\ref\RC.Lib.Motion.Nanotec.dll
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController\bin\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Motion.Nanotec.deps.json
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController\bin\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Motion.Nanotec.dll
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController\bin\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Motion.Nanotec.pdb
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Motion.Nanotec.csproj.AssemblyReference.cache
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Motion.Nanotec.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Motion.Nanotec.AssemblyInfoInputs.cache
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Motion.Nanotec.AssemblyInfo.cs
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Motion.Nanotec.csproj.CoreCompileInputs.cache
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Motion.Nanotec.sourcelink.json
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Motion.Nanotec.dll
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net8.0-windows10.0.22621.0\refint\RC.Lib.Motion.Nanotec.dll
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net8.0-windows10.0.22621.0\RC.Lib.Motion.Nanotec.pdb
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController\obj\x64\Debug\net8.0-windows10.0.22621.0\ref\RC.Lib.Motion.Nanotec.dll

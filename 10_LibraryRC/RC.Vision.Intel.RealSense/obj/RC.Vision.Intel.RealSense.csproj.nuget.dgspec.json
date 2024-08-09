@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Vision.Intel.RealSense\\RC.Vision.Intel.RealSense.csproj": {}
+    "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Vision.Intel.RealSense\\RC.Vision.Intel.RealSense.csproj": {}
   },
   "projects": {
-    "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Vision.Intel.RealSense\\RC.Vision.Intel.RealSense.csproj": {
+    "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Vision.Intel.RealSense\\RC.Vision.Intel.RealSense.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Vision.Intel.RealSense\\RC.Vision.Intel.RealSense.csproj",
+        "projectUniqueName": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Vision.Intel.RealSense\\RC.Vision.Intel.RealSense.csproj",
         "projectName": "RC.Vision.Intel.RealSense",
-        "projectPath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Vision.Intel.RealSense\\RC.Vision.Intel.RealSense.csproj",
+        "projectPath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Vision.Intel.RealSense\\RC.Vision.Intel.RealSense.csproj",
         "packagesPath": "C:\\Users\\msdit\\.nuget\\packages\\",
-        "outputPath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Vision.Intel.RealSense\\obj\\",
+        "outputPath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Vision.Intel.RealSense\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

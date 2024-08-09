@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MHG2CACCMcU=",
+  "dgSpecHash": "G4H2z34TZrk=",
   "success": true,
-  "projectFilePath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.PowerSupply.Nextys.DcDcConverter\\RC.Lib.PowerSupply.Nextys.csproj",
+  "projectFilePath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.PowerSupply.Nextys.DcDcConverter\\RC.Lib.PowerSupply.Nextys.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\msdit\\.nuget\\packages\\runtime.linux-arm.runtime.native.system.io.ports\\8.0.0\\runtime.linux-arm.runtime.native.system.io.ports.8.0.0.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\runtime.linux-arm64.runtime.native.system.io.ports\\8.0.0\\runtime.linux-arm64.runtime.native.system.io.ports.8.0.0.nupkg.sha512",

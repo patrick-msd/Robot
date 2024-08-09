@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("READ-COOP SCE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.0.0.11245")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.0.0.11245+1aef8bb8c342b3a489253cb87e7d3f61ab47c1dd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.0.0.11245+99486e7a566d8cb3246945b670fd3acdeb9a4e23")]
 [assembly: System.Reflection.AssemblyProductAttribute("RC.Control.RobotElectronics.Gpio.Sample")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RC.Control.RobotElectronics.Gpio.Sample")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.0.0.11245")]

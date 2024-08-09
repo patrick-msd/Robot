@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Git\MSD\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController.Sample\obj\x64\Debug\net8.0-windows10.0.22621.0\
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController.Sample\obj\x64\Debug\net8.0-windows10.0.22621.0\
 RC.Motion.Nanotec.Sample
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Git\MSD\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController.Sample\App.xaml
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Motion.Nanotec.MotionController.Sample\App.xaml
 546767224
 
 13516696089
-2251947244657
+2071160956567
 UIMainWindow.xaml;UIMainWindow_ObjectDirectory.xaml;UIMainWindow_Operation.xaml;UIMainWindow_Setup.xaml;UISplashScreen.xaml;
 
-True
+False
 

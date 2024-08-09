@@ -8,3 +8,8 @@ C:\Git\MSD\Robot\10_LibraryRC\RC.Robot.Doosan.Control.CPP\bin\x64\Debug\RC.Lib.R
 C:\Git\MSD\Robot\10_LibraryRC\RC.Robot.Doosan.Control.CPP\bin\x64\Debug\RC.Lib.Robot.Doosan.CPP.runtimeconfig.json
 C:\Git\MSD\Robot\10_LibraryRC\RC.Robot.Doosan.Control.CPP\int\Debug\x64\RC.Robot.Doosan.Control.CPP.sourcelink.json
 C:\Git\MSD\Robot\10_LibraryRC\RC.Robot.Doosan.Control.CPP\int\Debug\x64\RC.Robot.Doosan.Control.CPP.genruntimeconfig.cache
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Robot.Doosan.Control.CPP\bin\x64\Debug\Ijwhost.dll
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Robot.Doosan.Control.CPP\bin\x64\Debug\RC.Lib.Robot.Doosan.CPP.deps.json
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Robot.Doosan.Control.CPP\bin\x64\Debug\RC.Lib.Robot.Doosan.CPP.runtimeconfig.json
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Robot.Doosan.Control.CPP\int\Debug\x64\RC.Robot.Doosan.Control.CPP.sourcelink.json
+C:\Git\PSGM\Robot\10_LibraryRC\RC.Robot.Doosan.Control.CPP\int\Debug\x64\RC.Robot.Doosan.Control.CPP.genruntimeconfig.cache

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\PSGM.Lib.ExifData\\PSGM.Lib.ExifData.csproj",
+      "projectUniqueName": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\PSGM.Lib.ExifData\\PSGM.Lib.ExifData.csproj",
       "projectName": "PSGM.Lib.ExifData",
-      "projectPath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\PSGM.Lib.ExifData\\PSGM.Lib.ExifData.csproj",
+      "projectPath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\PSGM.Lib.ExifData\\PSGM.Lib.ExifData.csproj",
       "packagesPath": "C:\\Users\\msdit\\.nuget\\packages\\",
-      "outputPath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\PSGM.Lib.ExifData\\obj\\",
+      "outputPath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\PSGM.Lib.ExifData\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -758,11 +758,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Vision.SVSVistek.Camera.Sample\\RC.Vision.SVSVistek.Sample.csproj",
+      "projectUniqueName": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Vision.SVSVistek.Camera.Sample\\RC.Vision.SVSVistek.Sample.csproj",
       "projectName": "RC.Vision.SVSVistek.Sample",
-      "projectPath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Vision.SVSVistek.Camera.Sample\\RC.Vision.SVSVistek.Sample.csproj",
+      "projectPath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Vision.SVSVistek.Camera.Sample\\RC.Vision.SVSVistek.Sample.csproj",
       "packagesPath": "C:\\Users\\msdit\\.nuget\\packages\\",
-      "outputPath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Vision.SVSVistek.Camera.Sample\\obj\\",
+      "outputPath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Vision.SVSVistek.Camera.Sample\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -784,8 +784,8 @@
         "net8.0-windows10.0.22621": {
           "targetAlias": "net8.0-windows10.0.22621.0",
           "projectReferences": {
-            "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Vision.SVSVistek.Camera\\RC.Lib.Vision.SVSVistek.csproj": {
-              "projectPath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Vision.SVSVistek.Camera\\RC.Lib.Vision.SVSVistek.csproj"
+            "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Vision.SVSVistek.Camera\\RC.Lib.Vision.SVSVistek.csproj": {
+              "projectPath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Vision.SVSVistek.Camera\\RC.Lib.Vision.SVSVistek.csproj"
             }
           }
         }

@@ -54,11 +54,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Controller.RobotElectronics.Gpio\\RC.Lib.Control.RobotElectronics.csproj",
+      "projectUniqueName": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Controller.RobotElectronics.Gpio\\RC.Lib.Control.RobotElectronics.csproj",
       "projectName": "RC.Lib.Control.RobotElectronics",
-      "projectPath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Controller.RobotElectronics.Gpio\\RC.Lib.Control.RobotElectronics.csproj",
+      "projectPath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Controller.RobotElectronics.Gpio\\RC.Lib.Control.RobotElectronics.csproj",
       "packagesPath": "C:\\Users\\msdit\\.nuget\\packages\\",
-      "outputPath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Controller.RobotElectronics.Gpio\\obj\\",
+      "outputPath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Controller.RobotElectronics.Gpio\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

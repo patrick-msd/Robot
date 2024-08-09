@@ -276,11 +276,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.PowerSupply.Nextys.DcDcConverter\\RC.Lib.PowerSupply.Nextys.csproj",
+      "projectUniqueName": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.PowerSupply.Nextys.DcDcConverter\\RC.Lib.PowerSupply.Nextys.csproj",
       "projectName": "RC.Lib.PowerSupply.Nextys",
-      "projectPath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.PowerSupply.Nextys.DcDcConverter\\RC.Lib.PowerSupply.Nextys.csproj",
+      "projectPath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.PowerSupply.Nextys.DcDcConverter\\RC.Lib.PowerSupply.Nextys.csproj",
       "packagesPath": "C:\\Users\\msdit\\.nuget\\packages\\",
-      "outputPath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.PowerSupply.Nextys.DcDcConverter\\obj\\",
+      "outputPath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.PowerSupply.Nextys.DcDcConverter\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

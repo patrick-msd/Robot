@@ -1,39 +1,26 @@
 {
   "version": 2,
-  "dgSpecHash": "4s+IKNbyz/U=",
-  "success": true,
-  "projectFilePath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Controller.RobotElectronics.Gpio.Sample\\RC.Control.RobotElectronics.Gpio.Sample.csproj",
+  "dgSpecHash": "ISBnpkox5Cc=",
+  "success": false,
+  "projectFilePath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Controller.RobotElectronics.Gpio.Sample\\RC.Control.RobotElectronics.Gpio.Sample.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.1\\microsoft.data.sqlite.core.8.0.1.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.1\\microsoft.entityframeworkcore.8.0.1.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.1\\microsoft.entityframeworkcore.abstractions.8.0.1.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.1\\microsoft.entityframeworkcore.analyzers.8.0.1.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\8.0.1\\microsoft.entityframeworkcore.relational.8.0.1.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\8.0.1\\microsoft.entityframeworkcore.sqlite.8.0.1.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\8.0.1\\microsoft.entityframeworkcore.sqlite.core.8.0.1.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\8.0.0\\microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.extensions.caching.memory\\8.0.0\\microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.extensions.dependencymodel\\8.0.0\\microsoft.extensions.dependencymodel.8.0.0.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.extensions.logging\\8.0.0\\microsoft.extensions.logging.8.0.0.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\serilog\\4.0.1\\serilog.4.0.1.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\serilog.enrichers.thread\\4.0.0\\serilog.enrichers.thread.4.0.0.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\serilog.sinks.debug\\3.0.0\\serilog.sinks.debug.3.0.0.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\serilog.sinks.grafana.loki\\8.3.0\\serilog.sinks.grafana.loki.8.3.0.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\serilog.sinks.richtextbox.wpf\\1.1.0\\serilog.sinks.richtextbox.wpf.1.1.0.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.6\\sqlitepclraw.bundle_e_sqlite3.2.1.6.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\sqlitepclraw.core\\2.1.6\\sqlitepclraw.core.2.1.6.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.6\\sqlitepclraw.lib.e_sqlite3.2.1.6.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.6\\sqlitepclraw.provider.e_sqlite3.2.1.6.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512",
+    "C:\\Users\\msdit\\.nuget\\packages\\system.text.json\\4.7.0\\system.text.json.4.7.0.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.22621.31\\microsoft.windows.sdk.net.ref.10.0.22621.31.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project 'C:\\Git\\PSGM\\Robot\\80_Model\\RC.Model\\OLD.RC.Model.csproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "C:\\Git\\PSGM\\Robot\\80_Model\\RC.Model\\OLD.RC.Model.csproj",
+      "targetGraphs": [
+        "net8.0-windows10.0.22621"
+      ]
+    }
+  ]
 }

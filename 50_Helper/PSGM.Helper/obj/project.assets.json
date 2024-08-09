@@ -931,11 +931,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Git\\MSD\\Robot\\50_Helper\\PSGM.Helper\\PSGM.Helper.csproj",
+      "projectUniqueName": "C:\\Git\\PSGM\\Robot\\50_Helper\\PSGM.Helper\\PSGM.Helper.csproj",
       "projectName": "PSGM.Helper",
-      "projectPath": "C:\\Git\\MSD\\Robot\\50_Helper\\PSGM.Helper\\PSGM.Helper.csproj",
+      "projectPath": "C:\\Git\\PSGM\\Robot\\50_Helper\\PSGM.Helper\\PSGM.Helper.csproj",
       "packagesPath": "C:\\Users\\msdit\\.nuget\\packages\\",
-      "outputPath": "C:\\Git\\MSD\\Robot\\50_Helper\\PSGM.Helper\\obj\\",
+      "outputPath": "C:\\Git\\PSGM\\Robot\\50_Helper\\PSGM.Helper\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -957,8 +957,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Git\\MSD\\Robot\\10_LibraryRC\\PSGM.Lib.ExifData\\PSGM.Lib.ExifData.csproj": {
-              "projectPath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\PSGM.Lib.ExifData\\PSGM.Lib.ExifData.csproj"
+            "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\PSGM.Lib.ExifData\\PSGM.Lib.ExifData.csproj": {
+              "projectPath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\PSGM.Lib.ExifData\\PSGM.Lib.ExifData.csproj"
             }
           }
         }

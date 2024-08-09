@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Motion.Nanotec.MotionController\\RC.Lib.Motion.Nanotec.csproj": {}
+    "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Motion.Nanotec.MotionController\\RC.Lib.Motion.Nanotec.csproj": {}
   },
   "projects": {
-    "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Motion.Nanotec.MotionController\\RC.Lib.Motion.Nanotec.csproj": {
+    "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Motion.Nanotec.MotionController\\RC.Lib.Motion.Nanotec.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Motion.Nanotec.MotionController\\RC.Lib.Motion.Nanotec.csproj",
+        "projectUniqueName": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Motion.Nanotec.MotionController\\RC.Lib.Motion.Nanotec.csproj",
         "projectName": "RC.Lib.Motion.Nanotec",
-        "projectPath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Motion.Nanotec.MotionController\\RC.Lib.Motion.Nanotec.csproj",
+        "projectPath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Motion.Nanotec.MotionController\\RC.Lib.Motion.Nanotec.csproj",
         "packagesPath": "C:\\Users\\msdit\\.nuget\\packages\\",
-        "outputPath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Motion.Nanotec.MotionController\\obj\\",
+        "outputPath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Motion.Nanotec.MotionController\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

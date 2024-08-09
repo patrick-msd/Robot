@@ -1,37 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Git\\MSD\\Robot\\",
+  "WorkspaceRootPath": "C:\\Git\\PSGM\\Robot\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3F701106-C939-4156-AFF0-53442BAECD52}|10_LibraryRC\\RC.PowerSupply.Nextys.DcDcConverter\\RC.Lib.PowerSupply.Nextys.csproj|c:\\git\\msd\\robot\\10_libraryrc\\rc.powersupply.nextys.dcdcconverter\\nextys_dcdcconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3F701106-C939-4156-AFF0-53442BAECD52}|10_LibraryRC\\RC.PowerSupply.Nextys.DcDcConverter\\RC.Lib.PowerSupply.Nextys.csproj|c:\\git\\psgm\\robot\\10_libraryrc\\rc.powersupply.nextys.dcdcconverter\\nextys_dcdcconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3F701106-C939-4156-AFF0-53442BAECD52}|10_LibraryRC\\RC.PowerSupply.Nextys.DcDcConverter\\RC.Lib.PowerSupply.Nextys.csproj|solutionrelative:10_libraryrc\\rc.powersupply.nextys.dcdcconverter\\nextys_dcdcconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|c:\\git\\msd\\robot\\90_main\\sheetscan-singlesolution\\uimainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|c:\\git\\psgm\\robot\\90_main\\sheetscan-singlesolution\\uimainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|solutionrelative:90_main\\sheetscan-singlesolution\\uimainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|c:\\git\\msd\\robot\\90_main\\sheetscan-singlesolution\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|c:\\git\\psgm\\robot\\90_main\\sheetscan-singlesolution\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|solutionrelative:90_main\\sheetscan-singlesolution\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|c:\\git\\msd\\robot\\90_main\\sheetscan-singlesolution\\uimainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|c:\\git\\psgm\\robot\\90_main\\sheetscan-singlesolution\\uimainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|solutionrelative:90_main\\sheetscan-singlesolution\\uimainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60B88D8E-2966-4997-81B9-499F59056FAA}|90_Main\\PSGM.MultiTestApp1\\PSGM.MultiTestApp1.csproj|c:\\git\\msd\\robot\\90_main\\psgm.multitestapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{60B88D8E-2966-4997-81B9-499F59056FAA}|90_Main\\PSGM.MultiTestApp1\\PSGM.MultiTestApp1.csproj|c:\\git\\psgm\\robot\\90_main\\psgm.multitestapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{60B88D8E-2966-4997-81B9-499F59056FAA}|90_Main\\PSGM.MultiTestApp1\\PSGM.MultiTestApp1.csproj|solutionrelative:90_main\\psgm.multitestapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60B88D8E-2966-4997-81B9-499F59056FAA}|90_Main\\PSGM.MultiTestApp1\\PSGM.MultiTestApp1.csproj|c:\\git\\msd\\robot\\90_main\\psgm.multitestapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{60B88D8E-2966-4997-81B9-499F59056FAA}|90_Main\\PSGM.MultiTestApp1\\PSGM.MultiTestApp1.csproj|c:\\git\\psgm\\robot\\90_main\\psgm.multitestapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{60B88D8E-2966-4997-81B9-499F59056FAA}|90_Main\\PSGM.MultiTestApp1\\PSGM.MultiTestApp1.csproj|solutionrelative:90_main\\psgm.multitestapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|c:\\git\\msd\\robot\\90_main\\sheetscan-singlesolution\\uimainwindow_patrick.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|c:\\git\\psgm\\robot\\90_main\\sheetscan-singlesolution\\uimainwindow_patrick.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|solutionrelative:90_main\\sheetscan-singlesolution\\uimainwindow_patrick.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|c:\\git\\msd\\robot\\90_main\\sheetscan-singlesolution\\uisplashscreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|c:\\git\\psgm\\robot\\90_main\\sheetscan-singlesolution\\uisplashscreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|solutionrelative:90_main\\sheetscan-singlesolution\\uisplashscreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -72,11 +72,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Nextys_DcDcConverter.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.PowerSupply.Nextys.DcDcConverter\\Nextys_DcDcConverter.cs",
+              "DocumentMoniker": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.PowerSupply.Nextys.DcDcConverter\\Nextys_DcDcConverter.cs",
               "RelativeDocumentMoniker": "10_LibraryRC\\RC.PowerSupply.Nextys.DcDcConverter\\Nextys_DcDcConverter.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.PowerSupply.Nextys.DcDcConverter\\Nextys_DcDcConverter.cs",
+              "ToolTip": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.PowerSupply.Nextys.DcDcConverter\\Nextys_DcDcConverter.cs",
               "RelativeToolTip": "10_LibraryRC\\RC.PowerSupply.Nextys.DcDcConverter\\Nextys_DcDcConverter.cs",
-              "ViewState": "AQIAAK0BAAAAAAAAAAAAwLYBAAALAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGsAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-09T12:19:46.357Z",
               "EditorCaption": ""
@@ -85,9 +85,9 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\90_Main\\PSGM.MultiTestApp1\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Git\\PSGM\\Robot\\90_Main\\PSGM.MultiTestApp1\\MainWindow.xaml",
               "RelativeDocumentMoniker": "90_Main\\PSGM.MultiTestApp1\\MainWindow.xaml",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\90_Main\\PSGM.MultiTestApp1\\MainWindow.xaml",
+              "ToolTip": "C:\\Git\\PSGM\\Robot\\90_Main\\PSGM.MultiTestApp1\\MainWindow.xaml",
               "RelativeToolTip": "90_Main\\PSGM.MultiTestApp1\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-08-09T12:29:38.501Z"
@@ -96,22 +96,21 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\90_Main\\PSGM.MultiTestApp1\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Git\\PSGM\\Robot\\90_Main\\PSGM.MultiTestApp1\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "90_Main\\PSGM.MultiTestApp1\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\90_Main\\PSGM.MultiTestApp1\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Git\\PSGM\\Robot\\90_Main\\PSGM.MultiTestApp1\\MainWindow.xaml.cs",
               "RelativeToolTip": "90_Main\\PSGM.MultiTestApp1\\MainWindow.xaml.cs",
               "ViewState": "AQIAADgJAAAAAAAAAAAawGcJAABxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-09T12:19:46.374Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-09T12:19:46.374Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "UIMainWindow.xaml",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\UIMainWindow.xaml",
+              "DocumentMoniker": "C:\\Git\\PSGM\\Robot\\90_Main\\SheetScan-SingleSolution\\UIMainWindow.xaml",
               "RelativeDocumentMoniker": "90_Main\\SheetScan-SingleSolution\\UIMainWindow.xaml",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\UIMainWindow.xaml",
+              "ToolTip": "C:\\Git\\PSGM\\Robot\\90_Main\\SheetScan-SingleSolution\\UIMainWindow.xaml",
               "RelativeToolTip": "90_Main\\SheetScan-SingleSolution\\UIMainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-08-08T10:22:01.927Z"
@@ -120,48 +119,45 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "UIMainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\UIMainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Git\\PSGM\\Robot\\90_Main\\SheetScan-SingleSolution\\UIMainWindow.xaml.cs",
               "RelativeDocumentMoniker": "90_Main\\SheetScan-SingleSolution\\UIMainWindow.xaml.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\UIMainWindow.xaml.cs",
+              "ToolTip": "C:\\Git\\PSGM\\Robot\\90_Main\\SheetScan-SingleSolution\\UIMainWindow.xaml.cs",
               "RelativeToolTip": "90_Main\\SheetScan-SingleSolution\\UIMainWindow.xaml.cs",
               "ViewState": "AQIAAD0FAAAAAAAAAIA3wFcFAABXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:25:43.248Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:25:43.248Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "UIMainWindow_Patrick.xaml.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\UIMainWindow_Patrick.xaml.cs",
+              "DocumentMoniker": "C:\\Git\\PSGM\\Robot\\90_Main\\SheetScan-SingleSolution\\UIMainWindow_Patrick.xaml.cs",
               "RelativeDocumentMoniker": "90_Main\\SheetScan-SingleSolution\\UIMainWindow_Patrick.xaml.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\UIMainWindow_Patrick.xaml.cs",
+              "ToolTip": "C:\\Git\\PSGM\\Robot\\90_Main\\SheetScan-SingleSolution\\UIMainWindow_Patrick.xaml.cs",
               "RelativeToolTip": "90_Main\\SheetScan-SingleSolution\\UIMainWindow_Patrick.xaml.cs",
               "ViewState": "AQIAABMBAAAAAAAAAAAAwLIAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-07T13:16:56.768Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-07T13:16:56.768Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "UISplashScreen.xaml.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\UISplashScreen.xaml.cs",
+              "DocumentMoniker": "C:\\Git\\PSGM\\Robot\\90_Main\\SheetScan-SingleSolution\\UISplashScreen.xaml.cs",
               "RelativeDocumentMoniker": "90_Main\\SheetScan-SingleSolution\\UISplashScreen.xaml.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\UISplashScreen.xaml.cs",
+              "ToolTip": "C:\\Git\\PSGM\\Robot\\90_Main\\SheetScan-SingleSolution\\UISplashScreen.xaml.cs",
               "RelativeToolTip": "90_Main\\SheetScan-SingleSolution\\UISplashScreen.xaml.cs",
               "ViewState": "AQIAAKQDAAAAAAAAAAAcwL8DAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-07T20:48:01.463Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-07T20:48:01.463Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "App.xaml.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\App.xaml.cs",
+              "DocumentMoniker": "C:\\Git\\PSGM\\Robot\\90_Main\\SheetScan-SingleSolution\\App.xaml.cs",
               "RelativeDocumentMoniker": "90_Main\\SheetScan-SingleSolution\\App.xaml.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\App.xaml.cs",
+              "ToolTip": "C:\\Git\\PSGM\\Robot\\90_Main\\SheetScan-SingleSolution\\App.xaml.cs",
               "RelativeToolTip": "90_Main\\SheetScan-SingleSolution\\App.xaml.cs",
               "ViewState": "AQIAACgAAAAAAAAAAAAcwD0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
