@@ -672,13 +672,13 @@ namespace PSGM.MultiTestApp1
                 {
                     CameraId = _dbMachineContext.Devices.Where(d => d.DeviceName == "Vision 2D Right").FirstOrDefault().Id,
 
-                    Rotate = RotateFlags.Rotate90Counterclockwise
+                    Rotate = RotateFlags.Rotate90Clockwise
                 },
                 new ConfigurationRotateV1_0_0()
                 {
                     CameraId = _dbMachineContext.Devices.Where(d => d.DeviceName == "Vision 2D Left").FirstOrDefault().Id,
 
-                    Rotate = RotateFlags.Rotate90Clockwise
+                    Rotate = RotateFlags.Rotate90Counterclockwise
                 }
             });
 
@@ -707,13 +707,13 @@ namespace PSGM.MultiTestApp1
                 {
                     CameraId = _dbMachineContext.Devices.Where(d => d.DeviceName == "Vision 2D Right").FirstOrDefault().Id,
 
-                    angle = -90
+                    angle = 90
                 },
                 new ConfigurationRotateV2_0_0()
                 {
                     CameraId = _dbMachineContext.Devices.Where(d => d.DeviceName == "Vision 2D Left").FirstOrDefault().Id,
 
-                    angle = 90
+                    angle = -90
                 }
             });
 
@@ -845,7 +845,7 @@ namespace PSGM.MultiTestApp1
                     //dbWorkflowItemLink_Workflow1_Sharpen1Image_Data,
                     dbWorkflowItemLink_Workflow1_Sharpen2Image_Data,
                     dbWorkflowItemLink_Workflow1_SaveObjectToStorageAndDatabase_DataThumbnail
-                }                
+                }
             };
             _dbWorkflow_Context.Workflows.Add(dBWorkflow_Workflow);
             _dbWorkflow_Context.SaveChanges();

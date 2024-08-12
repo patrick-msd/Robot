@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64</Platforms>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="4.0.1" />
+    <PackageReference Include="Serilog.Enrichers.Thread" Version="4.0.0" />
+    <PackageReference Include="Serilog.Sinks.Debug" Version="3.0.0" />
+    <PackageReference Include="Serilog.Sinks.Grafana.Loki" Version="8.3.0" />
+    <PackageReference Include="Serilog.Sinks.RichTextBox.Wpf" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.Robot.Doosan\PSGM.Lib.Robot.Doosan.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbMachine\PSGM.Model.DbMachine.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbMain\PSGM.Model.DbMain.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbSoftware\PSGM.Model.DbSoftware.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbUser\PSGM.Model.DbUser.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="UISplashScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="UISplashScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="XCOPY &quot;$(SolutionDir)01_Library\Robot\Doosan\Release\$(Platform)\*&quot; &quot;$(OutDir)&quot; /Y /S" />
+  </Target>
+
+</Project>

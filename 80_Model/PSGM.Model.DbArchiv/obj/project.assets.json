@@ -4925,8 +4925,8 @@
     },
     "PSGM.Lib.ExifData/1.0.0": {
       "type": "project",
-      "path": "../../10_LibraryRC/PSGM.Lib.ExifData/PSGM.Lib.ExifData.csproj",
-      "msbuildProject": "../../10_LibraryRC/PSGM.Lib.ExifData/PSGM.Lib.ExifData.csproj"
+      "path": "../../10_LibraryPSGM/PSGM.Lib.ExifData/PSGM.Lib.ExifData.csproj",
+      "msbuildProject": "../../10_LibraryPSGM/PSGM.Lib.ExifData/PSGM.Lib.ExifData.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4949,11 +4949,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Git\\PSGM\\Robot\\80_Model\\PSGM.Model.DbArchiv\\PSGM.Model.DbArchiv.csproj",
+      "projectUniqueName": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbArchiv\\PSGM.Model.DbArchiv.csproj",
       "projectName": "PSGM.Model.DbArchiv",
-      "projectPath": "C:\\Git\\PSGM\\Robot\\80_Model\\PSGM.Model.DbArchiv\\PSGM.Model.DbArchiv.csproj",
+      "projectPath": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbArchiv\\PSGM.Model.DbArchiv.csproj",
       "packagesPath": "C:\\Users\\msdit\\.nuget\\packages\\",
-      "outputPath": "C:\\Git\\PSGM\\Robot\\80_Model\\PSGM.Model.DbArchiv\\obj\\",
+      "outputPath": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbArchiv\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4975,8 +4975,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Git\\PSGM\\Robot\\50_Helper\\PSGM.Helper\\PSGM.Helper.csproj": {
-              "projectPath": "C:\\Git\\PSGM\\Robot\\50_Helper\\PSGM.Helper\\PSGM.Helper.csproj"
+            "C:\\Git\\MSD\\Robot\\50_Helper\\PSGM.Helper\\PSGM.Helper.csproj": {
+              "projectPath": "C:\\Git\\MSD\\Robot\\50_Helper\\PSGM.Helper\\PSGM.Helper.csproj"
             }
           }
         }

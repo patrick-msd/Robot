@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64</Platforms>
+    <SupportedOSPlatformVersion>10.0.22621.0</SupportedOSPlatformVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenCvSharp4" Version="4.10.0.20240616" />
+    <PackageReference Include="Serilog" Version="4.0.1" />
+    <PackageReference Include="Serilog.Enrichers.Thread" Version="4.0.0" />
+    <PackageReference Include="Serilog.Sinks.Debug" Version="3.0.0" />
+    <PackageReference Include="Serilog.Sinks.Grafana.Loki" Version="8.3.0" />
+    <PackageReference Include="Serilog.Sinks.RichTextBox.Wpf" Version="1.1.0" />
+    <PackageReference Include="System.IO.Ports" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.Vision.SVSVistek\PSGM.Lib.Vision.SVSVistek.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbMachine\PSGM.Model.DbMachine.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbMain\PSGM.Model.DbMain.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbSoftware\PSGM.Model.DbSoftware.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbStorage\PSGM.Model.DbStorage.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbUser\PSGM.Model.DbUser.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbWorkflow\PSGM.Model.DbWorkflow.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="UISplashScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="copy /Y &quot;$(SolutionDir)01_Library\Vision\SVSVistek\Release\$(Platform)\*&quot; &quot;$(OutDir)\&quot;" />
+  </Target>
+
+</Project>

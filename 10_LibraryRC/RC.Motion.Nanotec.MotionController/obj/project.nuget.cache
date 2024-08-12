@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "u9MTHTTejNM=",
+  "dgSpecHash": "NMaxTsGHCE8=",
   "success": true,
-  "projectFilePath": "C:\\Git\\PSGM\\Robot\\10_LibraryRC\\RC.Motion.Nanotec.MotionController\\RC.Lib.Motion.Nanotec.csproj",
+  "projectFilePath": "C:\\Git\\MSD\\Robot\\10_LibraryRC\\RC.Motion.Nanotec.MotionController\\RC.Lib.Motion.Nanotec.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\msdit\\.nuget\\packages\\serilog\\4.0.1\\serilog.4.0.1.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.22621.31\\microsoft.windows.sdk.net.ref.10.0.22621.31.nupkg.sha512"

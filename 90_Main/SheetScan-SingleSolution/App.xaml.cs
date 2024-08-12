@@ -66,8 +66,8 @@ namespace RC.Scan_SingleSolution
             //_dbMainCon Globals.DbMachine_Context.ConnectionStringSQLServer="Server=(localdb)\\mssqllocaldb;Database=database;Trusted_Connection=True;";
             Globals.DbMain_Context.ConnectionStringSQLite = $"Data Source={path}\\DbMain.db";
             Globals.DbSoftware_Context.ConnectionStringSQLite = $"Data Source={path}\\DbSoftware.db";
-            Globals.DbStorage_Context.ConnectionStringSQLite = $"Data Source={path}\\DbStorage.db";
-            Globals.DbStorageRaw_Context.ConnectionStringSQLite = $"Data Source={path}\\DbStorageRaw.db";
+            Globals.DbStorage_Context.ConnectionStringSQLite = $"Data Source={path}\\DbStorageData.db";
+            Globals.DbStorageRaw_Context.ConnectionStringSQLite = $"Data Source={path}\\DbStorageDataRaw.db";
             Globals.DbUser_Context.ConnectionStringSQLite = $"Data Source={path}\\DbUser.db";
             Globals.DbWorkflow_Context.ConnectionStringSQLite = $"Data Source={path}\\DbWorkflow.db";
 

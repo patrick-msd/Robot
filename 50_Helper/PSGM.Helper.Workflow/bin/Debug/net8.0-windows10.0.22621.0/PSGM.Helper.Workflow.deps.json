@@ -14,6 +14,7 @@
           "OpenCvSharp4.Windows": "4.10.0.20240616",
           "PSGM.Helper": "1.0.0",
           "PSGM.Lib.ExifData": "1.0.0",
+          "PSGM.Lib.Vision.SVSVistek": "1.0.0",
           "PSGM.Model.DbJob": "1.0.0",
           "PSGM.Model.DbMachine": "1.0.0",
           "PSGM.Model.DbMain": "1.0.0",
@@ -21,7 +22,6 @@
           "PSGM.Model.DbStorage": "1.0.0",
           "PSGM.Model.DbUser": "1.0.0",
           "PSGM.Model.DbWorkflow": "1.0.0",
-          "RC.Lib.Vision.SVSVistek": "1.0.0",
           "Serilog": "4.0.1",
           "System.Drawing.Common": "8.0.7",
           "System.Management": "8.0.0",
@@ -942,6 +942,16 @@
           "PSGM.Lib.ExifData.dll": {}
         }
       },
+      "PSGM.Lib.Vision.SVSVistek/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "Serilog": "4.0.1",
+          "System.Drawing.Common": "8.0.7"
+        },
+        "runtime": {
+          "PSGM.Lib.Vision.SVSVistek.dll": {}
+        }
+      },
       "PSGM.Model.DbJob/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "8.0.7",
@@ -1038,16 +1048,6 @@
         },
         "runtime": {
           "PSGM.Model.DbWorkflow.dll": {}
-        }
-      },
-      "RC.Lib.Vision.SVSVistek/1.0.0": {
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.3",
-          "Serilog": "4.0.1",
-          "System.Drawing.Common": "8.0.7"
-        },
-        "runtime": {
-          "RC.Lib.Vision.SVSVistek.dll": {}
         }
       }
     }
@@ -1633,6 +1633,11 @@
       "serviceable": false,
       "sha512": ""
     },
+    "PSGM.Lib.Vision.SVSVistek/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "PSGM.Model.DbJob/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -1664,11 +1669,6 @@
       "sha512": ""
     },
     "PSGM.Model.DbWorkflow/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "RC.Lib.Vision.SVSVistek/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

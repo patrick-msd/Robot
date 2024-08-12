@@ -63,7 +63,7 @@ namespace RC.Scan_SingleSolution
             txbApplicationName.Text = Globals.ApplicationTitle;
             txbApplicationVersion.Text = "V" + Globals.ApplicationVersion.ToString();
 
-            Log.Information("Start spash screen ...");
+            Log.Information("Start splash screen ...");
 
             _closeApplication = false;
 
@@ -78,17 +78,17 @@ namespace RC.Scan_SingleSolution
             txbDateTime.Text = DateTime.UtcNow.ToString("dd.MM.yyyy - HH:mm:ss");
 
             // Thread clock
-            Log.Information("Initiaize Thread clock ...");
+            Log.Information("Initialize Thread clock ...");
             _ctsClock = new CancellationTokenSource();
             _thrClock = new Thread(ThreadFuction_Clock);
             _thrClock.Start();
 
-            // Worker splashscreen
-            Log.Information("Initiaize Worker splashscreen ...");
+            // Worker splash screen
+            Log.Information("Initialize Worker splash screen ...");
             _bgwSplashscreen = new BackgroundWorker();
             _bgwSplashscreen.WorkerReportsProgress = true;
             _bgwSplashscreen.DoWork += WorkerSplashscreen_Function;
-            _bgwSplashscreen.ProgressChanged += WorkerSpashscreen_ProgressChanged;
+            _bgwSplashscreen.ProgressChanged += WorkerSplashscreen_ProgressChanged;
             _bgwSplashscreen.RunWorkerAsync();
         }
         #endregion
@@ -178,14 +178,14 @@ namespace RC.Scan_SingleSolution
             Thread.Sleep(125);
         }
 
-        void WorkerSpashscreen_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        void WorkerSplashscreen_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             pgbLoading.Value = _statePercentageValue;
             txbState.Text = _stateName;
 
             if (_statePercentageValue >= _statePercentageCount)
             {
-                // Set Splasscree as top most
+                // Set Splash screen as top most
                 this.Topmost = true;
 
                 // Thread clock stop
@@ -302,27 +302,27 @@ namespace RC.Scan_SingleSolution
             {
                 Globals.Machine = new Globals_Machine()
                 {
-                    Control = new Globals_Machine.Globals_Device_Control()
+                    Control = new Globals_Machine.Globals_Machine_Control()
                     {
                         RobotElectronics = null
                     },
 
-                    Motion = new Globals_Machine.Globals_Device_Motion()
+                    Motion = new Globals_Machine.Globals_Machine_Motion()
                     {
                         Nanotec = null
                     },
 
-                    PowerSupply = new Globals_Machine.Globals_Device_PowerSupply()
+                    PowerSupply = new Globals_Machine.Globals_Machine_PowerSupply()
                     {
                         Nextys = null
                     },
 
-                    Robot = new Globals_Machine.Globals_Device_Robot()
+                    Robot = new Globals_Machine.Globals_Machine_Robot()
                     {
                         Doosan = null
                     },
 
-                    Vision = new Globals_Machine.Globals_Device_Vision()
+                    Vision = new Globals_Machine.Globals_Machine_Vision()
                     {
                         SVSVistek = null
                     }
@@ -344,7 +344,7 @@ namespace RC.Scan_SingleSolution
             devicesCount = devicesAll.Where(i => i.DeviceManufacturer == DeviceManufacturer.RobotElectronics).ToList().Count();
             if (devicesCount > 0)
             {
-                Globals.Machine.Control = new Globals_Machine.Globals_Device_Control();
+                Globals.Machine.Control = new Globals_Machine.Globals_Machine_Control();
                 Globals.Machine.Control.RobotElectronics = new RobotElectronics_Container();
             }
             else
@@ -360,7 +360,7 @@ namespace RC.Scan_SingleSolution
 
             if (interfaceCount > 0)
             {
-                Globals.Machine.Motion = new Globals_Machine.Globals_Device_Motion();
+                Globals.Machine.Motion = new Globals_Machine.Globals_Machine_Motion();
                 Globals.Machine.Motion.Nanotec = new List<Nanotec_Container>();
 
                 // Initialize devices on bus
@@ -397,7 +397,7 @@ namespace RC.Scan_SingleSolution
             devicesCount = devicesAll.Where(i => i.DeviceManufacturer == DeviceManufacturer.Nextys).ToList().Count();
             if (devicesCount > 0)
             {
-                Globals.Machine.PowerSupply = new Globals_Machine.Globals_Device_PowerSupply();
+                Globals.Machine.PowerSupply = new Globals_Machine.Globals_Machine_PowerSupply();
                 Globals.Machine.PowerSupply.Nextys = new Nextys_Container();
             }
             else
@@ -411,7 +411,7 @@ namespace RC.Scan_SingleSolution
             devicesCount = devicesAll.Where(i => i.DeviceManufacturer == DeviceManufacturer.Doosan).ToList().Count();
             if (devicesCount > 0)
             {
-                Globals.Machine.Robot = new Globals_Machine.Globals_Device_Robot();
+                Globals.Machine.Robot = new Globals_Machine.Globals_Machine_Robot();
                 Globals.Machine.Robot.Doosan = new Doosan_Container();
             }
             else
@@ -425,7 +425,7 @@ namespace RC.Scan_SingleSolution
             devicesCount = devicesAll.Where(i => i.DeviceManufacturer == DeviceManufacturer.SVSVistek).ToList().Count();
             if (devicesCount > 0)
             {
-                Globals.Machine.Vision = new Globals_Machine.Globals_Device_Vision();
+                Globals.Machine.Vision = new Globals_Machine.Globals_Machine_Vision();
                 Globals.Machine.Vision.SVSVistek = new SVSVistek_Container();
             }
             else
@@ -487,47 +487,6 @@ namespace RC.Scan_SingleSolution
 
         private void InitializeStorage()
         {
-            //Globals.Storage = new Globals_Storage()
-            //{
-            //    S3 = new List<Globals_Storage_S3>()
-            //    {
-            //        new Globals_Storage_S3()
-            //        {
-            //            Endpoint = _dbMain_Projects[0].ProjectParameter.StorageDataUrl,
-            //            AccessKey = _dbMain_Projects[0].ProjectParameter.StorageDataAccessKey,
-            //            SecretKey = _dbMain_Projects[0].ProjectParameter.StorageDataSecretKey,
-            //            Secure = _dbMain_Projects[0].ProjectParameter.StorageDataSecure,
-            //            Region = _dbMain_Projects[0].ProjectParameter.StorageDataLocation,
-
-            //            BucketName = _dbMain_Projects[0].ProjectParameter.StorageDataBucketName
-            //        },
-            //        new Globals_Storage_S3()
-            //        {
-            //            Endpoint = _dbMain_Projects[0].ProjectParameter.StorageThumbnailUrl,
-            //            AccessKey = _dbMain_Projects[0].ProjectParameter.StorageThumbnailAccessKey,
-            //            SecretKey = _dbMain_Projects[0].ProjectParameter.StorageThumbnailSecretKey,
-            //            Secure = _dbMain_Projects[0].ProjectParameter.StorageThumbnailSecure,
-            //            Region = _dbMain_Projects[0].ProjectParameter.StorageThumbnailLocation,
-
-            //            BucketName = _dbMain_Projects[0].ProjectParameter.StorageThumbnailBucketName
-            //        },
-            //        new Globals_Storage_S3()
-            //        {
-            //            Endpoint = _dbMain_Projects[0].ProjectParameter.StorageDataRawUrl,
-            //            AccessKey = _dbMain_Projects[0].ProjectParameter.StorageDataRawAccessKey,
-            //            SecretKey = _dbMain_Projects[0].ProjectParameter.StorageDataRawSecretKey,
-            //            Secure = _dbMain_Projects[0].ProjectParameter.StorageDataRawSecure,
-            //            Region = _dbMain_Projects[0].ProjectParameter.StorageDataRawLocation,
-
-            //            BucketName = _dbMain_Projects[0].ProjectParameter.StorageDataRawBucketName
-            //        },
-            //    }
-            //};
-
-
-
-
-
             Globals.Storage = new Globals_Storage();
             Globals.Storage.S3 = new List<Globals_Storage_S3>();
 
@@ -551,7 +510,6 @@ namespace RC.Scan_SingleSolution
                 item.InitilizeMinIoClient();
             }
         }
-
 
         private void ControlInitializeAndConnect()
         {
@@ -643,12 +601,12 @@ namespace RC.Scan_SingleSolution
                             // Now able to open the hardware itself
                             busInteface.OpenBusHardware();
                         }
+                        #endregion
                     }
                     else
                     {
                         // ToDo: ...
                     }
-                    #endregion
                 }
             }
         }

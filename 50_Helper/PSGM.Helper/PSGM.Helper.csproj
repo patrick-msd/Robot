@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\10_LibraryRC\PSGM.Lib.ExifData\PSGM.Lib.ExifData.csproj" />
+    <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.ExifData\PSGM.Lib.ExifData.csproj" />
   </ItemGroup>
 
 </Project>

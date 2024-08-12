@@ -17,8 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\10_LibraryRC\PSGM.Lib.ExifData\PSGM.Lib.ExifData.csproj" />
-    <ProjectReference Include="..\..\10_LibraryRC\RC.Vision.SVSVistek.Camera\RC.Lib.Vision.SVSVistek.csproj" />
+    <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.ExifData\PSGM.Lib.ExifData.csproj" />
+    <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.Vision.SVSVistek\PSGM.Lib.Vision.SVSVistek.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DbJob\PSGM.Model.DbJob.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DbMachine\PSGM.Model.DbMachine.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DbMain\PSGM.Model.DbMain.csproj" />
