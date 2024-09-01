@@ -95,6 +95,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PSGM.Lib.Vision.Sony", "10_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PSGM.Sample.Vision.Sony", "11_LibraryPSGM_Samples\PSGM.Sample.Vision.Sony\PSGM.Sample.Vision.Sony.csproj", "{8A803012-5C8B-464C-869A-7EF153B047DB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PSGM.Model.DbStorageStructure", "80_Model\PSGM.Model.DbStorageStructure\PSGM.Model.DbStorageStructure.csproj", "{601D42F1-2699-4D61-B15C-F256C504B223}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -549,6 +551,18 @@ Global
 		{8A803012-5C8B-464C-869A-7EF153B047DB}.Release|x64.Build.0 = Release|x64
 		{8A803012-5C8B-464C-869A-7EF153B047DB}.Release|x86.ActiveCfg = Release|Any CPU
 		{8A803012-5C8B-464C-869A-7EF153B047DB}.Release|x86.Build.0 = Release|Any CPU
+		{601D42F1-2699-4D61-B15C-F256C504B223}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{601D42F1-2699-4D61-B15C-F256C504B223}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{601D42F1-2699-4D61-B15C-F256C504B223}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{601D42F1-2699-4D61-B15C-F256C504B223}.Debug|x64.Build.0 = Debug|Any CPU
+		{601D42F1-2699-4D61-B15C-F256C504B223}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{601D42F1-2699-4D61-B15C-F256C504B223}.Debug|x86.Build.0 = Debug|Any CPU
+		{601D42F1-2699-4D61-B15C-F256C504B223}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{601D42F1-2699-4D61-B15C-F256C504B223}.Release|Any CPU.Build.0 = Release|Any CPU
+		{601D42F1-2699-4D61-B15C-F256C504B223}.Release|x64.ActiveCfg = Release|Any CPU
+		{601D42F1-2699-4D61-B15C-F256C504B223}.Release|x64.Build.0 = Release|Any CPU
+		{601D42F1-2699-4D61-B15C-F256C504B223}.Release|x86.ActiveCfg = Release|Any CPU
+		{601D42F1-2699-4D61-B15C-F256C504B223}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -591,6 +605,7 @@ Global
 		{D0009ECA-13A5-4689-A355-C768B75399EE} = {D36D5C8A-75DE-4801-8D12-4D075BE1F1EC}
 		{C79F707D-3825-42CD-AE44-1DA571B6ECE1} = {D36D5C8A-75DE-4801-8D12-4D075BE1F1EC}
 		{8A803012-5C8B-464C-869A-7EF153B047DB} = {FC920256-6DC3-47EC-A697-6E595A0F07B4}
+		{601D42F1-2699-4D61-B15C-F256C504B223} = {40EE5044-A103-4ADB-A472-23D882C0D0B7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2BF3358-069F-4B58-A4AE-C9E84979FCC6}

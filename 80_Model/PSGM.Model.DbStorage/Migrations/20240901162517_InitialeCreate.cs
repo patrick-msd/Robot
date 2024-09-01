@@ -346,6 +346,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     Permissions = table.Column<int>(type: "INTEGER", nullable: false),
                     UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     RootDirectoryId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -365,6 +366,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     Permissions = table.Column<int>(type: "INTEGER", nullable: false),
                     UserGroupIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     RootDirectoryId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -384,6 +386,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     NotificationString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
                     UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     RootDirectoryId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -403,6 +406,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     NotificationString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
                     UserGroupIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     RootDirectoryId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -540,6 +544,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     Permissions = table.Column<int>(type: "INTEGER", nullable: false),
                     UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     SubDirectoryId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -559,6 +564,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     Permissions = table.Column<int>(type: "INTEGER", nullable: false),
                     UserGroupIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     SubDirectoryId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -578,6 +584,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     NotificationString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
                     UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     SubDirectoryId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -597,6 +604,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     NotificationString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
                     UserGroupIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     SubDirectoryId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -616,6 +624,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     Permissions = table.Column<int>(type: "INTEGER", nullable: false),
                     UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     FileId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -635,6 +644,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     Permissions = table.Column<int>(type: "INTEGER", nullable: false),
                     UserGroupIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     FileId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -654,6 +664,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     NotificationString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
                     UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     FileId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -673,6 +684,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     NotificationString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
                     UserGroupIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     FileId = table.Column<Guid>(type: "TEXT", nullable: true)

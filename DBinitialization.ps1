@@ -53,14 +53,14 @@ cd C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorage
 dotnet ef migrations add InitialeCreate
 dotnet ef database update
 
-#Write-Host "########################### Clean and create DbStorageConfiguration ... ###########################"
-#Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorageConfiguration\Migrations' -Recurse -ErrorAction SilentlyContinue -Confirm:$false
-#Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorageConfiguration\DbStorageConfiguration.db' -ErrorAction SilentlyContinue -Confirm:$false
-##Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorageConfiguration\DbStorageConfiguration.db' -ErrorAction SilentlyContinue -Confirm:$false
-##Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorageConfiguration\DbStorageConfiguration.db' -ErrorAction SilentlyContinue -Confirm:$false
-#cd C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorageConfiguration
-#dotnet ef migrations add InitialeCreate
-#dotnet ef database update
+Write-Host "########################### Clean and create  DbStorageStructure... ###########################"
+Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorageStructure\Migrations' -Recurse -ErrorAction SilentlyContinue -Confirm:$false
+Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorageStructure\DbStorageStructure.db' -ErrorAction SilentlyContinue -Confirm:$false
+#Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorageStructure\DbStorageStructure.db' -ErrorAction SilentlyContinue -Confirm:$false
+#Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorageStructure\DbStorageStructure.db' -ErrorAction SilentlyContinue -Confirm:$false
+cd C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorageStructure
+dotnet ef migrations add InitialeCreate
+dotnet ef database update
 
 Write-Host "########################### Clean and create DbUser ... ###########################"
 Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbUser\Migrations' -Recurse -ErrorAction SilentlyContinue -Confirm:$false

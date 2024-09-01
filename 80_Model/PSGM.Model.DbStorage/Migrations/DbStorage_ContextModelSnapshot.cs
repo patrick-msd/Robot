@@ -24,6 +24,12 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("Id");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
+
                     b.Property<Guid?>("FileId")
                         .HasColumnType("TEXT");
 
@@ -48,6 +54,12 @@ namespace PSGM.Model.DbStorage.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
                         .HasColumnName("Id");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
 
                     b.Property<Guid?>("FileId")
                         .HasColumnType("TEXT");
@@ -154,6 +166,12 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("Id");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
+
                     b.Property<Guid?>("FileId")
                         .HasColumnType("TEXT");
 
@@ -180,6 +198,12 @@ namespace PSGM.Model.DbStorage.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
                         .HasColumnName("Id");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
 
                     b.Property<Guid?>("FileId")
                         .HasColumnType("TEXT");
@@ -288,6 +312,12 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("Id");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
+
                     b.Property<int>("Permissions")
                         .HasColumnType("INTEGER")
                         .HasColumnName("Permissions");
@@ -312,6 +342,12 @@ namespace PSGM.Model.DbStorage.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
                         .HasColumnName("Id");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
 
                     b.Property<int>("Permissions")
                         .HasColumnType("INTEGER")
@@ -418,6 +454,12 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("Id");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
+
                     b.Property<string>("NotificationString")
                         .IsRequired()
                         .HasMaxLength(16383)
@@ -444,6 +486,12 @@ namespace PSGM.Model.DbStorage.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
                         .HasColumnName("Id");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
 
                     b.Property<string>("NotificationString")
                         .IsRequired()
@@ -552,6 +600,12 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("Id");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
+
                     b.Property<int>("Permissions")
                         .HasColumnType("INTEGER")
                         .HasColumnName("Permissions");
@@ -576,6 +630,12 @@ namespace PSGM.Model.DbStorage.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
                         .HasColumnName("Id");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
 
                     b.Property<int>("Permissions")
                         .HasColumnType("INTEGER")
@@ -682,6 +742,12 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("Id");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
+
                     b.Property<string>("NotificationString")
                         .IsRequired()
                         .HasMaxLength(16383)
@@ -708,6 +774,12 @@ namespace PSGM.Model.DbStorage.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
                         .HasColumnName("Id");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
 
                     b.Property<string>("NotificationString")
                         .IsRequired()

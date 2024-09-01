@@ -20,7 +20,6 @@ namespace PSGM.Model.DbStorage
         [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Name { get; set; } = string.Empty;
 
-
         [Column("InternalContactUserIdExt")]
         [Display(Name = "InternalContactUserIdExt")]
         public Guid InternalContactUserIdExt { get; set; } = Guid.Empty;
@@ -36,13 +35,6 @@ namespace PSGM.Model.DbStorage
         [Column("ExternalContributorsUserIdExt")]
         [Display(Name = "ExternalContributorsUserIdExt")]
         public Guid ExternalContributorsUserIdExt { get; set; } = Guid.Empty;
-
-
-
-
-
-
-
 
         [Column("Description")]
         [Display(Name = "Description")]
@@ -76,14 +68,7 @@ namespace PSGM.Model.DbStorage
         [Column("OderProcessingFinishedUserIdExt")]
         [Display(Name = "OderProcessingFinishedUserIdExt")]
         public Guid OderProcessingFinishedUserIdExt { get; set; } = Guid.Empty;
-
-
-
-
-
-
-
-
+        
         #region Audit details for faster qrcode audit information
         [Required]
         [Column("CreatedDateTime")]

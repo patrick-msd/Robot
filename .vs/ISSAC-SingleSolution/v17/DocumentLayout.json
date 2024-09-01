@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Git\\MSD\\Robot\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstorage\\dbstorage_file.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|solutionrelative:80_model\\psgm.model.dbstorage\\dbstorage_file.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{601D42F1-2699-4D61-B15C-F256C504B223}|80_Model\\PSGM.Model.DbStorageStructure\\PSGM.Model.DbStorageStructure.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstoragestructure\\dbstoragestructure_projectstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{601D42F1-2699-4D61-B15C-F256C504B223}|80_Model\\PSGM.Model.DbStorageStructure\\PSGM.Model.DbStorageStructure.csproj|solutionrelative:80_model\\psgm.model.dbstoragestructure\\dbstoragestructure_projectstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstorage\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|solutionrelative:80_model\\psgm.model.dbstorage\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{601D42F1-2699-4D61-B15C-F256C504B223}|80_Model\\PSGM.Model.DbStorageStructure\\PSGM.Model.DbStorageStructure.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstoragestructure\\dbstoragestructure_project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{601D42F1-2699-4D61-B15C-F256C504B223}|80_Model\\PSGM.Model.DbStorageStructure\\PSGM.Model.DbStorageStructure.csproj|solutionrelative:80_model\\psgm.model.dbstoragestructure\\dbstoragestructure_project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstorage\\dbstorage_rootdirectory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|solutionrelative:80_model\\psgm.model.dbstorage\\dbstorage_rootdirectory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{601D42F1-2699-4D61-B15C-F256C504B223}|80_Model\\PSGM.Model.DbStorageStructure\\PSGM.Model.DbStorageStructure.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstoragestructure\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{601D42F1-2699-4D61-B15C-F256C504B223}|80_Model\\PSGM.Model.DbStorageStructure\\PSGM.Model.DbStorageStructure.csproj|solutionrelative:80_model\\psgm.model.dbstoragestructure\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstorage\\dbstorage_subdirectory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|solutionrelative:80_model\\psgm.model.dbstorage\\dbstorage_subdirectory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{601D42F1-2699-4D61-B15C-F256C504B223}|80_Model\\PSGM.Model.DbStorageStructure\\PSGM.Model.DbStorageStructure.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstoragestructure\\dbstoragestructure_projectstorage_auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{601D42F1-2699-4D61-B15C-F256C504B223}|80_Model\\PSGM.Model.DbStorageStructure\\PSGM.Model.DbStorageStructure.csproj|solutionrelative:80_model\\psgm.model.dbstoragestructure\\dbstoragestructure_projectstorage_auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{601D42F1-2699-4D61-B15C-F256C504B223}|80_Model\\PSGM.Model.DbStorageStructure\\PSGM.Model.DbStorageStructure.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstoragestructure\\dbstoragestructure_project_auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{601D42F1-2699-4D61-B15C-F256C504B223}|80_Model\\PSGM.Model.DbStorageStructure\\PSGM.Model.DbStorageStructure.csproj|solutionrelative:80_model\\psgm.model.dbstoragestructure\\dbstoragestructure_project_auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,8 +30,60 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DbStorageStructure_ProjectStorage_AuditLog.cs",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_ProjectStorage_AuditLog.cs",
+              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_ProjectStorage_AuditLog.cs",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_ProjectStorage_AuditLog.cs",
+              "RelativeToolTip": "80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_ProjectStorage_AuditLog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T16:17:04.304Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DbStorageStructure_ProjectStorage.cs",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_ProjectStorage.cs",
+              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_ProjectStorage.cs",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_ProjectStorage.cs",
+              "RelativeToolTip": "80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_ProjectStorage.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAQwEYAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T16:17:26.452Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DbStorageStructure_Project_AuditLog.cs",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_Project_AuditLog.cs",
+              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_Project_AuditLog.cs",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_Project_AuditLog.cs",
+              "RelativeToolTip": "80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_Project_AuditLog.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowEcAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T16:11:23.064Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DbStorageStructure_Project.cs",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_Project.cs",
+              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_Project.cs",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_Project.cs",
+              "RelativeToolTip": "80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_Project.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T16:11:02.036Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
@@ -54,54 +110,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DBStorage_File.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DBStorage_File.cs",
-              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorage\\DBStorage_File.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DBStorage_File.cs*",
-              "RelativeToolTip": "80_Model\\PSGM.Model.DbStorage\\DBStorage_File.cs*",
-              "ViewState": "AgIAAKUAAAAAAAAAAIAwwL4AAABtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-01T15:21:12.44Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DbStorage_SubDirectory.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorage_SubDirectory.cs",
-              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorage\\DbStorage_SubDirectory.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorage_SubDirectory.cs",
-              "RelativeToolTip": "80_Model\\PSGM.Model.DbStorage\\DbStorage_SubDirectory.cs",
-              "ViewState": "AgIAAIgAAAAAAAAAAIA3wKMAAAB1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-01T15:20:05.899Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DbContext.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbContext.cs",
-              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorage\\DbContext.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbContext.cs",
-              "RelativeToolTip": "80_Model\\PSGM.Model.DbStorage\\DbContext.cs",
-              "ViewState": "AgIAAFECAAAAAAAAAAAMwGoBAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-01T15:19:15.418Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "DbStorage_RootDirectory.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorage_RootDirectory.cs",
-              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorage\\DbStorage_RootDirectory.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorage_RootDirectory.cs",
-              "RelativeToolTip": "80_Model\\PSGM.Model.DbStorage\\DbStorage_RootDirectory.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAApwGgAAAB2AAAAAAAAAA==",
+              "Title": "DbContext.cs",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure\\DbContext.cs",
+              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorageStructure\\DbContext.cs",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure\\DbContext.cs",
+              "RelativeToolTip": "80_Model\\PSGM.Model.DbStorageStructure\\DbContext.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAuwKAAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-01T15:16:52.836Z",
+              "WhenOpened": "2024-09-01T16:06:46.53Z",
               "EditorCaption": ""
             }
           ]
