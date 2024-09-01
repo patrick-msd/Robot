@@ -27,7 +27,7 @@
         <Label x:Name="lblSheetZ_Copy7" Content="Tim: 0.000s" HorizontalAlignment="Left" Margin="822,659,0,0" VerticalAlignment="Top" Width="179"/>
         <Button Content="Test Move #3" HorizontalAlignment="Left" Height="36" Margin="10,405,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_4"/>
         <Image x:Name="imgImage" Height="612" Margin="206,10,758,0" VerticalAlignment="Top"/>
-        <Button Content="Save Pictures (SVS-Vistek)" HorizontalAlignment="Left" Height="36" Margin="10,272,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_12"/>
+        <!--<Button Content="Save Pictures (SVS-Vistek)" HorizontalAlignment="Left" Height="36" Margin="10,272,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_12"/>-->
         <Button Content="Open Downholder" HorizontalAlignment="Left" Height="21" Margin="10,510,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_8"/>
         <TextBox x:Name="txtSheetZ_Copy2" HorizontalAlignment="Left" Margin="105,487,0,0" TextWrapping="Wrap" Text="-25000" VerticalAlignment="Top" Width="85"/>
         <Image x:Name="imgImage_Copy" Height="613" Margin="1360,10,16,0" VerticalAlignment="Top"/>
@@ -37,8 +37,8 @@
         <Label Content="Start picture options:" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="chkFistStart" Content="FirstStart" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" IsChecked="True"/>
         <Label VerticalAlignment="Top" x:Name="lblSheetZ_Copy2" Margin="12,606,0,0" HorizontalAlignment="Left" Content="Graphic code:"/>
-        <TextBox x:Name="txtSheetZ_Copy3" Margin="95,612,0,0" VerticalAlignment="Top" Width="97" TextWrapping="Wrap" HorizontalAlignment="Left"/>
-        <Button Content="Taker Picture" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Margin="10,89,0,0" Width="180" Click="Button_Click_5"/>
+        <TextBox x:Name="txtSheetZ_Copy3" Margin="95,612,0,0" VerticalAlignment="Top" Width="97" TextWrapping="Wrap" HorizontalAlignment="Left" />
+        <!--<Button Content="Taker Picture" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Margin="10,89,0,0" Width="180" Click="Button_Click_5"/>-->
         <Button Content="Close Downholder" HorizontalAlignment="Left" Height="21" Margin="10,536,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_9"/>
         <CheckBox x:Name="chkCancle" Content="Cancle" HorizontalAlignment="Left" Margin="124,10,0,0" VerticalAlignment="Top" IsChecked="False"/>
         <CheckBox x:Name="chkIgnoreDoublepageSensor" Content="Ignore Doublepage Sensor" HorizontalAlignment="Left" Margin="15,30,0,0" VerticalAlignment="Top" IsChecked="False"/>

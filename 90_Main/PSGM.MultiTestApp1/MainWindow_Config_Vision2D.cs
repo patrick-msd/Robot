@@ -225,7 +225,7 @@ namespace PSGM.MultiTestApp1
                 {
                     Id = new Guid(),
 
-                    IpAddress = "192.168.140.101",
+                    IpAddress = "192.168.141.100",
                     Port = 0,
                     Timeout = 1000,
 

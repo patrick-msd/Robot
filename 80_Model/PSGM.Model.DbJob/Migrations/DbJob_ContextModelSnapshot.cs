@@ -15,7 +15,7 @@ namespace PSGM.Model.DbJob.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
 
             modelBuilder.Entity("PSGM.Model.DbJob.DbJob_Job", b =>
                 {

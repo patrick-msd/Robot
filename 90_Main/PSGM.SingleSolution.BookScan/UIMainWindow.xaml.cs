@@ -1,6 +1,6 @@
 ﻿using Emgu.CV;
 using Emgu.CV.Structure;
-using Intel.RealSense;
+//using Intel.RealSense;
 using Microsoft.EntityFrameworkCore;
 using PSGM.Helper;
 using PSGM.Helper.Workflow;
@@ -9,9 +9,9 @@ using PSGM.Model.DbStorage;
 using RC.Lib.Control.Doosan;
 using RC.Lib.Control.RobotElectronics;
 using RC.Lib.Motion;
-using RC.Lib.PowerSupply;
-using RC.Lib.Vision.SVSVistek;
-using RC.Vision.Intel.RealSense;
+//using RC.Lib.PowerSupply;
+//using RC.Lib.Vision.SVSVistek;
+//using RC.Vision.Intel.RealSense;
 using RCRobotDoosanControl;
 using SendGrid;
 using SendGrid.Helpers.Mail;
@@ -39,11 +39,11 @@ namespace RC.Scan_SingleSolution
         #region Hardware ...
         private RobotElectronics_Container? _robotElectronics;
         private List<Nanotec_Container>? _nanotec;
-        private Nextys_Container? _nextys;
+        //private Nextys_Container? _nextys;
         private Doosan_Container? _doosan;
-        private SVSVistek_Container? _svsVistek;
+       // private SVSVistek_Container? _svsVistek;
 
-        private RealSense _realSense = new RealSense();
+       // private RealSense _realSense = new RealSense();
         #endregion
 
         #region Thread and tasks ...
@@ -161,9 +161,9 @@ namespace RC.Scan_SingleSolution
             #region Inizialize variables ...
             _robotElectronics = Globals.Machine.Control.RobotElectronics;
             _nanotec = Globals.Machine.Motion.Nanotec;
-            _nextys = Globals.Machine.PowerSupply.Nextys;
+            //_nextys = Globals.Machine.PowerSupply.Nextys;
             _doosan = Globals.Machine.Robot.Doosan;
-            _svsVistek = Globals.Machine.Vision.SVSVistek;
+            //_svsVistek = Globals.Machine.Vision.SVSVistek;
             #endregion
 
             #region Inizialize threads and tasks ...
@@ -181,54 +181,54 @@ namespace RC.Scan_SingleSolution
             //_cancellationTokenSourceWorker = new CancellationTokenSource();
             //_tokenWorker = _cancellationTokenSourceWorker.Token;
 
-            _taskWorker = new Task[_svsVistek.Cameras.Count];
-            _cancellationTokenSourceWorker = new CancellationTokenSource[_svsVistek.Cameras.Count];
-            _tokenWorker = new CancellationToken[_svsVistek.Cameras.Count];
+           // _taskWorker = new Task[_svsVistek.Cameras.Count];
+            //_cancellationTokenSourceWorker = new CancellationTokenSource[_svsVistek.Cameras.Count];
+            //_tokenWorker = new CancellationToken[_svsVistek.Cameras.Count];
 
-            for (int i = 0; i < _taskWorker.Count(); i++)
-            {
-                _taskWorker[i] = new Task(() => { });
-                _cancellationTokenSourceWorker[i] = new CancellationTokenSource();
-                _tokenWorker[i] = _cancellationTokenSourceWorker[i].Token;
-            }
+            //for (int i = 0; i < _taskWorker.Count(); i++)
+            //{
+            //    _taskWorker[i] = new Task(() => { });
+            //    _cancellationTokenSourceWorker[i] = new CancellationTokenSource();
+            //    _tokenWorker[i] = _cancellationTokenSourceWorker[i].Token;
+            //}
 
-            _taskPicture = new Task(() => { });
-            _cancellationTokenSourcePicture = new CancellationTokenSource();
-            _tokenPicture = _cancellationTokenSourcePicture.Token;
+            //_taskPicture = new Task(() => { });
+            //_cancellationTokenSourcePicture = new CancellationTokenSource();
+            //_tokenPicture = _cancellationTokenSourcePicture.Token;
             #endregion
 
 
 
-            // Real Sense
-            _valuesDepthMean = new float[10];
-            _valuesDepthStandardDeviation = new float[10];
-            _realSense = new RealSense();
+            //// Real Sense
+            //_valuesDepthMean = new float[10];
+            //_valuesDepthStandardDeviation = new float[10];
+            //_realSense = new RealSense();
 
-            var devices = _realSense.GetDevices();
+            //var devices = _realSense.GetDevices();
 
-            _realSense.ConnectToDevice(devices[0].Info.GetInfo(CameraInfo.SerialNumber));
+            //_realSense.ConnectToDevice(devices[0].Info.GetInfo(CameraInfo.SerialNumber));
 
             // Write device information
-            Serilog.Log.Debug("\nUsing selected device, an {0}", _realSense.Device.Info[CameraInfo.Name]);
-            Serilog.Log.Debug("Serial number: {0}", _realSense.Device.Info[CameraInfo.SerialNumber]);
-            Serilog.Log.Debug("Firmware version: {0}", _realSense.Device.Info[CameraInfo.FirmwareVersion]);
+           // Serilog.Log.Debug("\nUsing selected device, an {0}", _realSense.Device.Info[CameraInfo.Name]);
+           // Serilog.Log.Debug("Serial number: {0}", _realSense.Device.Info[CameraInfo.SerialNumber]);
+           // Serilog.Log.Debug("Firmware version: {0}", _realSense.Device.Info[CameraInfo.FirmwareVersion]);
 
             // Initialize Senosors            
-            _realSense.InitializeStreamingProfileDepthSensor(0);
-            _realSense.InitializeStreamingProfileColorSensor(0);
-            //_realSense.InitializeStreamingProfileOfBothSensors(0, 0);
+           // _realSense.InitializeStreamingProfileDepthSensor(0);
+            //_realSense.InitializeStreamingProfileColorSensor(0);
+            // //_realSense.InitializeStreamingProfileOfBothSensors(0, 0);
 
             // Config Streaming
-            _realSense.StreamingConfigurationApply();
+           // _realSense.StreamingConfigurationApply();
 
             // Start pipeline with streaming configuration
-            _realSense.StreamingStart();
+            //_realSense.StreamingStart();
 
-            _realSense.Function1Start();
+            //_realSense.Function1Start();
 
-            _realSense._updateColor += MonitoringColor;
-            _realSense._updateDepth += MonitoringDepth;
-            _realSense._updateDepthColorized += MonitoringDepthColorized;
+            //_realSense._updateColor += MonitoringColor;
+            //_realSense._updateDepth += MonitoringDepth;
+            //_realSense._updateDepthColorized += MonitoringDepthColorized;
 
 
 
@@ -249,29 +249,29 @@ namespace RC.Scan_SingleSolution
             _doosan.Controllers[0].SetAnalogOutput(GpioCtrlboxAnalogIndex.GPIO_CTRLBOX_ANALOG_INDEX_2, 0.000f);
 
 
-            foreach (Nextys_DcDcConverter dcDcConverter in _nextys.DcDcConverters)
-            {
-                //if (item.Control != null)
-                //{
-                //    if (!item.Control.IsConnected)
-                //    {
-                //        item.Control = new NextysModbus(item.Serial.PortName, item.Serial.BaudRate, item.Serial.Parity, item.Serial.StopBit, item.Serial.Handshake, item.Serial.ReadTimeout, item.Serial.WriteTimeout, item.Serial.MonitoringInterval, 0x01);
-                //        item.Control.Connect();
-                //    }
-                //}
+            //foreach (Nextys_DcDcConverter dcDcConverter in _nextys.DcDcConverters)
+            //{
+            //    //if (item.Control != null)
+            //    //{
+            //    //    if (!item.Control.IsConnected)
+            //    //    {
+            //    //        item.Control = new NextysModbus(item.Serial.PortName, item.Serial.BaudRate, item.Serial.Parity, item.Serial.StopBit, item.Serial.Handshake, item.Serial.ReadTimeout, item.Serial.WriteTimeout, item.Serial.MonitoringInterval, 0x01);
+            //    //        item.Control.Connect();
+            //    //    }
+            //    //}
 
-                // Disable Output
-                dcDcConverter.OutputDisable();
+            //    // Disable Output
+            //    dcDcConverter.OutputDisable();
 
-                // Set values
-                dcDcConverter._minOutputVoltage = (int)(4.500f * 1000);
-                dcDcConverter._maxOutputVoltage = (int)(24.000f * 1000);
-                dcDcConverter.SetNominalOutputVoltage((int)(4.500f * 1000));
+            //    // Set values
+            //    dcDcConverter._minOutputVoltage = (int)(4.500f * 1000);
+            //    dcDcConverter._maxOutputVoltage = (int)(24.000f * 1000);
+            //    dcDcConverter.SetNominalOutputVoltage((int)(4.500f * 1000));
 
-                dcDcConverter._minOutputCurrent = (int)(1.000f * 1000);
-                dcDcConverter._maxOutputCurrent = (int)(1.2500f * 1000);
-                dcDcConverter.SetMaximalOutputCurrent((int)(1.250f * 1000));
-            }
+            //    dcDcConverter._minOutputCurrent = (int)(1.000f * 1000);
+            //    dcDcConverter._maxOutputCurrent = (int)(1.2500f * 1000);
+            //    dcDcConverter.SetMaximalOutputCurrent((int)(1.250f * 1000));
+            //}
 
 
 
@@ -345,29 +345,29 @@ namespace RC.Scan_SingleSolution
             }
             #endregion
 
-            #region Close power supply devices
-            Serilog.Log.Information("Power Supply: Close devices and clean up variabels ...");
+            //#region Close power supply devices
+            //Serilog.Log.Information("Power Supply: Close devices and clean up variabels ...");
 
-            try
-            {
-                if (_nextys.DcDcConverters.Count > 0)
-                {
-                    foreach (Nextys_DcDcConverter device in _nextys.DcDcConverters)
-                    {
-                        device.Disconnect();
-                    }
+            //try
+            //{
+            //    if (_nextys.DcDcConverters.Count > 0)
+            //    {
+            //        foreach (Nextys_DcDcConverter device in _nextys.DcDcConverters)
+            //        {
+            //            device.Disconnect();
+            //        }
 
-                    Thread.Sleep(250);
+            //        Thread.Sleep(250);
 
-                    _nextys.DcDcConverters.Clear();
-                    //_nextys = null;
-                }
-            }
-            catch (Exception ex)
-            {
-                Serilog.Log.Error(ex.Message);
-            }
-            #endregion
+            //        _nextys.DcDcConverters.Clear();
+            //        //_nextys = null;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Serilog.Log.Error(ex.Message);
+            //}
+            //#endregion
 
             #region Close robot devices
             Serilog.Log.Information("Robot: Close devices and clean up variabels ...");
@@ -390,40 +390,40 @@ namespace RC.Scan_SingleSolution
             }
             #endregion
 
-            #region Close vison devices
-            Serilog.Log.Information("Vision: Close devices and clean up variabels ...");
+            //#region Close vison devices
+            //Serilog.Log.Information("Vision: Close devices and clean up variabels ...");
 
-            try
-            {
-                //cam.CloseCameraAll();
+            //try
+            //{
+            //    //cam.CloseCameraAll();
 
-                if (_svsVistek.Cameras != null)
-                {
-                    for (int i = 0; i < _svsVistek.Cameras.Count; i++)
-                    {
-                        Serilog.Log.Debug($"Closing Cam {_svsVistek.Cameras[i].DeviceInfo.DeviceInfo.serialNumber}");
+            //    if (_svsVistek.Cameras != null)
+            //    {
+            //        for (int i = 0; i < _svsVistek.Cameras.Count; i++)
+            //        {
+            //            Serilog.Log.Debug($"Closing Cam {_svsVistek.Cameras[i].DeviceInfo.DeviceInfo.serialNumber}");
 
-                        _svsVistek.Cameras[i].AcquisitionStop();
-                        _svsVistek.Cameras[i].StreamingChannelClose();
-                        _svsVistek.Cameras[i].closeConnection();
+            //            _svsVistek.Cameras[i].AcquisitionStop();
+            //            _svsVistek.Cameras[i].StreamingChannelClose();
+            //            _svsVistek.Cameras[i].closeConnection();
 
-                        //_svsVistek.Cameras[i].Distroy();
+            //            //_svsVistek.Cameras[i].Distroy();
 
-                        //_svsVistek.Cameras.Remove(_svsVistek.Cameras[i]);
+            //            //_svsVistek.Cameras.Remove(_svsVistek.Cameras[i]);
 
-                        Thread.Sleep(125);
-                    }
+            //            Thread.Sleep(125);
+            //        }
 
-                    _svsVistek.Cameras.Clear();
-                }
+            //        _svsVistek.Cameras.Clear();
+            //    }
 
-                _svsVistek = null;
-            }
-            catch (Exception ex)
-            {
-                Serilog.Log.Error(ex.Message);
-            }
-            #endregion
+            //    _svsVistek = null;
+            //}
+            //catch (Exception ex)
+            //{
+            //    Serilog.Log.Error(ex.Message);
+            //}
+            //#endregion
 
             //#region Close hardware connections
             //Serilog.Log.Information("################################# Close hardware connections #################################");
@@ -456,7 +456,7 @@ namespace RC.Scan_SingleSolution
             //    _nanotec.MotionBusController = null;
             //}
             //#endregion
-            //#endregion
+           // #endregion
         }
 
         #region GUI functions ...
@@ -521,21 +521,21 @@ namespace RC.Scan_SingleSolution
 
         private void Button_Click_12(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                foreach (SVSVistek_Camera cam in _svsVistek.Cameras)
-                {
-                    Serilog.Log.Debug("Save Picture - Cam " + cam.DeviceInfo.DeviceInfo.serialNumber);
-                    cam.GrabImageHdrAsync(new long[] { 2500, 7500, 15000, 32500, 45000 });
+            //try
+            //{
+            //    foreach (SVSVistek_Camera cam in _svsVistek.Cameras)
+            //    {
+            //        Serilog.Log.Debug("Save Picture - Cam " + cam.DeviceInfo.DeviceInfo.serialNumber);
+            //        cam.GrabImageHdrAsync(new long[] { 2500, 7500, 15000, 32500, 45000 });
 
-                    Thread.Sleep(25);
-                }
+            //        Thread.Sleep(25);
+            //    }
 
-            }
-            catch (Exception ex)
-            {
-                Serilog.Log.Debug(ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Serilog.Log.Debug(ex.Message);
+            //}
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -1006,6 +1006,48 @@ namespace RC.Scan_SingleSolution
             }
         }
 
+
+
+        private void Test_Calculations()
+        {
+            long RotationDegree = 45;
+            long PosX = 20;
+            long PosZ = 60;
+
+            long steps_RotationDegree = 0;
+            long steps_PosX = 0;
+            long steps_PosZ = 0;
+
+            long nullPosDistance = 200;
+
+            long timeToReach = 2; // in seconds
+
+            long rotationVelocity = 0;
+            long posXVelocity = 0;
+            long posZVelocity = 0;
+
+            long rotationAccel = 0;
+            long posXAccel = 0;
+            long posZAccel = 0;
+
+
+            steps_RotationDegree = (long)((RotationDegree * (4096 / 360)) / 12);
+            steps_PosX = (long)((PosX + Math.Abs(nullPosDistance * Math.Cos(RotationDegree))) * (4096 / 4));
+            steps_PosZ = (long)((PosZ + Math.Abs(nullPosDistance * Math.Sin(RotationDegree))) * (4096 / 4));
+
+            rotationVelocity = (long)(steps_RotationDegree / timeToReach);
+            posXVelocity = (long)(steps_PosX / timeToReach);
+            posZVelocity = (long)(steps_PosZ / timeToReach);
+
+            rotationAccel = (long)(rotationVelocity / timeToReach);
+            posXAccel = (long)(posXVelocity / timeToReach);
+            posZAccel = (long)(posZVelocity / timeToReach);
+
+            
+        }
+
+
+
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
             if (_thread.IsAlive)
@@ -1339,162 +1381,162 @@ namespace RC.Scan_SingleSolution
 
 
 
-        async Task Worker(int number)
-        {
-            int runs = 0;
+        //async Task Worker(int number)
+        //{
+        //    int runs = 0;
 
-            bool currentValue = false;
-            bool previousValue = false;
+        //    bool currentValue = false;
+        //    bool previousValue = false;
 
-            Workflow workflow;
+        //    Workflow workflow;
 
-            Guid machineId = MachineInfo.GetMachineUUID();
-            Guid patrickSchoeneggerId = Globals.DbUser_Context.Users.Where(u => u.LoginName == "patrick.schoenegger").FirstOrDefault().Id;
-            Guid softwareId = new Guid();
+        //    Guid machineId = MachineInfo.GetMachineUUID();
+        //    Guid patrickSchoeneggerId = Globals.DbUser_Context.Users.Where(u => u.LoginName == "patrick.schoenegger").FirstOrDefault().Id;
+        //    Guid softwareId = new Guid();
 
-            List<DbMain_Project> projects = Globals.DbMain_Context.Projects.Where(p => p.MachinesExt.Contains(machineId))
-                                                                              .Include(p => p.ProjectParameter)
-                                                                              .Include(p => p.Organization)
-                                                                              .Include(p => p.Contributors)
-                                                                              //.Include(p => p.Locations)
-                                                                              .ToList();
+        //    List<DbMain_Project> projects = Globals.DbMain_Context.Projects.Where(p => p.MachinesExt.Contains(machineId))
+        //                                                                      .Include(p => p.ProjectParameter)
+        //                                                                      .Include(p => p.Organization)
+        //                                                                      .Include(p => p.Contributors)
+        //                                                                      //.Include(p => p.Locations)
+        //                                                                      .ToList();
 
-            List<DbStorage_RootDirectory> storage = Globals.DbStorage_Context.RootDirectories.Where(p => p.Id == projects.FirstOrDefault().Id)
-                                                                                                .Include(p => p.SubDirectories)
-                                                                                                    .ThenInclude(d => d.Files)
-                                                                                                        .ThenInclude(f => f.QrCode)
-                                                                                                .Include(p => p.Files)
-                                                                                                    .ThenInclude(f => f.QrCode)
-                                                                                                .ToList();
+        //    List<DbStorage_RootDirectory> storage = Globals.DbStorage_Context.RootDirectories.Where(p => p.Id == projects.FirstOrDefault().Id)
+        //                                                                                        .Include(p => p.SubDirectories)
+        //                                                                                            .ThenInclude(d => d.Files)
+        //                                                                                                .ThenInclude(f => f.QrCode)
+        //                                                                                        .Include(p => p.Files)
+        //                                                                                            .ThenInclude(f => f.QrCode)
+        //                                                                                        .ToList();
 
-            DbMain_Project projectSelected = projects.FirstOrDefault();                                                             // To specified (Select box)
-            DbStorage_SubDirectory? dataSubdirectorySelected = storage.FirstOrDefault().SubDirectories.FirstOrDefault();            // To specified (Select box)
+        //    DbMain_Project projectSelected = projects.FirstOrDefault();                                                             // To specified (Select box)
+        //    DbStorage_SubDirectory? dataSubdirectorySelected = storage.FirstOrDefault().SubDirectories.FirstOrDefault();            // To specified (Select box)
 
-            workflow = new Workflow(projectSelected.WorkflowIdExt, patrickSchoeneggerId, machineId, softwareId, Globals.DbMain_Context.ConnectionStringSQLite, Globals.DbMain_Context.DatabaseType, projectSelected.Id, Globals.DbWorkflow_Context.ConnectionStringSQLite, Globals.DbWorkflow_Context.DatabaseType);
+        //    workflow = new Workflow(projectSelected.WorkflowIdExt, patrickSchoeneggerId, machineId, softwareId, Globals.DbMain_Context.ConnectionStringSQLite, Globals.DbMain_Context.DatabaseType, projectSelected.Id, Globals.DbWorkflow_Context.ConnectionStringSQLite, Globals.DbWorkflow_Context.DatabaseType);
 
-            while (!_tokenWorker[number].IsCancellationRequested)
-            {
-                if (previousValue && !currentValue)
-                {
-                    List<ImageHelper> imagesHelper = new List<ImageHelper>();
-                    List<Bitmap> imagesHelperBitmap = new List<Bitmap>();
+        //    while (!_tokenWorker[number].IsCancellationRequested)
+        //    {
+        //        if (previousValue && !currentValue)
+        //        {
+        //            List<ImageHelper> imagesHelper = new List<ImageHelper>();
+        //            List<Bitmap> imagesHelperBitmap = new List<Bitmap>();
 
-                    for (int j = 0; j < _svsVistek.Cameras[number].ImagesRgbCount; j++)
-                    {
-                        imagesHelper.Add(new ImageHelper() { FileId = Guid.NewGuid(), FileRawIds = null, ExposureTime = _svsVistek.Cameras[number].ImagesRgbExposureTime[j], DateDigitized = DateTime.UtcNow, CameraDeviceId = _svsVistek.Cameras[number].IdDb });
-                        imagesHelperBitmap.Add(_svsVistek.Cameras[number].ImagesRgb[j]);
-                    }
+        //            for (int j = 0; j < _svsVistek.Cameras[number].ImagesRgbCount; j++)
+        //            {
+        //                imagesHelper.Add(new ImageHelper() { FileId = Guid.NewGuid(), FileRawIds = null, ExposureTime = _svsVistek.Cameras[number].ImagesRgbExposureTime[j], DateDigitized = DateTime.UtcNow, CameraDeviceId = _svsVistek.Cameras[number].IdDb });
+        //                imagesHelperBitmap.Add(_svsVistek.Cameras[number].ImagesRgb[j]);
+        //            }
 
-                    #region Run workflow
-                    workflow.RunWithCapturedImages(imagesHelper, imagesHelperBitmap, "C:/tmp", dataSubdirectorySelected.Id, "Meldezettel TLA / UIBK", null);
-                    #endregion
+        //            #region Run workflow
+        //            workflow.RunWithCapturedImages(imagesHelper, imagesHelperBitmap, "C:/tmp", dataSubdirectorySelected.Id, "Meldezettel TLA / UIBK", null);
+        //            #endregion
 
-                    imagesHelper.RemoveAll(x => true);
-                    imagesHelperBitmap.RemoveAll(x => true);
+        //            imagesHelper.RemoveAll(x => true);
+        //            imagesHelperBitmap.RemoveAll(x => true);
 
-                    break;
-                }
+        //            break;
+        //        }
 
-                if (runs >= 100)
-                {
-                    Serilog.Log.Error($"Waiting too long for image from camera {_svsVistek.Cameras[number].GetDeviceSerialNumber}...");
-                    break;
-                }
+        //        if (runs >= 100)
+        //        {
+        //            Serilog.Log.Error($"Waiting too long for image from camera {_svsVistek.Cameras[number].GetDeviceSerialNumber}...");
+        //            break;
+        //        }
 
-                await Task.Delay(25);
+        //        await Task.Delay(25);
 
-                runs++;
+        //        runs++;
 
-                previousValue = currentValue;
-                currentValue = _svsVistek.Cameras[number].IsGrabbingImage;
-            }
-        }
+        //        previousValue = currentValue;
+        //        currentValue = _svsVistek.Cameras[number].IsGrabbingImage;
+        //    }
+        //}
 
 
 
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            #region 
-            bool FistStartLeft = false;
-            bool FistStartRight = false;
+            //#region 
+            //bool FistStartLeft = false;
+            //bool FistStartRight = false;
 
-            // Read values from GUI
-            FistStartLeft = (bool)chkFistStart_left.IsChecked;
-            FistStartRight = (bool)chkFistStart_right.IsChecked;
+            //// Read values from GUI
+            //FistStartLeft = (bool)chkFistStart_left.IsChecked;
+            //FistStartRight = (bool)chkFistStart_right.IsChecked;
 
-            for (int i = 0; i < _taskWorker.Count(); i++)
-            {
-                if (_taskWorker[i].Status == TaskStatus.Running)
-                {
-                    Serilog.Log.Information("Another thread is already running ...");
-                }
-                else
-                {
-                    if (FistStartRight)
-                    {
-                        _cancellationTokenSourceWorker[i] = new CancellationTokenSource();
-                        _tokenWorker[i] = _cancellationTokenSourceWorker[i].Token;
+            //for (int i = 0; i < _taskWorker.Count(); i++)
+            //{
+            //    if (_taskWorker[i].Status == TaskStatus.Running)
+            //    {
+            //        Serilog.Log.Information("Another thread is already running ...");
+            //    }
+            //    else
+            //    {
+            //        if (FistStartRight)
+            //        {
+            //            _cancellationTokenSourceWorker[i] = new CancellationTokenSource();
+            //            _tokenWorker[i] = _cancellationTokenSourceWorker[i].Token;
 
-                        Thread.Sleep(25);
+            //            Thread.Sleep(25);
 
-                        _taskWorker[i] = Task.Run(() => Worker(i), _tokenWorker[i]);
-                    }
+            //            _taskWorker[i] = Task.Run(() => Worker(i), _tokenWorker[i]);
+            //        }
 
-                    if (FistStartLeft)
-                    {
-                        _cancellationTokenSourceWorker[i] = new CancellationTokenSource();
-                        _tokenWorker[i] = _cancellationTokenSourceWorker[i].Token;
+            //        if (FistStartLeft)
+            //        {
+            //            _cancellationTokenSourceWorker[i] = new CancellationTokenSource();
+            //            _tokenWorker[i] = _cancellationTokenSourceWorker[i].Token;
 
-                        Thread.Sleep(25);
+            //            Thread.Sleep(25);
 
-                        _taskWorker[i] = Task.Run(() => Worker(i), _tokenWorker[i]);
-                    }
-                }
-            }
-            #endregion
+            //            _taskWorker[i] = Task.Run(() => Worker(i), _tokenWorker[i]);
+            //        }
+            //    }
+            //}
+            //#endregion
 
-            #region 
-            if (_taskPicture.Status == TaskStatus.Running)
-            {
-                Serilog.Log.Information("Another thread is already running ...");
-            }
-            else
-            {
-                _cancellationTokenSourcePicture = new CancellationTokenSource();
-                _tokenPicture = _cancellationTokenSourcePicture.Token;
+            //#region 
+            //if (_taskPicture.Status == TaskStatus.Running)
+            //{
+            //    Serilog.Log.Information("Another thread is already running ...");
+            //}
+            //else
+            //{
+            //    _cancellationTokenSourcePicture = new CancellationTokenSource();
+            //    _tokenPicture = _cancellationTokenSourcePicture.Token;
 
-                _taskPicture = Task.Run(async () =>
-                {
-                    bool FistStartLeft = false;
-                    bool FistStartRight = false;
+            //    _taskPicture = Task.Run(async () =>
+            //    {
+            //        bool FistStartLeft = false;
+            //        bool FistStartRight = false;
 
-                    // Read values from GUI
-                    this.Dispatcher.Invoke((Action)(() =>
-                    {
-                        FistStartLeft = (bool)chkFistStart_left.IsChecked;
-                        FistStartRight = (bool)chkFistStart_right.IsChecked;
-                    }));
+            //        // Read values from GUI
+            //        this.Dispatcher.Invoke((Action)(() =>
+            //        {
+            //            FistStartLeft = (bool)chkFistStart_left.IsChecked;
+            //            FistStartRight = (bool)chkFistStart_right.IsChecked;
+            //        }));
 
-                    if (FistStartLeft || FistStartRight)
-                    {
-                        if (FistStartRight)
-                        {
-                            Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[0].DeviceInfo.DeviceInfo.serialNumber);
+            //        if (FistStartLeft || FistStartRight)
+            //        {
+            //            if (FistStartRight)
+            //            {
+            //                Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[0].DeviceInfo.DeviceInfo.serialNumber);
 
-                            _svsVistek.Cameras[0].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
-                        }
+            //                _svsVistek.Cameras[0].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
+            //            }
 
-                        if (FistStartLeft)
-                        {
-                            Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[1].DeviceInfo.DeviceInfo.serialNumber);
+            //            if (FistStartLeft)
+            //            {
+            //                Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[1].DeviceInfo.DeviceInfo.serialNumber);
 
-                            _svsVistek.Cameras[1].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
-                        }
-                    }
-                }, _tokenPicture);
-            }
-            #endregion
+            //                _svsVistek.Cameras[1].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
+            //            }
+            //        }
+            //    }, _tokenPicture);
+            //}
+            //#endregion
         }
     }
 }

@@ -214,7 +214,7 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "System.Drawing.Common/8.0.7": {
+      "System.Drawing.Common/8.0.8": {
         "type": "package",
         "dependencies": {
           "Microsoft.Win32.SystemEvents": "8.0.0"
@@ -729,10 +729,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Drawing.Common/8.0.7": {
-      "sha512": "DoeBae0gZvxs3mtfoub6F1k28fSkFPzmhFuvblplKMnLYKmTMVy0j4Yxahh96KM532JzHGDxhJn1VpMKSB1pyg==",
+    "System.Drawing.Common/8.0.8": {
+      "sha512": "4ZM1wvLjz9nVVExsfPAaSl/qOvU+QNedJL5rQ+2Wbow+iGeyO0e7XN07707rMBgaffEeeLrCZBwC0oHUuvRdPw==",
       "type": "package",
-      "path": "system.drawing.common/8.0.7",
+      "path": "system.drawing.common/8.0.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -764,7 +764,7 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "system.drawing.common.8.0.7.nupkg.sha512",
+        "system.drawing.common.8.0.8.nupkg.sha512",
         "system.drawing.common.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -920,7 +920,7 @@
       "OpenCvSharp4 >= 4.10.0.20240616",
       "PSGM.Lib.ExifData >= 1.0.0",
       "Serilog >= 4.0.1",
-      "System.Drawing.Common >= 8.0.7",
+      "System.Drawing.Common >= 8.0.8",
       "System.Management >= 8.0.0"
     ]
   },
@@ -992,7 +992,7 @@
           },
           "System.Drawing.Common": {
             "target": "Package",
-            "version": "[8.0.7, )"
+            "version": "[8.0.8, )"
           },
           "System.Management": {
             "target": "Package",
@@ -1015,7 +1015,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

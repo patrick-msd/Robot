@@ -45,22 +45,12 @@ namespace PSGM.Model.DbMain
 
         [Column("WorkflowApplyLevel")]
         [Display(Name = "WorkflowApplyLevel")]
-        public ApplyLevel WorkflowApplyLevel { get; set; } = ApplyLevel.Undefined;
+        public WorkflowApplyLevel WorkflowApplyLevel { get; set; } = WorkflowApplyLevel.Undefined;
 
         [Column("MachinesExtString")]
         [Display(Name = "MachinesExtString")]
         [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string MachinesExtString { get; private set; } = string.Empty;
-
-        //[Column("AuthorizedUsersExtString")]
-        //[Display(Name = "AuthorizedUsersExtString")]
-        //[StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string AuthorizedUsersExtString { get; private set; } = string.Empty;
-
-        //[Column("AuthorizedUserGroupsExtString")]
-        //[Display(Name = "AuthorizedUserGroupsExtString")]
-        //[StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string AuthorizedUserGroupsExtString { get; private set; } = string.Empty;
         #endregion
 
         #region Links
@@ -73,8 +63,8 @@ namespace PSGM.Model.DbMain
         [InverseProperty("Project")]
         public virtual ICollection<DbMain_Contributors>? Contributors { get; set; }
 
-        //[InverseProperty("Project")]
-        //public virtual ICollection<DbMain_Location>? Locations { get; set; }
+        [InverseProperty("Project")]
+        public virtual ICollection<DbMain_ProjectDocumentType>? ProjectDocumentTypes { get; set; }
 
         [InverseProperty("Project")]
         public virtual ICollection<DbMain_ProjectAuthorization_User>? AuthorizationUser { get; set; }
@@ -96,23 +86,12 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Not Mapped
+        [NotMapped]
         public List<Guid> MachinesExt
         {
             get { return MachinesExtString != string.Empty ? MachinesExtString.Split(',').Select(Guid.Parse).ToList() : null; }
             set { MachinesExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
         }
-
-        //public List<Guid>? AuthorizedUsersExt
-        //{
-        //    get { return AuthorizedUsersExtString != string.Empty ? AuthorizedUsersExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-        //    set { AuthorizedUsersExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        //}
-
-        //public List<Guid>? AuthorizedUserGroupsExt
-        //{
-        //    get { return AuthorizedUserGroupsExtString != string.Empty ? AuthorizedUserGroupsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-        //    set { AuthorizedUserGroupsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        //}
         #endregion
     }
 }

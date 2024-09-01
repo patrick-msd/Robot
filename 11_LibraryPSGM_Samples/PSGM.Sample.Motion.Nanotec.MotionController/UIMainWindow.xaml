@@ -24,5 +24,13 @@
         <TextBox x:Name="textMove2" HorizontalAlignment="Left" Margin="10,146,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="120" Height="18"/>
         <Button Content="Move3 - 21" HorizontalAlignment="Left" Height="36" Margin="10,251,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click_Move3"/>
         <TextBox x:Name="textMove3" HorizontalAlignment="Left" Margin="10,228,0,0" TextWrapping="Wrap" Text="50000" VerticalAlignment="Top" Width="120" Height="18"/>
+
+        
+        <Button Content="Move Syncron" HorizontalAlignment="Left" Height="36" Margin="10,419,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click_MoveSync"/>
+        <TextBox x:Name="textMoveSyncDegree" HorizontalAlignment="Left" Margin="10,396,0,0" TextWrapping="Wrap" Text="360" VerticalAlignment="Top" Width="120" Height="18"/>
+        <TextBox x:Name="textMoveSyncX" HorizontalAlignment="Left" Margin="10,373,0,0" TextWrapping="Wrap" Text="60" VerticalAlignment="Top" Width="120" Height="18"/>
+        <TextBox x:Name="textMoveSyncZ" HorizontalAlignment="Left" Margin="10,350,0,0" TextWrapping="Wrap" Text="30" VerticalAlignment="Top" Width="120" Height="18"/>
+        
+        <Button Content="Test" HorizontalAlignment="Left" Height="36" Margin="10,496,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click_TEST"/>
     </Grid>
 </Window>

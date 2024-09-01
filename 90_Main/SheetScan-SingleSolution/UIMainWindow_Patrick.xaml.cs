@@ -1,11 +1,8 @@
 ﻿using Emgu.CV;
 using Emgu.CV.Structure;
-using Microsoft.EntityFrameworkCore;
-using PSGM.Model.DbStorage;
 using RC.Lib.Vision.SVSVistek;
 using RCRobotDoosanControl;
 using System;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -175,6 +172,35 @@ namespace RC.Scan_SingleSolution
             //}
             //#endregion
 
+
+
+
+
+            #region 
+            for (int i = 0; i < _taskWorker.Count(); i++)
+            {
+                if (_taskWorker[i].Status == TaskStatus.Running)
+                {
+                    Serilog.Log.Information("Another thread is already running ...");
+                }
+                else
+                {
+                    _cancellationTokenSourceWorker[i] = new CancellationTokenSource();
+                    _tokenWorker[i] = _cancellationTokenSourceWorker[i].Token;
+
+                    Thread.Sleep(25);
+
+                    _taskWorker[i] = Task.Run(() => Worker(i), _tokenWorker[i]);
+                }
+            }
+            #endregion
+
+
+
+
+
+
+
             #region 
             if (_taskCheck.Status == TaskStatus.Running)
             {
@@ -204,7 +230,7 @@ namespace RC.Scan_SingleSolution
 
                                 this.Dispatcher.Invoke((Action)(() =>
                                 {
-                                    foreach(var item in _cancellationTokenSourceWorker)
+                                    foreach (var item in _cancellationTokenSourceWorker)
                                     {
                                         item.Cancel();
                                     }
@@ -388,16 +414,16 @@ namespace RC.Scan_SingleSolution
                             // Camera 0
                             Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[0].DeviceInfo.DeviceInfo.serialNumber);
 
-                            directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
-                            Directory.CreateDirectory(directoryImages);
+                            //directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
+                            //Directory.CreateDirectory(directoryImages);
 
                             _svsVistek.Cameras[0].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
 
                             // Camera 1
                             Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[1].DeviceInfo.DeviceInfo.serialNumber);
 
-                            directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
-                            Directory.CreateDirectory(directoryImages);
+                            //directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
+                            //Directory.CreateDirectory(directoryImages);
 
                             _svsVistek.Cameras[1].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
 
@@ -411,8 +437,8 @@ namespace RC.Scan_SingleSolution
                         {
                             Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[0].DeviceInfo.DeviceInfo.serialNumber);
 
-                            directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
-                            Directory.CreateDirectory(directoryImages);
+                            //directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
+                            //Directory.CreateDirectory(directoryImages);
 
                             _svsVistek.Cameras[0].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
 
@@ -422,13 +448,12 @@ namespace RC.Scan_SingleSolution
                                 Thread.Sleep(5);
                             }
                         }
-
                         else if (FistStartLeft)
                         {
                             Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[1].DeviceInfo.DeviceInfo.serialNumber);
 
-                            directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
-                            Directory.CreateDirectory(directoryImages);
+                            //directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
+                            //Directory.CreateDirectory(directoryImages);
 
                             _svsVistek.Cameras[1].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
 
@@ -443,28 +468,28 @@ namespace RC.Scan_SingleSolution
                         //Serilog.Log.Error("Wait for cameras ...");
                         //await Task.Delay(5000);
 
-                        // Write values to GUI
-                        if (FistStartRight)
-                        {
-                            _imageRight = _svsVistek.Cameras[0].Image.ToImage<Bgr, byte>();
+                        //// Write values to GUI
+                        //if (FistStartRight)
+                        //{
+                        //    _imageRight = _svsVistek.Cameras[0].Image.ToImage<Bgr, byte>();
 
-                            this.Dispatcher.Invoke((Action)(() =>
-                            {
-                                imgImage_Copy.Source = ToBitmapSource(_imageRight);
-                            }));
-                        }
+                        //    this.Dispatcher.Invoke((Action)(() =>
+                        //    {
+                        //        imgImage_Copy.Source = ToBitmapSource(_imageRight);
+                        //    }));
+                        //}
 
-                        if (FistStartLeft)
-                        {
-                            _imageLeft = _svsVistek.Cameras[1].Image.ToImage<Bgr, byte>();
+                        //if (FistStartLeft)
+                        //{
+                        //    _imageLeft = _svsVistek.Cameras[1].Image.ToImage<Bgr, byte>();
 
-                            _imageLeft_GraphicalCode = AnalyseImage(ref _imageLeft);
+                        //    _imageLeft_GraphicalCode = AnalyseImage(ref _imageLeft);
 
-                            this.Dispatcher.Invoke((Action)(() =>
-                            {
-                                imgImage_Copy1.Source = ToBitmapSource(_imageLeft);
-                            }));
-                        }
+                        //    this.Dispatcher.Invoke((Action)(() =>
+                        //    {
+                        //        imgImage_Copy1.Source = ToBitmapSource(_imageLeft);
+                        //    }));
+                        //}
                     }
 
                     Serilog.Log.Debug("Close all downholder ...");
@@ -479,25 +504,25 @@ namespace RC.Scan_SingleSolution
 
                         if (!_tokenMain.IsCancellationRequested)
                         {
-                            // Check QR-Code of the page
-                            if (_imageLeft_GraphicalCode != null)
-                            {
-                                if (_imageLeft_GraphicalCode.Length > 0)
-                                {
-                                    this.Dispatcher.Invoke((Action)(() =>
-                                    {
-                                        txtSheetZ_Copy3.Text = _imageLeft_GraphicalCode[0].DecodedInfo;
-                                    }));
+                            //// Check QR-Code of the page
+                            //if (_imageLeft_GraphicalCode != null)
+                            //{
+                            //    if (_imageLeft_GraphicalCode.Length > 0)
+                            //    {
+                            //        this.Dispatcher.Invoke((Action)(() =>
+                            //        {
+                            //            txtSheetZ_Copy3.Text = _imageLeft_GraphicalCode[0].DecodedInfo;
+                            //        }));
 
-                                    // Reset variables
-                                    _ignoreDoublepageSensor = false;
-                                    _preparedPage = false;
-                                    _replacedPage = false;
-                                    _scanFinish = false;
+                            //        // Reset variables
+                            //        _ignoreDoublepageSensor = false;
+                            //        _preparedPage = false;
+                            //        _replacedPage = false;
+                            //        _scanFinish = false;
 
-                                    AnalyseQrCode(_imageLeft_GraphicalCode[0].DecodedInfo);
-                                }
-                            }
+                            //        AnalyseQrCode(_imageLeft_GraphicalCode[0].DecodedInfo);
+                            //    }
+                            //}
 
                             Serilog.Log.Debug("Cradle safety check (height) ...");
                             if (_cradleLeftZeroLevelPosition < cradleLimit || _cradleRightZeroLevelPosition < cradleLimit)
@@ -1014,8 +1039,8 @@ namespace RC.Scan_SingleSolution
                                     {
                                         Serilog.Log.Debug("Save Picture - Cam " + cam.DeviceInfo.DeviceInfo.serialNumber);
 
-                                        directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
-                                        Directory.CreateDirectory(directoryImages);
+                                        //directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
+                                        //Directory.CreateDirectory(directoryImages);
 
                                         cam.GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
 
@@ -1039,16 +1064,16 @@ namespace RC.Scan_SingleSolution
 
                                 MoveDownholderASync(downholderPositon.Close);
 
-                                _imageLeft = _svsVistek.Cameras[1].Image.ToImage<Bgr, byte>();
-                                _imageRight = _svsVistek.Cameras[0].Image.ToImage<Bgr, byte>();
+                                //_imageLeft = _svsVistek.Cameras[1].Image.ToImage<Bgr, byte>();
+                                //_imageRight = _svsVistek.Cameras[0].Image.ToImage<Bgr, byte>();
 
-                                _imageLeft_GraphicalCode = AnalyseImage(ref _imageLeft);
+                                //_imageLeft_GraphicalCode = AnalyseImage(ref _imageLeft);
 
                                 // Write values top GUI
                                 this.Dispatcher.Invoke((Action)(() =>
                                 {
-                                    imgImage_Copy1.Source = ToBitmapSource(_imageLeft);
-                                    imgImage_Copy.Source = ToBitmapSource(_imageRight);
+                                    //imgImage_Copy1.Source = ToBitmapSource(_imageLeft);
+                                    //imgImage_Copy.Source = ToBitmapSource(_imageRight);
 
                                     if (_timer.ElapsedMilliseconds > 0)
                                     {

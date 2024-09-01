@@ -11,14 +11,14 @@ using PSGM.Model.DbMachine;
 namespace PSGM.Model.DbMachine.Migrations
 {
     [DbContext(typeof(DbMachine_Context))]
-    [Migration("20240807123821_InitialeCreate")]
+    [Migration("20240901101033_InitialeCreate")]
     partial class InitialeCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
 
             modelBuilder.Entity("PSGM.Model.DbMachine.DbMachine_Address", b =>
                 {

@@ -11,14 +11,14 @@ using PSGM.Model.DbArchiv;
 namespace PSGM.Model.DbArchiv.Migrations
 {
     [DbContext(typeof(DbArchiv_Context))]
-    [Migration("20240807123809_InitialeCreate")]
+    [Migration("20240901101021_InitialeCreate")]
     partial class InitialeCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
 
             modelBuilder.Entity("PSGM.Model.DbArchiv.DbArchiv_Job", b =>
                 {

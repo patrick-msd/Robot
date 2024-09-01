@@ -63,19 +63,19 @@ namespace RC.Scan_SingleSolution
             ushort[] depthImage = new ushort[data.Width * data.Height];
             data.As<VideoFrame>().CopyTo(depthImage);
 
-            float oneMeter = 1.000f / _realSense.GetDepthScale();
+           // float oneMeter = 1.000f / _realSense.GetDepthScale();
 
-            float[,] depthArray = new float[data.Width, data.Height];
+            //float[,] depthArray = new float[data.Width, data.Height];
 
-            // Calculate height on the complet array ...
-            for (int y = 0; y < data.Height; y++)
-            {
-                for (int x = 0; x < data.Width; x++)
-                {
-                    //depthArray[x, y] = depthImage[x + (y * data.Width)] / one_meter;
-                    depthArray[x, y] = (depthImage[x + (y * data.Width)] / oneMeter) * 1000.000f;
-                }
-            }
+            //// Calculate height on the complet array ...
+            //for (int y = 0; y < data.Height; y++)
+            //{
+            //    for (int x = 0; x < data.Width; x++)
+            //    {
+            //        //depthArray[x, y] = depthImage[x + (y * data.Width)] / one_meter;
+            //        depthArray[x, y] = (depthImage[x + (y * data.Width)] / oneMeter) * 1000.000f;
+            //    }
+            //}
 
             // Calculate mean value of the define element ...
             //float[,] array1 = asde.SubArray(110, 125, 257, 272);
@@ -88,8 +88,8 @@ namespace RC.Scan_SingleSolution
             //float[,] array7 = asde.SubArray(940, 945, 515, 530);
             //float[,] array8 = asde.SubArray(650, 665, 515, 530);
 
-            float[,] array9 = depthArray.SubArray(175, 375, 330, 455);
-            float[,] array10 = depthArray.SubArray(695, 895, 330, 455);
+           // float[,] array9 = depthArray.SubArray(175, 375, 330, 455);
+           // float[,] array10 = depthArray.SubArray(695, 895, 330, 455);
 
             //_valuesDepth[0] = SumFloat(array1) / array1.Length;
             //_valuesDepth[1] = SumFloat(array2) / array2.Length;
@@ -101,8 +101,8 @@ namespace RC.Scan_SingleSolution
             //_valuesDepth[6] = SumFloat(array7) / array7.Length;
             //_valuesDepth[7] = SumFloat(array8) / array8.Length;
 
-            Calculation(array9, ref _valuesDepthMean[8], ref _valuesDepthStandardDeviation[8]);
-            Calculation(array10, ref _valuesDepthMean[9], ref _valuesDepthStandardDeviation[9]);
+           // Calculation(array9, ref _valuesDepthMean[8], ref _valuesDepthStandardDeviation[8]);
+           // Calculation(array10, ref _valuesDepthMean[9], ref _valuesDepthStandardDeviation[9]);
 
 
 

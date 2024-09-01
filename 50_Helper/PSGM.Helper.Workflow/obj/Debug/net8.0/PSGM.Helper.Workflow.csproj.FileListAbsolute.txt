@@ -9,6 +9,7 @@ C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Helper.Wor
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Helper.Workflow.pdb
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Helper.dll
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Lib.ExifData.dll
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Lib.Vision.SVSVistek.dll
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Model.DbJob.dll
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Model.DbMachine.dll
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Model.DbMain.dll
@@ -16,7 +17,6 @@ C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Model.DbSo
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Model.DbStorage.dll
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Model.DbUser.dll
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Model.DbWorkflow.dll
-C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\RC.Lib.Vision.SVSVistek.dll
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Lib.ExifData.pdb
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Model.DbJob.pdb
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Model.DbMachine.pdb
@@ -26,7 +26,7 @@ C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Model.DbSt
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Model.DbUser.pdb
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Model.DbWorkflow.pdb
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Helper.pdb
-C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\RC.Lib.Vision.SVSVistek.pdb
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\bin\Debug\net8.0\PSGM.Lib.Vision.SVSVistek.pdb
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\obj\Debug\net8.0\PSGM.Helper.Workflow.csproj.AssemblyReference.cache
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\obj\Debug\net8.0\PSGM.Helper.Workflow.GeneratedMSBuildEditorConfig.editorconfig
 C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\obj\Debug\net8.0\PSGM.Helper.Workflow.AssemblyInfoInputs.cache

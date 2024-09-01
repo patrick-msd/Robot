@@ -50,16 +50,6 @@ namespace PSGM.Model.DbMain
         [Display(Name = "Homepage")]
         [StringLength(511, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Homepage { get; set; } = string.Empty;
-
-        //[Column("AuthorizedUsersExtString")]
-        //[Display(Name = "AuthorizedUsersExtString")]
-        //[StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string AuthorizedUsersExtString { get; private set; } = string.Empty;
-
-        //[Column("AuthorizedUserGroupsExtString")]
-        //[Display(Name = "AuthorizedUserGroupsExtString")]
-        //[StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string AuthorizedUserGroupsExtString { get; private set; } = string.Empty;
         #endregion
 
         #region Links
@@ -91,17 +81,6 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Not Mapped
-        //public List<Guid>? AuthorizedUsersExt
-        //{
-        //    get { return AuthorizedUsersExtString != string.Empty ? AuthorizedUsersExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-        //    set { AuthorizedUsersExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        //}
-
-        //public List<Guid>? AuthorizedUserGroupsExt
-        //{
-        //    get { return AuthorizedUserGroupsExtString != string.Empty ? AuthorizedUserGroupsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-        //    set { AuthorizedUserGroupsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        //}
         #endregion
     }
 }

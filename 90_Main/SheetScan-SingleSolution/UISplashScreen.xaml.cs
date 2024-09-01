@@ -75,7 +75,7 @@ namespace RC.Scan_SingleSolution
             pgbLoading.Minimum = _statePercentageValue;
             pgbLoading.Maximum = _statePercentageCount;
 
-            txbDateTime.Text = DateTime.UtcNow.ToString("dd.MM.yyyy - HH:mm:ss");
+            txbDateTime.Text = DateTime.Now.ToString("dd.MM.yyyy - HH:mm:ss");
 
             // Thread clock
             Log.Information("Initialize Thread clock ...");

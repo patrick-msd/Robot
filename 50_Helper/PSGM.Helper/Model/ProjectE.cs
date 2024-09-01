@@ -7,9 +7,13 @@
         Created = 10000,
 
         Started = 20000,
-        InProgress = 20001,
-        Stopped = 20002,
-        Paused = 20003,
-        Finished = 20004,
+
+        InProgress = 30000,
+
+        Hold = 70000,
+
+        Stopped = 80000,
+      
+        Finished = 90000,
     }
 }

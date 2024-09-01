@@ -2,7 +2,7 @@
 using Emgu.CV.Structure;
 using Microsoft.EntityFrameworkCore;
 using PSGM.Model.DbStorage;
-using RC.Lib.Vision.SVSVistek;
+//using RC.Lib.Vision.SVSVistek;
 using RCRobotDoosanControl;
 using System;
 using System.Drawing;
@@ -175,63 +175,63 @@ namespace RC.Scan_SingleSolution
             //}
             //#endregion
 
-            #region 
-            if (_taskCheck.Status == TaskStatus.Running)
-            {
-                Serilog.Log.Information("Another thread is already running ...");
-            }
-            else
-            {
-                _cancellationTokenSourceCheck = new CancellationTokenSource();
-                _tokenCheck = _cancellationTokenSourceCheck.Token;
+            //#region 
+            //if (_taskCheck.Status == TaskStatus.Running)
+            //{
+            //    Serilog.Log.Information("Another thread is already running ...");
+            //}
+            //else
+            //{
+            //    _cancellationTokenSourceCheck = new CancellationTokenSource();
+            //    _tokenCheck = _cancellationTokenSourceCheck.Token;
 
-                _taskCheck = Task.Run(async () =>
-                {
-                    while (!_tokenCheck.IsCancellationRequested)
-                    {
-                        float vaccuum = 0.000f;
-                        float vaccuumMinimum = 1.050f;
+            //    _taskCheck = Task.Run(async () =>
+            //    {
+            //        while (!_tokenCheck.IsCancellationRequested)
+            //        {
+            //            float vaccuum = 0.000f;
+            //            float vaccuumMinimum = 1.050f;
 
-                        if (_sheetControl)
-                        {
-                            vaccuum = _doosan.Controllers[0].GetAnalogInput(GpioCtrlboxAnalogIndex.GPIO_CTRLBOX_ANALOG_INDEX_1);
+            //            if (_sheetControl)
+            //            {
+            //                vaccuum = _doosan.Controllers[0].GetAnalogInput(GpioCtrlboxAnalogIndex.GPIO_CTRLBOX_ANALOG_INDEX_1);
 
-                            if (vaccuum > vaccuumMinimum)
-                            {
-                                Serilog.Log.Error("Lost sheet ...");
-                                Serilog.Log.Error($"Break --> vaccuum: {vaccuum}");
-                                Serilog.Log.Error("Stop Robot ...");
+            //                if (vaccuum > vaccuumMinimum)
+            //                {
+            //                    Serilog.Log.Error("Lost sheet ...");
+            //                    Serilog.Log.Error($"Break --> vaccuum: {vaccuum}");
+            //                    Serilog.Log.Error("Stop Robot ...");
 
-                                this.Dispatcher.Invoke((Action)(() =>
-                                {
-                                    foreach(var item in _cancellationTokenSourceWorker)
-                                    {
-                                        item.Cancel();
-                                    }
-                                    _cancellationTokenSourceMain.Cancel();
-                                    _cancellationTokenSourceCheck.Cancel();
-                                }));
+            //                    this.Dispatcher.Invoke((Action)(() =>
+            //                    {
+            //                        foreach(var item in _cancellationTokenSourceWorker)
+            //                        {
+            //                            item.Cancel();
+            //                        }
+            //                        _cancellationTokenSourceMain.Cancel();
+            //                        _cancellationTokenSourceCheck.Cancel();
+            //                    }));
 
-                                MoveDoublePageSensor(doublePageSensorPositon.In);
+            //                    MoveDoublePageSensor(doublePageSensorPositon.In);
 
-                                FansVoltage(5.000f, 5.000f);
-                                FansDisable();
+            //                    FansVoltage(5.000f, 5.000f);
+            //                    FansDisable();
 
-                                VaccuumPump(0.000f);
+            //                    VaccuumPump(0.000f);
 
-                                VccuumVentil(VaccuumVentil.Open);
+            //                    VccuumVentil(VaccuumVentil.Open);
 
-                                await Task.Delay(1000);
+            //                    await Task.Delay(1000);
 
-                                VccuumVentil(VaccuumVentil.Close);
-                            }
-                        }
+            //                    VccuumVentil(VaccuumVentil.Close);
+            //                }
+            //            }
 
-                        await Task.Delay(25);
-                    }
-                }, _tokenCheck);
-            }
-            #endregion
+            //            await Task.Delay(25);
+            //        }
+            //    }, _tokenCheck);
+            //}
+            //#endregion
 
             #region
             if (_taskMain.Status == TaskStatus.Running)
@@ -343,7 +343,7 @@ namespace RC.Scan_SingleSolution
                     await Task.Delay(250);
 
                     // Enable Output fans
-                    FansEnable();
+                    //FansEnable();
 
                     // Initialize Motors
                     SetupCradleMotors();
@@ -374,98 +374,98 @@ namespace RC.Scan_SingleSolution
 
                     await Task.Delay(1250);
 
-                    if (FistStartLeft || FistStartLeft)
-                    {
-                        Serilog.Log.Debug("Move robot away for taking a picture ...");
-                        _pose = new float[] { -300.000f, 6.250f, 600.000f, 0.000f, 90.000f, 180.000f };
-                        _doosan.Controllers[0].MoveL(_pose, robotTargetVelFast, ronotTargetAccFast, robotTargetTime, robotMoveMode, robotMoveReference, 0, robotBlendingSpeedType);
-                        _poseCurrent = _doosan.Controllers[0].GetCurrentPosx()._fTargetPos;
-                        Serilog.Log.Verbose("Pose calculated: x={0:000.000}, y={1:000.000}, z={2:000.000}, a={3:000.000}, b={4:000.000}, c={5:000.000} --> current: x={6:000.000}, y={7:000.000}, z={8:000.000}, a={9:000.000}, b={10:000.000}, c={11:000.000}", _pose[0], _pose[1], _pose[2], _pose[3], _pose[4], _pose[5], _poseCurrent[0], _poseCurrent[1], _poseCurrent[2], _poseCurrent[3], _poseCurrent[4], _poseCurrent[5]);
+                    //if (FistStartLeft || FistStartLeft)
+                    //{
+                    //    Serilog.Log.Debug("Move robot away for taking a picture ...");
+                    //    _pose = new float[] { -300.000f, 6.250f, 600.000f, 0.000f, 90.000f, 180.000f };
+                    //    _doosan.Controllers[0].MoveL(_pose, robotTargetVelFast, ronotTargetAccFast, robotTargetTime, robotMoveMode, robotMoveReference, 0, robotBlendingSpeedType);
+                    //    _poseCurrent = _doosan.Controllers[0].GetCurrentPosx()._fTargetPos;
+                    //    Serilog.Log.Verbose("Pose calculated: x={0:000.000}, y={1:000.000}, z={2:000.000}, a={3:000.000}, b={4:000.000}, c={5:000.000} --> current: x={6:000.000}, y={7:000.000}, z={8:000.000}, a={9:000.000}, b={10:000.000}, c={11:000.000}", _pose[0], _pose[1], _pose[2], _pose[3], _pose[4], _pose[5], _poseCurrent[0], _poseCurrent[1], _poseCurrent[2], _poseCurrent[3], _poseCurrent[4], _poseCurrent[5]);
 
 
-                        if (FistStartRight && FistStartLeft)
-                        {
-                            // Camera 0
-                            Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[0].DeviceInfo.DeviceInfo.serialNumber);
+                    //    if (FistStartRight && FistStartLeft)
+                    //    {
+                    //        // Camera 0
+                    //        Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[0].DeviceInfo.DeviceInfo.serialNumber);
 
-                            directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
-                            Directory.CreateDirectory(directoryImages);
+                    //        directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
+                    //        Directory.CreateDirectory(directoryImages);
 
-                            _svsVistek.Cameras[0].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
+                    //        _svsVistek.Cameras[0].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
 
-                            // Camera 1
-                            Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[1].DeviceInfo.DeviceInfo.serialNumber);
+                    //        // Camera 1
+                    //        Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[1].DeviceInfo.DeviceInfo.serialNumber);
 
-                            directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
-                            Directory.CreateDirectory(directoryImages);
+                    //        directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
+                    //        Directory.CreateDirectory(directoryImages);
 
-                            _svsVistek.Cameras[1].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
+                    //        _svsVistek.Cameras[1].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
 
-                            // Wait for all cameras finished
-                            while (_svsVistek.Cameras[0].IsGrabbingImage || _svsVistek.Cameras[1].IsGrabbingImage)
-                            {
-                                Thread.Sleep(5);
-                            }
-                        }
-                        else if (FistStartRight)
-                        {
-                            Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[0].DeviceInfo.DeviceInfo.serialNumber);
+                    //        // Wait for all cameras finished
+                    //        while (_svsVistek.Cameras[0].IsGrabbingImage || _svsVistek.Cameras[1].IsGrabbingImage)
+                    //        {
+                    //            Thread.Sleep(5);
+                    //        }
+                    //    }
+                    //    else if (FistStartRight)
+                    //    {
+                    //        Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[0].DeviceInfo.DeviceInfo.serialNumber);
 
-                            directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
-                            Directory.CreateDirectory(directoryImages);
+                    //        directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
+                    //        Directory.CreateDirectory(directoryImages);
 
-                            _svsVistek.Cameras[0].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
+                    //        _svsVistek.Cameras[0].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
 
-                            // Wait for all cameras finished
-                            while (_svsVistek.Cameras[0].IsGrabbingImage)
-                            {
-                                Thread.Sleep(5);
-                            }
-                        }
+                    //        // Wait for all cameras finished
+                    //        while (_svsVistek.Cameras[0].IsGrabbingImage)
+                    //        {
+                    //            Thread.Sleep(5);
+                    //        }
+                    //    }
 
-                        else if (FistStartLeft)
-                        {
-                            Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[1].DeviceInfo.DeviceInfo.serialNumber);
+                    //    else if (FistStartLeft)
+                    //    {
+                    //        Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[1].DeviceInfo.DeviceInfo.serialNumber);
 
-                            directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
-                            Directory.CreateDirectory(directoryImages);
+                    //        directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
+                    //        Directory.CreateDirectory(directoryImages);
 
-                            _svsVistek.Cameras[1].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
+                    //        _svsVistek.Cameras[1].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
 
-                            // Wait for all cameras finished
-                            while (_svsVistek.Cameras[1].IsGrabbingImage)
-                            {
-                                Thread.Sleep(5);
-                            }
-                        }
+                    //        // Wait for all cameras finished
+                    //        while (_svsVistek.Cameras[1].IsGrabbingImage)
+                    //        {
+                    //            Thread.Sleep(5);
+                    //        }
+                    //    }
 
-                        // ToDo: Waiting time for camera ...
-                        //Serilog.Log.Error("Wait for cameras ...");
-                        //await Task.Delay(5000);
+                    //    // ToDo: Waiting time for camera ...
+                    //    //Serilog.Log.Error("Wait for cameras ...");
+                    //    //await Task.Delay(5000);
 
-                        // Write values to GUI
-                        if (FistStartRight)
-                        {
-                            _imageRight = _svsVistek.Cameras[0].Image.ToImage<Bgr, byte>();
+                    //    // Write values to GUI
+                    //    if (FistStartRight)
+                    //    {
+                    //        _imageRight = _svsVistek.Cameras[0].Image.ToImage<Bgr, byte>();
 
-                            this.Dispatcher.Invoke((Action)(() =>
-                            {
-                                imgImage_Copy.Source = ToBitmapSource(_imageRight);
-                            }));
-                        }
+                    //        this.Dispatcher.Invoke((Action)(() =>
+                    //        {
+                    //            imgImage_Copy.Source = ToBitmapSource(_imageRight);
+                    //        }));
+                    //    }
 
-                        if (FistStartLeft)
-                        {
-                            _imageLeft = _svsVistek.Cameras[1].Image.ToImage<Bgr, byte>();
+                    //    if (FistStartLeft)
+                    //    {
+                    //        _imageLeft = _svsVistek.Cameras[1].Image.ToImage<Bgr, byte>();
 
-                            _imageLeft_GraphicalCode = AnalyseImage(ref _imageLeft);
+                    //        _imageLeft_GraphicalCode = AnalyseImage(ref _imageLeft);
 
-                            this.Dispatcher.Invoke((Action)(() =>
-                            {
-                                imgImage_Copy1.Source = ToBitmapSource(_imageLeft);
-                            }));
-                        }
-                    }
+                    //        this.Dispatcher.Invoke((Action)(() =>
+                    //        {
+                    //            imgImage_Copy1.Source = ToBitmapSource(_imageLeft);
+                    //        }));
+                    //    }
+                    // }
 
                     Serilog.Log.Debug("Close all downholder ...");
                     MoveDownholderASync(downholderPositon.Close);
@@ -549,9 +549,9 @@ namespace RC.Scan_SingleSolution
 
                                 MoveDoublePageSensorASync(doublePageSensorPositon.In);
 
-                                FansEnable();
+                                //FansEnable();
 
-                                FansVoltage(12.500f, 12.500f);
+                                //FansVoltage(12.500f, 12.500f);
 
                                 Serilog.Log.Debug("Move robot to start pose (before move down to sheet) ...");
                                 _pose = new float[] { _poseDownRobot_Vertical[0], _poseDownRobot_Vertical[1], _poseDownRobot_Vertical[2], _poseDownRobot_Vertical[3], _poseDownRobot_Vertical[4], _poseDownRobot_Vertical[5] };
@@ -560,7 +560,7 @@ namespace RC.Scan_SingleSolution
                                 Serilog.Log.Debug("Pose calculated: x={0:000.000}, y={1:000.000}, z={2:000.000}, a={3:000.000}, b={4:000.000}, c={5:000.000} --> current: x={6:000.000}, y={7:000.000}, z={8:000.000}, a={9:000.000}, b={10:000.000}, c={11:000.000}", _pose[0], _pose[1], _pose[2], _pose[3], _pose[4], _pose[5], _poseCurrent[0], _poseCurrent[1], _poseCurrent[2], _poseCurrent[3], _poseCurrent[4], _poseCurrent[5]);
 
                                 VaccuumPump(1.500f);
-                                FansVoltage(10.000f, 10.000f);
+                                //FansVoltage(10.000f, 10.000f);
 
                                 Serilog.Log.Debug("Move robot to start pose (before move down to sheet) ...");
                                 _pose[2] = _pose[2] + 15.0000f;
@@ -602,7 +602,7 @@ namespace RC.Scan_SingleSolution
                                 _doosan.Controllers[0].Stop(StopType.STOP_TYPE_QUICK);
                                 Serilog.Log.Information("Preasure ={0:000.000}, Force: x={1:000.000}, y={2:000.000}, z={3:000.000}, a={4:000.000}, b={5:000.000}, c={6:000.000}", vaccuum, forces[0], forces[1], forces[2], forces[3], forces[4], forces[5]);
 
-                                FansVoltage(7.500f, 7.500f);
+                                //FansVoltage(7.500f, 7.500f);
 
                                 //Serilog.Log.Debug("Move cradle left slightly down, for better picking the sheets with the robot ...");
                                 //MoveCradleLeftASync((long)((float)_cradleLeftZeroLevelPosition - (float)_cradleLeftDownToFan / 1.2500f));
@@ -619,7 +619,7 @@ namespace RC.Scan_SingleSolution
                                 _pose[2] = _pose[2] - (20.000f * 2.000f) - 5.000f; // 20.000f Abstand von Zettel zum Sensor, 5.000f Abweichung "_poseDownRobot_Vertical" zum Sensor
                                 _doosan.Controllers[0].MoveL(_pose, robotTargetVelMed, robotTargetAccMed, robotTargetTime, robotMoveMode, robotMoveReference, 0, robotBlendingSpeedType);
 
-                                FansVoltage(4.000f, 4.000f);
+                                //FansVoltage(4.000f, 4.000f);
 
                                 MoveDoublePageSensor(doublePageSensorPositon.Out);
 
@@ -747,7 +747,7 @@ namespace RC.Scan_SingleSolution
                                             VccuumVentil(VaccuumVentil.Close);
 
                                             // ############################## Restart Cycle ##############################
-                                            FansVoltage(fan1Speed, fan2Speed);
+                                            //FansVoltage(fan1Speed, fan2Speed);
 
                                             VaccuumPump(1.500f);
 
@@ -785,7 +785,7 @@ namespace RC.Scan_SingleSolution
                                             _doosan.Controllers[0].Stop(StopType.STOP_TYPE_QUICK);
                                             Serilog.Log.Information("Preasure ={0:000.000}, Force: x={1:000.000}, y={2:000.000}, z={3:000.000}, a={4:000.000}, b={5:000.000}, c={6:000.000}", vaccuum, forces[0], forces[1], forces[2], forces[3], forces[4], forces[5]);
 
-                                            FansVoltage(fan1Speed, fan2Speed);
+                                            //FansVoltage(fan1Speed, fan2Speed);
 
                                             Serilog.Log.Debug("Move cradle left slightly down, for better picking the sheets with the robot ...");
                                             MoveCradleLeftASync((long)((float)_cradleLeftZeroLevelPosition - (float)_cradleLeftDownToFan / 1.500f));
@@ -802,7 +802,7 @@ namespace RC.Scan_SingleSolution
                                             _pose[2] = _poseDownRobot_Vertical[2] - (20.000f * 2.000f) - 5.000f; // 20.000f Abstand von Zettel zum Sensor, 5.000f Abweichung "_poseDownRobot_Vertical" zum Sensor
                                             _doosan.Controllers[0].MoveL(_pose, robotTargetVelFast, ronotTargetAccFast, robotTargetTime, robotMoveMode, robotMoveReference, 0, robotBlendingSpeedType);
 
-                                            FansVoltage(10.000f, 10.000f);
+                                            //FansVoltage(10.000f, 10.000f);
 
                                             MoveDoublePageSensor(doublePageSensorPositon.Out);
 
@@ -861,8 +861,8 @@ namespace RC.Scan_SingleSolution
 
                                                 MoveDoublePageSensor(doublePageSensorPositon.In);
 
-                                                FansVoltage(5.000f, 5.000f);
-                                                FansDisable();
+                                                //FansVoltage(5.000f, 5.000f);
+                                                //FansDisable();
 
                                                 VaccuumPump(0.000f);
 
@@ -885,9 +885,9 @@ namespace RC.Scan_SingleSolution
                                 Serilog.Log.Information("Start sheet control ...");
                                 _sheetControl = true;
 
-                                FansVoltage(5.000f, 5.000f);
+                                //FansVoltage(5.000f, 5.000f);
 
-                                FansDisable();
+                                //FansDisable();
 
                                 Serilog.Log.Debug("Open downholder a little bit...");
                                 //_nanotec[0].SetPositionASync(_nanotec[0].MotionController[5].DeviceHandle, (long)downholderPositon.Open);
@@ -915,7 +915,7 @@ namespace RC.Scan_SingleSolution
                                 await Task.Delay(500);
                                 _nanotec[0].SetPositionASync(_nanotec[0].MotionController[7].DeviceHandle, 950);
 
-                                FansLeftVoltage(16.000f);
+                                //FansLeftVoltage(16.000f);
 
                                 MoveCradleLeftASync(_cradleLeftZeroLevelPosition);
 
@@ -985,19 +985,19 @@ namespace RC.Scan_SingleSolution
                                 MoveDownholderLeftASync(1000);
                                 MoveDownholderRightASync(900);
 
-                                FansEnable();
-                                FansVoltage(12.500f, 10.000f);
+                                //FansEnable();
+                                //FansVoltage(12.500f, 10.000f);
 
                                 MoveCradlesASync(_cradleLeftZeroLevelPosition - _cradleDownBeforePicture, _cradleRightZeroLevelPosition - _cradleDownBeforePicture);
 
                                 await Task.Delay(2000);
 
-                                FansVoltage(12.500f, 7.500f);
+                                //FansVoltage(12.500f, 7.500f);
 
                                 MoveCradlesASync(_cradleLeftZeroLevelPosition, _cradleRightZeroLevelPosition);
 
-                                FansVoltage(5.000f, 5.000f);
-                                FansDisable();
+                                //FansVoltage(5.000f, 5.000f);
+                                //FansDisable();
 
                                 await Task.Delay(1500);
 
@@ -1005,66 +1005,66 @@ namespace RC.Scan_SingleSolution
 
                                 await Task.Delay(500);
 
-                                if (!_tokenMain.IsCancellationRequested)
-                                {
-                                    Serilog.Log.Debug("Take picture of both sheet ...");
-                                    int camIndex = 0;
+                                //if (!_tokenMain.IsCancellationRequested)
+                                //{
+                                //    Serilog.Log.Debug("Take picture of both sheet ...");
+                                //    int camIndex = 0;
 
-                                    foreach (SVSVistek_Camera cam in _svsVistek.Cameras)
-                                    {
-                                        Serilog.Log.Debug("Save Picture - Cam " + cam.DeviceInfo.DeviceInfo.serialNumber);
+                                //    foreach (SVSVistek_Camera cam in _svsVistek.Cameras)
+                                //    {
+                                //        Serilog.Log.Debug("Save Picture - Cam " + cam.DeviceInfo.DeviceInfo.serialNumber);
 
-                                        directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
-                                        Directory.CreateDirectory(directoryImages);
+                                //        directoryImages = _sourcePath + "\\" + DateTime.UtcNow.ToString("yyyyMMdd_HHmmss.ffff");
+                                //        Directory.CreateDirectory(directoryImages);
 
-                                        cam.GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
+                                //        cam.GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
 
-                                        Thread.Sleep(25);
+                                //        Thread.Sleep(25);
 
-                                        camIndex++;
-                                    }
+                                //        camIndex++;
+                                //    }
 
-                                    // Wait for all cameras finished
-                                    while (_svsVistek.Cameras[0].IsGrabbingImage || _svsVistek.Cameras[1].IsGrabbingImage)
-                                    {
-                                        Thread.Sleep(5);
-                                    }
-                                }
+                                //    // Wait for all cameras finished
+                                //    while (_svsVistek.Cameras[0].IsGrabbingImage || _svsVistek.Cameras[1].IsGrabbingImage)
+                                //    {
+                                //        Thread.Sleep(5);
+                                //    }
+                                //}
 
-                                // ToDo: Waiting time for camera ...
-                                //Serilog.Log.Error("Wait for cameras ...");
-                                //await Task.Delay(5000);
+                                //// ToDo: Waiting time for camera ...
+                                ////Serilog.Log.Error("Wait for cameras ...");
+                                ////await Task.Delay(5000);
 
-                                CalculateHeightForCradle();
+                                //CalculateHeightForCradle();
 
-                                MoveDownholderASync(downholderPositon.Close);
+                                //MoveDownholderASync(downholderPositon.Close);
 
-                                _imageLeft = _svsVistek.Cameras[1].Image.ToImage<Bgr, byte>();
-                                _imageRight = _svsVistek.Cameras[0].Image.ToImage<Bgr, byte>();
+                                //_imageLeft = _svsVistek.Cameras[1].Image.ToImage<Bgr, byte>();
+                                //_imageRight = _svsVistek.Cameras[0].Image.ToImage<Bgr, byte>();
 
-                                _imageLeft_GraphicalCode = AnalyseImage(ref _imageLeft);
+                                //_imageLeft_GraphicalCode = AnalyseImage(ref _imageLeft);
 
-                                // Write values top GUI
-                                this.Dispatcher.Invoke((Action)(() =>
-                                {
-                                    imgImage_Copy1.Source = ToBitmapSource(_imageLeft);
-                                    imgImage_Copy.Source = ToBitmapSource(_imageRight);
+                                //// Write values top GUI
+                                //this.Dispatcher.Invoke((Action)(() =>
+                                //{
+                                //    imgImage_Copy1.Source = ToBitmapSource(_imageLeft);
+                                //    imgImage_Copy.Source = ToBitmapSource(_imageRight);
 
-                                    if (_timer.ElapsedMilliseconds > 0)
-                                    {
-                                        lblSheetZ_Copy7.Content = "Time: " + string.Format("{0:0.###}", (double)(_timer.ElapsedMilliseconds / 1000.000f / _sheet)) + "s";
-                                    }
+                                //    if (_timer.ElapsedMilliseconds > 0)
+                                //    {
+                                //        lblSheetZ_Copy7.Content = "Time: " + string.Format("{0:0.###}", (double)(_timer.ElapsedMilliseconds / 1000.000f / _sheet)) + "s";
+                                //    }
 
-                                    _sheet++;
+                                //    _sheet++;
 
-                                    if (_sheet <= _sheetsToDigitalis)
-                                    {
-                                        lblProgress.Content = string.Format("{0} / {1}", _sheet, _sheetsToDigitalis);
+                                //    if (_sheet <= _sheetsToDigitalis)
+                                //    {
+                                //        lblProgress.Content = string.Format("{0} / {1}", _sheet, _sheetsToDigitalis);
 
-                                        File.WriteAllText(@"C:\WorkDir\OBSStudio\TextFiles\Digitized.txt", string.Format("Sheet {0} --> Erros {1} thereof solved {2}", _sheet, _sheetError, SheetErrorSolved));
-                                        //File.WriteAllText(@"C:\WorkDir\OBSStudio\TextFiles\Digitized.txt", string.Format("Sheet {0} of {1} --> Erros {2} thereof solved {3}", _sheet, _sheets, _sheetError, solved));
-                                    }
-                                }));
+                                //        File.WriteAllText(@"C:\WorkDir\OBSStudio\TextFiles\Digitized.txt", string.Format("Sheet {0} --> Erros {1} thereof solved {2}", _sheet, _sheetError, SheetErrorSolved));
+                                //        //File.WriteAllText(@"C:\WorkDir\OBSStudio\TextFiles\Digitized.txt", string.Format("Sheet {0} of {1} --> Erros {2} thereof solved {3}", _sheet, _sheets, _sheetError, solved));
+                                //    }
+                                //}));
 
                                 // Read values from GUI
                                 this.Dispatcher.Invoke((Action)(() =>
@@ -1085,8 +1085,8 @@ namespace RC.Scan_SingleSolution
 
                                     MoveDoublePageSensor(doublePageSensorPositon.In);
 
-                                    FansVoltage(5.000f, 5.000f);
-                                    FansDisable();
+                                   // FansVoltage(5.000f, 5.000f);
+                                   // FansDisable();
 
                                     VaccuumPump(0.000f);
 
@@ -1107,8 +1107,8 @@ namespace RC.Scan_SingleSolution
 
                                     MoveDoublePageSensor(doublePageSensorPositon.In);
 
-                                    FansVoltage(5.000f, 5.000f);
-                                    FansDisable();
+                                    //FansVoltage(5.000f, 5.000f);
+                                   // FansDisable();
 
                                     VaccuumPump(0.000f);
 
@@ -1135,8 +1135,8 @@ namespace RC.Scan_SingleSolution
 
                             MoveDoublePageSensor(doublePageSensorPositon.In);
 
-                            FansVoltage(5.000f, 5.000f);
-                            FansDisable();
+                            //FansVoltage(5.000f, 5.000f);
+                            //FansDisable();
 
                             VaccuumPump(0.000f);
 

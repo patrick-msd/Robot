@@ -50,6 +50,7 @@ namespace PSGM.Helper.Workflow
         private StorageConnector _storageConnector_Data;
         private StorageConnector _storageConnectors_DataThumbnail;
         private ImageHelperMat_Workflow _image_Data;
+        public ImageHelperMat_Workflow Image_Data { get { return _image_Data; } }
         private ExifDataRaw _exifDataRaw_Data;
         private string _image_Data_ExifImageDescription;
 

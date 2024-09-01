@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PSGM.Model.DbJob;
 
@@ -11,14 +10,12 @@ using PSGM.Model.DbJob;
 namespace PSGM.Model.DbJob.Migrations
 {
     [DbContext(typeof(DbJob_Context))]
-    [Migration("20240807123815_InitialeCreate")]
-    partial class InitialeCreate
+    partial class DbJob_ContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
 
             modelBuilder.Entity("PSGM.Model.DbJob.DbJob_Job", b =>
                 {

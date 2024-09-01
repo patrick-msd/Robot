@@ -388,5 +388,7 @@ namespace RC.Motion.Nanotec.Sample
                 Log.Debug(ex.Message);
             }
         }
+
+
     }
 }

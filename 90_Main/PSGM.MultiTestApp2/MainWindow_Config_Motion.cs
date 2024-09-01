@@ -24,7 +24,7 @@ namespace PSGM.MultiTestApp1
                 DeviceType = DeviceType.HW630322,
                 DeviceUrl = "https://www.hms-networks.com/de/p/1-01-0281-12001-ixxat-usb-to-can-v2-compact",
 
-                //Serialnumber = "HW630322",dsgf
+                Serialnumber = "HW025152",
                 ConfigurationString = string.Empty,
                 AttachmentsString = string.Empty,
 

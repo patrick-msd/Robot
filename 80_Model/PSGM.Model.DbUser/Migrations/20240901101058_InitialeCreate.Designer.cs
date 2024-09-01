@@ -11,14 +11,14 @@ using PSGM.Model.DbUser;
 namespace PSGM.Model.DbUser.Migrations
 {
     [DbContext(typeof(DbUser_Context))]
-    [Migration("20240807123845_InitialeCreate")]
+    [Migration("20240901101058_InitialeCreate")]
     partial class InitialeCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
 
             modelBuilder.Entity("DbUser_UserDbUser_UserGroup", b =>
                 {

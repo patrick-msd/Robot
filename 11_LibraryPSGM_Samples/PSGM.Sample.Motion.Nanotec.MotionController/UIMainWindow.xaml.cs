@@ -448,6 +448,58 @@ namespace RC.Motion.Nanotec.Sample
             }
         }
 
+
+        private void Button_Click_MoveSync(object sender, RoutedEventArgs e)
+        {
+            //...
+        }
+
+        private void Button_Click_TEST(object sender, RoutedEventArgs e)
+        {
+            long RotationDegree = 0;
+            long PosX = 0;
+            long PosZ = 0;
+
+            long steps_RotationDegree = 0;
+            long steps_PosX = 0;
+            long steps_PosZ = 0;
+
+            long nullPosDistance = 200;
+
+            long timeToReach = 2; // in seconds
+
+            long rotationVelocity = 0;
+            long posXVelocity = 0;
+            long posZVelocity = 0;
+
+            long rotationAccel = 0;
+            long posXAccel = 0;
+            long posZAccel = 0;
+
+            Dispatcher.Invoke(() =>
+            {
+                RotationDegree = (long)Convert.ToDouble(textMoveSyncDegree.Text.Replace(".", ","));
+                PosX = (long)Convert.ToDouble(textMoveSyncX.Text.Replace(".", ","));
+                PosZ = (long)Convert.ToDouble(textMoveSyncZ.Text.Replace(".", ","));
+            });
+
+
+            steps_RotationDegree = (long)((RotationDegree * (4096/360))/12);
+            steps_PosX = (long)((PosX + Math.Abs(nullPosDistance * Math.Cos(RotationDegree))) * (4096 / 4));
+            steps_PosZ = (long)((PosZ + Math.Abs(nullPosDistance * Math.Sin(RotationDegree))) * (4096 / 4));
+
+            rotationVelocity = (long)(steps_RotationDegree / timeToReach);
+            posXVelocity = (long)(steps_PosX / timeToReach);
+            posZVelocity = (long)(steps_PosZ / timeToReach);
+
+            rotationAccel = (long)(rotationVelocity / timeToReach);
+            posXAccel = (long)(posXVelocity / timeToReach);
+            posZAccel = (long)(posZVelocity / timeToReach);
+
+           
+        }
+
+
         private void Button_Click_Operation(object sender, RoutedEventArgs e)
         {
             UIMainWindow_Operation operationWindow = new UIMainWindow_Operation(_nanotec, _thread);
@@ -461,6 +513,7 @@ namespace RC.Motion.Nanotec.Sample
             objectDirectoryWindow.Owner = this;
             objectDirectoryWindow.Show();
         }
+
         #endregion
 
         #region Functions ...
@@ -468,5 +521,7 @@ namespace RC.Motion.Nanotec.Sample
 
 
         #endregion
+
+
     }
 }

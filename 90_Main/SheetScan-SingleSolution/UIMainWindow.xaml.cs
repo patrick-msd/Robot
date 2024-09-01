@@ -2,6 +2,7 @@
 using Emgu.CV.Structure;
 using Intel.RealSense;
 using Microsoft.EntityFrameworkCore;
+using OpenCvSharp.Extensions;
 using PSGM.Helper;
 using PSGM.Helper.Workflow;
 using PSGM.Model.DbMain;
@@ -1147,7 +1148,8 @@ namespace RC.Scan_SingleSolution
             string Tool = "Tool1";
             string TCP = "TCP1";
 
-            float[] toolCenterPosition = { 0.000f, 0.000f, 125.000f, 0.000f, 0.000f, 0.000f };
+            //float[] toolCenterPosition = { 0.000f, 0.000f, 125.000f, 0.000f, 0.000f, 0.000f };
+            float[] toolCenterPosition = { 0.000f, 0.000f, 90.000f, 0.000f, 0.000f, 0.000f };
 
             float ToolWeight = 0.000f;
 
@@ -1389,6 +1391,27 @@ namespace RC.Scan_SingleSolution
                     workflow.RunWithCapturedImages(imagesHelper, imagesHelperBitmap, "C:/tmp", dataSubdirectorySelected.Id, "Meldezettel TLA / UIBK", null);
                     #endregion
 
+                    // Write values to GUI
+                    if (number == 0)
+                    {
+                        _imageRight = workflow.Image_Data.Image.ToBitmap().ToImage<Bgr, byte>();
+
+                        this.Dispatcher.Invoke((Action)(() =>
+                        {
+                            imgImage_Copy.Source = ToBitmapSource(_imageRight);
+                        }));
+                    }
+
+                    if (number == 1)
+                    {
+                        _imageLeft = workflow.Image_Data.Image.ToBitmap().ToImage<Bgr, byte>();
+
+                        this.Dispatcher.Invoke((Action)(() =>
+                        {
+                            imgImage_Copy1.Source = ToBitmapSource(_imageLeft);
+                        }));
+                    }
+
                     imagesHelper.RemoveAll(x => true);
                     imagesHelperBitmap.RemoveAll(x => true);
 
@@ -1423,33 +1446,37 @@ namespace RC.Scan_SingleSolution
             FistStartLeft = (bool)chkFistStart_left.IsChecked;
             FistStartRight = (bool)chkFistStart_right.IsChecked;
 
-            for (int i = 0; i < _taskWorker.Count(); i++)
+            if (FistStartRight)
             {
-                if (_taskWorker[i].Status == TaskStatus.Running)
+                if (_taskWorker[0].Status == TaskStatus.Running)
                 {
                     Serilog.Log.Information("Another thread is already running ...");
                 }
                 else
                 {
-                    if (FistStartRight)
-                    {
-                        _cancellationTokenSourceWorker[i] = new CancellationTokenSource();
-                        _tokenWorker[i] = _cancellationTokenSourceWorker[i].Token;
+                    _cancellationTokenSourceWorker[0] = new CancellationTokenSource();
+                    _tokenWorker[0] = _cancellationTokenSourceWorker[0].Token;
 
-                        Thread.Sleep(25);
+                    Thread.Sleep(25);
 
-                        _taskWorker[i] = Task.Run(() => Worker(i), _tokenWorker[i]);
-                    }
+                    _taskWorker[0] = Task.Run(() => Worker(0), _tokenWorker[0]);
+                }
+            }
 
-                    if (FistStartLeft)
-                    {
-                        _cancellationTokenSourceWorker[i] = new CancellationTokenSource();
-                        _tokenWorker[i] = _cancellationTokenSourceWorker[i].Token;
+            if (FistStartLeft)
+            {
+                if (_taskWorker[1].Status == TaskStatus.Running)
+                {
+                    Serilog.Log.Information("Another thread is already running ...");
+                }
+                else
+                {
+                    _cancellationTokenSourceWorker[1] = new CancellationTokenSource();
+                    _tokenWorker[1] = _cancellationTokenSourceWorker[1].Token;
 
-                        Thread.Sleep(25);
+                    Thread.Sleep(25);
 
-                        _taskWorker[i] = Task.Run(() => Worker(i), _tokenWorker[i]);
-                    }
+                    _taskWorker[1] = Task.Run(() => Worker(1), _tokenWorker[1]);
                 }
             }
             #endregion
@@ -1476,21 +1503,18 @@ namespace RC.Scan_SingleSolution
                         FistStartRight = (bool)chkFistStart_right.IsChecked;
                     }));
 
-                    if (FistStartLeft || FistStartRight)
+                    if (FistStartRight)
                     {
-                        if (FistStartRight)
-                        {
-                            Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[0].DeviceInfo.DeviceInfo.serialNumber);
+                        Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[0].DeviceInfo.DeviceInfo.serialNumber);
 
-                            _svsVistek.Cameras[0].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
-                        }
+                        _svsVistek.Cameras[0].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
+                    }
 
-                        if (FistStartLeft)
-                        {
-                            Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[1].DeviceInfo.DeviceInfo.serialNumber);
+                    if (FistStartLeft)
+                    {
+                        Serilog.Log.Debug("Save Picture - Cam " + _svsVistek.Cameras[1].DeviceInfo.DeviceInfo.serialNumber);
 
-                            _svsVistek.Cameras[1].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
-                        }
+                        _svsVistek.Cameras[1].GrabImageHdrAsync(new long[] { 7500, 10000, 15000, 20000, 27500 });
                     }
                 }, _tokenPicture);
             }

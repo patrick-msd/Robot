@@ -188,7 +188,7 @@ namespace PSGM.MultiTestApp1
             btnConnectToStorageDatabase_Click(null, null);
             btnSetupStorageAndStorageDb_Click(null, null);
 
-            btnSetupStorage_Click(null, null);
+            //btnSetupStorage_Click(null, null);
             #endregion
         }
 
@@ -459,7 +459,7 @@ namespace PSGM.MultiTestApp1
                 Id = Guid.NewGuid(),
 
                 Order = 1,
-                ApplyLevel = ApplyLevel.Organization,
+                ApplyLevel = WorkflowApplyLevel.Organization,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.DataRaw,
@@ -479,7 +479,7 @@ namespace PSGM.MultiTestApp1
                 Id = Guid.NewGuid(),
 
                 Order = 4,
-                ApplyLevel = ApplyLevel.Organization,
+                ApplyLevel = WorkflowApplyLevel.Organization,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.DataRaw,
@@ -503,7 +503,7 @@ namespace PSGM.MultiTestApp1
                 Id = Guid.NewGuid(),
 
                 Order = 5,
-                ApplyLevel = ApplyLevel.Organization,
+                ApplyLevel = WorkflowApplyLevel.Organization,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
@@ -523,7 +523,7 @@ namespace PSGM.MultiTestApp1
                 Id = Guid.NewGuid(),
 
                 Order = 8,
-                ApplyLevel = ApplyLevel.Organization,
+                ApplyLevel = WorkflowApplyLevel.Organization,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.DataAndDataThumbnail,
@@ -546,7 +546,7 @@ namespace PSGM.MultiTestApp1
                 Id = Guid.NewGuid(),
 
                 Order = 9,
-                ApplyLevel = ApplyLevel.Organization,
+                ApplyLevel = WorkflowApplyLevel.Organization,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
@@ -583,7 +583,7 @@ namespace PSGM.MultiTestApp1
                 Id = Guid.NewGuid(),
 
                 Order = 12,
-                ApplyLevel = ApplyLevel.Organization,
+                ApplyLevel = WorkflowApplyLevel.Organization,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.DataAndDataThumbnail,
@@ -606,7 +606,7 @@ namespace PSGM.MultiTestApp1
                 Id = Guid.NewGuid(),
 
                 Order = 13,
-                ApplyLevel = ApplyLevel.Organization,
+                ApplyLevel = WorkflowApplyLevel.Organization,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
@@ -653,7 +653,7 @@ namespace PSGM.MultiTestApp1
                 Id = Guid.NewGuid(),
 
                 Order = 14,
-                ApplyLevel = ApplyLevel.Organization,
+                ApplyLevel = WorkflowApplyLevel.Organization,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
@@ -688,7 +688,7 @@ namespace PSGM.MultiTestApp1
                 Id = Guid.NewGuid(),
 
                 Order = 15,
-                ApplyLevel = ApplyLevel.Organization,
+                ApplyLevel = WorkflowApplyLevel.Organization,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
@@ -723,7 +723,7 @@ namespace PSGM.MultiTestApp1
                 Id = Guid.NewGuid(),
 
                 Order = 16,
-                ApplyLevel = ApplyLevel.Organization,
+                ApplyLevel = WorkflowApplyLevel.Organization,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
@@ -762,7 +762,7 @@ namespace PSGM.MultiTestApp1
                 Id = Guid.NewGuid(),
 
                 Order = 17,
-                ApplyLevel = ApplyLevel.Organization,
+                ApplyLevel = WorkflowApplyLevel.Organization,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
@@ -799,7 +799,7 @@ namespace PSGM.MultiTestApp1
                 Id = Guid.NewGuid(),
 
                 Order = 20,
-                ApplyLevel = ApplyLevel.Organization,
+                ApplyLevel = WorkflowApplyLevel.Organization,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.DataAndDataThumbnail,
@@ -1171,7 +1171,7 @@ namespace PSGM.MultiTestApp1
                 Finished = DateTime.MinValue,
 
                 WorkflowIdExt = _dbWorkflow_Context.Workflows.FirstOrDefault().Id,
-                WorkflowApplyLevel = ApplyLevel.File,
+                WorkflowApplyLevel = WorkflowApplyLevel.File,
 
                 ProjectParameter = new DbMain_ProjectParameter()
                 {

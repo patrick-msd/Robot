@@ -1,6 +1,6 @@
 ﻿namespace PSGM.Helper
 {
-    public enum ApplyLevel : uint
+    public enum WorkflowApplyLevel : uint
     {
         Undefined = 0,
 

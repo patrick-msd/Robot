@@ -11,14 +11,14 @@ using PSGM.Model.DbStorage;
 namespace PSGM.Model.DbStorage.Migrations
 {
     [DbContext(typeof(DbStorage_Context))]
-    [Migration("20240807123839_InitialeCreate")]
+    [Migration("20240901101052_InitialeCreate")]
     partial class InitialeCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileAuthorization_User", b =>
                 {

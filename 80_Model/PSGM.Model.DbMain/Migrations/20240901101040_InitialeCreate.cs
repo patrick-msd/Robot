@@ -143,8 +143,7 @@ namespace PSGM.Model.DbMain.Migrations
                     Finished = table.Column<DateTime>(type: "TEXT", nullable: false),
                     WorkflowIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     WorkflowApplyLevel = table.Column<uint>(type: "INTEGER", nullable: false),
-                    MachinesExtString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
-                    MachinesExt = table.Column<string>(type: "TEXT", nullable: false)
+                    MachinesExtString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -194,6 +193,21 @@ namespace PSGM.Model.DbMain.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProjectAuthorization_UserGroup_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProjectDocumentType_AuditLog",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    SourceId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Action = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Changes = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectDocumentType_AuditLog", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -285,6 +299,7 @@ namespace PSGM.Model.DbMain.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     Permissions = table.Column<int>(type: "INTEGER", nullable: false),
                     UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     ProjectId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -304,6 +319,7 @@ namespace PSGM.Model.DbMain.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     Permissions = table.Column<int>(type: "INTEGER", nullable: false),
                     UserGroupIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     ProjectId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -319,10 +335,36 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProjectDocumentType",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 1024, nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 8191, nullable: false),
+                    Status = table.Column<uint>(type: "INTEGER", nullable: false),
+                    Started = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Finished = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    WorkflowIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    WorkflowApplyLevel = table.Column<uint>(type: "INTEGER", nullable: false),
+                    MachinesExtString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
+                    ProjectId = table.Column<Guid>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectDocumentType", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProjectDocumentType_Project_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Project",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ProjectNotification_User",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     NotificationString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
                     UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     ProjectId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -342,6 +384,7 @@ namespace PSGM.Model.DbMain.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     NotificationString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
                     UserGroupIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     ProjectId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -361,6 +404,7 @@ namespace PSGM.Model.DbMain.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     ProjectId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
@@ -405,6 +449,7 @@ namespace PSGM.Model.DbMain.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     ProjectId = table.Column<Guid>(type: "TEXT", nullable: true),
                     OrganizationId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
@@ -428,6 +473,7 @@ namespace PSGM.Model.DbMain.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     Permissions = table.Column<int>(type: "INTEGER", nullable: false),
                     UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     OrganizationId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -447,6 +493,7 @@ namespace PSGM.Model.DbMain.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     Permissions = table.Column<int>(type: "INTEGER", nullable: false),
                     UserGroupIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     OrganizationId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -466,6 +513,7 @@ namespace PSGM.Model.DbMain.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     NotificationString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
                     UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     OrganizationId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -485,6 +533,7 @@ namespace PSGM.Model.DbMain.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
                     NotificationString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
                     UserGroupIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
                     OrganizationId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -509,6 +558,7 @@ namespace PSGM.Model.DbMain.Migrations
                     DatabaseConnectionString = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
                     StorageType = table.Column<uint>(type: "INTEGER", nullable: false),
                     StorageClass = table.Column<uint>(type: "INTEGER", nullable: false),
+                    StorageTier = table.Column<uint>(type: "INTEGER", nullable: false),
                     StorageFilePath = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
                     StorageS3Endpoint = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
                     StorageS3BucketName = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
@@ -628,6 +678,11 @@ namespace PSGM.Model.DbMain.Migrations
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProjectDocumentType_ProjectId",
+                table: "ProjectDocumentType",
+                column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProjectNotification_User_ProjectId",
                 table: "ProjectNotification_User",
                 column: "ProjectId");
@@ -708,6 +763,12 @@ namespace PSGM.Model.DbMain.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProjectAuthorization_UserGroup_AuditLog");
+
+            migrationBuilder.DropTable(
+                name: "ProjectDocumentType");
+
+            migrationBuilder.DropTable(
+                name: "ProjectDocumentType_AuditLog");
 
             migrationBuilder.DropTable(
                 name: "ProjectNotification_User");

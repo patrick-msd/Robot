@@ -11,14 +11,14 @@ using PSGM.Model.DbWorkflow;
 namespace PSGM.Model.DbWorkflow.Migrations
 {
     [DbContext(typeof(DbWorkflow_Context))]
-    [Migration("20240807123851_InitialeCreate")]
+    [Migration("20240901101104_InitialeCreate")]
     partial class InitialeCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
 
             modelBuilder.Entity("PSGM.Model.DbWorkflow.DbWorkflow_Workflow", b =>
                 {

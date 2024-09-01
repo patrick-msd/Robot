@@ -1,5 +1,4 @@
-﻿using PSGM.Helper;
-using PSGM.Model.DbMain;
+﻿using PSGM.Model.DbMain;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 

@@ -77,6 +77,9 @@ namespace PSGM.Model.DbMain
         public DbSet<DbMain_ProjectAuthorization_UserGroup> ProjectAuthorization_UserGroup { get; set; }
         public DbSet<DbMain_ProjectAuthorization_UserGroup_AuditLog> ProjectAuthorization_UserGroup_AuditLog { get; set; }
 
+        public DbSet<DbMain_ProjectDocumentType> ProjectDocumentType { get; set; }
+        public DbSet<DbMain_ProjectDocumentType_AuditLog> ProjectDocumentType_AuditLog { get; set; }
+
         public DbSet<DbMain_ProjectNotification_User> ProjectNotification_User { get; set; }
         public DbSet<DbMain_ProjectNotification_User_AuditLog> ProjectNotification_User_AuditLog { get; set; }
 
@@ -344,6 +347,23 @@ namespace PSGM.Model.DbMain
                         break;
 
                     case DbMain_ProjectAuthorization_UserGroup_AuditLog projectAuthorization_UserGroup_AuditLog:
+                        break;
+
+                    case DbMain_ProjectDocumentType projectDocumentType:
+                        ProjectDocumentType_AuditLog.Add(new DbMain_ProjectDocumentType_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = projectDocumentType.Id,
+                            //TableName = entry.Metadata.GetTableName(),
+                            //EntityName = projectAuthorization_UserGroup.GetType().Name,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMain_ProjectDocumentType_AuditLog projectDocumentType_AuditLog:
                         break;
 
                     case DbMain_ProjectNotification_User projectNotification_User:
