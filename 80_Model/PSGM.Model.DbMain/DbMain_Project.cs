@@ -55,9 +55,6 @@ namespace PSGM.Model.DbMain
 
         #region Links
         [InverseProperty("Project")]
-        public virtual DbMain_ProjectParameter? ProjectParameter { get; set; }
-
-        [InverseProperty("Project")]
         public virtual DbMain_Organization? Organization { get; set; }
 
         [InverseProperty("Project")]

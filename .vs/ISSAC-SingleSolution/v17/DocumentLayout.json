@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Git\\MSD\\Robot\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{36EC0D68-D5CC-4B18-BD5B-B4FBBBD63C99}|80_Model\\PSGM.Model.DbMain\\PSGM.Model.DbMain.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbmain\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36EC0D68-D5CC-4B18-BD5B-B4FBBBD63C99}|80_Model\\PSGM.Model.DbMain\\PSGM.Model.DbMain.csproj|solutionrelative:80_model\\psgm.model.dbmain\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36EC0D68-D5CC-4B18-BD5B-B4FBBBD63C99}|80_Model\\PSGM.Model.DbMain\\PSGM.Model.DbMain.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbmain\\dbmain_project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36EC0D68-D5CC-4B18-BD5B-B4FBBBD63C99}|80_Model\\PSGM.Model.DbMain\\PSGM.Model.DbMain.csproj|solutionrelative:80_model\\psgm.model.dbmain\\dbmain_project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{601D42F1-2699-4D61-B15C-F256C504B223}|80_Model\\PSGM.Model.DbStorageStructure\\PSGM.Model.DbStorageStructure.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstoragestructure\\dbstoragestructure_projectstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{601D42F1-2699-4D61-B15C-F256C504B223}|80_Model\\PSGM.Model.DbStorageStructure\\PSGM.Model.DbStorageStructure.csproj|solutionrelative:80_model\\psgm.model.dbstoragestructure\\dbstoragestructure_projectstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -30,11 +38,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "DbContext.cs",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbMain\\DbContext.cs",
+              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbMain\\DbContext.cs",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbMain\\DbContext.cs*",
+              "RelativeToolTip": "80_Model\\PSGM.Model.DbMain\\DbContext.cs*",
+              "ViewState": "AgIAAHkBAAAAmpmZmZkrwIsBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T16:27:01.803Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "DbStorageStructure_ProjectStorage_AuditLog.cs",
               "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_ProjectStorage_AuditLog.cs",
               "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_ProjectStorage_AuditLog.cs",
@@ -47,20 +68,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "DbStorageStructure_ProjectStorage.cs",
               "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_ProjectStorage.cs",
               "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_ProjectStorage.cs",
               "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_ProjectStorage.cs",
               "RelativeToolTip": "80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_ProjectStorage.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAQwEYAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAADEAAAAAAAAAAAAQwEsAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-01T16:17:26.452Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "DbMain_Project.cs",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbMain\\DbMain_Project.cs",
+              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbMain\\DbMain_Project.cs",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbMain\\DbMain_Project.cs*",
+              "RelativeToolTip": "80_Model\\PSGM.Model.DbMain\\DbMain_Project.cs*",
+              "ViewState": "AgIAACcAAAAAAAAAAAA4wDgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T16:26:52.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "DbStorageStructure_Project_AuditLog.cs",
               "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_Project_AuditLog.cs",
               "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_Project_AuditLog.cs",
@@ -73,7 +107,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "DbStorageStructure_Project.cs",
               "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_Project.cs",
               "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure_Project.cs",
@@ -110,7 +144,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "DbContext.cs",
               "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure\\DbContext.cs",
               "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorageStructure\\DbContext.cs",

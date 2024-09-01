@@ -85,12 +85,6 @@ namespace PSGM.Model.DbMain
 
         public DbSet<DbMain_ProjectNotification_UserGroup> ProjectNotification_UserGroup { get; set; }
         public DbSet<DbMain_ProjectNotification_UserGroup_AuditLog> ProjectNotification_UserGroup_AuditLog { get; set; }
-
-        public DbSet<DbMain_ProjectParameter> ProjectParameters { get; set; }
-        public DbSet<DbMain_ProjectParameter_AuditLog> ProjectParameter_AuditLog { get; set; }
-
-        public DbSet<DbMain_ProjectParameterStorage> ProjectParametersStorage { get; set; }
-        public DbSet<DbMain_ProjectParameterStorage_AuditLog> ProjectParametersStorage_AuditLog { get; set; }
         #endregion
 
         #region Overrides
@@ -398,40 +392,6 @@ namespace PSGM.Model.DbMain
                         break;
 
                     case DbMain_ProjectNotification_UserGroup_AuditLog projectNotification_UserGroup_AuditLog:
-                        break;
-
-                    case DbMain_ProjectParameter projectParameter:
-                        ProjectParameter_AuditLog.Add(new DbMain_ProjectParameter_AuditLog
-                        {
-                            Id = new Guid(),
-
-                            SourceId = projectParameter.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = projectParameter.GetType().Name,
-                            Action = entry.State.ToString(),
-                            DateTime = DateTime.UtcNow,
-                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                        });
-                        break;
-
-                    case DbMain_ProjectParameter_AuditLog projectParameter_AuditLog:
-                        break;
-
-                    case DbMain_ProjectParameterStorage projectParameterStorage:
-                        ProjectParameter_AuditLog.Add(new DbMain_ProjectParameter_AuditLog
-                        {
-                            Id = new Guid(),
-
-                            SourceId = projectParameterStorage.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = projectParameterStorage.GetType().Name,
-                            Action = entry.State.ToString(),
-                            DateTime = DateTime.UtcNow,
-                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                        });
-                        break;
-
-                    case DbMain_ProjectParameterStorage_AuditLog projectParameterStorage_AuditLog:
                         break;
 
                     default:
