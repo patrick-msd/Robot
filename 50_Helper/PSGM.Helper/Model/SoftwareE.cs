@@ -14,5 +14,7 @@
         Official = 10000,
         ReleaseCandidate = 20000,
         EarlyAccess = 30000,
+        Beta = 40000,
+        Alpha = 50000,
     }
 }

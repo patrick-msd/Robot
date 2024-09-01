@@ -227,6 +227,93 @@ namespace PSGM.Model.DbMain.Migrations
                     b.ToTable("Contributors_AuditLog");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DocumentType", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
+
+                    b.Property<DateTime>("Finished")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Finished");
+
+                    b.Property<string>("MachinesExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("MachinesExtString");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(1024)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Name");
+
+                    b.Property<Guid?>("OrderId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Started")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Started");
+
+                    b.Property<uint>("Status")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("Status");
+
+                    b.Property<uint>("WorkflowApplyLevel")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("WorkflowApplyLevel");
+
+                    b.Property<Guid>("WorkflowIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("WorkflowIdExt");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("DocumentType");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DocumentType_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("SourceId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DocumentType_AuditLog");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Location", b =>
                 {
                     b.Property<Guid>("Id")
@@ -291,6 +378,264 @@ namespace PSGM.Model.DbMain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Location_AuditLog");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Order", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("CreatedByUserIdExt");
+
+                    b.Property<DateTime>("CreatedDateTime")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("CreatedDateTime");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
+
+                    b.Property<Guid>("ExternalContactUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ExternalContactUserIdExt");
+
+                    b.Property<Guid>("ExternalContributorsUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ExternalContributorsUserIdExt");
+
+                    b.Property<Guid>("InternalContactUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("InternalContactUserIdExt");
+
+                    b.Property<Guid>("InternalContributorsUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("InternalContributorsUserIdExt");
+
+                    b.Property<string>("LastChanges")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("LastChanges");
+
+                    b.Property<Guid>("ModifiedByUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ModifiedByUserIdExt");
+
+                    b.Property<DateTime>("ModifiedDateTime")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ModifiedDateTime");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Name");
+
+                    b.Property<DateTime>("OderProcessingFinishedDateTime")
+                        .HasMaxLength(1023)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("OderProcessingFinishedDateTime");
+
+                    b.Property<Guid>("OderProcessingFinishedUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("OderProcessingFinishedUserIdExt");
+
+                    b.Property<DateTime>("OderProcessingStartedDateTime")
+                        .HasMaxLength(1023)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("OderProcessingStartedDateTime");
+
+                    b.Property<Guid>("OderProcessingStartedUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("OderProcessingStartedUserIdExt");
+
+                    b.Property<uint>("OderStatus")
+                        .HasMaxLength(1023)
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("OderStatus");
+
+                    b.Property<string>("OrderDocumentObjectName")
+                        .IsRequired()
+                        .HasMaxLength(1023)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("OrderDocumentObjectName");
+
+                    b.Property<Guid?>("ProjectId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId")
+                        .IsUnique();
+
+                    b.ToTable("Order");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_OrderTemplate", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("CreatedByUserIdExt");
+
+                    b.Property<DateTime>("CreatedDateTime")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("CreatedDateTime");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
+
+                    b.Property<Guid>("ExternalContactUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ExternalContactUserIdExt");
+
+                    b.Property<Guid>("ExternalContributorsUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ExternalContributorsUserIdExt");
+
+                    b.Property<Guid>("InternalContactUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("InternalContactUserIdExt");
+
+                    b.Property<Guid>("InternalContributorsUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("InternalContributorsUserIdExt");
+
+                    b.Property<string>("LastChanges")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("LastChanges");
+
+                    b.Property<Guid>("ModifiedByUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ModifiedByUserIdExt");
+
+                    b.Property<DateTime>("ModifiedDateTime")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ModifiedDateTime");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Name");
+
+                    b.Property<DateTime>("OderProcessingFinishedDateTime")
+                        .HasMaxLength(1023)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("OderProcessingFinishedDateTime");
+
+                    b.Property<Guid>("OderProcessingFinishedUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("OderProcessingFinishedUserIdExt");
+
+                    b.Property<DateTime>("OderProcessingStartedDateTime")
+                        .HasMaxLength(1023)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("OderProcessingStartedDateTime");
+
+                    b.Property<Guid>("OderProcessingStartedUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("OderProcessingStartedUserIdExt");
+
+                    b.Property<uint>("OderStatus")
+                        .HasMaxLength(1023)
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("OderStatus");
+
+                    b.Property<string>("OrderDocumentObjectName")
+                        .IsRequired()
+                        .HasMaxLength(1023)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("OrderDocumentObjectName");
+
+                    b.Property<Guid?>("OrderId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId")
+                        .IsUnique();
+
+                    b.ToTable("OrderTemplate");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_OrderTemplate_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("SourceId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OrderTemplate_AuditLog");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Order_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("SourceId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Order_AuditLog");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization", b =>
@@ -817,93 +1162,6 @@ namespace PSGM.Model.DbMain.Migrations
                     b.ToTable("ProjectAuthorization_User_AuditLog");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectDocumentType", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<DateTime>("Finished")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Finished");
-
-                    b.Property<string>("MachinesExtString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("MachinesExtString");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(1024)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Name");
-
-                    b.Property<Guid?>("ProjectId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("Started")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Started");
-
-                    b.Property<uint>("Status")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Status");
-
-                    b.Property<uint>("WorkflowApplyLevel")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("WorkflowApplyLevel");
-
-                    b.Property<Guid>("WorkflowIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("WorkflowIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjectId");
-
-                    b.ToTable("ProjectDocumentType");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectDocumentType_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProjectDocumentType_AuditLog");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectNotification_User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1034,196 +1292,6 @@ namespace PSGM.Model.DbMain.Migrations
                     b.ToTable("ProjectNotification_User_AuditLog");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectParameter", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<Guid?>("ProjectId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjectId")
-                        .IsUnique();
-
-                    b.ToTable("ProjectParameter");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectParameterStorage", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("DatabaseConnectionString")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DatabaseConnectionString");
-
-                    b.Property<string>("DatabaseFilePath")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DatabaseFilePath");
-
-                    b.Property<uint>("DatabaseType")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("DatabaseType");
-
-                    b.Property<Guid?>("ProjectParameterId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("ReadOnlyMode")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("ReadOnlyMode");
-
-                    b.Property<uint>("StorageClass")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("StorageClass");
-
-                    b.Property<string>("StorageFilePath")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageFilePath");
-
-                    b.Property<string>("StorageS3AccessKey")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3AccessKey");
-
-                    b.Property<string>("StorageS3BucketName")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3BucketName");
-
-                    b.Property<string>("StorageS3Endpoint")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3Endpoint");
-
-                    b.Property<string>("StorageS3Region")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3Region");
-
-                    b.Property<string>("StorageS3SecretKey")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3SecretKey");
-
-                    b.Property<bool>("StorageS3Secure")
-                        .HasMaxLength(1023)
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("StorageS3Secure");
-
-                    b.Property<uint>("StorageTier")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("StorageTier");
-
-                    b.Property<uint>("StorageType")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("StorageType");
-
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Url");
-
-                    b.Property<string>("UrlPublic")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UrlPublic");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjectParameterId");
-
-                    b.ToTable("ProjectParameterStorage");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectParameterStorage_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProjectParameterStorage_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectParameter_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProjectParameter_AuditLog");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1280,6 +1348,15 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Project");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DocumentType", b =>
+                {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Order", "Order")
+                        .WithMany("DocumentTypes")
+                        .HasForeignKey("OrderId");
+
+                    b.Navigation("Order");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Location", b =>
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization", "Organization")
@@ -1293,6 +1370,24 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Organization");
 
                     b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Order", b =>
+                {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
+                        .WithOne("Order")
+                        .HasForeignKey("PSGM.Model.DbMain.DbMain_Order", "ProjectId");
+
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_OrderTemplate", b =>
+                {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Order", "Order")
+                        .WithOne("CreatedWithOrderTemplate")
+                        .HasForeignKey("PSGM.Model.DbMain.DbMain_OrderTemplate", "OrderId");
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization", b =>
@@ -1358,15 +1453,6 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectDocumentType", b =>
-                {
-                    b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
-                        .WithMany("ProjectDocumentTypes")
-                        .HasForeignKey("ProjectId");
-
-                    b.Navigation("Project");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectNotification_User", b =>
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
@@ -1385,27 +1471,16 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectParameter", b =>
-                {
-                    b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
-                        .WithOne("ProjectParameter")
-                        .HasForeignKey("PSGM.Model.DbMain.DbMain_ProjectParameter", "ProjectId");
-
-                    b.Navigation("Project");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectParameterStorage", b =>
-                {
-                    b.HasOne("PSGM.Model.DbMain.DbMain_ProjectParameter", "ProjectParameter")
-                        .WithMany("Storages")
-                        .HasForeignKey("ProjectParameterId");
-
-                    b.Navigation("ProjectParameter");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Location", b =>
                 {
                     b.Navigation("Address");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Order", b =>
+                {
+                    b.Navigation("CreatedWithOrderTemplate");
+
+                    b.Navigation("DocumentTypes");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization", b =>
@@ -1435,16 +1510,9 @@ namespace PSGM.Model.DbMain.Migrations
 
                     b.Navigation("NotificationUserGroup");
 
+                    b.Navigation("Order");
+
                     b.Navigation("Organization");
-
-                    b.Navigation("ProjectDocumentTypes");
-
-                    b.Navigation("ProjectParameter");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectParameter", b =>
-                {
-                    b.Navigation("Storages");
                 });
 #pragma warning restore 612, 618
         }

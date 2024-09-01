@@ -11,7 +11,7 @@ using PSGM.Model.DbStorage;
 namespace PSGM.Model.DbStorage.Migrations
 {
     [DbContext(typeof(DbStorage_Context))]
-    [Migration("20240901162517_InitialeCreate")]
+    [Migration("20240901173201_InitialeCreate")]
     partial class InitialeCreate
     {
         /// <inheritdoc />
@@ -1044,296 +1044,6 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.ToTable("File_AuditLog");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_Order", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<Guid>("CreatedByUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("CreatedByUserIdExt");
-
-                    b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("CreatedDateTime");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<Guid>("ExternalContactUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("ExternalContactUserIdExt");
-
-                    b.Property<Guid>("ExternalContributorsUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("ExternalContributorsUserIdExt");
-
-                    b.Property<Guid>("InternalContactUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("InternalContactUserIdExt");
-
-                    b.Property<Guid>("InternalContributorsUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("InternalContributorsUserIdExt");
-
-                    b.Property<string>("LastChanges")
-                        .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("LastChanges");
-
-                    b.Property<Guid>("ModifiedByUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("ModifiedByUserIdExt");
-
-                    b.Property<DateTime>("ModifiedDateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("ModifiedDateTime");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Name");
-
-                    b.Property<DateTime>("OderProcessingFinishedDateTime")
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("OderProcessingFinishedDateTime");
-
-                    b.Property<Guid>("OderProcessingFinishedUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("OderProcessingFinishedUserIdExt");
-
-                    b.Property<DateTime>("OderProcessingStartedDateTime")
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("OderProcessingStartedDateTime");
-
-                    b.Property<Guid>("OderProcessingStartedUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("OderProcessingStartedUserIdExt");
-
-                    b.Property<uint>("OderStatus")
-                        .HasMaxLength(1023)
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("OderStatus");
-
-                    b.Property<string>("OrderDocumentObjectName")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("OrderDocumentObjectName");
-
-                    b.Property<Guid?>("RootDirectoryId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("SubDirectoryId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RootDirectoryId");
-
-                    b.HasIndex("SubDirectoryId");
-
-                    b.ToTable("Order");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_OrderTemplate", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<Guid>("CreatedByUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("CreatedByUserIdExt");
-
-                    b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("CreatedDateTime");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<Guid>("ExternalContactUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("ExternalContactUserIdExt");
-
-                    b.Property<Guid>("ExternalContributorsUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("ExternalContributorsUserIdExt");
-
-                    b.Property<Guid>("InternalContactUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("InternalContactUserIdExt");
-
-                    b.Property<Guid>("InternalContributorsUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("InternalContributorsUserIdExt");
-
-                    b.Property<string>("LastChanges")
-                        .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("LastChanges");
-
-                    b.Property<Guid>("ModifiedByUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("ModifiedByUserIdExt");
-
-                    b.Property<DateTime>("ModifiedDateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("ModifiedDateTime");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Name");
-
-                    b.Property<DateTime>("OderProcessingFinishedDateTime")
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("OderProcessingFinishedDateTime");
-
-                    b.Property<Guid>("OderProcessingFinishedUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("OderProcessingFinishedUserIdExt");
-
-                    b.Property<DateTime>("OderProcessingStartedDateTime")
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("OderProcessingStartedDateTime");
-
-                    b.Property<Guid>("OderProcessingStartedUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("OderProcessingStartedUserIdExt");
-
-                    b.Property<uint>("OderStatus")
-                        .HasMaxLength(1023)
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("OderStatus");
-
-                    b.Property<string>("OrderDocumentObjectName")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("OrderDocumentObjectName");
-
-                    b.Property<Guid?>("OrderId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("RootDirectoryId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("SubDirectoryId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId")
-                        .IsUnique();
-
-                    b.HasIndex("RootDirectoryId")
-                        .IsUnique();
-
-                    b.HasIndex("SubDirectoryId")
-                        .IsUnique();
-
-                    b.ToTable("OrderTemplate");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_OrderTemplate_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OrderTemplate_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_Order_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Order_AuditLog");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_QrCode", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1575,6 +1285,10 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnName("DirectorySize");
 
+                    b.Property<bool>("DocumentType")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("DocumentType");
+
                     b.Property<string>("JobsIdExtString")
                         .IsRequired()
                         .HasMaxLength(16383)
@@ -1586,6 +1300,10 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasMaxLength(8191)
                         .HasColumnType("TEXT")
                         .HasColumnName("LastModificationChanges");
+
+                    b.Property<bool>("Locked")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("Locked");
 
                     b.Property<Guid>("ModifiedByUserIdExtAutoFill")
                         .HasColumnType("TEXT")
@@ -1795,42 +1513,6 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("SubDirectory");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_Order", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory", "RootDirectory")
-                        .WithMany("Orders")
-                        .HasForeignKey("RootDirectoryId");
-
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory", "SubDirectory")
-                        .WithMany("Orders")
-                        .HasForeignKey("SubDirectoryId");
-
-                    b.Navigation("RootDirectory");
-
-                    b.Navigation("SubDirectory");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_OrderTemplate", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_Order", "Order")
-                        .WithOne("CreatedWithOrderTemplate")
-                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_OrderTemplate", "OrderId");
-
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory", "RootDirectory")
-                        .WithOne("OrderTemplate")
-                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_OrderTemplate", "RootDirectoryId");
-
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory", "SubDirectory")
-                        .WithOne("OrderTemplate")
-                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_OrderTemplate", "SubDirectoryId");
-
-                    b.Navigation("Order");
-
-                    b.Navigation("RootDirectory");
-
-                    b.Navigation("SubDirectory");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_QrCode", b =>
                 {
                     b.HasOne("PSGM.Model.DbStorage.DbStorage_File", "File")
@@ -1868,11 +1550,6 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("QrCode");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_Order", b =>
-                {
-                    b.Navigation("CreatedWithOrderTemplate");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory", b =>
                 {
                     b.Navigation("AuthorizationUser");
@@ -1884,10 +1561,6 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("NotificationUser");
 
                     b.Navigation("NotificationUserGroup");
-
-                    b.Navigation("OrderTemplate");
-
-                    b.Navigation("Orders");
 
                     b.Navigation("SubDirectories");
                 });
@@ -1903,10 +1576,6 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("NotificationUser");
 
                     b.Navigation("NotificationUserGroup");
-
-                    b.Navigation("OrderTemplate");
-
-                    b.Navigation("Orders");
 
                     b.Navigation("SubDirectories");
                 });

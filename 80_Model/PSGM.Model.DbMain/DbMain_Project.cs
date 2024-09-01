@@ -55,13 +55,13 @@ namespace PSGM.Model.DbMain
 
         #region Links
         [InverseProperty("Project")]
+        public virtual DbMain_Order? Order { get; set; }
+
+        [InverseProperty("Project")]
         public virtual DbMain_Organization? Organization { get; set; }
 
         [InverseProperty("Project")]
         public virtual ICollection<DbMain_Contributors>? Contributors { get; set; }
-
-        [InverseProperty("Project")]
-        public virtual ICollection<DbMain_ProjectDocumentType>? ProjectDocumentTypes { get; set; }
 
         [InverseProperty("Project")]
         public virtual ICollection<DbMain_ProjectAuthorization_User>? AuthorizationUser { get; set; }

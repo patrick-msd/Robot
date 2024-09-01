@@ -87,12 +87,6 @@ namespace PSGM.Model.DbStorage
         public virtual ICollection<DbStorage_SubDirectory>? SubDirectories { get; set; }
 
         [InverseProperty("RootDirectory")]
-        public virtual ICollection<DbStorage_Order>? Orders { get; set; }
-
-        [InverseProperty("RootDirectory")]
-        public virtual DbStorage_OrderTemplate? OrderTemplate { get; set; }
-
-        [InverseProperty("RootDirectory")]
         public virtual ICollection<DbStorage_RootDirectoryAuthorization_User>? AuthorizationUser { get; set; }
 
         [InverseProperty("RootDirectory")]

@@ -42,6 +42,21 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DocumentType_AuditLog",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    SourceId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Action = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Changes = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DocumentType_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Location_AuditLog",
                 columns: table => new
                 {
@@ -54,6 +69,36 @@ namespace PSGM.Model.DbMain.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Location_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Order_AuditLog",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    SourceId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Action = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Changes = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Order_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrderTemplate_AuditLog",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    SourceId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Action = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Changes = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderTemplate_AuditLog", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -196,21 +241,6 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProjectDocumentType_AuditLog",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SourceId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Action = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Changes = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProjectDocumentType_AuditLog", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ProjectNotification_User_AuditLog",
                 columns: table => new
                 {
@@ -241,33 +271,37 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProjectParameter_AuditLog",
+                name: "Order",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SourceId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Action = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Changes = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false)
+                    Name = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
+                    InternalContactUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    InternalContributorsUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ExternalContactUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ExternalContributorsUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 8191, nullable: false),
+                    OderStatus = table.Column<uint>(type: "INTEGER", maxLength: 1023, nullable: false),
+                    OrderDocumentObjectName = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
+                    OderProcessingStartedDateTime = table.Column<DateTime>(type: "TEXT", maxLength: 1023, nullable: false),
+                    OderProcessingStartedUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    OderProcessingFinishedDateTime = table.Column<DateTime>(type: "TEXT", maxLength: 1023, nullable: false),
+                    OderProcessingFinishedUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    CreatedDateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedByUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ModifiedDateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ModifiedByUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    LastChanges = table.Column<string>(type: "TEXT", maxLength: 8191, nullable: false),
+                    ProjectId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProjectParameter_AuditLog", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProjectParameterStorage_AuditLog",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SourceId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Action = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Changes = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProjectParameterStorage_AuditLog", x => x.Id);
+                    table.PrimaryKey("PK_Order", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Order_Project_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Project",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -335,31 +369,6 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProjectDocumentType",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 1024, nullable: false),
-                    Description = table.Column<string>(type: "TEXT", maxLength: 8191, nullable: false),
-                    Status = table.Column<uint>(type: "INTEGER", nullable: false),
-                    Started = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Finished = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    WorkflowIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    WorkflowApplyLevel = table.Column<uint>(type: "INTEGER", nullable: false),
-                    MachinesExtString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
-                    ProjectId = table.Column<Guid>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProjectDocumentType", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ProjectDocumentType_Project_ProjectId",
-                        column: x => x.ProjectId,
-                        principalTable: "Project",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ProjectNotification_User",
                 columns: table => new
                 {
@@ -400,20 +409,61 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProjectParameter",
+                name: "DocumentType",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Description = table.Column<string>(type: "TEXT", maxLength: 16384, nullable: false),
-                    ProjectId = table.Column<Guid>(type: "TEXT", nullable: true)
+                    Name = table.Column<string>(type: "TEXT", maxLength: 1024, nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 8191, nullable: false),
+                    Status = table.Column<uint>(type: "INTEGER", nullable: false),
+                    Started = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Finished = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    WorkflowIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    WorkflowApplyLevel = table.Column<uint>(type: "INTEGER", nullable: false),
+                    MachinesExtString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
+                    OrderId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProjectParameter", x => x.Id);
+                    table.PrimaryKey("PK_DocumentType", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProjectParameter_Project_ProjectId",
-                        column: x => x.ProjectId,
-                        principalTable: "Project",
+                        name: "FK_DocumentType_Order_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Order",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrderTemplate",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
+                    InternalContactUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    InternalContributorsUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ExternalContactUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ExternalContributorsUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 8191, nullable: false),
+                    OderStatus = table.Column<uint>(type: "INTEGER", maxLength: 1023, nullable: false),
+                    OrderDocumentObjectName = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
+                    OderProcessingStartedDateTime = table.Column<DateTime>(type: "TEXT", maxLength: 1023, nullable: false),
+                    OderProcessingStartedUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    OderProcessingFinishedDateTime = table.Column<DateTime>(type: "TEXT", maxLength: 1023, nullable: false),
+                    OderProcessingFinishedUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    CreatedDateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedByUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ModifiedDateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ModifiedByUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
+                    LastChanges = table.Column<string>(type: "TEXT", maxLength: 8191, nullable: false),
+                    OrderId = table.Column<Guid>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderTemplate", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OrderTemplate_Order_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Order",
                         principalColumn: "Id");
                 });
 
@@ -549,39 +599,6 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProjectParameterStorage",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    DatabaseType = table.Column<uint>(type: "INTEGER", nullable: false),
-                    DatabaseFilePath = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    DatabaseConnectionString = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageType = table.Column<uint>(type: "INTEGER", nullable: false),
-                    StorageClass = table.Column<uint>(type: "INTEGER", nullable: false),
-                    StorageTier = table.Column<uint>(type: "INTEGER", nullable: false),
-                    StorageFilePath = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3Endpoint = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3BucketName = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3AccessKey = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3SecretKey = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3Secure = table.Column<bool>(type: "INTEGER", maxLength: 1023, nullable: false),
-                    StorageS3Region = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    Url = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    UrlPublic = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    ReadOnlyMode = table.Column<bool>(type: "INTEGER", nullable: false),
-                    ProjectParameterId = table.Column<Guid>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProjectParameterStorage", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ProjectParameterStorage_ProjectParameter_ProjectParameterId",
-                        column: x => x.ProjectParameterId,
-                        principalTable: "ProjectParameter",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Address",
                 columns: table => new
                 {
@@ -633,6 +650,11 @@ namespace PSGM.Model.DbMain.Migrations
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_DocumentType_OrderId",
+                table: "DocumentType",
+                column: "OrderId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Location_OrganizationId",
                 table: "Location",
                 column: "OrganizationId");
@@ -641,6 +663,18 @@ namespace PSGM.Model.DbMain.Migrations
                 name: "IX_Location_ProjectId",
                 table: "Location",
                 column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Order_ProjectId",
+                table: "Order",
+                column: "ProjectId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderTemplate_OrderId",
+                table: "OrderTemplate",
+                column: "OrderId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Organization_ProjectId",
@@ -679,11 +713,6 @@ namespace PSGM.Model.DbMain.Migrations
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProjectDocumentType_ProjectId",
-                table: "ProjectDocumentType",
-                column: "ProjectId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ProjectNotification_User_ProjectId",
                 table: "ProjectNotification_User",
                 column: "ProjectId");
@@ -692,17 +721,6 @@ namespace PSGM.Model.DbMain.Migrations
                 name: "IX_ProjectNotification_UserGroup_ProjectId",
                 table: "ProjectNotification_UserGroup",
                 column: "ProjectId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProjectParameter_ProjectId",
-                table: "ProjectParameter",
-                column: "ProjectId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProjectParameterStorage_ProjectParameterId",
-                table: "ProjectParameterStorage",
-                column: "ProjectParameterId");
         }
 
         /// <inheritdoc />
@@ -721,7 +739,22 @@ namespace PSGM.Model.DbMain.Migrations
                 name: "Contributors_AuditLog");
 
             migrationBuilder.DropTable(
+                name: "DocumentType");
+
+            migrationBuilder.DropTable(
+                name: "DocumentType_AuditLog");
+
+            migrationBuilder.DropTable(
                 name: "Location_AuditLog");
+
+            migrationBuilder.DropTable(
+                name: "Order_AuditLog");
+
+            migrationBuilder.DropTable(
+                name: "OrderTemplate");
+
+            migrationBuilder.DropTable(
+                name: "OrderTemplate_AuditLog");
 
             migrationBuilder.DropTable(
                 name: "Organization_AuditLog");
@@ -766,12 +799,6 @@ namespace PSGM.Model.DbMain.Migrations
                 name: "ProjectAuthorization_UserGroup_AuditLog");
 
             migrationBuilder.DropTable(
-                name: "ProjectDocumentType");
-
-            migrationBuilder.DropTable(
-                name: "ProjectDocumentType_AuditLog");
-
-            migrationBuilder.DropTable(
                 name: "ProjectNotification_User");
 
             migrationBuilder.DropTable(
@@ -784,19 +811,10 @@ namespace PSGM.Model.DbMain.Migrations
                 name: "ProjectNotification_UserGroup_AuditLog");
 
             migrationBuilder.DropTable(
-                name: "ProjectParameter_AuditLog");
-
-            migrationBuilder.DropTable(
-                name: "ProjectParameterStorage");
-
-            migrationBuilder.DropTable(
-                name: "ProjectParameterStorage_AuditLog");
-
-            migrationBuilder.DropTable(
                 name: "Location");
 
             migrationBuilder.DropTable(
-                name: "ProjectParameter");
+                name: "Order");
 
             migrationBuilder.DropTable(
                 name: "Organization");

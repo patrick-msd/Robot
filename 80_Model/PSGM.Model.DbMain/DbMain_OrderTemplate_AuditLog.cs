@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbMain
 {
-    [Table("ProjectDocumentType_AuditLog")]
-    public class DbMain_ProjectDocumentType_AuditLog
+    [Table("OrderTemplate_AuditLog")]
+    public class DbMain_OrderTemplate_AuditLog
     {
         #region Entities
         [Key]
@@ -42,6 +42,16 @@ namespace PSGM.Model.DbMain
         [Display(Name = "DateTime")]
         public DateTime DateTime { get; set; } = DateTime.MinValue;
 
+        //[Required]
+        //[Column("UserIdExt")]
+        //[Display(Name = "UserIdExt")]
+        //public Guid UserIdExt { get; set; } = Guid.Empty;
+
+        //[Required]
+        //[Column("SoftwareIdExt")]
+        //[Display(Name = "SoftwareIdExt")]
+        //public Guid SoftwareIdExt { get; set; } = Guid.Empty;
+
         [Required]
         [Column("Changes")]
         [Display(Name = "Changes")]
@@ -59,9 +69,9 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Not Mapped
-        public DbMain_ProjectDocumentType GetChagnes()
+        public DbMain_OrderTemplate GetChagnes()
         {
-            return JsonConvert.DeserializeObject<DbMain_ProjectDocumentType>(Changes);
+            return JsonConvert.DeserializeObject<DbMain_OrderTemplate>(Changes);
         }
         #endregion
     }

@@ -2,10 +2,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PSGM.Model.DbStorage
+namespace PSGM.Model.DbMain
 {
-    [Table("OrderTemplate_AuditLog")]
-    public class DbStorage_OrderTemplate_AuditLog
+    [Table("Order_AuditLog")]
+    public class DbMain_Order_AuditLog
     {
         #region Entities
         [Key]
@@ -42,15 +42,15 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "DateTime")]
         public DateTime DateTime { get; set; } = DateTime.MinValue;
 
-        [Required]
-        [Column("UserIdExt")]
-        [Display(Name = "UserIdExt")]
-        public Guid UserIdExt { get; set; } = Guid.Empty;
+        //[Required]
+        //[Column("UserIdExt")]
+        //[Display(Name = "UserIdExt")]
+        //public Guid UserIdExt { get; set; } = Guid.Empty;
 
-        [Required]
-        [Column("SoftwareIdExt")]
-        [Display(Name = "SoftwareIdExt")]
-        public Guid SoftwareIdExt { get; set; } = Guid.Empty;
+        //[Required]
+        //[Column("SoftwareIdExt")]
+        //[Display(Name = "SoftwareIdExt")]
+        //public Guid SoftwareIdExt { get; set; } = Guid.Empty;
 
         [Required]
         [Column("Changes")]
@@ -69,9 +69,9 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Not Mapped
-        public DbStorage_OrderTemplate GetChagnes()
+        public DbMain_Order GetChagnes()
         {
-            return JsonConvert.DeserializeObject<DbStorage_OrderTemplate>(Changes);
+            return JsonConvert.DeserializeObject<DbMain_Order>(Changes);
         }
         #endregion
     }

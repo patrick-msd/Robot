@@ -2,10 +2,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PSGM.Model.DbStorage
+namespace PSGM.Model.DbMain
 {
-    [Table("Order")]
-    public class DbStorage_Order
+    [Table("OrderTemplate")]
+    public class DbMain_OrderTemplate
     {
         #region Entities
         [Key]
@@ -19,6 +19,7 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "Name")]
         [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Name { get; set; } = string.Empty;
+
 
         [Column("InternalContactUserIdExt")]
         [Display(Name = "InternalContactUserIdExt")]
@@ -35,6 +36,10 @@ namespace PSGM.Model.DbStorage
         [Column("ExternalContributorsUserIdExt")]
         [Display(Name = "ExternalContributorsUserIdExt")]
         public Guid ExternalContributorsUserIdExt { get; set; } = Guid.Empty;
+
+
+
+
 
         [Column("Description")]
         [Display(Name = "Description")]
@@ -68,7 +73,12 @@ namespace PSGM.Model.DbStorage
         [Column("OderProcessingFinishedUserIdExt")]
         [Display(Name = "OderProcessingFinishedUserIdExt")]
         public Guid OderProcessingFinishedUserIdExt { get; set; } = Guid.Empty;
-        
+
+
+
+
+
+
         #region Audit details for faster qrcode audit information
         [Required]
         [Column("CreatedDateTime")]
@@ -96,18 +106,12 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Links
-        [InverseProperty("Order")]
-        public virtual DbStorage_OrderTemplate? CreatedWithOrderTemplate { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [ForeignKey("SubDirectory")]
-        public Guid? SubDirectoryId { get; set; }
-        public virtual DbStorage_SubDirectory? SubDirectory { get; set; }
-
-        [ForeignKey("RootDirectory")]
-        public Guid? RootDirectoryId { get; set; }
-        public virtual DbStorage_RootDirectory? RootDirectory { get; set; }
+        [ForeignKey("Order")]
+        public Guid? OrderId { get; set; }
+        public virtual DbMain_Order? Order { get; set; }
         #endregion
 
         #region Links (Outside DB)

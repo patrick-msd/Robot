@@ -30,55 +30,6 @@ namespace PSGM.Model.DbStorage
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
-        //[Required]
-        //[Column("StorageType")]
-        //[Display(Name = "StorageType")]
-        //public StorageType StorageType { get; set; } = StorageType.Unknown;
-
-        //[Column("StoragePath")]
-        //[Display(Name = "StoragePath")]
-        //[StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StoragePath { get; set; } = string.Empty;
-
-        //[Column("StorageUrl")]
-        //[Display(Name = "StorageUrl")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageUrl { get; set; } = string.Empty;
-
-        //[Column("StorageUrlPublic")]
-        //[Display(Name = "StorageUrlPublic")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageUrlPublic { get; set; } = string.Empty;
-
-        //[Column("StorageEndpoint")]
-        //[Display(Name = "StorageEndpoint")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageEndpoint { get; set; } = string.Empty;
-
-        //[Column("StorageBucketName")]
-        //[Display(Name = "StorageBucketName")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageBucketName { get; set; } = string.Empty;
-
-        //[Column("StorageAccessKey")]
-        //[Display(Name = "StorageAccessKey")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageAccessKey { get; set; } = string.Empty;
-
-        //[Column("StorageSecretKey")]
-        //[Display(Name = "StorageSecretKey")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageSecretKey { get; set; } = string.Empty;
-
-        //[Column("StorageSecure")]
-        //[Display(Name = "StorageSecure")]
-        //public bool StorageSecure { get; set; } = true;
-
-        //[Column("StorageLocation")]
-        //[Display(Name = "StorageLocation")]
-        //[StringLength(256, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageLocation { get; set; } = string.Empty;
-
         [Column("Objects")]
         [Display(Name = "Objects")]
         public long Objects { get; set; } = 0;
@@ -86,6 +37,14 @@ namespace PSGM.Model.DbStorage
         [Column("DirectorySize")]
         [Display(Name = "DirectorySize")]
         public long DirectorySize { get; set; } = 0;
+
+        [Column("DocumentType")]
+        [Display(Name = "DocumentType")]
+        public bool DocumentType { get; set; } = false;
+
+        [Column("Locked")]
+        [Display(Name = "Locked")]
+        public bool Locked { get; set; } = false;
 
         [Column("JobsIdExtString")]
         [Display(Name = "JobsIdExtString")]
@@ -96,16 +55,6 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "WorkflowItemExtString")]
         [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string WorkflowItemsExtString { get; private set; } = string.Empty;
-
-        //[Column("AuthorizedUsersExtString")]
-        //[Display(Name = "AuthorizedUsersExtString")]
-        //[StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string AuthorizedUsersExtString { get; private set; } = string.Empty;
-
-        //[Column("AuthorizedUserGroupsExtString")]
-        //[Display(Name = "AuthorizedUserGroupsExtString")]
-        //[StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string AuthorizedUserGroupsExtString { get; private set; } = string.Empty;
 
         [Column("BackupsExtString")]
         [Display(Name = "BackupsExtString")]
@@ -144,12 +93,6 @@ namespace PSGM.Model.DbStorage
 
         [InverseProperty("SubDirectory")]
         public virtual ICollection<DbStorage_File>? Files { get; set; }
-
-        [InverseProperty("SubDirectory")]
-        public virtual ICollection<DbStorage_Order>? Orders { get; set; }
-
-        [InverseProperty("SubDirectory")]
-        public virtual DbStorage_OrderTemplate? OrderTemplate { get; set; }
 
         [InverseProperty("SubDirectory")]
         public virtual ICollection<DbStorage_SubDirectoryAuthorization_User>? AuthorizationUser { get; set; }

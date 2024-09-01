@@ -97,40 +97,6 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Order_AuditLog",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SourceId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Action = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SoftwareIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Changes = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Order_AuditLog", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "OrderTemplate_AuditLog",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SourceId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Action = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SoftwareIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Changes = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_OrderTemplate_AuditLog", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "QrCode_AuditLog",
                 columns: table => new
                 {
@@ -431,6 +397,8 @@ namespace PSGM.Model.DbStorage.Migrations
                     Description = table.Column<string>(type: "TEXT", maxLength: 8191, nullable: false),
                     Objects = table.Column<long>(type: "INTEGER", nullable: false),
                     DirectorySize = table.Column<long>(type: "INTEGER", nullable: false),
+                    DocumentType = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Locked = table.Column<bool>(type: "INTEGER", nullable: false),
                     JobsIdExtString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
                     WorkflowItemExtString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
                     BackupsExtString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
@@ -494,46 +462,6 @@ namespace PSGM.Model.DbStorage.Migrations
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_File_SubDirectory_SubDirectoryId",
-                        column: x => x.SubDirectoryId,
-                        principalTable: "SubDirectory",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Order",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
-                    InternalContactUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    InternalContributorsUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ExternalContactUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ExternalContributorsUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Description = table.Column<string>(type: "TEXT", maxLength: 8191, nullable: false),
-                    OderStatus = table.Column<uint>(type: "INTEGER", maxLength: 1023, nullable: false),
-                    OrderDocumentObjectName = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    OderProcessingStartedDateTime = table.Column<DateTime>(type: "TEXT", maxLength: 1023, nullable: false),
-                    OderProcessingStartedUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    OderProcessingFinishedDateTime = table.Column<DateTime>(type: "TEXT", maxLength: 1023, nullable: false),
-                    OderProcessingFinishedUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedDateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    CreatedByUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ModifiedDateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    ModifiedByUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    LastChanges = table.Column<string>(type: "TEXT", maxLength: 8191, nullable: false),
-                    SubDirectoryId = table.Column<Guid>(type: "TEXT", nullable: true),
-                    RootDirectoryId = table.Column<Guid>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Order", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Order_RootDirectory_RootDirectoryId",
-                        column: x => x.RootDirectoryId,
-                        principalTable: "RootDirectory",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Order_SubDirectory_SubDirectoryId",
                         column: x => x.SubDirectoryId,
                         principalTable: "SubDirectory",
                         principalColumn: "Id");
@@ -723,52 +651,6 @@ namespace PSGM.Model.DbStorage.Migrations
                         principalColumn: "Id");
                 });
 
-            migrationBuilder.CreateTable(
-                name: "OrderTemplate",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
-                    InternalContactUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    InternalContributorsUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ExternalContactUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ExternalContributorsUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Description = table.Column<string>(type: "TEXT", maxLength: 8191, nullable: false),
-                    OderStatus = table.Column<uint>(type: "INTEGER", maxLength: 1023, nullable: false),
-                    OrderDocumentObjectName = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    OderProcessingStartedDateTime = table.Column<DateTime>(type: "TEXT", maxLength: 1023, nullable: false),
-                    OderProcessingStartedUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    OderProcessingFinishedDateTime = table.Column<DateTime>(type: "TEXT", maxLength: 1023, nullable: false),
-                    OderProcessingFinishedUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedDateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    CreatedByUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ModifiedDateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    ModifiedByUserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    LastChanges = table.Column<string>(type: "TEXT", maxLength: 8191, nullable: false),
-                    OrderId = table.Column<Guid>(type: "TEXT", nullable: true),
-                    SubDirectoryId = table.Column<Guid>(type: "TEXT", nullable: true),
-                    RootDirectoryId = table.Column<Guid>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_OrderTemplate", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_OrderTemplate_Order_OrderId",
-                        column: x => x.OrderId,
-                        principalTable: "Order",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_OrderTemplate_RootDirectory_RootDirectoryId",
-                        column: x => x.RootDirectoryId,
-                        principalTable: "RootDirectory",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_OrderTemplate_SubDirectory_SubDirectoryId",
-                        column: x => x.SubDirectoryId,
-                        principalTable: "SubDirectory",
-                        principalColumn: "Id");
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_File_RootDirectoryId",
                 table: "File",
@@ -798,34 +680,6 @@ namespace PSGM.Model.DbStorage.Migrations
                 name: "IX_FileNotification_UserGroup_FileId",
                 table: "FileNotification_UserGroup",
                 column: "FileId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Order_RootDirectoryId",
-                table: "Order",
-                column: "RootDirectoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Order_SubDirectoryId",
-                table: "Order",
-                column: "SubDirectoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderTemplate_OrderId",
-                table: "OrderTemplate",
-                column: "OrderId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderTemplate_RootDirectoryId",
-                table: "OrderTemplate",
-                column: "RootDirectoryId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderTemplate_SubDirectoryId",
-                table: "OrderTemplate",
-                column: "SubDirectoryId",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_QrCode_FileId",
@@ -915,15 +769,6 @@ namespace PSGM.Model.DbStorage.Migrations
                 name: "FileNotification_UserGroup_AuditLog");
 
             migrationBuilder.DropTable(
-                name: "Order_AuditLog");
-
-            migrationBuilder.DropTable(
-                name: "OrderTemplate");
-
-            migrationBuilder.DropTable(
-                name: "OrderTemplate_AuditLog");
-
-            migrationBuilder.DropTable(
                 name: "QrCode");
 
             migrationBuilder.DropTable(
@@ -982,9 +827,6 @@ namespace PSGM.Model.DbStorage.Migrations
 
             migrationBuilder.DropTable(
                 name: "SubDirectoryNotification_UserGroup_AuditLog");
-
-            migrationBuilder.DropTable(
-                name: "Order");
 
             migrationBuilder.DropTable(
                 name: "File");

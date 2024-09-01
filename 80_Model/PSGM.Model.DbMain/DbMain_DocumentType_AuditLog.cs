@@ -2,10 +2,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PSGM.Model.DbStorage
+namespace PSGM.Model.DbMain
 {
-    [Table("Order_AuditLog")]
-    public class DbStorage_Order_AuditLog
+    [Table("DocumentType_AuditLog")]
+    public class DbMain_DocumentType_AuditLog
     {
         #region Entities
         [Key]
@@ -43,16 +43,6 @@ namespace PSGM.Model.DbStorage
         public DateTime DateTime { get; set; } = DateTime.MinValue;
 
         [Required]
-        [Column("UserIdExt")]
-        [Display(Name = "UserIdExt")]
-        public Guid UserIdExt { get; set; } = Guid.Empty;
-
-        [Required]
-        [Column("SoftwareIdExt")]
-        [Display(Name = "SoftwareIdExt")]
-        public Guid SoftwareIdExt { get; set; } = Guid.Empty;
-
-        [Required]
         [Column("Changes")]
         [Display(Name = "Changes")]
         [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
@@ -69,9 +59,9 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Not Mapped
-        public DbStorage_Order GetChagnes()
+        public DbMain_DocumentType GetChagnes()
         {
-            return JsonConvert.DeserializeObject<DbStorage_Order>(Changes);
+            return JsonConvert.DeserializeObject<DbMain_DocumentType>(Changes);
         }
         #endregion
     }

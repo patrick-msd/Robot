@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbMain
 {
-    [Table("ProjectDocumentType")]
-    public class DbMain_ProjectDocumentType
+    [Table("DocumentType")]
+    public class DbMain_DocumentType
     {
         #region Entities
         [Key]
@@ -57,9 +57,9 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [ForeignKey("Project")]
-        public Guid? ProjectId { get; set; }
-        public virtual DbMain_Project? Project { get; set; }
+        [ForeignKey("Order")]
+        public Guid? OrderId { get; set; }
+        public virtual DbMain_Order? Order { get; set; }
         #endregion
 
         #region Links (Outside DB)

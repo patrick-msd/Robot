@@ -50,8 +50,17 @@ namespace PSGM.Model.DbMain
         public DbSet<DbMain_Contributors> Contributors { get; set; }
         public DbSet<DbMain_Contributors_AuditLog> Contributor_AuditLog { get; set; }
 
+        public DbSet<DbMain_DocumentType> DocumentTypes { get; set; }
+        public DbSet<DbMain_DocumentType_AuditLog> DocumentType_AuditLog { get; set; }
+
         public DbSet<DbMain_Location> Locations { get; set; }
         public DbSet<DbMain_Location_AuditLog> Location_AuditLog { get; set; }
+
+        public DbSet<DbMain_Order> Orders { get; set; }
+        public DbSet<DbMain_Order_AuditLog> Order_AuditLog { get; set; }
+
+        public DbSet<DbMain_OrderTemplate> OrderTemplates { get; set; }
+        public DbSet<DbMain_OrderTemplate_AuditLog> OrderTemplate_AuditLog { get; set; }
 
         public DbSet<DbMain_Organization> Organizations { get; set; }
         public DbSet<DbMain_Organization_AuditLog> Organization_AuditLog { get; set; }
@@ -76,9 +85,6 @@ namespace PSGM.Model.DbMain
 
         public DbSet<DbMain_ProjectAuthorization_UserGroup> ProjectAuthorization_UserGroup { get; set; }
         public DbSet<DbMain_ProjectAuthorization_UserGroup_AuditLog> ProjectAuthorization_UserGroup_AuditLog { get; set; }
-
-        public DbSet<DbMain_ProjectDocumentType> ProjectDocumentType { get; set; }
-        public DbSet<DbMain_ProjectDocumentType_AuditLog> ProjectDocumentType_AuditLog { get; set; }
 
         public DbSet<DbMain_ProjectNotification_User> ProjectNotification_User { get; set; }
         public DbSet<DbMain_ProjectNotification_User_AuditLog> ProjectNotification_User_AuditLog { get; set; }
@@ -191,6 +197,23 @@ namespace PSGM.Model.DbMain
                     case DbMain_Contributors_AuditLog contributors_AuditLog:
                         break;
 
+                    case DbMain_DocumentType documentType:
+                        DocumentType_AuditLog.Add(new DbMain_DocumentType_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = documentType.Id,
+                            //TableName = entry.Metadata.GetTableName(),
+                            //EntityName = documentType.GetType().Name,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMain_DocumentType_AuditLog documentType_AuditLog:
+                        break;
+
                     case DbMain_Location location:
                         Location_AuditLog.Add(new DbMain_Location_AuditLog
                         {
@@ -206,6 +229,40 @@ namespace PSGM.Model.DbMain
                         break;
 
                     case DbMain_Location_AuditLog location_AuditLog:
+                        break;
+
+                    case DbMain_Order order:
+                        Order_AuditLog.Add(new DbMain_Order_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = order.Id,
+                            //TableName = entry.Metadata.GetTableName(),
+                            //EntityName = order.GetType().Name,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMain_Order_AuditLog order_AuditLog:
+                        break;
+
+                    case DbMain_OrderTemplate orderTemplate:
+                        OrderTemplate_AuditLog.Add(new DbMain_OrderTemplate_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = orderTemplate.Id,
+                            //TableName = entry.Metadata.GetTableName(),
+                            //EntityName = orderTemplate.GetType().Name,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMain_OrderTemplate_AuditLog orderTemplate_AuditLog:
                         break;
 
                     case DbMain_Organization organization:
@@ -341,23 +398,6 @@ namespace PSGM.Model.DbMain
                         break;
 
                     case DbMain_ProjectAuthorization_UserGroup_AuditLog projectAuthorization_UserGroup_AuditLog:
-                        break;
-
-                    case DbMain_ProjectDocumentType projectDocumentType:
-                        ProjectDocumentType_AuditLog.Add(new DbMain_ProjectDocumentType_AuditLog
-                        {
-                            Id = new Guid(),
-
-                            SourceId = projectDocumentType.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = projectAuthorization_UserGroup.GetType().Name,
-                            Action = entry.State.ToString(),
-                            DateTime = DateTime.UtcNow,
-                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                        });
-                        break;
-
-                    case DbMain_ProjectDocumentType_AuditLog projectDocumentType_AuditLog:
                         break;
 
                     case DbMain_ProjectNotification_User projectNotification_User:

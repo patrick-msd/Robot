@@ -78,12 +78,6 @@ namespace PSGM.Model.DbStorage
         public DbSet<DbStorage_FileNotification_UserGroup> FileNotification_UserGroup { get; set; }
         public DbSet<DbStorage_FileNotification_UserGroup_AuditLog> FileNotification_UserGroup_AuditLog { get; set; }
 
-        public DbSet<DbStorage_Order> Orders { get; set; }
-        public DbSet<DbStorage_Order_AuditLog> Order_AuditLog { get; set; }
-
-        public DbSet<DbStorage_OrderTemplate> OrderTemplates { get; set; }
-        public DbSet<DbStorage_OrderTemplate_AuditLog> OrderTemplate_AuditLog { get; set; }
-
         public DbSet<DbStorage_QrCode> QrCodes { get; set; }
         public DbSet<DbStorage_QrCode_AuditLog> QrCode_AuditLog { get; set; }
 
@@ -324,43 +318,7 @@ namespace PSGM.Model.DbStorage
                     case DbStorage_FileNotification_UserGroup_AuditLog fileNotification_UserGroup_AuditLog:
                         break;
 
-                    case DbStorage_Order order:
-                        Order_AuditLog.Add(new DbStorage_Order_AuditLog
-                        {
-                            Id = new Guid(),
-
-                            SourceId = order.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = order.GetType().Name,
-                            Action = entry.State.ToString(),
-                            DateTime = DateTime.UtcNow,
-                            UserIdExt = DatabaseSessionParameter_UserId,
-                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
-                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                        });
-                        break;
-
-                    case DbStorage_Order_AuditLog order_AuditLog:
-                        break;
-
-                    case DbStorage_OrderTemplate orderTemplate:
-                        OrderTemplate_AuditLog.Add(new DbStorage_OrderTemplate_AuditLog
-                        {
-                            Id = new Guid(),
-
-                            SourceId = orderTemplate.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = orderTemplate.GetType().Name,
-                            Action = entry.State.ToString(),
-                            DateTime = DateTime.UtcNow,
-                            UserIdExt = DatabaseSessionParameter_UserId,
-                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
-                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                        });
-                        break;
-
-                    case DbStorage_OrderTemplate_AuditLog orderTemplate_AuditLog:
-                        break;
+               
 
                     case DbStorage_QrCode qrCode:
                         QrCode_AuditLog.Add(new DbStorage_QrCode_AuditLog

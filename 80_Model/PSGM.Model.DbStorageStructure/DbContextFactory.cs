@@ -44,8 +44,8 @@ namespace PSGM.Model.DbStorageStructure
             //}
 
 
-            return new DbStorageStructure_Context(DatabaseType.ConnectionString, "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure_Context\\DbStorageStructure_Context.db");
-            //return new DbStorageStructure_Context(DatabaseType.ConnectionString, "Data Source=C:\\Git\\PSGM\\PSGM_-_PSGM.Model\\80_Model\\PSGM.Model.DbStorageStructure_Context\\DbStorageStructure_Context.db");
+            return new DbStorageStructure_Context(DatabaseType.ConnectionString, "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure.db");
+            //return new DbStorageStructure_Context(DatabaseType.ConnectionString, "Data Source=C:\\Git\\PSGM\\PSGM_-_PSGM.Model\\80_Model\\PSGM.Model.DbStorageStructure\\DbStorageStructure.db");
 
             //return new DbStorageStructure_Context(Directory.GetCurrentDirectory() + "\\DbStorageStructure_Context.db");
 
