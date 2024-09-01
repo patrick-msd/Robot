@@ -3,7 +3,7 @@ using PSGM.Helper;
 
 namespace PSGM.Model.DbStorage
 {
-    public class DBStorageContextFactory : IDesignTimeDbContextFactory<DbStorage_Context>
+    public class DBStorage_ContextFactory : IDesignTimeDbContextFactory<DbStorage_Context>
     {
         public DbStorage_Context CreateDbContext(string[] args)
         {

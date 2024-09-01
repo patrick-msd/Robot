@@ -3,7 +3,7 @@ using PSGM.Helper;
 
 namespace PSGM.Model.DbMain
 {
-    public class DBMainContextFactory : IDesignTimeDbContextFactory<DbMain_Context>
+    public class DBMain_ContextFactory : IDesignTimeDbContextFactory<DbMain_Context>
     {
         public DbMain_Context CreateDbContext(string[] args)
         {

@@ -3,7 +3,7 @@ using PSGM.Helper;
 
 namespace PSGM.Model.DbJob
 {
-    public class DBJobContextFactory : IDesignTimeDbContextFactory<DbJob_Context>
+    public class DBJob_ContextFactory : IDesignTimeDbContextFactory<DbJob_Context>
     {
         public DbJob_Context CreateDbContext(string[] args)
         {

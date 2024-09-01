@@ -3,7 +3,7 @@ using PSGM.Helper;
 
 namespace PSGM.Model.DbWorkflow
 {
-    public class DbWorkflowContextFactory : IDesignTimeDbContextFactory<DbWorkflow_Context>
+    public class DbWorkflow_ContextFactory : IDesignTimeDbContextFactory<DbWorkflow_Context>
     {
         public DbWorkflow_Context CreateDbContext(string[] args)
         {

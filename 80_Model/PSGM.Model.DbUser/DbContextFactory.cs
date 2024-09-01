@@ -3,7 +3,7 @@ using PSGM.Helper;
 
 namespace PSGM.Model.DbUser
 {
-    public class DbUserContextContextFactory : IDesignTimeDbContextFactory<DbUser_Context>
+    public class DbUser_ContextFactory : IDesignTimeDbContextFactory<DbUser_Context>
     {
         public DbUser_Context CreateDbContext(string[] args)
         {
