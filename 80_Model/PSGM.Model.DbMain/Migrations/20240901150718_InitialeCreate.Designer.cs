@@ -11,7 +11,7 @@ using PSGM.Model.DbMain;
 namespace PSGM.Model.DbMain.Migrations
 {
     [DbContext(typeof(DbMain_Context))]
-    [Migration("20240901101040_InitialeCreate")]
+    [Migration("20240901150718_InitialeCreate")]
     partial class InitialeCreate
     {
         /// <inheritdoc />
@@ -1086,6 +1086,10 @@ namespace PSGM.Model.DbMain.Migrations
 
                     b.Property<Guid?>("ProjectParameterId")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("ReadOnlyMode")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("ReadOnlyMode");
 
                     b.Property<uint>("StorageClass")
                         .HasColumnType("INTEGER")

@@ -30,55 +30,6 @@ namespace PSGM.Model.DbStorage
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
-        //[Required]
-        //[Column("StorageType")]
-        //[Display(Name = "StorageType")]
-        //public StorageType StorageType { get; set; } = StorageType.Unknown;
-
-        //[Column("StoragePath")]
-        //[Display(Name = "StoragePath")]
-        //[StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StoragePath { get; set; } = string.Empty;
-
-        //[Column("StorageUrl")]
-        //[Display(Name = "StorageUrl")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageUrl { get; set; } = string.Empty;
-
-        //[Column("StorageUrlPublic")]
-        //[Display(Name = "StorageUrlPublic")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageUrlPublic { get; set; } = string.Empty;
-
-        //[Column("StorageEndpoint")]
-        //[Display(Name = "StorageEndpoint")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageEndpoint { get; set; } = string.Empty;
-
-        //[Column("StorageBucketName")]
-        //[Display(Name = "StorageBucketName")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageBucketName { get; set; } = string.Empty;
-
-        //[Column("StorageAccessKey")]
-        //[Display(Name = "StorageAccessKey")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageAccessKey { get; set; } = string.Empty;
-
-        //[Column("StorageSecretKey")]
-        //[Display(Name = "StorageSecretKey")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageSecretKey { get; set; } = string.Empty;
-
-        //[Column("StorageSecure")]
-        //[Display(Name = "StorageSecure")]
-        //public bool StorageSecure { get; set; } = true;
-
-        //[Column("StorageLocation")]
-        //[Display(Name = "StorageLocation")]
-        //[StringLength(256, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageLocation { get; set; } = string.Empty;
-
         [Column("Objects")]
         [Display(Name = "Objects")]
         public long Objects { get; set; } = 0;
@@ -87,30 +38,20 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "DirectorySize")]
         public long DirectorySize { get; set; } = 0;
 
-        [Column("JobsIdExtString")]
-        [Display(Name = "JobsIdExtString")]
+        [Column("JobIdsExtString")]
+        [Display(Name = "JobIdsExtString")]
         [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string JobsIdExtString { get; private set; } = string.Empty;
+        public string JobIdsExtString { get; private set; } = string.Empty;
 
-        [Column("WorkflowItemExtString")]
-        [Display(Name = "WorkflowItemExtString")]
+        [Column("WorkflowItemIdsExtString")]
+        [Display(Name = "WorkflowItemIdsExtString")]
         [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string WorkflowItemsExtString { get; private set; } = string.Empty;
+        public string WorkflowItemIdsExtString { get; private set; } = string.Empty;
 
-        //[Column("AuthorizedUsersExtString")]
-        //[Display(Name = "AuthorizedUsersExtString")]
-        //[StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string AuthorizedUsersExtString { get; private set; } = string.Empty;
-
-        //[Column("AuthorizedUserGroupsExtString")]
-        //[Display(Name = "AuthorizedUserGroupsExtString")]
-        //[StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string AuthorizedUserGroupsExtString { get; private set; } = string.Empty;
-
-        [Column("BackupsExtString")]
-        [Display(Name = "BackupsExtString")]
+        [Column("BackupIdsExtString")]
+        [Display(Name = "BackupIdsExtString")]
         [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string BackupsExtString { get; private set; } = string.Empty;
+        public string BackupIdsExtString { get; private set; } = string.Empty;
 
         #region Audit details for faster file audit information
         [Required]
@@ -175,38 +116,24 @@ namespace PSGM.Model.DbStorage
 
         #region Not Mapped
         [NotMapped]
-        public List<Guid>? JobsIdExt
+        public List<Guid>? JobIdsExt
         {
-            get { return JobsIdExtString != string.Empty ? JobsIdExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { JobsIdExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+            get { return JobIdsExtString != string.Empty ? JobIdsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
+            set { JobIdsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
         }
 
         [NotMapped]
-        public List<Guid>? WorkflowItemsExt
+        public List<Guid>? WorkflowItemIdsExt
         {
-            get { return WorkflowItemsExtString != string.Empty ? WorkflowItemsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { WorkflowItemsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+            get { return WorkflowItemIdsExtString != string.Empty ? WorkflowItemIdsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
+            set { WorkflowItemIdsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
         }
 
-        //[NotMapped]
-        //public List<Guid>? AuthorizedUsersExt
-        //{
-        //    get { return AuthorizedUsersExtString != string.Empty ? AuthorizedUsersExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-        //    set { AuthorizedUsersExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        //}
-
-        //[NotMapped]
-        //public List<Guid>? AuthorizedUserGroupsExt
-        //{
-        //    get { return AuthorizedUserGroupsExtString != string.Empty ? AuthorizedUserGroupsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-        //    set { AuthorizedUserGroupsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        //}
-
         [NotMapped]
-        public List<Guid>? BackupsExt
+        public List<Guid>? BackupIdsExt
         {
-            get { return BackupsExtString != string.Empty ? BackupsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { BackupsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+            get { return BackupIdsExtString != string.Empty ? BackupIdsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
+            set { BackupIdsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
         }
         #endregion
     }

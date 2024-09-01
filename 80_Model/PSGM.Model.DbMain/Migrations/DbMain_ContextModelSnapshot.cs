@@ -1084,6 +1084,10 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Property<Guid?>("ProjectParameterId")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("ReadOnlyMode")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("ReadOnlyMode");
+
                     b.Property<uint>("StorageClass")
                         .HasColumnType("INTEGER")
                         .HasColumnName("StorageClass");

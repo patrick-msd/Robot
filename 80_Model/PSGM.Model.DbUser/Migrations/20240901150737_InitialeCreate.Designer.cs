@@ -11,7 +11,7 @@ using PSGM.Model.DbUser;
 namespace PSGM.Model.DbUser.Migrations
 {
     [DbContext(typeof(DbUser_Context))]
-    [Migration("20240901101058_InitialeCreate")]
+    [Migration("20240901150737_InitialeCreate")]
     partial class InitialeCreate
     {
         /// <inheritdoc />

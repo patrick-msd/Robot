@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PSGM.Model.DbJob;
+using PSGM.Model.DbArchiv;
 
 #nullable disable
 
-namespace PSGM.Model.DbJob.Migrations
+namespace PSGM.Model.DbArchiv.Migrations
 {
-    [DbContext(typeof(DbJob_Context))]
-    [Migration("20240901101027_InitialeCreate")]
+    [DbContext(typeof(DbArchiv_Context))]
+    [Migration("20240901150700_InitialeCreate")]
     partial class InitialeCreate
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace PSGM.Model.DbJob.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
 
-            modelBuilder.Entity("PSGM.Model.DbJob.DbJob_Job", b =>
+            modelBuilder.Entity("PSGM.Model.DbArchiv.DbArchiv_Job", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -102,129 +102,7 @@ namespace PSGM.Model.DbJob.Migrations
                     b.ToTable("Job");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbJob.DbJob_JobHistory", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<Guid>("CreatedByUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("CreatedByUserIdExt");
-
-                    b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("CreatedDateTime");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<Guid>("DeviceIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DeviceIdExt");
-
-                    b.Property<Guid>("FileIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("FileIdExt");
-
-                    b.Property<DateTime>("JobFinished")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("JobFinished");
-
-                    b.Property<DateTime>("JobStarted")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("JobStarted");
-
-                    b.Property<uint>("JobType")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("JobType");
-
-                    b.Property<string>("LastChanges")
-                        .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("LastChanges");
-
-                    b.Property<Guid>("MachineIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("MachineIdExt");
-
-                    b.Property<Guid>("ModifiedByUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("ModifiedByUserIdExt");
-
-                    b.Property<DateTime>("ModifiedDateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("ModifiedDateTime");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Name");
-
-                    b.Property<Guid>("ProjectIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("ProjectIdExt");
-
-                    b.Property<Guid>("SubDirectoryIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SubDirectoryIdExt");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("JobHistory");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbJob.DbJob_JobHistory_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("JobHistory_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbJob.DbJob_Job_AuditLog", b =>
+            modelBuilder.Entity("PSGM.Model.DbArchiv.DbArchiv_Job_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

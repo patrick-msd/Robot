@@ -568,6 +568,7 @@ namespace PSGM.Model.DbMain.Migrations
                     StorageS3Region = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
                     Url = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
                     UrlPublic = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
+                    ReadOnlyMode = table.Column<bool>(type: "INTEGER", nullable: false),
                     ProjectParameterId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>

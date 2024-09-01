@@ -84,6 +84,10 @@ namespace PSGM.Model.DbMain
         [Display(Name = "UrlPublic")]
         [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string UrlPublic { get; set; } = string.Empty;
+
+        [Column("ReadOnlyMode")]
+        [Display(Name = "ReadOnlyMode")]
+        public bool ReadOnlyMode { get; set; } = true;
         #endregion
 
         #region Links
