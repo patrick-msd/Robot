@@ -35,6 +35,11 @@ namespace PSGM.Model.DbWorkflow
         [Column("ApplyLevel")]
         [Display(Name = "ApplyLevel")]
         public WorkflowApplyLevel ApplyLevel { get; set; } = WorkflowApplyLevel.Undefined;
+
+        [Required]
+        [Column("WorkflowExecutionLevel")]
+        [Display(Name = "WorkflowExecutionLevel")]
+        public WorkflowExecutionLevel WorkflowExecutionLevel { get; set; } = WorkflowExecutionLevel.Undefined;        
         #endregion
 
         #region Links

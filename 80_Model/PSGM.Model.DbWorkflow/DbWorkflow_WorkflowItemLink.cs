@@ -15,18 +15,6 @@ namespace PSGM.Model.DbWorkflow
         [Display(Name = "Id")]
         public Guid Id { get; set; }
 
-        //[Required]
-        //[Column("Name")]
-        //[Display(Name = "Name")]
-        //[StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string Name { get; set; } = string.Empty;
-
-        //[Required]
-        //[Column("Description")]
-        //[Display(Name = "Description")]
-        //[StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string Description { get; set; } = string.Empty;
-
         [Required]
         [Column("Order")]
         [Display(Name = "Order")]
@@ -43,7 +31,7 @@ namespace PSGM.Model.DbWorkflow
         public StorageType StorageType { get; set; } = StorageType.Unknown;
 
         [Required]
-        [Column("AppStorageClasslyLevel")]
+        [Column("StorageClass")]
         [Display(Name = "StorageClass")]
         public StorageClass StorageClass { get; set; } = StorageClass.Unknown;
 
@@ -51,6 +39,11 @@ namespace PSGM.Model.DbWorkflow
         [Display(Name = "Configuration")]
         [StringLength(65536, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Configuration { get; set; } = string.Empty;
+
+        [Required]
+        [Column("ExecutionPermissions")]
+        [Display(Name = "ExecutionPermissions")]
+        public PermissionsType ExecutionPermissions { get; set; } = PermissionsType.None;
         #endregion
 
         #region Links

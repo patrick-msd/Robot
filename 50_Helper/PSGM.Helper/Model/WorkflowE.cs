@@ -13,4 +13,13 @@
 
         Organization = 40000,
     }
+
+    public enum WorkflowExecutionLevel : uint
+    {
+        Undefined = 0,
+
+        Automatically = 10000,
+
+        Manually = 20000,
+    }
 }

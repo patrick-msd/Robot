@@ -11,7 +11,7 @@ using PSGM.Model.DbWorkflow;
 namespace PSGM.Model.DbWorkflow.Migrations
 {
     [DbContext(typeof(DbWorkflow_Context))]
-    [Migration("20240901173219_InitialeCreate")]
+    [Migration("20240901182744_InitialeCreate")]
     partial class InitialeCreate
     {
         /// <inheritdoc />
@@ -73,6 +73,10 @@ namespace PSGM.Model.DbWorkflow.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("Name");
 
+                    b.Property<uint>("WorkflowExecutionLevel")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("WorkflowExecutionLevel");
+
                     b.HasKey("Id");
 
                     b.ToTable("WorkflowItem", (string)null);
@@ -84,7 +88,8 @@ namespace PSGM.Model.DbWorkflow.Migrations
                             ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Save object (depending on storage configuration in project parameters) to specified S3 storage or filesystem and add the file entity to the database...",
-                            Name = "Save object to S3 storage or filesystem and add entity to database - V1.0.0"
+                            Name = "Save object to S3 storage or filesystem and add entity to database - V1.0.0",
+                            WorkflowExecutionLevel = 0u
                         },
                         new
                         {
@@ -92,7 +97,8 @@ namespace PSGM.Model.DbWorkflow.Migrations
                             ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Grab image with specified camera ...",
-                            Name = "Grab image - V1.0.0"
+                            Name = "Grab image - V1.0.0",
+                            WorkflowExecutionLevel = 0u
                         },
                         new
                         {
@@ -100,7 +106,8 @@ namespace PSGM.Model.DbWorkflow.Migrations
                             ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Calculate HDR image with OpenCV (mergeMertens) ...",
-                            Name = "Calculate HDR image - V1.0.0"
+                            Name = "Calculate HDR image - V1.0.0",
+                            WorkflowExecutionLevel = 0u
                         },
                         new
                         {
@@ -108,7 +115,8 @@ namespace PSGM.Model.DbWorkflow.Migrations
                             ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Calculate darktable image according to the sidecar file ...",
-                            Name = "Calculate darktable image - V1.0.0"
+                            Name = "Calculate darktable image - V1.0.0",
+                            WorkflowExecutionLevel = 0u
                         },
                         new
                         {
@@ -116,7 +124,8 @@ namespace PSGM.Model.DbWorkflow.Migrations
                             ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Resize image to specified size...",
-                            Name = "Resize image - V1.0.0"
+                            Name = "Resize image - V1.0.0",
+                            WorkflowExecutionLevel = 0u
                         },
                         new
                         {
@@ -124,7 +133,8 @@ namespace PSGM.Model.DbWorkflow.Migrations
                             ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Crop image to specified size...",
-                            Name = "Crop image - V1.0.0"
+                            Name = "Crop image - V1.0.0",
+                            WorkflowExecutionLevel = 0u
                         },
                         new
                         {
@@ -132,7 +142,8 @@ namespace PSGM.Model.DbWorkflow.Migrations
                             ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Rotate image ...",
-                            Name = "Rotate image - V1.0.0"
+                            Name = "Rotate image - V1.0.0",
+                            WorkflowExecutionLevel = 0u
                         },
                         new
                         {
@@ -140,7 +151,8 @@ namespace PSGM.Model.DbWorkflow.Migrations
                             ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Rotate image ...",
-                            Name = "Rotate image - V2.0.0"
+                            Name = "Rotate image - V2.0.0",
+                            WorkflowExecutionLevel = 0u
                         },
                         new
                         {
@@ -148,7 +160,8 @@ namespace PSGM.Model.DbWorkflow.Migrations
                             ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Sharpen image ...",
-                            Name = "Sharpen image - V1.0.0"
+                            Name = "Sharpen image - V1.0.0",
+                            WorkflowExecutionLevel = 0u
                         },
                         new
                         {
@@ -156,7 +169,8 @@ namespace PSGM.Model.DbWorkflow.Migrations
                             ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Sharpen image ...",
-                            Name = "Sharpen image - V2.0.0"
+                            Name = "Sharpen image - V2.0.0",
+                            WorkflowExecutionLevel = 0u
                         });
                 });
 
@@ -177,13 +191,17 @@ namespace PSGM.Model.DbWorkflow.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("Configuration");
 
+                    b.Property<int>("ExecutionPermissions")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("ExecutionPermissions");
+
                     b.Property<uint>("Order")
                         .HasColumnType("INTEGER")
                         .HasColumnName("Order");
 
                     b.Property<uint>("StorageClass")
                         .HasColumnType("INTEGER")
-                        .HasColumnName("AppStorageClasslyLevel");
+                        .HasColumnName("StorageClass");
 
                     b.Property<uint>("StorageType")
                         .HasColumnType("INTEGER")

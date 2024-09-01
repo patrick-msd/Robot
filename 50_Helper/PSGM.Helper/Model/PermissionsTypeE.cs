@@ -5,19 +5,19 @@
         None = 0,
         Inherited = 1,
 
-        Owner = 10000,
+        SuperAdmin = 10000,
+        Admin = 10001,
 
-        SuperAdmin = 20000,
-        Admin = 20001,
+        Owner = 20000,
 
+        Read = 30000,
         ReadWrite = 30000,
         ReadWriteDelete = 30001,
 
+        WorkflowAdmin = 80000,
+        WorkflowContributor = 80001,
 
-
-        ServiceProviderScanning = 80000,
-        ServiceProviderInfrastructure = 80001,
-
-        Viewer = 90000
+        ServiceProviderScanning = 90000,
+        ServiceProviderInfrastructure = 90001,
     }
 }
