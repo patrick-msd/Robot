@@ -103,9 +103,6 @@ namespace PSGM.Model.DbStorage
 
         [InverseProperty("RootDirectory")]
         public virtual ICollection<DbStorage_RootDirectoryNotification_UserGroup>? NotificationUserGroup { get; set; }
-
-        [InverseProperty("RootDirectory")]
-        public virtual DbStorage_RootDirectoryParameter? RootDirectoryParameter { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)

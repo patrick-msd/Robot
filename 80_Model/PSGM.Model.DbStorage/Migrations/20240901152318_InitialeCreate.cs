@@ -97,40 +97,6 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FileParameter_AuditLog",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SourceId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Action = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SoftwareIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Changes = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FileParameter_AuditLog", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "FileParameterStorage_AuditLog",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SourceId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Action = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SoftwareIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Changes = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FileParameterStorage_AuditLog", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Order_AuditLog",
                 columns: table => new
                 {
@@ -191,9 +157,9 @@ namespace PSGM.Model.DbStorage.Migrations
                     Description = table.Column<string>(type: "TEXT", maxLength: 8191, nullable: false),
                     Objects = table.Column<long>(type: "INTEGER", nullable: false),
                     DirectorySize = table.Column<long>(type: "INTEGER", nullable: false),
-                    JobsIdExtString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
-                    WorkflowItemExtString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
-                    BackupsExtString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
+                    JobIdsExtString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
+                    WorkflowItemIdsExtString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
+                    BackupIdsExtString = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false),
                     CreatedDateTimeAutoFill = table.Column<DateTime>(type: "TEXT", nullable: false),
                     CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "TEXT", nullable: false),
                     ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "TEXT", nullable: false),
@@ -291,40 +257,6 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RootDirectoryParameter_AuditLog",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SourceId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Action = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SoftwareIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Changes = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RootDirectoryParameter_AuditLog", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RootDirectoryParameterStorage_AuditLog",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SourceId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Action = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SoftwareIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Changes = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RootDirectoryParameterStorage_AuditLog", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "SubDirectory_AuditLog",
                 columns: table => new
                 {
@@ -410,40 +342,6 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubDirectoryParameter_AuditLog",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SourceId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Action = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SoftwareIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Changes = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SubDirectoryParameter_AuditLog", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "SubDirectoryParameterStorage_AuditLog",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SourceId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Action = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    UserIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SoftwareIdExt = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Changes = table.Column<string>(type: "TEXT", maxLength: 16383, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SubDirectoryParameterStorage_AuditLog", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "RootDirectoryAuthorization_User",
                 columns: table => new
                 {
@@ -520,23 +418,6 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RootDirectoryParameter",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SubDirectoryId = table.Column<Guid>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RootDirectoryParameter", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_RootDirectoryParameter_RootDirectory_SubDirectoryId",
-                        column: x => x.SubDirectoryId,
-                        principalTable: "RootDirectory",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "SubDirectory",
                 columns: table => new
                 {
@@ -569,37 +450,6 @@ namespace PSGM.Model.DbStorage.Migrations
                         name: "FK_SubDirectory_SubDirectory_ParentSubDirectoryId",
                         column: x => x.ParentSubDirectoryId,
                         principalTable: "SubDirectory",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RootDirectoryParameterStorage",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    DatabaseType = table.Column<uint>(type: "INTEGER", nullable: false),
-                    DatabaseFilePath = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    DatabaseConnectionString = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageType = table.Column<uint>(type: "INTEGER", nullable: false),
-                    StorageClass = table.Column<uint>(type: "INTEGER", nullable: false),
-                    SubDirectory = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3Endpoint = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3BucketName = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3AccessKey = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3SecretKey = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3Secure = table.Column<bool>(type: "INTEGER", maxLength: 1023, nullable: false),
-                    StorageS3Region = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    Url = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    UrlPublic = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    RootDirectoryParameterId = table.Column<Guid>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RootDirectoryParameterStorage", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_RootDirectoryParameterStorage_RootDirectoryParameter_RootDirectoryParameterId",
-                        column: x => x.RootDirectoryParameterId,
-                        principalTable: "RootDirectoryParameter",
                         principalColumn: "Id");
                 });
 
@@ -762,23 +612,6 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubDirectoryParameter",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    SubDirectoryId = table.Column<Guid>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SubDirectoryParameter", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_SubDirectoryParameter_SubDirectory_SubDirectoryId",
-                        column: x => x.SubDirectoryId,
-                        principalTable: "SubDirectory",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "FileAuthorization_User",
                 columns: table => new
                 {
@@ -855,23 +688,6 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FileParameter",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    FileId = table.Column<Guid>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FileParameter", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_FileParameter_File_FileId",
-                        column: x => x.FileId,
-                        principalTable: "File",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "QrCode",
                 columns: table => new
                 {
@@ -941,68 +757,6 @@ namespace PSGM.Model.DbStorage.Migrations
                         principalColumn: "Id");
                 });
 
-            migrationBuilder.CreateTable(
-                name: "SubDirectoryParameterStorage",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    DatabaseType = table.Column<uint>(type: "INTEGER", nullable: false),
-                    DatabaseFilePath = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    DatabaseConnectionString = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageType = table.Column<uint>(type: "INTEGER", nullable: false),
-                    StorageClass = table.Column<uint>(type: "INTEGER", nullable: false),
-                    SubDirectory = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3Endpoint = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3BucketName = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3AccessKey = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3SecretKey = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3Secure = table.Column<bool>(type: "INTEGER", maxLength: 1023, nullable: false),
-                    StorageS3Region = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    Url = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    UrlPublic = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    SubDirectoryParameterId = table.Column<Guid>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SubDirectoryParameterStorage", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_SubDirectoryParameterStorage_SubDirectoryParameter_SubDirectoryParameterId",
-                        column: x => x.SubDirectoryParameterId,
-                        principalTable: "SubDirectoryParameter",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "FileParameterStorage",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    DatabaseType = table.Column<uint>(type: "INTEGER", nullable: false),
-                    DatabaseFilePath = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    DatabaseConnectionString = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageType = table.Column<uint>(type: "INTEGER", nullable: false),
-                    StorageClass = table.Column<uint>(type: "INTEGER", nullable: false),
-                    SubDirectory = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3Endpoint = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3BucketName = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3AccessKey = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3SecretKey = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    StorageS3Secure = table.Column<bool>(type: "INTEGER", maxLength: 1023, nullable: false),
-                    StorageS3Region = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    Url = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    UrlPublic = table.Column<string>(type: "TEXT", maxLength: 1023, nullable: false),
-                    FileParameterId = table.Column<Guid>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FileParameterStorage", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_FileParameterStorage_FileParameter_FileParameterId",
-                        column: x => x.FileParameterId,
-                        principalTable: "FileParameter",
-                        principalColumn: "Id");
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_File_RootDirectoryId",
                 table: "File",
@@ -1032,17 +786,6 @@ namespace PSGM.Model.DbStorage.Migrations
                 name: "IX_FileNotification_UserGroup_FileId",
                 table: "FileNotification_UserGroup",
                 column: "FileId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FileParameter_FileId",
-                table: "FileParameter",
-                column: "FileId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FileParameterStorage_FileParameterId",
-                table: "FileParameterStorage",
-                column: "FileParameterId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Order_RootDirectoryId",
@@ -1099,17 +842,6 @@ namespace PSGM.Model.DbStorage.Migrations
                 column: "RootDirectoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RootDirectoryParameter_SubDirectoryId",
-                table: "RootDirectoryParameter",
-                column: "SubDirectoryId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RootDirectoryParameterStorage_RootDirectoryParameterId",
-                table: "RootDirectoryParameterStorage",
-                column: "RootDirectoryParameterId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_SubDirectory_ParentSubDirectoryId",
                 table: "SubDirectory",
                 column: "ParentSubDirectoryId");
@@ -1138,17 +870,6 @@ namespace PSGM.Model.DbStorage.Migrations
                 name: "IX_SubDirectoryNotification_UserGroup_SubDirectoryId",
                 table: "SubDirectoryNotification_UserGroup",
                 column: "SubDirectoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SubDirectoryParameter_SubDirectoryId",
-                table: "SubDirectoryParameter",
-                column: "SubDirectoryId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SubDirectoryParameterStorage_SubDirectoryParameterId",
-                table: "SubDirectoryParameterStorage",
-                column: "SubDirectoryParameterId");
         }
 
         /// <inheritdoc />
@@ -1180,15 +901,6 @@ namespace PSGM.Model.DbStorage.Migrations
 
             migrationBuilder.DropTable(
                 name: "FileNotification_UserGroup_AuditLog");
-
-            migrationBuilder.DropTable(
-                name: "FileParameter_AuditLog");
-
-            migrationBuilder.DropTable(
-                name: "FileParameterStorage");
-
-            migrationBuilder.DropTable(
-                name: "FileParameterStorage_AuditLog");
 
             migrationBuilder.DropTable(
                 name: "Order_AuditLog");
@@ -1233,15 +945,6 @@ namespace PSGM.Model.DbStorage.Migrations
                 name: "RootDirectoryNotification_UserGroup_AuditLog");
 
             migrationBuilder.DropTable(
-                name: "RootDirectoryParameter_AuditLog");
-
-            migrationBuilder.DropTable(
-                name: "RootDirectoryParameterStorage");
-
-            migrationBuilder.DropTable(
-                name: "RootDirectoryParameterStorage_AuditLog");
-
-            migrationBuilder.DropTable(
                 name: "SubDirectory_AuditLog");
 
             migrationBuilder.DropTable(
@@ -1269,25 +972,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 name: "SubDirectoryNotification_UserGroup_AuditLog");
 
             migrationBuilder.DropTable(
-                name: "SubDirectoryParameter_AuditLog");
-
-            migrationBuilder.DropTable(
-                name: "SubDirectoryParameterStorage");
-
-            migrationBuilder.DropTable(
-                name: "SubDirectoryParameterStorage_AuditLog");
-
-            migrationBuilder.DropTable(
-                name: "FileParameter");
-
-            migrationBuilder.DropTable(
                 name: "Order");
-
-            migrationBuilder.DropTable(
-                name: "RootDirectoryParameter");
-
-            migrationBuilder.DropTable(
-                name: "SubDirectoryParameter");
 
             migrationBuilder.DropTable(
                 name: "File");

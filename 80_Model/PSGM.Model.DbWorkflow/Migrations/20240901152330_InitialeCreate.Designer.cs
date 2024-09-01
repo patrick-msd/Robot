@@ -11,7 +11,7 @@ using PSGM.Model.DbWorkflow;
 namespace PSGM.Model.DbWorkflow.Migrations
 {
     [DbContext(typeof(DbWorkflow_Context))]
-    [Migration("20240901150743_InitialeCreate")]
+    [Migration("20240901152330_InitialeCreate")]
     partial class InitialeCreate
     {
         /// <inheritdoc />

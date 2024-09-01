@@ -78,20 +78,11 @@ namespace PSGM.Model.DbStorage
         public DbSet<DbStorage_FileNotification_UserGroup> FileNotification_UserGroup { get; set; }
         public DbSet<DbStorage_FileNotification_UserGroup_AuditLog> FileNotification_UserGroup_AuditLog { get; set; }
 
-        public DbSet<DbStorage_FileParameter> FileParameters { get; set; }
-        public DbSet<DbStorage_FileParameter_AuditLog> FileParameter_AuditLog { get; set; }
-
-        public DbSet<DbStorage_FileParameterStorage> FileParametersStorage { get; set; }
-        public DbSet<DbStorage_FileParameterStorage_AuditLog> FileParameterStorage_AuditLog { get; set; }
-
         public DbSet<DbStorage_Order> Orders { get; set; }
         public DbSet<DbStorage_Order_AuditLog> Order_AuditLog { get; set; }
 
         public DbSet<DbStorage_OrderTemplate> OrderTemplates { get; set; }
         public DbSet<DbStorage_OrderTemplate_AuditLog> OrderTemplate_AuditLog { get; set; }
-
-        //public DbSet<DbStorage_Project> Projects { get; set; }
-        //public DbSet<DbStorage_Project_AuditLog> Project_AuditLog { get; set; }
 
         public DbSet<DbStorage_QrCode> QrCodes { get; set; }
         public DbSet<DbStorage_QrCode_AuditLog> QrCode_AuditLog { get; set; }
@@ -111,12 +102,6 @@ namespace PSGM.Model.DbStorage
         public DbSet<DbStorage_RootDirectoryNotification_UserGroup> RootDirectoryNotification_UserGroup { get; set; }
         public DbSet<DbStorage_RootDirectoryNotification_UserGroup_AuditLog> RootDirectoryNotification_UserGroup_AuditLog { get; set; }
 
-        public DbSet<DbStorage_RootDirectoryParameter> RootDirectoryParameters { get; set; }
-        public DbSet<DbStorage_RootDirectoryParameter_AuditLog> RootDirectoryParameter_AuditLog { get; set; }
-
-        public DbSet<DbStorage_RootDirectoryParameterStorage> RootDirectoryParametersStorage { get; set; }
-        public DbSet<DbStorage_RootDirectoryParameterStorage_AuditLog> RootDirectoryParameterStorage_AuditLog { get; set; }
-
         public DbSet<DbStorage_SubDirectory> SubDirectories { get; set; }
         public DbSet<DbStorage_SubDirectory_AuditLog> SubDirectory_AuditLog { get; set; }
 
@@ -131,12 +116,6 @@ namespace PSGM.Model.DbStorage
 
         public DbSet<DbStorage_SubDirectoryNotification_UserGroup> SubDirectoryNotification_UserGroup { get; set; }
         public DbSet<DbStorage_SubDirectoryNotification_UserGroup_AuditLog> SubDirectoryNotification_UserGroup_AuditLog { get; set; }
-
-        public DbSet<DbStorage_SubDirectoryParameter> SubDirectoryParameters { get; set; }
-        public DbSet<DbStorage_SubDirectoryParameter_AuditLog> SubDirectoryParameter_AuditLog { get; set; }
-
-        public DbSet<DbStorage_SubDirectoryParameterStorage> SubDirectoryParametersStorage { get; set; }
-        public DbSet<DbStorage_SubDirectoryParameterStorage_AuditLog> SubDirectoryParameterStorage_AuditLog { get; set; }
         #endregion
 
         #region Overrides
@@ -345,44 +324,6 @@ namespace PSGM.Model.DbStorage
                     case DbStorage_FileNotification_UserGroup_AuditLog fileNotification_UserGroup_AuditLog:
                         break;
 
-                    case DbStorage_FileParameter fileParameter:
-                        FileParameter_AuditLog.Add(new DbStorage_FileParameter_AuditLog
-                        {
-                            Id = new Guid(),
-
-                            SourceId = fileParameter.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = fileParameter.GetType().Name,
-                            Action = entry.State.ToString(),
-                            DateTime = DateTime.UtcNow,
-                            UserIdExt = DatabaseSessionParameter_UserId,
-                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
-                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                        });
-                        break;
-
-                    case DbStorage_FileParameter_AuditLog fileParameter_AuditLog:
-                        break;
-
-                    case DbStorage_FileParameterStorage fileParameterStorage:
-                        FileParameterStorage_AuditLog.Add(new DbStorage_FileParameterStorage_AuditLog
-                        {
-                            Id = new Guid(),
-
-                            SourceId = fileParameterStorage.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = fileParameterStorage.GetType().Name,
-                            Action = entry.State.ToString(),
-                            DateTime = DateTime.UtcNow,
-                            UserIdExt = DatabaseSessionParameter_UserId,
-                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
-                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                        });
-                        break;
-
-                    case DbStorage_FileParameterStorage_AuditLog fileParameterStorage_AuditLog:
-                        break;
-
                     case DbStorage_Order order:
                         Order_AuditLog.Add(new DbStorage_Order_AuditLog
                         {
@@ -420,25 +361,6 @@ namespace PSGM.Model.DbStorage
 
                     case DbStorage_OrderTemplate_AuditLog orderTemplate_AuditLog:
                         break;
-
-                    //case DbStorage_Project project:
-                    //    Project_AuditLog.Add(new DbStorage_Project_AuditLog
-                    //    {
-                    //        Id = new Guid(),
-
-                    //        SourceId = project.Id,
-                    //        //TableName = entry.Metadata.GetTableName(),
-                    //        //EntityName = project.GetType().Name,
-                    //        Action = entry.State.ToString(),
-                    //        DateTime = DateTime.UtcNow,
-                    //        UserIdExt = DatabaseSessionParameter_UserId,
-                    //        SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
-                    //        Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                    //    });
-                    //    break;
-
-                    //case DbStorage_Project_AuditLog project_AuditLog:
-                    //    break;
 
                     case DbStorage_QrCode qrCode:
                         QrCode_AuditLog.Add(new DbStorage_QrCode_AuditLog
@@ -570,44 +492,6 @@ namespace PSGM.Model.DbStorage
                     case DbStorage_RootDirectoryNotification_UserGroup_AuditLog rootDirectoryNotification_UserGroup_AuditLog:
                         break;
 
-                    case DbStorage_RootDirectoryParameter rootDirectoryParameter:
-                        RootDirectoryParameter_AuditLog.Add(new DbStorage_RootDirectoryParameter_AuditLog
-                        {
-                            Id = new Guid(),
-
-                            SourceId = rootDirectoryParameter.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = rootDirectoryParameter.GetType().Name,
-                            Action = entry.State.ToString(),
-                            DateTime = DateTime.UtcNow,
-                            UserIdExt = DatabaseSessionParameter_UserId,
-                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
-                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                        });
-                        break;
-
-                    case DbStorage_RootDirectoryParameter_AuditLog rootDirectoryParameter_AuditLog:
-                        break;
-
-                    case DbStorage_RootDirectoryParameterStorage rootDirectoryParameterStorage:
-                        RootDirectoryParameterStorage_AuditLog.Add(new DbStorage_RootDirectoryParameterStorage_AuditLog
-                        {
-                            Id = new Guid(),
-
-                            SourceId = rootDirectoryParameterStorage.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = rootDirectoryParameterStorage.GetType().Name,
-                            Action = entry.State.ToString(),
-                            DateTime = DateTime.UtcNow,
-                            UserIdExt = DatabaseSessionParameter_UserId,
-                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
-                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                        });
-                        break;
-
-                    case DbStorage_RootDirectoryParameterStorage_AuditLog rootDirectoryParameterStorage_AuditLog:
-                        break;
-
                     case DbStorage_SubDirectory subDirectory:
                         SubDirectory_AuditLog.Add(new DbStorage_SubDirectory_AuditLog
                         {
@@ -717,44 +601,6 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectoryNotification_UserGroup_AuditLog subDirectoryNotification_UserGroup_AuditLog:
-                        break;
-
-                    case DbStorage_SubDirectoryParameter subDirectoryParameter:
-                        SubDirectoryParameter_AuditLog.Add(new DbStorage_SubDirectoryParameter_AuditLog
-                        {
-                            Id = new Guid(),
-
-                            SourceId = subDirectoryParameter.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = subDirectoryParameter.GetType().Name,
-                            Action = entry.State.ToString(),
-                            DateTime = DateTime.UtcNow,
-                            UserIdExt = DatabaseSessionParameter_UserId,
-                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
-                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                        });
-                        break;
-
-                    case DbStorage_SubDirectoryParameter_AuditLog subDirectoryParameter_AuditLog:
-                        break;
-
-                    case DbStorage_SubDirectoryParameterStorage subDirectoryParameterStorage:
-                        SubDirectoryParameterStorage_AuditLog.Add(new DbStorage_SubDirectoryParameterStorage_AuditLog
-                        {
-                            Id = new Guid(),
-
-                            SourceId = subDirectoryParameterStorage.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = subDirectoryParameterStorage.GetType().Name,
-                            Action = entry.State.ToString(),
-                            DateTime = DateTime.UtcNow,
-                            UserIdExt = DatabaseSessionParameter_UserId,
-                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
-                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                        });
-                        break;
-
-                    case DbStorage_SubDirectoryParameterStorage_AuditLog subDirectoryParameterStorage_AuditLog:
                         break;
 
                     default:

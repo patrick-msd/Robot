@@ -281,86 +281,6 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.ToTable("FileNotification_User_AuditLog");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileParameterStorage_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FileParameterStorage_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileParameter_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FileParameter_AuditLog");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_RootDirectoryAuthorization_User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -623,86 +543,6 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("RootDirectoryNotification_User_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_RootDirectoryParameterStorage_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RootDirectoryParameterStorage_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_RootDirectoryParameter_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RootDirectoryParameter_AuditLog");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_SubDirectoryAuthorization_User", b =>
@@ -969,86 +809,6 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.ToTable("SubDirectoryNotification_User_AuditLog");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_SubDirectoryParameterStorage_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SubDirectoryParameterStorage_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_SubDirectoryParameter_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SubDirectoryParameter_AuditLog");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1167,118 +927,6 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.HasIndex("SubDirectoryId");
 
                     b.ToTable("File");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_FileParameter", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<Guid?>("FileId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FileId")
-                        .IsUnique();
-
-                    b.ToTable("FileParameter");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_FileParameterStorage", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("DatabaseConnectionString")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DatabaseConnectionString");
-
-                    b.Property<string>("DatabaseFilePath")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DatabaseFilePath");
-
-                    b.Property<uint>("DatabaseType")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("DatabaseType");
-
-                    b.Property<Guid?>("FileParameterId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<uint>("StorageClass")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("StorageClass");
-
-                    b.Property<string>("StorageFilePath")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SubDirectory");
-
-                    b.Property<string>("StorageS3AccessKey")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3AccessKey");
-
-                    b.Property<string>("StorageS3BucketName")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3BucketName");
-
-                    b.Property<string>("StorageS3Endpoint")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3Endpoint");
-
-                    b.Property<string>("StorageS3Region")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3Region");
-
-                    b.Property<string>("StorageS3SecretKey")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3SecretKey");
-
-                    b.Property<bool>("StorageS3Secure")
-                        .HasMaxLength(1023)
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("StorageS3Secure");
-
-                    b.Property<uint>("StorageType")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("StorageType");
-
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Url");
-
-                    b.Property<string>("UrlPublic")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UrlPublic");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FileParameterId");
-
-                    b.ToTable("FileParameterStorage");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_AuditLog", b =>
@@ -1710,11 +1358,11 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("Id");
 
-                    b.Property<string>("BackupsExtString")
+                    b.Property<string>("BackupIdsExtString")
                         .IsRequired()
                         .HasMaxLength(16383)
                         .HasColumnType("TEXT")
-                        .HasColumnName("BackupsExtString");
+                        .HasColumnName("BackupIdsExtString");
 
                     b.Property<Guid>("CreatedByUserIdExtAutoFill")
                         .HasColumnType("TEXT")
@@ -1734,11 +1382,11 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnName("DirectorySize");
 
-                    b.Property<string>("JobsIdExtString")
+                    b.Property<string>("JobIdsExtString")
                         .IsRequired()
                         .HasMaxLength(16383)
                         .HasColumnType("TEXT")
-                        .HasColumnName("JobsIdExtString");
+                        .HasColumnName("JobIdsExtString");
 
                     b.Property<string>("LastModificationChanges")
                         .IsRequired()
@@ -1770,127 +1418,15 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("Suffix");
 
-                    b.Property<string>("WorkflowItemsExtString")
+                    b.Property<string>("WorkflowItemIdsExtString")
                         .IsRequired()
                         .HasMaxLength(16383)
                         .HasColumnType("TEXT")
-                        .HasColumnName("WorkflowItemExtString");
+                        .HasColumnName("WorkflowItemIdsExtString");
 
                     b.HasKey("Id");
 
                     b.ToTable("RootDirectory");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectoryParameter", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<Guid?>("SubDirectoryId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SubDirectoryId")
-                        .IsUnique();
-
-                    b.ToTable("RootDirectoryParameter");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectoryParameterStorage", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("DatabaseConnectionString")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DatabaseConnectionString");
-
-                    b.Property<string>("DatabaseFilePath")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DatabaseFilePath");
-
-                    b.Property<uint>("DatabaseType")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("DatabaseType");
-
-                    b.Property<Guid?>("RootDirectoryParameterId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<uint>("StorageClass")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("StorageClass");
-
-                    b.Property<string>("StorageFilePath")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SubDirectory");
-
-                    b.Property<string>("StorageS3AccessKey")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3AccessKey");
-
-                    b.Property<string>("StorageS3BucketName")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3BucketName");
-
-                    b.Property<string>("StorageS3Endpoint")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3Endpoint");
-
-                    b.Property<string>("StorageS3Region")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3Region");
-
-                    b.Property<string>("StorageS3SecretKey")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3SecretKey");
-
-                    b.Property<bool>("StorageS3Secure")
-                        .HasMaxLength(1023)
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("StorageS3Secure");
-
-                    b.Property<uint>("StorageType")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("StorageType");
-
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Url");
-
-                    b.Property<string>("UrlPublic")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UrlPublic");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RootDirectoryParameterId");
-
-                    b.ToTable("RootDirectoryParameterStorage");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_AuditLog", b =>
@@ -2019,118 +1555,6 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.HasIndex("RootDirectoryId");
 
                     b.ToTable("SubDirectory");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectoryParameter", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<Guid?>("SubDirectoryId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SubDirectoryId")
-                        .IsUnique();
-
-                    b.ToTable("SubDirectoryParameter");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectoryParameterStorage", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("DatabaseConnectionString")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DatabaseConnectionString");
-
-                    b.Property<string>("DatabaseFilePath")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DatabaseFilePath");
-
-                    b.Property<uint>("DatabaseType")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("DatabaseType");
-
-                    b.Property<uint>("StorageClass")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("StorageClass");
-
-                    b.Property<string>("StorageFilePath")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SubDirectory");
-
-                    b.Property<string>("StorageS3AccessKey")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3AccessKey");
-
-                    b.Property<string>("StorageS3BucketName")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3BucketName");
-
-                    b.Property<string>("StorageS3Endpoint")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3Endpoint");
-
-                    b.Property<string>("StorageS3Region")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3Region");
-
-                    b.Property<string>("StorageS3SecretKey")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StorageS3SecretKey");
-
-                    b.Property<bool>("StorageS3Secure")
-                        .HasMaxLength(1023)
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("StorageS3Secure");
-
-                    b.Property<uint>("StorageType")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("StorageType");
-
-                    b.Property<Guid?>("SubDirectoryParameterId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Url");
-
-                    b.Property<string>("UrlPublic")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UrlPublic");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SubDirectoryParameterId");
-
-                    b.ToTable("SubDirectoryParameterStorage");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_AuditLog", b =>
@@ -2296,24 +1720,6 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("SubDirectory");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_FileParameter", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File", "File")
-                        .WithOne("FileParameter")
-                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_FileParameter", "FileId");
-
-                    b.Navigation("File");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_FileParameterStorage", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_FileParameter", "FileParameter")
-                        .WithMany("Storages")
-                        .HasForeignKey("FileParameterId");
-
-                    b.Navigation("FileParameter");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_Order", b =>
                 {
                     b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory", "RootDirectory")
@@ -2359,24 +1765,6 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("File");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectoryParameter", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory", "RootDirectory")
-                        .WithOne("RootDirectoryParameter")
-                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_RootDirectoryParameter", "SubDirectoryId");
-
-                    b.Navigation("RootDirectory");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectoryParameterStorage", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectoryParameter", "RootDirectoryParameter")
-                        .WithMany("Storages")
-                        .HasForeignKey("RootDirectoryParameterId");
-
-                    b.Navigation("RootDirectoryParameter");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory", b =>
                 {
                     b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory", "ParentSubDirectory")
@@ -2392,42 +1780,17 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("RootDirectory");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectoryParameter", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory", "SubDirectory")
-                        .WithOne("SubDirectoryParameter")
-                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_SubDirectoryParameter", "SubDirectoryId");
-
-                    b.Navigation("SubDirectory");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectoryParameterStorage", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectoryParameter", "SubDirectoryParameter")
-                        .WithMany("Storages")
-                        .HasForeignKey("SubDirectoryParameterId");
-
-                    b.Navigation("SubDirectoryParameter");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File", b =>
                 {
                     b.Navigation("AuthorizationUser");
 
                     b.Navigation("AuthorizationUserGroup");
 
-                    b.Navigation("FileParameter");
-
                     b.Navigation("NotificationUser");
 
                     b.Navigation("NotificationUserGroup");
 
                     b.Navigation("QrCode");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_FileParameter", b =>
-                {
-                    b.Navigation("Storages");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_Order", b =>
@@ -2451,14 +1814,7 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.Navigation("Orders");
 
-                    b.Navigation("RootDirectoryParameter");
-
                     b.Navigation("SubDirectories");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectoryParameter", b =>
-                {
-                    b.Navigation("Storages");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory", b =>
@@ -2478,13 +1834,6 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("Orders");
 
                     b.Navigation("SubDirectories");
-
-                    b.Navigation("SubDirectoryParameter");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectoryParameter", b =>
-                {
-                    b.Navigation("Storages");
                 });
 #pragma warning restore 612, 618
         }

@@ -162,10 +162,6 @@ namespace PSGM.Model.DbStorage
 
         [InverseProperty("SubDirectory")]
         public virtual ICollection<DbStorage_SubDirectoryNotification_UserGroup>? NotificationUserGroup { get; set; }
-
-        [InverseProperty("SubDirectory")]
-        public virtual DbStorage_SubDirectoryParameter? SubDirectoryParameter { get; set; }
-
         #endregion
 
         #region Backlinks (ForeignKeys)

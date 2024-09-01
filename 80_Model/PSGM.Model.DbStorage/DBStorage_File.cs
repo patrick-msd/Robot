@@ -189,9 +189,6 @@ namespace PSGM.Model.DbStorage
 
         [InverseProperty("File")]
         public virtual ICollection<DbStorage_FileNotification_UserGroup>? NotificationUserGroup { get; set; }
-
-        [InverseProperty("File")]
-        public virtual DbStorage_FileParameter? FileParameter { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
