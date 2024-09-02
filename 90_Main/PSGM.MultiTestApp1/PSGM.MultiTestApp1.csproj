@@ -40,6 +40,7 @@
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DBMachine\PSGM.Model.DbMachine.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DBMain\PSGM.Model.DbMain.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DBSoftware\PSGM.Model.DbSoftware.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbStorageStructure\PSGM.Model.DbStorageStructure.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DBStorage\PSGM.Model.DbStorage.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DBUser\PSGM.Model.DbUser.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DBWorkflow\PSGM.Model.DbWorkflow.csproj" />

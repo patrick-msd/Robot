@@ -12,6 +12,7 @@ using PSGM.Model.DbMachine;
 using PSGM.Model.DbMain;
 using PSGM.Model.DbSoftware;
 using PSGM.Model.DbStorage;
+using PSGM.Model.DbStorageStructure;
 using PSGM.Model.DbUser;
 using PSGM.Model.DbWorkflow;
 using Serilog;
@@ -35,7 +36,7 @@ namespace PSGM.MultiTestApp1
         string _lokiOutputTemplate;
 
 
-
+        ConfigFile _configFile;
 
         private DbJob_Context _dbJobContext;
         private DbMachine_Context _dbMachineContext;
@@ -43,12 +44,14 @@ namespace PSGM.MultiTestApp1
         private DbSoftware_Context _dbSoftwareContext;
         private DbStorage_Context _dbStorage_Data_Context;
         private DbStorage_Context _dbStorage_DataRaw_Context;
-        //private DbStorage_Context _dbStorageThumbnailsContext;
+        private DbStorageStructure_Context _dbStorageStructure_Context;
         private DbUser_Context _dbUserContext;
         private DbWorkflow_Context _dbWorkflow_Context;
 
         Guid _softwareId;
         Guid _machineId;
+
+        Guid _projectId;
 
         Guid _patrickSchoeneggerId;
         Guid _guenterMuehlbergerId;
@@ -106,21 +109,21 @@ namespace PSGM.MultiTestApp1
             //Log.Information($"Application \"{Globals.ApplicationTitle} V{Globals.ApplicationVersion.ToString()}\" start...");
             #endregion
 
+            if (_configFile.ConfigFileExists(Directory.GetCurrentDirectory() + "\\ConfigFile.json"))
+            {
+                _configFile.ReadFromFile(Directory.GetCurrentDirectory() + "\\ConfigFile.json");
+            }
+
             #region Database initialization
             _dbJobContext = new DbJob_Context();
             _dbMachineContext = new DbMachine_Context();
             _dbMain_Context = new DbMain_Context();
             _dbSoftwareContext = new DbSoftware_Context();
-            _dbUserContext = new DbUser_Context();
-            _dbWorkflow_Context = new DbWorkflow_Context();
-
             _dbStorage_Data_Context = new DbStorage_Context();
             _dbStorage_DataRaw_Context = new DbStorage_Context();
-
-            //string envDatabaseType=Environment.GetEnvironmentVariable("PSGM_DBMAIN_DATABSETYPE");
-
-            //_dbMainContext.ConnectionStringSQLite="C:\\ProgramData\\PSGM\\Test\\DbMain.db";
-            //_dbMainContext.ConnectionStringSQLite="Data Source=C:\\Git\\PSGM\\PSGM_-_PSGM.Model\\80_Model\\PSGM.Model.MainDB\\DbMain.db";
+            _dbStorageStructure_Context = new DbStorageStructure_Context();
+            _dbUserContext = new DbUser_Context();
+            _dbWorkflow_Context = new DbWorkflow_Context();
 
             string[] dbFiles = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.db");
 
@@ -129,19 +132,18 @@ namespace PSGM.MultiTestApp1
                 File.Delete(file);
             }
 
-            _dbJobContext.ConnectionStringSQLite = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbJob.db";
-            _dbMachineContext.ConnectionStringSQLite = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbMachine.db";
-            _dbMain_Context.ConnectionStringSQLite = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbMain.db";
-            _dbSoftwareContext.ConnectionStringSQLite = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbSoftware.db";
-            _dbUserContext.ConnectionStringSQLite = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbUser.db";
-            _dbWorkflow_Context.ConnectionStringSQLite = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbWorkflow.db";
+            _dbJobContext.ConnectionStringSQLite = _configFile.JobDatabaseConnectionString;
+            _dbMachineContext.ConnectionStringSQLite = _configFile.MachineDatabaseConnectionString;
+            _dbMain_Context.ConnectionStringSQLite = _configFile.MainDatabaseConnectionString;
+            _dbSoftwareContext.ConnectionStringSQLite = _configFile.SoftwareDatabaseConnectionString;
+            _dbUserContext.ConnectionStringSQLite = _configFile.UserDatabaseConnectionString;
+            _dbWorkflow_Context.ConnectionStringSQLite = _configFile.WorkflowDatabaseConnectionString;
 
-            _dbJobContext.DatabaseType = DatabaseType.SQLite;
-            _dbMachineContext.DatabaseType = DatabaseType.SQLite;
-            _dbMain_Context.DatabaseType = DatabaseType.SQLite;
-            _dbSoftwareContext.DatabaseType = DatabaseType.SQLite;
-            _dbUserContext.DatabaseType = DatabaseType.SQLite;
-            _dbWorkflow_Context.DatabaseType = DatabaseType.SQLite;
+            _dbMachineContext.DatabaseType = _configFile.MachineDatabaseType;
+            _dbMain_Context.DatabaseType = _configFile.MainDatabaseType;
+            _dbSoftwareContext.DatabaseType = _configFile.SoftwareDatabaseType;
+            _dbUserContext.DatabaseType = _configFile.UserDatabaseType;
+            _dbWorkflow_Context.DatabaseType = _configFile.WorkflowDatabaseType;
 
             _dbJobContext.Database.EnsureCreated();
             _dbMachineContext.Database.EnsureCreated();
@@ -156,31 +158,14 @@ namespace PSGM.MultiTestApp1
             _dbSoftwareContext.Database.OpenConnection();
             _dbUserContext.Database.OpenConnection();
             _dbWorkflow_Context.Database.OpenConnection();
-
-            // Connection to storage databases is done later, due to that the storage database information ist storred in the project
-
-
-
-
-
-
-
-            //_dbJobContext.ConnectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DBJob\\DBJob.db";
-            //_dbMachineContext.ConnectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DBMachine\\DBMachine.db";
-            //_dbMainContext.ConnectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DBMain\\DBMain.db";
-            //_dbSoftwareContext.ConnectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DBSoftware\\DBSoftware.db";
-            //_dbStorageContext.ConnectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DBStorage\\DBStorage.db";
-            //_dbStorageRawContext.ConnectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DBStorageRaw\\DBStorageRaw.db";
-            //_dbStorageThumbnailsContext.ConnectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DBStorageThumbnails\\DBStorageThumbnails.db";
-            //_dbUserContext.ConnectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DBUser\\DBUser.db";
-            //_dbWorkflowContext.ConnectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DBWorkflow\\DBWorkflow.db";
-
-            //_dbMainContext.ConnectionStringPostgreSQL="Host=db-clu001.branch31.psgm.at;Port=50001;Database=MainDB;Username=ef.core;Password=Ulexxubih4LOdKuhC8Hx33d4zA4";
-            //_dbMainContext.ConnectionStringSQLServer="Server=(localdb)\\mssqllocaldb;Database=database;Trusted_Connection=True;";
-
             #endregion
 
             #region Initialize Databases
+            if (_configFile.ConfigFileExists(Directory.GetCurrentDirectory() + "\\ConfigFile.json"))
+            {
+                btnDbCreateConfigFile_Click(null, null);
+            }
+
             btnDbCreateUser_Click(null, null);
             btnDbCreateMachine_Click(null, null);
             btnDbCreateWorkflow_Click(null, null);
@@ -190,6 +175,41 @@ namespace PSGM.MultiTestApp1
 
             btnSetupStorage_Click(null, null);
             #endregion
+        }
+
+        private void btnDbCreateConfigFile_Click(object sender, RoutedEventArgs e)
+        {
+            _configFile = new ConfigFile()
+            {
+                JobDatabaseConnectionString = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbJob.db",
+                JobDatabaseType = DatabaseType.SQLite,
+
+                MachineDatabaseConnectionString = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbMachine.db",
+                MachineDatabaseType = DatabaseType.SQLite,
+
+                MainDatabaseConnectionString = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbMain.db",
+                MainDatabaseType = DatabaseType.SQLite,
+
+                SoftwareDatabaseConnectionString = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbSoftware.db",
+                SoftwareDatabaseType = DatabaseType.SQLite,
+
+                //string StorageDataDatabaseConnectionString = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbStorageData.db",
+                //StorageDataDatabaseType  = DatabaseType.SQLite,
+
+                //StorageDataRawDatabaseConnectionString = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbStorageDataRaw.db",
+                //StorageDataRawDatabaseType = DatabaseType.SQLite,
+
+                StorageStructureDatabaseConnectionString = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbStorageStructure.db",
+                StorageStructureDatabaseType = DatabaseType.SQLite,
+
+                UserDatabaseConnectionString = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbUser.db",
+                UserDatabaseType = DatabaseType.SQLite,
+
+                WorkflowDatabaseConnectionString = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbWorkflow.db",
+                WorkflowDatabaseType = DatabaseType.SQLite,
+            };
+
+            _configFile.WriteToFile(Directory.GetCurrentDirectory() + "\\ConfigFile.json");
         }
 
         private void btnDbCreateUser_Click(object sender, RoutedEventArgs e)
@@ -304,7 +324,7 @@ namespace PSGM.MultiTestApp1
             _guenterMuehlbergerId = _dbUserContext.Users.Where(u => u.LoginName == "guenter.muehlberger").FirstOrDefault().Id;
             _gertraudZeindlId = _dbUserContext.Users.Where(u => u.LoginName == "gertraud.zeindl").FirstOrDefault().Id;
             _christophHaidacherId = _dbUserContext.Users.Where(u => u.LoginName == "christoph.haidacher").FirstOrDefault().Id;
-            #endregion          
+            #endregion
         }
 
         private void btnDbCreateMachine_Click(object sender, RoutedEventArgs e)
@@ -336,7 +356,8 @@ namespace PSGM.MultiTestApp1
                 GpsLongitudeCardinalPoint = 'E',
 
                 // FK
-                //Location=null,
+                //Location = null,
+                //LocationId = Guid.Empty
             };
             _dbMachineContext.Addresses.Add(DBMachine_addressUIBK);
             _dbMachineContext.SaveChanges();
@@ -353,7 +374,8 @@ namespace PSGM.MultiTestApp1
                 Address = DBMachine_addressUIBK,
 
                 //FK
-                //Machine=null
+                //Machine=null,
+                //MachineId = Guid.Empty
             };
             _dbMachineContext.Locations.Add(DBMachine_location);
             _dbMachineContext.SaveChanges();
@@ -388,7 +410,8 @@ namespace PSGM.MultiTestApp1
                 },
 
                 //FK
-                //Machine=null
+                //Machine=null,
+                //MachineId = Guid.Empty
             };
             _dbMachineContext.DeviceGroups.Add(DBMachine_deviceGroup_mainFrame);
             _dbMachineContext.SaveChanges();
@@ -409,7 +432,8 @@ namespace PSGM.MultiTestApp1
                 },
 
                 //FK
-                //Machine=null
+                //Machine=null,
+                //MachineId = Guid.Empty
             };
             _dbMachineContext.DeviceGroups.Add(DBMachine_deviceGroup_sheetCradle);
             _dbMachineContext.SaveChanges();
@@ -438,7 +462,7 @@ namespace PSGM.MultiTestApp1
                     DBMachine_deviceGroup_sheetCradle
                 },
 
-                // FK
+                // FK                
             };
             _dbMachineContext.Machines.Add(DBMachine_machine);
             _dbMachineContext.SaveChanges();
@@ -463,6 +487,9 @@ namespace PSGM.MultiTestApp1
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.DataRaw,
 
+                Permissions = PermissionType.None,
+                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
@@ -483,6 +510,9 @@ namespace PSGM.MultiTestApp1
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.DataRaw,
                 //StorageClass = StorageClass.DataRawAndDataRawThumbnail, 
+
+                Permissions = PermissionType.None,
+                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
 
                 Configuration = string.Empty,
 
@@ -507,6 +537,9 @@ namespace PSGM.MultiTestApp1
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
 
+                Permissions = PermissionType.None,
+                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
@@ -526,6 +559,9 @@ namespace PSGM.MultiTestApp1
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.DataAndDataThumbnail,
+
+                Permissions = PermissionType.None,
+                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
 
                 Configuration = string.Empty,
 
@@ -549,6 +585,9 @@ namespace PSGM.MultiTestApp1
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
+
+                Permissions = PermissionType.None,
+                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
 
                 Configuration = string.Empty,
 
@@ -587,6 +626,9 @@ namespace PSGM.MultiTestApp1
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.DataAndDataThumbnail,
 
+                Permissions = PermissionType.None,
+                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
@@ -609,6 +651,9 @@ namespace PSGM.MultiTestApp1
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
+
+                Permissions = PermissionType.None,
+                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
 
                 Configuration = string.Empty,
 
@@ -657,6 +702,9 @@ namespace PSGM.MultiTestApp1
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
 
+                Permissions = PermissionType.None,
+                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
@@ -692,6 +740,9 @@ namespace PSGM.MultiTestApp1
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
 
+                Permissions = PermissionType.None,
+                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
@@ -726,6 +777,9 @@ namespace PSGM.MultiTestApp1
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
+
+                Permissions = PermissionType.None,
+                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
 
                 Configuration = string.Empty,
 
@@ -766,6 +820,9 @@ namespace PSGM.MultiTestApp1
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
 
+                Permissions = PermissionType.None,
+                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
@@ -803,11 +860,14 @@ namespace PSGM.MultiTestApp1
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.DataAndDataThumbnail,
 
+                Permissions = PermissionType.None,
+                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
                 WorkflowItemId = Workflow_DbMain_RootDirectories.StorageAndDatabase_Save_V1_0_0,
-                
+
                 // FK
                 //Workflow = null,
                 //WorkflowId = null
@@ -829,7 +889,7 @@ namespace PSGM.MultiTestApp1
                     // Grab Image
                     dbWorkflowItemLink_Vision2D_GrabImage_DataRaw,
                     dbWorkflowItemLink_Vision2D_SaveObjectToStorageAndDatabase_DataRaw,
-
+                    
                     // HDR Image
                     dbWorkflowItemLink_HDR_CreateImage_Data,
                     dbWorkflowItemLink_HDR_SaveObjectToStorageAndDatabase_Data_DataThumbnail,
@@ -849,7 +909,7 @@ namespace PSGM.MultiTestApp1
             };
             _dbWorkflow_Context.Workflows.Add(dBWorkflow_Workflow);
             _dbWorkflow_Context.SaveChanges();
-            #endregion 
+            #endregion
         }
 
         private void btnDbCreateOrganizationAndProject_Click(object sender, RoutedEventArgs e)
@@ -882,6 +942,7 @@ namespace PSGM.MultiTestApp1
 
                 // FK
                 //Location=null,
+                //LocationId = Guid.Empty
             };
             _dbMain_Context.Addresses.Add(dbMain_addressTLA);
             _dbMain_Context.SaveChanges();
@@ -913,6 +974,7 @@ namespace PSGM.MultiTestApp1
 
                 // FK
                 //Location=null,
+                //LocationId = Guid.Empty
             };
             _dbMain_Context.Addresses.Add(dbMain_addressUIBK);
             _dbMain_Context.SaveChanges();
@@ -941,10 +1003,14 @@ namespace PSGM.MultiTestApp1
 
                         Name="Headquarter",
                         Address=dbMain_addressTLA,
+
+                        Description = string.Empty,
                         
                         // FK
                         //Project=null,
-                        //Organization=null,                        
+                        //ProjectId = Guid.Empty,
+                        //Organization = null,
+                        //OrganizationId = Guid.Empty,                        
                     }
                 },
 
@@ -955,20 +1021,26 @@ namespace PSGM.MultiTestApp1
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _gertraudZeindlId,
-                        Permissions = PermissionsType.Owner,
+                        Permissions = PermissionType.Owner,
 
+                        Description = string.Empty,
+                        
                         // FK
-                        //Project=null,
+                        //Organization = null,
+                        //OrganizationId = Guid.Empty,     
                     },
                     new DbMain_OrganizationAuthorization_User()
                     {
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _christophHaidacherId,
-                        Permissions = PermissionsType.Admin,
+                        Permissions = PermissionType.Admin,
 
+                        Description = string.Empty,
+                        
                         // FK
-                        //Project=null,
+                        //Organization = null,
+                        //OrganizationId = Guid.Empty,   
                     },
                 },
                 AuthorizationUserGroup = null,
@@ -979,27 +1051,37 @@ namespace PSGM.MultiTestApp1
                     {
                         Id = Guid.NewGuid(),
 
+                        Description = string.Empty,
+
                         UserIdExt = _gertraudZeindlId,
+
                         Notifications = new List<Notification>
                         {
                             new Notification() { NotificationType = NotificationType.None, EMail = false, Slack = false, Teams = false, SMS = false, WhatsApp = false, Telegram = false, Gotify = false },
-                        },    
+                        },
+                        //NotificationString = string.Empty,                        
                         
                         // FK
-                        //Project=null,
+                        //Organization = null,
+                        //OrganizationId = Guid.Empty,   
                     },
                     new DbMain_OrganizationNotification_User()
                     {
                         Id = Guid.NewGuid(),
 
+                        Description = string.Empty,
+
                         UserIdExt = _christophHaidacherId,
+
                         Notifications = new List<Notification>
                         {
                             new Notification() { NotificationType = NotificationType.None, EMail = false, Slack = false, Teams = false, SMS = false, WhatsApp = false, Telegram = false, Gotify = false },
                         },    
-                        
+                        //NotificationString = string.Empty,  
+
                         // FK
-                        //Project=null,
+                        //Organization = null,
+                        //OrganizationId = Guid.Empty, 
                     },
 
                 },
@@ -1008,7 +1090,8 @@ namespace PSGM.MultiTestApp1
                 Contributors = null,
 
                 // FK
-                //Project=null
+                //Project = null,
+                //ProjectId = Guid.NewGuid()
             };
             _dbMain_Context.Organizations.Add(dbMain_organizationTLA);
             _dbMain_Context.SaveChanges();
@@ -1035,10 +1118,14 @@ namespace PSGM.MultiTestApp1
 
                         Name="Headquarter",
                         Address=dbMain_addressUIBK,
-                    
+
+                        Description = string.Empty,
+                        
                         // FK
                         //Project=null,
-                        //Organization=null,        
+                        //ProjectId = Guid.Empty,
+                        //Organization = null,
+                        //OrganizationId = Guid.Empty,         
                     }
                 },
 
@@ -1049,10 +1136,13 @@ namespace PSGM.MultiTestApp1
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _patrickSchoeneggerId,
-                        Permissions = PermissionsType.Owner,
+                        Permissions = PermissionType.Owner,
 
+                        Description = string.Empty,
+                        
                         // FK
-                        //Project=null,
+                        //Organization = null,
+                        //OrganizationId = Guid.Empty, 
                     },
 
                     new DbMain_OrganizationAuthorization_User()
@@ -1060,10 +1150,12 @@ namespace PSGM.MultiTestApp1
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _guenterMuehlbergerId,
-                        Permissions = PermissionsType.Admin,
+                        Permissions = PermissionType.Admin,
 
-                        // FK
-                        //Project=null,
+                        Description = string.Empty,
+                                                 // FK
+                        //Organization = null,
+                        //OrganizationId = Guid.Empty, 
                     }
                 },
                 AuthorizationUserGroup = null,
@@ -1075,26 +1167,36 @@ namespace PSGM.MultiTestApp1
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _patrickSchoeneggerId,
+
+                        Description = string.Empty,
+
                         Notifications = new List<Notification>
                         {
                             new Notification() { NotificationType = NotificationType.All, EMail = true, Slack = true, Teams = true, SMS = true, WhatsApp = true, Telegram = true, Gotify = true },
-                        },    
-                        
+                        },        
+                        //NotificationString = string.Empty,  
+
                         // FK
-                        //Project=null,
+                        //Organization = null,
+                        //OrganizationId = Guid.Empty, 
                     },
                     new DbMain_OrganizationNotification_User()
                     {
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _guenterMuehlbergerId,
+
+                        Description = string.Empty,
+
                         Notifications = new List<Notification>
                         {
                             new Notification() { NotificationType = NotificationType.None, EMail = false, Slack = false, Teams = false, SMS = false, WhatsApp = false, Telegram = false, Gotify = false },
-                        },    
-                        
+                        },        
+                        //NotificationString = string.Empty,  
+
                         // FK
-                        //Project=null,
+                        //Organization = null,
+                        //OrganizationId = Guid.Empty, 
                     },
                 },
                 NotificationUserGroup = null,
@@ -1102,7 +1204,8 @@ namespace PSGM.MultiTestApp1
                 Contributors = null,
 
                 // FK
-                //Project=null
+                //Project = null
+                //ProjectId = Guid.NewGuid(),
             };
             _dbMain_Context.Organizations.Add(dbMain_organizationUIBK);
             _dbMain_Context.SaveChanges();
@@ -1116,35 +1219,6 @@ namespace PSGM.MultiTestApp1
 
                 Name = "Meldezettel",
                 Description = "Digitalisierung der Meldezettel von ...",
-
-                //Locations = new List<DbMain_Location>()
-                //{
-                //    new  DbMain_Location()
-                //    {
-                //        Id = Guid.NewGuid(),
-
-                //        Name = "Headquarter",
-
-                //        Address = dbMain_addressTLA,
-
-                //        // FK
-                //        //Project=null,
-                //        //Organization=null
-                //    },
-
-                //    new  DbMain_Location()
-                //    {
-                //        Id = Guid.NewGuid(),
-
-                //        Name = "Universität Innsbruck (DEA)",
-
-                //        Address = dbMain_addressUIBK,
-
-                //        // FK
-                //        //Project=null,
-                //        //Organization=null
-                //    }
-                //},
 
                 Organization = dbMain_organizationTLA,
                 Contributors = new List<DbMain_Contributors>()
@@ -1166,201 +1240,66 @@ namespace PSGM.MultiTestApp1
                 },
 
                 Status = ProjectStatus.Created,
-                Started = DateTime.UtcNow,
+                Started = DateTime.Now,
                 Finished = DateTime.MinValue,
 
                 WorkflowIdExt = _dbWorkflow_Context.Workflows.FirstOrDefault().Id,
                 WorkflowApplyLevel = WorkflowApplyLevel.File,
 
-                ProjectParameter = new DbMain_ProjectParameter()
-                {
-                    Id = Guid.NewGuid(),
-
-                    Storages = new List<DbMain_ProjectParameterStorage>()
-                    {
-                        new DbMain_ProjectParameterStorage()
-                        {
-                            Id = Guid.NewGuid(),
-
-                            DatabaseType = DatabaseType.SQLite,
-                            DatabaseFilePath = $"Data Source=\"{Directory.GetCurrentDirectory()}/DBStorageDataMain.db\"",
-                            DatabaseConnectionString = string.Empty,
-
-                            StorageType=StorageType.S3,
-                            StorageClass = StorageClass.DataMain,
-                            StorageTier = StorageTier.Hot,
-
-                            StorageFilePath = string.Empty,
-
-                            StorageS3Endpoint = "s3-clu001.branch31.psgm.at",
-                            StorageS3BucketName = string.Empty,
-                            StorageS3AccessKey = "xVnwqfNWGqblg1dmA33j",
-                            StorageS3SecretKey = "1Xq3G7az3QC3R0wKTBbwNHPNawhA16j1cx0n0a",
-                            StorageS3Secure = false,
-                            StorageS3Region = "eu-central-1",
-
-                            Url = "https://s3-clu001.branch31.psgm.at:9000",
-                            UrlPublic = "https://s3-clu001.psgm.at",
-                            
-                            // FK
-                            //ProjectParameter = null,
-                        },
-                        new DbMain_ProjectParameterStorage()
-                        {
-                            Id = Guid.NewGuid(),
-
-                            DatabaseType = DatabaseType.SQLite,
-                            DatabaseFilePath = $"Data Source=\"{Directory.GetCurrentDirectory()}/DBStorageDataRaw.db\"",
-                            DatabaseConnectionString = string.Empty,
-
-                            StorageType=StorageType.S3,
-                            StorageClass = StorageClass.DataRaw,
-                            StorageTier = StorageTier.Hot,
-
-                            StorageFilePath = string.Empty,
-
-                            StorageS3Endpoint = "s3-clu100.branch31.psgm.at",
-                            StorageS3BucketName = string.Empty,                         // Root Verzeichnis ist OrganizationId\\ProjectId\\DirectiryIds\\FileId
-                            StorageS3AccessKey = "lXbKy82C7lIkNRRQXaoq",
-                            StorageS3SecretKey = "iuVv7TMZA0Oaky7bgXE6mdejI9Xnu40KGMrFve",
-                            StorageS3Secure = false,
-                            StorageS3Region = "eu-central-1",
-
-                            Url = "https://s3-clu001.branch31.psgm.at:9000",
-                            UrlPublic = "https://s3-clu001.psgm.at",
-                            
-                            // FK
-                            //ProjectParameter = null,
-                        },
-                        new DbMain_ProjectParameterStorage()
-                        {
-                            Id = Guid.NewGuid(),
-
-                            DatabaseType = DatabaseType.Undefined,
-                            DatabaseFilePath = string.Empty,
-                            DatabaseConnectionString = string.Empty,
-
-                            StorageType=StorageType.S3,
-                            StorageClass = StorageClass.DataRawThumbnail,
-                            StorageTier = StorageTier.Hot,
-
-                            StorageFilePath = string.Empty,
-
-                            StorageS3Endpoint = "s3-clu101.branch31.psgm.at",
-                            StorageS3BucketName = string.Empty,                         // Root Verzeichnis ist OrganizationId\\ProjectId\\DirectiryIds\\FileId
-                            StorageS3AccessKey = "Mq5A3CCxUMcUxW9xP0Nw",
-                            StorageS3SecretKey = "YCVcvjFidGNneQVPTJ0LUhDM1Nxj9Y5fD5RMCh",
-                            StorageS3Secure = false,
-                            StorageS3Region = "eu-central-1",
-
-                            Url = "https://s3-clu003.branch31.psgm.at:9000",
-                            UrlPublic = "https://s3-clu003.psgm.at",
-
-                            // FK
-                            //ProjectParameter = null,
-                        },
-                        new DbMain_ProjectParameterStorage()
-                        {
-                            Id = Guid.NewGuid(),
-
-                            DatabaseType = DatabaseType.SQLite,
-                            DatabaseFilePath = $"Data Source=\"{Directory.GetCurrentDirectory()}/DBStorageData.db\"",
-                            DatabaseConnectionString = string.Empty,
-
-                            StorageType=StorageType.S3,
-                            StorageClass = StorageClass.Data,
-                            StorageTier = StorageTier.Hot,
-
-                            StorageFilePath = string.Empty,
-
-                            StorageS3Endpoint = "s3-clu102.branch31.psgm.at",
-                            StorageS3BucketName = string.Empty,                         // Root Verzeichnis ist OrganizationId\\ProjectId\\DirectiryIds\\FileId
-                            StorageS3AccessKey = "cIm3AkV6LpnR47v7vP68",
-                            StorageS3SecretKey = "LcBxrCot4ekVhNXOQ5pF6cXakToEilbEmXpX3G",
-                            StorageS3Secure = false,
-                            StorageS3Region = "eu-central-1",
-
-                            Url = "https://s3-clu002.branch31.psgm.at:9000",
-                            UrlPublic = "https://s3-clu002.psgm.at",
-
-                            // FK
-                            //ProjectParameter = null,
-                        },
-                        new DbMain_ProjectParameterStorage()
-                        {
-                            Id = Guid.NewGuid(),
-
-                            DatabaseType = DatabaseType.Undefined,
-                            DatabaseFilePath = string.Empty,
-                            DatabaseConnectionString = string.Empty,
-
-                            StorageType=StorageType.S3,
-                            StorageClass = StorageClass.DataThumbnail,
-                            StorageTier = StorageTier.Hot,
-
-                            StorageFilePath = string.Empty,
-
-                            StorageS3Endpoint = "s3-clu103.branch31.psgm.at",
-                            StorageS3BucketName = string.Empty,                         // Root Verzeichnis ist OrganizationId\\ProjectId\\DirectiryIds\\FileId
-                            StorageS3AccessKey = "iPM6Iklm5dcyJVq9z3Vr",
-                            StorageS3SecretKey = "jgn0MHMHgMg9MtldqVVCPuNU2ahOVDdQpvm4g9",
-                            StorageS3Secure = false,
-                            StorageS3Region = "eu-central-1",
-
-                            Url = "https://s3-clu003.branch31.psgm.at:9000",
-                            UrlPublic = "https://s3-clu003.psgm.at",
-
-                            // FK
-                            //ProjectParameter = null,
-                        },
-                    }
-
-                    // FK
-                    //Project=null,
-                },
+                Order = null,
 
                 AuthorizationUser = new List<DbMain_ProjectAuthorization_User>()
                 {
                     new DbMain_ProjectAuthorization_User()
                     {
                         Id = Guid.NewGuid(),
-
                         UserIdExt = _gertraudZeindlId,
-                        Permissions = PermissionsType.Owner,
+                        Permissions = PermissionType.Owner,
+
+                        Description = string.Empty,
 
                         // FK
-                        //Project=null,
+                        //Project = null,
+                        //ProjectId = Guid.Empty
                     },
                     new DbMain_ProjectAuthorization_User()
                     {
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _christophHaidacherId,
-                        Permissions = PermissionsType.Admin,
+                        Permissions = PermissionType.Admin,
+
+                        Description = string.Empty,
 
                         // FK
-                        //Project=null,
+                        //Project = null,
+                        //ProjectId = Guid.Empty
                     },
                     new DbMain_ProjectAuthorization_User()
                     {
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _patrickSchoeneggerId,
-                        Permissions = PermissionsType.ServiceProviderInfrastructure,
+                        Permissions = PermissionType.ServiceProviderInfrastructure,
 
+                        Description = string.Empty,
+                        
                         // FK
-                        //Project=null,
+                        //Project = null,
+                        //ProjectId = Guid.Empty
                     },
-
                     new DbMain_ProjectAuthorization_User()
                     {
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _guenterMuehlbergerId,
-                        Permissions = PermissionsType.ServiceProviderInfrastructure,
+                        Permissions = PermissionType.ServiceProviderInfrastructure,
+
+                        Description = string.Empty,
 
                         // FK
-                        //Project=null,
+                        //Project = null,
+                        //ProjectId = Guid.Empty
                     }
                 },
                 AuthorizationUserGroup = null,
@@ -1372,52 +1311,72 @@ namespace PSGM.MultiTestApp1
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _gertraudZeindlId,
+
+                        Description = string.Empty,
+
                         Notifications = new List<Notification>
                         {
                             new Notification() { NotificationType = NotificationType.None, EMail = false, Slack = false, Teams = false, SMS = false, WhatsApp = false, Telegram = false, Gotify = false },
                         }, 
+                        //NotificationString = string.Empty,
                         
                         // FK
-                        //Project=null,
+                        //Project = null,
+                        //ProjectId = Guid.Empty
                     },
                     new DbMain_ProjectNotification_User()
                     {
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _christophHaidacherId,
+
+                        Description = string.Empty,
+
                         Notifications = new List<Notification>
                         {
                             new Notification() { NotificationType = NotificationType.None, EMail = false, Slack = false, Teams = false, SMS = false, WhatsApp = false, Telegram = false, Gotify = false },
-                        },    
+                        },
+                        //NotificationString = string.Empty,
                         
                         // FK
-                        //Project=null,
+                        //Project = null,
+                        //ProjectId = Guid.Empty
                     },
                     new DbMain_ProjectNotification_User()
                     {
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _patrickSchoeneggerId,
+
+                        Description = string.Empty,
+
                         Notifications = new List<Notification>
                         {
                             new Notification() { NotificationType = NotificationType.All, EMail = true, Slack = true, Teams = true, SMS = true, WhatsApp = true, Telegram = true, Gotify = true },
                         },    
+                        //NotificationString = string.Empty,
                         
                         // FK
-                        //Project=null,
+                        //Project = null,
+                        //ProjectId = Guid.Empty
                     },
                     new DbMain_ProjectNotification_User()
                     {
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _guenterMuehlbergerId,
+
+                        Description = string.Empty,
+
                         Notifications = new List<Notification>
                         {
                             new Notification() { NotificationType = NotificationType.All, EMail = true, Slack = false, Teams = false, SMS = false, WhatsApp = false, Telegram = false, Gotify = false },
                         },    
+                        //NotificationString = string.Empty,
 
                         // FK
-                        //Project=null,
+                        //Project = null,
+                        //ProjectId = Guid.Empty
                     },
                 },
                 NotificationUserGroup = null,
@@ -1426,8 +1385,9 @@ namespace PSGM.MultiTestApp1
                 {
                     _machineId
                 },
+                //MachinesExtString = string.Empty,   
 
-                // FK
+                // FK                
             };
             _dbMain_Context.Projects.Add(dbMain_project);
             _dbMain_Context.SaveChanges();
@@ -1446,18 +1406,197 @@ namespace PSGM.MultiTestApp1
         private void btnConnectToStorageDatabase_Click(object sender, RoutedEventArgs e)
         {
             List<DbMain_Project> projects = _dbMain_Context.Projects.Where(p => p.MachinesExt.Contains(_machineId))
-                                                        .Include(p => p.ProjectParameter)
-                                                           .ThenInclude(p => p.Storages)
-                                                        .Include(p => p.Organization)
-                                                        .Include(p => p.Contributors)
-                                                        //.Include(p => p.Locations)
-                                                        .ToList();
+                                                                     .Include(p => p.Organization)
+                                                                     .Include(p => p.Contributors)
+                                                                     .ToList();
 
-            _dbStorage_Data_Context.ConnectionStringSQLite = projects[0].ProjectParameter.Storages.Where(p => p.StorageClass == StorageClass.Data).FirstOrDefault().DatabaseFilePath;
-            _dbStorage_DataRaw_Context.ConnectionStringSQLite = projects[0].ProjectParameter.Storages.Where(p => p.StorageClass == StorageClass.DataRaw).FirstOrDefault().DatabaseFilePath;
+            DbStorageStructure_Storage storageDataMain = new DbStorageStructure_Storage()
+            {
+                Id = Guid.NewGuid(),
 
-            _dbStorage_Data_Context.DatabaseType = projects[0].ProjectParameter.Storages.Where(p => p.StorageClass == StorageClass.Data).FirstOrDefault().DatabaseType;
-            _dbStorage_DataRaw_Context.DatabaseType = projects[0].ProjectParameter.Storages.Where(p => p.StorageClass == StorageClass.DataRaw).FirstOrDefault().DatabaseType;
+                DatabaseType = DatabaseType.SQLite,
+                DatabaseFilePath = $"Data Source=\"{Directory.GetCurrentDirectory()}/DBStorageDataMain.db\"",
+                DatabaseConnectionString = string.Empty,
+
+                StorageType = StorageType.S3,
+                StorageClass = StorageClass.DataMain,
+                StorageTier = StorageTier.Hot,
+
+                StorageFilePath = string.Empty,
+                
+                StorageS3Endpoint = "s3-clu001.branch31.psgm.at",
+                StorageS3BucketName = string.Empty,                             // BucketName is Project Id
+                StorageS3AccessKey = "xVnwqfNWGqblg1dmA33j",
+                StorageS3SecretKey = "1Xq3G7az3QC3R0wKTBbwNHPNawhA16j1cx0n0a",
+                StorageS3Secure = false,
+                StorageS3Region = "eu-central-1",
+
+                Url = "https://s3-clu001.branch31.psgm.at:9000",
+                UrlPublic = "https://s3-clu001.psgm.at",
+
+                ReadOnlyMode = false,
+
+                // FK
+                //Project = null,
+                //ProjectId = Guid.Empty
+            };
+            _dbStorageStructure_Context.Storages.Add(storageDataMain);
+            _dbStorageStructure_Context.SaveChanges();
+
+            DbStorageStructure_Storage storageDataRaw = new DbStorageStructure_Storage()
+            {
+                Id = Guid.NewGuid(),
+                
+                DatabaseType = DatabaseType.SQLite,
+                DatabaseFilePath = $"Data Source=\"{Directory.GetCurrentDirectory()}/DBStorageDataRaw.db\"",
+                DatabaseConnectionString = string.Empty,
+
+                StorageType = StorageType.S3,
+                StorageClass = StorageClass.DataRaw,
+                StorageTier = StorageTier.Hot,
+
+                StorageFilePath = string.Empty,
+
+                StorageS3Endpoint = "s3-clu100.branch31.psgm.at",
+                StorageS3BucketName = string.Empty,                             // BucketName is Project Id
+                StorageS3AccessKey = "lXbKy82C7lIkNRRQXaoq",
+                StorageS3SecretKey = "iuVv7TMZA0Oaky7bgXE6mdejI9Xnu40KGMrFve",
+                StorageS3Secure = false,
+                StorageS3Region = "eu-central-1",
+
+                Url = "https://s3-clu001.branch31.psgm.at:9000",
+                UrlPublic = "https://s3-clu001.psgm.at",
+
+                ReadOnlyMode = false,
+
+                // FK
+                //Project = null,
+                //ProjectId = Guid.Empty
+            };
+            _dbStorageStructure_Context.Storages.Add(storageDataRaw);
+            _dbStorageStructure_Context.SaveChanges();
+
+            DbStorageStructure_Storage storageDataRawThumbnail = new DbStorageStructure_Storage()
+            {
+                Id = Guid.NewGuid(),
+
+                DatabaseType = DatabaseType.Undefined,
+                DatabaseFilePath = string.Empty,                                // Same as storageDataRaw
+                DatabaseConnectionString = string.Empty,
+
+                StorageType = StorageType.S3,
+                StorageClass = StorageClass.DataRawThumbnail,
+                StorageTier = StorageTier.Hot,
+
+                StorageFilePath = string.Empty,
+
+                StorageS3Endpoint = "s3-clu101.branch31.psgm.at",
+                StorageS3BucketName = string.Empty,                             // BucketName is Project Id
+                StorageS3AccessKey = "Mq5A3CCxUMcUxW9xP0Nw",
+                StorageS3SecretKey = "YCVcvjFidGNneQVPTJ0LUhDM1Nxj9Y5fD5RMCh",
+                StorageS3Secure = false,
+                StorageS3Region = "eu-central-1",
+
+                Url = "https://s3-clu003.branch31.psgm.at:9000",
+                UrlPublic = "https://s3-clu003.psgm.at",
+
+                ReadOnlyMode = false,
+
+                // FK
+                //Project = null,
+                //ProjectId = Guid.Empty
+            };
+            _dbStorageStructure_Context.Storages.Add(storageDataRawThumbnail);
+            _dbStorageStructure_Context.SaveChanges();
+
+            DbStorageStructure_Storage storageData = new DbStorageStructure_Storage()
+            {
+                Id = Guid.NewGuid(),
+
+                DatabaseType = DatabaseType.SQLite,
+                DatabaseFilePath = $"Data Source=\"{Directory.GetCurrentDirectory()}/DBStorageData.db\"",
+                DatabaseConnectionString = string.Empty,
+
+                StorageType = StorageType.S3,
+                StorageClass = StorageClass.Data,
+                StorageTier = StorageTier.Hot,
+
+                StorageFilePath = string.Empty,
+
+                StorageS3Endpoint = "s3-clu102.branch31.psgm.at",
+                StorageS3BucketName = string.Empty,                             // BucketName is Project Id
+                StorageS3AccessKey = "cIm3AkV6LpnR47v7vP68",
+                StorageS3SecretKey = "LcBxrCot4ekVhNXOQ5pF6cXakToEilbEmXpX3G",
+                StorageS3Secure = false,
+                StorageS3Region = "eu-central-1",
+
+                Url = "https://s3-clu002.branch31.psgm.at:9000",
+                UrlPublic = "https://s3-clu002.psgm.at",
+
+                ReadOnlyMode = false,
+
+                // FK
+                //Project = null,
+                //ProjectId = Guid.Empty
+            };
+            _dbStorageStructure_Context.Storages.Add(storageData);
+            _dbStorageStructure_Context.SaveChanges();
+
+            DbStorageStructure_Storage storageDataThumbnail = new DbStorageStructure_Storage()
+            {
+                Id = Guid.NewGuid(),
+
+                DatabaseType = DatabaseType.Undefined,
+                DatabaseFilePath = string.Empty,                                // Same as storageData
+                DatabaseConnectionString = string.Empty,
+
+                StorageType = StorageType.S3,
+                StorageClass = StorageClass.DataThumbnail,
+                StorageTier = StorageTier.Hot,
+
+                StorageFilePath = string.Empty,
+
+                StorageS3Endpoint = "s3-clu103.branch31.psgm.at",
+                StorageS3BucketName = string.Empty,                             // BucketName is Project Id
+                StorageS3AccessKey = "iPM6Iklm5dcyJVq9z3Vr",
+                StorageS3SecretKey = "jgn0MHMHgMg9MtldqVVCPuNU2ahOVDdQpvm4g9",
+                StorageS3Secure = false,
+                StorageS3Region = "eu-central-1",
+
+                Url = "https://s3-clu003.branch31.psgm.at:9000",
+                UrlPublic = "https://s3-clu003.psgm.at",
+
+                ReadOnlyMode = false,
+
+                // FK
+                //Project = null,
+                //ProjectId = Guid.Empty
+            };
+            _dbStorageStructure_Context.Storages.Add(storageDataThumbnail);
+            _dbStorageStructure_Context.SaveChanges();
+
+            DbStorageStructure_Project storageStructure_Project = new DbStorageStructure_Project()
+            {
+                Id = projects.FirstOrDefault().Id,
+
+                Storages = new List<DbStorageStructure_Storage>()
+                {
+                    storageDataMain,
+                    storageDataRaw,
+                    storageDataRawThumbnail,
+                    storageData,
+                    storageDataThumbnail
+                }
+            };
+            _dbStorageStructure_Context.Projects.Add(storageStructure_Project);
+            _dbStorageStructure_Context.SaveChanges();
+
+
+            _dbStorage_Data_Context.ConnectionStringSQLite = storageStructure_Project.Storages.Where(p => p.StorageClass == StorageClass.Data).FirstOrDefault().DatabaseFilePath;
+            _dbStorage_DataRaw_Context.ConnectionStringSQLite = storageStructure_Project.Storages.Where(p => p.StorageClass == StorageClass.DataRaw).FirstOrDefault().DatabaseFilePath;
+
+            _dbStorage_Data_Context.DatabaseType = storageStructure_Project.Storages.Where(p => p.StorageClass == StorageClass.Data).FirstOrDefault().DatabaseType;
+            _dbStorage_DataRaw_Context.DatabaseType = storageStructure_Project.Storages.Where(p => p.StorageClass == StorageClass.DataRaw).FirstOrDefault().DatabaseType;
 
             _dbStorage_Data_Context.Database.EnsureCreated();
             _dbStorage_DataRaw_Context.Database.EnsureCreated();
@@ -1469,11 +1608,9 @@ namespace PSGM.MultiTestApp1
         private void btnSetupStorageAndStorageDb_Click(object sender, RoutedEventArgs e)
         {
             DbMain_Project projects = _dbMain_Context.Projects.Where(p => p.MachinesExt.Contains(_machineId))
-                                                               .Include(p => p.ProjectParameter)
-                                                          .Include(p => p.Organization)
-                                                               .Include(p => p.Contributors)
-                                                               //.Include(p => p.Locations)
-                                                               .FirstOrDefault();
+                                                                .Include(p => p.Organization)
+                                                                .Include(p => p.Contributors)
+                                                                .FirstOrDefault();
 
             #region Add main directory (ProjectId) to DbStorage, DbStorageRaw & DbStorageThumbnails
             DbStorage_RootDirectory dbStorage_directoryMain = new DbStorage_RootDirectory()
@@ -1671,7 +1808,7 @@ namespace PSGM.MultiTestApp1
             _dbStorage_Data_Context.SaveChanges();
             _dbStorage_DataRaw_Context.SubDirectories.Add(dbStorage_subDirectory4);
             _dbStorage_DataRaw_Context.SaveChanges();
-            #endregion       
+            #endregion
         }
 
         private void btnDbReadInfo_Click(object sender, RoutedEventArgs e)
@@ -2469,6 +2606,7 @@ namespace PSGM.MultiTestApp1
             swProcessingTime.Stop();
 #endif
         }
+
     }
 }
 

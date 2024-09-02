@@ -48,10 +48,6 @@ namespace PSGM.Model.DbWorkflow.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("Id");
 
-                    b.Property<uint>("ApplyLevel")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("ApplyLevel");
-
                     b.Property<string>("Configuration")
                         .IsRequired()
                         .HasMaxLength(65536)
@@ -70,6 +66,14 @@ namespace PSGM.Model.DbWorkflow.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("Name");
 
+                    b.Property<int>("Permissions")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("Permissions");
+
+                    b.Property<uint>("WorkflowApplyLevel")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("WorkflowApplyLevel");
+
                     b.Property<uint>("WorkflowExecutionLevel")
                         .HasColumnType("INTEGER")
                         .HasColumnName("WorkflowExecutionLevel");
@@ -82,92 +86,102 @@ namespace PSGM.Model.DbWorkflow.Migrations
                         new
                         {
                             Id = new Guid("ef601faa-1bb5-4171-b907-60a2f1935eee"),
-                            ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Save object (depending on storage configuration in project parameters) to specified S3 storage or filesystem and add the file entity to the database...",
                             Name = "Save object to S3 storage or filesystem and add entity to database - V1.0.0",
-                            WorkflowExecutionLevel = 0u
+                            Permissions = 0,
+                            WorkflowApplyLevel = 10000u,
+                            WorkflowExecutionLevel = 90000u
                         },
                         new
                         {
                             Id = new Guid("f03093f8-6ea8-4bee-9875-30d1fc7975f3"),
-                            ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Grab image with specified camera ...",
                             Name = "Grab image - V1.0.0",
-                            WorkflowExecutionLevel = 0u
+                            Permissions = 0,
+                            WorkflowApplyLevel = 10000u,
+                            WorkflowExecutionLevel = 10000u
                         },
                         new
                         {
                             Id = new Guid("4d7723ce-5bcd-4f82-a921-f9621fa5c383"),
-                            ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Calculate HDR image with OpenCV (mergeMertens) ...",
                             Name = "Calculate HDR image - V1.0.0",
-                            WorkflowExecutionLevel = 0u
+                            Permissions = 0,
+                            WorkflowApplyLevel = 10000u,
+                            WorkflowExecutionLevel = 90000u
                         },
                         new
                         {
                             Id = new Guid("68299067-b79b-4120-98df-13a3e2232c88"),
-                            ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Calculate darktable image according to the sidecar file ...",
                             Name = "Calculate darktable image - V1.0.0",
-                            WorkflowExecutionLevel = 0u
+                            Permissions = 0,
+                            WorkflowApplyLevel = 10000u,
+                            WorkflowExecutionLevel = 90000u
                         },
                         new
                         {
                             Id = new Guid("c33c011d-229a-4c3d-af44-05db3a4c7af4"),
-                            ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Resize image to specified size...",
                             Name = "Resize image - V1.0.0",
-                            WorkflowExecutionLevel = 0u
+                            Permissions = 0,
+                            WorkflowApplyLevel = 10000u,
+                            WorkflowExecutionLevel = 90000u
                         },
                         new
                         {
                             Id = new Guid("c2dc5eed-f926-4615-882f-c8184c981d93"),
-                            ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Crop image to specified size...",
                             Name = "Crop image - V1.0.0",
-                            WorkflowExecutionLevel = 0u
+                            Permissions = 0,
+                            WorkflowApplyLevel = 10000u,
+                            WorkflowExecutionLevel = 90000u
                         },
                         new
                         {
                             Id = new Guid("0f10bb0b-f782-4e5b-a53b-c75f7c0403fb"),
-                            ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Rotate image ...",
                             Name = "Rotate image - V1.0.0",
-                            WorkflowExecutionLevel = 0u
+                            Permissions = 0,
+                            WorkflowApplyLevel = 10000u,
+                            WorkflowExecutionLevel = 90000u
                         },
                         new
                         {
                             Id = new Guid("fd184c53-2e4a-4384-8894-3639eef8ea66"),
-                            ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Rotate image ...",
                             Name = "Rotate image - V2.0.0",
-                            WorkflowExecutionLevel = 0u
+                            Permissions = 0,
+                            WorkflowApplyLevel = 10000u,
+                            WorkflowExecutionLevel = 90000u
                         },
                         new
                         {
                             Id = new Guid("38905667-b47b-4d23-b149-c500372f0eff"),
-                            ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Sharpen image ...",
                             Name = "Sharpen image - V1.0.0",
-                            WorkflowExecutionLevel = 0u
+                            Permissions = 0,
+                            WorkflowApplyLevel = 10000u,
+                            WorkflowExecutionLevel = 90000u
                         },
                         new
                         {
                             Id = new Guid("083c3d9a-0915-4506-bf60-b164d19071df"),
-                            ApplyLevel = 10000u,
                             Configuration = "",
                             Description = "Sharpen image ...",
                             Name = "Sharpen image - V2.0.0",
-                            WorkflowExecutionLevel = 0u
+                            Permissions = 0,
+                            WorkflowApplyLevel = 10000u,
+                            WorkflowExecutionLevel = 90000u
                         });
                 });
 
@@ -188,13 +202,13 @@ namespace PSGM.Model.DbWorkflow.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("Configuration");
 
-                    b.Property<int>("ExecutionPermissions")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("ExecutionPermissions");
-
                     b.Property<uint>("Order")
                         .HasColumnType("INTEGER")
                         .HasColumnName("Order");
+
+                    b.Property<int>("Permissions")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("Permissions");
 
                     b.Property<uint>("StorageClass")
                         .HasColumnType("INTEGER")
@@ -203,6 +217,10 @@ namespace PSGM.Model.DbWorkflow.Migrations
                     b.Property<uint>("StorageType")
                         .HasColumnType("INTEGER")
                         .HasColumnName("StorageType");
+
+                    b.Property<uint>("WorkflowExecutionLevel")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("WorkflowExecutionLevel");
 
                     b.Property<Guid>("WorkflowId")
                         .HasColumnType("TEXT");

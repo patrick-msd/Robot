@@ -22,7 +22,7 @@ namespace PSGM.Model.DbMain
         [Required]
         [Column("Permissions")]
         [Display(Name = "Permissions")]
-        public PermissionsType Permissions { get; set; } = PermissionsType.None;
+        public PermissionType Permissions { get; set; } = PermissionType.None;
 
         [Required]
         [Column("UserIdExt")]

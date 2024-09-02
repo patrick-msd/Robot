@@ -26,20 +26,25 @@ namespace PSGM.Model.DbWorkflow
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
-        [Column("Configuration")]
-        [Display(Name = "Configuration")]
-        [StringLength(65536, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string Configuration { get; set; } = string.Empty;
+        [Required]
+        [Column("Permissions")]
+        [Display(Name = "Permissions")]
+        public PermissionType Permissions { get; set; } = PermissionType.None;
 
         [Required]
-        [Column("ApplyLevel")]
-        [Display(Name = "ApplyLevel")]
-        public WorkflowApplyLevel ApplyLevel { get; set; } = WorkflowApplyLevel.Undefined;
+        [Column("WorkflowApplyLevel")]
+        [Display(Name = "WorkflowApplyLevel")]
+        public WorkflowApplyLevel WorkflowApplyLevel { get; set; } = WorkflowApplyLevel.Undefined;
 
         [Required]
         [Column("WorkflowExecutionLevel")]
         [Display(Name = "WorkflowExecutionLevel")]
-        public WorkflowExecutionLevel WorkflowExecutionLevel { get; set; } = WorkflowExecutionLevel.Undefined;        
+        public WorkflowExecutionLevel WorkflowExecutionLevel { get; set; } = WorkflowExecutionLevel.Undefined;
+
+        [Column("Configuration")]
+        [Display(Name = "Configuration")]
+        [StringLength(65536, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Configuration { get; set; } = string.Empty;
         #endregion
 
         #region Links

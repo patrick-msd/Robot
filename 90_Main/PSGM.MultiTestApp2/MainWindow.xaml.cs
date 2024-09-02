@@ -956,7 +956,7 @@ namespace PSGM.MultiTestApp1
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _gertraudZeindlId,
-                        Permissions = PermissionsType.Owner,
+                        Permissions = PermissionType.Owner,
 
                         // FK
                         //Project=null,
@@ -966,7 +966,7 @@ namespace PSGM.MultiTestApp1
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _christophHaidacherId,
-                        Permissions = PermissionsType.Admin,
+                        Permissions = PermissionType.Admin,
 
                         // FK
                         //Project=null,
@@ -1050,7 +1050,7 @@ namespace PSGM.MultiTestApp1
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _patrickSchoeneggerId,
-                        Permissions = PermissionsType.Owner,
+                        Permissions = PermissionType.Owner,
 
                         // FK
                         //Project=null,
@@ -1061,7 +1061,7 @@ namespace PSGM.MultiTestApp1
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _guenterMuehlbergerId,
-                        Permissions = PermissionsType.Admin,
+                        Permissions = PermissionType.Admin,
 
                         // FK
                         //Project=null,
@@ -1327,7 +1327,7 @@ namespace PSGM.MultiTestApp1
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _gertraudZeindlId,
-                        Permissions = PermissionsType.Owner,
+                        Permissions = PermissionType.Owner,
 
                         // FK
                         //Project=null,
@@ -1337,7 +1337,7 @@ namespace PSGM.MultiTestApp1
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _christophHaidacherId,
-                        Permissions = PermissionsType.Admin,
+                        Permissions = PermissionType.Admin,
 
                         // FK
                         //Project=null,
@@ -1347,7 +1347,7 @@ namespace PSGM.MultiTestApp1
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _patrickSchoeneggerId,
-                        Permissions = PermissionsType.ServiceProviderInfrastructure,
+                        Permissions = PermissionType.ServiceProviderInfrastructure,
 
                         // FK
                         //Project=null,
@@ -1358,7 +1358,7 @@ namespace PSGM.MultiTestApp1
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _guenterMuehlbergerId,
-                        Permissions = PermissionsType.ServiceProviderInfrastructure,
+                        Permissions = PermissionType.ServiceProviderInfrastructure,
 
                         // FK
                         //Project=null,

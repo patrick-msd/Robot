@@ -65,8 +65,8 @@ namespace PSGM.Model.DbStorageStructure
         public DbSet<DbStorageStructure_Project> Projects { get; set; }
         public DbSet<DbStorageStructure_Project_AuditLog> Project_AuditLog { get; set; }
 
-        public DbSet<DbStorageStructure_ProjectStorage> ProjectStorages { get; set; }
-        public DbSet<DbStorageStructure_ProjectStorage_AuditLog> ProjectStorage_AuditLog { get; set; }
+        public DbSet<DbStorageStructure_Storage> Storages { get; set; }
+        public DbSet<DbStorageStructure_Storage_AuditLog> Storage_AuditLog { get; set; }
         #endregion
 
         #region Overrides
@@ -156,8 +156,8 @@ namespace PSGM.Model.DbStorageStructure
                     case DbStorageStructure_Project_AuditLog project_AuditLog:
                         break;
 
-                    case DbStorageStructure_ProjectStorage projectStorage:
-                        ProjectStorage_AuditLog.Add(new DbStorageStructure_ProjectStorage_AuditLog
+                    case DbStorageStructure_Storage projectStorage:
+                        Storage_AuditLog.Add(new DbStorageStructure_Storage_AuditLog
                         {
                             Id = new Guid(),
 
@@ -170,7 +170,7 @@ namespace PSGM.Model.DbStorageStructure
                         });
                         break;
 
-                    case DbStorageStructure_ProjectStorage_AuditLog projectStorage_AuditLog:
+                    case DbStorageStructure_Storage_AuditLog projectStorage_AuditLog:
                         break;
 
                     default:

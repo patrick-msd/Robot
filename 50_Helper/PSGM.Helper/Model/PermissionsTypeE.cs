@@ -1,6 +1,6 @@
 ﻿namespace PSGM.Helper
 {
-    public enum PermissionsType : int
+    public enum PermissionType : int
     {
         None = 0,
         Inherited = 1,

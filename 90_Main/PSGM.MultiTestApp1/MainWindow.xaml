@@ -10,14 +10,15 @@
     <Grid>
         <GroupBox HorizontalAlignment="Left" Height="600" Width="280" Header="Database" Margin="10,10,0,0" VerticalAlignment="Top">
             <StackPanel>
-                <Button x:Name="btnDbCreateUser" Content="Create User" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnDbCreateUser_Click"/>
+                <Button x:Name="btnDbCreateConfigFile" Content="Create ConfigFile" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnDbCreateConfigFile_Click"/>
+                <Button x:Name="btnDbCreateUser" Content="Create User" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,30,0,0" VerticalAlignment="Top" Click="btnDbCreateUser_Click"/>
                 <Button x:Name="btnDbCreateMachine" Content="Create Machine" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnDbCreateMachine_Click"/>
                 <Button x:Name="btnDbCreateWorkflow" Content="Create Workflow" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" Click="btnDbCreateWorkflow_Click"/>
                 <Button x:Name="btnDbCreateOrganizationAndProject" Content="Create Organization and Project" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnDbCreateOrganizationAndProject_Click"/>
-                <Button x:Name="btnConnectToStorageDatabase" Content="Connect to storage database" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnConnectToStorageDatabase_Click"/>
+                <Button x:Name="btnConnectToStorageDatabase" Content="Create Storage Database &#xA;Connect to storage" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnConnectToStorageDatabase_Click"/>
                 <Button x:Name="btnDbCreateStorage" Content="Create Storage" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnSetupStorageAndStorageDb_Click"/>
 
-                <Button x:Name="btnDbReadInfo" Content="Read Organization and Project from DB" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,50,0,0" VerticalAlignment="Top" Click="btnDbReadInfo_Click"/>
+                <Button x:Name="btnDbReadInfo" Content="Read Organization and Project from DB" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,30,0,0" VerticalAlignment="Top" Click="btnDbReadInfo_Click"/>
                 <ComboBox x:Name="cmbProjects" Width="250" Margin="1,10,0,0" VerticalAlignment="Top"/>
                 <ComboBox x:Name="cmbOrganization" Width="250" Margin="1,10,0,0" VerticalAlignment="Top"/>
                 <ComboBox x:Name="cmbDirectory" Width="250" Margin="1,10,0,0" VerticalAlignment="Top"/>

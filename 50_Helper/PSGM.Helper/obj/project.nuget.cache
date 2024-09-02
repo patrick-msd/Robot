@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HTdvEJH6c9w=",
+  "dgSpecHash": "9rvshT6DqwY=",
   "success": true,
   "projectFilePath": "C:\\Git\\MSD\\Robot\\50_Helper\\PSGM.Helper\\PSGM.Helper.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,7 @@
     "C:\\Users\\msdit\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\minio\\6.0.3\\minio.6.0.3.nupkg.sha512",
+    "C:\\Users\\msdit\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\opencvsharp4\\4.10.0.20240616\\opencvsharp4.4.10.0.20240616.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\serilog\\4.0.1\\serilog.4.0.1.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\system.codedom\\8.0.0\\system.codedom.8.0.0.nupkg.sha512",

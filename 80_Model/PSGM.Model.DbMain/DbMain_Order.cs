@@ -41,33 +41,37 @@ namespace PSGM.Model.DbMain
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
-        [Column("OderStatus")]
-        [Display(Name = "OderStatus")]
+        [Column("OrderIsDirectory")]
+        [Display(Name = "OrderIsDirectory")]
+        public bool OrderIsDirectory { get; set; } = false;
+
+        [Column("Status")]
+        [Display(Name = "Status")]
         [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public OrderType OderStatus { get; set; } = OrderType.Undefined;
+        public OrderType Status { get; set; } = OrderType.Undefined;
 
-        [Column("OrderDocumentObjectName")]
-        [Display(Name = "OrderDocumentObjectName")]
+        [Column("DocumentObjectName")]
+        [Display(Name = "DocumentObjectName")]
         [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string OrderDocumentObjectName { get; set; } = string.Empty;
+        public string DocumentObjectName { get; set; } = string.Empty;
 
-        [Column("OderProcessingStartedDateTime")]
-        [Display(Name = "OderProcessingStartedDateTime")]
+        [Column("ProcessingStartedDateTime")]
+        [Display(Name = "ProcessingStartedDateTime")]
         [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public DateTime OderProcessingStartedDateTime { get; set; } = DateTime.MinValue;
+        public DateTime ProcessingStartedDateTime { get; set; } = DateTime.MinValue;
 
-        [Column("OderProcessingStartedUserIdExt")]
-        [Display(Name = "OderProcessingStartedUserIdExt")]
-        public Guid OderProcessingStartedUserIdExt { get; set; } = Guid.Empty;
+        [Column("ProcessingStartedUserIdExt")]
+        [Display(Name = "ProcessingStartedUserIdExt")]
+        public Guid ProcessingStartedUserIdExt { get; set; } = Guid.Empty;
 
-        [Column("OderProcessingFinishedDateTime")]
-        [Display(Name = "OderProcessingFinishedDateTime")]
+        [Column("ProcessingFinishedDateTime")]
+        [Display(Name = "ProcessingFinishedDateTime")]
         [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public DateTime OderProcessingFinishedDateTime { get; set; } = DateTime.MinValue;
+        public DateTime ProcessingFinishedDateTime { get; set; } = DateTime.MinValue;
 
-        [Column("OderProcessingFinishedUserIdExt")]
-        [Display(Name = "OderProcessingFinishedUserIdExt")]
-        public Guid OderProcessingFinishedUserIdExt { get; set; } = Guid.Empty;
+        [Column("ProcessingFinishedUserIdExt")]
+        [Display(Name = "ProcessingFinishedUserIdExt")]
+        public Guid ProcessingFinishedUserIdExt { get; set; } = Guid.Empty;
         
         #region Audit details for faster qrcode audit information
         [Required]
@@ -101,6 +105,12 @@ namespace PSGM.Model.DbMain
 
         [InverseProperty("Order")]
         public virtual DbMain_OrderTemplate? CreatedWithOrderTemplate { get; set; }
+
+        [InverseProperty("Order")]
+        public virtual ICollection<DbMain_PostDirectory>? PostDirectories { get; set; }
+
+        [InverseProperty("Order")]
+        public virtual ICollection<DbMain_PreDirectory>? PreDirectories { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)

@@ -16,7 +16,7 @@ namespace PSGM.Model.DbStorageStructure
 
         #region Links
         [InverseProperty("Project")]
-        public virtual ICollection<DbStorageStructure_ProjectStorage>? Storage { get; set; }
+        public virtual ICollection<DbStorageStructure_Storage>? Storages { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)

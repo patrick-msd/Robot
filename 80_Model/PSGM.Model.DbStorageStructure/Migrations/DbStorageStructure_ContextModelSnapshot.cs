@@ -29,7 +29,47 @@ namespace PSGM.Model.DbStorageStructure.Migrations
                     b.ToTable("Project");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorageStructure.DbStorageStructure_ProjectStorage", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorageStructure.DbStorageStructure_Project_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Project_AuditLog");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorageStructure.DbStorageStructure_Storage", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -128,10 +168,10 @@ namespace PSGM.Model.DbStorageStructure.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("ProjectParameterStorage");
+                    b.ToTable("Storage");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorageStructure.DbStorageStructure_ProjectStorage_AuditLog", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorageStructure.DbStorageStructure_Storage_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -160,53 +200,13 @@ namespace PSGM.Model.DbStorageStructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProjectParameterStorage_AuditLog");
+                    b.ToTable("Storage_AuditLog");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorageStructure.DbStorageStructure_Project_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Project_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorageStructure.DbStorageStructure_ProjectStorage", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorageStructure.DbStorageStructure_Storage", b =>
                 {
                     b.HasOne("PSGM.Model.DbStorageStructure.DbStorageStructure_Project", "Project")
-                        .WithMany("Storage")
+                        .WithMany("Storages")
                         .HasForeignKey("ProjectId");
 
                     b.Navigation("Project");
@@ -214,7 +214,7 @@ namespace PSGM.Model.DbStorageStructure.Migrations
 
             modelBuilder.Entity("PSGM.Model.DbStorageStructure.DbStorageStructure_Project", b =>
                 {
-                    b.Navigation("Storage");
+                    b.Navigation("Storages");
                 });
 #pragma warning restore 612, 618
         }

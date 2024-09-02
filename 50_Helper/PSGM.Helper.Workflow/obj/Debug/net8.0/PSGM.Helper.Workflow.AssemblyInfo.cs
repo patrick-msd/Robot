@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PSGM.Helper.Workflow")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+980c5f67b47932e57a52275df392cc80029d5ec8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4f78039fa8268cfdd6ab723967889334aa700d7")]
 [assembly: System.Reflection.AssemblyProductAttribute("PSGM.Helper.Workflow")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PSGM.Helper.Workflow")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

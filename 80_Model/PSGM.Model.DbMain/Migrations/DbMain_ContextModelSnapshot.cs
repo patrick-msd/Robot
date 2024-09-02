@@ -401,6 +401,12 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("Description");
 
+                    b.Property<string>("DocumentObjectName")
+                        .IsRequired()
+                        .HasMaxLength(1023)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("DocumentObjectName");
+
                     b.Property<Guid>("ExternalContactUserIdExt")
                         .HasColumnType("TEXT")
                         .HasColumnName("ExternalContactUserIdExt");
@@ -437,37 +443,35 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("Name");
 
-                    b.Property<DateTime>("OderProcessingFinishedDateTime")
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("OderProcessingFinishedDateTime");
-
-                    b.Property<Guid>("OderProcessingFinishedUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("OderProcessingFinishedUserIdExt");
-
-                    b.Property<DateTime>("OderProcessingStartedDateTime")
-                        .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("OderProcessingStartedDateTime");
-
-                    b.Property<Guid>("OderProcessingStartedUserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("OderProcessingStartedUserIdExt");
-
-                    b.Property<uint>("OderStatus")
-                        .HasMaxLength(1023)
+                    b.Property<bool>("OrderIsDirectory")
                         .HasColumnType("INTEGER")
-                        .HasColumnName("OderStatus");
+                        .HasColumnName("OrderIsDirectory");
 
-                    b.Property<string>("OrderDocumentObjectName")
-                        .IsRequired()
+                    b.Property<DateTime>("ProcessingFinishedDateTime")
                         .HasMaxLength(1023)
                         .HasColumnType("TEXT")
-                        .HasColumnName("OrderDocumentObjectName");
+                        .HasColumnName("ProcessingFinishedDateTime");
+
+                    b.Property<Guid>("ProcessingFinishedUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ProcessingFinishedUserIdExt");
+
+                    b.Property<DateTime>("ProcessingStartedDateTime")
+                        .HasMaxLength(1023)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ProcessingStartedDateTime");
+
+                    b.Property<Guid>("ProcessingStartedUserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ProcessingStartedUserIdExt");
 
                     b.Property<Guid?>("ProjectId")
                         .HasColumnType("TEXT");
+
+                    b.Property<uint>("Status")
+                        .HasMaxLength(1023)
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("Status");
 
                     b.HasKey("Id");
 
@@ -986,6 +990,278 @@ namespace PSGM.Model.DbMain.Migrations
                     b.ToTable("Organization_AuditLog");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_PostDirectory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("BackupsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("BackupsExtString");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
+
+                    b.Property<long>("DirectorySize")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("DirectorySize");
+
+                    b.Property<bool>("DocumentType")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("DocumentType");
+
+                    b.Property<string>("JobsIdExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("JobsIdExtString");
+
+                    b.Property<string>("LastModificationChanges")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("LastModificationChanges");
+
+                    b.Property<bool>("Locked")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("Locked");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Name");
+
+                    b.Property<long>("Objects")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("Objects");
+
+                    b.Property<Guid?>("OrderId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("ParentSubDirectoryId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Suffix")
+                        .IsRequired()
+                        .HasMaxLength(127)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Suffix");
+
+                    b.Property<string>("WorkflowItemsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("WorkflowItemExtString");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ParentSubDirectoryId");
+
+                    b.ToTable("PostDirectory");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_PostDirectory_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PostDirectory_AuditLog");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_PreDirectory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("BackupsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("BackupsExtString");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
+
+                    b.Property<long>("DirectorySize")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("DirectorySize");
+
+                    b.Property<bool>("DocumentType")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("DocumentType");
+
+                    b.Property<string>("JobsIdExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("JobsIdExtString");
+
+                    b.Property<string>("LastModificationChanges")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("LastModificationChanges");
+
+                    b.Property<bool>("Locked")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("Locked");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Name");
+
+                    b.Property<long>("Objects")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("Objects");
+
+                    b.Property<Guid?>("OrderId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("ParentSubDirectoryId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Suffix")
+                        .IsRequired()
+                        .HasMaxLength(127)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Suffix");
+
+                    b.Property<string>("WorkflowItemsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("WorkflowItemExtString");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ParentSubDirectoryId");
+
+                    b.ToTable("PreDirectory");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_PreDirectory_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PreDirectory_AuditLog");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1435,6 +1711,36 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Organization");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_PostDirectory", b =>
+                {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Order", "Order")
+                        .WithMany("PostDirectories")
+                        .HasForeignKey("OrderId");
+
+                    b.HasOne("PSGM.Model.DbMain.DbMain_PostDirectory", "ParentSubDirectory")
+                        .WithMany("SubDirectories")
+                        .HasForeignKey("ParentSubDirectoryId");
+
+                    b.Navigation("Order");
+
+                    b.Navigation("ParentSubDirectory");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_PreDirectory", b =>
+                {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Order", "Order")
+                        .WithMany("PreDirectories")
+                        .HasForeignKey("OrderId");
+
+                    b.HasOne("PSGM.Model.DbMain.DbMain_PreDirectory", "ParentSubDirectory")
+                        .WithMany("SubDirectories")
+                        .HasForeignKey("ParentSubDirectoryId");
+
+                    b.Navigation("Order");
+
+                    b.Navigation("ParentSubDirectory");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectAuthorization_User", b =>
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
@@ -1481,6 +1787,10 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("CreatedWithOrderTemplate");
 
                     b.Navigation("DocumentTypes");
+
+                    b.Navigation("PostDirectories");
+
+                    b.Navigation("PreDirectories");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization", b =>
@@ -1496,6 +1806,16 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("NotificationUser");
 
                     b.Navigation("NotificationUserGroup");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_PostDirectory", b =>
+                {
+                    b.Navigation("SubDirectories");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_PreDirectory", b =>
+                {
+                    b.Navigation("SubDirectories");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project", b =>

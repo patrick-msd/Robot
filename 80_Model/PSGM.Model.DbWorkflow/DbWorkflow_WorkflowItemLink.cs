@@ -35,15 +35,20 @@ namespace PSGM.Model.DbWorkflow
         [Display(Name = "StorageClass")]
         public StorageClass StorageClass { get; set; } = StorageClass.Unknown;
 
+        [Required]
+        [Column("Permissions")]
+        [Display(Name = "Permissions")]
+        public PermissionType Permissions { get; set; } = PermissionType.None;
+
+        [Required]
+        [Column("WorkflowExecutionLevel")]
+        [Display(Name = "WorkflowExecutionLevel")]
+        public WorkflowExecutionLevel WorkflowExecutionLevel { get; set; } = WorkflowExecutionLevel.Undefined;
+
         [Column("Configuration")]
         [Display(Name = "Configuration")]
         [StringLength(65536, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Configuration { get; set; } = string.Empty;
-
-        [Required]
-        [Column("ExecutionPermissions")]
-        [Display(Name = "ExecutionPermissions")]
-        public PermissionsType ExecutionPermissions { get; set; } = PermissionsType.None;
         #endregion
 
         #region Links

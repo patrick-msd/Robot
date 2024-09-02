@@ -21,5 +21,7 @@
         Automatically = 10000,
 
         Manually = 20000,
+
+        ManuallyAndAutomatically = 90000,
     }
 }
