@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		DBinitialization.ps1 = DBinitialization.ps1
+		DBinitialization_DbMain.ps1 = DBinitialization_DbMain.ps1
+		DBinitialization_DbStorage.ps1 = DBinitialization_DbStorage.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RC.Scan-SingleSolution", "90_Main\Scan-SingleSolution\RC.Scan-SingleSolution.csproj", "{D52DAEB5-14B9-4044-BE52-B03394E05B7A}"

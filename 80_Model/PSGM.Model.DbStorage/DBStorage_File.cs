@@ -159,7 +159,7 @@ namespace PSGM.Model.DbStorage
 
         #region Links
         [InverseProperty("File")]
-        public virtual ICollection<DbStorage_QrCode>? Metadata { get; set; }
+        public virtual ICollection<DbStorage_FileMetadata>? Metadata { get; set; }
 
         [InverseProperty("File")]
         public virtual DbStorage_QrCode? QrCode { get; set; }

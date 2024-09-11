@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PSGM.Model.DbMain;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbStorage
@@ -51,6 +52,17 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Links
+        [InverseProperty("FileMetadata")]
+        public virtual ICollection<DbStorage_FileMetadataAuthorization_User>? AuthorizationUsers { get; set; }
+
+        [InverseProperty("FileMetadata")]
+        public virtual ICollection<DbStorage_FileMetadataAuthorization_UserGroup>? AuthorizationUserGroups { get; set; }
+
+        [InverseProperty("FileMetadata")]
+        public virtual ICollection<DbStorage_FileMetadataNotification_User>? NotificationUsers { get; set; }
+
+        [InverseProperty("FileMetadata")]
+        public virtual ICollection<DbStorage_FileMetadataNotification_UserGroup>? NotificationUserGroups { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)

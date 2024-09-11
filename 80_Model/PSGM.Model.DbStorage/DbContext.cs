@@ -72,6 +72,21 @@ namespace PSGM.Model.DbStorage
         public DbSet<DbStorage_FileAuthorization_UserGroup> FileAuthorization_UserGroup { get; set; }
         public DbSet<DbStorage_FileAuthorization_UserGroup_AuditLog> FileAuthorization_UserGroup_AuditLog { get; set; }
 
+        public DbSet<DbStorage_FileMetadata> FileMetadata { get; set; }
+        public DbSet<DbStorage_FileMetadata_AuditLog> FileMetadata_AuditLog { get; set; }
+
+        public DbSet<DbStorage_FileMetadataAuthorization_User> FileMetadataAuthorization_User { get; set; }
+        public DbSet<DbStorage_FileMetadataAuthorization_User_AuditLog> FileMetadataAuthorization_User_AuditLog { get; set; }
+
+        public DbSet<DbStorage_FileMetadataAuthorization_UserGroup> FileMetadataAuthorization_UserGroup { get; set; }
+        public DbSet<DbStorage_FileMetadataAuthorization_UserGroup_AuditLog> FileMetadataAuthorization_UserGroup_AuditLog { get; set; }
+
+        public DbSet<DbStorage_FileMetadataNotification_User> FileMetadataNotification_User { get; set; }
+        public DbSet<DbStorage_FileMetadataNotification_User_AuditLog> FileMetadataNotification_User_AuditLog { get; set; }
+
+        public DbSet<DbStorage_FileMetadataNotification_UserGroup> FileMetadataNotification_UserGroup { get; set; }
+        public DbSet<DbStorage_FileMetadataNotification_UserGroup_AuditLog> FileMetadataNotification_UserGroup_AuditLog { get; set; }
+
         public DbSet<DbStorage_FileNotification_User> FileNotification_User { get; set; }
         public DbSet<DbStorage_FileNotification_User_AuditLog> FileNotification_User_AuditLog { get; set; }
 
@@ -169,6 +184,13 @@ namespace PSGM.Model.DbStorage
             //	clusters.Add(new Models.ModelCluster() { ClusterId = new Guid("9235B29B-9FE7-41AD-BE44-AA7A56DF9F6E"), Name = "clu0002", Comment = "Productiv Cluster 2", SiteId = new Guid("9F0420FD-87E0-4C7B-999A-091D0DBDC3AE"), TenantId = new Guid("C4FE4119-D5DB-42B3-B937-DCBF497A5BCB") });
             //	clusters.Add(new Models.ModelCluster() { ClusterId = new Guid("7758D761-22F6-4683-89D0-70F065507C9C"), Name = "clu0003", Comment = "Test Cluster 1", SiteId = new Guid("9F0420FD-87E0-4C7B-999A-091D0DBDC3AE"), TenantId = new Guid("C4FE4119-D5DB-42B3-B937-DCBF497A5BCB") });
             //	modelBuilder.Entity<Models.ModelCluster>().HasData(clusters);
+
+
+            //modelBuilder.Entity<Bestellung>()
+            //            .HasIndex(b => new { b.KundeId, b.Bestelldatum })
+            //            .HasDatabaseName("IX_Bestellungen_KundeId_Bestelldatum");
+
+
         }
 
         public override int SaveChanges()
@@ -213,14 +235,14 @@ namespace PSGM.Model.DbStorage
 
                             file.CreatedDateTimeAutoFill = DateTime.UtcNow;
                             file.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
-                            file.LastModificationChanges = JsonConvert.SerializeObject(entry.CurrentValues.ToObject());
+                            file.LastModificationChangesAutoFill = JsonConvert.SerializeObject(entry.CurrentValues.ToObject());
 
                         }
                         else if (entry.State == EntityState.Modified)
                         {
                             file.ModifiedDateTimeAutoFill = DateTime.UtcNow;
                             file.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
-                            file.LastModificationChanges = JsonConvert.SerializeObject(entry.CurrentValues.ToObject());
+                            file.LastModificationChangesAutoFill = JsonConvert.SerializeObject(entry.CurrentValues.ToObject());
                         }
                         else if (entry.State == EntityState.Deleted)
                         {
@@ -278,6 +300,25 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_FileAuthorization_UserGroup_AuditLog fileAuthorization_UserGroup_AuditLog:
+                        break;
+
+                    case DbStorage_FileMetadata fileMetadata:
+                        FileMetadata_AuditLog.Add(new DbStorage_FileMetadata_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = fileMetadata.Id,
+                            //TableName = entry.Metadata.GetTableName(),
+                            //EntityName = fileMetadata.GetType().Name,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_FileMetadata_AuditLog fileMetadata_AuditLog:
                         break;
 
                     case DbStorage_FileNotification_User fileNotification_User:
