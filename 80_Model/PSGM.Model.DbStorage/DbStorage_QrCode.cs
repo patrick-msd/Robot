@@ -26,27 +26,27 @@ namespace PSGM.Model.DbStorage
 
         #region Audit details for faster qrcode audit information
         [Required]
-        [Column("CreatedDateTime")]
-        [Display(Name = "CreatedDateTime")]
-        public DateTime CreatedDateTime { get; set; } = DateTime.MinValue;
+        [Column("CreatedDateTimeAutoFill")]
+        [Display(Name = "CreatedDateTimeAutoFill")]
+        public DateTime CreatedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
         [Required]
-        [Column("CreatedByUserIdExt")]
-        [Display(Name = "CreatedByUserIdExt")]
-        public Guid CreatedByUserIdExt { get; set; } = Guid.Empty;
+        [Column("CreatedByUserIdExtAutoFill")]
+        [Display(Name = "CreatedByUserIdExtAutoFill")]
+        public Guid CreatedByUserIdExtAutoFill { get; set; } = Guid.Empty;
 
-        [Column("ModifiedDateTime")]
-        [Display(Name = "ModifiedDateTime")]
-        public DateTime ModifiedDateTime { get; set; } = DateTime.MinValue;
+        [Column("ModifiedDateTimeAutoFill")]
+        [Display(Name = "ModifiedDateTimeAutoFill")]
+        public DateTime ModifiedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
-        [Column("ModifiedByUserIdExt")]
-        [Display(Name = "ModifiedByUserIdExt")]
-        public Guid ModifiedByUserIdExt { get; set; } = Guid.Empty;
+        [Column("ModifiedByUserIdExtAutoFill")]
+        [Display(Name = "ModifiedByUserIdExtAutoFill")]
+        public Guid ModifiedByUserIdExtAutoFill { get; set; } = Guid.Empty;
 
-        [Column("LastChanges")]
-        [Display(Name = "LastChanges")]
+        [Column("LastModificationChangesAutoFill")]
+        [Display(Name = "LastModificationChangesAutoFill")]
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string LastChanges { get; set; } = string.Empty;
+        public string LastModificationChangesAutoFill { get; set; } = string.Empty;
         #endregion
         #endregion
 

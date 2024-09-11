@@ -17,6 +17,46 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "Id")]
         public Guid Id { get; set; }
 
+        [Column("ExtId1")]
+        [Display(Name = "ExtId1")]
+        public string ExtId1 { get; set; } = string.Empty;
+
+        [Column("ExtId2")]
+        [Display(Name = "ExtId2")]
+        public string ExtId2 { get; set; } = string.Empty;
+
+        [Column("ExtId3")]
+        [Display(Name = "ExtId3")]
+        public string ExtId3 { get; set; } = string.Empty;
+
+        [Column("ExtId4")]
+        [Display(Name = "ExtId4")]
+        public string ExtId4 { get; set; } = string.Empty;
+
+        [Column("ExtId5")]
+        [Display(Name = "ExtId5")]
+        public string ExtId5 { get; set; } = string.Empty;
+
+        [Column("ExtId6")]
+        [Display(Name = "ExtId6")]
+        public string ExtId6 { get; set; } = string.Empty;
+
+        [Column("ExtId7")]
+        [Display(Name = "ExtId7")]
+        public string ExtId7 { get; set; } = string.Empty;
+
+        [Column("ExtId8")]
+        [Display(Name = "ExtId8")]
+        public string ExtId8 { get; set; } = string.Empty;
+
+        [Column("ExtId9")]
+        [Display(Name = "ExtId9")]
+        public string ExtId9 { get; set; } = string.Empty;
+
+        [Column("ExtId10")]
+        [Display(Name = "ExtId10")]
+        public string ExtId10 { get; set; } = string.Empty;
+
         [Column("Suffix")]
         [Display(Name = "Suffix")]
         [StringLength(127, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
@@ -38,59 +78,15 @@ namespace PSGM.Model.DbStorage
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
-        //[Required]
-        //[Column("StorageType")]
-        //[Display(Name = "StorageType")]
-        //public StorageType StorageType { get; set; } = StorageType.Unknown;
-
-        //[Column("StoragePath")]
-        //[Display(Name = "StoragePath")]
-        //[StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StoragePath { get; set; } = string.Empty;
-
-        //[Column("StorageUrl")]
-        //[Display(Name = "StorageUrl")]
-        //[StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageUrl { get; set; } = string.Empty;
-
-        //[Column("StorageUrlPublic")]
-        //[Display(Name = "StorageUrlPublic")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageUrlPublic { get; set; } = string.Empty;
-
-        //[Column("StorageEndpoint")]
-        //[Display(Name = "StorageEndpoint")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageEndpoint { get; set; } = string.Empty;
-
-        //[Column("StorageBucketName")]
-        //[Display(Name = "StorageBucketName")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageBucketName { get; set; } = string.Empty;
-
-        //[Column("StorageAccessKey")]
-        //[Display(Name = "StorageAccessKey")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageAccessKey { get; set; } = string.Empty;
-
-        //[Column("StorageSecretKey")]
-        //[Display(Name = "StorageSecretKey")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageSecretKey { get; set; } = string.Empty;
-
-        //[Column("StorageSecure")]
-        //[Display(Name = "StorageSecure")]
-        //public bool StorageSecure { get; set; } = true;
-
-        //[Column("StorageLocation")]
-        //[Display(Name = "StorageLocation")]
-        //[StringLength(256, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageLocation { get; set; } = string.Empty;
-
         [Column("StorageObjectName")]
         [Display(Name = "StorageObjectName")]
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string StorageObjectName { get; set; } = string.Empty;
+
+        [Column("StorageObjectUrl")]
+        [Display(Name = "StorageObjectUrl")]
+        [StringLength(4096, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string StorageObjectUrl { get; set; } = string.Empty;
 
         [Column("StorageObjectUrlPublic")]
         [Display(Name = "StorageObjectUrlPublic")]
@@ -105,9 +101,6 @@ namespace PSGM.Model.DbStorage
         [Required]
         [Column("ObjectSize")]
         [Display(Name = "ObjectSize")]
-        /// <summary>
-        /// File size in bytes
-        /// </summary>
         public long ObjectSize { get; set; } = 0;
 
         [Column("ObjectMetadataString")]
@@ -133,16 +126,6 @@ namespace PSGM.Model.DbStorage
         [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string WorkflowItemsExtString { get; private set; } = string.Empty;
 
-        //[Column("AuthorizedUsersExtString")]
-        //[Display(Name = "AuthorizedUsersExtString")]
-        //[StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string AuthorizedUsersExtString { get; private set; } = string.Empty;
-
-        //[Column("AuthorizedUserGroupsExtString")]
-        //[Display(Name = "AuthorizedUserGroupsExtString")]
-        //[StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string AuthorizedUserGroupsExtString { get; private set; } = string.Empty;
-
         [Column("BackupsExtString")]
         [Display(Name = "BackupsExtString")]
         [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
@@ -167,28 +150,31 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "ModifiedByUserIdExtAutoFill")]
         public Guid ModifiedByUserIdExtAutoFill { get; set; } = Guid.Empty;
 
-        [Column("LastModificationChanges")]
-        [Display(Name = "LastModificationChanges")]
+        [Column("LastModificationChangesAutoFill")]
+        [Display(Name = "LastModificationChangesAutoFill")]
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string LastModificationChanges { get; set; } = string.Empty;
+        public string LastModificationChangesAutoFill { get; set; } = string.Empty;
         #endregion
         #endregion
 
         #region Links
         [InverseProperty("File")]
+        public virtual ICollection<DbStorage_QrCode>? Metadata { get; set; }
+
+        [InverseProperty("File")]
         public virtual DbStorage_QrCode? QrCode { get; set; }
 
         [InverseProperty("File")]
-        public virtual ICollection<DbStorage_FileAuthorization_User>? AuthorizationUser { get; set; }
+        public virtual ICollection<DbStorage_FileAuthorization_User>? AuthorizationUsers { get; set; }
 
         [InverseProperty("File")]
-        public virtual ICollection<DbStorage_FileAuthorization_UserGroup>? AuthorizationUserGroup { get; set; }
+        public virtual ICollection<DbStorage_FileAuthorization_UserGroup>? AuthorizationUserGroups { get; set; }
 
         [InverseProperty("File")]
-        public virtual ICollection<DbStorage_FileNotification_User>? NotificationUser { get; set; }
+        public virtual ICollection<DbStorage_FileNotification_User>? NotificationUsers { get; set; }
 
         [InverseProperty("File")]
-        public virtual ICollection<DbStorage_FileNotification_UserGroup>? NotificationUserGroup { get; set; }
+        public virtual ICollection<DbStorage_FileNotification_UserGroup>? NotificationUserGroups { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
