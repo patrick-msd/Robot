@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PSGM.Model.DbStorage;
 
 #nullable disable
@@ -15,1326 +16,203 @@ namespace PSGM.Model.DbStorage.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileAuthorization_User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<Guid?>("FileId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Permissions")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Permissions");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FileId");
-
-                    b.ToTable("FileAuthorization_User");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileAuthorization_UserGroup", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<Guid?>("FileId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Permissions")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Permissions");
-
-                    b.Property<Guid>("UserGroupIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserGroupIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FileId");
-
-                    b.ToTable("FileAuthorization_UserGroup");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileAuthorization_UserGroup_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FileAuthorization_UserGroup_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileAuthorization_User_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FileAuthorization_User_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileMetadataAuthorization_User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<Guid?>("FileMetadataId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Permissions")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Permissions");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FileMetadataId");
-
-                    b.ToTable("FileMetadataAuthorization_User");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileMetadataAuthorization_UserGroup", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<Guid?>("FileMetadataId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Permissions")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Permissions");
-
-                    b.Property<Guid>("UserGroupIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserGroupIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FileMetadataId");
-
-                    b.ToTable("FileMetadataAuthorization_UserGroup");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileMetadataAuthorization_UserGroup_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FileMetadataAuthorization_UserGroup_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileMetadataAuthorization_User_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FileMetadataAuthorization_User_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileMetadataNotification_User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<Guid?>("FileMetadataId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NotificationString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("NotificationString");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FileMetadataId");
-
-                    b.ToTable("FilMetadataNotification_User");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileMetadataNotification_UserGroup", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<Guid?>("FileMetadataId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NotificationString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("NotificationString");
-
-                    b.Property<Guid>("UserGroupIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserGroupIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FileMetadataId");
-
-                    b.ToTable("FileMetadataNotification_UserGroup");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileMetadataNotification_UserGroup_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FileMetadataNotification_UserGroup_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileMetadataNotification_User_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FileMetadataNotification_User_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileNotification_User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<Guid?>("FileId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NotificationString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("NotificationString");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FileId");
-
-                    b.ToTable("FileNotification_User");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileNotification_UserGroup", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<Guid?>("FileId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NotificationString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("NotificationString");
-
-                    b.Property<Guid>("UserGroupIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserGroupIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FileId");
-
-                    b.ToTable("FileNotification_UserGroup");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileNotification_UserGroup_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FileNotification_UserGroup_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileNotification_User_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FileNotification_User_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_RootDirectoryAuthorization_User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<int>("Permissions")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Permissions");
-
-                    b.Property<Guid?>("RootDirectoryId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RootDirectoryId");
-
-                    b.ToTable("RootDirectoryAuthorization_User");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_RootDirectoryAuthorization_UserGroup", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<int>("Permissions")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Permissions");
-
-                    b.Property<Guid?>("RootDirectoryId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("UserGroupIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserGroupIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RootDirectoryId");
-
-                    b.ToTable("RootDirectoryAuthorization_UserGroup");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_RootDirectoryAuthorization_UserGroup_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RootDirectoryAuthorization_UserGroup_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_RootDirectoryAuthorization_User_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RootDirectoryAuthorization_User_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_RootDirectoryNotification_User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<string>("NotificationString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("NotificationString");
-
-                    b.Property<Guid?>("RootDirectoryId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RootDirectoryId");
-
-                    b.ToTable("RootDirectoryNotification_User");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_RootDirectoryNotification_UserGroup", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<string>("NotificationString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("NotificationString");
-
-                    b.Property<Guid?>("RootDirectoryId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("UserGroupIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserGroupIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RootDirectoryId");
-
-                    b.ToTable("RootDirectoryNotification_UserGroup");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_RootDirectoryNotification_UserGroup_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RootDirectoryNotification_UserGroup_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_RootDirectoryNotification_User_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RootDirectoryNotification_User_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_SubDirectoryAuthorization_User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<int>("Permissions")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Permissions");
-
-                    b.Property<Guid?>("SubDirectoryId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SubDirectoryId");
-
-                    b.ToTable("SubDirectoryAuthorization_User");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_SubDirectoryAuthorization_UserGroup", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<int>("Permissions")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Permissions");
-
-                    b.Property<Guid?>("SubDirectoryId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("UserGroupIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserGroupIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SubDirectoryId");
-
-                    b.ToTable("SubDirectoryAuthorization_UserGroup");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_SubDirectoryAuthorization_UserGroup_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SubDirectoryAuthorization_UserGroup_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_SubDirectoryAuthorization_User_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SubDirectoryAuthorization_User_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_SubDirectoryNotification_User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<string>("NotificationString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("NotificationString");
-
-                    b.Property<Guid?>("SubDirectoryId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SubDirectoryId");
-
-                    b.ToTable("SubDirectoryNotification_User");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_SubDirectoryNotification_UserGroup", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Description");
-
-                    b.Property<string>("NotificationString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("NotificationString");
-
-                    b.Property<Guid?>("SubDirectoryId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("UserGroupIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserGroupIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SubDirectoryId");
-
-                    b.ToTable("SubDirectoryNotification_UserGroup");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_SubDirectoryNotification_UserGroup_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SubDirectoryNotification_UserGroup_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_SubDirectoryNotification_User_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SubDirectoryNotification_User_AuditLog");
-                });
+            modelBuilder
+                .HasDefaultSchema("psgm")
+                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("Id");
 
-                    b.Property<string>("BackupsExtString")
+                    b.Property<string>("AuthorizationUserGroupIdsExtString")
                         .IsRequired()
                         .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("BackupsExtString");
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("AuthorizationUserGroupIdsExtString");
+
+                    b.Property<string>("AuthorizationUserIdsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("AuthorizationUserIdsExtString");
+
+                    b.Property<string>("BackupIdsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("BackupIdsExtString");
 
                     b.Property<Guid>("CreatedByUserIdExtAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("CreatedByUserIdExtAutoFill");
 
                     b.Property<DateTime>("CreatedDateTimeAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("CreatedDateTimeAutoFill");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(8191)")
                         .HasColumnName("Description");
 
                     b.Property<Guid>("DeviceIdExt")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("DeviceIdExt");
 
                     b.Property<string>("ExtId1")
                         .IsRequired()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("text")
                         .HasColumnName("ExtId1");
 
                     b.Property<string>("ExtId10")
                         .IsRequired()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("text")
                         .HasColumnName("ExtId10");
 
                     b.Property<string>("ExtId2")
                         .IsRequired()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("text")
                         .HasColumnName("ExtId2");
 
                     b.Property<string>("ExtId3")
                         .IsRequired()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("text")
                         .HasColumnName("ExtId3");
 
                     b.Property<string>("ExtId4")
                         .IsRequired()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("text")
                         .HasColumnName("ExtId4");
 
                     b.Property<string>("ExtId5")
                         .IsRequired()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("text")
                         .HasColumnName("ExtId5");
 
                     b.Property<string>("ExtId6")
                         .IsRequired()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("text")
                         .HasColumnName("ExtId6");
 
                     b.Property<string>("ExtId7")
                         .IsRequired()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("text")
                         .HasColumnName("ExtId7");
 
                     b.Property<string>("ExtId8")
                         .IsRequired()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("text")
                         .HasColumnName("ExtId8");
 
                     b.Property<string>("ExtId9")
                         .IsRequired()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("text")
                         .HasColumnName("ExtId9");
 
-                    b.Property<string>("JobsIdExtString")
+                    b.Property<string>("JobIdsExtString")
                         .IsRequired()
                         .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("JobsIdExtString");
-
-                    b.Property<string>("LastModificationChangesAutoFill")
-                        .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("LastModificationChangesAutoFill");
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("JobIdsExtString");
 
                     b.Property<Guid>("MachineIdExt")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("MachineIdExt");
 
                     b.Property<Guid>("ModifiedByUserIdExtAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("ModifiedByUserIdExtAutoFill");
 
                     b.Property<DateTime>("ModifiedDateTimeAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("Name");
 
-                    b.Property<uint>("ObjectExtension")
-                        .HasColumnType("INTEGER")
+                    b.Property<string>("NotificationUserGroupIdsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("NotificationUserGroupIdsExtString");
+
+                    b.Property<string>("NotificationUserIdsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("NotificationUserIdsExtString");
+
+                    b.Property<long>("ObjectExtension")
+                        .HasColumnType("bigint")
                         .HasColumnName("ObjectExtension");
 
                     b.Property<string>("ObjectMetadataString")
                         .IsRequired()
                         .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(16383)")
                         .HasColumnName("ObjectMetadataString");
 
                     b.Property<long>("ObjectSize")
-                        .HasColumnType("INTEGER")
+                        .HasColumnType("bigint")
                         .HasColumnName("ObjectSize");
+
+                    b.Property<string>("Prefix")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("Prefix");
 
                     b.Property<string>("RawFileIdsString")
                         .IsRequired()
                         .HasMaxLength(1023)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(1023)")
                         .HasColumnName("RawFileIdsString");
 
                     b.Property<Guid?>("RootDirectoryId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("StorageObjectName")
                         .IsRequired()
                         .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(8191)")
                         .HasColumnName("StorageObjectName");
 
                     b.Property<string>("StorageObjectUrl")
                         .IsRequired()
-                        .HasMaxLength(4096)
-                        .HasColumnType("TEXT")
+                        .HasMaxLength(8191)
+                        .HasColumnType("character varying(8191)")
                         .HasColumnName("StorageObjectUrl");
 
                     b.Property<string>("StorageObjectUrlPublic")
                         .IsRequired()
-                        .HasMaxLength(4096)
-                        .HasColumnType("TEXT")
+                        .HasMaxLength(8191)
+                        .HasColumnType("character varying(8191)")
                         .HasColumnName("StorageObjectUrlPublic");
 
                     b.Property<Guid?>("SubDirectoryId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Suffix")
                         .IsRequired()
-                        .HasMaxLength(127)
-                        .HasColumnType("TEXT")
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("Suffix");
 
-                    b.Property<string>("WorkflowItemsExtString")
+                    b.Property<string>("WorkflowItemIdsExtString")
                         .IsRequired()
                         .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("WorkflowItemExtString");
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("WorkflowItemIdsExtString");
 
                     b.HasKey("Id");
 
@@ -1342,182 +220,258 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("SubDirectoryId");
 
-                    b.ToTable("File");
+                    b.ToTable("File", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_FileMetadata", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<string>("AuthorizationUserGroupsString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("AuthorizationUserGroupsString");
+
+                    b.Property<string>("AuthorizationUsersString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("AuthorizationUsersString");
+
                     b.Property<Guid>("CreatedByUserIdExtAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("CreatedByUserIdExtAutoFill");
 
                     b.Property<DateTime>("CreatedDateTimeAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("CreatedDateTimeAutoFill");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(8191)")
                         .HasColumnName("Description");
 
+                    b.Property<bool>("EditAll")
+                        .HasColumnType("boolean")
+                        .HasColumnName("EditAll");
+
                     b.Property<Guid?>("FileId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uuid");
 
-                    b.Property<string>("LastModificationChangesAutoFill")
+                    b.Property<string>("Key")
                         .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("LastModificationChangesAutoFill");
-
-                    b.Property<string>("Metadata")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Metadata");
+                        .HasMaxLength(1024)
+                        .HasColumnType("character varying(1024)")
+                        .HasColumnName("Key");
 
                     b.Property<Guid>("ModifiedByUserIdExtAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("ModifiedByUserIdExtAutoFill");
 
                     b.Property<DateTime>("ModifiedDateTimeAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("character varying(8191)")
+                        .HasColumnName("Value");
+
+                    b.Property<bool>("ViewAll")
+                        .HasColumnType("boolean")
+                        .HasColumnName("ViewAll");
 
                     b.HasKey("Id");
 
                     b.HasIndex("FileId");
 
-                    b.ToTable("FileMetadata");
+                    b.ToTable("FileMetadata", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_FileMetadataLink", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid?>("FileId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("FileMetadataId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FileId");
+
+                    b.HasIndex("FileMetadataId");
+
+                    b.ToTable("FileMetadataLink", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_FileMetadataLink_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FileMetadataLink_AuditLog", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_FileMetadata_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("Id");
 
                     b.Property<string>("Action")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(256)")
                         .HasColumnName("Action");
 
                     b.Property<string>("Changes")
                         .IsRequired()
                         .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(16383)")
                         .HasColumnName("Changes");
 
                     b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("DateTime");
 
                     b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("SoftwareIdExt");
 
                     b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("SourceId");
 
                     b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("UserIdExt");
 
                     b.HasKey("Id");
 
-                    b.ToTable("FileMetadata_AuditLog");
+                    b.ToTable("FileMetadata_AuditLog", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("Id");
 
                     b.Property<string>("Action")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(256)")
                         .HasColumnName("Action");
 
                     b.Property<string>("Changes")
                         .IsRequired()
                         .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(16383)")
                         .HasColumnName("Changes");
 
                     b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("DateTime");
 
                     b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("SoftwareIdExt");
 
                     b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("SourceId");
 
                     b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("UserIdExt");
 
                     b.HasKey("Id");
 
-                    b.ToTable("File_AuditLog");
+                    b.ToTable("File_AuditLog", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_QrCode", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("Id");
 
                     b.Property<Guid>("CreatedByUserIdExtAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("CreatedByUserIdExtAutoFill");
 
                     b.Property<DateTime>("CreatedDateTimeAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("CreatedDateTimeAutoFill");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(8191)")
                         .HasColumnName("Description");
 
                     b.Property<Guid?>("FileId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LastModificationChangesAutoFill")
-                        .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("LastModificationChangesAutoFill");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid>("ModifiedByUserIdExtAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("ModifiedByUserIdExtAutoFill");
 
                     b.Property<DateTime>("ModifiedDateTimeAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("Name");
 
                     b.HasKey("Id");
@@ -1525,253 +479,474 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.HasIndex("FileId")
                         .IsUnique();
 
-                    b.ToTable("QrCode");
+                    b.ToTable("QrCode", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_QrCode_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("Id");
 
                     b.Property<string>("Action")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(256)")
                         .HasColumnName("Action");
 
                     b.Property<string>("Changes")
                         .IsRequired()
                         .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(16383)")
                         .HasColumnName("Changes");
 
                     b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("DateTime");
 
                     b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("SoftwareIdExt");
 
                     b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("SourceId");
 
                     b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("UserIdExt");
 
                     b.HasKey("Id");
 
-                    b.ToTable("QrCode_AuditLog");
+                    b.ToTable("QrCode_AuditLog", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("Id");
+
+                    b.Property<string>("AuthorizationUserGroupIdsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("AuthorizationUserGroupIdsExtString");
+
+                    b.Property<string>("AuthorizationUserIdsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("AuthorizationUserIdsExtString");
 
                     b.Property<string>("BackupIdsExtString")
                         .IsRequired()
                         .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(16383)")
                         .HasColumnName("BackupIdsExtString");
 
                     b.Property<Guid>("CreatedByUserIdExtAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("CreatedByUserIdExtAutoFill");
 
                     b.Property<DateTime>("CreatedDateTimeAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("CreatedDateTimeAutoFill");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(8191)")
                         .HasColumnName("Description");
 
-                    b.Property<long>("DirectorySize")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("DirectorySize");
+                    b.Property<bool>("DirectoryLocked")
+                        .HasColumnType("boolean")
+                        .HasColumnName("DirectoryLocked");
+
+                    b.Property<long>("DirectoryObjectsAutofill")
+                        .HasColumnType("bigint")
+                        .HasColumnName("ObjectsAutofill");
+
+                    b.Property<long>("DirectorySizeAutofill")
+                        .HasColumnType("bigint")
+                        .HasColumnName("DirectorySizeAutofill");
 
                     b.Property<string>("JobIdsExtString")
                         .IsRequired()
                         .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(16383)")
                         .HasColumnName("JobIdsExtString");
 
-                    b.Property<string>("LastModificationChanges")
-                        .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("LastModificationChanges");
-
                     b.Property<Guid>("ModifiedByUserIdExtAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("ModifiedByUserIdExtAutoFill");
 
                     b.Property<DateTime>("ModifiedDateTimeAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("Name");
 
-                    b.Property<long>("Objects")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Objects");
+                    b.Property<string>("NotificationUserGroupIdsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("NotificationUserGroupIdsExtString");
+
+                    b.Property<string>("NotificationUserIdsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("NotificationUserIdsExtString");
+
+                    b.Property<string>("Prefix")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("Prefix");
 
                     b.Property<string>("Suffix")
                         .IsRequired()
-                        .HasMaxLength(127)
-                        .HasColumnType("TEXT")
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("Suffix");
 
                     b.Property<string>("WorkflowItemIdsExtString")
                         .IsRequired()
                         .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(16383)")
                         .HasColumnName("WorkflowItemIdsExtString");
 
                     b.HasKey("Id");
 
-                    b.ToTable("RootDirectory");
+                    b.ToTable("RootDirectory", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectoryMetadata", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("AuthorizationUserGroupsString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("AuthorizationUserGroupsString");
+
+                    b.Property<string>("AuthorizationUsersString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("AuthorizationUsersString");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("character varying(8191)")
+                        .HasColumnName("Description");
+
+                    b.Property<bool>("EditAll")
+                        .HasColumnType("boolean")
+                        .HasColumnName("EditAll");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(1024)
+                        .HasColumnType("character varying(1024)")
+                        .HasColumnName("Key");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<Guid?>("RootDirectoryId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("character varying(8191)")
+                        .HasColumnName("Value");
+
+                    b.Property<bool>("ViewAll")
+                        .HasColumnType("boolean")
+                        .HasColumnName("ViewAll");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RootDirectoryId");
+
+                    b.ToTable("RootDirectoryMetadata", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectoryMetadataLink", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid?>("RootDirectoryId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("RootDirectoryMetadataId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RootDirectoryId");
+
+                    b.HasIndex("RootDirectoryMetadataId");
+
+                    b.ToTable("RootDirectoryMetadataLink", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectoryMetadataLink_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RootDirectoryMetadataLink_AuditLog", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectoryMetadata_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RootDirectoryMetadata_AuditLog", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("Id");
 
                     b.Property<string>("Action")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(256)")
                         .HasColumnName("Action");
 
                     b.Property<string>("Changes")
                         .IsRequired()
                         .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(16383)")
                         .HasColumnName("Changes");
 
                     b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("DateTime");
 
                     b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("SoftwareIdExt");
 
                     b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("SourceId");
 
                     b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("UserIdExt");
 
                     b.HasKey("Id");
 
-                    b.ToTable("RootDirectory_AuditLog");
+                    b.ToTable("RootDirectory_AuditLog", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("Id");
 
-                    b.Property<string>("BackupsExtString")
+                    b.Property<string>("AuthorizationUserGroupIdsExtString")
                         .IsRequired()
                         .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("BackupsExtString");
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("AuthorizationUserGroupIdsExtString");
+
+                    b.Property<string>("AuthorizationUserIdsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("AuthorizationUserIdsExtString");
+
+                    b.Property<string>("BackupIdsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("BackupIdsExtString");
 
                     b.Property<Guid>("CreatedByUserIdExtAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("CreatedByUserIdExtAutoFill");
 
                     b.Property<DateTime>("CreatedDateTimeAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("CreatedDateTimeAutoFill");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(8191)")
                         .HasColumnName("Description");
 
-                    b.Property<long>("DirectorySize")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("DirectorySize");
+                    b.Property<bool>("DirectoryLocked")
+                        .HasColumnType("boolean")
+                        .HasColumnName("DirectoryLocked");
 
-                    b.Property<bool>("DocumentType")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("DocumentType");
+                    b.Property<long>("DirectoryObjectsAutofill")
+                        .HasColumnType("bigint")
+                        .HasColumnName("ObjectsAutofill");
 
-                    b.Property<string>("JobsIdExtString")
+                    b.Property<long>("DirectorySizeAutofill")
+                        .HasColumnType("bigint")
+                        .HasColumnName("DirectorySizeAutofill");
+
+                    b.Property<string>("JobIdsExtString")
                         .IsRequired()
                         .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("JobsIdExtString");
-
-                    b.Property<string>("LastModificationChanges")
-                        .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("LastModificationChanges");
-
-                    b.Property<bool>("Locked")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Locked");
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("JobIdsExtString");
 
                     b.Property<Guid>("ModifiedByUserIdExtAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("ModifiedByUserIdExtAutoFill");
 
                     b.Property<DateTime>("ModifiedDateTimeAutoFill")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("Name");
 
-                    b.Property<long>("Objects")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Objects");
+                    b.Property<string>("NotificationUserGroupIdsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("NotificationUserGroupIdsExtString");
+
+                    b.Property<string>("NotificationUserIdsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("NotificationUserIdsExtString");
 
                     b.Property<Guid?>("ParentSubDirectoryId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Prefix")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("Prefix");
 
                     b.Property<Guid?>("RootDirectoryId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Suffix")
                         .IsRequired()
-                        .HasMaxLength(127)
-                        .HasColumnType("TEXT")
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("Suffix");
 
-                    b.Property<string>("WorkflowItemsExtString")
+                    b.Property<string>("WorkflowItemIdsExtString")
                         .IsRequired()
                         .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("WorkflowItemExtString");
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("WorkflowItemIdsExtString");
 
                     b.HasKey("Id");
 
@@ -1779,191 +954,220 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("RootDirectoryId");
 
-                    b.ToTable("SubDirectory");
+                    b.ToTable("SubDirectory", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectoryMetadata", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("AuthorizationUserGroupsString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("AuthorizationUserGroupsString");
+
+                    b.Property<string>("AuthorizationUsersString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("AuthorizationUsersString");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("character varying(8191)")
+                        .HasColumnName("Description");
+
+                    b.Property<bool>("EditAll")
+                        .HasColumnType("boolean")
+                        .HasColumnName("EditAll");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(1024)
+                        .HasColumnType("character varying(1024)")
+                        .HasColumnName("Key");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<Guid?>("SubDirectoryId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("character varying(8191)")
+                        .HasColumnName("Value");
+
+                    b.Property<bool>("ViewAll")
+                        .HasColumnType("boolean")
+                        .HasColumnName("ViewAll");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SubDirectoryId");
+
+                    b.ToTable("SubDirectoryMetadata", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectoryMetadataLink", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid?>("SubDirectoryId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("SubDirectoryMetadataId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SubDirectoryId");
+
+                    b.HasIndex("SubDirectoryMetadataId");
+
+                    b.ToTable("SubDirectoryMetadataLink", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectoryMetadataLink_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SubDirectoryMetadataLink_AuditLog", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectoryMetadata_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SubDirectoryMetadata_AuditLog", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("Id");
 
                     b.Property<string>("Action")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(256)")
                         .HasColumnName("Action");
 
                     b.Property<string>("Changes")
                         .IsRequired()
                         .HasMaxLength(16383)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("character varying(16383)")
                         .HasColumnName("Changes");
 
                     b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("DateTime");
 
                     b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("SoftwareIdExt");
 
                     b.Property<Guid>("SourceId")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("SourceId");
 
                     b.Property<Guid>("UserIdExt")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uuid")
                         .HasColumnName("UserIdExt");
 
                     b.HasKey("Id");
 
-                    b.ToTable("SubDirectory_AuditLog");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileAuthorization_User", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File", "File")
-                        .WithMany("AuthorizationUsers")
-                        .HasForeignKey("FileId");
-
-                    b.Navigation("File");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileAuthorization_UserGroup", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File", "File")
-                        .WithMany("AuthorizationUserGroups")
-                        .HasForeignKey("FileId");
-
-                    b.Navigation("File");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileMetadataAuthorization_User", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_FileMetadata", "FileMetadata")
-                        .WithMany("AuthorizationUsers")
-                        .HasForeignKey("FileMetadataId");
-
-                    b.Navigation("FileMetadata");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileMetadataAuthorization_UserGroup", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_FileMetadata", "FileMetadata")
-                        .WithMany("AuthorizationUserGroups")
-                        .HasForeignKey("FileMetadataId");
-
-                    b.Navigation("FileMetadata");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileMetadataNotification_User", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_FileMetadata", "FileMetadata")
-                        .WithMany("NotificationUsers")
-                        .HasForeignKey("FileMetadataId");
-
-                    b.Navigation("FileMetadata");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileMetadataNotification_UserGroup", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_FileMetadata", "FileMetadata")
-                        .WithMany("NotificationUserGroups")
-                        .HasForeignKey("FileMetadataId");
-
-                    b.Navigation("FileMetadata");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileNotification_User", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File", "File")
-                        .WithMany("NotificationUsers")
-                        .HasForeignKey("FileId");
-
-                    b.Navigation("File");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_FileNotification_UserGroup", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File", "File")
-                        .WithMany("NotificationUserGroups")
-                        .HasForeignKey("FileId");
-
-                    b.Navigation("File");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_RootDirectoryAuthorization_User", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory", "RootDirectory")
-                        .WithMany("AuthorizationUser")
-                        .HasForeignKey("RootDirectoryId");
-
-                    b.Navigation("RootDirectory");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_RootDirectoryAuthorization_UserGroup", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory", "RootDirectory")
-                        .WithMany("AuthorizationUserGroup")
-                        .HasForeignKey("RootDirectoryId");
-
-                    b.Navigation("RootDirectory");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_RootDirectoryNotification_User", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory", "RootDirectory")
-                        .WithMany("NotificationUser")
-                        .HasForeignKey("RootDirectoryId");
-
-                    b.Navigation("RootDirectory");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_RootDirectoryNotification_UserGroup", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory", "RootDirectory")
-                        .WithMany("NotificationUserGroup")
-                        .HasForeignKey("RootDirectoryId");
-
-                    b.Navigation("RootDirectory");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_SubDirectoryAuthorization_User", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory", "SubDirectory")
-                        .WithMany("AuthorizationUser")
-                        .HasForeignKey("SubDirectoryId");
-
-                    b.Navigation("SubDirectory");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_SubDirectoryAuthorization_UserGroup", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory", "SubDirectory")
-                        .WithMany("AuthorizationUserGroup")
-                        .HasForeignKey("SubDirectoryId");
-
-                    b.Navigation("SubDirectory");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_SubDirectoryNotification_User", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory", "SubDirectory")
-                        .WithMany("NotificationUser")
-                        .HasForeignKey("SubDirectoryId");
-
-                    b.Navigation("SubDirectory");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbStorage_SubDirectoryNotification_UserGroup", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory", "SubDirectory")
-                        .WithMany("NotificationUserGroup")
-                        .HasForeignKey("SubDirectoryId");
-
-                    b.Navigation("SubDirectory");
+                    b.ToTable("SubDirectory_AuditLog", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File", b =>
@@ -1984,10 +1188,27 @@ namespace PSGM.Model.DbStorage.Migrations
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_FileMetadata", b =>
                 {
                     b.HasOne("PSGM.Model.DbStorage.DbStorage_File", "File")
-                        .WithMany("Metadata")
+                        .WithMany()
                         .HasForeignKey("FileId");
 
                     b.Navigation("File");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_FileMetadataLink", b =>
+                {
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File", "File")
+                        .WithMany("FileMetadataLinks")
+                        .HasForeignKey("FileId");
+
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_FileMetadata", "FileMetadata")
+                        .WithMany("FileMetadataLinks")
+                        .HasForeignKey("FileMetadataId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("File");
+
+                    b.Navigation("FileMetadata");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_QrCode", b =>
@@ -1997,6 +1218,32 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasForeignKey("PSGM.Model.DbStorage.DbStorage_QrCode", "FileId");
 
                     b.Navigation("File");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectoryMetadata", b =>
+                {
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory", "RootDirectory")
+                        .WithMany()
+                        .HasForeignKey("RootDirectoryId");
+
+                    b.Navigation("RootDirectory");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectoryMetadataLink", b =>
+                {
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory", "RootDirectory")
+                        .WithMany("RootDirectoryMetadataLinks")
+                        .HasForeignKey("RootDirectoryId");
+
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectoryMetadata", "RootDirectoryMetadata")
+                        .WithMany("RootDirectoryMetadataLinks")
+                        .HasForeignKey("RootDirectoryMetadataId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("RootDirectory");
+
+                    b.Navigation("RootDirectoryMetadata");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory", b =>
@@ -2014,60 +1261,70 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("RootDirectory");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectoryMetadata", b =>
+                {
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory", "SubDirectory")
+                        .WithMany()
+                        .HasForeignKey("SubDirectoryId");
+
+                    b.Navigation("SubDirectory");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectoryMetadataLink", b =>
+                {
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory", "SubDirectory")
+                        .WithMany("SubDirectoryMetadataLinks")
+                        .HasForeignKey("SubDirectoryId");
+
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectoryMetadata", "SubDirectoryMetadata")
+                        .WithMany("SubDirectoryMetadataLinks")
+                        .HasForeignKey("SubDirectoryMetadataId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SubDirectory");
+
+                    b.Navigation("SubDirectoryMetadata");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File", b =>
                 {
-                    b.Navigation("AuthorizationUserGroups");
-
-                    b.Navigation("AuthorizationUsers");
-
-                    b.Navigation("Metadata");
-
-                    b.Navigation("NotificationUserGroups");
-
-                    b.Navigation("NotificationUsers");
+                    b.Navigation("FileMetadataLinks");
 
                     b.Navigation("QrCode");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_FileMetadata", b =>
                 {
-                    b.Navigation("AuthorizationUserGroups");
-
-                    b.Navigation("AuthorizationUsers");
-
-                    b.Navigation("NotificationUserGroups");
-
-                    b.Navigation("NotificationUsers");
+                    b.Navigation("FileMetadataLinks");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory", b =>
                 {
-                    b.Navigation("AuthorizationUser");
-
-                    b.Navigation("AuthorizationUserGroup");
-
                     b.Navigation("Files");
 
-                    b.Navigation("NotificationUser");
-
-                    b.Navigation("NotificationUserGroup");
+                    b.Navigation("RootDirectoryMetadataLinks");
 
                     b.Navigation("SubDirectories");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectoryMetadata", b =>
+                {
+                    b.Navigation("RootDirectoryMetadataLinks");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory", b =>
                 {
-                    b.Navigation("AuthorizationUser");
-
-                    b.Navigation("AuthorizationUserGroup");
-
                     b.Navigation("Files");
 
-                    b.Navigation("NotificationUser");
-
-                    b.Navigation("NotificationUserGroup");
-
                     b.Navigation("SubDirectories");
+
+                    b.Navigation("SubDirectoryMetadataLinks");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectoryMetadata", b =>
+                {
+                    b.Navigation("SubDirectoryMetadataLinks");
                 });
 #pragma warning restore 612, 618
         }

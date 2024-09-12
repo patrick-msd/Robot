@@ -19,18 +19,6 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "SourceId")]
         public Guid SourceId { get; set; } = Guid.Empty;
 
-        //[Required]
-        //[Column("TableName")]
-        //[Display(Name = "TableName")]
-        //[StringLength(256, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string TableName { get; set; } = string.Empty;
-
-        //[Required]
-        //[Column("EntityName")]
-        //[Display(Name = "EntityName")]
-        //[StringLength(256, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string EntityName { get; set; } = string.Empty;
-
         [Required]
         [Column("Action")]
         [Display(Name = "EntityName")]
@@ -69,7 +57,7 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Not Mapped
-        public DbStorage_RootDirectory GetChagnes()
+        public DbStorage_RootDirectory GetChanges()
         {
             return JsonConvert.DeserializeObject<DbStorage_RootDirectory>(Changes);
         }

@@ -2480,7 +2480,7 @@ namespace PSGM.MultiTestApp1
 
             var fileAuditLog = _dbStorage_Data_Context.File_AuditLog.Where(f => f.SourceId == storage.First().SubDirectories.FirstOrDefault().Files.FirstOrDefault().Id).FirstOrDefault();
             DbStorage_File ads = JsonConvert.DeserializeObject<DbStorage_File>(fileAuditLog.Changes);
-            DbStorage_File adasdasds = fileAuditLog.GetChagnes();
+            DbStorage_File adasdasds = fileAuditLog.GetChanges();
             #region
 
             List<FileItem> fileItems = new List<FileItem>();

@@ -3,16 +3,44 @@
   "WorkspaceRootPath": "C:\\Git\\MSD\\Robot\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0437BDA5-5753-4C3B-A818-1B8E70A30C59}|81_Model_Samples\\PSGM.Sample.Model.DbStorage\\PSGM.Sample.Model.DbStorage.csproj|c:\\git\\msd\\robot\\81_model_samples\\psgm.sample.model.dbstorage\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0437BDA5-5753-4C3B-A818-1B8E70A30C59}|81_Model_Samples\\PSGM.Sample.Model.DbStorage\\PSGM.Sample.Model.DbStorage.csproj|solutionrelative:81_model_samples\\psgm.sample.model.dbstorage\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0437BDA5-5753-4C3B-A818-1B8E70A30C59}|81_Model_Samples\\PSGM.Sample.Model.DbStorage\\PSGM.Sample.Model.DbStorage.csproj|c:\\git\\msd\\robot\\81_model_samples\\psgm.sample.model.dbstorage\\mainwindow_create_files2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0437BDA5-5753-4C3B-A818-1B8E70A30C59}|81_Model_Samples\\PSGM.Sample.Model.DbStorage\\PSGM.Sample.Model.DbStorage.csproj|solutionrelative:81_model_samples\\psgm.sample.model.dbstorage\\mainwindow_create_files2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0437BDA5-5753-4C3B-A818-1B8E70A30C59}|81_Model_Samples\\PSGM.Sample.Model.DbStorage\\PSGM.Sample.Model.DbStorage.csproj|c:\\git\\msd\\robot\\81_model_samples\\psgm.sample.model.dbstorage\\mainwindow_create_files1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0437BDA5-5753-4C3B-A818-1B8E70A30C59}|81_Model_Samples\\PSGM.Sample.Model.DbStorage\\PSGM.Sample.Model.DbStorage.csproj|solutionrelative:81_model_samples\\psgm.sample.model.dbstorage\\mainwindow_create_files1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0437BDA5-5753-4C3B-A818-1B8E70A30C59}|81_Model_Samples\\PSGM.Sample.Model.DbStorage\\PSGM.Sample.Model.DbStorage.csproj|c:\\git\\msd\\robot\\81_model_samples\\psgm.sample.model.dbstorage\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0437BDA5-5753-4C3B-A818-1B8E70A30C59}|81_Model_Samples\\PSGM.Sample.Model.DbStorage\\PSGM.Sample.Model.DbStorage.csproj|solutionrelative:81_model_samples\\psgm.sample.model.dbstorage\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstorage\\dbstorage_file_auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|solutionrelative:80_model\\psgm.model.dbstorage\\dbstorage_file_auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstorage\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|solutionrelative:80_model\\psgm.model.dbstorage\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstorage\\dbstorage_filemetadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|solutionrelative:80_model\\psgm.model.dbstorage\\dbstorage_filemetadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstorage\\dbstorage_file.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|solutionrelative:80_model\\psgm.model.dbstorage\\dbstorage_file.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstorage\\dbstorage_rootdirectory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|solutionrelative:80_model\\psgm.model.dbstorage\\dbstorage_rootdirectory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstorage\\dbstorage_subdirectory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|solutionrelative:80_model\\psgm.model.dbstorage\\dbstorage_subdirectory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstorage\\dbstorage_qrcode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|solutionrelative:80_model\\psgm.model.dbstorage\\dbstorage_qrcode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,21 +50,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 10,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DbStorage_FileMetadata.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorage_FileMetadata.cs",
-              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorage\\DbStorage_FileMetadata.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorage_FileMetadata.cs",
-              "RelativeToolTip": "80_Model\\PSGM.Model.DbStorage\\DbStorage_FileMetadata.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAuwD8AAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T14:28:25.206Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
@@ -63,28 +78,152 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DBStorage_File.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DBStorage_File.cs",
-              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorage\\DBStorage_File.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DBStorage_File.cs",
-              "RelativeToolTip": "80_Model\\PSGM.Model.DbStorage\\DBStorage_File.cs",
-              "ViewState": "AgIAAJ4AAAAAAAAAAAAiwKYAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "MainWindow_Create_Files2.cs",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow_Create_Files2.cs",
+              "RelativeDocumentMoniker": "81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow_Create_Files2.cs",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow_Create_Files2.cs",
+              "RelativeToolTip": "81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow_Create_Files2.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAMwFYAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T14:23:59.671Z",
+              "WhenOpened": "2024-09-12T20:47:25.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow_Create_Files1.cs",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow_Create_Files1.cs",
+              "RelativeDocumentMoniker": "81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow_Create_Files1.cs",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow_Create_Files1.cs",
+              "RelativeToolTip": "81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow_Create_Files1.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAMwFYAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T20:47:19.995Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow.xaml",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow.xaml",
+              "RelativeToolTip": "81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-11T17:21:07.639Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow.xaml.cs",
+              "RelativeToolTip": "81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAMYAAAAAAAAAAIAwwMsAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-11T17:21:30.468Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "b81c3878-9bbf-4ad9-8978-f95b25915a34",
+        "Display": 0,
+        "X": 511,
+        "Y": 285,
+        "Width": 1414,
+        "Height": 752,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DbStorage_File_AuditLog.cs",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorage_File_AuditLog.cs",
+              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorage\\DbStorage_File_AuditLog.cs",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorage_File_AuditLog.cs",
+              "RelativeToolTip": "80_Model\\PSGM.Model.DbStorage\\DbStorage_File_AuditLog.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAYAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T19:58:43.099Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DbStorage_QrCode.cs",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorage_QrCode.cs",
+              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorage\\DbStorage_QrCode.cs",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorage_QrCode.cs",
+              "RelativeToolTip": "80_Model\\PSGM.Model.DbStorage\\DbStorage_QrCode.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T15:57:34.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DBStorage_File.cs",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DBStorage_File.cs",
+              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorage\\DBStorage_File.cs",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DBStorage_File.cs",
+              "RelativeToolTip": "80_Model\\PSGM.Model.DbStorage\\DBStorage_File.cs",
+              "ViewState": "AgIAAKEAAAAAAAAAAAAiwLQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-11T19:46:01.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DbStorage_SubDirectory.cs",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorage_SubDirectory.cs",
+              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorage\\DbStorage_SubDirectory.cs",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorage_SubDirectory.cs",
+              "RelativeToolTip": "80_Model\\PSGM.Model.DbStorage\\DbStorage_SubDirectory.cs",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAgwHMAAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T12:07:23.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DbStorage_RootDirectory.cs",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorage_RootDirectory.cs",
+              "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorage\\DbStorage_RootDirectory.cs",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorage_RootDirectory.cs",
+              "RelativeToolTip": "80_Model\\PSGM.Model.DbStorage\\DbStorage_RootDirectory.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAAAHAAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T12:07:17.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "DbContext.cs",
               "DocumentMoniker": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbContext.cs",
               "RelativeDocumentMoniker": "80_Model\\PSGM.Model.DbStorage\\DbContext.cs",
               "ToolTip": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbContext.cs",
               "RelativeToolTip": "80_Model\\PSGM.Model.DbStorage\\DbContext.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAzwEgAAAB3AAAAAAAAAA==",
+              "ViewState": "AgIAAHIBAAAAAAAAAADwv30BAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T15:19:28.908Z",
+              "WhenOpened": "2024-09-11T18:46:38.798Z",
               "EditorCaption": ""
             }
           ]

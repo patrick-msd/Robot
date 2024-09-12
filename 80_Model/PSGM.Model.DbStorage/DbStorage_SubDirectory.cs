@@ -1,4 +1,5 @@
-﻿using PSGM.Model.DbMain;
+﻿using Newtonsoft.Json;
+using PSGM.Helper;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,7 +17,7 @@ namespace PSGM.Model.DbStorage
 
         [Column("Suffix")]
         [Display(Name = "Suffix")]
-        [StringLength(127, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Suffix { get; set; } = string.Empty;
 
         [Required]
@@ -25,41 +26,66 @@ namespace PSGM.Model.DbStorage
         [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Name { get; set; } = string.Empty;
 
+        [Column("Prefix")]
+        [Display(Name = "Prefix")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Prefix { get; set; } = string.Empty;
+
         [Column("Description")]
         [Display(Name = "Description")]
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
-        [Column("Objects")]
-        [Display(Name = "Objects")]
-        public long Objects { get; set; } = 0;
+        [Column("DirectoryLocked")]
+        [Display(Name = "DirectoryLocked")]
+        public bool DirectoryLocked { get; set; } = false;
 
-        [Column("DirectorySize")]
-        [Display(Name = "DirectorySize")]
-        public long DirectorySize { get; set; } = 0;
-
-        [Column("DocumentType")]
-        [Display(Name = "DocumentType")]
-        public bool DocumentType { get; set; } = false;
-
-        [Column("Locked")]
-        [Display(Name = "Locked")]
-        public bool Locked { get; set; } = false;
-
-        [Column("JobsIdExtString")]
-        [Display(Name = "JobsIdExtString")]
+        #region No direct access
+        [Column("AuthorizationUserIdsExtString")]
+        [Display(Name = "AuthorizationUserIdsExtString")]
         [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string JobsIdExtString { get; private set; } = string.Empty;
+        public string AuthorizationUserIdsExtString { get; private set; } = string.Empty;
 
-        [Column("WorkflowItemExtString")]
-        [Display(Name = "WorkflowItemExtString")]
+        [Column("AuthorizationUserGroupIdsExtString")]
+        [Display(Name = "AuthorizationUserGroupIdsExtString")]
         [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string WorkflowItemsExtString { get; private set; } = string.Empty;
+        public string AuthorizationUserGroupIdsExtString { get; private set; } = string.Empty;
 
-        [Column("BackupsExtString")]
-        [Display(Name = "BackupsExtString")]
+        [Column("NotificationUserIdsExtString")]
+        [Display(Name = "NotificationUserIdsExtString")]
         [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string BackupsExtString { get; private set; } = string.Empty;
+        public string NotificationUserIdsExtString { get; private set; } = string.Empty;
+
+        [Column("NotificationUserGroupIdsExtString")]
+        [Display(Name = "NotificationUserGroupIdsExtString")]
+        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string NotificationUserGroupIdsExtString { get; private set; } = string.Empty;
+
+        [Column("JobIdsExtString")]
+        [Display(Name = "JobIdsExtString")]
+        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string JobIdsExtString { get; private set; } = string.Empty;
+
+        [Column("WorkflowItemIdsExtString")]
+        [Display(Name = "WorkflowItemIdsExtString")]
+        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string WorkflowItemIdsExtString { get; private set; } = string.Empty;
+
+        [Column("BackupIdsExtString")]
+        [Display(Name = "BackupIdsExtString")]
+        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string BackupIdsExtString { get; private set; } = string.Empty;
+        #endregion
+
+        #region Autofill
+        [Column("ObjectsAutofill")]
+        [Display(Name = "ObjectsAutofill")]
+        public long DirectoryObjectsAutofill { get; set; } = 0;
+
+        [Column("DirectorySizeAutofill")]
+        [Display(Name = "DirectorySizeAutofill")]
+        public long DirectorySizeAutofill { get; set; } = 0;
+        #endregion
 
         #region Audit details for faster file audit information
         [Required]
@@ -79,32 +105,18 @@ namespace PSGM.Model.DbStorage
         [Column("ModifiedByUserIdExtAutoFill")]
         [Display(Name = "ModifiedByUserIdExtAutoFill")]
         public Guid ModifiedByUserIdExtAutoFill { get; set; } = Guid.Empty;
-
-        [Column("LastModificationChanges")]
-        [Display(Name = "LastModificationChanges")]
-        [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string LastModificationChanges { get; set; } = string.Empty;
         #endregion
         #endregion
 
         #region Links
+        [InverseProperty("SubDirectory")]
+        public virtual ICollection<DbStorage_File>? Files { get; set; }
+
         [InverseProperty("ParentSubDirectory")]
         public virtual ICollection<DbStorage_SubDirectory>? SubDirectories { get; set; }
 
         [InverseProperty("SubDirectory")]
-        public virtual ICollection<DbStorage_File>? Files { get; set; }
-
-        [InverseProperty("SubDirectory")]
-        public virtual ICollection<DbStorage_SubDirectoryAuthorization_User>? AuthorizationUser { get; set; }
-
-        [InverseProperty("SubDirectory")]
-        public virtual ICollection<DbStorage_SubDirectoryAuthorization_UserGroup>? AuthorizationUserGroup { get; set; }
-
-        [InverseProperty("SubDirectory")]
-        public virtual ICollection<DbStorage_SubDirectoryNotification_User>? NotificationUser { get; set; }
-
-        [InverseProperty("SubDirectory")]
-        public virtual ICollection<DbStorage_SubDirectoryNotification_UserGroup>? NotificationUserGroup { get; set; }
+        public virtual ICollection<DbStorage_SubDirectoryMetadataLink>? SubDirectoryMetadataLinks { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
@@ -122,38 +134,52 @@ namespace PSGM.Model.DbStorage
 
         #region Not Mapped
         [NotMapped]
-        public List<Guid>? JobsIdExt
+        public List<Authorization_User> AuthorizationUsersIdExt
         {
-            get { return JobsIdExtString != string.Empty ? JobsIdExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { JobsIdExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+            get { return AuthorizationUserIdsExtString != string.Empty ? JsonConvert.DeserializeObject<List<Authorization_User>>(AuthorizationUserIdsExtString) : null; }
+            set { AuthorizationUserIdsExtString = value != null ? JsonConvert.SerializeObject(value) : string.Empty; }
         }
 
         [NotMapped]
-        public List<Guid>? WorkflowItemsExt
+        public List<Authorization_UserGroup> AuthorizationUserGroupIdsExt
         {
-            get { return WorkflowItemsExtString != string.Empty ? WorkflowItemsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { WorkflowItemsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+            get { return AuthorizationUserGroupIdsExtString != string.Empty ? JsonConvert.DeserializeObject<List<Authorization_UserGroup>>(AuthorizationUserGroupIdsExtString) : null; }
+            set { AuthorizationUserGroupIdsExtString = value != null ? JsonConvert.SerializeObject(value) : string.Empty; }
         }
 
-        //[NotMapped]
-        //public List<Guid>? AuthorizedUsersExt
-        //{
-        //    get { return AuthorizedUsersExtString != string.Empty ? AuthorizedUsersExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-        //    set { AuthorizedUsersExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        //}
-
-        //[NotMapped]
-        //public List<Guid>? AuthorizedUserGroupsExt
-        //{
-        //    get { return AuthorizedUserGroupsExtString != string.Empty ? AuthorizedUserGroupsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-        //    set { AuthorizedUserGroupsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        //}
+        [NotMapped]
+        public List<Notification_User> NotificationUserIdsExt
+        {
+            get { return NotificationUserIdsExtString != string.Empty ? JsonConvert.DeserializeObject<List<Notification_User>>(NotificationUserIdsExtString) : null; }
+            set { NotificationUserIdsExtString = value != null ? JsonConvert.SerializeObject(value) : string.Empty; }
+        }
 
         [NotMapped]
-        public List<Guid>? BackupsExt
+        public List<Notification_UserGroup> NotificationUserGroupIdsExt
         {
-            get { return BackupsExtString != string.Empty ? BackupsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { BackupsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+            get { return NotificationUserGroupIdsExtString != string.Empty ? JsonConvert.DeserializeObject<List<Notification_UserGroup>>(NotificationUserGroupIdsExtString) : null; }
+            set { NotificationUserGroupIdsExtString = value != null ? JsonConvert.SerializeObject(value) : string.Empty; }
+        }
+
+        [NotMapped]
+        public List<Guid>? JobIdsExt
+        {
+            get { return JobIdsExtString != string.Empty ? JobIdsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
+            set { JobIdsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+        }
+
+        [NotMapped]
+        public List<Guid>? WorkflowItemIdsExt
+        {
+            get { return WorkflowItemIdsExtString != string.Empty ? WorkflowItemIdsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
+            set { WorkflowItemIdsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+        }
+
+        [NotMapped]
+        public List<Guid>? BackupIdsExt
+        {
+            get { return BackupIdsExtString != string.Empty ? BackupIdsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
+            set { BackupIdsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
         }
         #endregion
     }

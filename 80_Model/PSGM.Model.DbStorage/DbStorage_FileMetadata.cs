@@ -1,4 +1,5 @@
-﻿using PSGM.Model.DbMain;
+﻿using Newtonsoft.Json;
+using PSGM.Helper;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,17 +16,40 @@ namespace PSGM.Model.DbStorage
         public Guid Id { get; set; }
 
         [Required]
-        [Column("Metadata")]
-        [Display(Name = "Metadata")]
-        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string Metadata { get; set; } = string.Empty;
+        [Column("Key")]
+        [Display(Name = "Key")]
+        [StringLength(1024, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Key { get; set; } = string.Empty;
+
+        [Column("Value")]
+        [Display(Name = "Value")]
+        [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Value { get; set; } = string.Empty;
 
         [Column("Description")]
         [Display(Name = "Description")]
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
-        #region Audit details for faster metadata audit information
+        [Column("EditAll")]
+        [Display(Name = "EditAll")]
+        public bool EditAll { get; set; } = false;
+
+        [Column("ViewAll")]
+        [Display(Name = "ViewAll")]
+        public bool ViewAll { get; set; } = false;
+
+        [Column("AuthorizationUsersString")]
+        [Display(Name = "AuthorizationUsersString")]
+        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string AuthorizationUsersString { get; private set; } = string.Empty;
+
+        [Column("AuthorizationUserGroupsString")]
+        [Display(Name = "AuthorizationUserGroupsString")]
+        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string AuthorizationUserGroupsString { get; private set; } = string.Empty;
+
+        #region Audit details for faster file audit information
         [Required]
         [Column("CreatedDateTimeAutoFill")]
         [Display(Name = "CreatedDateTimeAutoFill")]
@@ -43,26 +67,12 @@ namespace PSGM.Model.DbStorage
         [Column("ModifiedByUserIdExtAutoFill")]
         [Display(Name = "ModifiedByUserIdExtAutoFill")]
         public Guid ModifiedByUserIdExtAutoFill { get; set; } = Guid.Empty;
-
-        [Column("LastModificationChangesAutoFill")]
-        [Display(Name = "LastModificationChangesAutoFill")]
-        [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string LastModificationChangesAutoFill { get; set; } = string.Empty;
         #endregion
         #endregion
 
         #region Links
         [InverseProperty("FileMetadata")]
-        public virtual ICollection<DbStorage_FileMetadataAuthorization_User>? AuthorizationUsers { get; set; }
-
-        [InverseProperty("FileMetadata")]
-        public virtual ICollection<DbStorage_FileMetadataAuthorization_UserGroup>? AuthorizationUserGroups { get; set; }
-
-        [InverseProperty("FileMetadata")]
-        public virtual ICollection<DbStorage_FileMetadataNotification_User>? NotificationUsers { get; set; }
-
-        [InverseProperty("FileMetadata")]
-        public virtual ICollection<DbStorage_FileMetadataNotification_UserGroup>? NotificationUserGroups { get; set; }
+        public virtual ICollection<DbStorage_FileMetadataLink>? FileMetadataLinks { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
@@ -75,6 +85,19 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Not Mapped
+        [NotMapped]
+        public List<Authorization_User> AuthorizationUsers
+        {
+            get { return AuthorizationUsersString != string.Empty ? JsonConvert.DeserializeObject<List<Authorization_User>>(AuthorizationUsersString) : null; }
+            set { AuthorizationUsersString = value != null ? JsonConvert.SerializeObject(value) : string.Empty; }
+        }
+
+        [NotMapped]
+        public List<Authorization_UserGroup> AuthorizationUserGroups
+        {
+            get { return AuthorizationUserGroupsString != string.Empty ? JsonConvert.DeserializeObject<List<Authorization_UserGroup>>(AuthorizationUserGroupsString) : null; }
+            set { AuthorizationUserGroupsString = value != null ? JsonConvert.SerializeObject(value) : string.Empty; }
+        }
         #endregion
     }
 }

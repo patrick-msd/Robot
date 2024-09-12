@@ -44,12 +44,19 @@ namespace PSGM.Model.DbStorage
             //}
 
 
-            return new DbStorage_Context(DatabaseType.ConnectionString, "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorage.db");
+            //return new DbStorage_Context(DatabaseType.ConnectionString, "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorage.db");
+
+            return new DbStorage_Context(DatabaseType.PostgreSQL, "Host=db-clu001.branch31.psgm.at:50001;Database=DbStorage;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V");
+
             //return new DBStorageContext(DatabaseType.ConnectionString, "Data Source=C:\\Git\\PSGM\\PSGM_-_PSGM.Model\\80_Model\\PSGM.Model.DbStorage\\DbStorage.db");
 
             //return new DBStorageContext(Directory.GetCurrentDirectory() + "\\DbStorage.db");
 
             //return new DBStorageContext("db-clu001.branch31.psgm.at:50001", "DbStorage", "ef.core", "Ulexxubih4LOdKuhC8Hx33d4zA4");
+
+           
+
+            
         }
     }
 }

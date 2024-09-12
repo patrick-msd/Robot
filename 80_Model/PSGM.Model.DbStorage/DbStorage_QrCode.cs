@@ -24,7 +24,7 @@ namespace PSGM.Model.DbStorage
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
-        #region Audit details for faster qrcode audit information
+        #region Audit details for faster file audit information
         [Required]
         [Column("CreatedDateTimeAutoFill")]
         [Display(Name = "CreatedDateTimeAutoFill")]
@@ -42,11 +42,6 @@ namespace PSGM.Model.DbStorage
         [Column("ModifiedByUserIdExtAutoFill")]
         [Display(Name = "ModifiedByUserIdExtAutoFill")]
         public Guid ModifiedByUserIdExtAutoFill { get; set; } = Guid.Empty;
-
-        [Column("LastModificationChangesAutoFill")]
-        [Display(Name = "LastModificationChangesAutoFill")]
-        [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string LastModificationChangesAutoFill { get; set; } = string.Empty;
         #endregion
         #endregion
 
