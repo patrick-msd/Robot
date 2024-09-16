@@ -107,10 +107,7 @@ namespace PSGM.Model.DbMain
         public virtual DbMain_DeliveryBillTemplate? CreatedWithDeliveryBillTemplate { get; set; }
 
         [InverseProperty("DeliveryBill")]
-        public virtual ICollection<DbMain_PostDirectory>? PostDirectories { get; set; }
-
-        [InverseProperty("DeliveryBill")]
-        public virtual ICollection<DbMain_PreDirectory>? PreDirectories { get; set; }
+        public virtual ICollection<DbMain_Unit>? Units { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)

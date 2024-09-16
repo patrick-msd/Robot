@@ -12,7 +12,7 @@ using PSGM.Model.DbMain;
 namespace PSGM.Model.DbMain.Migrations
 {
     [DbContext(typeof(DbMain_Context))]
-    [Migration("20240916203312_InitialeCreate")]
+    [Migration("20240916205303_InitialeCreate")]
     partial class InitialeCreate
     {
         /// <inheritdoc />
@@ -999,278 +999,6 @@ namespace PSGM.Model.DbMain.Migrations
                     b.ToTable("Organization_AuditLog", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_PostDirectory", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("BackupsExtString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("BackupsExtString");
-
-                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
-                        .HasColumnType("uuid")
-                        .HasColumnName("CreatedByUserIdExtAutoFill");
-
-                    b.Property<DateTime>("CreatedDateTimeAutoFill")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("CreatedDateTimeAutoFill");
-
-                    b.Property<Guid?>("DeliveryBillId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("character varying(8191)")
-                        .HasColumnName("Description");
-
-                    b.Property<long>("DirectorySize")
-                        .HasColumnType("bigint")
-                        .HasColumnName("DirectorySize");
-
-                    b.Property<bool>("DocumentType")
-                        .HasColumnType("boolean")
-                        .HasColumnName("DocumentType");
-
-                    b.Property<string>("JobsIdExtString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("JobsIdExtString");
-
-                    b.Property<string>("LastModificationChanges")
-                        .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("character varying(8191)")
-                        .HasColumnName("LastModificationChanges");
-
-                    b.Property<bool>("Locked")
-                        .HasColumnType("boolean")
-                        .HasColumnName("Locked");
-
-                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
-                        .HasColumnType("uuid")
-                        .HasColumnName("ModifiedByUserIdExtAutoFill");
-
-                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("ModifiedDateTimeAutoFill");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
-                        .HasColumnName("Name");
-
-                    b.Property<long>("Objects")
-                        .HasColumnType("bigint")
-                        .HasColumnName("Objects");
-
-                    b.Property<Guid?>("ParentSubDirectoryId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Suffix")
-                        .IsRequired()
-                        .HasMaxLength(127)
-                        .HasColumnType("character varying(127)")
-                        .HasColumnName("Suffix");
-
-                    b.Property<string>("WorkflowItemsExtString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("WorkflowItemExtString");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DeliveryBillId");
-
-                    b.HasIndex("ParentSubDirectoryId");
-
-                    b.ToTable("PostDirectory", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_PostDirectory_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("uuid")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("uuid")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PostDirectory_AuditLog", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_PreDirectory", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("BackupsExtString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("BackupsExtString");
-
-                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
-                        .HasColumnType("uuid")
-                        .HasColumnName("CreatedByUserIdExtAutoFill");
-
-                    b.Property<DateTime>("CreatedDateTimeAutoFill")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("CreatedDateTimeAutoFill");
-
-                    b.Property<Guid?>("DeliveryBillId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("character varying(8191)")
-                        .HasColumnName("Description");
-
-                    b.Property<long>("DirectorySize")
-                        .HasColumnType("bigint")
-                        .HasColumnName("DirectorySize");
-
-                    b.Property<bool>("DocumentType")
-                        .HasColumnType("boolean")
-                        .HasColumnName("DocumentType");
-
-                    b.Property<string>("JobsIdExtString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("JobsIdExtString");
-
-                    b.Property<string>("LastModificationChanges")
-                        .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("character varying(8191)")
-                        .HasColumnName("LastModificationChanges");
-
-                    b.Property<bool>("Locked")
-                        .HasColumnType("boolean")
-                        .HasColumnName("Locked");
-
-                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
-                        .HasColumnType("uuid")
-                        .HasColumnName("ModifiedByUserIdExtAutoFill");
-
-                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("ModifiedDateTimeAutoFill");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
-                        .HasColumnName("Name");
-
-                    b.Property<long>("Objects")
-                        .HasColumnType("bigint")
-                        .HasColumnName("Objects");
-
-                    b.Property<Guid?>("ParentSubDirectoryId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Suffix")
-                        .IsRequired()
-                        .HasMaxLength(127)
-                        .HasColumnType("character varying(127)")
-                        .HasColumnName("Suffix");
-
-                    b.Property<string>("WorkflowItemsExtString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("WorkflowItemExtString");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DeliveryBillId");
-
-                    b.HasIndex("ParentSubDirectoryId");
-
-                    b.ToTable("PreDirectory", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_PreDirectory_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareIdExt")
-                        .HasColumnType("uuid")
-                        .HasColumnName("SoftwareIdExt");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("uuid")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PreDirectory_AuditLog", "psgm");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1653,6 +1381,142 @@ namespace PSGM.Model.DbMain.Migrations
                     b.ToTable("Project_AuditLog", "psgm");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Unit", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("BackupsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("BackupsExtString");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<Guid?>("DeliveryBillId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("character varying(8191)")
+                        .HasColumnName("Description");
+
+                    b.Property<long>("DirectorySize")
+                        .HasColumnType("bigint")
+                        .HasColumnName("DirectorySize");
+
+                    b.Property<bool>("DocumentType")
+                        .HasColumnType("boolean")
+                        .HasColumnName("DocumentType");
+
+                    b.Property<string>("JobsIdExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("JobsIdExtString");
+
+                    b.Property<string>("LastModificationChanges")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("character varying(8191)")
+                        .HasColumnName("LastModificationChanges");
+
+                    b.Property<bool>("Locked")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Locked");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("Name");
+
+                    b.Property<long>("Objects")
+                        .HasColumnType("bigint")
+                        .HasColumnName("Objects");
+
+                    b.Property<Guid?>("ParentUnitId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Suffix")
+                        .IsRequired()
+                        .HasMaxLength(127)
+                        .HasColumnType("character varying(127)")
+                        .HasColumnName("Suffix");
+
+                    b.Property<string>("WorkflowItemsExtString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("WorkflowItemExtString");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DeliveryBillId");
+
+                    b.HasIndex("ParentUnitId");
+
+                    b.ToTable("Unit", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Unit_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Unit_AuditLog", "psgm");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Address", b =>
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Location", "Location")
@@ -1764,36 +1628,6 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_PostDirectory", b =>
-                {
-                    b.HasOne("PSGM.Model.DbMain.DbMain_DeliveryBill", "DeliveryBill")
-                        .WithMany("PostDirectories")
-                        .HasForeignKey("DeliveryBillId");
-
-                    b.HasOne("PSGM.Model.DbMain.DbMain_PostDirectory", "ParentSubDirectory")
-                        .WithMany("SubDirectories")
-                        .HasForeignKey("ParentSubDirectoryId");
-
-                    b.Navigation("DeliveryBill");
-
-                    b.Navigation("ParentSubDirectory");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_PreDirectory", b =>
-                {
-                    b.HasOne("PSGM.Model.DbMain.DbMain_DeliveryBill", "DeliveryBill")
-                        .WithMany("PreDirectories")
-                        .HasForeignKey("DeliveryBillId");
-
-                    b.HasOne("PSGM.Model.DbMain.DbMain_PreDirectory", "ParentSubDirectory")
-                        .WithMany("SubDirectories")
-                        .HasForeignKey("ParentSubDirectoryId");
-
-                    b.Navigation("DeliveryBill");
-
-                    b.Navigation("ParentSubDirectory");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectAuthorization_User", b =>
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
@@ -1830,15 +1664,28 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Project");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Unit", b =>
+                {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_DeliveryBill", "DeliveryBill")
+                        .WithMany("Units")
+                        .HasForeignKey("DeliveryBillId");
+
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Unit", "ParentUnit")
+                        .WithMany("Unit")
+                        .HasForeignKey("ParentUnitId");
+
+                    b.Navigation("DeliveryBill");
+
+                    b.Navigation("ParentUnit");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DeliveryBill", b =>
                 {
                     b.Navigation("CreatedWithDeliveryBillTemplate");
 
                     b.Navigation("DocumentTypes");
 
-                    b.Navigation("PostDirectories");
-
-                    b.Navigation("PreDirectories");
+                    b.Navigation("Units");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Location", b =>
@@ -1861,16 +1708,6 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("NotificationUserGroup");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_PostDirectory", b =>
-                {
-                    b.Navigation("SubDirectories");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_PreDirectory", b =>
-                {
-                    b.Navigation("SubDirectories");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project", b =>
                 {
                     b.Navigation("AuthorizationUser");
@@ -1886,6 +1723,11 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("NotificationUserGroup");
 
                     b.Navigation("Organization");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Unit", b =>
+                {
+                    b.Navigation("Unit");
                 });
 #pragma warning restore 612, 618
         }

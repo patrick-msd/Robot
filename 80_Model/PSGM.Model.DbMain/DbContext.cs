@@ -77,12 +77,6 @@ namespace PSGM.Model.DbMain
         public DbSet<DbMain_OrganizationNotification_UserGroup> OrganizationNotification_UserGroup { get; set; }
         public DbSet<DbMain_OrganizationNotification_UserGroup_AuditLog> OrganizationNotification_UserGroup_AuditLog { get; set; }
 
-        public DbSet<DbMain_PostDirectory> PostDirectories { get; set; }
-        public DbSet<DbMain_PostDirectory_AuditLog> PostDirectory_AuditLog { get; set; }
-
-        public DbSet<DbMain_PreDirectory> PreDirectories { get; set; }
-        public DbSet<DbMain_PreDirectory_AuditLog> PreDirectory_AuditLog { get; set; }
-
         public DbSet<DbMain_Project> Projects { get; set; }
         public DbSet<DbMain_Project_AuditLog> Project_AuditLog { get; set; }
 
@@ -97,6 +91,9 @@ namespace PSGM.Model.DbMain
 
         public DbSet<DbMain_ProjectNotification_UserGroup> ProjectNotification_UserGroup { get; set; }
         public DbSet<DbMain_ProjectNotification_UserGroup_AuditLog> ProjectNotification_UserGroup_AuditLog { get; set; }
+
+        public DbSet<DbMain_Unit> Units { get; set; }
+        public DbSet<DbMain_Unit_AuditLog> Unit_AuditLog { get; set; }
         #endregion
 
         #region Overrides
@@ -335,36 +332,6 @@ namespace PSGM.Model.DbMain
                     case DbMain_OrganizationNotification_UserGroup_AuditLog organizationNotification_UserGroup_AuditLog:
                         break;
 
-                    case DbMain_PostDirectory postDirectory:
-                        PostDirectory_AuditLog.Add(new DbMain_PostDirectory_AuditLog
-                        {
-                            Id = new Guid(),
-
-                            SourceId = postDirectory.Id,
-                            Action = entry.State.ToString(),
-                            DateTime = DateTime.UtcNow,
-                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                        });
-                        break;
-
-                    case DbMain_PostDirectory_AuditLog postDirectory_AuditLog:
-                        break;
-
-                    case DbMain_PreDirectory preDirectory:
-                        PreDirectory_AuditLog.Add(new DbMain_PreDirectory_AuditLog
-                        {
-                            Id = new Guid(),
-
-                            SourceId = preDirectory.Id,
-                            Action = entry.State.ToString(),
-                            DateTime = DateTime.UtcNow,
-                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                        });
-                        break;
-
-                    case DbMain_PreDirectory_AuditLog preDirectory_AuditLog:
-                        break;
-
                     case DbMain_Project project:
                         Project_AuditLog.Add(new DbMain_Project_AuditLog
                         {
@@ -438,6 +405,21 @@ namespace PSGM.Model.DbMain
                         break;
 
                     case DbMain_ProjectNotification_UserGroup_AuditLog projectNotification_UserGroup_AuditLog:
+                        break;
+
+                    case DbMain_Unit unit:
+                        Unit_AuditLog.Add(new DbMain_Unit_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = unit.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMain_Unit_AuditLog unit_AuditLog:
                         break;
 
                     default:

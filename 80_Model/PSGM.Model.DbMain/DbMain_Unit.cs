@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbMain
 {
-    [Table("PostDirectory")]
-    public class DbMain_PostDirectory
+    [Table("Unit")]
+    public class DbMain_Unit
     {
         #region Entities
         [Key]
@@ -87,8 +87,8 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Links
-        [InverseProperty("ParentSubDirectory")]
-        public virtual ICollection<DbMain_PostDirectory>? SubDirectories { get; set; }
+        [InverseProperty("ParentUnit")]
+        public virtual ICollection<DbMain_Unit>? Unit { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
@@ -97,9 +97,9 @@ namespace PSGM.Model.DbMain
         public virtual DbMain_DeliveryBill? DeliveryBill { get; set; }
 
 
-        [ForeignKey("ParentSubDirectory")]
-        public Guid? ParentSubDirectoryId { get; set; }
-        public virtual DbMain_PostDirectory? ParentSubDirectory { get; set; }
+        [ForeignKey("ParentUnit")]
+        public Guid? ParentUnitId { get; set; }
+        public virtual DbMain_Unit? ParentUnit { get; set; }
         #endregion
 
         #region Links (Outside DB)

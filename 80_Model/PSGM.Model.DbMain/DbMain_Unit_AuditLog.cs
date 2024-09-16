@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbMain
 {
-    [Table("PreDirectory_AuditLog")]
-    public class DbMain_PreDirectory_AuditLog
+    [Table("Unit_AuditLog")]
+    public class DbMain_Unit_AuditLog
     {
         #region Entities
         [Key]
@@ -69,9 +69,9 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Not Mapped
-        public DbMain_PreDirectory GetChagnes()
+        public DbMain_Unit GetChagnes()
         {
-            return JsonConvert.DeserializeObject<DbMain_PreDirectory>(Changes);
+            return JsonConvert.DeserializeObject<DbMain_Unit>(Changes);
         }
         #endregion
     }

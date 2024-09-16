@@ -191,42 +191,6 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PostDirectory_AuditLog",
-                schema: "psgm",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
-                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UserIdExt = table.Column<Guid>(type: "uuid", nullable: false),
-                    SoftwareIdExt = table.Column<Guid>(type: "uuid", nullable: false),
-                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PostDirectory_AuditLog", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PreDirectory_AuditLog",
-                schema: "psgm",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
-                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UserIdExt = table.Column<Guid>(type: "uuid", nullable: false),
-                    SoftwareIdExt = table.Column<Guid>(type: "uuid", nullable: false),
-                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PreDirectory_AuditLog", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Project",
                 schema: "psgm",
                 columns: table => new
@@ -335,6 +299,24 @@ namespace PSGM.Model.DbMain.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProjectNotification_UserGroup_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Unit_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserIdExt = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareIdExt = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Unit_AuditLog", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -552,7 +534,7 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PostDirectory",
+                name: "Unit",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -573,63 +555,22 @@ namespace PSGM.Model.DbMain.Migrations
                     ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
                     LastModificationChanges = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
                     DeliveryBillId = table.Column<Guid>(type: "uuid", nullable: true),
-                    ParentSubDirectoryId = table.Column<Guid>(type: "uuid", nullable: true)
+                    ParentUnitId = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PostDirectory", x => x.Id);
+                    table.PrimaryKey("PK_Unit", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PostDirectory_DeliveryBill_DeliveryBillId",
+                        name: "FK_Unit_DeliveryBill_DeliveryBillId",
                         column: x => x.DeliveryBillId,
                         principalSchema: "psgm",
                         principalTable: "DeliveryBill",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_PostDirectory_PostDirectory_ParentSubDirectoryId",
-                        column: x => x.ParentSubDirectoryId,
+                        name: "FK_Unit_Unit_ParentUnitId",
+                        column: x => x.ParentUnitId,
                         principalSchema: "psgm",
-                        principalTable: "PostDirectory",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PreDirectory",
-                schema: "psgm",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Suffix = table.Column<string>(type: "character varying(127)", maxLength: 127, nullable: false),
-                    Name = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    Description = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
-                    Objects = table.Column<long>(type: "bigint", nullable: false),
-                    DirectorySize = table.Column<long>(type: "bigint", nullable: false),
-                    DocumentType = table.Column<bool>(type: "boolean", nullable: false),
-                    Locked = table.Column<bool>(type: "boolean", nullable: false),
-                    JobsIdExtString = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
-                    WorkflowItemExtString = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
-                    BackupsExtString = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
-                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    LastModificationChanges = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
-                    DeliveryBillId = table.Column<Guid>(type: "uuid", nullable: true),
-                    ParentSubDirectoryId = table.Column<Guid>(type: "uuid", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PreDirectory", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_PreDirectory_DeliveryBill_DeliveryBillId",
-                        column: x => x.DeliveryBillId,
-                        principalSchema: "psgm",
-                        principalTable: "DeliveryBill",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_PreDirectory_PreDirectory_ParentSubDirectoryId",
-                        column: x => x.ParentSubDirectoryId,
-                        principalSchema: "psgm",
-                        principalTable: "PreDirectory",
+                        principalTable: "Unit",
                         principalColumn: "Id");
                 });
 
@@ -898,30 +839,6 @@ namespace PSGM.Model.DbMain.Migrations
                 column: "OrganizationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PostDirectory_DeliveryBillId",
-                schema: "psgm",
-                table: "PostDirectory",
-                column: "DeliveryBillId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PostDirectory_ParentSubDirectoryId",
-                schema: "psgm",
-                table: "PostDirectory",
-                column: "ParentSubDirectoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PreDirectory_DeliveryBillId",
-                schema: "psgm",
-                table: "PreDirectory",
-                column: "DeliveryBillId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PreDirectory_ParentSubDirectoryId",
-                schema: "psgm",
-                table: "PreDirectory",
-                column: "ParentSubDirectoryId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ProjectAuthorization_User_ProjectId",
                 schema: "psgm",
                 table: "ProjectAuthorization_User",
@@ -944,6 +861,18 @@ namespace PSGM.Model.DbMain.Migrations
                 schema: "psgm",
                 table: "ProjectNotification_UserGroup",
                 column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Unit_DeliveryBillId",
+                schema: "psgm",
+                table: "Unit",
+                column: "DeliveryBillId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Unit_ParentUnitId",
+                schema: "psgm",
+                table: "Unit",
+                column: "ParentUnitId");
         }
 
         /// <inheritdoc />
@@ -1026,22 +955,6 @@ namespace PSGM.Model.DbMain.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "PostDirectory",
-                schema: "psgm");
-
-            migrationBuilder.DropTable(
-                name: "PostDirectory_AuditLog",
-                schema: "psgm");
-
-            migrationBuilder.DropTable(
-                name: "PreDirectory",
-                schema: "psgm");
-
-            migrationBuilder.DropTable(
-                name: "PreDirectory_AuditLog",
-                schema: "psgm");
-
-            migrationBuilder.DropTable(
                 name: "Project_AuditLog",
                 schema: "psgm");
 
@@ -1075,6 +988,14 @@ namespace PSGM.Model.DbMain.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProjectNotification_UserGroup_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "Unit",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "Unit_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
