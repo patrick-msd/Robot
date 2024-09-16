@@ -15,16 +15,16 @@ namespace PSGM.Model.DbMain
         public string ConnectionString { get { return _connectionString; } set { _connectionString = value; } }
 
 
-        private string _connectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbMain\\DbMain.db";
-        public string ConnectionStringSQLite { get { return _connectionStringSQLite; } set { _connectionStringSQLite = value; } }
+        private Guid _databaseSessionParameter_UserId = Guid.Empty;
+        public Guid DatabaseSessionParameter_UserId { get { return _databaseSessionParameter_UserId; } set { _databaseSessionParameter_UserId = value; } }
 
 
-        private string _connectionStringPostgreSQL = "Host=server;Database=database;Username=user;Password=password";
-        public string ConnectionStringPostgreSQL { get { return _connectionStringPostgreSQL; } set { _connectionStringPostgreSQL = value; } }
+        private Guid _databaseSessionParameter_MachineId = Guid.Empty;
+        public Guid DatabaseSessionParameter_MachineId { get { return _databaseSessionParameter_MachineId; } set { _databaseSessionParameter_MachineId = value; } }
 
 
-        private string _connectionStringSQLServer = "Server=(localdb)\\mssqllocaldb;Database=database;Trusted_Connection=True;";
-        public string ConnectionStringSQLServer { get { return _connectionStringSQLServer; } set { _connectionStringSQLServer = value; } }
+        private Guid _databaseSessionParameter_SoftwareId = Guid.Empty;
+        public Guid DatabaseSessionParameter_SoftwareId { get { return _databaseSessionParameter_SoftwareId; } set { _databaseSessionParameter_SoftwareId = value; } }
         #endregion
 
         #region Context
@@ -56,11 +56,11 @@ namespace PSGM.Model.DbMain
         public DbSet<DbMain_Location> Locations { get; set; }
         public DbSet<DbMain_Location_AuditLog> Location_AuditLog { get; set; }
 
-        public DbSet<DbMain_Order> Orders { get; set; }
-        public DbSet<DbMain_Order_AuditLog> Order_AuditLog { get; set; }
+        public DbSet<DbMain_DeliveryBill> DeliveryBills { get; set; }
+        public DbSet<DbMain_DeliveryBill_AuditLog> DeliveryBill_AuditLog { get; set; }
 
-        public DbSet<DbMain_OrderTemplate> OrderTemplates { get; set; }
-        public DbSet<DbMain_OrderTemplate_AuditLog> OrderTemplate_AuditLog { get; set; }
+        public DbSet<DbMain_DeliveryBillTemplate> DeliveryBillTemplates { get; set; }
+        public DbSet<DbMain_DeliveryBillTemplate_AuditLog> DeliveryBillTemplate_AuditLog { get; set; }
 
         public DbSet<DbMain_Organization> Organizations { get; set; }
         public DbSet<DbMain_Organization_AuditLog> Organization_AuditLog { get; set; }
@@ -109,15 +109,15 @@ namespace PSGM.Model.DbMain
                     break;
 
                 case DatabaseType.SQLite:
-                    optionsBuilder.UseSqlite(_connectionStringSQLite);
+                    optionsBuilder.UseSqlite(_connectionString);
                     break;
 
                 case DatabaseType.PostgreSQL:
-                    optionsBuilder.UseNpgsql(_connectionStringPostgreSQL);
+                    optionsBuilder.UseNpgsql(_connectionString);
                     break;
 
                 case DatabaseType.SQLServer:
-                    optionsBuilder.UseSqlServer(_connectionStringSQLServer);
+                    optionsBuilder.UseSqlServer(_connectionString);
                     break;
 
                 default:
@@ -130,6 +130,8 @@ namespace PSGM.Model.DbMain
             // https://learn.microsoft.com/en-us/ef/core/modeling/data-seeding
             // https://www.learnentityframeworkcore.com/migrations/seeding
             // https://www.learnentityframeworkcore.com/configuration/data-annotation-attributes
+
+            modelBuilder.HasDefaultSchema("psgm");
 
             //modelBuilder.ApplyConfiguration(new ModelLogTypeConfiguration());
             //modelBuilder.ApplyConfiguration(new ModelObjectTypeConfiguration());
@@ -175,8 +177,6 @@ namespace PSGM.Model.DbMain
                             Id = new Guid(),
 
                             SourceId = address.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = address.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
@@ -192,8 +192,6 @@ namespace PSGM.Model.DbMain
                             Id = new Guid(),
 
                             SourceId = contributors.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = contributors.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
@@ -209,8 +207,6 @@ namespace PSGM.Model.DbMain
                             Id = new Guid(),
 
                             SourceId = documentType.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = documentType.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
@@ -226,8 +222,6 @@ namespace PSGM.Model.DbMain
                             Id = new Guid(),
 
                             SourceId = location.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = location.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
@@ -237,38 +231,34 @@ namespace PSGM.Model.DbMain
                     case DbMain_Location_AuditLog location_AuditLog:
                         break;
 
-                    case DbMain_Order order:
-                        Order_AuditLog.Add(new DbMain_Order_AuditLog
+                    case DbMain_DeliveryBill deliveryBill:
+                        DeliveryBill_AuditLog.Add(new DbMain_DeliveryBill_AuditLog
                         {
                             Id = new Guid(),
 
-                            SourceId = order.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = order.GetType().Name,
+                            SourceId = deliveryBill.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
-                    case DbMain_Order_AuditLog order_AuditLog:
+                    case DbMain_DeliveryBill_AuditLog deliveryBill_AuditLog:
                         break;
 
-                    case DbMain_OrderTemplate orderTemplate:
-                        OrderTemplate_AuditLog.Add(new DbMain_OrderTemplate_AuditLog
+                    case DbMain_DeliveryBillTemplate deliveryBillTemplate:
+                        DeliveryBillTemplate_AuditLog.Add(new DbMain_DeliveryBillTemplate_AuditLog
                         {
                             Id = new Guid(),
 
-                            SourceId = orderTemplate.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = orderTemplate.GetType().Name,
+                            SourceId = deliveryBillTemplate.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
-                    case DbMain_OrderTemplate_AuditLog orderTemplate_AuditLog:
+                    case DbMain_DeliveryBillTemplate_AuditLog deliveryBillTemplate_AuditLog:
                         break;
 
                     case DbMain_Organization organization:
@@ -277,8 +267,6 @@ namespace PSGM.Model.DbMain
                             Id = new Guid(),
 
                             SourceId = organization.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = organization.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
@@ -293,8 +281,6 @@ namespace PSGM.Model.DbMain
                             Id = new Guid(),
 
                             SourceId = organizationAuthorization_User.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = organizationAuthorization_User.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
@@ -310,8 +296,6 @@ namespace PSGM.Model.DbMain
                             Id = new Guid(),
 
                             SourceId = organizationAuthorization_UserGroup.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = organizationAuthorization_UserGroup.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
@@ -327,8 +311,6 @@ namespace PSGM.Model.DbMain
                             Id = new Guid(),
 
                             SourceId = organizationNotification_User.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = organizationNotification_User.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
@@ -344,8 +326,6 @@ namespace PSGM.Model.DbMain
                             Id = new Guid(),
 
                             SourceId = organizationNotification_UserGroup.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = organizationNotification_UserGroup.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
@@ -361,8 +341,6 @@ namespace PSGM.Model.DbMain
                             Id = new Guid(),
 
                             SourceId = postDirectory.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = postDirectory.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
@@ -378,8 +356,6 @@ namespace PSGM.Model.DbMain
                             Id = new Guid(),
 
                             SourceId = preDirectory.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = preDirectory.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
@@ -395,8 +371,6 @@ namespace PSGM.Model.DbMain
                             Id = new Guid(),
 
                             SourceId = project.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = project.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
@@ -412,8 +386,6 @@ namespace PSGM.Model.DbMain
                             Id = new Guid(),
 
                             SourceId = projectAuthorization_User.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = projectAuthorization_User.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
@@ -429,8 +401,6 @@ namespace PSGM.Model.DbMain
                             Id = new Guid(),
 
                             SourceId = projectAuthorization_UserGroup.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = projectAuthorization_UserGroup.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
@@ -446,8 +416,6 @@ namespace PSGM.Model.DbMain
                             Id = new Guid(),
 
                             SourceId = projectNotification_User.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = projectNotification_User.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
@@ -463,8 +431,6 @@ namespace PSGM.Model.DbMain
                             Id = new Guid(),
 
                             SourceId = projectNotification_UserGroup.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = projectNotification_UserGroup.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
@@ -486,23 +452,7 @@ namespace PSGM.Model.DbMain
         #region Functions
         public string GetConnectionString()
         {
-            switch (DatabaseType)
-            {
-                case DatabaseType.ConnectionString:
-                    return _connectionString;
-
-                case DatabaseType.SQLite:
-                    return _connectionStringSQLite;
-
-                case DatabaseType.PostgreSQL:
-                    return _connectionStringPostgreSQL;
-
-                case DatabaseType.SQLServer:
-                    return _connectionStringSQLServer;
-
-                default:
-                    throw new Exception("Unsupported database type");
-            }
+            return _connectionString;
         }
         #endregion
     }

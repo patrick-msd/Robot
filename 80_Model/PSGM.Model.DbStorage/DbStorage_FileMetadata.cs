@@ -31,6 +31,10 @@ namespace PSGM.Model.DbStorage
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
+        [Column("Hidden")]
+        [Display(Name = "Hidden")]
+        public bool Hidden { get; set; } = false;
+
         [Column("EditAll")]
         [Display(Name = "EditAll")]
         public bool EditAll { get; set; } = false;
@@ -76,9 +80,6 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [ForeignKey("File")]
-        public Guid? FileId { get; set; }
-        public virtual DbStorage_File? File { get; set; }
         #endregion
 
         #region Links (Outside DB)

@@ -5,14 +5,32 @@ namespace PSGM.Sample.Model.DbStorage
 {
     public partial class MainWindow : System.Windows.Window
     {
-        public List<DbStorage_File> Create_Files2(int count, List<Authorization_User> users, List<Authorization_UserGroup> userGroups, List<Notification_User> notificationUsers, List<Notification_UserGroup> notificationUserGroups, List<DbStorage_SubDirectory> subDirectories, List<DbStorage_RootDirectory> rootDirectories)
+        public List<DbStorage_File> Create_Files2(int count, List<Authorization_User> users, List<Authorization_UserGroup> userGroups, List<Notification_User> notificationUsers, List<Notification_UserGroup> notificationUserGroups, List<DbStorage_SubDirectory> subDirectories, List<DbStorage_RootDirectory> rootDirectories, List<DbStorage_FileMetadata> dbStorage_FileMetadata)
         {
             Random random = new Random();
+
+            List<DbStorage_FileMetadataLink> dbStorage_FileMetadataLink;
 
             List<DbStorage_File> tmp = new List<DbStorage_File>();
 
             for (int i = 0; i < count; i++)
             {
+                dbStorage_FileMetadataLink = new List<DbStorage_FileMetadataLink>();
+
+                for (int j = 0; j < random.Next(0, dbStorage_FileMetadata.Count()); j++)
+                {
+                    dbStorage_FileMetadataLink.Add(new DbStorage_FileMetadataLink()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        //File = null,
+                        //FileId = Guid.Empty,
+
+                        FileMetadata = dbStorage_FileMetadata[random.Next(0, dbStorage_FileMetadata.Count())],
+                        //FileMetadataId = Guid.Empty,
+                    });
+                }
+
                 tmp.Add(new DbStorage_File()
                 {
                     Id = Guid.NewGuid(),
@@ -24,11 +42,13 @@ namespace PSGM.Sample.Model.DbStorage
                     Name = "File " + i.ToString(),
                     Prefix = i.ToString(),
 
-                    Description = "Description " + i.ToString(),
+                    Description = "FileDescription " + i.ToString(),
 
                     ObjectExtension = FileExtension.JSON,
 
-                    ObjectSize = 34235,
+                    ObjectSize = 34235456,
+
+                    FileMetadataLinks = dbStorage_FileMetadataLink,
 
                     StorageObjectName = string.Empty,
                     StorageObjectUrl = string.Empty,
@@ -69,12 +89,6 @@ namespace PSGM.Sample.Model.DbStorage
                     ExtId9 = Guid.NewGuid().ToString(),
                     ExtId10 = Guid.NewGuid().ToString(),
 
-                    //CreatedByUserIdExtAutoFill = Guid.Empty,
-                    //CreatedDateTimeAutoFill = DateTime.Now,
-                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
-                    //ModifiedDateTimeAutoFill = DateTime.Now,
-                    //LastModificationChangesAutoFill = string.Empty,
-
                     //Metadata = new List<DbStorage_FileMetadata>()
                     //{
                     //    new DbStorage_FileMetadata()
@@ -91,15 +105,28 @@ namespace PSGM.Sample.Model.DbStorage
                     {
                         Id = Guid.NewGuid(),
 
-                        //QrCodeString = "QrCode " + i.ToString(),
-                        //QrCodeImage = new byte[0],
+                        Name = "QrCode " + i.ToString(),
+                        Description = "QrCode  sdfdasfdsfvsf" + i.ToString(),
+
+                        File = null,
+                        FileId = Guid.Empty,
+
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
                     },
 
-                    //RootDirectory = Guid.Empty,
+                    //RootDirectory = null,
                     //RootDirectoryId = Guid.Empty,
 
                     SubDirectory = subDirectories.Last(),
                     //SubDirectoryId = Guid.Empty,
+
+                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                    //CreatedDateTimeAutoFill = DateTime.Now,
+                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                    //ModifiedDateTimeAutoFill = DateTime.Now,
                 });
             }
 

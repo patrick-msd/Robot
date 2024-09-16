@@ -36,6 +36,39 @@ namespace PSGM.Model.DbStorage
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
+        [Column("Stars")]
+        [Display(Name = "Stars")]
+        public int Stars { get; set; } = -1;
+
+        [Column("Order")]
+        [Display(Name = "Order")]
+        public int Order { get; set; } = -1;
+
+        [Column("DirectoryState")]
+        [Display(Name = "DirectoryState")]
+        public DirectoryState DirectoryState { get; set; } = DirectoryState.Undefined;
+
+        [Column("SuffixProjectOwner")]
+        [Display(Name = "SuffixProjectOwner")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string SuffixProjectOwner { get; set; } = string.Empty;
+
+        [Required]
+        [Column("NameProjectOwner")]
+        [Display(Name = "NameProjectOwner")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string NameProjectOwner { get; set; } = string.Empty;
+
+        [Column("PrefixProjectOwner")]
+        [Display(Name = "PrefixProjectOwner")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string PrefixProjectOwner { get; set; } = string.Empty;
+
+        [Column("DescriptionProjectOwner")]
+        [Display(Name = "DescriptionProjectOwner")]
+        [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string DescriptionProjectOwner { get; set; } = string.Empty;
+
         [Column("DirectoryLocked")]
         [Display(Name = "DirectoryLocked")]
         public bool DirectoryLocked { get; set; } = false;
@@ -80,11 +113,11 @@ namespace PSGM.Model.DbStorage
         #region Autofill
         [Column("ObjectsAutofill")]
         [Display(Name = "ObjectsAutofill")]
-        public long DirectoryObjectsAutofill { get; set; } = 0;
+        public int DirectoryObjectsAutofill { get; set; } = -1;
 
         [Column("DirectorySizeAutofill")]
         [Display(Name = "DirectorySizeAutofill")]
-        public long DirectorySizeAutofill { get; set; } = 0;
+        public long DirectorySizeAutofill { get; set; } = -1;
         #endregion
 
         #region Audit details for faster file audit information
@@ -111,6 +144,12 @@ namespace PSGM.Model.DbStorage
         #region Links
         [InverseProperty("SubDirectory")]
         public virtual ICollection<DbStorage_File>? Files { get; set; }
+
+        [InverseProperty("SubDirectory")]
+        public virtual DbStorage_QrCode? QrCode { get; set; }
+
+        [InverseProperty("SubDirectory")]
+        public virtual DbStorage_Quality? Quality { get; set; }
 
         [InverseProperty("ParentSubDirectory")]
         public virtual ICollection<DbStorage_SubDirectory>? SubDirectories { get; set; }

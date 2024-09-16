@@ -5,12 +5,32 @@ namespace PSGM.Sample.Model.DbStorage
 {
     public partial class MainWindow : System.Windows.Window
     {
-        public List<DbStorage_RootDirectory> Create_RootDirectories(int count, List<Authorization_User> users, List<Authorization_UserGroup> userGroups, List<Notification_User> notificationUsers, List<Notification_UserGroup> notificationUserGroups)
+        public List<DbStorage_RootDirectory> Create_RootDirectories(int count, List<Authorization_User> users, List<Authorization_UserGroup> userGroups, List<Notification_User> notificationUsers, List<Notification_UserGroup> notificationUserGroups, List<DbStorage_RootDirectoryMetadata> directoryMetadata)
         {
+            Random random = new Random();
+
+            List<DbStorage_RootDirectoryMetadataLink> dbStorage_RootDirectoryMetadataLink;
+
             List<DbStorage_RootDirectory> tmp = new List<DbStorage_RootDirectory>();
 
             for (int i = 0; i < count; i++)
             {
+                dbStorage_RootDirectoryMetadataLink = new List<DbStorage_RootDirectoryMetadataLink>();
+
+                for (int j = 0; j < random.Next(0, directoryMetadata.Count()); j++)
+                {
+                    dbStorage_RootDirectoryMetadataLink.Add(new DbStorage_RootDirectoryMetadataLink()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        //RootDirectory = null,
+                        //RootDirectoryId = Guid.Empty,
+                        
+                        RootDirectoryMetadata = directoryMetadata[random.Next(0, directoryMetadata.Count())],
+                        //RootDirectoryMetadataId = Guid.Empty,
+                    });
+                }
+
                 tmp.Add(new DbStorage_RootDirectory()
                 {
                     Id = Guid.NewGuid(),
@@ -21,6 +41,8 @@ namespace PSGM.Sample.Model.DbStorage
 
                     Description = "RootDirectory Description " + i.ToString(),
 
+                    RootDirectoryMetadataLinks = dbStorage_RootDirectoryMetadataLink,
+                    
                     DirectoryLocked = false,
 
                     AuthorizationUsersIdExt = users,
@@ -47,14 +69,13 @@ namespace PSGM.Sample.Model.DbStorage
                     Files = null,
                     SubDirectories = null,
 
-                    //ObjectsAutofill = 0,
-                    //DirectorySizeAutofill = 0,
+                    DirectoryObjectsAutofill = 0,
+                    DirectorySizeAutofill = 0,
 
                     //CreatedByUserIdExtAutoFill = Guid.Empty,
                     //CreatedDateTimeAutoFill = DateTime.Now,
                     //ModifiedByUserIdExtAutoFill = Guid.Empty,
                     //ModifiedDateTimeAutoFill = DateTime.Now,
-                    //LastModificationChangesAutoFill = string.Empty,
                 });
             }
 

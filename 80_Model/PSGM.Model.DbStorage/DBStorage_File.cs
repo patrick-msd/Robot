@@ -16,11 +16,6 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "Id")]
         public Guid Id { get; set; }
 
-        [Column("RawFileIdsString")]
-        [Display(Name = "RawFileIdsString")]
-        [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string RawFileIdsString { get; private set; } = string.Empty;
-
         [Column("Suffix")]
         [Display(Name = "Suffix")]
         [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
@@ -42,6 +37,43 @@ namespace PSGM.Model.DbStorage
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
+        [Column("Stars")]
+        [Display(Name = "Stars")]
+        public int Stars { get; set; } = -1;
+
+        [Column("Order")]
+        [Display(Name = "Order")]
+        public int Order { get; set; } = -1;
+
+        [Column("SuffixProjectOwner")]
+        [Display(Name = "SuffixProjectOwner")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string SuffixProjectOwner { get; set; } = string.Empty;
+
+        [Required]
+        [Column("NameProjectOwner")]
+        [Display(Name = "NameProjectOwner")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string NameProjectOwner { get; set; } = string.Empty;
+
+        [Column("PrefixProjectOwner")]
+        [Display(Name = "PrefixProjectOwner")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string PrefixProjectOwner { get; set; } = string.Empty;
+
+        [Column("DescriptionProjectOwner")]
+        [Display(Name = "DescriptionProjectOwner")]
+        [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string DescriptionProjectOwner { get; set; } = string.Empty;
+
+        [Column("StarsProjectOwner")]
+        [Display(Name = "StarsProjectOwner")]
+        public int StarsProjectOwner { get; set; } = -1;
+
+        [Column("OrderProjectOwner")]
+        [Display(Name = "OrderProjectOwner")]
+        public int OrderProjectOwner { get; set; } = -1;
+
         [Required]
         [Column("ObjectExtension")]
         [Display(Name = "ObjectExtension")]
@@ -50,12 +82,16 @@ namespace PSGM.Model.DbStorage
         [Required]
         [Column("ObjectSize")]
         [Display(Name = "ObjectSize")]
-        public long ObjectSize { get; set; } = 0;
+        public long ObjectSize { get; set; } = -1;
 
         [Column("StorageObjectName")]
         [Display(Name = "StorageObjectName")]
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string StorageObjectName { get; set; } = string.Empty;
+        public string StorageObjectNameStorageObjectName { get; set; } = string.Empty;
+
+        [Column("StorageObjectVersion")]
+        [Display(Name = "StorageObjectVersion")]
+        public int StorageObjectVersion { get; set; } = 0;
 
         [Column("StorageObjectUrl")]
         [Display(Name = "StorageObjectUrl")]
@@ -66,6 +102,89 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "StorageObjectUrlPublic")]
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string StorageObjectUrlPublic { get; set; } = string.Empty;
+
+        [Column("ExtId1")]
+        [Display(Name = "ExtId1")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string ExtId1 { get; set; } = string.Empty;
+
+        [Column("ExtId2")]
+        [Display(Name = "ExtId2")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string ExtId2 { get; set; } = string.Empty;
+
+        [Column("ExtId3")]
+        [Display(Name = "ExtId3")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string ExtId3 { get; set; } = string.Empty;
+
+        [Column("ExtId4")]
+        [Display(Name = "ExtId4")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string ExtId4 { get; set; } = string.Empty;
+
+        [Column("ExtId5")]
+        [Display(Name = "ExtId5")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string ExtId5 { get; set; } = string.Empty;
+
+        [Column("ExtId6")]
+        [Display(Name = "ExtId6")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string ExtId6 { get; set; } = string.Empty;
+
+        [Column("ExtId7")]
+        [Display(Name = "ExtId7")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string ExtId7 { get; set; } = string.Empty;
+
+        [Column("ExtId8")]
+        [Display(Name = "ExtId8")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string ExtId8 { get; set; } = string.Empty;
+
+        [Column("ExtId9")]
+        [Display(Name = "ExtId9")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string ExtId9 { get; set; } = string.Empty;
+
+        [Column("ExtId10")]
+        [Display(Name = "ExtId10")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string ExtId10 { get; set; } = string.Empty;
+
+        [Column("MachineIdExt")]
+        [Display(Name = "MachineIdExt")]
+        public Guid MachineIdExt { get; set; } = Guid.Empty;
+
+        [Column("DeviceIdExt")]
+        [Display(Name = "DeviceIdExt")]
+        public Guid DeviceIdExt { get; set; } = Guid.Empty;
+
+        [Column("SoftwareIdExt")]
+        [Display(Name = "SoftwareIdExt")]
+        public Guid SoftwareIdExt { get; set; } = Guid.Empty;
+
+        #region No direct access
+        [Column("RawFileIdsString")]
+        [Display(Name = "RawFileIdsString")]
+        [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string RawFileIdsString { get; private set; } = string.Empty;
+
+        [Column("JobIdsExtString")]
+        [Display(Name = "JobIdsExtString")]
+        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string JobIdsExtString { get; private set; } = string.Empty;
+
+        [Column("WorkflowItemIdsExtString")]
+        [Display(Name = "WorkflowItemIdsExtString")]
+        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string WorkflowItemIdsExtString { get; private set; } = string.Empty;
+
+        [Column("BackupIdsExtString")]
+        [Display(Name = "BackupIdsExtString")]
+        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string BackupIdsExtString { get; private set; } = string.Empty;
 
         [Column("AuthorizationUserIdsExtString")]
         [Display(Name = "AuthorizationUserIdsExtString")]
@@ -86,75 +205,6 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "NotificationUserGroupIdsExtString")]
         [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string NotificationUserGroupIdsExtString { get; private set; } = string.Empty;
-
-        [Column("ObjectMetadataString")]
-        [Display(Name = "ObjectMetadataString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string ObjectMetadataString { get; private set; } = string.Empty;
-
-        [Column("ExtId1")]
-        [Display(Name = "ExtId1")]
-        public string ExtId1 { get; set; } = string.Empty;
-
-        [Column("ExtId2")]
-        [Display(Name = "ExtId2")]
-        public string ExtId2 { get; set; } = string.Empty;
-
-        [Column("ExtId3")]
-        [Display(Name = "ExtId3")]
-        public string ExtId3 { get; set; } = string.Empty;
-
-        [Column("ExtId4")]
-        [Display(Name = "ExtId4")]
-        public string ExtId4 { get; set; } = string.Empty;
-
-        [Column("ExtId5")]
-        [Display(Name = "ExtId5")]
-        public string ExtId5 { get; set; } = string.Empty;
-
-        [Column("ExtId6")]
-        [Display(Name = "ExtId6")]
-        public string ExtId6 { get; set; } = string.Empty;
-
-        [Column("ExtId7")]
-        [Display(Name = "ExtId7")]
-        public string ExtId7 { get; set; } = string.Empty;
-
-        [Column("ExtId8")]
-        [Display(Name = "ExtId8")]
-        public string ExtId8 { get; set; } = string.Empty;
-
-        [Column("ExtId9")]
-        [Display(Name = "ExtId9")]
-        public string ExtId9 { get; set; } = string.Empty;
-
-        [Column("ExtId10")]
-        [Display(Name = "ExtId10")]
-        public string ExtId10 { get; set; } = string.Empty;
-
-        [Column("MachineIdExt")]
-        [Display(Name = "MachineIdExt")]
-        public Guid MachineIdExt { get; set; } = Guid.Empty;
-
-        [Column("DeviceIdExt")]
-        [Display(Name = "DeviceIdExt")]
-        public Guid DeviceIdExt { get; set; } = Guid.Empty;
-
-        #region No direct access
-        [Column("JobIdsExtString")]
-        [Display(Name = "JobIdsExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string JobIdsExtString { get; private set; } = string.Empty;
-
-        [Column("WorkflowItemIdsExtString")]
-        [Display(Name = "WorkflowItemIdsExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string WorkflowItemIdsExtString { get; private set; } = string.Empty;
-
-        [Column("BackupIdsExtString")]
-        [Display(Name = "BackupIdsExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string BackupIdsExtString { get; private set; } = string.Empty;
         #endregion
 
         #region Audit details for faster file audit information
@@ -184,6 +234,9 @@ namespace PSGM.Model.DbStorage
 
         [InverseProperty("File")]
         public virtual DbStorage_QrCode? QrCode { get; set; }
+
+        [InverseProperty("File")]
+        public virtual DbStorage_Quality? Quality { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
@@ -255,68 +308,6 @@ namespace PSGM.Model.DbStorage
             get { return BackupIdsExtString != string.Empty ? BackupIdsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
             set { BackupIdsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public void SetImageMetadata(ImageHelper imageHelper)
-        {
-            if (imageHelper != null)
-            {
-                ImageHelper imageHelperTemp = new ImageHelper()
-                {
-                    FileId = imageHelper.FileId,
-                    FileRawIds = imageHelper.FileRawIds,
-
-                    ExposureTime = imageHelper.ExposureTime,
-                    DateDigitized = imageHelper.DateDigitized,
-
-                    CameraDeviceId = imageHelper.CameraDeviceId
-                };
-
-                ObjectMetadataString = JsonConvert.SerializeObject(imageHelperTemp);
-            }
-            else
-            {
-                ObjectMetadataString = string.Empty;
-            }
-        }
-
-        public ImageHelper GetImageMetadata()
-        {
-            return ObjectMetadataString != string.Empty ? JsonConvert.DeserializeObject<ImageHelper>(ObjectMetadataString) : null;
-        }
-
-
-        //public DbStorage_File GetAuditLogs()
-        //{
-
-
-
-        //    return LastModificationChangesAutoFill != string.Empty ? JsonConvert.DeserializeObject<DbStorage_File>(LastModificationChangesAutoFill) : null;
-        //}
-
-
-
-
-
         #endregion
     }
 }

@@ -53,6 +53,9 @@ namespace PSGM.Model.DbStorage
         public DbSet<DbStorage_FileMetadataLink> FileMetadataLink { get; set; }
         public DbSet<DbStorage_FileMetadataLink_AuditLog> FileMetadataLink_AuditLog { get; set; }
 
+        public DbSet<DbStorage_Quality> FileQualities { get; set; }
+        public DbSet<DbStorage_Quality_AuditLog> FileQuality_AuditLog { get; set; }
+
         public DbSet<DbStorage_QrCode> QrCodes { get; set; }
         public DbSet<DbStorage_QrCode_AuditLog> QrCode_AuditLog { get; set; }
 
@@ -303,6 +306,19 @@ namespace PSGM.Model.DbStorage
                             SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
+
+                        #region Automatically added: Audit details for faster subDirectory audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            fileMetadata.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            fileMetadata.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else if (entry.State == EntityState.Modified)
+                        {
+                            fileMetadata.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            fileMetadata.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
                         break;
 
                     case DbStorage_FileMetadata_AuditLog fileMetadata_AuditLog:
@@ -340,6 +356,23 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_QrCode_AuditLog qrCode_AuditLog:
+                        break;
+
+                    case DbStorage_Quality quality:
+                        FileQuality_AuditLog.Add(new DbStorage_Quality_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = quality.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_Quality_AuditLog quality_AuditLog:
                         break;
 
                     case DbStorage_RootDirectory rootDirectory:
@@ -384,6 +417,19 @@ namespace PSGM.Model.DbStorage
                             SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
+
+                        #region Automatically added: Audit details for faster subDirectory audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectoryMetadata.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectoryMetadata.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else if (entry.State == EntityState.Modified)
+                        {
+                            rootDirectoryMetadata.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectoryMetadata.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
                         break;
 
                     case DbStorage_RootDirectoryMetadata_AuditLog rootDirectoryMetadata_AuditLog:
@@ -448,6 +494,19 @@ namespace PSGM.Model.DbStorage
                             SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
+
+                        #region Automatically added: Audit details for faster subDirectory audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectoryMetadata.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectoryMetadata.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else if (entry.State == EntityState.Modified)
+                        {
+                            subDirectoryMetadata.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectoryMetadata.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
                         break;
 
                     case DbStorage_SubDirectoryMetadata_AuditLog subDirectoryMetadata_AuditLog:

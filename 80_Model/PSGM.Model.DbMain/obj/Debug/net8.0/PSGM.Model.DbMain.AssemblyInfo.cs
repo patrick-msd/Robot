@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PSGM.Model.DbMain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a51e41e412dfbed6708f252088b159ad72bb48f6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4efcc3daf100831a1bc006b7dc1b7f8d6a614f29")]
 [assembly: System.Reflection.AssemblyProductAttribute("PSGM.Model.DbMain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PSGM.Model.DbMain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

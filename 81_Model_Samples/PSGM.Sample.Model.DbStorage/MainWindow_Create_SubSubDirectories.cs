@@ -5,14 +5,32 @@ namespace PSGM.Sample.Model.DbStorage
 {
     public partial class MainWindow : System.Windows.Window
     {
-        public List<DbStorage_SubDirectory> Create_SubSubDirectories(int count, List<Authorization_User> users, List<Authorization_UserGroup> userGroups, List<Notification_User> notificationUsers, List<Notification_UserGroup> notificationUserGroups, List<DbStorage_RootDirectory> rootDirectories)
+        public List<DbStorage_SubDirectory> Create_SubSubDirectories(int count, List<Authorization_User> users, List<Authorization_UserGroup> userGroups, List<Notification_User> notificationUsers, List<Notification_UserGroup> notificationUserGroups, List<DbStorage_RootDirectory> rootDirectories, List<DbStorage_SubDirectoryMetadata> directoryMetadata)
         {
             Random random = new Random();
+
+            List<DbStorage_SubDirectoryMetadataLink> dbStorage_SubDirectoryMetadataLink;
 
             List<DbStorage_SubDirectory> tmp = new List<DbStorage_SubDirectory>();
 
             for (int i = 0; i <= count; i++)
             {
+                dbStorage_SubDirectoryMetadataLink = new List<DbStorage_SubDirectoryMetadataLink>();
+
+                for (int j = 0; j < random.Next(0, directoryMetadata.Count()); j++)
+                {
+                    dbStorage_SubDirectoryMetadataLink.Add(new DbStorage_SubDirectoryMetadataLink()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        //SubDirectory = null,
+                        //SubDirectoryId = Guid.Empty,
+
+                        SubDirectoryMetadata = directoryMetadata[random.Next(0, directoryMetadata.Count())],
+                        //SubDirectoryMetadataId = Guid.Empty,
+                    });
+                }
+
                 if (i == 0)
                 {
                     tmp.Add(new DbStorage_SubDirectory()
@@ -24,6 +42,8 @@ namespace PSGM.Sample.Model.DbStorage
                         Prefix = i.ToString(),
 
                         Description = "SubSubDirectory Description " + i.ToString(),
+
+                        SubDirectoryMetadataLinks = dbStorage_SubDirectoryMetadataLink,
 
                         DirectoryLocked = false,
 
@@ -51,20 +71,19 @@ namespace PSGM.Sample.Model.DbStorage
                         Files = null,
                         SubDirectories = null,
 
-                        ParentSubDirectory = null,
+                        //ParentSubDirectory = null,
                         //ParentSubDirectoryId = Guid.Empty,
 
                         RootDirectory = rootDirectories[random.Next(0, rootDirectories.Count())],
                         //RootDirectoryId = Guid.Empty,
 
-                        //ObjectsAutofill = 0,
-                        //DirectorySizeAutofill = 0,
+                        DirectoryObjectsAutofill = 0,
+                        DirectorySizeAutofill = 0,
 
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
                         //ModifiedByUserIdExtAutoFill = Guid.Empty,
                         //ModifiedDateTimeAutoFill = DateTime.Now,
-                        //LastModificationChangesAutoFill = string.Empty,
                     });
                 }
                 else if (i > 0 && i < count)
@@ -78,6 +97,8 @@ namespace PSGM.Sample.Model.DbStorage
                         Prefix = i.ToString(),
 
                         Description = "Description " + i.ToString(),
+
+                        SubDirectoryMetadataLinks = dbStorage_SubDirectoryMetadataLink,
 
                         DirectoryLocked = false,
 
@@ -108,19 +129,18 @@ namespace PSGM.Sample.Model.DbStorage
                         ParentSubDirectory = tmp.Last(),
                         //ParentSubDirectoryId = Guid.Empty,
 
-                        RootDirectory = null,
+                        //RootDirectory = null,
                         //RootDirectoryId = Guid.Empty,
 
-                        //ObjectsAutofill = 0,
-                        //DirectorySizeAutofill = 0,
+                        DirectoryObjectsAutofill = 0,
+                        DirectorySizeAutofill = 0,
 
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
                         //ModifiedByUserIdExtAutoFill = Guid.Empty,
                         //ModifiedDateTimeAutoFill = DateTime.Now,
-                        //LastModificationChangesAutoFill = string.Empty,
                     });
-                }               
+                }
             }
 
             return tmp;

@@ -62,59 +62,79 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(8191)")
                         .HasColumnName("Description");
 
+                    b.Property<string>("DescriptionProjectOwner")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("character varying(8191)")
+                        .HasColumnName("DescriptionProjectOwner");
+
                     b.Property<Guid>("DeviceIdExt")
                         .HasColumnType("uuid")
                         .HasColumnName("DeviceIdExt");
 
                     b.Property<string>("ExtId1")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("ExtId1");
 
                     b.Property<string>("ExtId10")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("ExtId10");
 
                     b.Property<string>("ExtId2")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("ExtId2");
 
                     b.Property<string>("ExtId3")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("ExtId3");
 
                     b.Property<string>("ExtId4")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("ExtId4");
 
                     b.Property<string>("ExtId5")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("ExtId5");
 
                     b.Property<string>("ExtId6")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("ExtId6");
 
                     b.Property<string>("ExtId7")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("ExtId7");
 
                     b.Property<string>("ExtId8")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("ExtId8");
 
                     b.Property<string>("ExtId9")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("ExtId9");
+
+                    b.Property<long>("FileState")
+                        .HasColumnType("bigint")
+                        .HasColumnName("FileState");
 
                     b.Property<string>("JobIdsExtString")
                         .IsRequired()
@@ -140,6 +160,12 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("Name");
 
+                    b.Property<string>("NameProjectOwner")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("NameProjectOwner");
+
                     b.Property<string>("NotificationUserGroupIdsExtString")
                         .IsRequired()
                         .HasMaxLength(16383)
@@ -156,21 +182,29 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("ObjectExtension");
 
-                    b.Property<string>("ObjectMetadataString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("ObjectMetadataString");
-
                     b.Property<long>("ObjectSize")
                         .HasColumnType("bigint")
                         .HasColumnName("ObjectSize");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("integer")
+                        .HasColumnName("Order");
+
+                    b.Property<int>("OrderProjectOwner")
+                        .HasColumnType("integer")
+                        .HasColumnName("OrderProjectOwner");
 
                     b.Property<string>("Prefix")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("character varying(255)")
                         .HasColumnName("Prefix");
+
+                    b.Property<string>("PrefixProjectOwner")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("PrefixProjectOwner");
 
                     b.Property<string>("RawFileIdsString")
                         .IsRequired()
@@ -181,7 +215,19 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Property<Guid?>("RootDirectoryId")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("StorageObjectName")
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<int>("Stars")
+                        .HasColumnType("integer")
+                        .HasColumnName("Stars");
+
+                    b.Property<int>("StarsProjectOwner")
+                        .HasColumnType("integer")
+                        .HasColumnName("StarsProjectOwner");
+
+                    b.Property<string>("StorageObjectNameStorageObjectName")
                         .IsRequired()
                         .HasMaxLength(8191)
                         .HasColumnType("character varying(8191)")
@@ -199,6 +245,10 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(8191)")
                         .HasColumnName("StorageObjectUrlPublic");
 
+                    b.Property<int>("StorageObjectVersion")
+                        .HasColumnType("integer")
+                        .HasColumnName("StorageObjectVersion");
+
                     b.Property<Guid?>("SubDirectoryId")
                         .HasColumnType("uuid");
 
@@ -207,6 +257,12 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("character varying(255)")
                         .HasColumnName("Suffix");
+
+                    b.Property<string>("SuffixProjectOwner")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("SuffixProjectOwner");
 
                     b.Property<string>("WorkflowItemIdsExtString")
                         .IsRequired()
@@ -260,8 +316,9 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("EditAll");
 
-                    b.Property<Guid?>("FileId")
-                        .HasColumnType("uuid");
+                    b.Property<bool>("Hidden")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Hidden");
 
                     b.Property<string>("Key")
                         .IsRequired()
@@ -288,8 +345,6 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnName("ViewAll");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FileId");
 
                     b.ToTable("FileMetadata", "psgm");
                 });
@@ -474,9 +529,25 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("Name");
 
+                    b.Property<long>("QrCodeType")
+                        .HasColumnType("bigint")
+                        .HasColumnName("QrCodeType");
+
+                    b.Property<Guid?>("RootDirectoryId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("SubDirectoryId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
 
                     b.HasIndex("FileId")
+                        .IsUnique();
+
+                    b.HasIndex("RootDirectoryId")
+                        .IsUnique();
+
+                    b.HasIndex("SubDirectoryId")
                         .IsUnique();
 
                     b.ToTable("QrCode", "psgm");
@@ -522,6 +593,102 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.ToTable("QrCode_AuditLog", "psgm");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_Quality", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("character varying(8191)")
+                        .HasColumnName("Description");
+
+                    b.Property<Guid?>("FileId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<long>("QualityState")
+                        .HasColumnType("bigint")
+                        .HasColumnName("QualityState");
+
+                    b.Property<Guid?>("RootDirectoryId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("SubDirectoryId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FileId")
+                        .IsUnique();
+
+                    b.HasIndex("RootDirectoryId")
+                        .IsUnique();
+
+                    b.HasIndex("SubDirectoryId")
+                        .IsUnique();
+
+                    b.ToTable("Quality", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_Quality_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FileQuality_AuditLog", "psgm");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory", b =>
                 {
                     b.Property<Guid>("Id")
@@ -561,17 +728,27 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(8191)")
                         .HasColumnName("Description");
 
+                    b.Property<string>("DescriptionProjectOwner")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("character varying(8191)")
+                        .HasColumnName("DescriptionProjectOwner");
+
                     b.Property<bool>("DirectoryLocked")
                         .HasColumnType("boolean")
                         .HasColumnName("DirectoryLocked");
 
-                    b.Property<long>("DirectoryObjectsAutofill")
-                        .HasColumnType("bigint")
+                    b.Property<int>("DirectoryObjectsAutofill")
+                        .HasColumnType("integer")
                         .HasColumnName("ObjectsAutofill");
 
                     b.Property<long>("DirectorySizeAutofill")
                         .HasColumnType("bigint")
                         .HasColumnName("DirectorySizeAutofill");
+
+                    b.Property<long>("DirectoryState")
+                        .HasColumnType("bigint")
+                        .HasColumnName("DirectoryState");
 
                     b.Property<string>("JobIdsExtString")
                         .IsRequired()
@@ -593,6 +770,12 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("Name");
 
+                    b.Property<string>("NameProjectOwner")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("NameProjectOwner");
+
                     b.Property<string>("NotificationUserGroupIdsExtString")
                         .IsRequired()
                         .HasMaxLength(16383)
@@ -611,11 +794,27 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("Prefix");
 
+                    b.Property<string>("PrefixProjectOwner")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("PrefixProjectOwner");
+
+                    b.Property<int>("Stars")
+                        .HasColumnType("integer")
+                        .HasColumnName("Stars");
+
                     b.Property<string>("Suffix")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("character varying(255)")
                         .HasColumnName("Suffix");
+
+                    b.Property<string>("SuffixProjectOwner")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("SuffixProjectOwner");
 
                     b.Property<string>("WorkflowItemIdsExtString")
                         .IsRequired()
@@ -665,6 +864,10 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("EditAll");
 
+                    b.Property<bool>("Hidden")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Hidden");
+
                     b.Property<string>("Key")
                         .IsRequired()
                         .HasMaxLength(1024)
@@ -679,9 +882,6 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("ModifiedDateTimeAutoFill");
 
-                    b.Property<Guid?>("RootDirectoryId")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("Value")
                         .IsRequired()
                         .HasMaxLength(8191)
@@ -693,8 +893,6 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnName("ViewAll");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RootDirectoryId");
 
                     b.ToTable("RootDirectoryMetadata", "psgm");
                 });
@@ -880,17 +1078,27 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(8191)")
                         .HasColumnName("Description");
 
+                    b.Property<string>("DescriptionProjectOwner")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("character varying(8191)")
+                        .HasColumnName("DescriptionProjectOwner");
+
                     b.Property<bool>("DirectoryLocked")
                         .HasColumnType("boolean")
                         .HasColumnName("DirectoryLocked");
 
-                    b.Property<long>("DirectoryObjectsAutofill")
-                        .HasColumnType("bigint")
+                    b.Property<int>("DirectoryObjectsAutofill")
+                        .HasColumnType("integer")
                         .HasColumnName("ObjectsAutofill");
 
                     b.Property<long>("DirectorySizeAutofill")
                         .HasColumnType("bigint")
                         .HasColumnName("DirectorySizeAutofill");
+
+                    b.Property<long>("DirectoryState")
+                        .HasColumnType("bigint")
+                        .HasColumnName("DirectoryState");
 
                     b.Property<string>("JobIdsExtString")
                         .IsRequired()
@@ -912,6 +1120,12 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("Name");
 
+                    b.Property<string>("NameProjectOwner")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("NameProjectOwner");
+
                     b.Property<string>("NotificationUserGroupIdsExtString")
                         .IsRequired()
                         .HasMaxLength(16383)
@@ -924,6 +1138,10 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(16383)")
                         .HasColumnName("NotificationUserIdsExtString");
 
+                    b.Property<int>("Order")
+                        .HasColumnType("integer")
+                        .HasColumnName("Order");
+
                     b.Property<Guid?>("ParentSubDirectoryId")
                         .HasColumnType("uuid");
 
@@ -933,14 +1151,30 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("Prefix");
 
+                    b.Property<string>("PrefixProjectOwner")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("PrefixProjectOwner");
+
                     b.Property<Guid?>("RootDirectoryId")
                         .HasColumnType("uuid");
+
+                    b.Property<int>("Stars")
+                        .HasColumnType("integer")
+                        .HasColumnName("Stars");
 
                     b.Property<string>("Suffix")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("character varying(255)")
                         .HasColumnName("Suffix");
+
+                    b.Property<string>("SuffixProjectOwner")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("SuffixProjectOwner");
 
                     b.Property<string>("WorkflowItemIdsExtString")
                         .IsRequired()
@@ -994,6 +1228,10 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("EditAll");
 
+                    b.Property<bool>("Hidden")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Hidden");
+
                     b.Property<string>("Key")
                         .IsRequired()
                         .HasMaxLength(1024)
@@ -1008,9 +1246,6 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("ModifiedDateTimeAutoFill");
 
-                    b.Property<Guid?>("SubDirectoryId")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("Value")
                         .IsRequired()
                         .HasMaxLength(8191)
@@ -1022,8 +1257,6 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnName("ViewAll");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SubDirectoryId");
 
                     b.ToTable("SubDirectoryMetadata", "psgm");
                 });
@@ -1185,15 +1418,6 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("SubDirectory");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_FileMetadata", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File", "File")
-                        .WithMany()
-                        .HasForeignKey("FileId");
-
-                    b.Navigation("File");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_FileMetadataLink", b =>
                 {
                     b.HasOne("PSGM.Model.DbStorage.DbStorage_File", "File")
@@ -1217,16 +1441,40 @@ namespace PSGM.Model.DbStorage.Migrations
                         .WithOne("QrCode")
                         .HasForeignKey("PSGM.Model.DbStorage.DbStorage_QrCode", "FileId");
 
-                    b.Navigation("File");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectoryMetadata", b =>
-                {
                     b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory", "RootDirectory")
-                        .WithMany()
-                        .HasForeignKey("RootDirectoryId");
+                        .WithOne("QrCode")
+                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_QrCode", "RootDirectoryId");
+
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory", "SubDirectory")
+                        .WithOne("QrCode")
+                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_QrCode", "SubDirectoryId");
+
+                    b.Navigation("File");
 
                     b.Navigation("RootDirectory");
+
+                    b.Navigation("SubDirectory");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_Quality", b =>
+                {
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File", "File")
+                        .WithOne("Quality")
+                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_Quality", "FileId");
+
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory", "RootDirectory")
+                        .WithOne("Quality")
+                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_Quality", "RootDirectoryId");
+
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory", "SubDirectory")
+                        .WithOne("Quality")
+                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_Quality", "SubDirectoryId");
+
+                    b.Navigation("File");
+
+                    b.Navigation("RootDirectory");
+
+                    b.Navigation("SubDirectory");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectoryMetadataLink", b =>
@@ -1261,15 +1509,6 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("RootDirectory");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectoryMetadata", b =>
-                {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory", "SubDirectory")
-                        .WithMany()
-                        .HasForeignKey("SubDirectoryId");
-
-                    b.Navigation("SubDirectory");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectoryMetadataLink", b =>
                 {
                     b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory", "SubDirectory")
@@ -1292,6 +1531,8 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("FileMetadataLinks");
 
                     b.Navigation("QrCode");
+
+                    b.Navigation("Quality");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_FileMetadata", b =>
@@ -1302,6 +1543,10 @@ namespace PSGM.Model.DbStorage.Migrations
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory", b =>
                 {
                     b.Navigation("Files");
+
+                    b.Navigation("QrCode");
+
+                    b.Navigation("Quality");
 
                     b.Navigation("RootDirectoryMetadataLinks");
 
@@ -1316,6 +1561,10 @@ namespace PSGM.Model.DbStorage.Migrations
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory", b =>
                 {
                     b.Navigation("Files");
+
+                    b.Navigation("QrCode");
+
+                    b.Navigation("Quality");
 
                     b.Navigation("SubDirectories");
 

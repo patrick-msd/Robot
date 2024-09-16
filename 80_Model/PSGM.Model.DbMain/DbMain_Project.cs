@@ -39,6 +39,67 @@ namespace PSGM.Model.DbMain
         [Display(Name = "Finished")]
         public DateTime Finished { get; set; } = DateTime.MinValue;
 
+
+
+
+
+
+
+
+
+        [Column("AqlQuantityImage")]
+        [Display(Name = "AqlQuantityImage")]
+        public AqlQuantity AqlQuantityImage { get; set; } = AqlQuantity.None;
+
+        [Column("AqlInspectionLevelImage")]
+        [Display(Name = "AqlInspectionLevelImage")]
+        public AqlInspectionLevel AqlInspectionLevelImage { get; set; } = AqlInspectionLevel.None;
+
+        [Column("AqlAcceptableQualityLevelImage")]
+        [Display(Name = "AqlAcceptableQualityLevelImage")]
+        public AcceptableQualityLevel AqlAcceptableQualityLevelImage { get; set; } = AcceptableQualityLevel.None;
+
+        [Column("AqlStateImage")]
+        [Display(Name = "AqlStateImage")]
+        public AqlState AqlStateImage { get; set; } = AqlState.None;
+
+        [Column("AqlStateLastChangeImage")]
+        [Display(Name = "AqlStateLastChangeImage")]
+        public DateTime AqlStateLastChangeImage { get; set; } = DateTime.MinValue;
+
+
+
+        [Column("AqlQuantityTranscription")]
+        [Display(Name = "AqlQuantityTranscription")]
+        public AqlQuantity AqlQuantityTranscription { get; set; } = AqlQuantity.None;
+
+        [Column("AqlInspectionLevelTranscription")]
+        [Display(Name = "AqlInspectionLevelTranscription")]
+        public AqlInspectionLevel AqlInspectionLevelTranscription { get; set; } = AqlInspectionLevel.None;
+
+        [Column("AqlAcceptableQualityLevelTranscription")]
+        [Display(Name = "AqlAcceptableQualityLevelTranscription")]
+        public AcceptableQualityLevel AqlAcceptableQualityLevelTranscription { get; set; } = AcceptableQualityLevel.None;
+
+        [Column("AqlStateTranscription")]
+        [Display(Name = "AqlStateTranscription")]
+        public AqlState AqlStateTranscription { get; set; } = AqlState.None;
+
+        [Column("AqlStateLastChangeTranscription")]
+        [Display(Name = "AqlStateLastChangeTranscription")]
+        public DateTime AqlStateLastChangeTranscription { get; set; } = DateTime.MinValue;
+
+
+
+        [Column("MaxDirectorySize")]
+        [Display(Name = "MaxDirectorySize")]
+        public long MaxDirectorySize { get; set; } = 125000000;     // Byte
+
+
+
+
+
+
         [Column("WorkflowIdExt")]
         [Display(Name = "WorkflowIdExt")]
         public Guid WorkflowIdExt { get; set; } = Guid.Empty;
@@ -55,7 +116,7 @@ namespace PSGM.Model.DbMain
 
         #region Links
         [InverseProperty("Project")]
-        public virtual DbMain_Order? Order { get; set; }
+        public virtual DbMain_DeliveryBill? DeliveryBill { get; set; }
 
         [InverseProperty("Project")]
         public virtual DbMain_Organization? Organization { get; set; }

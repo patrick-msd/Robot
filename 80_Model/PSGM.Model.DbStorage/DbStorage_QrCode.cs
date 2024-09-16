@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PSGM.Helper;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbStorage
@@ -23,6 +24,10 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "Description")]
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
+
+        [Column("QrCodeType")]
+        [Display(Name = "QrCodeType")]
+        public QrCodeType QrCodeType { get; set; } = QrCodeType.Undefined;
 
         #region Audit details for faster file audit information
         [Required]
@@ -52,6 +57,14 @@ namespace PSGM.Model.DbStorage
         [ForeignKey("File")]
         public Guid? FileId { get; set; }
         public virtual DbStorage_File? File { get; set; }
+
+        [ForeignKey("RootDirectory")]
+        public Guid? RootDirectoryId { get; set; }
+        public virtual DbStorage_RootDirectory? RootDirectory { get; set; }
+
+        [ForeignKey("SubDirectory")]
+        public Guid? SubDirectoryId { get; set; }
+        public virtual DbStorage_SubDirectory? SubDirectory { get; set; }
         #endregion
 
         #region Links (Outside DB)

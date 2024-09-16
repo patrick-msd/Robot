@@ -17,51 +17,7 @@
                 <Button x:Name="btnDbGenerateData" Content="Generate Data" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,30,0,0" VerticalAlignment="Top" Click="btnDbGenerateData_Click"/>
 
                 <Button x:Name="btnDbReadData1" Content="Read Data 1" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,50,0,0" Click="btnDbReadData1_Click"/>
-
-                <Button x:Name="btnDbCreateOrganizationAndProject" Content="Create Organization and Project" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,50,0,0" VerticalAlignment="Top"/>
-                <Button x:Name="btnConnectToStorageDatabase" Content="Create Storage Database &#xA;Connect to storage" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                <Button x:Name="btnDbCreateStorage" Content="Create Storage" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top"/>
-
-                <Button x:Name="btnDbReadInfo" Content="Read Organization and Project from DB" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,30,0,0" VerticalAlignment="Top"/>
-                <ComboBox x:Name="cmbProjects" Width="250" Margin="1,10,0,0" VerticalAlignment="Top"/>
-                <ComboBox x:Name="cmbOrganization" Width="250" Margin="1,10,0,0" VerticalAlignment="Top"/>
-                <ComboBox x:Name="cmbDirectory" Width="250" Margin="1,10,0,0" VerticalAlignment="Top"/>
             </StackPanel>
         </GroupBox>
-
-        <GroupBox HorizontalAlignment="Left" Height="600" Width="280" Header="Storage" Margin="300,10,0,0" VerticalAlignment="Top" >
-            <StackPanel>
-                <Button x:Name="btnSetupStorage" Content="Setup Storages (Bucket)" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                <Button x:Name="btnUploadFilesToBucket" Content="Upload files to bucket S3-Data" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top"/>
-
-
-            </StackPanel>
-        </GroupBox>
-
-        <GroupBox HorizontalAlignment="Left" Height="600" Width="280" Header="Vision 2D" Margin="590,10,0,0" VerticalAlignment="Top" >
-            <StackPanel>
-                <Button x:Name="btnVisionHDR" Content="HDR" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnVisionHDR_Click"/>
-                
-
-            </StackPanel>
-        </GroupBox>
-
-        <DataGrid x:Name="grdFolder" AutoGenerateColumns="False" Margin="10,615,1468,216" >
-            <DataGrid.Columns >
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="Size" Binding="{Binding Size}" />
-                <DataGridTextColumn Header="Last Modified" Binding="{Binding LastModified}" />
-                <!--Add more columns as needed -->
-            </DataGrid.Columns>
-        </DataGrid>
-
-        <DataGrid x:Name="grdFile" AutoGenerateColumns="False" Margin="10,797,10,10" >
-            <DataGrid.Columns >
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="Size" Binding="{Binding Size, StringFormat={}{0:N3}}" />
-                <DataGridTextColumn Header="Last Modified" Binding="{Binding LastModified, StringFormat={}{0:dd.MM.yyyy - HH:mm:ss.ffff}}" />
-                <!--Add more columns as needed -->
-            </DataGrid.Columns>
-        </DataGrid>
     </Grid>
 </Window>
