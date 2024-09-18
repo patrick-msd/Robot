@@ -37,14 +37,6 @@ namespace PSGM.Model.DbStorage
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
-        [Column("Stars")]
-        [Display(Name = "Stars")]
-        public int Stars { get; set; } = -1;
-
-        [Column("Order")]
-        [Display(Name = "Order")]
-        public int Order { get; set; } = -1;
-
         [Column("SuffixProjectOwner")]
         [Display(Name = "SuffixProjectOwner")]
         [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
@@ -66,13 +58,13 @@ namespace PSGM.Model.DbStorage
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string DescriptionProjectOwner { get; set; } = string.Empty;
 
-        [Column("StarsProjectOwner")]
-        [Display(Name = "StarsProjectOwner")]
-        public int StarsProjectOwner { get; set; } = -1;
+        [Column("Stars")]
+        [Display(Name = "Stars")]
+        public int Stars { get; set; } = -1;
 
-        [Column("OrderProjectOwner")]
-        [Display(Name = "OrderProjectOwner")]
-        public int OrderProjectOwner { get; set; } = -1;
+        [Column("Order")]
+        [Display(Name = "Order")]
+        public int Order { get; set; } = -1;
 
         [Required]
         [Column("ObjectExtension")]
@@ -87,7 +79,7 @@ namespace PSGM.Model.DbStorage
         [Column("StorageObjectName")]
         [Display(Name = "StorageObjectName")]
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string StorageObjectNameStorageObjectName { get; set; } = string.Empty;
+        public string StorageObjectName { get; set; } = string.Empty;
 
         [Column("StorageObjectVersion")]
         [Display(Name = "StorageObjectVersion")]
@@ -171,40 +163,40 @@ namespace PSGM.Model.DbStorage
         [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string RawFileIdsString { get; private set; } = string.Empty;
 
+        [Column("AuthorizationUserIdsExtString")]
+        [Display(Name = "AuthorizationUserIdsExtString")]
+        [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string AuthorizationUserIdsExtString { get; private set; } = string.Empty;
+
+        [Column("AuthorizationUserGroupIdsExtString")]
+        [Display(Name = "AuthorizationUserGroupIdsExtString")]
+        [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string AuthorizationUserGroupIdsExtString { get; private set; } = string.Empty;
+
+        [Column("NotificationUserIdsExtString")]
+        [Display(Name = "NotificationUserIdsExtString")]
+        [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string NotificationUserIdsExtString { get; private set; } = string.Empty;
+
+        [Column("NotificationUserGroupIdsExtString")]
+        [Display(Name = "NotificationUserGroupIdsExtString")]
+        [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string NotificationUserGroupIdsExtString { get; private set; } = string.Empty;
+
         [Column("JobIdsExtString")]
         [Display(Name = "JobIdsExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        [StringLength(32766, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string JobIdsExtString { get; private set; } = string.Empty;
 
         [Column("WorkflowItemIdsExtString")]
         [Display(Name = "WorkflowItemIdsExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        [StringLength(32766, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string WorkflowItemIdsExtString { get; private set; } = string.Empty;
 
         [Column("BackupIdsExtString")]
         [Display(Name = "BackupIdsExtString")]
         [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string BackupIdsExtString { get; private set; } = string.Empty;
-
-        [Column("AuthorizationUserIdsExtString")]
-        [Display(Name = "AuthorizationUserIdsExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string AuthorizationUserIdsExtString { get; private set; } = string.Empty;
-
-        [Column("AuthorizationUserGroupIdsExtString")]
-        [Display(Name = "AuthorizationUserGroupIdsExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string AuthorizationUserGroupIdsExtString { get; private set; } = string.Empty;
-
-        [Column("NotificationUserIdsExtString")]
-        [Display(Name = "NotificationUserIdsExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string NotificationUserIdsExtString { get; private set; } = string.Empty;
-
-        [Column("NotificationUserGroupIdsExtString")]
-        [Display(Name = "NotificationUserGroupIdsExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string NotificationUserGroupIdsExtString { get; private set; } = string.Empty;
         #endregion
 
         #region Audit details for faster file audit information

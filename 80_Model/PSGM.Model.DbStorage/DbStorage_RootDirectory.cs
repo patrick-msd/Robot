@@ -36,18 +36,6 @@ namespace PSGM.Model.DbStorage
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
-        [Column("Stars")]
-        [Display(Name = "Stars")]
-        public int Stars { get; set; } = -1;
-
-        [Column("Order")]
-        [Display(Name = "Order")]
-         int Order { get; set; } = -1;
-
-        [Column("DirectoryState")]
-        [Display(Name = "DirectoryState")]
-        public DirectoryState DirectoryState { get; set; } = DirectoryState.Undefined; 
-
         [Column("SuffixProjectOwner")]
         [Display(Name = "SuffixProjectOwner")]
         [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
@@ -69,6 +57,18 @@ namespace PSGM.Model.DbStorage
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string DescriptionProjectOwner { get; set; } = string.Empty;
 
+        [Column("Stars")]
+        [Display(Name = "Stars")]
+        public int Stars { get; set; } = -1;
+
+        [Column("Order")]
+        [Display(Name = "Order")]
+        public int Order { get; set; } = -1;
+
+        [Column("DirectoryState")]
+        [Display(Name = "DirectoryState")]
+        public DirectoryState DirectoryState { get; set; } = DirectoryState.Undefined;
+
         [Column("DirectoryLocked")]
         [Display(Name = "DirectoryLocked")]
         public bool DirectoryLocked { get; set; } = false;
@@ -76,32 +76,32 @@ namespace PSGM.Model.DbStorage
         #region No direct access
         [Column("AuthorizationUserIdsExtString")]
         [Display(Name = "AuthorizationUserIdsExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string AuthorizationUserIdsExtString { get; private set; } = string.Empty;
 
         [Column("AuthorizationUserGroupIdsExtString")]
         [Display(Name = "AuthorizationUserGroupIdsExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string AuthorizationUserGroupIdsExtString { get; private set; } = string.Empty;
 
         [Column("NotificationUserIdsExtString")]
         [Display(Name = "NotificationUserIdsExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string NotificationUserIdsExtString { get; private set; } = string.Empty;
 
         [Column("NotificationUserGroupIdsExtString")]
         [Display(Name = "NotificationUserGroupIdsExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string NotificationUserGroupIdsExtString { get; private set; } = string.Empty;
 
         [Column("JobIdsExtString")]
         [Display(Name = "JobIdsExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        [StringLength(32766, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string JobIdsExtString { get; private set; } = string.Empty;
 
         [Column("WorkflowItemIdsExtString")]
         [Display(Name = "WorkflowItemIdsExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        [StringLength(32766, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string WorkflowItemIdsExtString { get; private set; } = string.Empty;
 
         [Column("BackupIdsExtString")]

@@ -9,6 +9,8 @@ namespace PSGM.Sample.Model.DbStorage
         {
             Random random = new Random();
 
+            DbStorage_Quality dbStorage_Quality;
+
             List<DbStorage_RootDirectoryMetadataLink> dbStorage_RootDirectoryMetadataLink;
 
             List<DbStorage_RootDirectory> tmp = new List<DbStorage_RootDirectory>();
@@ -23,12 +25,93 @@ namespace PSGM.Sample.Model.DbStorage
                     {
                         Id = Guid.NewGuid(),
 
-                        //RootDirectory = null,
-                        //RootDirectoryId = Guid.Empty,
-                        
+                        RootDirectory = null,
+                        RootDirectoryId = null,
+
                         RootDirectoryMetadata = directoryMetadata[random.Next(0, directoryMetadata.Count())],
                         //RootDirectoryMetadataId = Guid.Empty,
                     });
+                }
+
+                int quality = random.Next(0, 3);
+                if (quality == 0)
+                {
+                    dbStorage_Quality = new DbStorage_Quality()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        Description = Common.RandomString(random.Next(10, 100)),
+
+                        QualityState = QualityState.CheckPassed,
+
+                        RootDirectory = null,
+                        RootDirectoryId = null,
+
+                        SubDirectory = null,
+                        SubDirectoryId = null,
+
+                        File = null,
+                        FileId = null,
+
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+                    };
+                }
+                else if (quality == 1)
+                {
+                    dbStorage_Quality = new DbStorage_Quality()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        Description = Common.RandomString(random.Next(10, 100)),
+
+                        QualityState = QualityState.CheckNotPassed,
+
+                        RootDirectory = null,
+                        RootDirectoryId = null,
+
+                        SubDirectory = null,
+                        SubDirectoryId = null,
+
+                        File = null,
+                        FileId = null,
+
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+                    };
+                }
+                else if (quality == 2)
+                {
+                    dbStorage_Quality = new DbStorage_Quality()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        Description = Common.RandomString(random.Next(10, 100)),
+
+                        QualityState = QualityState.Unchecked,
+
+                        RootDirectory = null,
+                        RootDirectoryId = null,
+
+                        SubDirectory = null,
+                        SubDirectoryId = null,
+
+                        File = null,
+                        FileId = null,
+
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+                    };
+                }
+                else
+                {
+                    dbStorage_Quality = null;
                 }
 
                 tmp.Add(new DbStorage_RootDirectory()
@@ -38,11 +121,23 @@ namespace PSGM.Sample.Model.DbStorage
                     Suffix = i.ToString(),
                     Name = "RootDirectory " + i.ToString(),
                     Prefix = i.ToString(),
+                    Description = "RootDirectory Description " + i.ToString() + " " + Common.RandomString(random.Next(10, 100)),
 
-                    Description = "RootDirectory Description " + i.ToString(),
+                    SuffixProjectOwner = i.ToString(),
+                    NameProjectOwner = "ProjectOwner " + i.ToString(),
+                    PrefixProjectOwner = i.ToString(),
+                    DescriptionProjectOwner = "ProjectOwner Description " + i.ToString() + " " + Common.RandomString(random.Next(10, 100)),
+
+                    Stars = random.Next(0, 5),
+
+                    Order = random.Next(0, 10000),
+
+                    DirectoryState = DirectoryState.Undefined,
+
+                    Quality = dbStorage_Quality,
 
                     RootDirectoryMetadataLinks = dbStorage_RootDirectoryMetadataLink,
-                    
+
                     DirectoryLocked = false,
 
                     AuthorizationUsersIdExt = users,
@@ -64,13 +159,30 @@ namespace PSGM.Sample.Model.DbStorage
                     //WorkflowItemIdsExtString = string.Empty,
 
                     BackupIdsExt = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
-                    //BackupIdsExtString = string.Empty,
+                    //BackupIdsExtString = string.Empty,                        
+
+                    SubDirectories = null,
 
                     Files = null,
-                    SubDirectories = null,
 
                     DirectoryObjectsAutofill = 0,
                     DirectorySizeAutofill = 0,
+
+                    QrCode = new DbStorage_QrCode()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        Name = "QrCode " + i.ToString(),
+                        Description = "QrCode " + i.ToString() + " " + Common.RandomString(random.Next(10, 100)),
+
+                        File = null,
+                        FileId = null,
+
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+                    },
 
                     //CreatedByUserIdExtAutoFill = Guid.Empty,
                     //CreatedDateTimeAutoFill = DateTime.Now,

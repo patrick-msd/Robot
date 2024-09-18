@@ -112,6 +112,20 @@ namespace PSGM.Model.DbStorage
 
             modelBuilder.HasDefaultSchema("psgm");
 
+            modelBuilder.Entity<DbStorage_File>()
+                        .HasIndex(b => new { b.AuthorizationUserIdsExtString })
+                        .HasDatabaseName("IX_Names_Ascendingasd");
+
+            modelBuilder.Entity<DbStorage_File>()
+                        .HasIndex(b => new { b.AuthorizationUserGroupIdsExtString })
+                        .HasDatabaseName("IX_Names_Descendinasdg")
+                        .IsDescending();
+
+            modelBuilder.Entity<DbStorage_File>()
+                        .HasIndex(b => new { b.AuthorizationUserIdsExtString, b.AuthorizationUserGroupIdsExtString })
+                        .HasDatabaseName("IX_Names_Descendasding")
+                        .IsDescending();
+
             //modelBuilder.ApplyConfiguration(new ModelLogTypeConfiguration());
             //modelBuilder.ApplyConfiguration(new ModelObjectTypeConfiguration());
 
@@ -136,7 +150,7 @@ namespace PSGM.Model.DbStorage
             //	clusters.Add(new Models.ModelCluster() { ClusterId = new Guid("6E92A1D7-EF34-4378-96FB-831749CDC588"), Name = "clu0001", Comment = "Productiv Cluster 1", SiteId = new Guid("9F0420FD-87E0-4C7B-999A-091D0DBDC3AE"), TenantId = new Guid("C4FE4119-D5DB-42B3-B937-DCBF497A5BCB") });
             //	clusters.Add(new Models.ModelCluster() { ClusterId = new Guid("9235B29B-9FE7-41AD-BE44-AA7A56DF9F6E"), Name = "clu0002", Comment = "Productiv Cluster 2", SiteId = new Guid("9F0420FD-87E0-4C7B-999A-091D0DBDC3AE"), TenantId = new Guid("C4FE4119-D5DB-42B3-B937-DCBF497A5BCB") });
             //	clusters.Add(new Models.ModelCluster() { ClusterId = new Guid("7758D761-22F6-4683-89D0-70F065507C9C"), Name = "clu0003", Comment = "Test Cluster 1", SiteId = new Guid("9F0420FD-87E0-4C7B-999A-091D0DBDC3AE"), TenantId = new Guid("C4FE4119-D5DB-42B3-B937-DCBF497A5BCB") });
-            //	modelBuilder.Entity<Models.ModelCluster>().HasData(clusters);
+            //	modelBuilder.Entity<Models.ModelCluster>().HasData(clusters);      
         }
 
         public override int SaveChanges()

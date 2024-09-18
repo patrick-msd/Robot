@@ -98,8 +98,12 @@ namespace PSGM.Sample.Model.DbStorage
                 _dbStorage_Data_Context = new DbStorage_Context();
                 _dbStorage_Data_Context.ConnectionString = _configFile.StorageStructureDatabaseConnectionString;
                 _dbStorage_Data_Context.DatabaseType = _configFile.StorageStructureDatabaseType;
+                if (_dbStorage_Data_Context.Database.EnsureCreated())
+                {
+                    _dbStorage_Data_Context.Database.OpenConnection();
+                }
+                //_dbStorage_Data_Context.Database.EnsureDeleted();
                 //_dbStorage_Data_Context.Database.EnsureCreated();
-                _dbStorage_Data_Context.Database.OpenConnection();
             }
             #endregion
         }
@@ -120,6 +124,7 @@ namespace PSGM.Sample.Model.DbStorage
             _dbStorage_Data_Context = new DbStorage_Context();
             _dbStorage_Data_Context.ConnectionString = _configFile.StorageStructureDatabaseConnectionString;
             _dbStorage_Data_Context.DatabaseType = _configFile.StorageStructureDatabaseType;
+            _dbStorage_Data_Context.Database.EnsureDeleted();
             _dbStorage_Data_Context.Database.EnsureCreated();
             _dbStorage_Data_Context.Database.OpenConnection();
         }
@@ -153,7 +158,7 @@ namespace PSGM.Sample.Model.DbStorage
                 new Notification_User() { UserIdExt = Guid.NewGuid(), NotificationChannels = new List<NotificationChannel> { NotificationChannel.EMail, NotificationChannel.Gotify, NotificationChannel.Teams }, NotificationType = NotificationType.None },
                 new Notification_User() { UserIdExt = Guid.NewGuid(), NotificationChannels = new List<NotificationChannel> { NotificationChannel.None }, NotificationType = NotificationType.None },
                 new Notification_User() { UserIdExt = Guid.NewGuid(), NotificationChannels = new List<NotificationChannel> { NotificationChannel.Teams, NotificationChannel.Gotify, NotificationChannel.SMS }, NotificationType = NotificationType.StatusChange },
-                new Notification_User() { UserIdExt = Guid.NewGuid(), NotificationChannels = new List<NotificationChannel> { NotificationChannel.SMS, NotificationChannel.Slack, NotificationChannel.Gotify }, NotificationType = NotificationType.Inherited },
+                new Notification_User() { UserIdExt = Guid.NewGuid(), NotificationChannels = new List<NotificationChannel> { NotificationChannel.SMS, NotificationChannel.Slack, NotificationChannel.Gotify }, NotificationType = NotificationType.Inherited, },
             };
 
             List<Notification_UserGroup> notificationUserGroups = new List<Notification_UserGroup>()
@@ -177,6 +182,18 @@ namespace PSGM.Sample.Model.DbStorage
                 new DbStorage_FileMetadata() { Id = Guid.NewGuid(), Key = "RootDirhgjgjhjectory Metadata 1", Value = "afdsgfgjhgfjhdhgf ghtghgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
                 new DbStorage_FileMetadata() { Id = Guid.NewGuid(), Key = "RootDirehjhgtory Metadata 1", Value = "afdsgffdjhgjhhgf ghtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
                 new DbStorage_FileMetadata() { Id = Guid.NewGuid(), Key = "RootDirectojhg Meghjtadata 1", Value = "afdsgfjfhgjfdhgf jghgjhtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_FileMetadata() { Id = Guid.NewGuid(), Key = "RootDirectory Metadata 1", Value = "afdsgffhjdhgf ghtgfgjgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = false, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_FileMetadata() { Id = Guid.NewGuid(), Key = "RootDirectoryjfgh Metadata 1", Value = "afdsgffdhgf ghghjtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_FileMetadata() { Id = Guid.NewGuid(), Key = "RootDirfghgdectory Metadata 1", Value = "afdsgjfhjffdhhjhgghjjgf ghtghgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = false, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_FileMetadata() { Id = Guid.NewGuid(), Key = "RootDirecdffhtory Mghjetagdata 1", Value = "afdsgjfffjfdhgf ghhgjtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_FileMetadata() { Id = Guid.NewGuid(), Key = "RootDirectory Metadata 1", Value = "afdsgffdhgf hjghtghgjhgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = false, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_FileMetadata() { Id = Guid.NewGuid(), Key = "RootDirhgjgjhjectory Metadata 1", Value = "afdsgfgjhgfjhdhgf ghtghgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_FileMetadata() { Id = Guid.NewGuid(), Key = "RootDirehjhgtory Metadata 1", Value = "afdsgffdjhgjhhgf ghtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_FileMetadata() { Id = Guid.NewGuid(), Key = "RootDirectojhg Meghjtadata 1", Value = "afdsgfjfhgjfdhgf jghgjhtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_FileMetadata() { Id = Guid.NewGuid(), Key = "RootDirectory Metadata 1", Value = "afdsgffdhgf hjghtghgjhgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = false, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_FileMetadata() { Id = Guid.NewGuid(), Key = "RootDirhgjgjhjectory Metadata 1", Value = "afdsgfgjhgfjhdhgf ghtghgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_FileMetadata() { Id = Guid.NewGuid(), Key = "RootDirehjhgtory Metadata 1", Value = "afdsgffdjhgjhhgf ghtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_FileMetadata() { Id = Guid.NewGuid(), Key = "RootDirectojhg Meghjtadata 1", Value = "afdsgfjfhgjfdhgf jghgjhtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups }
             };
             _dbStorage_Data_Context.FileMetadata.AddRange(fileMetadata);
             _dbStorage_Data_Context.SaveChanges();
@@ -191,6 +208,18 @@ namespace PSGM.Sample.Model.DbStorage
                 new DbStorage_RootDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirhgjgjhjectory Metadata 1", Value = "afdsgfgjhgfjhdhgf ghtghgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
                 new DbStorage_RootDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirehjhgtory Metadata 1", Value = "afdsgffdjhgjhhgf ghtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
                 new DbStorage_RootDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirectojhg Meghjtadata 1", Value = "afdsgfjfhgjfdhgf jghgjhtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_RootDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirectory Metadata 1", Value = "afdsgffhjdhgf ghtgfgjgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = false, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_RootDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirectoryjfgh Metadata 1", Value = "afdsgffdhgf ghghjtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_RootDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirfghgdectory Metadata 1", Value = "afdsgjfhjffdhhjhgghjjgf ghtghgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = false, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_RootDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirecdffhtory Mghjetagdata 1", Value = "afdsgjfffjfdhgf ghhgjtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_RootDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirectory Metadata 1", Value = "afdsgffdhgf hjghtghgjhgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = false, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_RootDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirhgjgjhjectory Metadata 1", Value = "afdsgfgjhgfjhdhgf ghtghgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_RootDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirehjhgtory Metadata 1", Value = "afdsgffdjhgjhhgf ghtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_RootDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirectojhg Meghjtadata 1", Value = "afdsgfjfhgjfdhgf jghgjhtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_RootDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirectory Metadata 1", Value = "afdsgffhjdhgf ghtgfgjgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = false, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_RootDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirectoryjfgh Metadata 1", Value = "afdsgffdhgf ghghjtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_RootDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirfghgdectory Metadata 1", Value = "afdsgjfhjffdhhjhgghjjgf ghtghgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = false, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_RootDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirecdffhtory Mghjetagdata 1", Value = "afdsgjfffjfdhgf ghhgjtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups }
             };
             _dbStorage_Data_Context.RootDirectoryMetadata.AddRange(rootDirectoryMetadata);
             _dbStorage_Data_Context.SaveChanges();
@@ -205,25 +234,36 @@ namespace PSGM.Sample.Model.DbStorage
                 new DbStorage_SubDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirhgjgjhjectory Metadata 1", Value = "afdsgfgjhgfjhdhgf ghtghgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
                 new DbStorage_SubDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirehjhgtory Metadata 1", Value = "afdsgffdjhgjhhgf ghtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
                 new DbStorage_SubDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirectojhg Meghjtadata 1", Value = "afdsgfjfhgjfdhgf jghgjhtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
-            };
+                new DbStorage_SubDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirectory Metadata 1", Value = "afdsgffhjdhgf ghtgfgjgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = false, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_SubDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirectoryjfgh Metadata 1", Value = "afdsgffdhgf ghghjtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_SubDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirfghgdectory Metadata 1", Value = "afdsgjfhjffdhhjhgghjjgf ghtghgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = false, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_SubDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirecdffhtory Mghjetagdata 1", Value = "afdsgjfffjfdhgf ghhgjtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_SubDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirectory Metadata 1", Value = "afdsgffdhgf hjghtghgjhgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = false, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_SubDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirhgjgjhjectory Metadata 1", Value = "afdsgfgjhgfjhdhgf ghtghgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_SubDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirehjhgtory Metadata 1", Value = "afdsgffdjhgjhhgf ghtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_SubDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirectojhg Meghjtadata 1", Value = "afdsgfjfhgjfdhgf jghgjhtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_SubDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirectory Metadata 1", Value = "afdsgffhjdhgf ghtgfgjgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = false, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_SubDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirectoryjfgh Metadata 1", Value = "afdsgffdhgf ghghjtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_SubDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirfghgdectory Metadata 1", Value = "afdsgjfhjffdhhjhgghjjgf ghtghgsh", Description = "asdfadsfdsf", Hidden = false, EditAll = false, ViewAll = true, AuthorizationUsers = users, AuthorizationUserGroups = userGroups },
+                new DbStorage_SubDirectoryMetadata() { Id = Guid.NewGuid(), Key = "RootDirecdffhtory Mghjetagdata 1", Value = "afdsgjfffjfdhgf ghhgjtghgsh", Description = "asdfadsfdsf", Hidden = true, EditAll = true, ViewAll = false, AuthorizationUsers = users, AuthorizationUserGroups = userGroups }            };
             _dbStorage_Data_Context.SubDirectoryMetadata.AddRange(subDirectoryMetadata);
             _dbStorage_Data_Context.SaveChanges();
             #endregion
 
             #region Add root directories ...
-            List<DbStorage_RootDirectory> rootDirectory = Create_RootDirectories(100, users, userGroups, notificationUsers, notificationUserGroups, rootDirectoryMetadata);
+            List<DbStorage_RootDirectory> rootDirectory = Create_RootDirectories(10, users, userGroups, notificationUsers, notificationUserGroups, rootDirectoryMetadata);
             _dbStorage_Data_Context.RootDirectories.AddRange(rootDirectory);
             _dbStorage_Data_Context.SaveChanges();
             #endregion
 
             #region Add sub directories ...
-            List<DbStorage_SubDirectory> subDirectories = Create_SubDirectories(10000, users, userGroups, notificationUsers, notificationUserGroups, rootDirectory, subDirectoryMetadata);
+            List<DbStorage_SubDirectory> subDirectories = Create_SubDirectories(100, users, userGroups, notificationUsers, notificationUserGroups, rootDirectory, subDirectoryMetadata);
             _dbStorage_Data_Context.SubDirectories.AddRange(subDirectories);
             _dbStorage_Data_Context.SaveChanges();
             #endregion
 
             #region Add sub sub directories ...
-            List<DbStorage_SubDirectory> subsubDirectories = Create_SubSubDirectories(100, users, userGroups, notificationUsers, notificationUserGroups, rootDirectory, subDirectoryMetadata);
+            List<DbStorage_SubDirectory> subsubDirectories = Create_SubSubDirectories(10, users, userGroups, notificationUsers, notificationUserGroups, rootDirectory, subDirectoryMetadata);
             _dbStorage_Data_Context.SubDirectories.AddRange(subsubDirectories);
             _dbStorage_Data_Context.SaveChanges();
             #endregion
@@ -231,7 +271,7 @@ namespace PSGM.Sample.Model.DbStorage
             #region Add files ...
             for (int i = 0; i < 100; i++)
             {
-                List<DbStorage_File> files1 = Create_Files1(10000, users, userGroups, notificationUsers, notificationUserGroups, subDirectories, rootDirectory, fileMetadata);
+                List<DbStorage_File> files1 = Create_Files1(100, users, userGroups, notificationUsers, notificationUserGroups, subDirectories, rootDirectory, fileMetadata);
                 _dbStorage_Data_Context.Files.AddRange(files1);
                 _dbStorage_Data_Context.SaveChanges();
             }
@@ -248,7 +288,7 @@ namespace PSGM.Sample.Model.DbStorage
 
             //var asdasd = _dbStorage_Data_Context.Files.ToList();
 
-            var asd = _dbStorage_Data_Context.Files.Where(f => f.ExtId3.Contains("e7b"))
+            var asd = _dbStorage_Data_Context.Files.Where(f => f.ExtId3.Contains("e"))
                                                     .Include(p => p.SubDirectory)
                                                         .ThenInclude(p => p.RootDirectory)
                                                     .Include(p => p.RootDirectory)
@@ -262,11 +302,23 @@ namespace PSGM.Sample.Model.DbStorage
             var asadfdsa = asd[0].JobIdsExt;
             //var asdadssa = asd[0].GetLastModificationChanges();
 
+            var asdasd = _dbStorage_Data_Context.Files.Where(f => f.AuthorizationUserIdsExtString.Contains("e7b") || f.AuthorizationUserGroupIdsExtString.Contains("a"))
+                                                    .Include(p => p.SubDirectory)
+                                                        .ThenInclude(p => p.RootDirectory)
+                                                    .Include(p => p.RootDirectory)
+                                                    .Include(p => p.FileMetadataLinks)
+                                                        .ThenInclude(p => p.FileMetadata)
+                                                    .Include(p => p.QrCode)
+                                                    .ToList();
+
+
 
             var asd2 = _dbStorage_Data_Context.RootDirectories.ToList();
             var asdasd2 = _dbStorage_Data_Context.SubDirectories.OrderBy(item => item.Id)
                                                                 .Take(100)
                                                                 .ToList();
+
+            var asdsad = _dbStorage_Data_Context.Files.ToList();
 
             ;
         }
