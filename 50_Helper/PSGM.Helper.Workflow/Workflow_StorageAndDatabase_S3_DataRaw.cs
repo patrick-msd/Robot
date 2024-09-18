@@ -104,8 +104,8 @@ namespace PSGM.Helper.Workflow
                         SubDirectory = dbStorage_subDirectory,
                         RootDirectory = null,
 
-                        AuthorizationUser = null,
-                        AuthorizationUserGroup = null,
+                        AuthorizationUsers = null,
+                        AuthorizationUserGroups = null,
 
                         NotificationUser = null,
                         NotificationUserGroup = null,

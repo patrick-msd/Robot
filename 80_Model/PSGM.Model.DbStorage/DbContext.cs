@@ -47,20 +47,62 @@ namespace PSGM.Model.DbStorage
         public DbSet<DbStorage_File> Files { get; set; }
         public DbSet<DbStorage_File_AuditLog> File_AuditLog { get; set; }
 
+        public DbSet<DbStorage_FileAuthorization_User> FileAuthorization_Users { get; set; }
+        public DbSet<DbStorage_FileAuthorization_User_AuditLog> FileAuthorization_User_AuditLog { get; set; }
+
+        public DbSet<DbStorage_FileAuthorization_UserGroup> FileAuthorization_UserGroups { get; set; }
+        public DbSet<DbStorage_FileAuthorization_UserGroup_AuditLog> FileAuthorization_UserGroup_AuditLog { get; set; }
+
+        public DbSet<DbStorage_FileAuthorization_UserLink> FileAuthorization_UserLinks { get; set; }
+        public DbSet<DbStorage_FileAuthorization_UserLink_AuditLog> FileAuthorization_UserLink_AuditLog { get; set; }
+
+        public DbSet<DbStorage_FileAuthorization_UserGroupLink> FileAuthorization_UserGroupLinks { get; set; }
+        public DbSet<DbStorage_FileAuthorization_UserGroupLink_AuditLog> FileAuthorization_UserGroupLink_AuditLog { get; set; }
+
         public DbSet<DbStorage_FileMetadata> FileMetadata { get; set; }
         public DbSet<DbStorage_FileMetadata_AuditLog> FileMetadata_AuditLog { get; set; }
+
+        public DbSet<DbStorage_FileMetadataAuthorization_User> FileMetadataAuthorization_Users { get; set; }
+        public DbSet<DbStorage_FileMetadataAuthorization_User_AuditLog> FileMetadataAuthorization_User_AuditLog { get; set; }
+
+        public DbSet<DbStorage_FileMetadataAuthorization_UserGroup> FileMetadataAuthorization_UserGroups { get; set; }
+        public DbSet<DbStorage_FileMetadataAuthorization_UserGroup_AuditLog> FileMetadataAuthorization_UserGroup_AuditLog { get; set; }
+
+        public DbSet<DbStorage_FileMetadataAuthorization_UserGroupLink> FileMetadataAuthorization_UserGroupLinks { get; set; }
+        public DbSet<DbStorage_FileMetadataAuthorization_UserGroupLink_AuditLog> FileMetadataAuthorization_UserGroupLink_AuditLog { get; set; }
+
+        public DbSet<DbStorage_FileMetadataAuthorization_UserLink> FileMetadataAuthorization_UserLinks { get; set; }
+        public DbSet<DbStorage_FileMetadataAuthorization_UserLink_AuditLog> FileMetadataAuthorization_UserLink_AuditLog { get; set; }
 
         public DbSet<DbStorage_FileMetadataLink> FileMetadataLink { get; set; }
         public DbSet<DbStorage_FileMetadataLink_AuditLog> FileMetadataLink_AuditLog { get; set; }
 
-        public DbSet<DbStorage_Quality> FileQualities { get; set; }
-        public DbSet<DbStorage_Quality_AuditLog> FileQuality_AuditLog { get; set; }
+        public DbSet<DbStorage_FileNotification_User> FileNotification_Users { get; set; }
+        public DbSet<DbStorage_FileNotification_User_AuditLog> FileNotification_User_AuditLog { get; set; }
+
+        public DbSet<DbStorage_FileNotification_UserGroup> FileNotification_UserGroups { get; set; }
+        public DbSet<DbStorage_FileNotification_UserGroup_AuditLog> FileNotification_UserGroup_AuditLog { get; set; }
+
+        public DbSet<DbStorage_FileNotification_UserLink> FileNotification_UserLinks { get; set; }
+        public DbSet<DbStorage_FileNotification_UserLink_AuditLog> FileNotification_UserLink_AuditLog { get; set; }
+
+        public DbSet<DbStorage_FileNotification_UserGroupLink> FileNotification_UserGroupLinks { get; set; }
+        public DbSet<DbStorage_FileNotification_UserGroupLink_AuditLog> FileNotification_UserGroupLink_AuditLog { get; set; }
 
         public DbSet<DbStorage_QrCode> QrCodes { get; set; }
         public DbSet<DbStorage_QrCode_AuditLog> QrCode_AuditLog { get; set; }
 
+        public DbSet<DbStorage_Quality> Qualities { get; set; }
+        public DbSet<DbStorage_Quality_AuditLog> Quality_AuditLog { get; set; }
+
         public DbSet<DbStorage_RootDirectory> RootDirectories { get; set; }
         public DbSet<DbStorage_RootDirectory_AuditLog> RootDirectory_AuditLog { get; set; }
+
+        public DbSet<DbStorage_RootDirectoryAuthorization_UserLink> RootDirectoryAuthorization_UserLinks { get; set; }
+        public DbSet<DbStorage_RootDirectoryAuthorization_UserLink_AuditLog> RootDirectoryAuthorization_UserLink_AuditLog { get; set; }
+
+        public DbSet<DbStorage_RootDirectoryAuthorization_UserGroupLink> RootDirectoryAuthorization_UserGroupLinks { get; set; }
+        public DbSet<DbStorage_RootDirectoryAuthorization_UserGroupLink_AuditLog> RootDirectoryAuthorization_UserGroupLink_AuditLog { get; set; }
 
         public DbSet<DbStorage_RootDirectoryMetadata> RootDirectoryMetadata { get; set; }
         public DbSet<DbStorage_RootDirectoryMetadata_AuditLog> RootDirectoryMetadata_AuditLog { get; set; }
@@ -68,14 +110,61 @@ namespace PSGM.Model.DbStorage
         public DbSet<DbStorage_RootDirectoryMetadataLink> RootDirectoryMetadataLink { get; set; }
         public DbSet<DbStorage_RootDirectoryMetadataLink_AuditLog> RootDirectoryMetadataLink_AuditLog { get; set; }
 
+
+
+        public DbSet<DbStorage_RootDirectoryMetadataAuthorization_User> RootDirectoryMetadataAuthorization_Users { get; set; }
+        public DbSet<DbStorage_RootDirectoryMetadataAuthorization_User_AuditLog> RootDirectoryMetadataAuthorization_User_AuditLog { get; set; }
+
+        public DbSet<DbStorage_RootDirectoryMetadataAuthorization_UserGroup> RootDirectoryMetadataAuthorization_UserGroups { get; set; }
+        public DbSet<DbStorage_RootDirectoryMetadataAuthorization_UserGroup_AuditLog> RootDirectoryMetadataAuthorization_UserGroup_AuditLog { get; set; }
+
+        public DbSet<DbStorage_RootDirectoryMetadataAuthorization_UserGroupLink> RootDirectoryMetadataAuthorization_UserGroupLinks { get; set; }
+        public DbSet<DbStorage_RootDirectoryMetadataAuthorization_UserGroupLink_AuditLog> RootDirectoryMetadataAuthorization_UserGroupLink_AuditLog { get; set; }
+
+        public DbSet<DbStorage_RootDirectoryMetadataAuthorization_UserLink> RootDirectoryMetadataAuthorization_UserLinks { get; set; }
+        public DbSet<DbStorage_RootDirectoryMetadataAuthorization_UserLink_AuditLog> RootDirectoryMetadataAuthorization_UserLink_AuditLog { get; set; }
+
+
+
+
+        public DbSet<DbStorage_RootDirectoryNotification_UserLink> RootDirectoryNotification_UserLinks { get; set; }
+        public DbSet<DbStorage_RootDirectoryNotification_UserLink_AuditLog> RootDirectoryNotification_UserLink_AuditLog { get; set; }
+
+        public DbSet<DbStorage_RootDirectoryNotification_UserGroupLink> RootDirectoryNotification_UserGroupLinks { get; set; }
+        public DbSet<DbStorage_RootDirectoryNotification_UserGroupLink_AuditLog> RootDirectoryNotification_UserGroupLink_AuditLog { get; set; }
+
         public DbSet<DbStorage_SubDirectory> SubDirectories { get; set; }
         public DbSet<DbStorage_SubDirectory_AuditLog> SubDirectory_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectoryAuthorization_UserLink> SubDirectoryAuthorization_UserLinks { get; set; }
+        public DbSet<DbStorage_SubDirectoryAuthorization_UserLink_AuditLog> SubDirectoryAuthorization_UserLink_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectoryAuthorization_UserGroupLink> SubDirectoryAuthorization_UserGroupLinks { get; set; }
+        public DbSet<DbStorage_SubDirectoryAuthorization_UserGroupLink_AuditLog> SubDirectoryAuthorization_UserGroupLink_AuditLog { get; set; }
 
         public DbSet<DbStorage_SubDirectoryMetadata> SubDirectoryMetadata { get; set; }
         public DbSet<DbStorage_SubDirectoryMetadata_AuditLog> SubDirectoryMetadata_AuditLog { get; set; }
 
+        public DbSet<DbStorage_SubDirectoryMetadataAuthorization_User> SubDirectoryMetadataAuthorization_Users { get; set; }
+        public DbSet<DbStorage_SubDirectoryMetadataAuthorization_User_AuditLog> SubDirectoryMetadataAuthorization_User_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectoryMetadataAuthorization_UserGroup> SubDirectoryMetadataAuthorization_UserGroups { get; set; }
+        public DbSet<DbStorage_SubDirectoryMetadataAuthorization_UserGroup_AuditLog> SubDirectoryMetadataAuthorization_UserGroup_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectoryMetadataAuthorization_UserGroupLink> SubDirectoryMetadataAuthorization_UserGroupLinks { get; set; }
+        public DbSet<DbStorage_SubDirectoryMetadataAuthorization_UserGroupLink_AuditLog> SubDirectoryMetadataAuthorization_UserGroupLink_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectoryMetadataAuthorization_UserLink> SubDirectoryMetadataAuthorization_UserLinks { get; set; }
+        public DbSet<DbStorage_SubDirectoryMetadataAuthorization_UserLink_AuditLog> SubDirectoryMetadataAuthorization_UserLink_AuditLog { get; set; }
+
         public DbSet<DbStorage_SubDirectoryMetadataLink> SubDirectoryMetadataLink { get; set; }
         public DbSet<DbStorage_SubDirectoryMetadataLink_AuditLog> SubDirectoryMetadataLink_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectoryNotification_UserLink> SubDirectoryNotification_UserLinks { get; set; }
+        public DbSet<DbStorage_SubDirectoryNotification_UserLink_AuditLog> SubDirectoryNotification_UserLink_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectoryNotification_UserGroupLink> SubDirectoryNotification_UserGroupLinks { get; set; }
+        public DbSet<DbStorage_SubDirectoryNotification_UserGroupLink_AuditLog> SubDirectoryNotification_UserGroupLink_AuditLog { get; set; }
         #endregion
 
         #region Overrides
@@ -112,19 +201,19 @@ namespace PSGM.Model.DbStorage
 
             modelBuilder.HasDefaultSchema("psgm");
 
-            modelBuilder.Entity<DbStorage_File>()
-                        .HasIndex(b => new { b.AuthorizationUserIdsExtString })
-                        .HasDatabaseName("IX_Names_Ascendingasd");
+            //modelBuilder.Entity<DbStorage_File>()
+            //            .HasIndex(b => new { b.AuthorizationUserIdsExtString })
+            //            .HasDatabaseName("IX_Names_Ascendingasd");
 
-            modelBuilder.Entity<DbStorage_File>()
-                        .HasIndex(b => new { b.AuthorizationUserGroupIdsExtString })
-                        .HasDatabaseName("IX_Names_Descendinasdg")
-                        .IsDescending();
+            //modelBuilder.Entity<DbStorage_File>()
+            //            .HasIndex(b => new { b.AuthorizationUserGroupIdsExtString })
+            //            .HasDatabaseName("IX_Names_Descendinasdg")
+            //            .IsDescending();
 
-            modelBuilder.Entity<DbStorage_File>()
-                        .HasIndex(b => new { b.AuthorizationUserIdsExtString, b.AuthorizationUserGroupIdsExtString })
-                        .HasDatabaseName("IX_Names_Descendasding")
-                        .IsDescending();
+            //modelBuilder.Entity<DbStorage_File>()
+            //            .HasIndex(b => new { b.AuthorizationUserIdsExtString, b.AuthorizationUserGroupIdsExtString })
+            //            .HasDatabaseName("IX_Names_Descendasding")
+            //            .IsDescending();
 
             //modelBuilder.ApplyConfiguration(new ModelLogTypeConfiguration());
             //modelBuilder.ApplyConfiguration(new ModelObjectTypeConfiguration());
@@ -308,6 +397,74 @@ namespace PSGM.Model.DbStorage
                     case DbStorage_File_AuditLog file_AuditLog:
                         break;
 
+                    case DbStorage_FileAuthorization_User fileAuthorization_User:
+                        FileAuthorization_User_AuditLog.Add(new DbStorage_FileAuthorization_User_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = fileAuthorization_User.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_FileAuthorization_User_AuditLog fileAuthorization_User_AuditLog:
+                        break;
+
+                    case DbStorage_FileAuthorization_UserGroup fileAuthorization_UserGroup:
+                        FileAuthorization_UserGroup_AuditLog.Add(new DbStorage_FileAuthorization_UserGroup_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = fileAuthorization_UserGroup.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_FileAuthorization_UserGroup_AuditLog fileAuthorization_UserGroup_AuditLog:
+                        break;
+
+                    case DbStorage_FileAuthorization_UserLink fileAuthorization_UserLink:
+                        FileAuthorization_UserLink_AuditLog.Add(new DbStorage_FileAuthorization_UserLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = fileAuthorization_UserLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_FileAuthorization_UserLink_AuditLog fileAuthorization_UserLink_AuditLog:
+                        break;
+
+                    case DbStorage_FileAuthorization_UserGroupLink fileAuthorization_UserGroupLink:
+                        FileAuthorization_UserGroupLink_AuditLog.Add(new DbStorage_FileAuthorization_UserGroupLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = fileAuthorization_UserGroupLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_FileAuthorization_UserGroupLink_AuditLog fileAuthorization_UserGroupLink_AuditLog:
+                        break;
+
                     case DbStorage_FileMetadata fileMetadata:
                         FileMetadata_AuditLog.Add(new DbStorage_FileMetadata_AuditLog
                         {
@@ -338,6 +495,74 @@ namespace PSGM.Model.DbStorage
                     case DbStorage_FileMetadata_AuditLog fileMetadata_AuditLog:
                         break;
 
+                    case DbStorage_FileMetadataAuthorization_User fileMetadataAuthorization_User:
+                        FileMetadataAuthorization_User_AuditLog.Add(new DbStorage_FileMetadataAuthorization_User_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = fileMetadataAuthorization_User.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_FileMetadataAuthorization_User_AuditLog fileMetadataAuthorization_User_AuditLog:
+                        break;
+
+                    case DbStorage_FileMetadataAuthorization_UserGroup fileMetadataAuthorization_UserGroup:
+                        FileMetadataAuthorization_UserGroup_AuditLog.Add(new DbStorage_FileMetadataAuthorization_UserGroup_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = fileMetadataAuthorization_UserGroup.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_FileMetadataAuthorization_UserGroup_AuditLog fileMetadataAuthorization_UserGroup_AuditLog:
+                        break;
+
+                    case DbStorage_FileMetadataAuthorization_UserGroupLink fileMetadataAuthorization_UserGroupLink:
+                        FileMetadataAuthorization_UserGroupLink_AuditLog.Add(new DbStorage_FileMetadataAuthorization_UserGroupLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = fileMetadataAuthorization_UserGroupLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_FileMetadataAuthorization_UserGroupLink_AuditLog fileMetadataAuthorization_UserGroupLink_AuditLog:
+                        break;
+
+                    case DbStorage_FileMetadataAuthorization_UserLink fileMetadataAuthorization_UserLink:
+                        FileMetadataAuthorization_UserLink_AuditLog.Add(new DbStorage_FileMetadataAuthorization_UserLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = fileMetadataAuthorization_UserLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_FileMetadataAuthorization_UserLink_AuditLog fileMetadataAuthorization_UserLink_AuditLog:
+                        break;
+
                     case DbStorage_FileMetadataLink fileMetadataLink:
                         FileMetadataLink_AuditLog.Add(new DbStorage_FileMetadataLink_AuditLog
                         {
@@ -353,6 +578,74 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_FileMetadataLink_AuditLog fileMetadataLink_AuditLog:
+                        break;
+
+                    case DbStorage_FileNotification_User fileNotification_User:
+                        FileNotification_User_AuditLog.Add(new DbStorage_FileNotification_User_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = fileNotification_User.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_FileNotification_User_AuditLog fileNotification_User_AuditLog:
+                        break;
+
+                    case DbStorage_FileNotification_UserGroup fileNotification_UserGroup:
+                        FileNotification_UserGroup_AuditLog.Add(new DbStorage_FileNotification_UserGroup_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = fileNotification_UserGroup.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_FileNotification_UserGroup_AuditLog fileNotification_UserGroup_AuditLog:
+                        break;
+
+                    case DbStorage_FileNotification_UserLink fileNotification_UserLink:
+                        FileNotification_UserLink_AuditLog.Add(new DbStorage_FileNotification_UserLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = fileNotification_UserLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_FileNotification_UserLink_AuditLog fileNotification_UserLink_AuditLog:
+                        break;
+
+                    case DbStorage_FileNotification_UserGroupLink fileNotification_UserGroupLink:
+                        FileNotification_UserGroupLink_AuditLog.Add(new DbStorage_FileNotification_UserGroupLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = fileNotification_UserGroupLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_FileNotification_UserGroupLink_AuditLog fileNotification_UserGroupLink_AuditLog:
                         break;
 
                     case DbStorage_QrCode qrCode:
@@ -373,7 +666,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_Quality quality:
-                        FileQuality_AuditLog.Add(new DbStorage_Quality_AuditLog
+                        Quality_AuditLog.Add(new DbStorage_Quality_AuditLog
                         {
                             Id = new Guid(),
 
@@ -417,6 +710,40 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_RootDirectory_AuditLog rootDirectory_AuditLog:
+                        break;
+
+                    case DbStorage_RootDirectoryAuthorization_UserLink rootDirectoryAuthorization_UserLink:
+                        RootDirectoryAuthorization_UserLink_AuditLog.Add(new DbStorage_RootDirectoryAuthorization_UserLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectoryAuthorization_UserLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectoryAuthorization_UserLink_AuditLog rootDirectoryAuthorization_UserLink_AuditLog:
+                        break;
+
+                    case DbStorage_RootDirectoryAuthorization_UserGroupLink rootDirectoryAuthorization_UserGroupLink:
+                        RootDirectoryAuthorization_UserGroupLink_AuditLog.Add(new DbStorage_RootDirectoryAuthorization_UserGroupLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectoryAuthorization_UserGroupLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectoryAuthorization_UserGroupLink_AuditLog rootDirectoryAuthorization_UserGroupLink_AuditLog:
                         break;
 
                     case DbStorage_RootDirectoryMetadata rootDirectoryMetadata:
@@ -466,6 +793,108 @@ namespace PSGM.Model.DbStorage
                     case DbStorage_RootDirectoryMetadataLink_AuditLog rootDirectoryMetadataLink_AuditLog:
                         break;
 
+                    case DbStorage_RootDirectoryMetadataAuthorization_User rootDirectoryMetadataAuthorization_User:
+                        RootDirectoryMetadataAuthorization_User_AuditLog.Add(new DbStorage_RootDirectoryMetadataAuthorization_User_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectoryMetadataAuthorization_User.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectoryMetadataAuthorization_User_AuditLog rootDirectoryMetadataAuthorization_User_AuditLog:
+                        break;
+
+                    case DbStorage_RootDirectoryMetadataAuthorization_UserGroup rootDirectoryMetadataAuthorization_UserGroup:
+                        RootDirectoryMetadataAuthorization_UserGroup_AuditLog.Add(new DbStorage_RootDirectoryMetadataAuthorization_UserGroup_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectoryMetadataAuthorization_UserGroup.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectoryMetadataAuthorization_UserGroup_AuditLog rootDirectoryMetadataAuthorization_UserGroup_AuditLog:
+                        break;
+
+                    case DbStorage_RootDirectoryMetadataAuthorization_UserGroupLink rootDirectoryMetadataAuthorization_UserGroupLink:
+                        RootDirectoryMetadataAuthorization_UserGroupLink_AuditLog.Add(new DbStorage_RootDirectoryMetadataAuthorization_UserGroupLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectoryMetadataAuthorization_UserGroupLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectoryMetadataAuthorization_UserGroupLink_AuditLog rootDirectoryMetadataAuthorization_UserGroupLink_AuditLog:
+                        break;
+
+                    case DbStorage_RootDirectoryMetadataAuthorization_UserLink rootDirectoryMetadataAuthorization_UserLink:
+                        RootDirectoryMetadataAuthorization_UserLink_AuditLog.Add(new DbStorage_RootDirectoryMetadataAuthorization_UserLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectoryMetadataAuthorization_UserLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectoryMetadataAuthorization_UserLink_AuditLog rootDirectoryMetadataAuthorization_UserLink_AuditLog:
+                        break;
+
+                    case DbStorage_RootDirectoryNotification_UserLink rootDirectoryNotification_UserLink:
+                        RootDirectoryNotification_UserLink_AuditLog.Add(new DbStorage_RootDirectoryNotification_UserLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectoryNotification_UserLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectoryNotification_UserLink_AuditLog rootDirectoryNotification_UserLink_AuditLog:
+                        break;
+
+                    case DbStorage_RootDirectoryNotification_UserGroupLink rootDirectoryNotification_UserGroupLink:
+                        RootDirectoryNotification_UserGroupLink_AuditLog.Add(new DbStorage_RootDirectoryNotification_UserGroupLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectoryNotification_UserGroupLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectoryNotification_UserGroupLink_AuditLog rootDirectoryNotification_UserGroupLink_AuditLog:
+                        break;
+
                     case DbStorage_SubDirectory subDirectory:
                         SubDirectory_AuditLog.Add(new DbStorage_SubDirectory_AuditLog
                         {
@@ -494,6 +923,40 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectory_AuditLog subDirectory_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectoryAuthorization_UserLink subDirectoryAuthorization_UserLink:
+                        SubDirectoryAuthorization_UserLink_AuditLog.Add(new DbStorage_SubDirectoryAuthorization_UserLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectoryAuthorization_UserLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectoryAuthorization_UserLink_AuditLog subDirectoryAuthorization_UserLink_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectoryAuthorization_UserGroupLink subDirectoryAuthorization_UserGroupLink:
+                        SubDirectoryAuthorization_UserGroupLink_AuditLog.Add(new DbStorage_SubDirectoryAuthorization_UserGroupLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectoryAuthorization_UserGroupLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectoryAuthorization_UserGroupLink_AuditLog subDirectoryAuthorization_UserGroupLink_AuditLog:
                         break;
 
                     case DbStorage_SubDirectoryMetadata subDirectoryMetadata:
@@ -526,6 +989,74 @@ namespace PSGM.Model.DbStorage
                     case DbStorage_SubDirectoryMetadata_AuditLog subDirectoryMetadata_AuditLog:
                         break;
 
+                    case DbStorage_SubDirectoryMetadataAuthorization_User subDirectoryMetadataAuthorization_User:
+                        SubDirectoryMetadataAuthorization_User_AuditLog.Add(new DbStorage_SubDirectoryMetadataAuthorization_User_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectoryMetadataAuthorization_User.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectoryMetadataAuthorization_User_AuditLog subDirectoryMetadataAuthorization_User_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectoryMetadataAuthorization_UserGroup subDirectoryMetadataAuthorization_UserGroup:
+                        SubDirectoryMetadataAuthorization_UserGroup_AuditLog.Add(new DbStorage_SubDirectoryMetadataAuthorization_UserGroup_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectoryMetadataAuthorization_UserGroup.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectoryMetadataAuthorization_UserGroup_AuditLog subDirectoryMetadataAuthorization_UserGroup_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectoryMetadataAuthorization_UserGroupLink subDirectoryMetadataAuthorization_UserGroupLink:
+                        SubDirectoryMetadataAuthorization_UserGroupLink_AuditLog.Add(new DbStorage_SubDirectoryMetadataAuthorization_UserGroupLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectoryMetadataAuthorization_UserGroupLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectoryMetadataAuthorization_UserGroupLink_AuditLog subDirectoryMetadataAuthorization_UserGroupLink_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectoryMetadataAuthorization_UserLink subDirectoryMetadataAuthorization_UserLink:
+                        SubDirectoryMetadataAuthorization_UserLink_AuditLog.Add(new DbStorage_SubDirectoryMetadataAuthorization_UserLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectoryMetadataAuthorization_UserLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectoryMetadataAuthorization_UserLink_AuditLog subDirectoryMetadataAuthorization_UserLink_AuditLog:
+                        break;
+
                     case DbStorage_SubDirectoryMetadataLink subDirectoryMetadataLink:
                         SubDirectoryMetadataLink_AuditLog.Add(new DbStorage_SubDirectoryMetadataLink_AuditLog
                         {
@@ -541,6 +1072,40 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectoryMetadataLink_AuditLog subDirectoryMetadataLink_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectoryNotification_UserLink subDirectoryNotification_UserLink:
+                        SubDirectoryNotification_UserLink_AuditLog.Add(new DbStorage_SubDirectoryNotification_UserLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectoryNotification_UserLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectoryNotification_UserLink_AuditLog subDirectoryNotification_UserLink_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectoryNotification_UserGroupLink subDirectoryNotification_UserGroupLink:
+                        SubDirectoryNotification_UserGroupLink_AuditLog.Add(new DbStorage_SubDirectoryNotification_UserGroupLink_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectoryNotification_UserGroupLink.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectoryNotification_UserGroupLink_AuditLog subDirectoryNotification_UserGroupLink_AuditLog:
                         break;
 
                     default:

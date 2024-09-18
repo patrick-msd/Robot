@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using PSGM.Helper;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -43,16 +42,6 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "ViewAll")]
         public bool ViewAll { get; set; } = false;
 
-        [Column("AuthorizationUsersString")]
-        [Display(Name = "AuthorizationUsersString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string AuthorizationUsersString { get; private set; } = string.Empty;
-
-        [Column("AuthorizationUserGroupsString")]
-        [Display(Name = "AuthorizationUserGroupsString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string AuthorizationUserGroupsString { get; private set; } = string.Empty;
-
         #region Audit details for faster file audit information
         [Required]
         [Column("CreatedDateTimeAutoFill")]
@@ -76,6 +65,12 @@ namespace PSGM.Model.DbStorage
 
         #region Links
         [InverseProperty("FileMetadata")]
+        public virtual ICollection<DbStorage_FileMetadataAuthorization_UserLink>? Authorization_UserLinks { get; set; }
+
+        [InverseProperty("FileMetadata")]
+        public virtual ICollection<DbStorage_FileMetadataAuthorization_UserGroupLink>? Authorization_UserGroupLinks { get; set; }
+
+        [InverseProperty("FileMetadata")]
         public virtual ICollection<DbStorage_FileMetadataLink>? FileMetadataLinks { get; set; }
         #endregion
 
@@ -86,19 +81,6 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Not Mapped
-        [NotMapped]
-        public List<Authorization_User> AuthorizationUsers
-        {
-            get { return AuthorizationUsersString != string.Empty ? JsonConvert.DeserializeObject<List<Authorization_User>>(AuthorizationUsersString) : null; }
-            set { AuthorizationUsersString = value != null ? JsonConvert.SerializeObject(value) : string.Empty; }
-        }
-
-        [NotMapped]
-        public List<Authorization_UserGroup> AuthorizationUserGroups
-        {
-            get { return AuthorizationUserGroupsString != string.Empty ? JsonConvert.DeserializeObject<List<Authorization_UserGroup>>(AuthorizationUserGroupsString) : null; }
-            set { AuthorizationUserGroupsString = value != null ? JsonConvert.SerializeObject(value) : string.Empty; }
-        }
         #endregion
     }
 }

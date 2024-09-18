@@ -2291,8 +2291,8 @@ namespace PSGM.MultiTestApp1
                     SubDirectory = storage.First().SubDirectories.FirstOrDefault(),
                     RootDirectory = null,
 
-                    AuthorizationUser = null,
-                    AuthorizationUserGroup = null,
+                    AuthorizationUsers = null,
+                    AuthorizationUserGroups = null,
 
                     NotificationUser = null,
                     NotificationUserGroup = null,

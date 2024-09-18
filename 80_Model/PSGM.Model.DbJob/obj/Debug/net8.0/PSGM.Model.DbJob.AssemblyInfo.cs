@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PSGM.Model.DbJob")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f318dd3932d0a6ad8ea62a87b1af5ce37336c6b3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+864bc4764caf7b7c5e01bfae9b7ea9a55c19d3f1")]
 [assembly: System.Reflection.AssemblyProductAttribute("PSGM.Model.DbJob")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PSGM.Model.DbJob")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
