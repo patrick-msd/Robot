@@ -56,11 +56,11 @@ namespace PSGM.Model.DbMain
         public DbSet<DbMain_Location> Locations { get; set; }
         public DbSet<DbMain_Location_AuditLog> Location_AuditLog { get; set; }
 
-        public DbSet<DbMain_DeliveryBill> DeliveryBills { get; set; }
-        public DbSet<DbMain_DeliveryBill_AuditLog> DeliveryBill_AuditLog { get; set; }
+        public DbSet<DbMain_DeliverySlip> DeliveryBills { get; set; }
+        public DbSet<DbMain_DeliverySlip_AuditLog> DeliveryBill_AuditLog { get; set; }
 
-        public DbSet<DbMain_DeliveryBillTemplate> DeliveryBillTemplates { get; set; }
-        public DbSet<DbMain_DeliveryBillTemplate_AuditLog> DeliveryBillTemplate_AuditLog { get; set; }
+        public DbSet<DbMain_DeliverySlip_Template> DeliveryBillTemplates { get; set; }
+        public DbSet<DbMain_DeliverySlip_Template_AuditLog> DeliveryBillTemplate_AuditLog { get; set; }
 
         public DbSet<DbMain_Organization> Organizations { get; set; }
         public DbSet<DbMain_Organization_AuditLog> Organization_AuditLog { get; set; }
@@ -228,8 +228,8 @@ namespace PSGM.Model.DbMain
                     case DbMain_Location_AuditLog location_AuditLog:
                         break;
 
-                    case DbMain_DeliveryBill deliveryBill:
-                        DeliveryBill_AuditLog.Add(new DbMain_DeliveryBill_AuditLog
+                    case DbMain_DeliverySlip deliveryBill:
+                        DeliveryBill_AuditLog.Add(new DbMain_DeliverySlip_AuditLog
                         {
                             Id = new Guid(),
 
@@ -240,11 +240,11 @@ namespace PSGM.Model.DbMain
                         });
                         break;
 
-                    case DbMain_DeliveryBill_AuditLog deliveryBill_AuditLog:
+                    case DbMain_DeliverySlip_AuditLog deliveryBill_AuditLog:
                         break;
 
-                    case DbMain_DeliveryBillTemplate deliveryBillTemplate:
-                        DeliveryBillTemplate_AuditLog.Add(new DbMain_DeliveryBillTemplate_AuditLog
+                    case DbMain_DeliverySlip_Template deliveryBillTemplate:
+                        DeliveryBillTemplate_AuditLog.Add(new DbMain_DeliverySlip_Template_AuditLog
                         {
                             Id = new Guid(),
 
@@ -255,7 +255,7 @@ namespace PSGM.Model.DbMain
                         });
                         break;
 
-                    case DbMain_DeliveryBillTemplate_AuditLog deliveryBillTemplate_AuditLog:
+                    case DbMain_DeliverySlip_Template_AuditLog deliveryBillTemplate_AuditLog:
                         break;
 
                     case DbMain_Organization organization:

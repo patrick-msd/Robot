@@ -116,7 +116,7 @@ namespace PSGM.Model.DbMain
 
         #region Links
         [InverseProperty("Project")]
-        public virtual DbMain_DeliveryBill? DeliveryBill { get; set; }
+        public virtual DbMain_DeliverySlip? DeliveryBill { get; set; }
 
         [InverseProperty("Project")]
         public virtual DbMain_Organization? Organization { get; set; }

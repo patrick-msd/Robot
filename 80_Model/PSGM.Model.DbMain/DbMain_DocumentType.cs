@@ -59,7 +59,7 @@ namespace PSGM.Model.DbMain
         #region Backlinks (ForeignKeys)
         [ForeignKey("DeliveryBill")]
         public Guid? DeliveryBillId { get; set; }
-        public virtual DbMain_DeliveryBill? DeliveryBill { get; set; }
+        public virtual DbMain_DeliverySlip? DeliveryBill { get; set; }
         #endregion
 
         #region Links (Outside DB)

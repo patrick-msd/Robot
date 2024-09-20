@@ -134,19 +134,19 @@ namespace PSGM.Sample.Model.DbStorage
             Random random = new Random();
 
             #region Add root directories ...
-            List<DbStorage_RootDirectory> rootDirectory = Create_RootDirectories(_dbStorage_Data_Context, 50);
+            List<DbStorage_RootDirectory> rootDirectory = Create_RootDirectories(_dbStorage_Data_Context, 25);
             _dbStorage_Data_Context.RootDirectories.AddRange(rootDirectory);
             _dbStorage_Data_Context.SaveChanges();
             #endregion
 
             #region Add sub directories ...
-            List<DbStorage_SubDirectory> subDirectories = Create_SubDirectories(250, rootDirectory);
+            List<DbStorage_SubDirectory> subDirectories = Create_SubDirectories(1000, rootDirectory);
             _dbStorage_Data_Context.SubDirectories.AddRange(subDirectories);
             _dbStorage_Data_Context.SaveChanges();
             #endregion
 
             #region Add sub sub directories ...
-            List<DbStorage_SubDirectory> subsubDirectories = Create_SubSubDirectories(100, rootDirectory);
+            List<DbStorage_SubDirectory> subsubDirectories = Create_SubSubDirectories(50, rootDirectory);
             _dbStorage_Data_Context.SubDirectories.AddRange(subsubDirectories);
             _dbStorage_Data_Context.SaveChanges();
             #endregion
@@ -154,7 +154,7 @@ namespace PSGM.Sample.Model.DbStorage
             #region Add files ...
             for (int i = 0; i < 1000; i++)
             {
-                List<DbStorage_File> files1 = Create_Files1(100, rootDirectory, subDirectories);
+                List<DbStorage_File> files1 = Create_Files1(1000, rootDirectory, subDirectories);
                 _dbStorage_Data_Context.Files.AddRange(files1);
                 _dbStorage_Data_Context.SaveChanges();
             }
@@ -178,7 +178,7 @@ namespace PSGM.Sample.Model.DbStorage
                                                         .ThenInclude(p => p.RootDirectory)
                                                     .Include(p => p.RootDirectory)
                                                     .Include(p => p.MetadataLinks)
-                                                        .ThenInclude(p => p.FileMetadata)
+                                                        .ThenInclude(p => p.Metadata)
                                                     .Include(p => p.QrCode)
                                                     .ToList();
 
@@ -187,22 +187,22 @@ namespace PSGM.Sample.Model.DbStorage
             //var asadfdsa = asd[0].JobIdsExt;
             ////var asdadssa = asd[0].GetLastModificationChanges();
 
-            var asdasd = _dbStorage_Data_Context.Files.Where(p=> p.Authorization_UserLinks.Any(p => p.FileAuthorization_User.UserIdExt == _patrickSchoeneggerId))
+            var asdasd = _dbStorage_Data_Context.Files.Where(p=> p.AuthorizationUserLinks.Any(p => p.AuthorizationUser.UserIdExt == Guid.Parse("aa4590f8-5ce6-4e95-aa78-0dda009d629b")))
                                                         .Include(p => p.SubDirectory)
                                                             .ThenInclude(p => p.RootDirectory)
                                                         .Include(p => p.RootDirectory)
                                                         .Include(p => p.MetadataLinks)
-                                                            .ThenInclude(p => p.FileMetadata)
+                                                            .ThenInclude(p => p.Metadata)
                                                         .Include(p => p.QrCode)
                                                         .Include(p => p.Quality)
-                                                        .Include(p => p.Authorization_UserLinks)
-                                                            .ThenInclude(p => p.FileAuthorization_User)
-                                                        .Include(p => p.Authorization_UserGroupLinks)
-                                                            .ThenInclude(p => p.FileAuthorization_UserGroup)
-                                                        .Include(p => p.Notification_UserLinks)
-                                                            .ThenInclude(p => p.FileNotification_User)
-                                                        .Include(p => p.Notification_UserGroupLinks)
-                                                            .ThenInclude(p => p.FileNotification_UserGroup)
+                                                        .Include(p => p.AuthorizationUserLinks)
+                                                            .ThenInclude(p => p.AuthorizationUser)
+                                                        .Include(p => p.AuthorizationUserGroupLinks)
+                                                            .ThenInclude(p => p.AuthorizationUserGroup)
+                                                        .Include(p => p.NotificationUserLinks)
+                                                            .ThenInclude(p => p.NotificationUser)
+                                                        .Include(p => p.NotificationUserGroupLinks)
+                                                            .ThenInclude(p => p.NotificationUserGroup)
                                                         .ToList();
 
 
