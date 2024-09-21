@@ -153,9 +153,6 @@ namespace PSGM.Model.DbStorage
         #region Backlinks (ForeignKeys)
         #endregion
 
-        #region Links (Outside DB)
-        #endregion
-
         #region Not Mapped
         [NotMapped]
         public List<Guid>? JobIdsExt

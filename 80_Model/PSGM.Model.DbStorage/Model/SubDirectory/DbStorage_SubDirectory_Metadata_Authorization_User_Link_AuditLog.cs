@@ -52,8 +52,6 @@ namespace PSGM.Model.DbStorage
 
         #region Backlinks (ForeignKeys)
         #endregion
-        #region Links (Outside DB)
-        #endregion
 
         #region Not Mapped
         public DbStorage_SubDirectory_Metadata_Authorization_User_Link GetChanges()

@@ -5,66 +5,75 @@ namespace PSGM.Sample.Model.DbStorage
 {
     public partial class MainWindow : System.Windows.Window
     {
-        public List<DbStorage_RootDirectory> Create_RootDirectories(DbStorage_Context contect, int count)
+        public List<DbStorage_File> Generate_Files1(int count, List<DbStorage_RootDirectory> rootDirectories, List<DbStorage_SubDirectory> subDirectories)
         {
             Random random = new Random();
-
-            List<DbStorage_RootDirectory> tmp = new List<DbStorage_RootDirectory>();
+            List<DbStorage_File> tmp = new List<DbStorage_File>();
 
             #region Create Data ...
-            List<DbStorage_RootDirectory_Authorization_User> authorization_Users = new List<DbStorage_RootDirectory_Authorization_User>();
+            List<DbStorage_File_Authorization_User> authorization_Users = new List<DbStorage_File_Authorization_User>();
             for (int i = 0; i < 250; i++)
             {
                 Array values = Enum.GetValues(typeof(PermissionType));
                 PermissionType randomPermissionType = (PermissionType)values.GetValue(random.Next(values.Length));
 
-                authorization_Users.Add(new DbStorage_RootDirectory_Authorization_User()
+                authorization_Users.Add(new DbStorage_File_Authorization_User()
                 {
                     Id = Guid.NewGuid(),
 
                     UserIdExt = Guid.NewGuid(),
-                    
+
                     Permissions = randomPermissionType,
 
                     Description = Common.RandomString(random.Next(10, 100)),
 
-                    AuthorizationUserLinks = null
+                    AuthorizationUserLinks = null,
+
+                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                    //CreatedDateTimeAutoFill = DateTime.Now,
+                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                    //ModifiedDateTimeAutoFill = DateTime.Now,
                 });
             }
 
-            List<DbStorage_RootDirectory_Authorization_UserGroup> authorization_UserGroups = new List<DbStorage_RootDirectory_Authorization_UserGroup>();
+            List<DbStorage_File_Authorization_UserGroup> authorization_UserGroups = new List<DbStorage_File_Authorization_UserGroup>();
             for (int i = 0; i < 250; i++)
             {
                 Array values = Enum.GetValues(typeof(PermissionType));
                 PermissionType randomPermissionType = (PermissionType)values.GetValue(random.Next(values.Length));
 
-                authorization_UserGroups.Add(new DbStorage_RootDirectory_Authorization_UserGroup()
+                authorization_UserGroups.Add(new DbStorage_File_Authorization_UserGroup()
                 {
                     Id = Guid.NewGuid(),
 
                     UserGroupIdExt = Guid.NewGuid(),
-                    
+
                     Permissions = randomPermissionType,
 
                     Description = Common.RandomString(random.Next(10, 100)),
 
-                    AuthorizationUserGroupLinks = null
+                    AuthorizationUserGroupLinks = null,
+
+                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                    //CreatedDateTimeAutoFill = DateTime.Now,
+                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                    //ModifiedDateTimeAutoFill = DateTime.Now,
                 });
             }
 
-            List<DbStorage_RootDirectory_Notification_User> notification_Users = new List<DbStorage_RootDirectory_Notification_User>();
+            List<DbStorage_File_Notification_User> notification_Users = new List<DbStorage_File_Notification_User>();
             for (int i = 0; i < 250; i++)
             {
                 Array values = Enum.GetValues(typeof(NotificationType));
 
-                notification_Users.Add(new DbStorage_RootDirectory_Notification_User()
+                notification_Users.Add(new DbStorage_File_Notification_User()
                 {
                     Id = Guid.NewGuid(),
 
                     UserIdExt = Guid.NewGuid(),
 
                     Description = Common.RandomString(random.Next(10, 100)),
-                    
+
                     NotificationType = (NotificationType)values.GetValue(random.Next(values.Length)),
 
                     EMail = random.Next(100) <= 50 ? true : false,
@@ -75,23 +84,28 @@ namespace PSGM.Sample.Model.DbStorage
                     Telegram = random.Next(100) <= 50 ? true : false,
                     Gotify = random.Next(100) <= 50 ? true : false,
 
-                    NotificationUserLinks = null
+                    NotificationUserLinks = null,
+
+                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                    //CreatedDateTimeAutoFill = DateTime.Now,
+                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                    //ModifiedDateTimeAutoFill = DateTime.Now,
                 });
             }
 
-            List<DbStorage_RootDirectory_Notification_UserGroup> notification_UserGroups = new List<DbStorage_RootDirectory_Notification_UserGroup>();
+            List<DbStorage_File_Notification_UserGroup> notification_UserGroups = new List<DbStorage_File_Notification_UserGroup>();
             for (int i = 0; i < 250; i++)
             {
                 Array values = Enum.GetValues(typeof(NotificationType));
 
-                notification_UserGroups.Add(new DbStorage_RootDirectory_Notification_UserGroup()
+                notification_UserGroups.Add(new DbStorage_File_Notification_UserGroup()
                 {
                     Id = Guid.NewGuid(),
 
                     UserGroupIdExt = Guid.NewGuid(),
 
                     Description = Common.RandomString(random.Next(10, 100)),
-                    
+
                     NotificationType = (NotificationType)values.GetValue(random.Next(values.Length)),
 
                     EMail = random.Next(100) <= 50 ? true : false,
@@ -102,77 +116,93 @@ namespace PSGM.Sample.Model.DbStorage
                     Telegram = random.Next(100) <= 50 ? true : false,
                     Gotify = random.Next(100) <= 50 ? true : false,
 
-                    NotificationUserGroupLinks = null
+                    NotificationUserGroupLinks = null,
+
+                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                    //CreatedDateTimeAutoFill = DateTime.Now,
+                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                    //ModifiedDateTimeAutoFill = DateTime.Now,
                 });
             }
 
 
-
-            List<DbStorage_RootDirectory_Metadata_Authorization_User> metadataAuthorization_Users = new List<DbStorage_RootDirectory_Metadata_Authorization_User>();
+            List<DbStorage_File_Metadata_Authorization_User> metadataAuthorization_Users = new List<DbStorage_File_Metadata_Authorization_User>();
             for (int i = 0; i < 250; i++)
             {
                 Array values = Enum.GetValues(typeof(PermissionType));
                 PermissionType randomPermissionType = (PermissionType)values.GetValue(random.Next(values.Length));
 
-                metadataAuthorization_Users.Add(new DbStorage_RootDirectory_Metadata_Authorization_User()
+                metadataAuthorization_Users.Add(new DbStorage_File_Metadata_Authorization_User()
                 {
                     Id = Guid.NewGuid(),
-                    
+
                     UserIdExt = Guid.NewGuid(),
 
                     Permissions = randomPermissionType,
 
                     Description = Common.RandomString(random.Next(10, 100)),
 
-                    AuthorizationUserLinks = null
+                    AuthorizationUserLinks = null,
+
+                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                    //CreatedDateTimeAutoFill = DateTime.Now,
+                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                    //ModifiedDateTimeAutoFill = DateTime.Now,
                 });
             }
 
-            List<DbStorage_RootDirectory_Metadata_Authorization_UserGroup> metadataAuthorization_UserGroups = new List<DbStorage_RootDirectory_Metadata_Authorization_UserGroup>();
+            List<DbStorage_File_Metadata_Authorization_UserGroup> metadataAuthorization_UserGroups = new List<DbStorage_File_Metadata_Authorization_UserGroup>();
             for (int i = 0; i < 250; i++)
             {
                 Array values = Enum.GetValues(typeof(PermissionType));
                 PermissionType randomPermissionType = (PermissionType)values.GetValue(random.Next(values.Length));
 
-                metadataAuthorization_UserGroups.Add(new DbStorage_RootDirectory_Metadata_Authorization_UserGroup()
+                metadataAuthorization_UserGroups.Add(new DbStorage_File_Metadata_Authorization_UserGroup()
                 {
                     Id = Guid.NewGuid(),
 
                     UserGroupIdExt = Guid.NewGuid(),
 
                     Permissions = randomPermissionType,
-                    
+
                     Description = Common.RandomString(random.Next(10, 100)),
 
-                    AuthorizationUserGroupLinks = null
+                    AuthorizationUserGroupLinks = null,
+
+                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                    //CreatedDateTimeAutoFill = DateTime.Now,
+                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                    //ModifiedDateTimeAutoFill = DateTime.Now,
                 });
             }
 
-            List<DbStorage_RootDirectory_Metadata> rootDirectoryMetadata = new List<DbStorage_RootDirectory_Metadata>();
-            for (int i = 1; i <= 50; i++)
+            List<DbStorage_File_Metadata> fileMetadata = new List<DbStorage_File_Metadata>();
+            for (int i = 0; i < 50; i++)
             {
-                List<DbStorage_RootDirectory_Metadata_Authorization_User_Link> authorization_UsersLoop = new List<DbStorage_RootDirectory_Metadata_Authorization_User_Link>();
+                List<DbStorage_File_Metadata_Authorization_User_Link> authorization_UsersLoop = new List<DbStorage_File_Metadata_Authorization_User_Link>();
                 for (int j = 0; j < random.Next(0, authorization_Users.Count()); j++)
                 {
-                    authorization_UsersLoop.Add(new DbStorage_RootDirectory_Metadata_Authorization_User_Link()
+                    authorization_UsersLoop.Add(new DbStorage_File_Metadata_Authorization_User_Link()
                     {
                         Id = Guid.NewGuid(),
 
+                        // FK
                         AuthorizationUser = metadataAuthorization_Users[random.Next(0, metadataAuthorization_Users.Count())],
                         //AuthorizationUserId = Guid.Empty,
                         
                         Metadata = null,
-                        MetadataId = null
+                        MetadataId = null,
                     });
                 }
 
-                List<DbStorage_RootDirectory_Metadata_Authorization_UserGroup_Link> authorization_UserGroupsLoop = new List<DbStorage_RootDirectory_Metadata_Authorization_UserGroup_Link>();
+                List<DbStorage_File_Metadata_Authorization_UserGroup_Link> authorization_UserGroupsLoop = new List<DbStorage_File_Metadata_Authorization_UserGroup_Link>();
                 for (int j = 0; j < random.Next(0, authorization_UserGroups.Count()); j++)
                 {
-                    authorization_UserGroupsLoop.Add(new DbStorage_RootDirectory_Metadata_Authorization_UserGroup_Link()
+                    authorization_UserGroupsLoop.Add(new DbStorage_File_Metadata_Authorization_UserGroup_Link()
                     {
                         Id = Guid.NewGuid(),
 
+                        // FK
                         AuthorizationUserGroup = metadataAuthorization_UserGroups[random.Next(0, metadataAuthorization_UserGroups.Count())],
                         //AuthorizationUserGroupId = Guid.Empty,
 
@@ -181,7 +211,10 @@ namespace PSGM.Sample.Model.DbStorage
                     });
                 }
 
-                rootDirectoryMetadata.Add(new DbStorage_RootDirectory_Metadata()
+                Array values = Enum.GetValues(typeof(MetadataType));
+                MetadataType metadataTypeStateType = (MetadataType)values.GetValue(random.Next(values.Length));
+
+                fileMetadata.Add(new DbStorage_File_Metadata()
                 {
                     Id = Guid.NewGuid(),
 
@@ -189,23 +222,21 @@ namespace PSGM.Sample.Model.DbStorage
                     Value = Common.RandomString(random.Next(10, 100)),
 
                     Description = Common.RandomString(random.Next(10, 200)),
-                    
+
                     Hidden = random.Next(100) <= 50 ? true : false,
                     EditAll = random.Next(100) <= 50 ? true : false,
                     ViewAll = random.Next(100) <= 50 ? true : false,
 
-                    ApplicableForFiles = random.Next(100) <= 50 ? true : false,
-
-                    Metadata_Links = null,
-
-                    MetadataType = MetadataType.Unknown,
+                    MetadataType = metadataTypeStateType,
 
                     Stars = random.Next(0, 5),
 
                     Order = random.Next(0, 10000),
 
-                    Authorization_User_Links = authorization_UsersLoop,
-                    Authorization_UserGroup_Links = authorization_UserGroupsLoop,
+                    MetadataLinks = null,
+
+                    AuthorizationUserLinks = authorization_UsersLoop,
+                    AuthorizationUserGroupLinks = authorization_UserGroupsLoop,
 
                     //CreatedByUserIdExtAutoFill = Guid.Empty,
                     //CreatedDateTimeAutoFill = DateTime.Now,
@@ -215,91 +246,96 @@ namespace PSGM.Sample.Model.DbStorage
             }
             #endregion
 
-            for (int i = 0; i < count; i++)
+            for (int i = 1; i <= count; i++)
             {
-                List<DbStorage_RootDirectory_Metadata_Link> rootDirectoryMetadataLinkLoop = new List<DbStorage_RootDirectory_Metadata_Link>();
-                for (int j = 0; j < random.Next(0, rootDirectoryMetadata.Count()); j++)
+                List<DbStorage_File_Metadata_Link> fileMetadataLinkLoop = new List<DbStorage_File_Metadata_Link>();
+                for (int j = 0; j < random.Next(0, fileMetadata.Count()); j++)
                 {
-                    rootDirectoryMetadataLinkLoop.Add(new DbStorage_RootDirectory_Metadata_Link()
+                    fileMetadataLinkLoop.Add(new DbStorage_File_Metadata_Link()
                     {
                         Id = Guid.NewGuid(),
-                        
-                        RootDirectory = null,
-                        RootDirectoryId = null,
 
-                        Metadata = rootDirectoryMetadata[random.Next(0, rootDirectoryMetadata.Count())],
+                        // FK
+                        Metadata = fileMetadata[random.Next(0, fileMetadata.Count())],
                         //MetadataId = Guid.Empty,
+
+                        File = null,
+                        FileId = null,
                     });
                 }
 
-                List<DbStorage_RootDirectory_Authorization_User_Link> authorization_UsersLoop = new List<DbStorage_RootDirectory_Authorization_User_Link>();
+                List<DbStorage_File_Authorization_User_Link> authorization_UsersLoop = new List<DbStorage_File_Authorization_User_Link>();
                 for (int j = 0; j < random.Next(0, authorization_Users.Count()); j++)
                 {
-                    authorization_UsersLoop.Add(new DbStorage_RootDirectory_Authorization_User_Link()
+                    authorization_UsersLoop.Add(new DbStorage_File_Authorization_User_Link()
                     {
                         Id = Guid.NewGuid(),
 
-                        RootDirectory = null,
-                        RootDirectoryId = null,
-
+                        // FK
                         AuthorizationUser = authorization_Users[random.Next(0, authorization_Users.Count())],
                         //AuthorizationUserId = Guid.Empty,
+
+                        File = null,
+                        FileId = null
                     });
                 }
 
-                List<DbStorage_RootDirectory_Authorization_UserGroup_Link> authorization_UserGroupsLoop = new List<DbStorage_RootDirectory_Authorization_UserGroup_Link>();
+                List<DbStorage_File_Authorization_UserGroup_Link> authorization_UserGroupsLoop = new List<DbStorage_File_Authorization_UserGroup_Link>();
                 for (int j = 0; j < random.Next(0, authorization_UserGroups.Count()); j++)
                 {
-                    authorization_UserGroupsLoop.Add(new DbStorage_RootDirectory_Authorization_UserGroup_Link()
+                    authorization_UserGroupsLoop.Add(new DbStorage_File_Authorization_UserGroup_Link()
                     {
                         Id = Guid.NewGuid(),
 
-                        RootDirectory = null,
-                        RootDirectoryId = null,
-
+                        // FK
                         AuthorizationUserGroup = authorization_UserGroups[random.Next(0, authorization_UserGroups.Count())],
                         //AuthorizationUserGroupId = Guid.Empty,
+
+                        File = null,
+                        FileId = null
                     });
                 }
 
-                List<DbStorage_RootDirectory_Notification_User_Link> notification_UsersLoop = new List<DbStorage_RootDirectory_Notification_User_Link>();
+                List<DbStorage_File_Notification_User_Link> notification_UsersLoop = new List<DbStorage_File_Notification_User_Link>();
                 for (int j = 0; j < random.Next(0, notification_Users.Count()); j++)
                 {
-                    notification_UsersLoop.Add(new DbStorage_RootDirectory_Notification_User_Link()
+                    notification_UsersLoop.Add(new DbStorage_File_Notification_User_Link()
                     {
                         Id = Guid.NewGuid(),
 
-                        RootDirectory = null,
-                        RootDirectoryId = null,
-
+                        // FK
                         NotificationUser = notification_Users[random.Next(0, notification_Users.Count())],
-                        //Notification_UserId = Guid.Empty,
+                        //NotificationUserId = Guid.Empty,
+
+                        File = null,
+                        FileId = null
                     });
                 }
 
-                List<DbStorage_RootDirectory_Notification_UserGroup_Link> notification_UserGroupsLoop = new List<DbStorage_RootDirectory_Notification_UserGroup_Link>();
+                List<DbStorage_File_Notification_UserGroup_Link> notification_UserGroupsLoop = new List<DbStorage_File_Notification_UserGroup_Link>();
                 for (int j = 0; j < random.Next(0, notification_UserGroups.Count()); j++)
                 {
-                    notification_UserGroupsLoop.Add(new DbStorage_RootDirectory_Notification_UserGroup_Link()
+                    notification_UserGroupsLoop.Add(new DbStorage_File_Notification_UserGroup_Link()
                     {
                         Id = Guid.NewGuid(),
 
-                        RootDirectory = null,
-                        RootDirectoryId = null,
-
+                        // FK
                         NotificationUserGroup = notification_UserGroups[random.Next(0, notification_UserGroups.Count())],
-                        //Notification_UserGroupId = Guid.Empty,
+                        //NotificationUserGroupId = Guid.Empty,
+
+                        File = null,
+                        FileId = null
                     });
                 }
 
                 Array values = Enum.GetValues(typeof(QualityState));
                 QualityState qualityStateType = (QualityState)values.GetValue(random.Next(values.Length));
 
-                DbStorage_RootDirectory_Quality quality;
+                DbStorage_File_Quality quality;
                 int qualityCount = random.Next(0, 3);
                 if (qualityCount == 0)
                 {
-                    quality = new DbStorage_RootDirectory_Quality()
+                    quality = new DbStorage_File_Quality()
                     {
                         Id = Guid.NewGuid(),
 
@@ -307,18 +343,19 @@ namespace PSGM.Sample.Model.DbStorage
 
                         QualityState = qualityStateType,
 
-                        RootDirectory = null,
-                        RootDirectoryId = null,
-
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
                         //ModifiedByUserIdExtAutoFill = Guid.Empty,
                         //ModifiedDateTimeAutoFill = DateTime.Now,
+                        
+                        // FK
+                        File = null,
+                        FileId = null,
                     };
                 }
                 else if (qualityCount == 1)
                 {
-                    quality = new DbStorage_RootDirectory_Quality()
+                    quality = new DbStorage_File_Quality()
                     {
                         Id = Guid.NewGuid(),
 
@@ -326,18 +363,19 @@ namespace PSGM.Sample.Model.DbStorage
 
                         QualityState = qualityStateType,
 
-                        RootDirectory = null,
-                        RootDirectoryId = null,
-
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
                         //ModifiedByUserIdExtAutoFill = Guid.Empty,
                         //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        File = null,
+                        FileId = null,
                     };
                 }
                 else if (qualityCount == 2)
                 {
-                    quality = new DbStorage_RootDirectory_Quality()
+                    quality = new DbStorage_File_Quality()
                     {
                         Id = Guid.NewGuid(),
 
@@ -345,13 +383,14 @@ namespace PSGM.Sample.Model.DbStorage
 
                         QualityState = qualityStateType,
 
-                        RootDirectory = null,
-                        RootDirectoryId = null,
-
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
                         //ModifiedByUserIdExtAutoFill = Guid.Empty,
                         //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        File = null,
+                        FileId = null,
                     };
                 }
                 else
@@ -359,31 +398,54 @@ namespace PSGM.Sample.Model.DbStorage
                     quality = null;
                 }
 
-                DbStorage_RootDirectory element = new DbStorage_RootDirectory()
+                DbStorage_File element = new DbStorage_File()
                 {
                     Id = Guid.NewGuid(),
+
+                    RawFileIds = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
+                    //RawFileIdsString = string.Empty,
                     
                     Suffix = i.ToString(),
-                    Name = "RootDirectory " + i.ToString(),
+                    Name = "File " + i.ToString(),
                     Prefix = i.ToString(),
-                    Description = "RootDirectory Description " + i.ToString() + " " + Common.RandomString(random.Next(10, 100)),
+                    Description = "FileDescription " + i.ToString() + " " + Common.RandomString(random.Next(10, 100)),
 
                     SuffixProjectOwner = i.ToString(),
                     NameProjectOwner = "ProjectOwner " + i.ToString(),
                     PrefixProjectOwner = i.ToString(),
-                    DescriptionProjectOwner = "ProjectOwner Description " + i.ToString() + " " + Common.RandomString(random.Next(10, 100)),
+                    DescriptionProjectOwner = "ProjectOwnerDescription " + i.ToString() + " " + Common.RandomString(random.Next(10, 100)),
 
                     Stars = random.Next(0, 5),
 
                     Order = random.Next(0, 10000),
 
-                    DirectoryState = DirectoryState.Undefined,
-
                     Quality = quality,
 
-                    MetadataLinks = rootDirectoryMetadataLinkLoop,
+                    MetadataLinks = fileMetadataLinkLoop,
 
-                    DirectoryLocked = false,
+                    MachineIdExt = Guid.NewGuid(),
+                    DeviceIdExt = Guid.NewGuid(),
+                    SoftwareIdExt = Guid.NewGuid(),
+
+                    ObjectExtension = FileExtension.JSON,
+
+                    ObjectSize = 34235,
+
+                    StorageObjectName = Common.RandomString(random.Next(10, 100)),
+                    StorageObjectVersion = random.Next(0, 100),
+                    StorageObjectUrl = Common.RandomString(random.Next(10, 200)),
+                    StorageObjectUrlPublic = Common.RandomString(random.Next(10, 200)),
+
+                    ExtId1 = Guid.NewGuid().ToString(),
+                    ExtId2 = Guid.NewGuid().ToString(),
+                    ExtId3 = Guid.NewGuid().ToString(),
+                    ExtId4 = Guid.NewGuid().ToString(),
+                    ExtId5 = Guid.NewGuid().ToString(),
+                    ExtId6 = Guid.NewGuid().ToString(),
+                    ExtId7 = Guid.NewGuid().ToString(),
+                    ExtId8 = Guid.NewGuid().ToString(),
+                    ExtId9 = Guid.NewGuid().ToString(),
+                    ExtId10 = Guid.NewGuid().ToString(),
 
                     AuthorizationUserLinks = authorization_UsersLoop,
                     AuthorizationUserGroupLinks = authorization_UserGroupsLoop,
@@ -400,38 +462,37 @@ namespace PSGM.Sample.Model.DbStorage
                     BackupIdsExt = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
                     //BackupIdsExtString = string.Empty,
 
-                    SubDirectories = null,
-
-                    Files = null,
-
-                    DirectoryObjectsAutofill = 0,
-                    DirectorySizeAutofill = 0,
-
-                    QrCode = new DbStorage_RootDirectory_QrCode()
+                    QrCode = new DbStorage_File_QrCode()
                     {
                         Id = Guid.NewGuid(),
 
                         Name = "QrCode " + i.ToString(),
                         Description = "QrCode " + i.ToString() + " " + Common.RandomString(random.Next(10, 100)),
 
-                        QrCodeType = QrCodeType.Undefined,
-
-                        RootDirectory = null,
-                        RootDirectoryId = null,
-
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
                         //ModifiedByUserIdExtAutoFill = Guid.Empty,
                         //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        File = null,
+                        FileId = null,
                     },
 
                     //CreatedByUserIdExtAutoFill = Guid.Empty,
                     //CreatedDateTimeAutoFill = DateTime.Now,
                     //ModifiedByUserIdExtAutoFill = Guid.Empty,
                     //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                    // FK
+                    RootDirectory = null,
+                    RootDirectoryId = null,
+
+                    SubDirectory = subDirectories[random.Next(0, subDirectories.Count())],
+                    SubDirectoryId = Guid.Empty,
                 };
 
-                //_dbStorage_Data_Context.RootDirectories.Add(element);
+                //_dbStorage_Data_Context.Files.Add(element);
                 //_dbStorage_Data_Context.SaveChanges();
 
                 tmp.Add(element);

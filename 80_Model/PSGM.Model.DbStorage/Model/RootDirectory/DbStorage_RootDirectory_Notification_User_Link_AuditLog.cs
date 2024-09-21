@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbStorage
 {
-    [Table("RootDirectory_Notification_UserLink_AuditLog")]
+    [Table("RootDirectory_Notification_User_Link_AuditLog")]
     public class DbStorage_RootDirectory_Notification_User_Link_AuditLog
     {
         #region Entities
@@ -51,9 +51,6 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Backlinks (ForeignKeys)
-        #endregion
-
-        #region Links (Outside DB)
         #endregion
 
         #region Not Mapped

@@ -124,9 +124,9 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [ForeignKey("Location")]
-        public Guid? LocationId { get; set; }
-        public virtual DbMain_Location? Location { get; set; }
+        [ForeignKey("Address")]
+        public Guid? AddressLinkId { get; set; }
+        public virtual DbMain_Location_Address_Link? AddressLink { get; set; }
         #endregion
 
         #region Links (Outside DB)

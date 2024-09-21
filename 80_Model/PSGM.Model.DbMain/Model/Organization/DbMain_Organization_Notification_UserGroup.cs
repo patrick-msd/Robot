@@ -56,9 +56,8 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [ForeignKey("Organization")]
-        public Guid? OrganizationId { get; set; }
-        public virtual DbMain_Organization? Organization { get; set; }
+        [InverseProperty("NotificationUserGroup")]
+        public virtual ICollection<DbMain_Organization_Notification_UserGroup_Link>? NotificationUserGroupLinks { get; set; }
         #endregion
 
         #region Links (Outside DB)

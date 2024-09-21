@@ -86,9 +86,6 @@ namespace PSGM.Model.DbStorage
         #region Backlinks (ForeignKeys)
         #endregion
 
-        #region Links (Outside DB)
-        #endregion
-
         #region Not Mapped
         #endregion
     }

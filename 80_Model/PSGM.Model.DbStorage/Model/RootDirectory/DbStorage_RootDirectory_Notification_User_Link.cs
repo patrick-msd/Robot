@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbStorage
 {
-    [Table("RootDirectory_Notification_UserLink")]
+    [Table("RootDirectory_Notification_User_Link")]
     public class DbStorage_RootDirectory_Notification_User_Link
     {
         #region Entities
@@ -26,9 +26,6 @@ namespace PSGM.Model.DbStorage
         [ForeignKey("NotificationUser")]
         public Guid NotificationUserId { get; set; } = Guid.Empty;
         public virtual DbStorage_RootDirectory_Notification_User? NotificationUser { get; set; }
-        #endregion
-
-        #region Links (Outside DB)
         #endregion
 
         #region Not Mapped

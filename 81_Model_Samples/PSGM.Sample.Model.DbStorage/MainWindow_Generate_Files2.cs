@@ -5,7 +5,7 @@ namespace PSGM.Sample.Model.DbStorage
 {
     public partial class MainWindow : System.Windows.Window
     {
-        public List<DbStorage_File> Create_Files2(int count, List<DbStorage_RootDirectory> rootDirectories, List<DbStorage_SubDirectory> subDirectories)
+        public List<DbStorage_File> Generate_Files2(int count, List<DbStorage_RootDirectory> rootDirectories, List<DbStorage_SubDirectory> subDirectories)
         {
             Random random = new Random();
             List<DbStorage_File> tmp = new List<DbStorage_File>();
@@ -186,16 +186,12 @@ namespace PSGM.Sample.Model.DbStorage
                     {
                         Id = Guid.NewGuid(),
 
+                        // FK
                         AuthorizationUser = metadataAuthorization_Users[random.Next(0, metadataAuthorization_Users.Count())],
                         //AuthorizationUserId = Guid.Empty,
                         
                         Metadata = null,
                         MetadataId = null,
-
-                        //CreatedByUserIdExtAutoFill = Guid.Empty,
-                        //CreatedDateTimeAutoFill = DateTime.Now,
-                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
-                        //ModifiedDateTimeAutoFill = DateTime.Now,
                     });
                 }
 
@@ -206,6 +202,7 @@ namespace PSGM.Sample.Model.DbStorage
                     {
                         Id = Guid.NewGuid(),
 
+                        // FK
                         AuthorizationUserGroup = metadataAuthorization_UserGroups[random.Next(0, metadataAuthorization_UserGroups.Count())],
                         //AuthorizationUserGroupId = Guid.Empty,
 
@@ -257,7 +254,8 @@ namespace PSGM.Sample.Model.DbStorage
                     fileMetadataLinkLoop.Add(new DbStorage_File_Metadata_Link()
                     {
                         Id = Guid.NewGuid(),
-                        
+
+                        // FK
                         Metadata = fileMetadata[random.Next(0, fileMetadata.Count())],
                         //MetadataId = Guid.Empty,
 
@@ -273,6 +271,7 @@ namespace PSGM.Sample.Model.DbStorage
                     {
                         Id = Guid.NewGuid(),
 
+                        // FK
                         AuthorizationUser = authorization_Users[random.Next(0, authorization_Users.Count())],
                         //AuthorizationUserId = Guid.Empty,
 
@@ -288,6 +287,7 @@ namespace PSGM.Sample.Model.DbStorage
                     {
                         Id = Guid.NewGuid(),
 
+                        // FK
                         AuthorizationUserGroup = authorization_UserGroups[random.Next(0, authorization_UserGroups.Count())],
                         //AuthorizationUserGroupId = Guid.Empty,
 
@@ -303,6 +303,7 @@ namespace PSGM.Sample.Model.DbStorage
                     {
                         Id = Guid.NewGuid(),
 
+                        // FK
                         NotificationUser = notification_Users[random.Next(0, notification_Users.Count())],
                         //NotificationUserId = Guid.Empty,
 
@@ -318,6 +319,7 @@ namespace PSGM.Sample.Model.DbStorage
                     {
                         Id = Guid.NewGuid(),
 
+                        // FK
                         NotificationUserGroup = notification_UserGroups[random.Next(0, notification_UserGroups.Count())],
                         //NotificationUserGroupId = Guid.Empty,
 
@@ -340,14 +342,15 @@ namespace PSGM.Sample.Model.DbStorage
                         Description = Common.RandomString(random.Next(10, 100)),
 
                         QualityState = qualityStateType,
-                        
-                        File = null,
-                        FileId = null,
 
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
                         //ModifiedByUserIdExtAutoFill = Guid.Empty,
                         //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        File = null,
+                        FileId = null,
                     };
                 }
                 else if (qualityCount == 1)
@@ -360,13 +363,14 @@ namespace PSGM.Sample.Model.DbStorage
 
                         QualityState = qualityStateType,
 
-                        File = null,
-                        FileId = null,
-
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
                         //ModifiedByUserIdExtAutoFill = Guid.Empty,
                         //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        File = null,
+                        FileId = null,
                     };
                 }
                 else if (qualityCount == 2)
@@ -379,13 +383,14 @@ namespace PSGM.Sample.Model.DbStorage
 
                         QualityState = qualityStateType,
 
-                        File = null,
-                        FileId = null,
-
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
                         //ModifiedByUserIdExtAutoFill = Guid.Empty,
                         //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        File = null,
+                        FileId = null,
                     };
                 }
                 else
@@ -464,25 +469,27 @@ namespace PSGM.Sample.Model.DbStorage
                         Name = "QrCode " + i.ToString(),
                         Description = "QrCode " + i.ToString() + " " + Common.RandomString(random.Next(10, 100)),
 
-                        File = null,
-                        FileId = null,
-
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
                         //ModifiedByUserIdExtAutoFill = Guid.Empty,
                         //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        File = null,
+                        FileId = null,
                     },
-
-                    RootDirectory = null,
-                    RootDirectoryId = null,
-
-                    SubDirectory = subDirectories[random.Next(0, subDirectories.Count())],
-                    SubDirectoryId = Guid.Empty,
 
                     //CreatedByUserIdExtAutoFill = Guid.Empty,
                     //CreatedDateTimeAutoFill = DateTime.Now,
                     //ModifiedByUserIdExtAutoFill = Guid.Empty,
                     //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                    // FK
+                    RootDirectory = null,
+                    RootDirectoryId = null,
+
+                    SubDirectory = subDirectories[random.Next(0, subDirectories.Count())],
+                    SubDirectoryId = Guid.Empty,
                 };
 
                 //_dbStorage_Data_Context.Files.Add(element);

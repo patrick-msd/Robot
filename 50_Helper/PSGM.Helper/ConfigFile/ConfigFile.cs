@@ -16,8 +16,8 @@ namespace PSGM.Helper
         public string SoftwareDatabaseConnectionString { get; set; } = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbSoftware.db";
         public DatabaseType SoftwareDatabaseType { get; set; } = DatabaseType.SQLite;
 
-        //public string StorageDataDatabaseConnectionString { get; set; } = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbStorageData.db";
-        //public DatabaseType StorageDataDatabaseType { get; set; } = DatabaseType.SQLite;
+        public string StorageDataDatabaseConnectionString { get; set; } = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbStorageData.db";
+        public DatabaseType StorageDataDatabaseType { get; set; } = DatabaseType.SQLite;
 
         //public string StorageDataRawDatabaseConnectionString { get; set; } = "Data Source=" + Directory.GetCurrentDirectory() + "\\DbStorageDataRaw.db";
         //public DatabaseType StorageDataRawDatabaseType  { get; set; }= DatabaseType.SQLite;
@@ -59,8 +59,8 @@ namespace PSGM.Helper
             this.SoftwareDatabaseConnectionString = deserializedPerson.SoftwareDatabaseConnectionString;
             this.SoftwareDatabaseType = deserializedPerson.SoftwareDatabaseType;
 
-            //this.StorageDataDatabaseConnectionString = deserializedPerson.StorageDataDatabaseConnectionString;
-            //this.StorageDataDatabaseType = deserializedPerson.StorageDataDatabaseType;
+            this.StorageDataDatabaseConnectionString = deserializedPerson.StorageDataDatabaseConnectionString;
+            this.StorageDataDatabaseType = deserializedPerson.StorageDataDatabaseType;
 
             //this.StorageDataRawDatabaseConnectionString = deserializedPerson.StorageDataRawDatabaseConnectionString;
             //this.StorageDataRawDatabaseType = deserializedPerson.StorageDataRawDatabaseType;

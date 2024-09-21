@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbMain
 {
-    [Table("ProjectNotification_User")]
+    [Table("Project_Notification_User")]
     public class DbMain_Project_Notification_User
     {
         #region Entities
@@ -56,9 +56,8 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [ForeignKey("Project")]
-        public Guid? ProjectId { get; set; }
-        public virtual DbMain_Project? Project { get; set; }
+        [InverseProperty("NotificationUser")]
+        public virtual ICollection<DbMain_Project_Notification_User_Link>? NotificationUserLinks { get; set; }
         #endregion
 
         #region Links (Outside DB)

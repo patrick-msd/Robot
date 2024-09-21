@@ -139,28 +139,28 @@ namespace PSGM.Model.DbMain
         public virtual DbMain_DeliverySlip? DeliverySlip { get; set; }
 
         [InverseProperty("Project")]
-        public virtual DbMain_Organization? Organization { get; set; }
-
-        [InverseProperty("Project")]
         public virtual ICollection<DbMain_Contributors>? Contributors { get; set; }
 
         [InverseProperty("Project")]
-        public virtual ICollection<DbMain_Project_Authorization_User>? AuthorizationUser { get; set; }
+        public virtual ICollection<DbMain_Project_Location_Link>? LocationLinks { get; set; }
 
         [InverseProperty("Project")]
-        public virtual ICollection<DbMain_Project_Authorization_UserGroup>? AuthorizationUserGroup { get; set; }
+        public virtual DbMain_Organization? Organization { get; set; }
 
         [InverseProperty("Project")]
-        public virtual ICollection<DbMain_Project_Notification_User>? NotificationUser { get; set; }
+        public virtual ICollection<DbMain_Project_Authorization_User_Link>? AuthorizationUserLinks { get; set; }
 
         [InverseProperty("Project")]
-        public virtual ICollection<DbMain_Project_Notification_UserGroup>? NotificationUserGroup { get; set; }
+        public virtual ICollection<DbMain_Project_Authorization_UserGroup_Link>? AuthorizationUserGroupLinks { get; set; }
+
+        [InverseProperty("Project")]
+        public virtual ICollection<DbMain_Project_Notification_User_Link>? NotificationUserLinks { get; set; }
+
+        [InverseProperty("Project")]
+        public virtual ICollection<DbMain_Project_Notification_UserGroup_Link>? NotificationUserGroupLinks { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
-        #endregion
-
-        #region Links (Outside DB)
         #endregion
 
         #region Not Mapped

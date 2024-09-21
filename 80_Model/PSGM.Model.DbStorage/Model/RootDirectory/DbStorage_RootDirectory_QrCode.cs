@@ -59,9 +59,6 @@ namespace PSGM.Model.DbStorage
         public virtual DbStorage_RootDirectory? RootDirectory { get; set; }
         #endregion
 
-        #region Links (Outside DB)
-        #endregion
-
         #region Not Mapped
         #endregion
     }

@@ -28,9 +28,6 @@ namespace PSGM.Model.DbStorage
         public virtual DbStorage_File_Authorization_UserGroup? AuthorizationUserGroup { get; set; }
         #endregion
 
-        #region Links (Outside DB)
-        #endregion
-
         #region Not Mapped
         #endregion
     }

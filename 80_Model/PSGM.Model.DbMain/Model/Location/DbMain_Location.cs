@@ -47,17 +47,18 @@ namespace PSGM.Model.DbMain
 
         #region Links
         [InverseProperty("Location")]
-        public virtual DbMain_Address? Address { get; set; }
+        public virtual DbMain_Location_Address_Link? AddressLink { get; set; }
+
+        [InverseProperty("Location")]
+        public virtual ICollection<DbMain_Organization_Location_Link>? OrganizationLocationLink { get; set; }
+
+        [InverseProperty("Location")]
+        public virtual ICollection<DbMain_Project_Location_Link>? ProjectLocationLink { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [ForeignKey("Project")]
-        public Guid? ProjectId { get; set; }
-        public virtual DbMain_Project? Project { get; set; }
 
-        [ForeignKey("Organization")]
-        public Guid? OrganizationId { get; set; }
-        public virtual DbMain_Organization? Organization { get; set; }
+
         #endregion
 
         #region Links (Outside DB)

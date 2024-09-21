@@ -59,9 +59,6 @@ namespace PSGM.Model.DbStorage
         public virtual DbStorage_SubDirectory? SubDirectory { get; set; }
         #endregion
 
-        #region Links (Outside DB)
-        #endregion
-
         #region Not Mapped
         #endregion
     }

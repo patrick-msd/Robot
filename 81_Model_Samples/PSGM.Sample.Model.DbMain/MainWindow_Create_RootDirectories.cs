@@ -262,10 +262,10 @@ namespace PSGM.Sample.Model.DbStorage
                     });
                 }
 
-                List<DbStorage_RootDirectory_Notification_User_Link> notification_UsersLoop = new List<DbStorage_RootDirectory_Notification_User_Link>();
+                List<DbMain_Project_Location_Link> notification_UsersLoop = new List<DbMain_Project_Location_Link>();
                 for (int j = 0; j < random.Next(0, notification_Users.Count()); j++)
                 {
-                    notification_UsersLoop.Add(new DbStorage_RootDirectory_Notification_User_Link()
+                    notification_UsersLoop.Add(new DbMain_Project_Location_Link()
                     {
                         Id = Guid.NewGuid(),
 

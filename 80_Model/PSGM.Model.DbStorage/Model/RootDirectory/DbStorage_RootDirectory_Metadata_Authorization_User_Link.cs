@@ -28,9 +28,6 @@ namespace PSGM.Model.DbStorage
         public virtual DbStorage_RootDirectory_Metadata_Authorization_User? AuthorizationUser { get; set; }
         #endregion
 
-        #region Links (Outside DB)
-        #endregion
-
         #region Not Mapped
         #endregion
     }

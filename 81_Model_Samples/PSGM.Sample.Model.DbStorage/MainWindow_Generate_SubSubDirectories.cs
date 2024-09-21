@@ -5,7 +5,7 @@ namespace PSGM.Sample.Model.DbStorage
 {
     public partial class MainWindow : System.Windows.Window
     {
-        public List<DbStorage_SubDirectory> Create_SubSubDirectories(int count, List<DbStorage_RootDirectory> rootDirectories)
+        public List<DbStorage_SubDirectory> Generate_SubSubDirectories(int count, List<DbStorage_RootDirectory> rootDirectories)
         {
             Random random = new Random();
 
@@ -158,6 +158,7 @@ namespace PSGM.Sample.Model.DbStorage
                     {
                         Id = Guid.NewGuid(),
 
+                        // FK
                         AuthorizationUser = metadataAuthorization_Users[random.Next(0, metadataAuthorization_Users.Count())],
                         //Authorization_UserId = Guid.Empty,
 
@@ -173,6 +174,7 @@ namespace PSGM.Sample.Model.DbStorage
                     {
                         Id = Guid.NewGuid(),
 
+                        // FK
                         AuthorizationUserGroup = metadataAuthorization_UserGroups[random.Next(0, metadataAuthorization_UserGroups.Count())],
                         //AuthorizationUserGroupId = Guid.Empty,
 
@@ -218,6 +220,7 @@ namespace PSGM.Sample.Model.DbStorage
                     {
                         Id = Guid.NewGuid(),
 
+                        // FK
                         SubDirectory = null,
                         SubDirectoryId = null,
 
@@ -233,6 +236,7 @@ namespace PSGM.Sample.Model.DbStorage
                     {
                         Id = Guid.NewGuid(),
 
+                        // FK
                         SubDirectory = null,
                         SubDirectoryId = null,
 
@@ -248,6 +252,7 @@ namespace PSGM.Sample.Model.DbStorage
                     {
                         Id = Guid.NewGuid(),
 
+                        // FK
                         SubDirectory = null,
                         SubDirectoryId = null,
 
@@ -263,6 +268,7 @@ namespace PSGM.Sample.Model.DbStorage
                     {
                         Id = Guid.NewGuid(),
 
+                        // FK
                         SubDirectory = null,
                         SubDirectoryId = null,
 
@@ -278,6 +284,7 @@ namespace PSGM.Sample.Model.DbStorage
                     {
                         Id = Guid.NewGuid(),
 
+                        // FK
                         SubDirectory = null,
                         SubDirectoryId = null,
 
@@ -301,13 +308,14 @@ namespace PSGM.Sample.Model.DbStorage
 
                         QualityState = qualityStateType,
 
-                        SubDirectory = null,
-                        SubDirectoryId = null,
-
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
                         //ModifiedByUserIdExtAutoFill = Guid.Empty,
                         //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        SubDirectory = null,
+                        SubDirectoryId = null,
                     };
                 }
                 else if (qualityCount == 1)
@@ -320,13 +328,14 @@ namespace PSGM.Sample.Model.DbStorage
 
                         QualityState = qualityStateType,
 
-                        SubDirectory = null,
-                        SubDirectoryId = null,
-
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
                         //ModifiedByUserIdExtAutoFill = Guid.Empty,
                         //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        SubDirectory = null,
+                        SubDirectoryId = null,
                     };
                 }
                 else if (qualityCount == 2)
@@ -339,13 +348,14 @@ namespace PSGM.Sample.Model.DbStorage
 
                         QualityState = qualityStateType,
 
-                        SubDirectory = null,
-                        SubDirectoryId = null,
-
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
                         //ModifiedByUserIdExtAutoFill = Guid.Empty,
                         //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        SubDirectory = null,
+                        SubDirectoryId = null,
                     };
                 }
                 else
@@ -420,13 +430,14 @@ namespace PSGM.Sample.Model.DbStorage
 
                             QrCodeType = QrCodeType.Undefined,
 
-                            SubDirectory = null,
-                            SubDirectoryId = null,
-
                             //CreatedByUserIdExtAutoFill = Guid.Empty,
                             //CreatedDateTimeAutoFill = DateTime.Now,
                             //ModifiedByUserIdExtAutoFill = Guid.Empty,
                             //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                            // FK
+                            SubDirectory = null,
+                            SubDirectoryId = null,
                         },
 
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
@@ -500,13 +511,14 @@ namespace PSGM.Sample.Model.DbStorage
 
                             QrCodeType = QrCodeType.Undefined,
 
-                            SubDirectory = null,
-                            SubDirectoryId = null,
-
                             //CreatedByUserIdExtAutoFill = Guid.Empty,
                             //CreatedDateTimeAutoFill = DateTime.Now,
                             //ModifiedByUserIdExtAutoFill = Guid.Empty,
                             //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                            // FK
+                            SubDirectory = null,
+                            SubDirectoryId = null,
                         },
 
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
@@ -580,13 +592,14 @@ namespace PSGM.Sample.Model.DbStorage
 
                             QrCodeType = QrCodeType.Undefined,
 
-                            SubDirectory = null,
-                            SubDirectoryId = null,
-
                             //CreatedByUserIdExtAutoFill = Guid.Empty,
                             //CreatedDateTimeAutoFill = DateTime.Now,
                             //ModifiedByUserIdExtAutoFill = Guid.Empty,
                             //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                            // FK
+                            SubDirectory = null,
+                            SubDirectoryId = null,
                         },
 
                         //CreatedByUserIdExtAutoFill = Guid.Empty,

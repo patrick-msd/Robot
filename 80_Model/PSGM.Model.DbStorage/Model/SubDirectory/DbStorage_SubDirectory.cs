@@ -160,9 +160,6 @@ namespace PSGM.Model.DbStorage
         public virtual DbStorage_SubDirectory? ParentSubDirectory { get; set; }
         #endregion
 
-        #region Links (Outside DB)
-        #endregion
-
         #region Not Mapped
         [NotMapped]
         public List<Guid>? JobIdsExt

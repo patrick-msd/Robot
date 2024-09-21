@@ -77,7 +77,7 @@ namespace PSGM.Model.DbMain
         public virtual ICollection<DbMain_Contributors>? Contributors { get; set; }
 
         [InverseProperty("Organization")]
-        public virtual ICollection<DbMain_Location>? Locations { get; set; }
+        public virtual ICollection<DbMain_Organization_Location_Link>? LocationLinks { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
@@ -88,16 +88,16 @@ namespace PSGM.Model.DbMain
 
         #region Links (Outside DB)
         [InverseProperty("Organization")]
-        public virtual ICollection<DbMain_Organization_Authorization_User>? AuthorizationUser { get; set; }
+        public virtual ICollection<DbMain_Organization_Authorization_User_Link>? AuthorizationUserLinks { get; set; }
 
         [InverseProperty("Organization")]
-        public virtual ICollection<DbMain_Organization_Authorization_UserGroup>? AuthorizationUserGroup { get; set; }
+        public virtual ICollection<DbMain_Organization_Authorization_UserGroup_Link>? AuthorizationUserGroupLinks { get; set; }
 
         [InverseProperty("Organization")]
-        public virtual ICollection<DbMain_Organization_Notification_User>? NotificationUser { get; set; }
+        public virtual ICollection<DbMain_Organization_Notification_User_Link>? NotificationUserLinks { get; set; }
 
         [InverseProperty("Organization")]
-        public virtual ICollection<DbMain_Organization_Notification_UserGroup>? NotificationUserGroup { get; set; }
+        public virtual ICollection<DbMain_Organization_Notification_UserGroup_Link>? NotificationUserGroupLinks { get; set; }
         #endregion
 
         #region Not Mapped

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PSGM.Helper;
-using PSGM.Model.DbStorage;
+using PSGM.Model.DbMain;
 using Serilog;
 using Serilog.Debugging;
 using Serilog.Sinks.Grafana.Loki;
@@ -22,7 +22,7 @@ namespace PSGM.Sample.Model.DbStorage
 
         ConfigFile _configFile;
 
-        private DbStorage_Context _dbStorage_Data_Context;
+        private DbMain_Context _dbMain_Context;
 
         Guid _softwareId;
         Guid _machineId;
@@ -105,21 +105,21 @@ namespace PSGM.Sample.Model.DbStorage
             #region Initialize Databases
             if (_configFile.ConfigFileExists(Directory.GetCurrentDirectory() + "\\ConfigFile.json"))
             {
-                _dbStorage_Data_Context = new DbStorage_Context();
+                _dbMain_Context = new DbMain_Context();
 
-                _dbStorage_Data_Context.ConnectionString = _configFile.StorageStructureDatabaseConnectionString;
-                _dbStorage_Data_Context.DatabaseType = _configFile.StorageStructureDatabaseType;
+                _dbMain_Context.ConnectionString = _configFile.MainDatabaseConnectionString;
+                _dbMain_Context.DatabaseType = _configFile.MainDatabaseType;
 
-                _dbStorage_Data_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
-                _dbStorage_Data_Context.DatabaseSessionParameter_MachineId = _machineId;
-                _dbStorage_Data_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
+                _dbMain_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
+                _dbMain_Context.DatabaseSessionParameter_MachineId = _machineId;
+                _dbMain_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
 
-                if (_dbStorage_Data_Context.Database.EnsureCreated())
+                if (_dbMain_Context.Database.EnsureCreated())
                 {
-                    _dbStorage_Data_Context.Database.OpenConnection();
+                    _dbMain_Context.Database.OpenConnection();
                 }
-                //_dbStorage_Data_Context.Database.EnsureDeleted();
-                //_dbStorage_Data_Context.Database.EnsureCreated();
+                //_dbMain_Context.Database.EnsureDeleted();
+                //_dbMain_Context.Database.EnsureCreated();
             }
             #endregion
         }
@@ -128,8 +128,8 @@ namespace PSGM.Sample.Model.DbStorage
         {
             _configFile = new ConfigFile()
             {
-                StorageStructureDatabaseConnectionString = "Host=db-clu001.branch31.psgm.at:50001;Database=DbStorage;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
-                StorageStructureDatabaseType = DatabaseType.PostgreSQL,
+                MainDatabaseConnectionString = "Host=db-clu001.branch31.psgm.at:50001;Database=dbMain;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
+                MainDatabaseType = DatabaseType.PostgreSQL,
             };
 
             _configFile.WriteToFile(Directory.GetCurrentDirectory() + "\\ConfigFile.json");
@@ -137,52 +137,94 @@ namespace PSGM.Sample.Model.DbStorage
 
         private void btnDbReadConfigFileAndInit_Click(object sender, RoutedEventArgs e)
         {
-            _dbStorage_Data_Context = new DbStorage_Context();
-            _dbStorage_Data_Context.ConnectionString = _configFile.StorageStructureDatabaseConnectionString;
-            _dbStorage_Data_Context.DatabaseType = _configFile.StorageStructureDatabaseType;
-            _dbStorage_Data_Context.Database.EnsureDeleted();
-            _dbStorage_Data_Context.Database.EnsureCreated();
-            _dbStorage_Data_Context.Database.OpenConnection();
+            _dbMain_Context = new DbMain_Context();
+            _dbMain_Context.ConnectionString = _configFile.MainDatabaseConnectionString;
+            _dbMain_Context.DatabaseType = _configFile.MainDatabaseType;
+            _dbMain_Context.Database.EnsureDeleted();
+            _dbMain_Context.Database.EnsureCreated();
+            _dbMain_Context.Database.OpenConnection();
         }
 
         private void btnDbGenerateData_Click(object sender, RoutedEventArgs e)
         {
             Random random = new Random();
 
+            #region Add addresses ...
+            List<DbMain_Address> addresses1 = Generate_Addresses1();
+            _dbMain_Context.Addresses.AddRange(addresses1);
+            _dbMain_Context.SaveChanges();
+            #endregion
+
+            #region Add locations ...
+            List<DbMain_Location> locations1 = Generate_Locations1(addresses1);
+            _dbMain_Context.Locations.AddRange(locations1);
+            _dbMain_Context.SaveChanges();
+            #endregion
+
+            #region Add organizations ...
+            List<DbMain_Organization> organization1 = Generate_Organization1(locations1);
+            _dbMain_Context.Organizations.AddRange(organization1);
+            _dbMain_Context.SaveChanges();
+            #endregion
+
+
+
+
+
             for (int h = 0; h < 10; h++)
             {
-                #region Add root directories ...
-                List<DbStorage_RootDirectory> rootDirectory = Create_RootDirectories(_dbStorage_Data_Context, 5);
-                _dbStorage_Data_Context.RootDirectories.AddRange(rootDirectory);
-                _dbStorage_Data_Context.SaveChanges();
+                #region Add addresses ...
+                List<DbMain_Address> addresses2 = Generate_Addresses2(25);
+                _dbMain_Context.Addresses.AddRange(addresses2);
+                _dbMain_Context.SaveChanges();
                 #endregion
+
+                #region Add locations ...
+                List<DbMain_Location> locations2 = Generate_Locations2(25, addresses2);
+                _dbMain_Context.Locations.AddRange(locations2);
+                _dbMain_Context.SaveChanges();
+                #endregion
+
+                #region Add organizations ...
+                List<DbMain_Organization> organization2 = Generate_Organization2(250, locations2);
+                _dbMain_Context.Organizations.AddRange(organization2);
+                _dbMain_Context.SaveChanges();
+                #endregion
+
+
+
+
+
+
+
+
 
                 #region Add sub directories ...
                 List<DbStorage_SubDirectory> subDirectories = Create_SubDirectories(50, rootDirectory);
-                _dbStorage_Data_Context.SubDirectories.AddRange(subDirectories);
-                _dbStorage_Data_Context.SaveChanges();
+                _dbMain_Context.SubDirectories.AddRange(subDirectories);
+                _dbMain_Context.SaveChanges();
                 #endregion
 
                 #region Add sub sub directories ...
                 List<DbStorage_SubDirectory> subsubDirectories = Create_SubSubDirectories(25, rootDirectory);
-                _dbStorage_Data_Context.SubDirectories.AddRange(subsubDirectories);
-                _dbStorage_Data_Context.SaveChanges();
+                _dbMain_Context.SubDirectories.AddRange(subsubDirectories);
+                _dbMain_Context.SaveChanges();
                 #endregion
 
                 #region Add files ...
                 for (int i = 0; i < 10; i++)
                 {
                     List<DbStorage_File> files = Create_Files1(1000, rootDirectory, subDirectories);
-                    _dbStorage_Data_Context.Files.AddRange(files);
-                    _dbStorage_Data_Context.SaveChanges();
+                    _dbMain_Context.Files.AddRange(files);
+                    _dbMain_Context.SaveChanges();
                     files.RemoveAll(p => true);
                 }
 
                 for (int i = 0; i < 10; i++)
                 {
                     List<DbStorage_File> files = Create_Files2(100, rootDirectory, subsubDirectories);
-                    _dbStorage_Data_Context.Files.AddRange(files);
-                    _dbStorage_Data_Context.SaveChanges();
+                    _dbMain_Context.Files.AddRange(files);
+                    _dbMain_Context.SaveChanges();
                     files.RemoveAll(p => true);
                 }
                 #endregion
@@ -192,22 +234,22 @@ namespace PSGM.Sample.Model.DbStorage
                 rootDirectory.RemoveAll(p => true);
 
                 // Clear the ChangeTracker to reduce memory usage
-                _dbStorage_Data_Context.ChangeTracker.Clear();
+                _dbMain_Context.ChangeTracker.Clear();
 
-                //_dbStorage_Data_Context.Database.CloseConnection();
-                //_dbStorage_Data_Context.Dispose();
-                //_dbStorage_Data_Context = null;
+                //_dbMain_Context.Database.CloseConnection();
+                //_dbMain_Context.Dispose();
+                //_dbMain_Context = null;
 
-                //_dbStorage_Data_Context = new DbStorage_Context();
+                //_dbMain_Context = new DbMain_Context();
 
-                //_dbStorage_Data_Context.ConnectionString = _configFile.StorageStructureDatabaseConnectionString;
-                //_dbStorage_Data_Context.DatabaseType = _configFile.StorageStructureDatabaseType;
+                //_dbMain_Context.ConnectionString = _configFile.MainDatabaseConnectionString;
+                //_dbMain_Context.DatabaseType = _configFile.MainDatabaseType;
 
-                //_dbStorage_Data_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
-                //_dbStorage_Data_Context.DatabaseSessionParameter_MachineId = _machineId;
-                //_dbStorage_Data_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
+                //_dbMain_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
+                //_dbMain_Context.DatabaseSessionParameter_MachineId = _machineId;
+                //_dbStorage_Data_dbMain_Context_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
 
-                //_dbStorage_Data_Context.Database.OpenConnection();
+                //_dbMain_Context.Database.OpenConnection();
             }
         }
 
@@ -215,9 +257,9 @@ namespace PSGM.Sample.Model.DbStorage
         {
             ;
 
-            //var asdasd = _dbStorage_Data_Context.Files.ToList();
+            //var asdasd = _dbMain_Context.Files.ToList();
 
-            var asd = _dbStorage_Data_Context.Files.Where(f => f.ExtId3.Contains("e"))
+            var asd = _dbMain_Context.Files.Where(f => f.ExtId3.Contains("e"))
                                                     .Include(p => p.SubDirectory)
                                                         .ThenInclude(p => p.RootDirectory)
                                                     .Include(p => p.RootDirectory)
@@ -231,7 +273,7 @@ namespace PSGM.Sample.Model.DbStorage
             //var asadfdsa = asd[0].JobIdsExt;
             ////var asdadssa = asd[0].GetLastModificationChanges();
 
-            var asdasd = _dbStorage_Data_Context.Files.Where(p => p.AuthorizationUserLinks.Any(p => p.AuthorizationUser.UserIdExt == Guid.Parse("aa4590f8-5ce6-4e95-aa78-0dda009d629b")))
+            var asdasd = _dbMain_Context.Files.Where(p => p.AuthorizationUserLinks.Any(p => p.AuthorizationUser.UserIdExt == Guid.Parse("aa4590f8-5ce6-4e95-aa78-0dda009d629b")))
                                                         .Include(p => p.SubDirectory)
                                                             .ThenInclude(p => p.RootDirectory)
                                                         .Include(p => p.RootDirectory)
@@ -251,12 +293,12 @@ namespace PSGM.Sample.Model.DbStorage
 
 
 
-            var asd2 = _dbStorage_Data_Context.RootDirectories.ToList();
-            var asdasd2 = _dbStorage_Data_Context.SubDirectories.OrderBy(item => item.Id)
+            var asd2 = _dbMain_Context.RootDirectories.ToList();
+            var asdasd2 = _dbMain_Context.SubDirectories.OrderBy(item => item.Id)
                                                                 .Take(100)
                                                                 .ToList();
 
-            var asdsad = _dbStorage_Data_Context.Files.ToList();
+            var asdsad = _dbMain_Context.Files.ToList();
 
             ;
         }

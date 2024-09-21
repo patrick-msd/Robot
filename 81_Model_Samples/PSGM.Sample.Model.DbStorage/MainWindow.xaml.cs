@@ -107,8 +107,8 @@ namespace PSGM.Sample.Model.DbStorage
             {
                 _dbStorage_Data_Context = new DbStorage_Context();
 
-                _dbStorage_Data_Context.ConnectionString = _configFile.StorageStructureDatabaseConnectionString;
-                _dbStorage_Data_Context.DatabaseType = _configFile.StorageStructureDatabaseType;
+                _dbStorage_Data_Context.ConnectionString = _configFile.StorageDataDatabaseConnectionString;
+                _dbStorage_Data_Context.DatabaseType = _configFile.StorageDataDatabaseType;
 
                 _dbStorage_Data_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
                 _dbStorage_Data_Context.DatabaseSessionParameter_MachineId = _machineId;
@@ -128,8 +128,8 @@ namespace PSGM.Sample.Model.DbStorage
         {
             _configFile = new ConfigFile()
             {
-                StorageStructureDatabaseConnectionString = "Host=db-clu001.branch31.psgm.at:50001;Database=DbStorage;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
-                StorageStructureDatabaseType = DatabaseType.PostgreSQL,
+                StorageDataDatabaseConnectionString = "Host=db-clu001.branch31.psgm.at:50001;Database=DbStorage;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
+                StorageDataDatabaseType = DatabaseType.PostgreSQL,
             };
 
             _configFile.WriteToFile(Directory.GetCurrentDirectory() + "\\ConfigFile.json");
@@ -138,8 +138,8 @@ namespace PSGM.Sample.Model.DbStorage
         private void btnDbReadConfigFileAndInit_Click(object sender, RoutedEventArgs e)
         {
             _dbStorage_Data_Context = new DbStorage_Context();
-            _dbStorage_Data_Context.ConnectionString = _configFile.StorageStructureDatabaseConnectionString;
-            _dbStorage_Data_Context.DatabaseType = _configFile.StorageStructureDatabaseType;
+            _dbStorage_Data_Context.ConnectionString = _configFile.StorageDataDatabaseConnectionString;
+            _dbStorage_Data_Context.DatabaseType = _configFile.StorageDataDatabaseType;
             _dbStorage_Data_Context.Database.EnsureDeleted();
             _dbStorage_Data_Context.Database.EnsureCreated();
             _dbStorage_Data_Context.Database.OpenConnection();
@@ -152,19 +152,19 @@ namespace PSGM.Sample.Model.DbStorage
             for (int h = 0; h < 10; h++)
             {
                 #region Add root directories ...
-                List<DbStorage_RootDirectory> rootDirectory = Create_RootDirectories(_dbStorage_Data_Context, 5);
+                List<DbStorage_RootDirectory> rootDirectory = Generate_RootDirectories(5);
                 _dbStorage_Data_Context.RootDirectories.AddRange(rootDirectory);
                 _dbStorage_Data_Context.SaveChanges();
                 #endregion
 
                 #region Add sub directories ...
-                List<DbStorage_SubDirectory> subDirectories = Create_SubDirectories(50, rootDirectory);
+                List<DbStorage_SubDirectory> subDirectories = Generate_SubDirectories(50, rootDirectory);
                 _dbStorage_Data_Context.SubDirectories.AddRange(subDirectories);
                 _dbStorage_Data_Context.SaveChanges();
                 #endregion
 
                 #region Add sub sub directories ...
-                List<DbStorage_SubDirectory> subsubDirectories = Create_SubSubDirectories(25, rootDirectory);
+                List<DbStorage_SubDirectory> subsubDirectories = Generate_SubSubDirectories(25, rootDirectory);
                 _dbStorage_Data_Context.SubDirectories.AddRange(subsubDirectories);
                 _dbStorage_Data_Context.SaveChanges();
                 #endregion
@@ -172,7 +172,7 @@ namespace PSGM.Sample.Model.DbStorage
                 #region Add files ...
                 for (int i = 0; i < 10; i++)
                 {
-                    List<DbStorage_File> files = Create_Files1(1000, rootDirectory, subDirectories);
+                    List<DbStorage_File> files = Generate_Files1(1000, rootDirectory, subDirectories);
                     _dbStorage_Data_Context.Files.AddRange(files);
                     _dbStorage_Data_Context.SaveChanges();
                     files.RemoveAll(p => true);
@@ -180,7 +180,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 for (int i = 0; i < 10; i++)
                 {
-                    List<DbStorage_File> files = Create_Files2(100, rootDirectory, subsubDirectories);
+                    List<DbStorage_File> files = Generate_Files2(100, rootDirectory, subsubDirectories);
                     _dbStorage_Data_Context.Files.AddRange(files);
                     _dbStorage_Data_Context.SaveChanges();
                     files.RemoveAll(p => true);
@@ -200,8 +200,8 @@ namespace PSGM.Sample.Model.DbStorage
 
                 //_dbStorage_Data_Context = new DbStorage_Context();
 
-                //_dbStorage_Data_Context.ConnectionString = _configFile.StorageStructureDatabaseConnectionString;
-                //_dbStorage_Data_Context.DatabaseType = _configFile.StorageStructureDatabaseType;
+                //_dbStorage_Data_Context.ConnectionString = _configFile.StorageDataDatabaseConnectionString;
+                //_dbStorage_Data_Context.DatabaseType = _configFile.StorageDataDatabaseType;
 
                 //_dbStorage_Data_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
                 //_dbStorage_Data_Context.DatabaseSessionParameter_MachineId = _machineId;

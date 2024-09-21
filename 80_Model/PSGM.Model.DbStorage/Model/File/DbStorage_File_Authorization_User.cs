@@ -55,12 +55,6 @@ namespace PSGM.Model.DbStorage
         public virtual ICollection<DbStorage_File_Authorization_User_Link>? AuthorizationUserLinks { get; set; }
         #endregion
 
-        #region Backlinks (ForeignKeys)
-        #endregion
-
-        #region Links (Outside DB)
-        #endregion
-
         #region Not Mapped
         #endregion
     }

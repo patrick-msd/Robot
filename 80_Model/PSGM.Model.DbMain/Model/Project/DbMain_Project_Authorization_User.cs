@@ -54,9 +54,8 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [ForeignKey("Project")]
-        public Guid? ProjectId { get; set; }
-        public virtual DbMain_Project? Project { get; set; }
+        [InverseProperty("AuthorizationUser")]
+        public virtual ICollection<DbMain_Project_Authorization_User_Link>? AuthorizationUserLinks { get; set; }
         #endregion
 
         #region Links (Outside DB)

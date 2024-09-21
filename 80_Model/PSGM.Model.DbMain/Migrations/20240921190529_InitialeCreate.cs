@@ -15,6 +15,41 @@ namespace PSGM.Model.DbMain.Migrations
                 name: "psgm");
 
             migrationBuilder.CreateTable(
+                name: "Address",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Line1 = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    Line2 = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    City = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    State = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    CountryCode = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    CountryName = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    PostalCode = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    RegionCode = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    RegionName = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    GpsAltitude = table.Column<int>(type: "integer", nullable: false),
+                    GpsLatitudeDegree = table.Column<decimal>(type: "numeric", nullable: false),
+                    GpsLatitudeMinute = table.Column<decimal>(type: "numeric", nullable: false),
+                    GpsLatitudeSecond = table.Column<decimal>(type: "numeric", nullable: false),
+                    GpsLatitudeCardinalPoint = table.Column<char>(type: "character(1)", nullable: false),
+                    GpsLongitudeDegree = table.Column<decimal>(type: "numeric", nullable: false),
+                    GpsLongitudeMinute = table.Column<decimal>(type: "numeric", nullable: false),
+                    GpsLongitudeSecond = table.Column<decimal>(type: "numeric", nullable: false),
+                    GpsLongitudeCardinalPoint = table.Column<char>(type: "character(1)", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    AddressLinkId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Address", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Address_AuditLog",
                 schema: "psgm",
                 columns: table => new
@@ -105,6 +140,24 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Location",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Location", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Location_AuditLog",
                 schema: "psgm",
                 columns: table => new
@@ -141,6 +194,25 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Organization_Authorization_User",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
+                    Permissions = table.Column<int>(type: "integer", nullable: false),
+                    UserIdExt = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Organization_Authorization_User", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Organization_Authorization_User_AuditLog",
                 schema: "psgm",
                 columns: table => new
@@ -156,6 +228,25 @@ namespace PSGM.Model.DbMain.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Organization_Authorization_User_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Organization_Authorization_UserGroup",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
+                    Permissions = table.Column<int>(type: "integer", nullable: false),
+                    UserGroupIdExt = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Organization_Authorization_UserGroup", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -177,6 +268,25 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Organization_Notification_User",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
+                    NotificationString = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
+                    UserIdExt = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Organization_Notification_User", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Organization_Notification_User_AuditLog",
                 schema: "psgm",
                 columns: table => new
@@ -192,6 +302,25 @@ namespace PSGM.Model.DbMain.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Organization_Notification_User_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Organization_Notification_UserGroup",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
+                    NotificationString = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
+                    UserGroupIdExt = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Organization_Notification_UserGroup", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -266,6 +395,25 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Project_Authorization_User",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
+                    Permissions = table.Column<int>(type: "integer", nullable: false),
+                    UserIdExt = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Project_Authorization_User", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Project_Authorization_User_AuditLog",
                 schema: "psgm",
                 columns: table => new
@@ -281,6 +429,25 @@ namespace PSGM.Model.DbMain.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Project_Authorization_User_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Project_Authorization_UserGroup",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
+                    Permissions = table.Column<int>(type: "integer", nullable: false),
+                    UserGroupIdExt = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Project_Authorization_UserGroup", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -302,6 +469,25 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Project_Notification_User",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
+                    NotificationString = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
+                    UserIdExt = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Project_Notification_User", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Project_Notification_User_AuditLog",
                 schema: "psgm",
                 columns: table => new
@@ -317,6 +503,25 @@ namespace PSGM.Model.DbMain.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Project_Notification_User_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Project_Notification_UserGroup",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
+                    NotificationString = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
+                    UserGroupIdExt = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Project_Notification_UserGroup", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -353,6 +558,32 @@ namespace PSGM.Model.DbMain.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Unit_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Location_Address_Link",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    AddressId = table.Column<Guid>(type: "uuid", nullable: true),
+                    LocationId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Location_Address_Link", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Location_Address_Link_Address_AddressId",
+                        column: x => x.AddressId,
+                        principalSchema: "psgm",
+                        principalTable: "Address",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Location_Address_Link_Location_LocationId",
+                        column: x => x.LocationId,
+                        principalSchema: "psgm",
+                        principalTable: "Location",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -422,25 +653,26 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Project_Authorization_User",
+                name: "Project_Location_Link",
                 schema: "psgm",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
-                    Permissions = table.Column<int>(type: "integer", nullable: false),
-                    UserIdExt = table.Column<Guid>(type: "uuid", nullable: false),
-                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ProjectId = table.Column<Guid>(type: "uuid", nullable: true)
+                    ProjectId = table.Column<Guid>(type: "uuid", nullable: true),
+                    LocationId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Project_Authorization_User", x => x.Id);
+                    table.PrimaryKey("PK_Project_Location_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Project_Authorization_User_Project_ProjectId",
+                        name: "FK_Project_Location_Link_Location_LocationId",
+                        column: x => x.LocationId,
+                        principalSchema: "psgm",
+                        principalTable: "Location",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Project_Location_Link_Project_ProjectId",
                         column: x => x.ProjectId,
                         principalSchema: "psgm",
                         principalTable: "Project",
@@ -448,25 +680,26 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Project_Authorization_UserGroup",
+                name: "Project_Authorization_User_Link",
                 schema: "psgm",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
-                    Permissions = table.Column<int>(type: "integer", nullable: false),
-                    UserGroupIdExt = table.Column<Guid>(type: "uuid", nullable: false),
-                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ProjectId = table.Column<Guid>(type: "uuid", nullable: true)
+                    ProjectId = table.Column<Guid>(type: "uuid", nullable: true),
+                    AuthorizationUserId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Project_Authorization_UserGroup", x => x.Id);
+                    table.PrimaryKey("PK_Project_Authorization_User_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Project_Authorization_UserGroup_Project_ProjectId",
+                        name: "FK_Project_Authorization_User_Link_Project_Authorization_User_~",
+                        column: x => x.AuthorizationUserId,
+                        principalSchema: "psgm",
+                        principalTable: "Project_Authorization_User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Project_Authorization_User_Link_Project_ProjectId",
                         column: x => x.ProjectId,
                         principalSchema: "psgm",
                         principalTable: "Project",
@@ -474,25 +707,26 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Project_Notification_UserGroup",
+                name: "Project_Authorization_UserGroup_Link",
                 schema: "psgm",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
-                    NotificationString = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
-                    UserGroupIdExt = table.Column<Guid>(type: "uuid", nullable: false),
-                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ProjectId = table.Column<Guid>(type: "uuid", nullable: true)
+                    ProjectId = table.Column<Guid>(type: "uuid", nullable: true),
+                    AuthorizationUserGroupId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Project_Notification_UserGroup", x => x.Id);
+                    table.PrimaryKey("PK_Project_Authorization_UserGroup_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Project_Notification_UserGroup_Project_ProjectId",
+                        name: "FK_Project_Authorization_UserGroup_Link_Project_Authorization_~",
+                        column: x => x.AuthorizationUserGroupId,
+                        principalSchema: "psgm",
+                        principalTable: "Project_Authorization_UserGroup",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Project_Authorization_UserGroup_Link_Project_ProjectId",
                         column: x => x.ProjectId,
                         principalSchema: "psgm",
                         principalTable: "Project",
@@ -500,25 +734,53 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProjectNotification_User",
+                name: "Project_Notification_User_Link",
                 schema: "psgm",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
-                    NotificationString = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
-                    UserIdExt = table.Column<Guid>(type: "uuid", nullable: false),
-                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ProjectId = table.Column<Guid>(type: "uuid", nullable: true)
+                    ProjectId = table.Column<Guid>(type: "uuid", nullable: true),
+                    NotificationUserId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProjectNotification_User", x => x.Id);
+                    table.PrimaryKey("PK_Project_Notification_User_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProjectNotification_User_Project_ProjectId",
+                        name: "FK_Project_Notification_User_Link_Project_Notification_User_No~",
+                        column: x => x.NotificationUserId,
+                        principalSchema: "psgm",
+                        principalTable: "Project_Notification_User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Project_Notification_User_Link_Project_ProjectId",
+                        column: x => x.ProjectId,
+                        principalSchema: "psgm",
+                        principalTable: "Project",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Project_Notification_UserGroup_Link",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    ProjectId = table.Column<Guid>(type: "uuid", nullable: true),
+                    NotificationUserGroupId = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Project_Notification_UserGroup_Link", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Project_Notification_UserGroup_Link_Project_Notification_Us~",
+                        column: x => x.NotificationUserGroupId,
+                        principalSchema: "psgm",
+                        principalTable: "Project_Notification_UserGroup",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Project_Notification_UserGroup_Link_Project_ProjectId",
                         column: x => x.ProjectId,
                         principalSchema: "psgm",
                         principalTable: "Project",
@@ -666,57 +928,26 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Location",
+                name: "Organization_Authorization_User_Link",
                 schema: "psgm",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
-                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ProjectId = table.Column<Guid>(type: "uuid", nullable: true),
-                    OrganizationId = table.Column<Guid>(type: "uuid", nullable: true)
+                    OrganizationId = table.Column<Guid>(type: "uuid", nullable: true),
+                    AuthorizationUserId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Location", x => x.Id);
+                    table.PrimaryKey("PK_Organization_Authorization_User_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Location_Organization_OrganizationId",
-                        column: x => x.OrganizationId,
+                        name: "FK_Organization_Authorization_User_Link_Organization_Authoriza~",
+                        column: x => x.AuthorizationUserId,
                         principalSchema: "psgm",
-                        principalTable: "Organization",
-                        principalColumn: "Id");
+                        principalTable: "Organization_Authorization_User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Location_Project_ProjectId",
-                        column: x => x.ProjectId,
-                        principalSchema: "psgm",
-                        principalTable: "Project",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Organization_Authorization_User",
-                schema: "psgm",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
-                    Permissions = table.Column<int>(type: "integer", nullable: false),
-                    UserIdExt = table.Column<Guid>(type: "uuid", nullable: false),
-                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    OrganizationId = table.Column<Guid>(type: "uuid", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Organization_Authorization_User", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Organization_Authorization_User_Organization_OrganizationId",
+                        name: "FK_Organization_Authorization_User_Link_Organization_Organizat~",
                         column: x => x.OrganizationId,
                         principalSchema: "psgm",
                         principalTable: "Organization",
@@ -724,25 +955,26 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Organization_Authorization_UserGroup",
+                name: "Organization_Authorization_UserGroup_Link",
                 schema: "psgm",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
-                    Permissions = table.Column<int>(type: "integer", nullable: false),
-                    UserGroupIdExt = table.Column<Guid>(type: "uuid", nullable: false),
-                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    OrganizationId = table.Column<Guid>(type: "uuid", nullable: true)
+                    OrganizationId = table.Column<Guid>(type: "uuid", nullable: true),
+                    AuthorizationUserGroupId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Organization_Authorization_UserGroup", x => x.Id);
+                    table.PrimaryKey("PK_Organization_Authorization_UserGroup_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Organization_Authorization_UserGroup_Organization_Organizat~",
+                        name: "FK_Organization_Authorization_UserGroup_Link_Organization_Auth~",
+                        column: x => x.AuthorizationUserGroupId,
+                        principalSchema: "psgm",
+                        principalTable: "Organization_Authorization_UserGroup",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Organization_Authorization_UserGroup_Link_Organization_Orga~",
                         column: x => x.OrganizationId,
                         principalSchema: "psgm",
                         principalTable: "Organization",
@@ -750,104 +982,85 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Organization_Notification_User",
+                name: "Organization_Location_Link",
                 schema: "psgm",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
-                    NotificationString = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
-                    UserIdExt = table.Column<Guid>(type: "uuid", nullable: false),
-                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    OrganizationId = table.Column<Guid>(type: "uuid", nullable: true)
+                    OrganizationId = table.Column<Guid>(type: "uuid", nullable: true),
+                    LocationId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Organization_Notification_User", x => x.Id);
+                    table.PrimaryKey("PK_Organization_Location_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Organization_Notification_User_Organization_OrganizationId",
-                        column: x => x.OrganizationId,
-                        principalSchema: "psgm",
-                        principalTable: "Organization",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Organization_Notification_UserGroup",
-                schema: "psgm",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
-                    NotificationString = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
-                    UserGroupIdExt = table.Column<Guid>(type: "uuid", nullable: false),
-                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    OrganizationId = table.Column<Guid>(type: "uuid", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Organization_Notification_UserGroup", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Organization_Notification_UserGroup_Organization_Organizati~",
-                        column: x => x.OrganizationId,
-                        principalSchema: "psgm",
-                        principalTable: "Organization",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Address",
-                schema: "psgm",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Line1 = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    Line2 = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    City = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    State = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    CountryCode = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
-                    CountryName = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    PostalCode = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
-                    RegionCode = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
-                    RegionName = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
-                    GpsAltitude = table.Column<int>(type: "integer", nullable: false),
-                    GpsLatitudeDegree = table.Column<decimal>(type: "numeric", nullable: false),
-                    GpsLatitudeMinute = table.Column<decimal>(type: "numeric", nullable: false),
-                    GpsLatitudeSecond = table.Column<decimal>(type: "numeric", nullable: false),
-                    GpsLatitudeCardinalPoint = table.Column<char>(type: "character(1)", nullable: false),
-                    GpsLongitudeDegree = table.Column<decimal>(type: "numeric", nullable: false),
-                    GpsLongitudeMinute = table.Column<decimal>(type: "numeric", nullable: false),
-                    GpsLongitudeSecond = table.Column<decimal>(type: "numeric", nullable: false),
-                    GpsLongitudeCardinalPoint = table.Column<char>(type: "character(1)", nullable: false),
-                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifiedByUserIdExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    LocationId = table.Column<Guid>(type: "uuid", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Address", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Address_Location_LocationId",
+                        name: "FK_Organization_Location_Link_Location_LocationId",
                         column: x => x.LocationId,
                         principalSchema: "psgm",
                         principalTable: "Location",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Organization_Location_Link_Organization_OrganizationId",
+                        column: x => x.OrganizationId,
+                        principalSchema: "psgm",
+                        principalTable: "Organization",
                         principalColumn: "Id");
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Address_LocationId",
+            migrationBuilder.CreateTable(
+                name: "Organization_Notification_User_Link",
                 schema: "psgm",
-                table: "Address",
-                column: "LocationId",
-                unique: true);
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    OrganizationId = table.Column<Guid>(type: "uuid", nullable: true),
+                    NotificationUserId = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Organization_Notification_User_Link", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Organization_Notification_User_Link_Organization_Notificati~",
+                        column: x => x.NotificationUserId,
+                        principalSchema: "psgm",
+                        principalTable: "Organization_Notification_User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Organization_Notification_User_Link_Organization_Organizati~",
+                        column: x => x.OrganizationId,
+                        principalSchema: "psgm",
+                        principalTable: "Organization",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Organization_Notification_UserGroup_Link",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    OrganizationId = table.Column<Guid>(type: "uuid", nullable: true),
+                    NotificationUserGroupId = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Organization_Notification_UserGroup_Link", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Organization_Notification_UserGroup_Link_Organization_Notif~",
+                        column: x => x.NotificationUserGroupId,
+                        principalSchema: "psgm",
+                        principalTable: "Organization_Notification_UserGroup",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Organization_Notification_UserGroup_Link_Organization_Organ~",
+                        column: x => x.OrganizationId,
+                        principalSchema: "psgm",
+                        principalTable: "Organization",
+                        principalColumn: "Id");
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Contributors_OrganizationId",
@@ -882,16 +1095,18 @@ namespace PSGM.Model.DbMain.Migrations
                 column: "DeliverySlipId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Location_OrganizationId",
+                name: "IX_Location_Address_Link_AddressId",
                 schema: "psgm",
-                table: "Location",
-                column: "OrganizationId");
+                table: "Location_Address_Link",
+                column: "AddressId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Location_ProjectId",
+                name: "IX_Location_Address_Link_LocationId",
                 schema: "psgm",
-                table: "Location",
-                column: "ProjectId");
+                table: "Location_Address_Link",
+                column: "LocationId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Organization_ProjectId",
@@ -901,51 +1116,123 @@ namespace PSGM.Model.DbMain.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Organization_Authorization_User_OrganizationId",
+                name: "IX_Organization_Authorization_User_Link_AuthorizationUserId",
                 schema: "psgm",
-                table: "Organization_Authorization_User",
+                table: "Organization_Authorization_User_Link",
+                column: "AuthorizationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Organization_Authorization_User_Link_OrganizationId",
+                schema: "psgm",
+                table: "Organization_Authorization_User_Link",
                 column: "OrganizationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Organization_Authorization_UserGroup_OrganizationId",
+                name: "IX_Organization_Authorization_UserGroup_Link_AuthorizationUser~",
                 schema: "psgm",
-                table: "Organization_Authorization_UserGroup",
+                table: "Organization_Authorization_UserGroup_Link",
+                column: "AuthorizationUserGroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Organization_Authorization_UserGroup_Link_OrganizationId",
+                schema: "psgm",
+                table: "Organization_Authorization_UserGroup_Link",
                 column: "OrganizationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Organization_Notification_User_OrganizationId",
+                name: "IX_Organization_Location_Link_LocationId",
                 schema: "psgm",
-                table: "Organization_Notification_User",
+                table: "Organization_Location_Link",
+                column: "LocationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Organization_Location_Link_OrganizationId",
+                schema: "psgm",
+                table: "Organization_Location_Link",
                 column: "OrganizationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Organization_Notification_UserGroup_OrganizationId",
+                name: "IX_Organization_Notification_User_Link_NotificationUserId",
                 schema: "psgm",
-                table: "Organization_Notification_UserGroup",
+                table: "Organization_Notification_User_Link",
+                column: "NotificationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Organization_Notification_User_Link_OrganizationId",
+                schema: "psgm",
+                table: "Organization_Notification_User_Link",
                 column: "OrganizationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Project_Authorization_User_ProjectId",
+                name: "IX_Organization_Notification_UserGroup_Link_NotificationUserGr~",
                 schema: "psgm",
-                table: "Project_Authorization_User",
+                table: "Organization_Notification_UserGroup_Link",
+                column: "NotificationUserGroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Organization_Notification_UserGroup_Link_OrganizationId",
+                schema: "psgm",
+                table: "Organization_Notification_UserGroup_Link",
+                column: "OrganizationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Project_Authorization_User_Link_AuthorizationUserId",
+                schema: "psgm",
+                table: "Project_Authorization_User_Link",
+                column: "AuthorizationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Project_Authorization_User_Link_ProjectId",
+                schema: "psgm",
+                table: "Project_Authorization_User_Link",
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Project_Authorization_UserGroup_ProjectId",
+                name: "IX_Project_Authorization_UserGroup_Link_AuthorizationUserGroup~",
                 schema: "psgm",
-                table: "Project_Authorization_UserGroup",
+                table: "Project_Authorization_UserGroup_Link",
+                column: "AuthorizationUserGroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Project_Authorization_UserGroup_Link_ProjectId",
+                schema: "psgm",
+                table: "Project_Authorization_UserGroup_Link",
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Project_Notification_UserGroup_ProjectId",
+                name: "IX_Project_Location_Link_LocationId",
                 schema: "psgm",
-                table: "Project_Notification_UserGroup",
+                table: "Project_Location_Link",
+                column: "LocationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Project_Location_Link_ProjectId",
+                schema: "psgm",
+                table: "Project_Location_Link",
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProjectNotification_User_ProjectId",
+                name: "IX_Project_Notification_User_Link_NotificationUserId",
                 schema: "psgm",
-                table: "ProjectNotification_User",
+                table: "Project_Notification_User_Link",
+                column: "NotificationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Project_Notification_User_Link_ProjectId",
+                schema: "psgm",
+                table: "Project_Notification_User_Link",
+                column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Project_Notification_UserGroup_Link_NotificationUserGroupId",
+                schema: "psgm",
+                table: "Project_Notification_UserGroup_Link",
+                column: "NotificationUserGroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Project_Notification_UserGroup_Link_ProjectId",
+                schema: "psgm",
+                table: "Project_Notification_UserGroup_Link",
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
@@ -964,10 +1251,6 @@ namespace PSGM.Model.DbMain.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Address",
-                schema: "psgm");
-
             migrationBuilder.DropTable(
                 name: "Address_AuditLog",
                 schema: "psgm");
@@ -1001,6 +1284,10 @@ namespace PSGM.Model.DbMain.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
+                name: "Location_Address_Link",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
                 name: "Location_AuditLog",
                 schema: "psgm");
 
@@ -1009,15 +1296,11 @@ namespace PSGM.Model.DbMain.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "Organization_Authorization_User",
-                schema: "psgm");
-
-            migrationBuilder.DropTable(
                 name: "Organization_Authorization_User_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "Organization_Authorization_UserGroup",
+                name: "Organization_Authorization_User_Link",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -1025,7 +1308,11 @@ namespace PSGM.Model.DbMain.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "Organization_Notification_User",
+                name: "Organization_Authorization_UserGroup_Link",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "Organization_Location_Link",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -1033,7 +1320,7 @@ namespace PSGM.Model.DbMain.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "Organization_Notification_UserGroup",
+                name: "Organization_Notification_User_Link",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -1041,11 +1328,11 @@ namespace PSGM.Model.DbMain.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "Project_AuditLog",
+                name: "Organization_Notification_UserGroup_Link",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "Project_Authorization_User",
+                name: "Project_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -1053,7 +1340,7 @@ namespace PSGM.Model.DbMain.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "Project_Authorization_UserGroup",
+                name: "Project_Authorization_User_Link",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -1061,11 +1348,19 @@ namespace PSGM.Model.DbMain.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
+                name: "Project_Authorization_UserGroup_Link",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "Project_Location_Link",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
                 name: "Project_Notification_User_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "Project_Notification_UserGroup",
+                name: "Project_Notification_User_Link",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -1073,7 +1368,7 @@ namespace PSGM.Model.DbMain.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "ProjectNotification_User",
+                name: "Project_Notification_UserGroup_Link",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -1085,15 +1380,51 @@ namespace PSGM.Model.DbMain.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "Location",
+                name: "Address",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "DeliverySlip",
+                name: "Organization_Authorization_User",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "Organization_Authorization_UserGroup",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "Organization_Notification_User",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "Organization_Notification_UserGroup",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
                 name: "Organization",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "Project_Authorization_User",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "Project_Authorization_UserGroup",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "Location",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "Project_Notification_User",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "Project_Notification_UserGroup",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "DeliverySlip",
                 schema: "psgm");
 
             migrationBuilder.DropTable(

@@ -12,7 +12,7 @@ using PSGM.Model.DbMain;
 namespace PSGM.Model.DbMain.Migrations
 {
     [DbContext(typeof(DbMain_Context))]
-    [Migration("20240921114657_InitialeCreate")]
+    [Migration("20240921190529_InitialeCreate")]
     partial class InitialeCreate
     {
         /// <inheritdoc />
@@ -32,6 +32,9 @@ namespace PSGM.Model.DbMain.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
+
+                    b.Property<Guid?>("AddressLinkId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("City")
                         .IsRequired()
@@ -107,9 +110,6 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("Line2");
 
-                    b.Property<Guid?>("LocationId")
-                        .HasColumnType("uuid");
-
                     b.Property<Guid>("ModifiedByUserIdExtAutoFill")
                         .HasColumnType("uuid")
                         .HasColumnName("ModifiedByUserIdExtAutoFill");
@@ -143,9 +143,6 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnName("State");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("LocationId")
-                        .IsUnique();
 
                     b.ToTable("Address", "psgm");
                 });
@@ -696,19 +693,33 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("Name");
 
-                    b.Property<Guid?>("OrganizationId")
+                    b.HasKey("Id");
+
+                    b.ToTable("Location", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Location_Address_Link", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid?>("AddressId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("ProjectId")
+                    b.Property<Guid?>("LocationId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrganizationId");
+                    b.HasIndex("AddressId")
+                        .IsUnique();
 
-                    b.HasIndex("ProjectId");
+                    b.HasIndex("LocationId")
+                        .IsUnique();
 
-                    b.ToTable("Location", "psgm");
+                    b.ToTable("Location_Address_Link", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Location_AuditLog", b =>
@@ -896,9 +907,6 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("ModifiedDateTimeAutoFill");
 
-                    b.Property<Guid?>("OrganizationId")
-                        .HasColumnType("uuid");
-
                     b.Property<int>("Permissions")
                         .HasColumnType("integer")
                         .HasColumnName("Permissions");
@@ -908,8 +916,6 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnName("UserIdExt");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Organization_Authorization_User", "psgm");
                 });
@@ -943,9 +949,6 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("ModifiedDateTimeAutoFill");
 
-                    b.Property<Guid?>("OrganizationId")
-                        .HasColumnType("uuid");
-
                     b.Property<int>("Permissions")
                         .HasColumnType("integer")
                         .HasColumnName("Permissions");
@@ -955,8 +958,6 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnName("UserGroupIdExt");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Organization_Authorization_UserGroup", "psgm");
                 });
@@ -1001,6 +1002,28 @@ namespace PSGM.Model.DbMain.Migrations
                     b.ToTable("Organization_Authorization_UserGroup_AuditLog", "psgm");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Authorization_UserGroup_Link", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("AuthorizationUserGroupId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("OrganizationId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorizationUserGroupId");
+
+                    b.HasIndex("OrganizationId");
+
+                    b.ToTable("Organization_Authorization_UserGroup_Link", "psgm");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Authorization_User_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1041,6 +1064,50 @@ namespace PSGM.Model.DbMain.Migrations
                     b.ToTable("Organization_Authorization_User_AuditLog", "psgm");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Authorization_User_Link", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("AuthorizationUserId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("OrganizationId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorizationUserId");
+
+                    b.HasIndex("OrganizationId");
+
+                    b.ToTable("Organization_Authorization_User_Link", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Location_Link", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("LocationId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("OrganizationId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LocationId");
+
+                    b.HasIndex("OrganizationId");
+
+                    b.ToTable("Organization_Location_Link", "psgm");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Notification_User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1076,16 +1143,11 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("character varying(16383)")
                         .HasColumnName("NotificationString");
 
-                    b.Property<Guid?>("OrganizationId")
-                        .HasColumnType("uuid");
-
                     b.Property<Guid>("UserIdExt")
                         .HasColumnType("uuid")
                         .HasColumnName("UserIdExt");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Organization_Notification_User", "psgm");
                 });
@@ -1125,16 +1187,11 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("character varying(16383)")
                         .HasColumnName("NotificationString");
 
-                    b.Property<Guid?>("OrganizationId")
-                        .HasColumnType("uuid");
-
                     b.Property<Guid>("UserGroupIdExt")
                         .HasColumnType("uuid")
                         .HasColumnName("UserGroupIdExt");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Organization_Notification_UserGroup", "psgm");
                 });
@@ -1179,6 +1236,28 @@ namespace PSGM.Model.DbMain.Migrations
                     b.ToTable("Organization_Notification_UserGroup_AuditLog", "psgm");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Notification_UserGroup_Link", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("NotificationUserGroupId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("OrganizationId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NotificationUserGroupId");
+
+                    b.HasIndex("OrganizationId");
+
+                    b.ToTable("Organization_Notification_UserGroup_Link", "psgm");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Notification_User_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1217,6 +1296,28 @@ namespace PSGM.Model.DbMain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Organization_Notification_User_AuditLog", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Notification_User_Link", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("NotificationUserId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("OrganizationId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NotificationUserId");
+
+                    b.HasIndex("OrganizationId");
+
+                    b.ToTable("Organization_Notification_User_Link", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project", b =>
@@ -1402,16 +1503,11 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("Permissions");
 
-                    b.Property<Guid?>("ProjectId")
-                        .HasColumnType("uuid");
-
                     b.Property<Guid>("UserIdExt")
                         .HasColumnType("uuid")
                         .HasColumnName("UserIdExt");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProjectId");
 
                     b.ToTable("Project_Authorization_User", "psgm");
                 });
@@ -1449,16 +1545,11 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("Permissions");
 
-                    b.Property<Guid?>("ProjectId")
-                        .HasColumnType("uuid");
-
                     b.Property<Guid>("UserGroupIdExt")
                         .HasColumnType("uuid")
                         .HasColumnName("UserGroupIdExt");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProjectId");
 
                     b.ToTable("Project_Authorization_UserGroup", "psgm");
                 });
@@ -1503,6 +1594,28 @@ namespace PSGM.Model.DbMain.Migrations
                     b.ToTable("Project_Authorization_UserGroup_AuditLog", "psgm");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Authorization_UserGroup_Link", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("AuthorizationUserGroupId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("ProjectId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorizationUserGroupId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("Project_Authorization_UserGroup_Link", "psgm");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Authorization_User_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1543,6 +1656,50 @@ namespace PSGM.Model.DbMain.Migrations
                     b.ToTable("Project_Authorization_User_AuditLog", "psgm");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Authorization_User_Link", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("AuthorizationUserId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("ProjectId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorizationUserId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("Project_Authorization_User_Link", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Location_Link", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("LocationId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("ProjectId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LocationId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("Project_Location_Link", "psgm");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Notification_User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1578,18 +1735,13 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("character varying(16383)")
                         .HasColumnName("NotificationString");
 
-                    b.Property<Guid?>("ProjectId")
-                        .HasColumnType("uuid");
-
                     b.Property<Guid>("UserIdExt")
                         .HasColumnType("uuid")
                         .HasColumnName("UserIdExt");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProjectId");
-
-                    b.ToTable("ProjectNotification_User", "psgm");
+                    b.ToTable("Project_Notification_User", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Notification_UserGroup", b =>
@@ -1627,16 +1779,11 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("character varying(16383)")
                         .HasColumnName("NotificationString");
 
-                    b.Property<Guid?>("ProjectId")
-                        .HasColumnType("uuid");
-
                     b.Property<Guid>("UserGroupIdExt")
                         .HasColumnType("uuid")
                         .HasColumnName("UserGroupIdExt");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProjectId");
 
                     b.ToTable("Project_Notification_UserGroup", "psgm");
                 });
@@ -1681,6 +1828,28 @@ namespace PSGM.Model.DbMain.Migrations
                     b.ToTable("Project_Notification_UserGroup_AuditLog", "psgm");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Notification_UserGroup_Link", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("NotificationUserGroupId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("ProjectId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NotificationUserGroupId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("Project_Notification_UserGroup_Link", "psgm");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Notification_User_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1719,6 +1888,28 @@ namespace PSGM.Model.DbMain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Project_Notification_User_AuditLog", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Notification_User_Link", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("NotificationUserId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("ProjectId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NotificationUserId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("Project_Notification_User_Link", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Unit", b =>
@@ -1857,15 +2048,6 @@ namespace PSGM.Model.DbMain.Migrations
                     b.ToTable("Unit_AuditLog", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Address", b =>
-                {
-                    b.HasOne("PSGM.Model.DbMain.DbMain_Location", "Location")
-                        .WithOne("Address")
-                        .HasForeignKey("PSGM.Model.DbMain.DbMain_Address", "LocationId");
-
-                    b.Navigation("Location");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Contributors", b =>
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization", "Organization")
@@ -1908,19 +2090,19 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("DeliverySlip");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Location", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Location_Address_Link", b =>
                 {
-                    b.HasOne("PSGM.Model.DbMain.DbMain_Organization", "Organization")
-                        .WithMany("Locations")
-                        .HasForeignKey("OrganizationId");
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Address", "Address")
+                        .WithOne("AddressLink")
+                        .HasForeignKey("PSGM.Model.DbMain.DbMain_Location_Address_Link", "AddressId");
 
-                    b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
-                        .WithMany()
-                        .HasForeignKey("ProjectId");
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Location", "Location")
+                        .WithOne("AddressLink")
+                        .HasForeignKey("PSGM.Model.DbMain.DbMain_Location_Address_Link", "LocationId");
 
-                    b.Navigation("Organization");
+                    b.Navigation("Address");
 
-                    b.Navigation("Project");
+                    b.Navigation("Location");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization", b =>
@@ -1932,74 +2114,172 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Authorization_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Authorization_UserGroup_Link", b =>
                 {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Organization_Authorization_UserGroup", "AuthorizationUserGroup")
+                        .WithMany("AuthorizationUserGroupLinks")
+                        .HasForeignKey("AuthorizationUserGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization", "Organization")
-                        .WithMany("AuthorizationUser")
+                        .WithMany("AuthorizationUserGroupLinks")
                         .HasForeignKey("OrganizationId");
+
+                    b.Navigation("AuthorizationUserGroup");
 
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Authorization_UserGroup", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Authorization_User_Link", b =>
                 {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Organization_Authorization_User", "AuthorizationUser")
+                        .WithMany("AuthorizationUserLinks")
+                        .HasForeignKey("AuthorizationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization", "Organization")
-                        .WithMany("AuthorizationUserGroup")
+                        .WithMany("AuthorizationUserLinks")
                         .HasForeignKey("OrganizationId");
+
+                    b.Navigation("AuthorizationUser");
 
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Notification_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Location_Link", b =>
                 {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Location", "Location")
+                        .WithMany("OrganizationLocationLink")
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization", "Organization")
-                        .WithMany("NotificationUser")
+                        .WithMany("LocationLinks")
                         .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Location");
 
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Notification_UserGroup", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Notification_UserGroup_Link", b =>
                 {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Organization_Notification_UserGroup", "NotificationUserGroup")
+                        .WithMany("NotificationUserGroupLinks")
+                        .HasForeignKey("NotificationUserGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization", "Organization")
-                        .WithMany("NotificationUserGroup")
+                        .WithMany("NotificationUserGroupLinks")
                         .HasForeignKey("OrganizationId");
+
+                    b.Navigation("NotificationUserGroup");
 
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Authorization_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Notification_User_Link", b =>
                 {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Organization_Notification_User", "NotificationUser")
+                        .WithMany("NotificationUserLinks")
+                        .HasForeignKey("NotificationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Organization", "Organization")
+                        .WithMany("NotificationUserLinks")
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("NotificationUser");
+
+                    b.Navigation("Organization");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Authorization_UserGroup_Link", b =>
+                {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Project_Authorization_UserGroup", "AuthorizationUserGroup")
+                        .WithMany("AuthorizationUserGroupLinks")
+                        .HasForeignKey("AuthorizationUserGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
-                        .WithMany("AuthorizationUser")
+                        .WithMany("AuthorizationUserGroupLinks")
                         .HasForeignKey("ProjectId");
+
+                    b.Navigation("AuthorizationUserGroup");
 
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Authorization_UserGroup", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Authorization_User_Link", b =>
                 {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Project_Authorization_User", "AuthorizationUser")
+                        .WithMany("AuthorizationUserLinks")
+                        .HasForeignKey("AuthorizationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
-                        .WithMany("AuthorizationUserGroup")
+                        .WithMany("AuthorizationUserLinks")
                         .HasForeignKey("ProjectId");
+
+                    b.Navigation("AuthorizationUser");
 
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Notification_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Location_Link", b =>
                 {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Location", "Location")
+                        .WithMany("ProjectLocationLink")
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
-                        .WithMany("NotificationUser")
+                        .WithMany("LocationLinks")
                         .HasForeignKey("ProjectId");
+
+                    b.Navigation("Location");
 
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Notification_UserGroup", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Notification_UserGroup_Link", b =>
                 {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Project_Notification_UserGroup", "NotificationUserGroup")
+                        .WithMany("NotificationUserGroupLinks")
+                        .HasForeignKey("NotificationUserGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
-                        .WithMany("NotificationUserGroup")
+                        .WithMany("NotificationUserGroupLinks")
                         .HasForeignKey("ProjectId");
+
+                    b.Navigation("NotificationUserGroup");
+
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Notification_User_Link", b =>
+                {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Project_Notification_User", "NotificationUser")
+                        .WithMany("NotificationUserLinks")
+                        .HasForeignKey("NotificationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
+                        .WithMany("NotificationUserLinks")
+                        .HasForeignKey("ProjectId");
+
+                    b.Navigation("NotificationUser");
 
                     b.Navigation("Project");
                 });
@@ -2019,6 +2299,11 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("ParentUnit");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Address", b =>
+                {
+                    b.Navigation("AddressLink");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DeliverySlip", b =>
                 {
                     b.Navigation("CreatedWithDeliverySlipTemplate");
@@ -2030,39 +2315,85 @@ namespace PSGM.Model.DbMain.Migrations
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Location", b =>
                 {
-                    b.Navigation("Address");
+                    b.Navigation("AddressLink");
+
+                    b.Navigation("OrganizationLocationLink");
+
+                    b.Navigation("ProjectLocationLink");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization", b =>
                 {
-                    b.Navigation("AuthorizationUser");
+                    b.Navigation("AuthorizationUserGroupLinks");
 
-                    b.Navigation("AuthorizationUserGroup");
+                    b.Navigation("AuthorizationUserLinks");
 
                     b.Navigation("Contributors");
 
-                    b.Navigation("Locations");
+                    b.Navigation("LocationLinks");
 
-                    b.Navigation("NotificationUser");
+                    b.Navigation("NotificationUserGroupLinks");
 
-                    b.Navigation("NotificationUserGroup");
+                    b.Navigation("NotificationUserLinks");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Authorization_User", b =>
+                {
+                    b.Navigation("AuthorizationUserLinks");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Authorization_UserGroup", b =>
+                {
+                    b.Navigation("AuthorizationUserGroupLinks");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Notification_User", b =>
+                {
+                    b.Navigation("NotificationUserLinks");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Notification_UserGroup", b =>
+                {
+                    b.Navigation("NotificationUserGroupLinks");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project", b =>
                 {
-                    b.Navigation("AuthorizationUser");
+                    b.Navigation("AuthorizationUserGroupLinks");
 
-                    b.Navigation("AuthorizationUserGroup");
+                    b.Navigation("AuthorizationUserLinks");
 
                     b.Navigation("Contributors");
 
                     b.Navigation("DeliverySlip");
 
-                    b.Navigation("NotificationUser");
+                    b.Navigation("LocationLinks");
 
-                    b.Navigation("NotificationUserGroup");
+                    b.Navigation("NotificationUserGroupLinks");
+
+                    b.Navigation("NotificationUserLinks");
 
                     b.Navigation("Organization");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Authorization_User", b =>
+                {
+                    b.Navigation("AuthorizationUserLinks");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Authorization_UserGroup", b =>
+                {
+                    b.Navigation("AuthorizationUserGroupLinks");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Notification_User", b =>
+                {
+                    b.Navigation("NotificationUserLinks");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Notification_UserGroup", b =>
+                {
+                    b.Navigation("NotificationUserGroupLinks");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Unit", b =>
