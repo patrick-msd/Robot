@@ -72,7 +72,7 @@ namespace PSGM.Model.DbMain
         public DbSet<DbMain_Location_AuditLog> Location_AuditLog { get; set; }
         #endregion
 
-        #region organization
+        #region Organization
         public DbSet<DbMain_Organization> Organizations { get; set; }
         public DbSet<DbMain_Organization_AuditLog> Organization_AuditLog { get; set; }
 
@@ -374,7 +374,7 @@ namespace PSGM.Model.DbMain
                         break;
                     #endregion
 
-                    #region organization
+                    #region Organization
                     case DbMain_Organization organization:
                         #region Automatically added: Audit details for faster file audit information
                         if (entry.State == EntityState.Added)

@@ -24,7 +24,7 @@ namespace PSGM.Model.DbMain
         public virtual DbMain_Organization? Organization { get; set; }
 
         [ForeignKey("AuthorizationUserGroup")]
-        public Guid AuthorizationUserGroupId { get; set; } = Guid.Empty;
+        public Guid? AuthorizationUserGroupId { get; set; } = Guid.Empty;
         public virtual DbMain_Organization_Authorization_UserGroup? AuthorizationUserGroup { get; set; }
         #endregion
 

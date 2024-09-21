@@ -53,9 +53,6 @@ namespace PSGM.Model.DbMain
         #region Backlinks (ForeignKeys)
         #endregion
 
-        #region Links (Outside DB)
-        #endregion
-
         #region Not Mapped
         public DbMain_DeliverySlip GetChanges()
         {

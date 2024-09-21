@@ -290,11 +290,27 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("Permissions")
                         .HasColumnType("integer")
@@ -316,11 +332,27 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("Permissions")
                         .HasColumnType("integer")
@@ -656,11 +688,27 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("Permissions")
                         .HasColumnType("integer")
@@ -682,11 +730,27 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("Permissions")
                         .HasColumnType("integer")
@@ -974,6 +1038,14 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
@@ -987,6 +1059,14 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Property<bool>("Gotify")
                         .HasColumnType("boolean")
                         .HasColumnName("Gotify");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("NotificationType")
                         .HasColumnType("integer")
@@ -1028,6 +1108,14 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
@@ -1041,6 +1129,14 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Property<bool>("Gotify")
                         .HasColumnType("boolean")
                         .HasColumnName("Gotify");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("NotificationType")
                         .HasColumnType("integer")
@@ -1618,11 +1714,27 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("Permissions")
                         .HasColumnType("integer")
@@ -1644,11 +1756,27 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("Permissions")
                         .HasColumnType("integer")
@@ -1988,11 +2116,27 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("Permissions")
                         .HasColumnType("integer")
@@ -2014,11 +2158,27 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("Permissions")
                         .HasColumnType("integer")
@@ -2306,6 +2466,14 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
@@ -2319,6 +2487,14 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Property<bool>("Gotify")
                         .HasColumnType("boolean")
                         .HasColumnName("Gotify");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("NotificationType")
                         .HasColumnType("integer")
@@ -2360,6 +2536,14 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
@@ -2373,6 +2557,14 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Property<bool>("Gotify")
                         .HasColumnType("boolean")
                         .HasColumnName("Gotify");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("NotificationType")
                         .HasColumnType("integer")
@@ -2466,7 +2658,7 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("RootDirectoryId");
 
-                    b.ToTable("RootDirectory_Notification_UserGroupLink", "psgm");
+                    b.ToTable("RootDirectory_Notification_UserGroup_Link", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_Notification_UserGroup_Link_AuditLog", b =>
@@ -2568,7 +2760,7 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("RootDirectoryId");
 
-                    b.ToTable("RootDirectory_Notification_UserLink", "psgm");
+                    b.ToTable("RootDirectory_Notification_User_Link", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_Notification_User_Link_AuditLog", b =>
@@ -2608,7 +2800,7 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RootDirectory_Notification_UserLink_AuditLog", "psgm");
+                    b.ToTable("RootDirectory_Notification_User_Link_AuditLog", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_QrCode", b =>
@@ -2960,11 +3152,27 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("Permissions")
                         .HasColumnType("integer")
@@ -2986,11 +3194,27 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("Permissions")
                         .HasColumnType("integer")
@@ -3330,11 +3554,27 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("Permissions")
                         .HasColumnType("integer")
@@ -3356,11 +3596,27 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("Permissions")
                         .HasColumnType("integer")
@@ -3648,6 +3904,14 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
@@ -3661,6 +3925,14 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Property<bool>("Gotify")
                         .HasColumnType("boolean")
                         .HasColumnName("Gotify");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("NotificationType")
                         .HasColumnType("integer")
@@ -3702,6 +3974,14 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
@@ -3715,6 +3995,14 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Property<bool>("Gotify")
                         .HasColumnType("boolean")
                         .HasColumnName("Gotify");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<int>("NotificationType")
                         .HasColumnType("integer")
@@ -4322,7 +4610,7 @@ namespace PSGM.Model.DbStorage.Migrations
                         .IsRequired();
 
                     b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_Metadata", "Metadata")
-                        .WithMany("Authorization_UserGroup_Links")
+                        .WithMany("AuthorizationUserGroupLinks")
                         .HasForeignKey("MetadataId")
                         .HasConstraintName("FK_RootDirectory_Metadata_Authorization_UserGroup_Link_RootDi~1");
 
@@ -4340,7 +4628,7 @@ namespace PSGM.Model.DbStorage.Migrations
                         .IsRequired();
 
                     b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_Metadata", "Metadata")
-                        .WithMany("Authorization_User_Links")
+                        .WithMany("AuthorizationUserLinks")
                         .HasForeignKey("MetadataId")
                         .HasConstraintName("FK_RootDirectory_Metadata_Authorization_User_Link_RootDirecto~1");
 
@@ -4352,7 +4640,7 @@ namespace PSGM.Model.DbStorage.Migrations
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_Metadata_Link", b =>
                 {
                     b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_Metadata", "Metadata")
-                        .WithMany("Metadata_Links")
+                        .WithMany("MetadataLinks")
                         .HasForeignKey("MetadataId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -4661,11 +4949,11 @@ namespace PSGM.Model.DbStorage.Migrations
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_Metadata", b =>
                 {
-                    b.Navigation("Authorization_UserGroup_Links");
+                    b.Navigation("AuthorizationUserGroupLinks");
 
-                    b.Navigation("Authorization_User_Links");
+                    b.Navigation("AuthorizationUserLinks");
 
-                    b.Navigation("Metadata_Links");
+                    b.Navigation("MetadataLinks");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_Metadata_Authorization_User", b =>

@@ -52,9 +52,6 @@ namespace PSGM.Model.DbMain
         #region Backlinks (ForeignKeys)
         #endregion
 
-        #region Links (Outside DB)
-        #endregion
-
         #region Not Mapped
         public DbMain_Organization_Authorization_User GetChanges()
         {

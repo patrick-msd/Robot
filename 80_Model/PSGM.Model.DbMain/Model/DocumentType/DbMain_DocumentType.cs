@@ -82,9 +82,6 @@ namespace PSGM.Model.DbMain
         public virtual DbMain_DeliverySlip? DeliverySlip { get; set; }
         #endregion
 
-        #region Links (Outside DB)
-        #endregion
-
         #region Not Mapped
         [NotMapped]
         public List<Guid> MachinesExt

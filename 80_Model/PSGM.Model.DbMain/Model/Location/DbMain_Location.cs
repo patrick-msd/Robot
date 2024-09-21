@@ -57,11 +57,6 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Backlinks (ForeignKeys)
-
-
-        #endregion
-
-        #region Links (Outside DB)
         #endregion
 
         #region Not Mapped

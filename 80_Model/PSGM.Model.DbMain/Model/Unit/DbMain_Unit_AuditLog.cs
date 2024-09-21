@@ -65,11 +65,8 @@ namespace PSGM.Model.DbMain
         #region Backlinks (ForeignKeys)
         #endregion
 
-        #region Links (Outside DB)
-        #endregion
-
         #region Not Mapped
-        public DbMain_Unit GetChagnes()
+        public DbMain_Unit GetChanges()
         {
             return JsonConvert.DeserializeObject<DbMain_Unit>(Changes);
         }

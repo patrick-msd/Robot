@@ -167,9 +167,16 @@ namespace PSGM.Sample.Model.DbStorage
             _dbMain_Context.SaveChanges();
             #endregion
 
+            #region Add projects ...
+            List<DbMain_Organization> projects1 = Generate_Project1(250, locations1);
+            _dbMain_Context.Organizations.AddRange(projects1);
+            _dbMain_Context.SaveChanges();
+            #endregion
 
-
-
+            addresses1.RemoveAll(p => true);
+            locations1.RemoveAll(p => true);
+            organization1.RemoveAll(p => true);
+            projects1.RemoveAll(p => true);
 
             for (int h = 0; h < 10; h++)
             {
@@ -185,53 +192,22 @@ namespace PSGM.Sample.Model.DbStorage
                 _dbMain_Context.SaveChanges();
                 #endregion
 
-                #region Add organizations ...
+                #region Add rganizations ...
                 List<DbMain_Organization> organization2 = Generate_Organization2(250, locations2);
                 _dbMain_Context.Organizations.AddRange(organization2);
                 _dbMain_Context.SaveChanges();
                 #endregion
 
-
-
-
-
-
-
-
-
-                #region Add sub directories ...
-                List<DbStorage_SubDirectory> subDirectories = Create_SubDirectories(50, rootDirectory);
-                _dbMain_Context.SubDirectories.AddRange(subDirectories);
+                #region Add projects ...
+                List<DbMain_Organization> projects2 = Generate_Project2(250, locations2);
+                _dbMain_Context.Organizations.AddRange(projects2);
                 _dbMain_Context.SaveChanges();
                 #endregion
 
-                #region Add sub sub directories ...
-                List<DbStorage_SubDirectory> subsubDirectories = Create_SubSubDirectories(25, rootDirectory);
-                _dbMain_Context.SubDirectories.AddRange(subsubDirectories);
-                _dbMain_Context.SaveChanges();
-                #endregion
-
-                #region Add files ...
-                for (int i = 0; i < 10; i++)
-                {
-                    List<DbStorage_File> files = Create_Files1(1000, rootDirectory, subDirectories);
-                    _dbMain_Context.Files.AddRange(files);
-                    _dbMain_Context.SaveChanges();
-                    files.RemoveAll(p => true);
-                }
-
-                for (int i = 0; i < 10; i++)
-                {
-                    List<DbStorage_File> files = Create_Files2(100, rootDirectory, subsubDirectories);
-                    _dbMain_Context.Files.AddRange(files);
-                    _dbMain_Context.SaveChanges();
-                    files.RemoveAll(p => true);
-                }
-                #endregion
-
-                subsubDirectories.RemoveAll(p => true);
-                subDirectories.RemoveAll(p => true);
-                rootDirectory.RemoveAll(p => true);
+                addresses2.RemoveAll(p => true);
+                locations2.RemoveAll(p => true);
+                organization2.RemoveAll(p => true);
+                projects2.RemoveAll(p => true);
 
                 // Clear the ChangeTracker to reduce memory usage
                 _dbMain_Context.ChangeTracker.Clear();

@@ -24,7 +24,7 @@ namespace PSGM.Model.DbMain
         public virtual DbMain_Project? Project { get; set; }
 
         [ForeignKey("NotificationUserGroup")]
-        public Guid NotificationUserGroupId { get; set; } = Guid.Empty;
+        public Guid? NotificationUserGroupId { get; set; } = Guid.Empty;
         public virtual DbMain_Project_Notification_UserGroup? NotificationUserGroup { get; set; }
         #endregion
 

@@ -102,9 +102,6 @@ namespace PSGM.Model.DbMain
         public virtual DbMain_Unit? ParentUnit { get; set; }
         #endregion
 
-        #region Links (Outside DB)
-        #endregion
-
         #region Not Mapped
         [NotMapped]
         public List<Guid>? JobsIdExt

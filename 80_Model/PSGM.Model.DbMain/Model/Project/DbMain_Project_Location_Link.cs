@@ -28,9 +28,6 @@ namespace PSGM.Model.DbMain
         public virtual DbMain_Location? Location { get; set; }
         #endregion
 
-        #region Links (Outside DB)
-        #endregion
-
         #region Not Mapped
         #endregion
     }

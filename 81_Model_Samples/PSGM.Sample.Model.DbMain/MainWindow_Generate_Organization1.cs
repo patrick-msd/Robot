@@ -9,6 +9,8 @@ namespace PSGM.Sample.Model.DbStorage
         {
             Random random = new Random();
 
+            Array values1 = Enum.GetValues(typeof(NotificationType));
+
             DbMain_Organization organizationUIBK = new DbMain_Organization()
             {
                 Id = Guid.NewGuid(),
@@ -16,7 +18,7 @@ namespace PSGM.Sample.Model.DbStorage
                 Name = "University Innsbruck (DEA)",
                 Description = "",
                 Acronym = "UIBK",
-                
+
                 EMail = "",
                 Homepage = "",
 
@@ -37,88 +39,135 @@ namespace PSGM.Sample.Model.DbStorage
                     }
                 },
 
-                AuthorizationUser = new List<DbMain_Organization_Authorization_User>()
+                AuthorizationUserLinks = new List<DbMain_Organization_Authorization_User_Link>()
                 {
-                    new DbMain_Organization_Authorization_User()
+                    new DbMain_Organization_Authorization_User_Link()
                     {
                         Id = Guid.NewGuid(),
 
-                        UserIdExt = patrickSchoeneggerId,
-                        Permissions = PermissionType.Owner,
+                        AuthorizationUser = new DbMain_Organization_Authorization_User ()
+                        {
+                            Id = Guid.NewGuid(),
 
-                        Description = string.Empty,
-                        
-                        //CreatedByUserIdExtAutoFill = Guid.Empty,
-                        //CreatedDateTimeAutoFill = DateTime.Now,
-                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
-                        //ModifiedDateTimeAutoFill = DateTime.Now,
+                            UserIdExt = _patrickSchoeneggerId,
+                            Permissions = PermissionType.Owner,
+
+                            Description = string.Empty,
+
+                            //CreatedByUserIdExtAutoFill = Guid.Empty,
+                            //CreatedDateTimeAutoFill = DateTime.Now,
+                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                            //ModifiedDateTimeAutoFill = DateTime.Now,
+                        },
+                        //AuthorizationUserId = null,
                         
                         // FK
                         Organization = null,
                         OrganizationId = null,
                     },
 
-                    new DbMain_Organization_Authorization_User()
+                    new DbMain_Organization_Authorization_User_Link()
                     {
                         Id = Guid.NewGuid(),
 
-                        UserIdExt = guenterMuehlbergerId,
-                        Permissions = PermissionType.Admin,
+                        AuthorizationUser = new DbMain_Organization_Authorization_User ()
+                        {
+                            Id = Guid.NewGuid(),
 
-                        Description = string.Empty,
+                            UserIdExt = _guenterMuehlbergerId,
+                            Permissions = PermissionType.Owner,
+
+                            Description = string.Empty,
+
+                            //CreatedByUserIdExtAutoFill = Guid.Empty,
+                            //CreatedDateTimeAutoFill = DateTime.Now,
+                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                            //ModifiedDateTimeAutoFill = DateTime.Now,
+                        },
+                        //AuthorizationUserId = null,
                         
-                        //CreatedByUserIdExtAutoFill = Guid.Empty,
-                        //CreatedDateTimeAutoFill = DateTime.Now,
-                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
-                        //ModifiedDateTimeAutoFill = DateTime.Now,
-
                         // FK
                         Organization = null,
                         OrganizationId = null,
-                    }
+                    },
                 },
-                AuthorizationUserGroup = null,
+                AuthorizationUserGroupLinks = null,
 
-                NotificationUser = new List<DbMain_Organization_Notification_User>()
+                NotificationUserLinks = new List<DbMain_Organization_Notification_User_Link>()
                 {
-                    new DbMain_Organization_Notification_User()
+                    new DbMain_Organization_Notification_User_Link()
                     {
                         Id = Guid.NewGuid(),
 
-                        UserIdExt = patrickSchoeneggerId,
-
-                        Description = string.Empty,
-
-                        Notifications = new List<Notification>
+                        NotificationUser = new DbMain_Organization_Notification_User()
                         {
-                            new Notification() { NotificationType = NotificationType.All, EMail = true, Slack = true, Teams = true, SMS = true, WhatsApp = true, Telegram = true, Gotify = true },
-                        },        
-                        //NotificationString = string.Empty,  
+                            Id = Guid.NewGuid(),
 
+                            UserIdExt = _patrickSchoeneggerId,
+
+                            Description = string.Empty,
+
+                            NotificationType = (NotificationType)values1.GetValue(random.Next(values1.Length)),
+
+                            EMail = random.Next(100) <= 50 ? true : false,
+                            Slack = random.Next(100) <= 50 ? true : false,
+                            Teams = random.Next(100) <= 50 ? true : false,
+                            SMS = random.Next(100) <= 50 ? true : false,
+                            WhatsApp = random.Next(100) <= 50 ? true : false,
+                            Telegram = random.Next(100) <= 50 ? true : false,
+                            Gotify = random.Next(100) <= 50 ? true : false,
+
+                            NotificationUserLinks = null,
+                            
+                            //CreatedByUserIdExtAutoFill = Guid.Empty,
+                            //CreatedDateTimeAutoFill = DateTime.Now,
+                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                            //ModifiedDateTimeAutoFill = DateTime.Now,
+                        },
+                        //NotificationUserId = null,
+                        
                         // FK
-                        //Organization = null,
-                        //OrganizationId = Guid.Empty, 
+                        Organization = null,
+                        OrganizationId = null,
                     },
-                    new DbMain_Organization_Notification_User()
+
+                    new DbMain_Organization_Notification_User_Link()
                     {
                         Id = Guid.NewGuid(),
 
-                        UserIdExt = guenterMuehlbergerId,
-
-                        Description = string.Empty,
-
-                        Notifications = new List<Notification>
+                        NotificationUser = new DbMain_Organization_Notification_User()
                         {
-                            new Notification() { NotificationType = NotificationType.None, EMail = false, Slack = false, Teams = false, SMS = false, WhatsApp = false, Telegram = false, Gotify = false },
-                        },        
-                        //NotificationString = string.Empty,  
+                            Id = Guid.NewGuid(),
 
+                            UserIdExt = _guenterMuehlbergerId,
+
+                            Description = string.Empty,
+
+                            NotificationType = (NotificationType)values1.GetValue(random.Next(values1.Length)),
+
+                            EMail = random.Next(100) <= 50 ? true : false,
+                            Slack = random.Next(100) <= 50 ? true : false,
+                            Teams = random.Next(100) <= 50 ? true : false,
+                            SMS = random.Next(100) <= 50 ? true : false,
+                            WhatsApp = random.Next(100) <= 50 ? true : false,
+                            Telegram = random.Next(100) <= 50 ? true : false,
+                            Gotify = random.Next(100) <= 50 ? true : false,
+
+                            NotificationUserLinks = null,
+                            
+                            //CreatedByUserIdExtAutoFill = Guid.Empty,
+                            //CreatedDateTimeAutoFill = DateTime.Now,
+                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                            //ModifiedDateTimeAutoFill = DateTime.Now,
+                        },
+                        //NotificationUserId = null,
+                        
                         // FK
-                        //Organization = null,
-                        //OrganizationId = Guid.Empty, 
+                        Organization = null,
+                        OrganizationId = null,
                     },
                 },
-                NotificationUserGroup = null,
+                NotificationUserGroupLinks = null,
 
                 Contributors = null,
 
@@ -160,78 +209,135 @@ namespace PSGM.Sample.Model.DbStorage
                     }
                 },
 
-                AuthorizationUser = new List<DbMain_Organization_Authorization_User>()
+                AuthorizationUserLinks = new List<DbMain_Organization_Authorization_User_Link>()
                 {
-                    new DbMain_Organization_Authorization_User()
+                    new DbMain_Organization_Authorization_User_Link()
                     {
                         Id = Guid.NewGuid(),
 
-                        UserIdExt = _gertraudZeindlId,
-                        Permissions = PermissionType.Owner,
-
-                        Description = string.Empty,
-                        
-                        // FK
-                        //Organization = null,
-                        //OrganizationId = Guid.Empty,     
-                    },
-                    new DbMain_Organization_Authorization_User()
-                    {
-                        Id = Guid.NewGuid(),
-
-                        UserIdExt = _christophHaidacherId,
-                        Permissions = PermissionType.Admin,
-
-                        Description = string.Empty,
-                        
-                        // FK
-                        //Organization = null,
-                        //OrganizationId = Guid.Empty,   
-                    },
-                },
-                AuthorizationUserGroup = null,
-
-                NotificationUser = new List<DbMain_Organization_Notification_User>()
-                {
-                    new DbMain_Organization_Notification_User()
-                    {
-                        Id = Guid.NewGuid(),
-
-                        Description = string.Empty,
-
-                        UserIdExt = _gertraudZeindlId,
-
-                        Notifications = new List<Notification>
+                        AuthorizationUser = new DbMain_Organization_Authorization_User ()
                         {
-                            new Notification() { NotificationType = NotificationType.None, EMail = false, Slack = false, Teams = false, SMS = false, WhatsApp = false, Telegram = false, Gotify = false },
+                            Id = Guid.NewGuid(),
+
+                            UserIdExt = _gertraudZeindlId,
+                            Permissions = PermissionType.Owner,
+
+                            Description = string.Empty,
+
+                            //CreatedByUserIdExtAutoFill = Guid.Empty,
+                            //CreatedDateTimeAutoFill = DateTime.Now,
+                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                            //ModifiedDateTimeAutoFill = DateTime.Now,
                         },
-                        //NotificationString = string.Empty,                        
+                        //AuthorizationUserId = null,
                         
                         // FK
-                        //Organization = null,
-                        //OrganizationId = Guid.Empty,   
+                        Organization = null,
+                        OrganizationId = null,
                     },
-                    new DbMain_Organization_Notification_User()
+
+                    new DbMain_Organization_Authorization_User_Link()
                     {
                         Id = Guid.NewGuid(),
 
-                        Description = string.Empty,
-
-                        UserIdExt = _christophHaidacherId,
-
-                        Notifications = new List<Notification>
+                        AuthorizationUser = new DbMain_Organization_Authorization_User ()
                         {
-                            new Notification() { NotificationType = NotificationType.None, EMail = false, Slack = false, Teams = false, SMS = false, WhatsApp = false, Telegram = false, Gotify = false },
-                        },    
-                        //NotificationString = string.Empty,  
+                            Id = Guid.NewGuid(),
 
+                            UserIdExt = _christophHaidacherId,
+                            Permissions = PermissionType.Owner,
+
+                            Description = string.Empty,
+
+                            //CreatedByUserIdExtAutoFill = Guid.Empty,
+                            //CreatedDateTimeAutoFill = DateTime.Now,
+                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                            //ModifiedDateTimeAutoFill = DateTime.Now,
+                        },
+                        //AuthorizationUserId = null,
+                        
                         // FK
-                        //Organization = null,
-                        //OrganizationId = Guid.Empty, 
+                        Organization = null,
+                        OrganizationId = null,
+                    },
+                },
+                AuthorizationUserGroupLinks = null,
+
+                NotificationUserLinks = new List<DbMain_Organization_Notification_User_Link>()
+                {
+                    new DbMain_Organization_Notification_User_Link()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        NotificationUser = new DbMain_Organization_Notification_User()
+                        {
+                            Id = Guid.NewGuid(),
+
+                            UserIdExt = _gertraudZeindlId,
+
+                            Description = string.Empty,
+
+                            NotificationType = (NotificationType)values1.GetValue(random.Next(values1.Length)),
+
+                            EMail = random.Next(100) <= 50 ? true : false,
+                            Slack = random.Next(100) <= 50 ? true : false,
+                            Teams = random.Next(100) <= 50 ? true : false,
+                            SMS = random.Next(100) <= 50 ? true : false,
+                            WhatsApp = random.Next(100) <= 50 ? true : false,
+                            Telegram = random.Next(100) <= 50 ? true : false,
+                            Gotify = random.Next(100) <= 50 ? true : false,
+
+                            NotificationUserLinks = null,
+                            
+                            //CreatedByUserIdExtAutoFill = Guid.Empty,
+                            //CreatedDateTimeAutoFill = DateTime.Now,
+                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                            //ModifiedDateTimeAutoFill = DateTime.Now,
+                        },
+                        //NotificationUserId = null,
+                        
+                        // FK
+                        Organization = null,
+                        OrganizationId = null,
                     },
 
+                    new DbMain_Organization_Notification_User_Link()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        NotificationUser = new DbMain_Organization_Notification_User()
+                        {
+                            Id = Guid.NewGuid(),
+
+                            UserIdExt = _christophHaidacherId,
+
+                            Description = string.Empty,
+
+                            NotificationType = (NotificationType)values1.GetValue(random.Next(values1.Length)),
+
+                            EMail = random.Next(100) <= 50 ? true : false,
+                            Slack = random.Next(100) <= 50 ? true : false,
+                            Teams = random.Next(100) <= 50 ? true : false,
+                            SMS = random.Next(100) <= 50 ? true : false,
+                            WhatsApp = random.Next(100) <= 50 ? true : false,
+                            Telegram = random.Next(100) <= 50 ? true : false,
+                            Gotify = random.Next(100) <= 50 ? true : false,
+
+                            NotificationUserLinks = null,
+                            
+                            //CreatedByUserIdExtAutoFill = Guid.Empty,
+                            //CreatedDateTimeAutoFill = DateTime.Now,
+                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                            //ModifiedDateTimeAutoFill = DateTime.Now,
+                        },
+                        //NotificationUserId = null,
+                        
+                        // FK
+                        Organization = null,
+                        OrganizationId = null,
+                    },
                 },
-                NotificationUserGroup = null,
+                NotificationUserGroupLinks = null,
 
                 Contributors = null,
 

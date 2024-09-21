@@ -1006,7 +1006,7 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
-                    b.Property<Guid>("AuthorizationUserGroupId")
+                    b.Property<Guid?>("AuthorizationUserGroupId")
                         .HasColumnType("uuid");
 
                     b.Property<Guid?>("OrganizationId")
@@ -1068,7 +1068,7 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
-                    b.Property<Guid>("AuthorizationUserId")
+                    b.Property<Guid?>("AuthorizationUserId")
                         .HasColumnType("uuid");
 
                     b.Property<Guid?>("OrganizationId")
@@ -1126,6 +1126,14 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
 
+                    b.Property<bool>("EMail")
+                        .HasColumnType("boolean")
+                        .HasColumnName("EMail");
+
+                    b.Property<bool>("Gotify")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Gotify");
+
                     b.Property<Guid>("ModifiedByUserIdExtAutoFill")
                         .HasColumnType("uuid")
                         .HasColumnName("ModifiedByUserIdExtAutoFill");
@@ -1134,15 +1142,33 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("ModifiedDateTimeAutoFill");
 
-                    b.Property<string>("NotificationString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("NotificationString");
+                    b.Property<int>("NotificationType")
+                        .HasColumnType("integer")
+                        .HasColumnName("NotificationType");
+
+                    b.Property<bool>("SMS")
+                        .HasColumnType("boolean")
+                        .HasColumnName("SMS");
+
+                    b.Property<bool>("Slack")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Slack");
+
+                    b.Property<bool>("Teams")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Teams");
+
+                    b.Property<bool>("Telegram")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Telegram");
 
                     b.Property<Guid>("UserIdExt")
                         .HasColumnType("uuid")
                         .HasColumnName("UserIdExt");
+
+                    b.Property<bool>("WhatsApp")
+                        .HasColumnType("boolean")
+                        .HasColumnName("WhatsApp");
 
                     b.HasKey("Id");
 
@@ -1170,6 +1196,14 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
 
+                    b.Property<bool>("EMail")
+                        .HasColumnType("boolean")
+                        .HasColumnName("EMail");
+
+                    b.Property<bool>("Gotify")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Gotify");
+
                     b.Property<Guid>("ModifiedByUserIdExtAutoFill")
                         .HasColumnType("uuid")
                         .HasColumnName("ModifiedByUserIdExtAutoFill");
@@ -1178,15 +1212,33 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("ModifiedDateTimeAutoFill");
 
-                    b.Property<string>("NotificationString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("NotificationString");
+                    b.Property<int>("NotificationType")
+                        .HasColumnType("integer")
+                        .HasColumnName("NotificationType");
+
+                    b.Property<bool>("SMS")
+                        .HasColumnType("boolean")
+                        .HasColumnName("SMS");
+
+                    b.Property<bool>("Slack")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Slack");
+
+                    b.Property<bool>("Teams")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Teams");
+
+                    b.Property<bool>("Telegram")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Telegram");
 
                     b.Property<Guid>("UserGroupIdExt")
                         .HasColumnType("uuid")
                         .HasColumnName("UserGroupIdExt");
+
+                    b.Property<bool>("WhatsApp")
+                        .HasColumnType("boolean")
+                        .HasColumnName("WhatsApp");
 
                     b.HasKey("Id");
 
@@ -1240,7 +1292,7 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
-                    b.Property<Guid>("NotificationUserGroupId")
+                    b.Property<Guid?>("NotificationUserGroupId")
                         .HasColumnType("uuid");
 
                     b.Property<Guid?>("OrganizationId")
@@ -1302,7 +1354,7 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
-                    b.Property<Guid>("NotificationUserId")
+                    b.Property<Guid?>("NotificationUserId")
                         .HasColumnType("uuid");
 
                     b.Property<Guid?>("OrganizationId")
@@ -1598,7 +1650,7 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
-                    b.Property<Guid>("AuthorizationUserGroupId")
+                    b.Property<Guid?>("AuthorizationUserGroupId")
                         .HasColumnType("uuid");
 
                     b.Property<Guid?>("ProjectId")
@@ -1660,7 +1712,7 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
-                    b.Property<Guid>("AuthorizationUserId")
+                    b.Property<Guid?>("AuthorizationUserId")
                         .HasColumnType("uuid");
 
                     b.Property<Guid?>("ProjectId")
@@ -1718,6 +1770,14 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
 
+                    b.Property<bool>("EMail")
+                        .HasColumnType("boolean")
+                        .HasColumnName("EMail");
+
+                    b.Property<bool>("Gotify")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Gotify");
+
                     b.Property<Guid>("ModifiedByUserIdExtAutoFill")
                         .HasColumnType("uuid")
                         .HasColumnName("ModifiedByUserIdExtAutoFill");
@@ -1726,15 +1786,33 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("ModifiedDateTimeAutoFill");
 
-                    b.Property<string>("NotificationString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("NotificationString");
+                    b.Property<int>("NotificationType")
+                        .HasColumnType("integer")
+                        .HasColumnName("NotificationType");
+
+                    b.Property<bool>("SMS")
+                        .HasColumnType("boolean")
+                        .HasColumnName("SMS");
+
+                    b.Property<bool>("Slack")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Slack");
+
+                    b.Property<bool>("Teams")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Teams");
+
+                    b.Property<bool>("Telegram")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Telegram");
 
                     b.Property<Guid>("UserIdExt")
                         .HasColumnType("uuid")
                         .HasColumnName("UserIdExt");
+
+                    b.Property<bool>("WhatsApp")
+                        .HasColumnType("boolean")
+                        .HasColumnName("WhatsApp");
 
                     b.HasKey("Id");
 
@@ -1762,6 +1840,14 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
 
+                    b.Property<bool>("EMail")
+                        .HasColumnType("boolean")
+                        .HasColumnName("EMail");
+
+                    b.Property<bool>("Gotify")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Gotify");
+
                     b.Property<Guid>("ModifiedByUserIdExtAutoFill")
                         .HasColumnType("uuid")
                         .HasColumnName("ModifiedByUserIdExtAutoFill");
@@ -1770,15 +1856,33 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("ModifiedDateTimeAutoFill");
 
-                    b.Property<string>("NotificationString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("NotificationString");
+                    b.Property<int>("NotificationType")
+                        .HasColumnType("integer")
+                        .HasColumnName("NotificationType");
+
+                    b.Property<bool>("SMS")
+                        .HasColumnType("boolean")
+                        .HasColumnName("SMS");
+
+                    b.Property<bool>("Slack")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Slack");
+
+                    b.Property<bool>("Teams")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Teams");
+
+                    b.Property<bool>("Telegram")
+                        .HasColumnType("boolean")
+                        .HasColumnName("Telegram");
 
                     b.Property<Guid>("UserGroupIdExt")
                         .HasColumnType("uuid")
                         .HasColumnName("UserGroupIdExt");
+
+                    b.Property<bool>("WhatsApp")
+                        .HasColumnType("boolean")
+                        .HasColumnName("WhatsApp");
 
                     b.HasKey("Id");
 
@@ -1832,7 +1936,7 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
-                    b.Property<Guid>("NotificationUserGroupId")
+                    b.Property<Guid?>("NotificationUserGroupId")
                         .HasColumnType("uuid");
 
                     b.Property<Guid?>("ProjectId")
@@ -1894,7 +1998,7 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
-                    b.Property<Guid>("NotificationUserId")
+                    b.Property<Guid?>("NotificationUserId")
                         .HasColumnType("uuid");
 
                     b.Property<Guid?>("ProjectId")
@@ -2115,9 +2219,7 @@ namespace PSGM.Model.DbMain.Migrations
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization_Authorization_UserGroup", "AuthorizationUserGroup")
                         .WithMany("AuthorizationUserGroupLinks")
-                        .HasForeignKey("AuthorizationUserGroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AuthorizationUserGroupId");
 
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization", "Organization")
                         .WithMany("AuthorizationUserGroupLinks")
@@ -2132,9 +2234,7 @@ namespace PSGM.Model.DbMain.Migrations
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization_Authorization_User", "AuthorizationUser")
                         .WithMany("AuthorizationUserLinks")
-                        .HasForeignKey("AuthorizationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AuthorizationUserId");
 
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization", "Organization")
                         .WithMany("AuthorizationUserLinks")
@@ -2166,9 +2266,7 @@ namespace PSGM.Model.DbMain.Migrations
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization_Notification_UserGroup", "NotificationUserGroup")
                         .WithMany("NotificationUserGroupLinks")
-                        .HasForeignKey("NotificationUserGroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("NotificationUserGroupId");
 
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization", "Organization")
                         .WithMany("NotificationUserGroupLinks")
@@ -2183,9 +2281,7 @@ namespace PSGM.Model.DbMain.Migrations
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization_Notification_User", "NotificationUser")
                         .WithMany("NotificationUserLinks")
-                        .HasForeignKey("NotificationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("NotificationUserId");
 
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization", "Organization")
                         .WithMany("NotificationUserLinks")
@@ -2200,9 +2296,7 @@ namespace PSGM.Model.DbMain.Migrations
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project_Authorization_UserGroup", "AuthorizationUserGroup")
                         .WithMany("AuthorizationUserGroupLinks")
-                        .HasForeignKey("AuthorizationUserGroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AuthorizationUserGroupId");
 
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
                         .WithMany("AuthorizationUserGroupLinks")
@@ -2217,9 +2311,7 @@ namespace PSGM.Model.DbMain.Migrations
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project_Authorization_User", "AuthorizationUser")
                         .WithMany("AuthorizationUserLinks")
-                        .HasForeignKey("AuthorizationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AuthorizationUserId");
 
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
                         .WithMany("AuthorizationUserLinks")
@@ -2251,9 +2343,7 @@ namespace PSGM.Model.DbMain.Migrations
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project_Notification_UserGroup", "NotificationUserGroup")
                         .WithMany("NotificationUserGroupLinks")
-                        .HasForeignKey("NotificationUserGroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("NotificationUserGroupId");
 
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
                         .WithMany("NotificationUserGroupLinks")
@@ -2268,9 +2358,7 @@ namespace PSGM.Model.DbMain.Migrations
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project_Notification_User", "NotificationUser")
                         .WithMany("NotificationUserLinks")
-                        .HasForeignKey("NotificationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("NotificationUserId");
 
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
                         .WithMany("NotificationUserLinks")

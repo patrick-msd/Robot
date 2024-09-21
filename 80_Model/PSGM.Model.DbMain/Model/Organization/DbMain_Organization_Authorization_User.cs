@@ -58,9 +58,6 @@ namespace PSGM.Model.DbMain
         public virtual ICollection<DbMain_Organization_Authorization_User_Link>? AuthorizationUserLinks { get; set; }
         #endregion
 
-        #region Links (Outside DB)
-        #endregion
-
         #region Not Mapped
         #endregion
     }
