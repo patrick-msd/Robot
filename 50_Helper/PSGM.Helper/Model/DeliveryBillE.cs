@@ -1,6 +1,6 @@
 ﻿namespace PSGM.Helper
 {
-    public enum DeliveryBillType : uint
+    public enum DeliverySlipType : uint
     {
         Undefined = 0,
 

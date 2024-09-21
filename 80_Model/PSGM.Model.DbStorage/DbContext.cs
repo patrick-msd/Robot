@@ -255,8 +255,6 @@ namespace PSGM.Model.DbStorage
             //modelBuilder.ApplyConfiguration(new ModelLogTypeConfiguration());
             //modelBuilder.ApplyConfiguration(new ModelObjectTypeConfiguration());
 
-            //	//modelBuilder.HasDefaultSchema("public");
-            //	//base.OnModelCreating(modelBuilder);
             //	modelBuilder.Entity<Models.ModelCluster>().ToTable("Cluster");
             //	modelBuilder.ApplyConfiguration(new Models.Configuration.ClusterTypeConfiguration());
             //	//modelBuilder.Entity<Enrollment>().ToTable("Enrollment");
@@ -291,18 +289,6 @@ namespace PSGM.Model.DbStorage
                 {
                     #region File
                     case DbStorage_File file:
-                        File_AuditLog.Add(new DbStorage_File_AuditLog
-                        {
-                            Id = new Guid(),
-
-                            SourceId = file.Id,
-                            Action = entry.State.ToString(),
-                            DateTime = DateTime.UtcNow,
-                            UserIdExt = DatabaseSessionParameter_UserId,
-                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
-                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                        });
-
                         #region Automatically added: Audit details for faster file audit information
                         if (entry.State == EntityState.Added)
                         {
@@ -426,16 +412,41 @@ namespace PSGM.Model.DbStorage
                                 file.RootDirectory.DirectorySizeAutofill -= file.ObjectSize;
                             }
 
-                            file.CreatedDateTimeAutoFill = DateTime.UtcNow;
-                            file.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                            file.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
                         }
                         #endregion
+
+                        File_AuditLog.Add(new DbStorage_File_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = file.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
                         break;
 
                     case DbStorage_File_AuditLog file_AuditLog:
                         break;
 
                     case DbStorage_File_Authorization_User file_Authorization_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            file_Authorization_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_Authorization_User.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            file_Authorization_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_Authorization_User.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         File_Authorization_User_AuditLog.Add(new DbStorage_File_Authorization_User_AuditLog
                         {
                             Id = new Guid(),
@@ -470,6 +481,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_File_Authorization_UserGroup file_Authorization_UserGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            file_Authorization_UserGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_Authorization_UserGroup.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            file_Authorization_UserGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_Authorization_UserGroup.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         File_Authorization_UserGroup_AuditLog.Add(new DbStorage_File_Authorization_UserGroup_AuditLog
                         {
                             Id = new Guid(),
@@ -504,6 +528,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_File_Metadata file_Metadata:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            file_Metadata.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_Metadata.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            file_Metadata.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_Metadata.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         File_Metadata_AuditLog.Add(new DbStorage_File_Metadata_AuditLog
                         {
                             Id = new Guid(),
@@ -515,25 +552,25 @@ namespace PSGM.Model.DbStorage
                             SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
-
-                        #region Automatically added: Audit details for faster subDirectory audit information
-                        if (entry.State == EntityState.Added)
-                        {
-                            file_Metadata.CreatedDateTimeAutoFill = DateTime.UtcNow;
-                            file_Metadata.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
-                        }
-                        else if (entry.State == EntityState.Modified)
-                        {
-                            file_Metadata.ModifiedDateTimeAutoFill = DateTime.UtcNow;
-                            file_Metadata.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
-                        }
-                        #endregion
                         break;
 
                     case DbStorage_File_Metadata_AuditLog file_Metadata_AuditLog:
                         break;
 
                     case DbStorage_File_Metadata_Authorization_User file_Metadata_Authorization_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            file_Metadata_Authorization_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_Metadata_Authorization_User.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            file_Metadata_Authorization_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_Metadata_Authorization_User.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         File_Metadata_Authorization_User_AuditLog.Add(new DbStorage_File_Metadata_Authorization_User_AuditLog
                         {
                             Id = new Guid(),
@@ -568,6 +605,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_File_Metadata_Authorization_UserGroup file_Metadata_Authorization_UserGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            file_Metadata_Authorization_UserGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_Metadata_Authorization_UserGroup.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            file_Metadata_Authorization_UserGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_Metadata_Authorization_UserGroup.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         File_Metadata_Authorization_UserGroup_AuditLog.Add(new DbStorage_File_Metadata_Authorization_UserGroup_AuditLog
                         {
                             Id = new Guid(),
@@ -619,6 +669,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_File_Notification_User file_Notification_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            file_Notification_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_Notification_User.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            file_Notification_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_Notification_User.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         File_Notification_User_AuditLog.Add(new DbStorage_File_Notification_User_AuditLog
                         {
                             Id = new Guid(),
@@ -653,6 +716,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_File_Notification_UserGroup file_Notification_UserGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            file_Notification_UserGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_Notification_UserGroup.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            file_Notification_UserGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_Notification_UserGroup.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         File_Notification_UserGroup_AuditLog.Add(new DbStorage_File_Notification_UserGroup_AuditLog
                         {
                             Id = new Guid(),
@@ -687,6 +763,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_File_QrCode file_QrCode:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            file_QrCode.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_QrCode.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            file_QrCode.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_QrCode.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         File_QrCode_AuditLog.Add(new DbStorage_File_QrCode_AuditLog
                         {
                             Id = new Guid(),
@@ -704,6 +793,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_File_Quality file_Quality:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            file_Quality.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_Quality.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            file_Quality.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_Quality.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         File_Quality_AuditLog.Add(new DbStorage_File_Quality_AuditLog
                         {
                             Id = new Guid(),
@@ -723,6 +825,19 @@ namespace PSGM.Model.DbStorage
 
                     #region RootDirectory
                     case DbStorage_RootDirectory rootDirectory:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         RootDirectory_AuditLog.Add(new DbStorage_RootDirectory_AuditLog
                         {
                             Id = new Guid(),
@@ -734,25 +849,25 @@ namespace PSGM.Model.DbStorage
                             SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
-
-                        #region Automatically added: Audit details for faster rootDirectory audit information
-                        if (entry.State == EntityState.Added)
-                        {
-                            rootDirectory.CreatedDateTimeAutoFill = DateTime.UtcNow;
-                            rootDirectory.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
-                        }
-                        else if (entry.State == EntityState.Modified)
-                        {
-                            rootDirectory.ModifiedDateTimeAutoFill = DateTime.UtcNow;
-                            rootDirectory.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
-                        }
-                        #endregion
                         break;
 
                     case DbStorage_RootDirectory_AuditLog rootDirectory_AuditLog:
                         break;
 
                     case DbStorage_RootDirectory_Authorization_User rootDirectory_Authorization_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory_Authorization_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_Authorization_User.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory_Authorization_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_Authorization_User.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         RootDirectory_Authorization_User_AuditLog.Add(new DbStorage_RootDirectory_Authorization_User_AuditLog
                         {
                             Id = new Guid(),
@@ -787,6 +902,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_RootDirectory_Authorization_UserGroup rootDirectory_Authorization_UserGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory_Authorization_UserGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_Authorization_UserGroup.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory_Authorization_UserGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_Authorization_UserGroup.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         RootDirectory_Authorization_UserGroup_AuditLog.Add(new DbStorage_RootDirectory_Authorization_UserGroup_AuditLog
                         {
                             Id = new Guid(),
@@ -821,6 +949,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_RootDirectory_Metadata rootDirectory_Metadata:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory_Metadata.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_Metadata.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory_Metadata.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_Metadata.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         RootDirectory_Metadata_AuditLog.Add(new DbStorage_RootDirectory_Metadata_AuditLog
                         {
                             Id = new Guid(),
@@ -832,25 +973,25 @@ namespace PSGM.Model.DbStorage
                             SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
-
-                        #region Automatically added: Audit details for faster subDirectory audit information
-                        if (entry.State == EntityState.Added)
-                        {
-                            rootDirectory_Metadata.CreatedDateTimeAutoFill = DateTime.UtcNow;
-                            rootDirectory_Metadata.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
-                        }
-                        else if (entry.State == EntityState.Modified)
-                        {
-                            rootDirectory_Metadata.ModifiedDateTimeAutoFill = DateTime.UtcNow;
-                            rootDirectory_Metadata.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
-                        }
-                        #endregion
                         break;
 
                     case DbStorage_RootDirectory_Metadata_AuditLog rootDirectory_Metadata_AuditLog:
                         break;
 
                     case DbStorage_RootDirectory_Metadata_Authorization_User rootDirectory_Metadata_Authorization_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory_Metadata_Authorization_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_Metadata_Authorization_User.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory_Metadata_Authorization_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_Metadata_Authorization_User.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         RootDirectory_Metadata_Authorization_User_AuditLog.Add(new DbStorage_RootDirectory_Metadata_Authorization_User_AuditLog
                         {
                             Id = new Guid(),
@@ -885,6 +1026,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_RootDirectory_Metadata_Authorization_UserGroup rootDirectory_Metadata_Authorization_UserGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory_Metadata_Authorization_UserGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_Metadata_Authorization_UserGroup.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory_Metadata_Authorization_UserGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_Metadata_Authorization_UserGroup.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         RootDirectory_Metadata_Authorization_UserGroup_AuditLog.Add(new DbStorage_RootDirectory_Metadata_Authorization_UserGroup_AuditLog
                         {
                             Id = new Guid(),
@@ -936,6 +1090,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_RootDirectory_Notification_User rootDirectory_Notification_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory_Notification_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_Notification_User.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory_Notification_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_Notification_User.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         RootDirectory_Notification_User_AuditLog.Add(new DbStorage_RootDirectory_Notification_User_AuditLog
                         {
                             Id = new Guid(),
@@ -970,6 +1137,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_RootDirectory_Notification_UserGroup rootDirectory_Notification_UserGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory_Notification_UserGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_Notification_UserGroup.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory_Notification_UserGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_Notification_UserGroup.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         RootDirectory_Notification_UserGroup_Link_AuditLog.Add(new DbStorage_RootDirectory_Notification_UserGroup_Link_AuditLog
                         {
                             Id = new Guid(),
@@ -1004,6 +1184,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_RootDirectory_QrCode rootDirectory_QrCode:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory_QrCode.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_QrCode.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory_QrCode.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_QrCode.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         RootDirectory_QrCode_AuditLog.Add(new DbStorage_RootDirectory_QrCode_AuditLog
                         {
                             Id = new Guid(),
@@ -1021,6 +1214,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_RootDirectory_Quality rootDirectory_Quality:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory_Quality.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_Quality.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory_Quality.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_Quality.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         RootDirectory_Quality_AuditLog.Add(new DbStorage_RootDirectory_Quality_AuditLog
                         {
                             Id = new Guid(),
@@ -1040,6 +1246,19 @@ namespace PSGM.Model.DbStorage
 
                     #region SubDirectory
                     case DbStorage_SubDirectory subDirectory:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         SubDirectory_AuditLog.Add(new DbStorage_SubDirectory_AuditLog
                         {
                             Id = new Guid(),
@@ -1051,25 +1270,25 @@ namespace PSGM.Model.DbStorage
                             SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
-
-                        #region Automatically added: Audit details for faster subDirectory audit information
-                        if (entry.State == EntityState.Added)
-                        {
-                            subDirectory.CreatedDateTimeAutoFill = DateTime.UtcNow;
-                            subDirectory.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
-                        }
-                        else if (entry.State == EntityState.Modified)
-                        {
-                            subDirectory.ModifiedDateTimeAutoFill = DateTime.UtcNow;
-                            subDirectory.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
-                        }
-                        #endregion
                         break;
 
                     case DbStorage_SubDirectory_AuditLog subDirectory_AuditLog:
                         break;
 
                     case DbStorage_SubDirectory_Authorization_User subDirectory_Authorization_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory_Authorization_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_Authorization_User.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory_Authorization_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_Authorization_User.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         SubDirectory_Authorization_User_AuditLog.Add(new DbStorage_SubDirectory_Authorization_User_AuditLog
                         {
                             Id = new Guid(),
@@ -1104,6 +1323,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectory_Authorization_UserGroup subDirectory_Authorization_UserGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory_Authorization_UserGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_Authorization_UserGroup.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory_Authorization_UserGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_Authorization_UserGroup.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         SubDirectory_Authorization_UserGroup_AuditLog.Add(new DbStorage_SubDirectory_Authorization_UserGroup_AuditLog
                         {
                             Id = new Guid(),
@@ -1138,6 +1370,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectory_Metadata subDirectory_Metadata:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory_Metadata.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_Metadata.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory_Metadata.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_Metadata.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         SubDirectory_Metadata_AuditLog.Add(new DbStorage_SubDirectory_Metadata_AuditLog
                         {
                             Id = new Guid(),
@@ -1149,25 +1394,25 @@ namespace PSGM.Model.DbStorage
                             SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
-
-                        #region Automatically added: Audit details for faster subDirectory audit information
-                        if (entry.State == EntityState.Added)
-                        {
-                            subDirectory_Metadata.CreatedDateTimeAutoFill = DateTime.UtcNow;
-                            subDirectory_Metadata.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
-                        }
-                        else if (entry.State == EntityState.Modified)
-                        {
-                            subDirectory_Metadata.ModifiedDateTimeAutoFill = DateTime.UtcNow;
-                            subDirectory_Metadata.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
-                        }
-                        #endregion
                         break;
 
                     case DbStorage_SubDirectory_Metadata_AuditLog subDirectory_Metadata_AuditLog:
                         break;
 
                     case DbStorage_SubDirectory_Metadata_Authorization_User subDirectory_MetadataAuthorization_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory_MetadataAuthorization_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_MetadataAuthorization_User.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory_MetadataAuthorization_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_MetadataAuthorization_User.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+                        
                         SubDirectory_MetadataAuthorization_User_AuditLog.Add(new DbStorage_SubDirectory_Metadata_Authorization_User_AuditLog
                         {
                             Id = new Guid(),
@@ -1202,6 +1447,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectory_Metadata_Authorization_UserGroup subDirectory_MetadataAuthorization_UserGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory_MetadataAuthorization_UserGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_MetadataAuthorization_UserGroup.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory_MetadataAuthorization_UserGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_MetadataAuthorization_UserGroup.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         SubDirectory_MetadataAuthorization_UserGroup_AuditLog.Add(new DbStorage_SubDirectory_Metadata_Authorization_UserGroup_AuditLog
                         {
                             Id = new Guid(),
@@ -1253,6 +1511,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectory_Notification_User subDirectory_Notification_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory_Notification_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_Notification_User.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory_Notification_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_Notification_User.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         SubDirectory_Notification_User_AuditLog.Add(new DbStorage_SubDirectory_Notification_User_AuditLog
                         {
                             Id = new Guid(),
@@ -1287,6 +1558,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectory_Notification_UserGroup subDirectory_Notification_UserGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory_Notification_UserGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_Notification_UserGroup.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory_Notification_UserGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_Notification_UserGroup.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         SubDirectory_Notification_UserGroup_AuditLog.Add(new DbStorage_SubDirectory_Notification_UserGroup_AuditLog
                         {
                             Id = new Guid(),
@@ -1321,6 +1605,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectory_QrCode subDirectory_QrCode:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory_QrCode.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_QrCode.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory_QrCode.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_QrCode.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         SubDirectory_QrCode_AuditLog.Add(new DbStorage_SubDirectory_QrCode_AuditLog
                         {
                             Id = new Guid(),
@@ -1338,6 +1635,19 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectory_Quality subDirectory_Quality:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory_Quality.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_Quality.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory_Quality.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_Quality.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         SubDirectory_Quality_AuditLog.Add(new DbStorage_SubDirectory_Quality_AuditLog
                         {
                             Id = new Guid(),

@@ -48,6 +48,14 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("CountryName");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<int>("GpsAltitude")
                         .HasColumnType("integer")
                         .HasColumnName("GpsAltitude");
@@ -98,6 +106,14 @@ namespace PSGM.Model.DbMain.Migrations
 
                     b.Property<Guid?>("LocationId")
                         .HasColumnType("uuid");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<string>("PostalCode")
                         .IsRequired()
@@ -154,13 +170,21 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("DateTime");
 
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
                     b.Property<Guid>("SourceId")
                         .HasColumnType("uuid")
                         .HasColumnName("SourceId");
 
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Adderss_AuditLog", "psgm");
+                    b.ToTable("Address_AuditLog", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Contributors", b =>
@@ -174,11 +198,27 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("ContributorType");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(8191)
                         .HasColumnType("character varying(8191)")
                         .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -224,38 +264,46 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("DateTime");
 
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
                     b.Property<Guid>("SourceId")
                         .HasColumnType("uuid")
                         .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
 
                     b.HasKey("Id");
 
                     b.ToTable("Contributors_AuditLog", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DeliveryBill", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DeliverySlip", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
-                    b.Property<Guid>("CreatedByUserIdExt")
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
                         .HasColumnType("uuid")
-                        .HasColumnName("CreatedByUserIdExt");
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
 
-                    b.Property<DateTime>("CreatedDateTime")
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("CreatedDateTime");
+                        .HasColumnName("CreatedDateTimeAutoFill");
 
-                    b.Property<bool>("DeliveryBillIsDirectory")
+                    b.Property<bool>("DeliverySlipIsDirectory")
                         .HasColumnType("boolean")
-                        .HasColumnName("DeliveryBillIsDirectory");
+                        .HasColumnName("DeliverySlipIsDirectory");
 
-                    b.Property<long>("DeliveryBillState")
+                    b.Property<long>("DeliverySlipState")
                         .HasMaxLength(1023)
                         .HasColumnType("bigint")
-                        .HasColumnName("DeliveryBillState");
+                        .HasColumnName("DeliverySliplState");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -285,19 +333,13 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("InternalContributorsUserIdExt");
 
-                    b.Property<string>("LastChanges")
-                        .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("character varying(8191)")
-                        .HasColumnName("LastChanges");
-
-                    b.Property<Guid>("ModifiedByUserIdExt")
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
                         .HasColumnType("uuid")
-                        .HasColumnName("ModifiedByUserIdExt");
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
 
-                    b.Property<DateTime>("ModifiedDateTime")
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("ModifiedDateTime");
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -331,37 +373,77 @@ namespace PSGM.Model.DbMain.Migrations
                     b.HasIndex("ProjectId")
                         .IsUnique();
 
-                    b.ToTable("DeliveryBill", "psgm");
+                    b.ToTable("DeliverySlip", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DeliveryBillTemplate", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DeliverySlip_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
-                    b.Property<Guid>("CreatedByUserIdExt")
-                        .HasColumnType("uuid")
-                        .HasColumnName("CreatedByUserIdExt");
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
 
-                    b.Property<DateTime>("CreatedDateTime")
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("CreatedDateTime");
+                        .HasColumnName("DateTime");
 
-                    b.Property<string>("DeliveryBillDocumentObjectName")
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DeliverySlip_AuditLog", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DeliverySlip_Template", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("DeliverySlipDocumentObjectName")
                         .IsRequired()
                         .HasMaxLength(1023)
                         .HasColumnType("character varying(1023)")
-                        .HasColumnName("DeliveryBillDocumentObjectName");
+                        .HasColumnName("DeliverySlipDocumentObjectName");
 
-                    b.Property<Guid?>("DeliveryBillId")
+                    b.Property<Guid?>("DeliverySlipId")
                         .HasColumnType("uuid");
 
-                    b.Property<long>("DeliveryBillState")
+                    b.Property<long>("DeliverySlipState")
                         .HasMaxLength(1023)
                         .HasColumnType("bigint")
-                        .HasColumnName("DeliveryBillState");
+                        .HasColumnName("DeliverySlipState");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -385,19 +467,13 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("InternalContributorsUserIdExt");
 
-                    b.Property<string>("LastChanges")
-                        .IsRequired()
-                        .HasMaxLength(8191)
-                        .HasColumnType("character varying(8191)")
-                        .HasColumnName("LastChanges");
-
-                    b.Property<Guid>("ModifiedByUserIdExt")
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
                         .HasColumnType("uuid")
-                        .HasColumnName("ModifiedByUserIdExt");
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
 
-                    b.Property<DateTime>("ModifiedDateTime")
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("ModifiedDateTime");
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -425,13 +501,13 @@ namespace PSGM.Model.DbMain.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DeliveryBillId")
+                    b.HasIndex("DeliverySlipId")
                         .IsUnique();
 
-                    b.ToTable("DeliveryBillTemplate", "psgm");
+                    b.ToTable("DeliverySlip_Template", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DeliveryBillTemplate_AuditLog", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DeliverySlip_Template_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -454,45 +530,21 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("DateTime");
 
-                    b.Property<Guid>("SourceId")
+                    b.Property<Guid>("SoftwareIdExt")
                         .HasColumnType("uuid")
-                        .HasColumnName("SourceId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DeliveryBillTemplate_AuditLog", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DeliveryBill_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("DateTime");
+                        .HasColumnName("SoftwareIdExt");
 
                     b.Property<Guid>("SourceId")
                         .HasColumnType("uuid")
                         .HasColumnName("SourceId");
 
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
                     b.HasKey("Id");
 
-                    b.ToTable("DeliveryBill_AuditLog", "psgm");
+                    b.ToTable("DeliverySlip_Template_AuditLog", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DocumentType", b =>
@@ -502,7 +554,15 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
-                    b.Property<Guid?>("DeliveryBillId")
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<Guid?>("DeliverySlipId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Description")
@@ -520,6 +580,14 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasMaxLength(16383)
                         .HasColumnType("character varying(16383)")
                         .HasColumnName("MachinesExtString");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -545,7 +613,7 @@ namespace PSGM.Model.DbMain.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DeliveryBillId");
+                    b.HasIndex("DeliverySlipId");
 
                     b.ToTable("DocumentType", "psgm");
                 });
@@ -573,9 +641,17 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("DateTime");
 
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
                     b.Property<Guid>("SourceId")
                         .HasColumnType("uuid")
                         .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
 
                     b.HasKey("Id");
 
@@ -589,11 +665,27 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(16384)
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -639,9 +731,17 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("DateTime");
 
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
                     b.Property<Guid>("SourceId")
                         .HasColumnType("uuid")
                         .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
 
                     b.HasKey("Id");
 
@@ -660,6 +760,14 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasMaxLength(32)
                         .HasColumnType("character varying(32)")
                         .HasColumnName("Acronym");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
 
                     b.Property<string>("DaytimePhoneNumber")
                         .IsRequired()
@@ -691,6 +799,14 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("character varying(511)")
                         .HasColumnName("Homepage");
 
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -706,262 +822,6 @@ namespace PSGM.Model.DbMain.Migrations
                         .IsUnique();
 
                     b.ToTable("Organization", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_OrganizationAuthorization_User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("character varying(16384)")
-                        .HasColumnName("Description");
-
-                    b.Property<Guid?>("OrganizationId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("Permissions")
-                        .HasColumnType("integer")
-                        .HasColumnName("Permissions");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("uuid")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrganizationId");
-
-                    b.ToTable("OrganizationAuthorization_User", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_OrganizationAuthorization_UserGroup", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("character varying(16384)")
-                        .HasColumnName("Description");
-
-                    b.Property<Guid?>("OrganizationId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("Permissions")
-                        .HasColumnType("integer")
-                        .HasColumnName("Permissions");
-
-                    b.Property<Guid>("UserGroupIdExt")
-                        .HasColumnType("uuid")
-                        .HasColumnName("UserGroupIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrganizationId");
-
-                    b.ToTable("OrganizationAuthorization_UserGroup", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_OrganizationAuthorization_UserGroup_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("SourceId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OrganizationAuthorization_UserGroup_AuditLog", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_OrganizationAuthorization_User_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("SourceId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OrganizationAuthorization_User_AuditLog", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_OrganizationNotification_User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("character varying(16384)")
-                        .HasColumnName("Description");
-
-                    b.Property<string>("NotificationString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("NotificationString");
-
-                    b.Property<Guid?>("OrganizationId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("uuid")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrganizationId");
-
-                    b.ToTable("OrganizationNotification_User", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_OrganizationNotification_UserGroup", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("character varying(16384)")
-                        .HasColumnName("Description");
-
-                    b.Property<string>("NotificationString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("NotificationString");
-
-                    b.Property<Guid?>("OrganizationId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("UserGroupIdExt")
-                        .HasColumnType("uuid")
-                        .HasColumnName("UserGroupIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrganizationId");
-
-                    b.ToTable("OrganizationNotification_UserGroup", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_OrganizationNotification_UserGroup_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("SourceId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OrganizationNotification_UserGroup_AuditLog", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_OrganizationNotification_User_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("SourceId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Organizationotification_User_AuditLog", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_AuditLog", b =>
@@ -987,13 +847,373 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("DateTime");
 
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
                     b.Property<Guid>("SourceId")
                         .HasColumnType("uuid")
                         .HasColumnName("SourceId");
 
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
                     b.HasKey("Id");
 
                     b.ToTable("Organization_AuditLog", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Authorization_User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("character varying(16384)")
+                        .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<Guid?>("OrganizationId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Permissions")
+                        .HasColumnType("integer")
+                        .HasColumnName("Permissions");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
+
+                    b.ToTable("Organization_Authorization_User", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Authorization_UserGroup", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("character varying(16384)")
+                        .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<Guid?>("OrganizationId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Permissions")
+                        .HasColumnType("integer")
+                        .HasColumnName("Permissions");
+
+                    b.Property<Guid>("UserGroupIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserGroupIdExt");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
+
+                    b.ToTable("Organization_Authorization_UserGroup", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Authorization_UserGroup_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Organization_Authorization_UserGroup_AuditLog", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Authorization_User_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Organization_Authorization_User_AuditLog", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Notification_User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("character varying(16384)")
+                        .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<string>("NotificationString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("NotificationString");
+
+                    b.Property<Guid?>("OrganizationId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
+
+                    b.ToTable("Organization_Notification_User", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Notification_UserGroup", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("character varying(16384)")
+                        .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<string>("NotificationString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("NotificationString");
+
+                    b.Property<Guid?>("OrganizationId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("UserGroupIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserGroupIdExt");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
+
+                    b.ToTable("Organization_Notification_UserGroup", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Notification_UserGroup_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Organization_Notification_UserGroup_AuditLog", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Notification_User_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Organization_Notification_User_AuditLog", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project", b =>
@@ -1043,6 +1263,14 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("AqlStateTranscription");
 
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(8191)
@@ -1062,6 +1290,14 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Property<long>("MaxDirectorySize")
                         .HasColumnType("bigint")
                         .HasColumnName("MaxDirectorySize");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1090,262 +1326,6 @@ namespace PSGM.Model.DbMain.Migrations
                     b.ToTable("Project", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectAuthorization_User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("character varying(16384)")
-                        .HasColumnName("Description");
-
-                    b.Property<int>("Permissions")
-                        .HasColumnType("integer")
-                        .HasColumnName("Permissions");
-
-                    b.Property<Guid?>("ProjectId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("uuid")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjectId");
-
-                    b.ToTable("ProjectAuthorization_User", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectAuthorization_UserGroup", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("character varying(16384)")
-                        .HasColumnName("Description");
-
-                    b.Property<int>("Permissions")
-                        .HasColumnType("integer")
-                        .HasColumnName("Permissions");
-
-                    b.Property<Guid?>("ProjectId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("UserGroupIdExt")
-                        .HasColumnType("uuid")
-                        .HasColumnName("UserGroupIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjectId");
-
-                    b.ToTable("ProjectAuthorization_UserGroup", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectAuthorization_UserGroup_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("SourceId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProjectAuthorization_UserGroup_AuditLog", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectAuthorization_User_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("SourceId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProjectAuthorization_User_AuditLog", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectNotification_User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("character varying(16384)")
-                        .HasColumnName("Description");
-
-                    b.Property<string>("NotificationString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("NotificationString");
-
-                    b.Property<Guid?>("ProjectId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("UserIdExt")
-                        .HasColumnType("uuid")
-                        .HasColumnName("UserIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjectId");
-
-                    b.ToTable("ProjectNotification_User", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectNotification_UserGroup", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(16384)
-                        .HasColumnType("character varying(16384)")
-                        .HasColumnName("Description");
-
-                    b.Property<string>("NotificationString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("NotificationString");
-
-                    b.Property<Guid?>("ProjectId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("UserGroupIdExt")
-                        .HasColumnType("uuid")
-                        .HasColumnName("UserGroupIdExt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjectId");
-
-                    b.ToTable("ProjectNotification_UserGroup", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectNotification_UserGroup_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("SourceId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProjectNotification_UserGroup_AuditLog", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectNotification_User_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("SourceId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProjectNotification_User_AuditLog", "psgm");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1369,13 +1349,373 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("DateTime");
 
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
                     b.Property<Guid>("SourceId")
                         .HasColumnType("uuid")
                         .HasColumnName("SourceId");
 
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
                     b.HasKey("Id");
 
                     b.ToTable("Project_AuditLog", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Authorization_User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("character varying(16384)")
+                        .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<int>("Permissions")
+                        .HasColumnType("integer")
+                        .HasColumnName("Permissions");
+
+                    b.Property<Guid?>("ProjectId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("Project_Authorization_User", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Authorization_UserGroup", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("character varying(16384)")
+                        .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<int>("Permissions")
+                        .HasColumnType("integer")
+                        .HasColumnName("Permissions");
+
+                    b.Property<Guid?>("ProjectId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("UserGroupIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserGroupIdExt");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("Project_Authorization_UserGroup", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Authorization_UserGroup_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Project_Authorization_UserGroup_AuditLog", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Authorization_User_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Project_Authorization_User_AuditLog", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Notification_User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("character varying(16384)")
+                        .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<string>("NotificationString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("NotificationString");
+
+                    b.Property<Guid?>("ProjectId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("ProjectNotification_User", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Notification_UserGroup", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("character varying(16384)")
+                        .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<string>("NotificationString")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("NotificationString");
+
+                    b.Property<Guid?>("ProjectId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("UserGroupIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserGroupIdExt");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("Project_Notification_UserGroup", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Notification_UserGroup_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Project_Notification_UserGroup_AuditLog", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Notification_User_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Project_Notification_User_AuditLog", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Unit", b =>
@@ -1399,7 +1739,7 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("CreatedDateTimeAutoFill");
 
-                    b.Property<Guid?>("DeliveryBillId")
+                    b.Property<Guid?>("DeliverySlipId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Description")
@@ -1467,7 +1807,7 @@ namespace PSGM.Model.DbMain.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DeliveryBillId");
+                    b.HasIndex("DeliverySlipId");
 
                     b.HasIndex("ParentUnitId");
 
@@ -1538,31 +1878,31 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DeliveryBill", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DeliverySlip", b =>
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
-                        .WithOne("DeliveryBill")
-                        .HasForeignKey("PSGM.Model.DbMain.DbMain_DeliveryBill", "ProjectId");
+                        .WithOne("DeliverySlip")
+                        .HasForeignKey("PSGM.Model.DbMain.DbMain_DeliverySlip", "ProjectId");
 
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DeliveryBillTemplate", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DeliverySlip_Template", b =>
                 {
-                    b.HasOne("PSGM.Model.DbMain.DbMain_DeliveryBill", "DeliveryBill")
-                        .WithOne("CreatedWithDeliveryBillTemplate")
-                        .HasForeignKey("PSGM.Model.DbMain.DbMain_DeliveryBillTemplate", "DeliveryBillId");
+                    b.HasOne("PSGM.Model.DbMain.DbMain_DeliverySlip", "DeliverySlip")
+                        .WithOne("CreatedWithDeliverySlipTemplate")
+                        .HasForeignKey("PSGM.Model.DbMain.DbMain_DeliverySlip_Template", "DeliverySlipId");
 
-                    b.Navigation("DeliveryBill");
+                    b.Navigation("DeliverySlip");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DocumentType", b =>
                 {
-                    b.HasOne("PSGM.Model.DbMain.DbMain_DeliveryBill", "DeliveryBill")
+                    b.HasOne("PSGM.Model.DbMain.DbMain_DeliverySlip", "DeliverySlip")
                         .WithMany("DocumentTypes")
-                        .HasForeignKey("DeliveryBillId");
+                        .HasForeignKey("DeliverySlipId");
 
-                    b.Navigation("DeliveryBill");
+                    b.Navigation("DeliverySlip");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Location", b =>
@@ -1589,7 +1929,7 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_OrganizationAuthorization_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Authorization_User", b =>
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization", "Organization")
                         .WithMany("AuthorizationUser")
@@ -1598,7 +1938,7 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_OrganizationAuthorization_UserGroup", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Authorization_UserGroup", b =>
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization", "Organization")
                         .WithMany("AuthorizationUserGroup")
@@ -1607,7 +1947,7 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_OrganizationNotification_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Notification_User", b =>
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization", "Organization")
                         .WithMany("NotificationUser")
@@ -1616,7 +1956,7 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_OrganizationNotification_UserGroup", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization_Notification_UserGroup", b =>
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Organization", "Organization")
                         .WithMany("NotificationUserGroup")
@@ -1625,7 +1965,7 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectAuthorization_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Authorization_User", b =>
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
                         .WithMany("AuthorizationUser")
@@ -1634,7 +1974,7 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectAuthorization_UserGroup", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Authorization_UserGroup", b =>
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
                         .WithMany("AuthorizationUserGroup")
@@ -1643,7 +1983,7 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectNotification_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Notification_User", b =>
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
                         .WithMany("NotificationUser")
@@ -1652,7 +1992,7 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_ProjectNotification_UserGroup", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Notification_UserGroup", b =>
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
                         .WithMany("NotificationUserGroup")
@@ -1663,22 +2003,22 @@ namespace PSGM.Model.DbMain.Migrations
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Unit", b =>
                 {
-                    b.HasOne("PSGM.Model.DbMain.DbMain_DeliveryBill", "DeliveryBill")
+                    b.HasOne("PSGM.Model.DbMain.DbMain_DeliverySlip", "DeliverySlip")
                         .WithMany("Units")
-                        .HasForeignKey("DeliveryBillId");
+                        .HasForeignKey("DeliverySlipId");
 
                     b.HasOne("PSGM.Model.DbMain.DbMain_Unit", "ParentUnit")
                         .WithMany("Unit")
                         .HasForeignKey("ParentUnitId");
 
-                    b.Navigation("DeliveryBill");
+                    b.Navigation("DeliverySlip");
 
                     b.Navigation("ParentUnit");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DeliveryBill", b =>
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_DeliverySlip", b =>
                 {
-                    b.Navigation("CreatedWithDeliveryBillTemplate");
+                    b.Navigation("CreatedWithDeliverySlipTemplate");
 
                     b.Navigation("DocumentTypes");
 
@@ -1713,7 +2053,7 @@ namespace PSGM.Model.DbMain.Migrations
 
                     b.Navigation("Contributors");
 
-                    b.Navigation("DeliveryBill");
+                    b.Navigation("DeliverySlip");
 
                     b.Navigation("NotificationUser");
 

@@ -56,6 +56,26 @@ namespace PSGM.Model.DbStorage
         [Column("Gotify")]
         [Display(Name = "Gotify")]
         public bool Gotify { get; set; } = false;
+
+        #region Audit details for faster file audit information
+        [Required]
+        [Column("CreatedDateTimeAutoFill")]
+        [Display(Name = "CreatedDateTimeAutoFill")]
+        public DateTime CreatedDateTimeAutoFill { get; set; } = DateTime.MinValue;
+
+        [Required]
+        [Column("CreatedByUserIdExtAutoFill")]
+        [Display(Name = "CreatedByUserIdExtAutoFill")]
+        public Guid CreatedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+
+        [Column("ModifiedDateTimeAutoFill")]
+        [Display(Name = "ModifiedDateTimeAutoFill")]
+        public DateTime ModifiedDateTimeAutoFill { get; set; } = DateTime.MinValue;
+
+        [Column("ModifiedByUserIdExtAutoFill")]
+        [Display(Name = "ModifiedByUserIdExtAutoFill")]
+        public Guid ModifiedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        #endregion
         #endregion
 
         #region Links

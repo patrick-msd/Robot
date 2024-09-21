@@ -44,56 +44,72 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region DataSets
+        #region Address
         public DbSet<DbMain_Address> Addresses { get; set; }
         public DbSet<DbMain_Address_AuditLog> Address_AuditLog { get; set; }
+        #endregion
 
+        #region Contributor
         public DbSet<DbMain_Contributors> Contributors { get; set; }
         public DbSet<DbMain_Contributors_AuditLog> Contributor_AuditLog { get; set; }
+        #endregion
 
+        #region Delivery Slip
+        public DbSet<DbMain_DeliverySlip> DeliverySlip { get; set; }
+        public DbSet<DbMain_DeliverySlip_AuditLog> DeliverySlip_AuditLog { get; set; }
+
+        public DbSet<DbMain_DeliverySlip_Template> DeliverySlip_Templates { get; set; }
+        public DbSet<DbMain_DeliverySlip_Template_AuditLog> DeliverySlip_Template_AuditLog { get; set; }
+        #endregion
+
+        #region DocumentType
         public DbSet<DbMain_DocumentType> DocumentTypes { get; set; }
         public DbSet<DbMain_DocumentType_AuditLog> DocumentType_AuditLog { get; set; }
+        #endregion
 
+        #region Location
         public DbSet<DbMain_Location> Locations { get; set; }
         public DbSet<DbMain_Location_AuditLog> Location_AuditLog { get; set; }
+        #endregion
 
-        public DbSet<DbMain_DeliverySlip> DeliveryBills { get; set; }
-        public DbSet<DbMain_DeliverySlip_AuditLog> DeliveryBill_AuditLog { get; set; }
-
-        public DbSet<DbMain_DeliverySlip_Template> DeliveryBillTemplates { get; set; }
-        public DbSet<DbMain_DeliverySlip_Template_AuditLog> DeliveryBillTemplate_AuditLog { get; set; }
-
+        #region organization
         public DbSet<DbMain_Organization> Organizations { get; set; }
         public DbSet<DbMain_Organization_AuditLog> Organization_AuditLog { get; set; }
 
-        public DbSet<DbMain_OrganizationAuthorization_User> OrganizationAuthorization_User { get; set; }
-        public DbSet<DbMain_OrganizationAuthorization_User_AuditLog> OrganizationAuthorization_User_AuditLog { get; set; }
+        public DbSet<DbMain_Organization_Authorization_User> Organization_Authorization_User { get; set; }
+        public DbSet<DbMain_Organization_Authorization_User_AuditLog> Organization_Authorization_User_AuditLog { get; set; }
 
-        public DbSet<DbMain_OrganizationAuthorization_UserGroup> OrganizationAuthorization_UserGroup { get; set; }
-        public DbSet<DbMain_OrganizationAuthorization_UserGroup_AuditLog> OrganizationAuthorization_UserGroup_AuditLog { get; set; }
+        public DbSet<DbMain_Organization_Authorization_UserGroup> Organization_Authorization_UserGroup { get; set; }
+        public DbSet<DbMain_Organization_Authorization_UserGroup_AuditLog> Organization_Authorization_UserGroup_AuditLog { get; set; }
 
-        public DbSet<DbMain_OrganizationNotification_User> OrganizationNotification_User { get; set; }
-        public DbSet<DbMain_OrganizationNotification_User_AuditLog> OrganizationNotification_User_AuditLog { get; set; }
+        public DbSet<DbMain_Organization_Notification_User> Organization_Notification_User { get; set; }
+        public DbSet<DbMain_Organization_Notification_User_AuditLog> Organization_Notification_User_AuditLog { get; set; }
 
-        public DbSet<DbMain_OrganizationNotification_UserGroup> OrganizationNotification_UserGroup { get; set; }
-        public DbSet<DbMain_OrganizationNotification_UserGroup_AuditLog> OrganizationNotification_UserGroup_AuditLog { get; set; }
+        public DbSet<DbMain_Organization_Notification_UserGroup> Organization_Notification_UserGroup { get; set; }
+        public DbSet<DbMain_Organization_Notification_UserGroup_AuditLog> Organization_Notification_UserGroup_AuditLog { get; set; }
+        #endregion
 
+        #region Project
         public DbSet<DbMain_Project> Projects { get; set; }
         public DbSet<DbMain_Project_AuditLog> Project_AuditLog { get; set; }
 
-        public DbSet<DbMain_ProjectAuthorization_User> ProjectAuthorization_User { get; set; }
-        public DbSet<DbMain_ProjectAuthorization_User_AuditLog> ProjectAuthorization_User_AuditLog { get; set; }
+        public DbSet<DbMain_Project_Authorization_User> Project_Authorization_User { get; set; }
+        public DbSet<DbMain_Project_Authorization_User_AuditLog> Project_Authorization_User_AuditLog { get; set; }
 
-        public DbSet<DbMain_ProjectAuthorization_UserGroup> ProjectAuthorization_UserGroup { get; set; }
-        public DbSet<DbMain_ProjectAuthorization_UserGroup_AuditLog> ProjectAuthorization_UserGroup_AuditLog { get; set; }
+        public DbSet<DbMain_Project_Authorization_UserGroup> Project_Authorization_UserGroup { get; set; }
+        public DbSet<DbMain_Project_Authorization_UserGroup_AuditLog> Project_Authorization_UserGroup_AuditLog { get; set; }
 
-        public DbSet<DbMain_ProjectNotification_User> ProjectNotification_User { get; set; }
-        public DbSet<DbMain_ProjectNotification_User_AuditLog> ProjectNotification_User_AuditLog { get; set; }
+        public DbSet<DbMain_Project_Notification_User> Project_Notification_User { get; set; }
+        public DbSet<DbMain_Project_Notification_User_AuditLog> Project_Notification_User_AuditLog { get; set; }
 
-        public DbSet<DbMain_ProjectNotification_UserGroup> ProjectNotification_UserGroup { get; set; }
-        public DbSet<DbMain_ProjectNotification_UserGroup_AuditLog> ProjectNotification_UserGroup_AuditLog { get; set; }
+        public DbSet<DbMain_Project_Notification_UserGroup> Project_Notification_UserGroup { get; set; }
+        public DbSet<DbMain_Project_Notification_UserGroup_AuditLog> Project_Notification_UserGroup_AuditLog { get; set; }
+        #endregion
 
+        #region Unit
         public DbSet<DbMain_Unit> Units { get; set; }
         public DbSet<DbMain_Unit_AuditLog> Unit_AuditLog { get; set; }
+        #endregion
         #endregion
 
         #region Overrides
@@ -168,7 +184,21 @@ namespace PSGM.Model.DbMain
             {
                 switch (entry.Entity)
                 {
+                    #region Address
                     case DbMain_Address address:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            address.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            address.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            address.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            address.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         Address_AuditLog.Add(new DbMain_Address_AuditLog
                         {
                             Id = new Guid(),
@@ -176,29 +206,125 @@ namespace PSGM.Model.DbMain
                             SourceId = address.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
                     case DbMain_Address_AuditLog address_AuditLog:
                         break;
+                    #endregion
 
-                    case DbMain_Contributors contributors:
+                    #region Contributor
+                    case DbMain_Contributors contributor:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            contributor.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            contributor.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            contributor.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            contributor.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         Contributor_AuditLog.Add(new DbMain_Contributors_AuditLog
                         {
                             Id = new Guid(),
 
-                            SourceId = contributors.Id,
+                            SourceId = contributor.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
                     case DbMain_Contributors_AuditLog contributors_AuditLog:
                         break;
+                    #endregion
 
+                    #region Delivery Slip
+                    case DbMain_DeliverySlip deliverySlip:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            deliverySlip.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            deliverySlip.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            deliverySlip.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            deliverySlip.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        DeliverySlip_AuditLog.Add(new DbMain_DeliverySlip_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = deliverySlip.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMain_DeliverySlip_AuditLog deliverySlip_AuditLog:
+                        break;
+
+                    case DbMain_DeliverySlip_Template deliverySlip_Template:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            deliverySlip_Template.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            deliverySlip_Template.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            deliverySlip_Template.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            deliverySlip_Template.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        DeliverySlip_Template_AuditLog.Add(new DbMain_DeliverySlip_Template_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = deliverySlip_Template.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMain_DeliverySlip_Template_AuditLog deliverySlip_Template_AuditLog:
+                        break;
+                    #endregion
+
+                    #region DocumentType
                     case DbMain_DocumentType documentType:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            documentType.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            documentType.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            documentType.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            documentType.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         DocumentType_AuditLog.Add(new DbMain_DocumentType_AuditLog
                         {
                             Id = new Guid(),
@@ -206,14 +332,31 @@ namespace PSGM.Model.DbMain
                             SourceId = documentType.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
                     case DbMain_DocumentType_AuditLog documentType_AuditLog:
                         break;
+                    #endregion
 
+                    #region Location
                     case DbMain_Location location:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            location.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            location.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            location.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            location.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         Location_AuditLog.Add(new DbMain_Location_AuditLog
                         {
                             Id = new Guid(),
@@ -221,44 +364,31 @@ namespace PSGM.Model.DbMain
                             SourceId = location.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
                     case DbMain_Location_AuditLog location_AuditLog:
                         break;
+                    #endregion
 
-                    case DbMain_DeliverySlip deliveryBill:
-                        DeliveryBill_AuditLog.Add(new DbMain_DeliverySlip_AuditLog
-                        {
-                            Id = new Guid(),
-
-                            SourceId = deliveryBill.Id,
-                            Action = entry.State.ToString(),
-                            DateTime = DateTime.UtcNow,
-                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                        });
-                        break;
-
-                    case DbMain_DeliverySlip_AuditLog deliveryBill_AuditLog:
-                        break;
-
-                    case DbMain_DeliverySlip_Template deliveryBillTemplate:
-                        DeliveryBillTemplate_AuditLog.Add(new DbMain_DeliverySlip_Template_AuditLog
-                        {
-                            Id = new Guid(),
-
-                            SourceId = deliveryBillTemplate.Id,
-                            Action = entry.State.ToString(),
-                            DateTime = DateTime.UtcNow,
-                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                        });
-                        break;
-
-                    case DbMain_DeliverySlip_Template_AuditLog deliveryBillTemplate_AuditLog:
-                        break;
-
+                    #region organization
                     case DbMain_Organization organization:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            organization.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            organization.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            organization.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            organization.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         Organization_AuditLog.Add(new DbMain_Organization_AuditLog
                         {
                             Id = new Guid(),
@@ -266,73 +396,151 @@ namespace PSGM.Model.DbMain
                             SourceId = organization.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
                     case DbMain_Organization_AuditLog organization_AuditLog:
                         break;
-                    case DbMain_OrganizationAuthorization_User organizationAuthorization_User:
-                        OrganizationAuthorization_User_AuditLog.Add(new DbMain_OrganizationAuthorization_User_AuditLog
+
+                    case DbMain_Organization_Authorization_User organization_Authorization_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            organization_Authorization_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            organization_Authorization_User.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            organization_Authorization_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            organization_Authorization_User.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        Organization_Authorization_User_AuditLog.Add(new DbMain_Organization_Authorization_User_AuditLog
                         {
                             Id = new Guid(),
 
-                            SourceId = organizationAuthorization_User.Id,
+                            SourceId = organization_Authorization_User.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
-                    case DbMain_OrganizationAuthorization_User_AuditLog organizationAuthorization_User_AuditLog:
+                    case DbMain_Organization_Authorization_User_AuditLog organization_Authorization_User_AuditLog:
                         break;
 
-                    case DbMain_OrganizationAuthorization_UserGroup organizationAuthorization_UserGroup:
-                        OrganizationAuthorization_UserGroup_AuditLog.Add(new DbMain_OrganizationAuthorization_UserGroup_AuditLog
+                    case DbMain_Organization_Authorization_UserGroup organization_Authorization_UserGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            organization_Authorization_UserGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            organization_Authorization_UserGroup.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            organization_Authorization_UserGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            organization_Authorization_UserGroup.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        Organization_Authorization_UserGroup_AuditLog.Add(new DbMain_Organization_Authorization_UserGroup_AuditLog
                         {
                             Id = new Guid(),
 
-                            SourceId = organizationAuthorization_UserGroup.Id,
+                            SourceId = organization_Authorization_UserGroup.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
-                    case DbMain_OrganizationAuthorization_UserGroup_AuditLog organizationAuthorization_UserGroup_AuditLog:
+                    case DbMain_Organization_Authorization_UserGroup_AuditLog organization_Authorization_UserGroup_AuditLog:
                         break;
 
-                    case DbMain_OrganizationNotification_User organizationNotification_User:
-                        OrganizationNotification_User_AuditLog.Add(new DbMain_OrganizationNotification_User_AuditLog
+                    case DbMain_Organization_Notification_User organization_Notification_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            organization_Notification_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            organization_Notification_User.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            organization_Notification_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            organization_Notification_User.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        Organization_Notification_User_AuditLog.Add(new DbMain_Organization_Notification_User_AuditLog
                         {
                             Id = new Guid(),
 
-                            SourceId = organizationNotification_User.Id,
+                            SourceId = organization_Notification_User.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
-                    case DbMain_OrganizationNotification_User_AuditLog organizationNotification_User_AuditLog:
+                    case DbMain_Organization_Notification_User_AuditLog organization_Notification_User_AuditLog:
                         break;
 
-                    case DbMain_OrganizationNotification_UserGroup organizationNotification_UserGroup:
-                        OrganizationNotification_UserGroup_AuditLog.Add(new DbMain_OrganizationNotification_UserGroup_AuditLog
+                    case DbMain_Organization_Notification_UserGroup organization_Notification_UserGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            organization_Notification_UserGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            organization_Notification_UserGroup.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            organization_Notification_UserGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            organization_Notification_UserGroup.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        Organization_Notification_UserGroup_AuditLog.Add(new DbMain_Organization_Notification_UserGroup_AuditLog
                         {
                             Id = new Guid(),
 
-                            SourceId = organizationNotification_UserGroup.Id,
+                            SourceId = organization_Notification_UserGroup.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
-                    case DbMain_OrganizationNotification_UserGroup_AuditLog organizationNotification_UserGroup_AuditLog:
+                    case DbMain_Organization_Notification_UserGroup_AuditLog organization_Notification_UserGroup_AuditLog:
                         break;
+                    #endregion
 
+                    #region Project
                     case DbMain_Project project:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            project.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            project.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            project.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            project.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         Project_AuditLog.Add(new DbMain_Project_AuditLog
                         {
                             Id = new Guid(),
@@ -340,6 +548,8 @@ namespace PSGM.Model.DbMain
                             SourceId = project.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -347,67 +557,142 @@ namespace PSGM.Model.DbMain
                     case DbMain_Project_AuditLog project_AuditLog:
                         break;
 
-                    case DbMain_ProjectAuthorization_User projectAuthorization_User:
-                        ProjectAuthorization_User_AuditLog.Add(new DbMain_ProjectAuthorization_User_AuditLog
+                    case DbMain_Project_Authorization_User project_Authorization_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            project_Authorization_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            project_Authorization_User.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            project_Authorization_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            project_Authorization_User.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        Project_Authorization_User_AuditLog.Add(new DbMain_Project_Authorization_User_AuditLog
                         {
                             Id = new Guid(),
 
-                            SourceId = projectAuthorization_User.Id,
+                            SourceId = project_Authorization_User.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
-                    case DbMain_ProjectAuthorization_User_AuditLog projectAuthorization_User_AuditLog:
+                    case DbMain_Project_Authorization_User_AuditLog project_Authorization_User_AuditLog:
                         break;
 
-                    case DbMain_ProjectAuthorization_UserGroup projectAuthorization_UserGroup:
-                        ProjectAuthorization_UserGroup_AuditLog.Add(new DbMain_ProjectAuthorization_UserGroup_AuditLog
+                    case DbMain_Project_Authorization_UserGroup project_Authorization_UserGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            project_Authorization_UserGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            project_Authorization_UserGroup.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            project_Authorization_UserGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            project_Authorization_UserGroup.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        Project_Authorization_UserGroup_AuditLog.Add(new DbMain_Project_Authorization_UserGroup_AuditLog
                         {
                             Id = new Guid(),
 
-                            SourceId = projectAuthorization_UserGroup.Id,
+                            SourceId = project_Authorization_UserGroup.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
-                    case DbMain_ProjectAuthorization_UserGroup_AuditLog projectAuthorization_UserGroup_AuditLog:
+                    case DbMain_Project_Authorization_UserGroup_AuditLog project_Authorization_UserGroup_AuditLog:
                         break;
 
-                    case DbMain_ProjectNotification_User projectNotification_User:
-                        ProjectNotification_User_AuditLog.Add(new DbMain_ProjectNotification_User_AuditLog
+                    case DbMain_Project_Notification_User project_Notification_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            project_Notification_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            project_Notification_User.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            project_Notification_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            project_Notification_User.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        Project_Notification_User_AuditLog.Add(new DbMain_Project_Notification_User_AuditLog
                         {
                             Id = new Guid(),
 
-                            SourceId = projectNotification_User.Id,
+                            SourceId = project_Notification_User.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
-                    case DbMain_ProjectNotification_User_AuditLog projectNotification_User_AuditLog:
+                    case DbMain_Project_Notification_User_AuditLog project_Notification_User_AuditLog:
                         break;
 
-                    case DbMain_ProjectNotification_UserGroup projectNotification_UserGroup:
-                        ProjectNotification_UserGroup_AuditLog.Add(new DbMain_ProjectNotification_UserGroup_AuditLog
+                    case DbMain_Project_Notification_UserGroup project_Notification_UserGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            project_Notification_UserGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            project_Notification_UserGroup.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            project_Notification_UserGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            project_Notification_UserGroup.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        Project_Notification_UserGroup_AuditLog.Add(new DbMain_Project_Notification_UserGroup_AuditLog
                         {
                             Id = new Guid(),
 
-                            SourceId = projectNotification_UserGroup.Id,
+                            SourceId = project_Notification_UserGroup.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
-                    case DbMain_ProjectNotification_UserGroup_AuditLog projectNotification_UserGroup_AuditLog:
+                    case DbMain_Project_Notification_UserGroup_AuditLog project_Notification_UserGroup_AuditLog:
                         break;
+                    #endregion
 
+                    #region Unit
                     case DbMain_Unit unit:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            unit.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            unit.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            unit.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            unit.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         Unit_AuditLog.Add(new DbMain_Unit_AuditLog
                         {
                             Id = new Guid(),
@@ -415,12 +700,15 @@ namespace PSGM.Model.DbMain
                             SourceId = unit.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
                     case DbMain_Unit_AuditLog unit_AuditLog:
                         break;
+                    #endregion
 
                     default:
                         break;

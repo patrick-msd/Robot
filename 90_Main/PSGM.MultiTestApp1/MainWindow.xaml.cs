@@ -1014,9 +1014,9 @@ namespace PSGM.MultiTestApp1
                     }
                 },
 
-                AuthorizationUser = new List<DbMain_OrganizationAuthorization_User>()
+                AuthorizationUser = new List<DbMain_Organization_Authorization_User>()
                 {
-                    new DbMain_OrganizationAuthorization_User()
+                    new DbMain_Organization_Authorization_User()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1029,7 +1029,7 @@ namespace PSGM.MultiTestApp1
                         //Organization = null,
                         //OrganizationId = Guid.Empty,     
                     },
-                    new DbMain_OrganizationAuthorization_User()
+                    new DbMain_Organization_Authorization_User()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1045,9 +1045,9 @@ namespace PSGM.MultiTestApp1
                 },
                 AuthorizationUserGroup = null,
 
-                NotificationUser = new List<DbMain_OrganizationNotification_User>()
+                NotificationUser = new List<DbMain_Organization_Notification_User>()
                 {
-                    new DbMain_OrganizationNotification_User()
+                    new DbMain_Organization_Notification_User()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1065,7 +1065,7 @@ namespace PSGM.MultiTestApp1
                         //Organization = null,
                         //OrganizationId = Guid.Empty,   
                     },
-                    new DbMain_OrganizationNotification_User()
+                    new DbMain_Organization_Notification_User()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1129,9 +1129,9 @@ namespace PSGM.MultiTestApp1
                     }
                 },
 
-                AuthorizationUser = new List<DbMain_OrganizationAuthorization_User>()
+                AuthorizationUser = new List<DbMain_Organization_Authorization_User>()
                 {
-                    new DbMain_OrganizationAuthorization_User()
+                    new DbMain_Organization_Authorization_User()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1145,7 +1145,7 @@ namespace PSGM.MultiTestApp1
                         //OrganizationId = Guid.Empty, 
                     },
 
-                    new DbMain_OrganizationAuthorization_User()
+                    new DbMain_Organization_Authorization_User()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1160,9 +1160,9 @@ namespace PSGM.MultiTestApp1
                 },
                 AuthorizationUserGroup = null,
 
-                NotificationUser = new List<DbMain_OrganizationNotification_User>()
+                NotificationUser = new List<DbMain_Organization_Notification_User>()
                 {
-                    new DbMain_OrganizationNotification_User()
+                    new DbMain_Organization_Notification_User()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1180,7 +1180,7 @@ namespace PSGM.MultiTestApp1
                         //Organization = null,
                         //OrganizationId = Guid.Empty, 
                     },
-                    new DbMain_OrganizationNotification_User()
+                    new DbMain_Organization_Notification_User()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1248,9 +1248,9 @@ namespace PSGM.MultiTestApp1
 
                 Order = null,
 
-                AuthorizationUser = new List<DbMain_ProjectAuthorization_User>()
+                AuthorizationUser = new List<DbMain_Project_Authorization_User>()
                 {
-                    new DbMain_ProjectAuthorization_User()
+                    new DbMain_Project_Authorization_User()
                     {
                         Id = Guid.NewGuid(),
                         UserIdExt = _gertraudZeindlId,
@@ -1262,7 +1262,7 @@ namespace PSGM.MultiTestApp1
                         //Project = null,
                         //ProjectId = Guid.Empty
                     },
-                    new DbMain_ProjectAuthorization_User()
+                    new DbMain_Project_Authorization_User()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1275,7 +1275,7 @@ namespace PSGM.MultiTestApp1
                         //Project = null,
                         //ProjectId = Guid.Empty
                     },
-                    new DbMain_ProjectAuthorization_User()
+                    new DbMain_Project_Authorization_User()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1288,7 +1288,7 @@ namespace PSGM.MultiTestApp1
                         //Project = null,
                         //ProjectId = Guid.Empty
                     },
-                    new DbMain_ProjectAuthorization_User()
+                    new DbMain_Project_Authorization_User()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1304,9 +1304,9 @@ namespace PSGM.MultiTestApp1
                 },
                 AuthorizationUserGroup = null,
 
-                NotificationUser = new List<DbMain_ProjectNotification_User>()
+                NotificationUser = new List<DbMain_Project_Notification_User>()
                 {
-                    new DbMain_ProjectNotification_User()
+                    new DbMain_Project_Notification_User()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1324,7 +1324,7 @@ namespace PSGM.MultiTestApp1
                         //Project = null,
                         //ProjectId = Guid.Empty
                     },
-                    new DbMain_ProjectNotification_User()
+                    new DbMain_Project_Notification_User()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1342,7 +1342,7 @@ namespace PSGM.MultiTestApp1
                         //Project = null,
                         //ProjectId = Guid.Empty
                     },
-                    new DbMain_ProjectNotification_User()
+                    new DbMain_Project_Notification_User()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1360,7 +1360,7 @@ namespace PSGM.MultiTestApp1
                         //Project = null,
                         //ProjectId = Guid.Empty
                     },
-                    new DbMain_ProjectNotification_User()
+                    new DbMain_Project_Notification_User()
                     {
                         Id = Guid.NewGuid(),
 
