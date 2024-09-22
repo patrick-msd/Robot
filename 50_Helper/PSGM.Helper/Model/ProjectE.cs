@@ -4,16 +4,14 @@
     {
         Undefined = 0,
 
-        Created = 10000,
+        Created = 20000,
+        Updated = 20001,
+        Deleted = 20002,
 
-        Started = 20000,
-
-        InProgress = 30000,
-
-        Hold = 70000,
-
-        Stopped = 80000,
-      
-        Finished = 90000,
+        Started = 30000,
+        InProgress = 30001,
+        Hold = 30002,
+        Stopped = 30003,
+        Finished = 30004,
     }
 }

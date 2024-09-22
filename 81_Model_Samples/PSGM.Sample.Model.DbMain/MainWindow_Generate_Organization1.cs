@@ -9,7 +9,7 @@ namespace PSGM.Sample.Model.DbStorage
         {
             Random random = new Random();
 
-            Array values1 = Enum.GetValues(typeof(NotificationType));
+            Array values = Enum.GetValues(typeof(PermissionType));
 
             DbMain_Organization organizationUIBK = new DbMain_Organization()
             {
@@ -39,25 +39,44 @@ namespace PSGM.Sample.Model.DbStorage
                     }
                 },
 
-                EmployeeLinks = new List<DbMain_Organization_Employee_Link>()
+                Employees = new List<DbMain_Organization_Employee>()
                 {
-                    new DbMain_Organization_Employee_Link()
+                    new DbMain_Organization_Employee ()
                     {
                         Id = Guid.NewGuid(),
 
-                        Employee = new DbMain_Organization_Employee ()
+                        UserId_Ext = _guenterMuehlbergerId,
+
+                        Acronym = "MUG",
+
+                        EMail = "",
+
+                        DaytimePhoneNumber = "+43 512 123456789",
+                        EveningPhoneNumber = "+43 512 123456789",
+
+                        FieldOfEmployment = FieldOfEmployment.ScanManager,
+
+                        Permissions = new DbMain_Organization_Employee_Permission()
                         {
                             Id = Guid.NewGuid(),
 
-                            Acronym = "PS",
+                            Description = string.Empty,
 
-                            EMail = "",
-                            DaytimePhoneNumber = "+43 512 123456789",
-                            EveningPhoneNumber = "+43 512 123456789",
+                            Addresses = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Contributors = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            DeliverySlip = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Locations = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Organizations = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Units = (PermissionType)values.GetValue(random.Next(values.Length)),
 
-                            EmployeeType = EmployeeType.Owner,
-
-                            UserIdExt = _patrickSchoeneggerId,
+                            Archive = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Job = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Machine = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Software = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Storage = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            StorageDirectories = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            StorageFiles = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Workflow = (PermissionType)values.GetValue(random.Next(values.Length)),
 
                             //CreatedByUserIdExtAutoFill = Guid.Empty,
                             //CreatedDateTimeAutoFill = DateTime.Now,
@@ -65,32 +84,89 @@ namespace PSGM.Sample.Model.DbStorage
                             //ModifiedDateTimeAutoFill = DateTime.Now,
 
                             // FK
-                            EmployeeLinks = null,
+                            Employee = null,
+                            EmployeeId = null,
                         },
-                        //EmployeeId = null,
-                        
+
+                        Notifications = new List<DbMain_Organization_Employee_Notification>()
+                        {
+                            new DbMain_Organization_Employee_Notification()
+                            {
+                                Id = Guid.NewGuid(),
+
+                                Description = string.Empty,
+
+                                TriggerType = NotificationTriggerType.DeliverySlip,
+                                TriggerState = NotificationTriggerState.CreatedUpdatedDeleted,
+
+                                EMail =  random.Next(100) <= 50 ? true : false,
+                                Slack =  random.Next(100) <= 50 ? true : false,
+                                Teams = random.Next(100) <= 50 ? true : false,
+                                SMS =  random.Next(100) <= 50 ? true : false,
+                                WhatsApp = random.Next(100) <= 50 ? true : false,
+                                Telegram = random.Next(100) <= 50 ? true : false,
+                                Gotify = random.Next(100) <= 50 ? true : false,
+
+                                //CreatedByUserIdExtAutoFill = Guid.Empty,
+                                //CreatedDateTimeAutoFill = DateTime.Now,
+                                //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                                //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                                // FK
+                                Employee = null,
+                                EmployeeId = null,
+                            }
+                            // More notifications ....
+                        },
+             
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+
                         // FK
+                        EmployeeGroup = null,
+                        EmployeeGroupId = null,
+
                         Organization = null,
                         OrganizationId = null,
                     },
-
-                    new DbMain_Organization_Employee_Link()
+                    new DbMain_Organization_Employee ()
                     {
                         Id = Guid.NewGuid(),
 
-                        Employee = new DbMain_Organization_Employee ()
+                        UserId_Ext = _patrickSchoeneggerId,
+
+                        Acronym = "SOP",
+
+                        EMail = "",
+
+                        DaytimePhoneNumber = "+43 512 123456789",
+                        EveningPhoneNumber = "+43 512 123456789",
+
+                        FieldOfEmployment = FieldOfEmployment.ScanEmployee,
+
+                        Permissions = new DbMain_Organization_Employee_Permission()
                         {
                             Id = Guid.NewGuid(),
 
-                            Acronym = "PS",
+                            Description = string.Empty,
 
-                            EMail = "",
-                            DaytimePhoneNumber = "+43 512 123456789",
-                            EveningPhoneNumber = "+43 512 123456789",
+                            Addresses = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Contributors = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            DeliverySlip = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Locations = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Organizations = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Units = (PermissionType)values.GetValue(random.Next(values.Length)),
 
-                            EmployeeType = EmployeeType.Owner,
-
-                            UserIdExt = _guenterMuehlbergerId,
+                            Archive = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Job = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Machine = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Software = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Storage = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            StorageDirectories = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            StorageFiles = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Workflow = (PermissionType)values.GetValue(random.Next(values.Length)),
 
                             //CreatedByUserIdExtAutoFill = Guid.Empty,
                             //CreatedDateTimeAutoFill = DateTime.Now,
@@ -98,92 +174,55 @@ namespace PSGM.Sample.Model.DbStorage
                             //ModifiedDateTimeAutoFill = DateTime.Now,
 
                             // FK
-                            EmployeeLinks = null,
+                            Employee = null,
+                            EmployeeId = null,
                         },
-                        //EmployeeId = null,
-                        
+
+                        Notifications = new List<DbMain_Organization_Employee_Notification>()
+                        {
+                            new DbMain_Organization_Employee_Notification()
+                            {
+                                Id = Guid.NewGuid(),
+
+                                Description = string.Empty,
+
+                                TriggerType = NotificationTriggerType.DeliverySlip,
+                                TriggerState = NotificationTriggerState.CreatedUpdatedDeleted,
+
+                                EMail =  random.Next(100) <= 50 ? true : false,
+                                Slack =  random.Next(100) <= 50 ? true : false,
+                                Teams = random.Next(100) <= 50 ? true : false,
+                                SMS =  random.Next(100) <= 50 ? true : false,
+                                WhatsApp = random.Next(100) <= 50 ? true : false,
+                                Telegram = random.Next(100) <= 50 ? true : false,
+                                Gotify = random.Next(100) <= 50 ? true : false,
+
+                                //CreatedByUserIdExtAutoFill = Guid.Empty,
+                                //CreatedDateTimeAutoFill = DateTime.Now,
+                                //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                                //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                                // FK
+                                Employee = null,
+                                EmployeeId = null,
+                            }
+                            // More notifications ....
+                        },
+
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+
                         // FK
+                        EmployeeGroup = null,
+                        EmployeeGroupId = null,
+
                         Organization = null,
                         OrganizationId = null,
                     },
                 },
-                EmployeeGroupLinks = null,
-
-hgjhgj               NotificationUserLinks = new List<DbMain_Organization_Notification_User_Link>()
-                {
-                    new DbMain_Organization_Notification_User_Link()
-                    {
-                        Id = Guid.NewGuid(),
-
-                        NotificationUser = new DbMain_Organization_Notification_User()
-                        {
-                            Id = Guid.NewGuid(),
-
-                            UserIdExt = _patrickSchoeneggerId,
-
-                            Description = string.Empty,
-
-                            NotificationType = (NotificationType)values1.GetValue(random.Next(values1.Length)),
-
-                            EMail = random.Next(100) <= 50 ? true : false,
-                            Slack = random.Next(100) <= 50 ? true : false,
-                            Teams = random.Next(100) <= 50 ? true : false,
-                            SMS = random.Next(100) <= 50 ? true : false,
-                            WhatsApp = random.Next(100) <= 50 ? true : false,
-                            Telegram = random.Next(100) <= 50 ? true : false,
-                            Gotify = random.Next(100) <= 50 ? true : false,
-
-                            NotificationUserLinks = null,
-                            
-                            //CreatedByUserIdExtAutoFill = Guid.Empty,
-                            //CreatedDateTimeAutoFill = DateTime.Now,
-                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
-                            //ModifiedDateTimeAutoFill = DateTime.Now,
-                        },
-                        //NotificationUserId = null,
-                        
-                        // FK
-                        Organization = null,
-                        OrganizationId = null,
-                    },
-
-                    new DbMain_Organization_Notification_User_Link()
-                    {
-                        Id = Guid.NewGuid(),
-
-                        NotificationUser = new DbMain_Organization_Notification_User()
-                        {
-                            Id = Guid.NewGuid(),
-
-                            UserIdExt = _guenterMuehlbergerId,
-
-                            Description = string.Empty,
-
-                            NotificationType = (NotificationType)values1.GetValue(random.Next(values1.Length)),
-
-                            EMail = random.Next(100) <= 50 ? true : false,
-                            Slack = random.Next(100) <= 50 ? true : false,
-                            Teams = random.Next(100) <= 50 ? true : false,
-                            SMS = random.Next(100) <= 50 ? true : false,
-                            WhatsApp = random.Next(100) <= 50 ? true : false,
-                            Telegram = random.Next(100) <= 50 ? true : false,
-                            Gotify = random.Next(100) <= 50 ? true : false,
-
-                            NotificationUserLinks = null,
-                            
-                            //CreatedByUserIdExtAutoFill = Guid.Empty,
-                            //CreatedDateTimeAutoFill = DateTime.Now,
-                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
-                            //ModifiedDateTimeAutoFill = DateTime.Now,
-                        },
-                        //NotificationUserId = null,
-                        
-                        // FK
-                        Organization = null,
-                        OrganizationId = null,
-                    },
-                },
-fghj              NotificationUserGroupLinks = null,
+                EmployeeGroups = null,
 
                 Contributors = null,
 
@@ -225,25 +264,42 @@ fghj              NotificationUserGroupLinks = null,
                     }
                 },
 
-                EmployeeLinks = new List<DbMain_Organization_Employee_Link>()
+                Employees = new List<DbMain_Organization_Employee>()
                 {
-                    new DbMain_Organization_Employee_Link()
+                    new DbMain_Organization_Employee ()
                     {
                         Id = Guid.NewGuid(),
 
-                        Employee = new DbMain_Organization_Employee ()
+                        UserId_Ext = _gertraudZeindlId,
+
+                        Acronym = "ZEG",
+
+                        DaytimePhoneNumber = "+43 512 123456789",
+                        EveningPhoneNumber = "+43 512 123456789",
+
+                        FieldOfEmployment = FieldOfEmployment.ProjectManager,
+
+                        Permissions = new DbMain_Organization_Employee_Permission()
                         {
                             Id = Guid.NewGuid(),
 
-                            Acronym = "PS",
+                            Description = string.Empty,
 
-                            EMail = "",
-                            DaytimePhoneNumber = "+43 512 123456789",
-                            EveningPhoneNumber = "+43 512 123456789",
+                            Addresses = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Contributors = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            DeliverySlip = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Locations = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Organizations = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Units = (PermissionType)values.GetValue(random.Next(values.Length)),
 
-                            EmployeeType = EmployeeType.Owner,
-
-                            UserIdExt = _gertraudZeindlId,
+                            Archive = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Job = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Machine = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Software = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Storage = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            StorageDirectories = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            StorageFiles = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Workflow = (PermissionType)values.GetValue(random.Next(values.Length)),
 
                             //CreatedByUserIdExtAutoFill = Guid.Empty,
                             //CreatedDateTimeAutoFill = DateTime.Now,
@@ -251,32 +307,89 @@ fghj              NotificationUserGroupLinks = null,
                             //ModifiedDateTimeAutoFill = DateTime.Now,
 
                             // FK
-                            EmployeeLinks = null,
+                            Employee = null,
+                            EmployeeId = null,
                         },
-                        //EmployeeId = null,
-                        
+
+                        Notifications = new List<DbMain_Organization_Employee_Notification>()
+                        {
+                            new DbMain_Organization_Employee_Notification()
+                            {
+                                Id = Guid.NewGuid(),
+
+                                Description = string.Empty,
+
+                                TriggerType = NotificationTriggerType.DeliverySlip,
+                                TriggerState = NotificationTriggerState.CreatedUpdatedDeleted,
+
+                                EMail =  random.Next(100) <= 50 ? true : false,
+                                Slack =  random.Next(100) <= 50 ? true : false,
+                                Teams = random.Next(100) <= 50 ? true : false,
+                                SMS =  random.Next(100) <= 50 ? true : false,
+                                WhatsApp = random.Next(100) <= 50 ? true : false,
+                                Telegram = random.Next(100) <= 50 ? true : false,
+                                Gotify = random.Next(100) <= 50 ? true : false,
+
+                                //CreatedByUserIdExtAutoFill = Guid.Empty,
+                                //CreatedDateTimeAutoFill = DateTime.Now,
+                                //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                                //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                                // FK
+                                Employee = null,
+                                EmployeeId = null,
+                            }
+                            // More notifications ....
+                        },
+             
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+
                         // FK
+                        EmployeeGroup = null,
+                        EmployeeGroupId = null,
+
                         Organization = null,
                         OrganizationId = null,
                     },
-
-                    new DbMain_Organization_Employee_Link()
+                    new DbMain_Organization_Employee ()
                     {
                         Id = Guid.NewGuid(),
 
-                        Employee = new DbMain_Organization_Employee ()
+                        UserId_Ext = _christophHaidacherId,
+
+                        Acronym = "HAC",
+
+                        EMail = "",
+
+                        DaytimePhoneNumber = "+43 512 123456789",
+                        EveningPhoneNumber = "+43 512 123456789",
+
+                        FieldOfEmployment = FieldOfEmployment.ProjectEmployee,
+
+                        Permissions = new DbMain_Organization_Employee_Permission()
                         {
                             Id = Guid.NewGuid(),
 
-                            Acronym = "PS",
+                            Description = string.Empty,
 
-                            EMail = "",
-                            DaytimePhoneNumber = "+43 512 123456789",
-                            EveningPhoneNumber = "+43 512 123456789",
+                            Addresses = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Contributors = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            DeliverySlip = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Locations = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Organizations = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Units = (PermissionType)values.GetValue(random.Next(values.Length)),
 
-                            EmployeeType = EmployeeType.Owner,
-
-                            UserIdExt = _christophHaidacherId,
+                            Archive = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Job = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Machine = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Software = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Storage = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            StorageDirectories = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            StorageFiles = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            Workflow = (PermissionType)values.GetValue(random.Next(values.Length)),
 
                             //CreatedByUserIdExtAutoFill = Guid.Empty,
                             //CreatedDateTimeAutoFill = DateTime.Now,
@@ -284,92 +397,55 @@ fghj              NotificationUserGroupLinks = null,
                             //ModifiedDateTimeAutoFill = DateTime.Now,
 
                             // FK
-                            EmployeeLinks = null,
+                            Employee = null,
+                            EmployeeId = null,
                         },
-                        //EmployeeId = null,
-                        
+
+                        Notifications = new List<DbMain_Organization_Employee_Notification>()
+                        {
+                            new DbMain_Organization_Employee_Notification()
+                            {
+                                Id = Guid.NewGuid(),
+
+                                Description = string.Empty,
+
+                                TriggerType = NotificationTriggerType.DeliverySlip,
+                                TriggerState = NotificationTriggerState.CreatedUpdatedDeleted,
+
+                                EMail =  random.Next(100) <= 50 ? true : false,
+                                Slack =  random.Next(100) <= 50 ? true : false,
+                                Teams = random.Next(100) <= 50 ? true : false,
+                                SMS =  random.Next(100) <= 50 ? true : false,
+                                WhatsApp = random.Next(100) <= 50 ? true : false,
+                                Telegram = random.Next(100) <= 50 ? true : false,
+                                Gotify = random.Next(100) <= 50 ? true : false,
+
+                                //CreatedByUserIdExtAutoFill = Guid.Empty,
+                                //CreatedDateTimeAutoFill = DateTime.Now,
+                                //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                                //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                                // FK
+                                Employee = null,
+                                EmployeeId = null,
+                            }
+                            // More notifications ....
+                        },
+             
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+
                         // FK
+                        EmployeeGroup = null,
+                        EmployeeGroupId = null,
+
                         Organization = null,
                         OrganizationId = null,
                     },
                 },
-                EmployeeGroupLinks = null,
-
-gfh               NotificationUserLinks = new List<DbMain_Organization_Notification_User_Link>()
-                {
-                    new DbMain_Organization_Notification_User_Link()
-                    {
-                        Id = Guid.NewGuid(),
-
-                        NotificationUser = new DbMain_Organization_Notification_User()
-                        {
-                            Id = Guid.NewGuid(),
-
-                            UserIdExt = _gertraudZeindlId,
-
-                            Description = string.Empty,
-
-                            NotificationType = (NotificationType)values1.GetValue(random.Next(values1.Length)),
-
-                            EMail = random.Next(100) <= 50 ? true : false,
-                            Slack = random.Next(100) <= 50 ? true : false,
-                            Teams = random.Next(100) <= 50 ? true : false,
-                            SMS = random.Next(100) <= 50 ? true : false,
-                            WhatsApp = random.Next(100) <= 50 ? true : false,
-                            Telegram = random.Next(100) <= 50 ? true : false,
-                            Gotify = random.Next(100) <= 50 ? true : false,
-
-                            NotificationUserLinks = null,
-                            
-                            //CreatedByUserIdExtAutoFill = Guid.Empty,
-                            //CreatedDateTimeAutoFill = DateTime.Now,
-                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
-                            //ModifiedDateTimeAutoFill = DateTime.Now,
-                        },
-                        //NotificationUserId = null,
-                        
-                        // FK
-                        Organization = null,
-                        OrganizationId = null,
-                    },
-
-                    new DbMain_Organization_Notification_User_Link()
-                    {
-                        Id = Guid.NewGuid(),
-
-                        NotificationUser = new DbMain_Organization_Notification_User()
-                        {
-                            Id = Guid.NewGuid(),
-
-                            UserIdExt = _christophHaidacherId,
-
-                            Description = string.Empty,
-
-                            NotificationType = (NotificationType)values1.GetValue(random.Next(values1.Length)),
-
-                            EMail = random.Next(100) <= 50 ? true : false,
-                            Slack = random.Next(100) <= 50 ? true : false,
-                            Teams = random.Next(100) <= 50 ? true : false,
-                            SMS = random.Next(100) <= 50 ? true : false,
-                            WhatsApp = random.Next(100) <= 50 ? true : false,
-                            Telegram = random.Next(100) <= 50 ? true : false,
-                            Gotify = random.Next(100) <= 50 ? true : false,
-
-                            NotificationUserLinks = null,
-                            
-                            //CreatedByUserIdExtAutoFill = Guid.Empty,
-                            //CreatedDateTimeAutoFill = DateTime.Now,
-                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
-                            //ModifiedDateTimeAutoFill = DateTime.Now,
-                        },
-                        //NotificationUserId = null,
-                        
-                        // FK
-                        Organization = null,
-                        OrganizationId = null,
-                    },
-                },
-fdhg               NotificationUserGroupLinks = null,
+                EmployeeGroups = null,
 
                 Contributors = null,
 

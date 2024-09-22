@@ -15,8 +15,8 @@ namespace PSGM.Sample.Model.DbStorage
             List<DbStorage_SubDirectory_Authorization_User> authorization_Users = new List<DbStorage_SubDirectory_Authorization_User>();
             for (int i = 0; i < 250; i++)
             {
-                Array values = Enum.GetValues(typeof(PermissionType));
-                PermissionType randomPermissionType = (PermissionType)values.GetValue(random.Next(values.Length));
+                Array values = Enum.GetValues(typeof(EmployeeType));
+                EmployeeType randomPermissionType = (EmployeeType)values.GetValue(random.Next(values.Length));
 
                 authorization_Users.Add(new DbStorage_SubDirectory_Authorization_User()
                 {
@@ -35,8 +35,8 @@ namespace PSGM.Sample.Model.DbStorage
             List<DbStorage_SubDirectory_Authorization_UserGroup> authorization_UserGroups = new List<DbStorage_SubDirectory_Authorization_UserGroup>();
             for (int i = 0; i < 250; i++)
             {
-                Array values = Enum.GetValues(typeof(PermissionType));
-                PermissionType randomPermissionType = (PermissionType)values.GetValue(random.Next(values.Length));
+                Array values = Enum.GetValues(typeof(EmployeeType));
+                EmployeeType randomPermissionType = (EmployeeType)values.GetValue(random.Next(values.Length));
 
                 authorization_UserGroups.Add(new DbStorage_SubDirectory_Authorization_UserGroup()
                 {
@@ -111,8 +111,8 @@ namespace PSGM.Sample.Model.DbStorage
             List<DbStorage_SubDirectory_Metadata_Authorization_User> metadataAuthorization_Users = new List<DbStorage_SubDirectory_Metadata_Authorization_User>();
             for (int i = 0; i < 250; i++)
             {
-                Array values = Enum.GetValues(typeof(PermissionType));
-                PermissionType randomPermissionType = (PermissionType)values.GetValue(random.Next(values.Length));
+                Array values = Enum.GetValues(typeof(EmployeeType));
+                EmployeeType randomPermissionType = (EmployeeType)values.GetValue(random.Next(values.Length));
 
                 metadataAuthorization_Users.Add(new DbStorage_SubDirectory_Metadata_Authorization_User()
                 {
@@ -131,8 +131,8 @@ namespace PSGM.Sample.Model.DbStorage
             List<DbStorage_SubDirectory_Metadata_Authorization_UserGroup> metadataAuthorization_UserGroups = new List<DbStorage_SubDirectory_Metadata_Authorization_UserGroup>();
             for (int i = 0; i < 250; i++)
             {
-                Array values = Enum.GetValues(typeof(PermissionType));
-                PermissionType randomPermissionType = (PermissionType)values.GetValue(random.Next(values.Length));
+                Array values = Enum.GetValues(typeof(EmployeeType));
+                EmployeeType randomPermissionType = (EmployeeType)values.GetValue(random.Next(values.Length));
 
                 metadataAuthorization_UserGroups.Add(new DbStorage_SubDirectory_Metadata_Authorization_UserGroup()
                 {

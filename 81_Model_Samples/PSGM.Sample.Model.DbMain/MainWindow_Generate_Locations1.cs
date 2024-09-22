@@ -13,11 +13,11 @@ namespace PSGM.Sample.Model.DbStorage
                 Id = new Guid(),
                 
                 Name = "Headquarter",
-
+                
                 AddressLink = new DbMain_Location_Address_Link()
                 {
                     Id = new Guid(),
-
+                    
                     // FK
                     Address = addresses.Where(p => p.Line1.Contains("Innrain 52d")).First(),
                     //AddressId = Guid.Empty,
@@ -29,7 +29,7 @@ namespace PSGM.Sample.Model.DbStorage
                 Description = string.Empty,
 
                 OrganizationLocationLink = null,
-
+                
                 ProjectLocationLink = null,
 
                 //CreatedByUserIdExtAutoFill = Guid.Empty,

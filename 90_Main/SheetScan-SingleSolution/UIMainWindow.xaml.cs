@@ -1354,7 +1354,7 @@ namespace RC.Scan_SingleSolution
             Guid patrickSchoeneggerId = Globals.DbUser_Context.Users.Where(u => u.LoginName == "patrick.schoenegger").FirstOrDefault().Id;
             Guid softwareId = new Guid();
 
-            List<DbMain_Project> projects = Globals.DbMain_Context.Projects.Where(p => p.MachinesExt.Contains(machineId))
+            List<DbMain_Project> projects = Globals.DbMain_Context.Projects.Where(p => p.Machines_Ext.Contains(machineId))
                                                                               .Include(p => p.ProjectParameter)
                                                                               .Include(p => p.Organization)
                                                                               .Include(p => p.Contributors)

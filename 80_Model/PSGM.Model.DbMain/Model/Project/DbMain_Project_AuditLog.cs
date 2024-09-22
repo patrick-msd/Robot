@@ -31,14 +31,14 @@ namespace PSGM.Model.DbMain
         public DateTime DateTime { get; set; } = DateTime.MinValue;
 
         [Required]
-        [Column("UserIdExt")]
-        [Display(Name = "UserIdExt")]
-        public Guid UserIdExt { get; set; } = Guid.Empty;
+        [Column("UserId_Ext")]
+        [Display(Name = "UserId_Ext")]
+        public Guid UserId_Ext { get; set; } = Guid.Empty;
 
         [Required]
-        [Column("SoftwareIdExt")]
-        [Display(Name = "SoftwareIdExt")]
-        public Guid SoftwareIdExt { get; set; } = Guid.Empty;
+        [Column("SoftwareId_Ext")]
+        [Display(Name = "SoftwareId_Ext")]
+        public Guid SoftwareId_Ext { get; set; } = Guid.Empty;
 
         [Required]
         [Column("Changes")]

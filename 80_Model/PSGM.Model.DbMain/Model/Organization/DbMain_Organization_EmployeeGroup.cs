@@ -22,7 +22,7 @@ namespace PSGM.Model.DbMain
         [Required]
         [Column("Permissions")]
         [Display(Name = "Permissions")]
-        public PermissionType Permissions { get; set; } = PermissionType.None;
+        public EmployeeType Permissions { get; set; } = EmployeeType.None;
 
         [Required]
         [Column("UserGroupIdExt")]
@@ -36,26 +36,29 @@ namespace PSGM.Model.DbMain
         public DateTime CreatedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
         [Required]
-        [Column("CreatedByUserIdExtAutoFill")]
-        [Display(Name = "CreatedByUserIdExtAutoFill")]
-        public Guid CreatedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        [Column("CreatedByUserId_ExtAutoFill")]
+        [Display(Name = "CreatedByUserId_ExtAutoFill")]
+        public Guid CreatedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
 
         [Column("ModifiedDateTimeAutoFill")]
         [Display(Name = "ModifiedDateTimeAutoFill")]
         public DateTime ModifiedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
-        [Column("ModifiedByUserIdExtAutoFill")]
-        [Display(Name = "ModifiedByUserIdExtAutoFill")]
-        public Guid ModifiedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        [Column("ModifiedByUserId_ExtAutoFill")]
+        [Display(Name = "ModifiedByUserId_ExtAutoFill")]
+        public Guid ModifiedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
         #endregion
         #endregion
 
         #region Links
+        [InverseProperty("EmployeeGroup")]
+        public virtual ICollection<DbMain_Organization_Employee>? Employees { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [InverseProperty("EmployeeGroup")]
-        public virtual ICollection<DbMain_Organization_EmployeeGroup_Link>? EmployeeGroupLinks { get; set; }
+        [ForeignKey("Organization")]
+        public Guid? OrganizationId { get; set; }
+        public virtual DbMain_Organization? Organization { get; set; }
         #endregion
 
         #region Not Mapped

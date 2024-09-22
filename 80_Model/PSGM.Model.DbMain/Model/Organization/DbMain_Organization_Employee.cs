@@ -36,14 +36,14 @@ namespace PSGM.Model.DbMain
         public string EMail { get; set; } = string.Empty;
 
         [Required]
-        [Column("EmployeeType")]
-        [Display(Name = "EmployeeType")]
-        public EmployeeType EmployeeType { get; set; } = EmployeeType.Unknown;
+        [Column("FieldOfEmployment")]
+        [Display(Name = "FieldOfEmployment")]
+        public FieldOfEmployment FieldOfEmployment { get; set; } = FieldOfEmployment.Unknown;
 
         [Required]
-        [Column("UserIdExt")]
-        [Display(Name = "UserIdExt")]
-        public Guid UserIdExt { get; set; } = Guid.Empty;
+        [Column("UserId_Ext")]
+        [Display(Name = "UserId_Ext")]
+        public Guid UserId_Ext { get; set; } = Guid.Empty;
 
         #region Audit details for faster file audit information
         [Required]
@@ -52,26 +52,36 @@ namespace PSGM.Model.DbMain
         public DateTime CreatedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
         [Required]
-        [Column("CreatedByUserIdExtAutoFill")]
-        [Display(Name = "CreatedByUserIdExtAutoFill")]
-        public Guid CreatedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        [Column("CreatedByUserId_ExtAutoFill")]
+        [Display(Name = "CreatedByUserId_ExtAutoFill")]
+        public Guid CreatedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
 
         [Column("ModifiedDateTimeAutoFill")]
         [Display(Name = "ModifiedDateTimeAutoFill")]
         public DateTime ModifiedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
-        [Column("ModifiedByUserIdExtAutoFill")]
-        [Display(Name = "ModifiedByUserIdExtAutoFill")]
-        public Guid ModifiedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        [Column("ModifiedByUserId_ExtAutoFill")]
+        [Display(Name = "ModifiedByUserId_ExtAutoFill")]
+        public Guid ModifiedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
         #endregion
         #endregion
 
         #region Links
+        [InverseProperty("Employee")]
+        public virtual ICollection<DbMain_Organization_Employee_Notification>? Notifications { get; set; }
+
+        [InverseProperty("Employee")]
+        public virtual DbMain_Organization_Employee_Permission? Permissions { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [InverseProperty("Employee")]
-        public virtual ICollection<DbMain_Organization_Employee_Link>? EmployeeLinks { get; set; }
+        [ForeignKey("Organization")]
+        public Guid? OrganizationId { get; set; }
+        public virtual DbMain_Organization? Organization { get; set; }
+
+        [ForeignKey("EmployeeGroup")]
+        public Guid? EmployeeGroupId { get; set; }
+        public virtual DbMain_Organization_EmployeeGroup? EmployeeGroup { get; set; }
         #endregion
 
         #region Not Mapped

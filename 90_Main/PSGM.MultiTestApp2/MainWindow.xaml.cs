@@ -955,8 +955,8 @@ namespace PSGM.MultiTestApp1
                     {
                         Id = Guid.NewGuid(),
 
-                        UserIdExt = _gertraudZeindlId,
-                        Permissions = PermissionType.Owner,
+                        UserId_Ext = _gertraudZeindlId,
+                        Permissions = EmployeeType.Owner,
 
                         // FK
                         //Project=null,
@@ -965,8 +965,8 @@ namespace PSGM.MultiTestApp1
                     {
                         Id = Guid.NewGuid(),
 
-                        UserIdExt = _christophHaidacherId,
-                        Permissions = PermissionType.Admin,
+                        UserId_Ext = _christophHaidacherId,
+                        Permissions = EmployeeType.Admin,
 
                         // FK
                         //Project=null,
@@ -974,9 +974,9 @@ namespace PSGM.MultiTestApp1
                 },
                 AuthorizationUserGroup = null,
 
-                NotificationUser = new List<DbMain_Organization_Notification_User>()
+                NotificationUser = new List<DbMain_Organization_Employee_Notification>()
                 {
-                    new DbMain_Organization_Notification_User()
+                    new DbMain_Organization_Employee_Notification()
                     {
                         Id = Guid.NewGuid(),
 
@@ -989,7 +989,7 @@ namespace PSGM.MultiTestApp1
                         // FK
                         //Project=null,
                     },
-                    new DbMain_Organization_Notification_User()
+                    new DbMain_Organization_Employee_Notification()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1049,8 +1049,8 @@ namespace PSGM.MultiTestApp1
                     {
                         Id = Guid.NewGuid(),
 
-                        UserIdExt = _patrickSchoeneggerId,
-                        Permissions = PermissionType.Owner,
+                        UserId_Ext = _patrickSchoeneggerId,
+                        Permissions = EmployeeType.Owner,
 
                         // FK
                         //Project=null,
@@ -1060,8 +1060,8 @@ namespace PSGM.MultiTestApp1
                     {
                         Id = Guid.NewGuid(),
 
-                        UserIdExt = _guenterMuehlbergerId,
-                        Permissions = PermissionType.Admin,
+                        UserId_Ext = _guenterMuehlbergerId,
+                        Permissions = EmployeeType.Admin,
 
                         // FK
                         //Project=null,
@@ -1069,9 +1069,9 @@ namespace PSGM.MultiTestApp1
                 },
                 AuthorizationUserGroup = null,
 
-                NotificationUser = new List<DbMain_Organization_Notification_User>()
+                NotificationUser = new List<DbMain_Organization_Employee_Notification>()
                 {
-                    new DbMain_Organization_Notification_User()
+                    new DbMain_Organization_Employee_Notification()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1084,7 +1084,7 @@ namespace PSGM.MultiTestApp1
                         // FK
                         //Project=null,
                     },
-                    new DbMain_Organization_Notification_User()
+                    new DbMain_Organization_Employee_Notification()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1327,7 +1327,7 @@ namespace PSGM.MultiTestApp1
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _gertraudZeindlId,
-                        Permissions = PermissionType.Owner,
+                        Permissions = EmployeeType.Owner,
 
                         // FK
                         //Project=null,
@@ -1337,7 +1337,7 @@ namespace PSGM.MultiTestApp1
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _christophHaidacherId,
-                        Permissions = PermissionType.Admin,
+                        Permissions = EmployeeType.Admin,
 
                         // FK
                         //Project=null,
@@ -1347,7 +1347,7 @@ namespace PSGM.MultiTestApp1
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _patrickSchoeneggerId,
-                        Permissions = PermissionType.ServiceProviderInfrastructure,
+                        Permissions = EmployeeType.ServiceProviderInfrastructure,
 
                         // FK
                         //Project=null,
@@ -1358,7 +1358,7 @@ namespace PSGM.MultiTestApp1
                         Id = Guid.NewGuid(),
 
                         UserIdExt = _guenterMuehlbergerId,
-                        Permissions = PermissionType.ServiceProviderInfrastructure,
+                        Permissions = EmployeeType.ServiceProviderInfrastructure,
 
                         // FK
                         //Project=null,
@@ -1423,7 +1423,7 @@ namespace PSGM.MultiTestApp1
                 },
                 NotificationUserGroup = null,
 
-                MachinesExt = new List<Guid>()
+                Machines_Ext = new List<Guid>()
                 {
                     _machineId
                 },
@@ -1446,7 +1446,7 @@ namespace PSGM.MultiTestApp1
 
         private void btnConnectToStorageDatabase_Click(object sender, RoutedEventArgs e)
         {
-            List<DbMain_Project> projects = _dbMain_Context.Projects.Where(p => p.MachinesExt.Contains(_machineId))
+            List<DbMain_Project> projects = _dbMain_Context.Projects.Where(p => p.Machines_Ext.Contains(_machineId))
                                                         .Include(p => p.ProjectParameter)
                                                            .ThenInclude(p => p.Storages)
                                                         .Include(p => p.Organization)
@@ -1469,7 +1469,7 @@ namespace PSGM.MultiTestApp1
 
         private void btnSetupStorageAndStorageDb_Click(object sender, RoutedEventArgs e)
         {
-            DbMain_Project projects = _dbMain_Context.Projects.Where(p => p.MachinesExt.Contains(_machineId))
+            DbMain_Project projects = _dbMain_Context.Projects.Where(p => p.Machines_Ext.Contains(_machineId))
                                                                .Include(p => p.ProjectParameter)
                                                           .Include(p => p.Organization)
                                                                .Include(p => p.Contributors)
@@ -1677,7 +1677,7 @@ namespace PSGM.MultiTestApp1
 
         private void btnDbReadInfo_Click(object sender, RoutedEventArgs e)
         {
-            List<DbMain_Project> projects = _dbMain_Context.Projects.Where(p => p.MachinesExt.Contains(_machineId))
+            List<DbMain_Project> projects = _dbMain_Context.Projects.Where(p => p.Machines_Ext.Contains(_machineId))
                                                                     .Include(p => p.ProjectParameter)
                                                                     .Include(p => p.Organization)
                                                                     .Include(p => p.Contributors)
@@ -1791,7 +1791,7 @@ namespace PSGM.MultiTestApp1
             string filePath = string.Empty;
             string contentType = string.Empty;
 
-            List<DbMain_Project> projects = _dbMain_Context.Projects.Where(p => p.MachinesExt.Contains(_machineId))
+            List<DbMain_Project> projects = _dbMain_Context.Projects.Where(p => p.Machines_Ext.Contains(_machineId))
                                                                     .Include(p => p.ProjectParameter)
                                                                         .ThenInclude(p => p.Storages)
                                                                     .Include(p => p.Organization)
@@ -2095,7 +2095,7 @@ namespace PSGM.MultiTestApp1
 
             FileInfo fileInfo;
 
-            List<DbMain_Project> projects = _dbMain_Context.Projects.Where(p => p.MachinesExt.Contains(_machineId))
+            List<DbMain_Project> projects = _dbMain_Context.Projects.Where(p => p.Machines_Ext.Contains(_machineId))
                                                                     .Include(p => p.ProjectParameter)
                                                                     .Include(p => p.Organization)
                                                                     .Include(p => p.Contributors)
@@ -2388,7 +2388,7 @@ namespace PSGM.MultiTestApp1
 
             Workflow workflow;
 
-            List<DbMain_Project> projects = _dbMain_Context.Projects.Where(p => p.MachinesExt.Contains(_machineId))
+            List<DbMain_Project> projects = _dbMain_Context.Projects.Where(p => p.Machines_Ext.Contains(_machineId))
                                                                       .Include(p => p.ProjectParameter)
                                                                       .Include(p => p.Organization)
                                                                       .Include(p => p.Contributors)

@@ -58,23 +58,29 @@ namespace PSGM.Model.DbMain
         public DateTime CreatedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
         [Required]
-        [Column("CreatedByUserIdExtAutoFill")]
-        [Display(Name = "CreatedByUserIdExtAutoFill")]
-        public Guid CreatedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        [Column("CreatedByUserId_ExtAutoFill")]
+        [Display(Name = "CreatedByUserId_ExtAutoFill")]
+        public Guid CreatedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
 
         [Column("ModifiedDateTimeAutoFill")]
         [Display(Name = "ModifiedDateTimeAutoFill")]
         public DateTime ModifiedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
-        [Column("ModifiedByUserIdExtAutoFill")]
-        [Display(Name = "ModifiedByUserIdExtAutoFill")]
-        public Guid ModifiedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        [Column("ModifiedByUserId_ExtAutoFill")]
+        [Display(Name = "ModifiedByUserId_ExtAutoFill")]
+        public Guid ModifiedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
         #endregion
         #endregion
 
         #region Links
         [InverseProperty("Organization")]
         public virtual ICollection<DbMain_Contributors>? Contributors { get; set; }
+
+        [InverseProperty("Organization")]
+        public virtual ICollection<DbMain_Organization_Employee>? Employees { get; set; }
+
+        [InverseProperty("Organization")]
+        public virtual ICollection<DbMain_Organization_EmployeeGroup>? EmployeeGroups { get; set; }
 
         [InverseProperty("Organization")]
         public virtual ICollection<DbMain_Organization_Location_Link>? LocationLinks { get; set; }
@@ -84,20 +90,17 @@ namespace PSGM.Model.DbMain
         [ForeignKey("Project")]
         public Guid? ProjectId { get; set; }
         public virtual DbMain_Project? Project { get; set; }
+
+        [ForeignKey("DeliverySlipInternet")]
+        public Guid? DeliverySlipInternetId { get; set; }
+        public virtual DbMain_DeliverySlip? DeliverySlipInternet { get; set; }
+
+        [ForeignKey("DeliverySlipExternal")]
+        public Guid? DeliverySlipExternalId { get; set; }
+        public virtual DbMain_DeliverySlip? DeliverySlipExternal { get; set; }
         #endregion
 
         #region Links (Outside DB)
-        [InverseProperty("Organization")]
-        public virtual ICollection<DbMain_Organization_Employee_Link>? EmployeeLinks { get; set; }
-
-        [InverseProperty("Organization")]
-        public virtual ICollection<DbMain_Organization_EmployeeGroup_Link>? EmployeeGroupLinks { get; set; }
-
-        [InverseProperty("Organization")]
-        public virtual ICollection<DbMain_Organization_Notification_User_Link>? NotificationUserLinks { get; set; }
-
-        [InverseProperty("Organization")]
-        public virtual ICollection<DbMain_Organization_Notification_UserGroup_Link>? NotificationUserGroupLinks { get; set; }
         #endregion
 
         #region Not Mapped

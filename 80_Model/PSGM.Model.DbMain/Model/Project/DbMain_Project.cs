@@ -39,14 +39,6 @@ namespace PSGM.Model.DbMain
         [Display(Name = "Finished")]
         public DateTime Finished { get; set; } = DateTime.MinValue;
 
-
-
-
-
-
-
-
-
         [Column("AqlQuantityImage")]
         [Display(Name = "AqlQuantityImage")]
         public AqlQuantity AqlQuantityImage { get; set; } = AqlQuantity.None;
@@ -66,8 +58,6 @@ namespace PSGM.Model.DbMain
         [Column("AqlStateLastChangeImage")]
         [Display(Name = "AqlStateLastChangeImage")]
         public DateTime AqlStateLastChangeImage { get; set; } = DateTime.MinValue;
-
-
 
         [Column("AqlQuantityTranscription")]
         [Display(Name = "AqlQuantityTranscription")]
@@ -89,29 +79,14 @@ namespace PSGM.Model.DbMain
         [Display(Name = "AqlStateLastChangeTranscription")]
         public DateTime AqlStateLastChangeTranscription { get; set; } = DateTime.MinValue;
 
-
-
         [Column("MaxDirectorySize")]
         [Display(Name = "MaxDirectorySize")]
         public long MaxDirectorySize { get; set; } = 125000000;     // Byte
 
-
-
-
-
-
-        [Column("WorkflowIdExt")]
-        [Display(Name = "WorkflowIdExt")]
-        public Guid WorkflowIdExt { get; set; } = Guid.Empty;
-
-        [Column("WorkflowApplyLevel")]
-        [Display(Name = "WorkflowApplyLevel")]
-        public WorkflowApplyLevel WorkflowApplyLevel { get; set; } = WorkflowApplyLevel.Undefined;
-
-        [Column("MachinesExtString")]
-        [Display(Name = "MachinesExtString")]
+        [Column("Machines_ExtString")]
+        [Display(Name = "Machines_ExtString")]
         [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string MachinesExtString { get; private set; } = string.Empty;
+        public string Machines_ExtString { get; private set; } = string.Empty;
 
         #region Audit details for faster file audit information
         [Required]
@@ -120,26 +95,26 @@ namespace PSGM.Model.DbMain
         public DateTime CreatedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
         [Required]
-        [Column("CreatedByUserIdExtAutoFill")]
-        [Display(Name = "CreatedByUserIdExtAutoFill")]
-        public Guid CreatedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        [Column("CreatedByUserId_ExtAutoFill")]
+        [Display(Name = "CreatedByUserId_ExtAutoFill")]
+        public Guid CreatedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
 
         [Column("ModifiedDateTimeAutoFill")]
         [Display(Name = "ModifiedDateTimeAutoFill")]
         public DateTime ModifiedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
-        [Column("ModifiedByUserIdExtAutoFill")]
-        [Display(Name = "ModifiedByUserIdExtAutoFill")]
-        public Guid ModifiedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        [Column("ModifiedByUserId_ExtAutoFill")]
+        [Display(Name = "ModifiedByUserId_ExtAutoFill")]
+        public Guid ModifiedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
         #endregion
         #endregion
 
         #region Links
         [InverseProperty("Project")]
-        public virtual DbMain_DeliverySlip? DeliverySlip { get; set; }
+        public virtual ICollection<DbMain_Contributors>? Contributors { get; set; }
 
         [InverseProperty("Project")]
-        public virtual ICollection<DbMain_Contributors>? Contributors { get; set; }
+        public virtual ICollection<DbMain_DeliverySlip>? DeliverySlips { get; set; }
 
         [InverseProperty("Project")]
         public virtual ICollection<DbMain_Project_Location_Link>? LocationLinks { get; set; }
@@ -148,16 +123,7 @@ namespace PSGM.Model.DbMain
         public virtual DbMain_Organization? Organization { get; set; }
 
         [InverseProperty("Project")]
-        public virtual ICollection<DbMain_Project_Authorization_User_Link>? AuthorizationUserLinks { get; set; }
-
-        [InverseProperty("Project")]
-        public virtual ICollection<DbMain_Project_Authorization_UserGroup_Link>? AuthorizationUserGroupLinks { get; set; }
-
-        [InverseProperty("Project")]
-        public virtual ICollection<DbMain_Project_Notification_User_Link>? NotificationUserLinks { get; set; }
-
-        [InverseProperty("Project")]
-        public virtual ICollection<DbMain_Project_Notification_UserGroup_Link>? NotificationUserGroupLinks { get; set; }
+        public virtual ICollection<DbMain_WorkflowGroup>? WorkflowGroups { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
@@ -165,10 +131,10 @@ namespace PSGM.Model.DbMain
 
         #region Not Mapped
         [NotMapped]
-        public List<Guid> MachinesExt
+        public List<Guid>? Machines_Ext
         {
-            get { return MachinesExtString != string.Empty ? MachinesExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { MachinesExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+            get { return Machines_ExtString != string.Empty ? Machines_ExtString.Split(',').Select(Guid.Parse).ToList() : null; }
+            set { Machines_ExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
         }
         #endregion
     }

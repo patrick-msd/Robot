@@ -150,8 +150,8 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("NameProjectOwner");
 
-                    b.Property<long>("ObjectExtension")
-                        .HasColumnType("bigint")
+                    b.Property<int>("ObjectExtension")
+                        .HasColumnType("integer")
                         .HasColumnName("ObjectExtension");
 
                     b.Property<long>("ObjectSize")
@@ -578,6 +578,10 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
+                    b.Property<bool>("ApplicableForFiles")
+                        .HasColumnType("boolean")
+                        .HasColumnName("ApplicableForFiles");
+
                     b.Property<Guid>("CreatedByUserIdExtAutoFill")
                         .HasColumnType("uuid")
                         .HasColumnName("CreatedByUserIdExtAutoFill");
@@ -592,22 +596,18 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(8191)")
                         .HasColumnName("Description");
 
-                    b.Property<bool>("EditAll")
-                        .HasColumnType("boolean")
-                        .HasColumnName("EditAll");
-
-                    b.Property<bool>("Hidden")
-                        .HasColumnType("boolean")
-                        .HasColumnName("Hidden");
-
                     b.Property<string>("Key")
                         .IsRequired()
                         .HasMaxLength(1024)
                         .HasColumnType("character varying(1024)")
                         .HasColumnName("Key");
 
-                    b.Property<long>("MetadataType")
-                        .HasColumnType("bigint")
+                    b.Property<int>("MetadataPermissions")
+                        .HasColumnType("integer")
+                        .HasColumnName("MetadataPermissions");
+
+                    b.Property<int>("MetadataType")
+                        .HasColumnType("integer")
                         .HasColumnName("MetadataType");
 
                     b.Property<Guid>("ModifiedByUserIdExtAutoFill")
@@ -631,10 +631,6 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasMaxLength(8191)
                         .HasColumnType("character varying(8191)")
                         .HasColumnName("Value");
-
-                    b.Property<bool>("ViewAll")
-                        .HasColumnType("boolean")
-                        .HasColumnName("ViewAll");
 
                     b.HasKey("Id");
 
@@ -1413,8 +1409,8 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("Name");
 
-                    b.Property<long>("QrCodeType")
-                        .HasColumnType("bigint")
+                    b.Property<int>("QrCodeType")
+                        .HasColumnType("integer")
                         .HasColumnName("QrCodeType");
 
                     b.HasKey("Id");
@@ -1497,8 +1493,8 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("ModifiedDateTimeAutoFill");
 
-                    b.Property<long>("QualityState")
-                        .HasColumnType("bigint")
+                    b.Property<int>("QualityState")
+                        .HasColumnType("integer")
                         .HasColumnName("QualityState");
 
                     b.HasKey("Id");
@@ -1594,8 +1590,8 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("DirectorySizeAutofill");
 
-                    b.Property<long>("DirectoryState")
-                        .HasColumnType("bigint")
+                    b.Property<int>("DirectoryState")
+                        .HasColumnType("integer")
                         .HasColumnName("DirectoryState");
 
                     b.Property<string>("JobIdsExtString")
@@ -2020,22 +2016,18 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(8191)")
                         .HasColumnName("Description");
 
-                    b.Property<bool>("EditAll")
-                        .HasColumnType("boolean")
-                        .HasColumnName("EditAll");
-
-                    b.Property<bool>("Hidden")
-                        .HasColumnType("boolean")
-                        .HasColumnName("Hidden");
-
                     b.Property<string>("Key")
                         .IsRequired()
                         .HasMaxLength(1024)
                         .HasColumnType("character varying(1024)")
                         .HasColumnName("Key");
 
-                    b.Property<long>("MetadataType")
-                        .HasColumnType("bigint")
+                    b.Property<int>("MetadataPermissions")
+                        .HasColumnType("integer")
+                        .HasColumnName("MetadataPermissions");
+
+                    b.Property<int>("MetadataType")
+                        .HasColumnType("integer")
                         .HasColumnName("MetadataType");
 
                     b.Property<Guid>("ModifiedByUserIdExtAutoFill")
@@ -2059,10 +2051,6 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasMaxLength(8191)
                         .HasColumnType("character varying(8191)")
                         .HasColumnName("Value");
-
-                    b.Property<bool>("ViewAll")
-                        .HasColumnType("boolean")
-                        .HasColumnName("ViewAll");
 
                     b.HasKey("Id");
 
@@ -2838,8 +2826,8 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("Name");
 
-                    b.Property<long>("QrCodeType")
-                        .HasColumnType("bigint")
+                    b.Property<int>("QrCodeType")
+                        .HasColumnType("integer")
                         .HasColumnName("QrCodeType");
 
                     b.Property<Guid?>("RootDirectoryId")
@@ -2922,8 +2910,8 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("ModifiedDateTimeAutoFill");
 
-                    b.Property<long>("QualityState")
-                        .HasColumnType("bigint")
+                    b.Property<int>("QualityState")
+                        .HasColumnType("integer")
                         .HasColumnName("QualityState");
 
                     b.Property<Guid?>("RootDirectoryId")
@@ -3022,8 +3010,8 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("DirectorySizeAutofill");
 
-                    b.Property<long>("DirectoryState")
-                        .HasColumnType("bigint")
+                    b.Property<int>("DirectoryState")
+                        .HasColumnType("integer")
                         .HasColumnName("DirectoryState");
 
                     b.Property<string>("JobIdsExtString")
@@ -3458,22 +3446,18 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(8191)")
                         .HasColumnName("Description");
 
-                    b.Property<bool>("EditAll")
-                        .HasColumnType("boolean")
-                        .HasColumnName("EditAll");
-
-                    b.Property<bool>("Hidden")
-                        .HasColumnType("boolean")
-                        .HasColumnName("Hidden");
-
                     b.Property<string>("Key")
                         .IsRequired()
                         .HasMaxLength(1024)
                         .HasColumnType("character varying(1024)")
                         .HasColumnName("Key");
 
-                    b.Property<long>("MetadataType")
-                        .HasColumnType("bigint")
+                    b.Property<int>("MetadataPermissions")
+                        .HasColumnType("integer")
+                        .HasColumnName("MetadataPermissions");
+
+                    b.Property<int>("MetadataType")
+                        .HasColumnType("integer")
                         .HasColumnName("MetadataType");
 
                     b.Property<Guid>("ModifiedByUserIdExtAutoFill")
@@ -3497,10 +3481,6 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasMaxLength(8191)
                         .HasColumnType("character varying(8191)")
                         .HasColumnName("Value");
-
-                    b.Property<bool>("ViewAll")
-                        .HasColumnType("boolean")
-                        .HasColumnName("ViewAll");
 
                     b.HasKey("Id");
 
@@ -4276,8 +4256,8 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("Name");
 
-                    b.Property<long>("QrCodeType")
-                        .HasColumnType("bigint")
+                    b.Property<int>("QrCodeType")
+                        .HasColumnType("integer")
                         .HasColumnName("QrCodeType");
 
                     b.Property<Guid?>("SubDirectoryId")
@@ -4360,8 +4340,8 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("ModifiedDateTimeAutoFill");
 
-                    b.Property<long>("QualityState")
-                        .HasColumnType("bigint")
+                    b.Property<int>("QualityState")
+                        .HasColumnType("integer")
                         .HasColumnName("QualityState");
 
                     b.Property<Guid?>("SubDirectoryId")

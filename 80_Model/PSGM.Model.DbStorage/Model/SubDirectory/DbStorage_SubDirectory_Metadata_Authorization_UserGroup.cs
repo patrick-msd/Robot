@@ -22,7 +22,7 @@ namespace PSGM.Model.DbStorage
         [Required]
         [Column("Permissions")]
         [Display(Name = "Permissions")]
-        public PermissionType Permissions { get; set; } = PermissionType.None;
+        public EmployeeType Permissions { get; set; } = EmployeeType.None;
 
         [Required]
         [Column("UserGroupIdExt")]

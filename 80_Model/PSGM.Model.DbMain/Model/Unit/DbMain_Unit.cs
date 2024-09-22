@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PSGM.Helper;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbMain
@@ -15,7 +16,7 @@ namespace PSGM.Model.DbMain
 
         [Column("Suffix")]
         [Display(Name = "Suffix")]
-        [StringLength(127, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Suffix { get; set; } = string.Empty;
 
         [Required]
@@ -24,41 +25,106 @@ namespace PSGM.Model.DbMain
         [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Name { get; set; } = string.Empty;
 
+        [Column("Prefix")]
+        [Display(Name = "Prefix")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Prefix { get; set; } = string.Empty;
+
         [Column("Description")]
         [Display(Name = "Description")]
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
-        [Column("Objects")]
-        [Display(Name = "Objects")]
-        public long Objects { get; set; } = 0;
+        [Column("SuffixProjectOwner")]
+        [Display(Name = "SuffixProjectOwner")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string SuffixProjectOwner { get; set; } = string.Empty;
 
-        [Column("DirectorySize")]
-        [Display(Name = "DirectorySize")]
-        public long DirectorySize { get; set; } = 0;
+        [Required]
+        [Column("NameProjectOwner")]
+        [Display(Name = "NameProjectOwner")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string NameProjectOwner { get; set; } = string.Empty;
 
-        [Column("DocumentType")]
-        [Display(Name = "DocumentType")]
-        public bool DocumentType { get; set; } = false;
+        [Column("PrefixProjectOwner")]
+        [Display(Name = "PrefixProjectOwner")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string PrefixProjectOwner { get; set; } = string.Empty;
+
+        [Column("DescriptionProjectOwner")]
+        [Display(Name = "DescriptionProjectOwner")]
+        [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string DescriptionProjectOwner { get; set; } = string.Empty;
+
+        [Column("Stars")]
+        [Display(Name = "Stars")]
+        public int Stars { get; set; } = -1;
+
+        [Column("Order")]
+        [Display(Name = "Order")]
+        public int Order { get; set; } = -1;
+
+        [Column("NaturalUnit")]
+        [Display(Name = "NaturalUnit")]
+        public bool NaturalUnit { get; set; } = false;
+
+        [Column("PreparationDateTime")]
+        [Display(Name = "PreparationDateTime")]
+        public DateTime PreparationDateTime { get; set; } = DateTime.MinValue;
+
+        [Column("PreparationUserId_Ext")]
+        [Display(Name = "PreparationUserId_Ext")]
+        public Guid PreparationUserId_Ext { get; set; } = Guid.Empty;
+
+        [Column("DetectedDefectsDuringPreparation")]
+        [Display(Name = "DetectedDefectsDuringPreparation")]
+        public int DetectedDefectsDuringPreparation { get; set; } = 0;
+
+        [Column("AqlStateImage")]
+        [Display(Name = "AqlStateImage")]
+        public AqlState AqlStateImage { get; set; } = AqlState.None;
+
+        [Column("AqlStateLastChangeImage")]
+        [Display(Name = "AqlStateLastChangeImage")]
+        public DateTime AqlStateLastChangeImage { get; set; } = DateTime.MinValue;
+
+        [Column("AqlStateTranscription")]
+        [Display(Name = "AqlStateTranscription")]
+        public AqlState AqlStateTranscription { get; set; } = AqlState.None;
+
+        [Column("AqlStateLastChangeTranscription")]
+        [Display(Name = "AqlStateLastChangeTranscription")]
+        public DateTime AqlStateLastChangeTranscription { get; set; } = DateTime.MinValue;
+
+
+
+
+
+
+
+
+
+        [Column("ObjectsOnStorageInUnit")]
+        [Display(Name = "ObjectsOnStorageInUnit")]
+        public int ObjectsOnStorageInUnit { get; set; } = 0;
+
+        [Column("DirectorySizeOnStorage")]
+        [Display(Name = "DirectorySizeOnStorage")]
+        public long DirectorySizeOnStorage { get; set; } = 0;
 
         [Column("Locked")]
         [Display(Name = "Locked")]
         public bool Locked { get; set; } = false;
 
-        [Column("JobsIdExtString")]
-        [Display(Name = "JobsIdExtString")]
+        [Column("JobsId_ExtString")]
+        [Display(Name = "JobsId_ExtString")]
         [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string JobsIdExtString { get; private set; } = string.Empty;
+        public string JobsId_ExtString { get; private set; } = string.Empty;
 
-        [Column("WorkflowItemExtString")]
-        [Display(Name = "WorkflowItemExtString")]
+        [Column("Backups_ExtString")]
+        [Display(Name = "Backups_ExtString")]
         [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string WorkflowItemsExtString { get; private set; } = string.Empty;
-
-        [Column("BackupsExtString")]
-        [Display(Name = "BackupsExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string BackupsExtString { get; private set; } = string.Empty;
+        public string Backups_ExtString { get; private set; } = string.Empty;
 
         #region Audit details for faster file audit information
         [Required]
@@ -67,26 +133,24 @@ namespace PSGM.Model.DbMain
         public DateTime CreatedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
         [Required]
-        [Column("CreatedByUserIdExtAutoFill")]
-        [Display(Name = "CreatedByUserIdExtAutoFill")]
-        public Guid CreatedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        [Column("CreatedByUserId_ExtAutoFill")]
+        [Display(Name = "CreatedByUserId_ExtAutoFill")]
+        public Guid CreatedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
 
         [Column("ModifiedDateTimeAutoFill")]
         [Display(Name = "ModifiedDateTimeAutoFill")]
         public DateTime ModifiedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
-        [Column("ModifiedByUserIdExtAutoFill")]
-        [Display(Name = "ModifiedByUserIdExtAutoFill")]
-        public Guid ModifiedByUserIdExtAutoFill { get; set; } = Guid.Empty;
-
-        [Column("LastModificationChanges")]
-        [Display(Name = "LastModificationChanges")]
-        [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string LastModificationChanges { get; set; } = string.Empty;
+        [Column("ModifiedByUserId_ExtAutoFill")]
+        [Display(Name = "ModifiedByUserId_ExtAutoFill")]
+        public Guid ModifiedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
         #endregion
         #endregion
 
         #region Links
+        [InverseProperty("Unit")]
+        public virtual DbMain_WorkflowGroup? ApplicableWorkflowGroup { get; set; }
+
         [InverseProperty("ParentUnit")]
         public virtual ICollection<DbMain_Unit>? Unit { get; set; }
         #endregion
@@ -96,7 +160,6 @@ namespace PSGM.Model.DbMain
         public Guid? DeliverySlipId { get; set; }
         public virtual DbMain_DeliverySlip? DeliverySlip { get; set; }
 
-
         [ForeignKey("ParentUnit")]
         public Guid? ParentUnitId { get; set; }
         public virtual DbMain_Unit? ParentUnit { get; set; }
@@ -104,38 +167,17 @@ namespace PSGM.Model.DbMain
 
         #region Not Mapped
         [NotMapped]
-        public List<Guid>? JobsIdExt
+        public List<Guid>? JobsId_Ext
         {
-            get { return JobsIdExtString != string.Empty ? JobsIdExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { JobsIdExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+            get { return JobsId_ExtString != string.Empty ? JobsId_ExtString.Split(',').Select(Guid.Parse).ToList() : null; }
+            set { JobsId_ExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
         }
 
         [NotMapped]
-        public List<Guid>? WorkflowItemsExt
+        public List<Guid>? Backups_Ext
         {
-            get { return WorkflowItemsExtString != string.Empty ? WorkflowItemsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { WorkflowItemsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        }
-
-        //[NotMapped]
-        //public List<Guid>? AuthorizedUsersExt
-        //{
-        //    get { return AuthorizedUsersExtString != string.Empty ? AuthorizedUsersExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-        //    set { AuthorizedUsersExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        //}
-
-        //[NotMapped]
-        //public List<Guid>? AuthorizedUserGroupsExt
-        //{
-        //    get { return AuthorizedUserGroupsExtString != string.Empty ? AuthorizedUserGroupsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-        //    set { AuthorizedUserGroupsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        //}
-
-        [NotMapped]
-        public List<Guid>? BackupsExt
-        {
-            get { return BackupsExtString != string.Empty ? BackupsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { BackupsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+            get { return Backups_ExtString != string.Empty ? Backups_ExtString.Split(',').Select(Guid.Parse).ToList() : null; }
+            set { Backups_ExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
         }
         #endregion
     }

@@ -28,7 +28,7 @@ namespace PSGM.Model.DbWorkflow
                     Name = "Save object to S3 storage or filesystem and add entity to database - V1.0.0",
                     Description = "Save object (depending on storage configuration in project parameters) to specified S3 storage or filesystem and add the file entity to the database...",
 
-                    Permissions = PermissionType.None,
+                    Permissions = EmployeeType.None,
                     WorkflowApplyLevel = WorkflowApplyLevel.File,
                     WorkflowExecutionLevel = WorkflowExecutionLevel.ManuallyAndAutomatically,
 
@@ -48,7 +48,7 @@ namespace PSGM.Model.DbWorkflow
                     Name = "Grab image - V1.0.0",
                     Description = "Grab image with specified camera ...",
 
-                    Permissions = PermissionType.None,
+                    Permissions = EmployeeType.None,
                     WorkflowApplyLevel = WorkflowApplyLevel.File,
                     WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
 
@@ -68,7 +68,7 @@ namespace PSGM.Model.DbWorkflow
                     Name = "Calculate HDR image - V1.0.0",
                     Description = "Calculate HDR image with OpenCV (mergeMertens) ...",
 
-                    Permissions = PermissionType.None,
+                    Permissions = EmployeeType.None,
                     WorkflowApplyLevel = WorkflowApplyLevel.File,
                     WorkflowExecutionLevel = WorkflowExecutionLevel.ManuallyAndAutomatically,
 
@@ -86,7 +86,7 @@ namespace PSGM.Model.DbWorkflow
                     Name = "Calculate darktable image - V1.0.0",
                     Description = "Calculate darktable image according to the sidecar file ...",
 
-                    Permissions = PermissionType.None,
+                    Permissions = EmployeeType.None,
                     WorkflowApplyLevel = WorkflowApplyLevel.File,
                     WorkflowExecutionLevel = WorkflowExecutionLevel.ManuallyAndAutomatically,
 
@@ -104,7 +104,7 @@ namespace PSGM.Model.DbWorkflow
                     Name = "Resize image - V1.0.0",
                     Description = "Resize image to specified size...",
 
-                    Permissions = PermissionType.None,
+                    Permissions = EmployeeType.None,
                     WorkflowApplyLevel = WorkflowApplyLevel.File,
                     WorkflowExecutionLevel = WorkflowExecutionLevel.ManuallyAndAutomatically,
 
@@ -122,7 +122,7 @@ namespace PSGM.Model.DbWorkflow
                     Name = "Crop image - V1.0.0",
                     Description = "Crop image to specified size...",
 
-                    Permissions = PermissionType.None,
+                    Permissions = EmployeeType.None,
                     WorkflowApplyLevel = WorkflowApplyLevel.File,
                     WorkflowExecutionLevel = WorkflowExecutionLevel.ManuallyAndAutomatically,
 
@@ -140,7 +140,7 @@ namespace PSGM.Model.DbWorkflow
                     Name = "Rotate image - V1.0.0",
                     Description = "Rotate image ...",
 
-                    Permissions = PermissionType.None,
+                    Permissions = EmployeeType.None,
                     WorkflowApplyLevel = WorkflowApplyLevel.File,
                     WorkflowExecutionLevel = WorkflowExecutionLevel.ManuallyAndAutomatically,
 
@@ -158,7 +158,7 @@ namespace PSGM.Model.DbWorkflow
                     Name = "Rotate image - V2.0.0",
                     Description = "Rotate image ...",
 
-                    Permissions = PermissionType.None,
+                    Permissions = EmployeeType.None,
                     WorkflowApplyLevel = WorkflowApplyLevel.File,
                     WorkflowExecutionLevel = WorkflowExecutionLevel.ManuallyAndAutomatically,
 
@@ -176,7 +176,7 @@ namespace PSGM.Model.DbWorkflow
                     Name = "Sharpen image - V1.0.0",
                     Description = "Sharpen image ...",
 
-                    Permissions = PermissionType.None,
+                    Permissions = EmployeeType.None,
                     WorkflowApplyLevel = WorkflowApplyLevel.File,
                     WorkflowExecutionLevel = WorkflowExecutionLevel.ManuallyAndAutomatically,
 
@@ -194,7 +194,7 @@ namespace PSGM.Model.DbWorkflow
                     Name = "Sharpen image - V2.0.0",
                     Description = "Sharpen image ...",
 
-                    Permissions = PermissionType.None,
+                    Permissions = EmployeeType.None,
                     WorkflowApplyLevel = WorkflowApplyLevel.File,
                     WorkflowExecutionLevel = WorkflowExecutionLevel.ManuallyAndAutomatically,
 

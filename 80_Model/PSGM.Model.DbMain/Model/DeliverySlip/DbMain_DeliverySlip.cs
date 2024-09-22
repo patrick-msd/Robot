@@ -20,32 +20,28 @@ namespace PSGM.Model.DbMain
         [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Name { get; set; } = string.Empty;
 
-        [Column("InternalContactUserIdExt")]
-        [Display(Name = "InternalContactUserIdExt")]
-        public Guid InternalContactUserIdExt { get; set; } = Guid.Empty;
-
-        [Column("InternalContributorsUserIdExt")]
-        [Display(Name = "InternalContributorsUserIdExt")]
-        public Guid InternalContributorsUserIdExt { get; set; } = Guid.Empty;
-
-        [Column("ExternalContactUserIdExt")]
-        [Display(Name = "ExternalContactUserIdExt")]
-        public Guid ExternalContactUserIdExt { get; set; } = Guid.Empty;
-
-        [Column("ExternalContributorsUserIdExt")]
-        [Display(Name = "ExternalContributorsUserIdExt")]
-        public Guid ExternalContributorsUserIdExt { get; set; } = Guid.Empty;
-
         [Column("Description")]
         [Display(Name = "Description")]
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
+        [Column("InternalContactUserId_Ext")]
+        [Display(Name = "InternalContactUserId_Ext")]
+        public Guid InternalContactUserId_Ext { get; set; } = Guid.Empty;
+
+        [Column("ExternalContactUserId_Ext")]
+        [Display(Name = "ExternalContactUserId_Ext")]
+        public Guid ExternalContactUserId_Ext { get; set; } = Guid.Empty;
+
         [Column("DeliverySlipIsDirectory")]
         [Display(Name = "DeliverySlipIsDirectory")]
         public bool DeliverySlipIsDirectory { get; set; } = false;
 
-        [Column("DeliverySliplState")]
+        [Column("NumberOfUnits")]
+        [Display(Name = "NumberOfUnits")]
+        public int NumberOfUnits { get; set; } = 0;
+
+        [Column("DeliverySlipState")]
         [Display(Name = "DeliverySlipState")]
         [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public DeliverySlipType DeliverySlipState { get; set; } = DeliverySlipType.Undefined;
@@ -60,18 +56,23 @@ namespace PSGM.Model.DbMain
         [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public DateTime ProcessingStartedDateTime { get; set; } = DateTime.MinValue;
 
-        [Column("ProcessingStartedUserIdExt")]
-        [Display(Name = "ProcessingStartedUserIdExt")]
-        public Guid ProcessingStartedUserIdExt { get; set; } = Guid.Empty;
+        [Column("Machines_ExtString")]
+        [Display(Name = "Machines_ExtString")]
+        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Machines_ExtString { get; private set; } = string.Empty;
+
+        [Column("ProcessingStartedUserId_Ext")]
+        [Display(Name = "ProcessingStartedUserId_Ext")]
+        public Guid ProcessingStartedUserId_Ext { get; set; } = Guid.Empty;
 
         [Column("ProcessingFinishedDateTime")]
         [Display(Name = "ProcessingFinishedDateTime")]
         [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public DateTime ProcessingFinishedDateTime { get; set; } = DateTime.MinValue;
 
-        [Column("ProcessingFinishedUserIdExt")]
-        [Display(Name = "ProcessingFinishedUserIdExt")]
-        public Guid ProcessingFinishedUserIdExt { get; set; } = Guid.Empty;
+        [Column("ProcessingFinishedUserId_Ext")]
+        [Display(Name = "ProcessingFinishedUserId_Ext")]
+        public Guid ProcessingFinishedUserId_Ext { get; set; } = Guid.Empty;
 
         #region Audit details for faster file audit information
         [Required]
@@ -80,29 +81,35 @@ namespace PSGM.Model.DbMain
         public DateTime CreatedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
         [Required]
-        [Column("CreatedByUserIdExtAutoFill")]
-        [Display(Name = "CreatedByUserIdExtAutoFill")]
-        public Guid CreatedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        [Column("CreatedByUserId_ExtAutoFill")]
+        [Display(Name = "CreatedByUserId_ExtAutoFill")]
+        public Guid CreatedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
 
         [Column("ModifiedDateTimeAutoFill")]
         [Display(Name = "ModifiedDateTimeAutoFill")]
         public DateTime ModifiedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
-        [Column("ModifiedByUserIdExtAutoFill")]
-        [Display(Name = "ModifiedByUserIdExtAutoFill")]
-        public Guid ModifiedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        [Column("ModifiedByUserId_ExtAutoFill")]
+        [Display(Name = "ModifiedByUserId_ExtAutoFill")]
+        public Guid ModifiedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
         #endregion
         #endregion
 
         #region Links
         [InverseProperty("DeliverySlip")]
-        public virtual ICollection<DbMain_DocumentType>? DocumentTypes { get; set; }
-
-        [InverseProperty("DeliverySlip")]
         public virtual DbMain_DeliverySlip_Template? CreatedWithDeliverySlipTemplate { get; set; }
+
+        [InverseProperty("DeliverySlipInternet")]
+        public virtual DbMain_Organization? InternalOrganization { get; set; }
+
+        [InverseProperty("DeliverySlipExternal")]
+        public virtual DbMain_Organization? ExternalOrganization { get; set; }
 
         [InverseProperty("DeliverySlip")]
         public virtual ICollection<DbMain_Unit>? Units { get; set; }
+
+        [InverseProperty("DeliverySlip")]
+        public virtual DbMain_WorkflowGroup? ApplicableWorkflowGroup { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
@@ -112,6 +119,12 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Not Mapped
+        [NotMapped]
+        public List<Guid>? Machines_Ext
+        {
+            get { return Machines_ExtString != string.Empty ? Machines_ExtString.Split(',').Select(Guid.Parse).ToList() : null; }
+            set { Machines_ExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+        }
         #endregion
     }
 }

@@ -181,7 +181,7 @@ namespace RC.Robot.Doosan.Sample
 
         private void LoadDataFromDB()
         {
-            _dbMain_Projects = Globals.DbMain_Context.Projects.Where(p => p.MachinesExtString.Contains(Globals.Machine.MachineId.ToString()))
+            _dbMain_Projects = Globals.DbMain_Context.Projects.Where(p => p.Machines_ExtString.Contains(Globals.Machine.MachineId.ToString()))
                                                                 .Include(p => p.ProjectParameter)
                                                                     .ThenInclude(p => p.Storages)
                                                                 .Include(p => p.Organization)
