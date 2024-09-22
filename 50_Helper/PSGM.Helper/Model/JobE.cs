@@ -1,6 +1,6 @@
 ﻿namespace PSGM.Helper
 {
-    public enum JobType : uint
+    public enum JobType : int
     {
         Unknown = 0,
 

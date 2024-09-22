@@ -128,7 +128,7 @@ namespace PSGM.Sample.Model.DbStorage
         {
             _configFile = new ConfigFile()
             {
-                MainDatabaseConnectionString = "Host=db-clu001.branch31.psgm.at:50001;Database=dbMain;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
+                MainDatabaseConnectionString = "Host=db-clu001.branch31.psgm.at:50001;Database=DbMain;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
                 MainDatabaseType = DatabaseType.PostgreSQL,
             };
 
@@ -168,8 +168,8 @@ namespace PSGM.Sample.Model.DbStorage
             #endregion
 
             #region Add projects ...
-            List<DbMain_Organization> projects1 = Generate_Project1(250, locations1);
-            _dbMain_Context.Organizations.AddRange(projects1);
+            List<DbMain_Project> projects1 = Generate_Project1(locations1, organization1);
+            _dbMain_Context.Projects.AddRange(projects1);
             _dbMain_Context.SaveChanges();
             #endregion
 
@@ -180,34 +180,34 @@ namespace PSGM.Sample.Model.DbStorage
 
             for (int h = 0; h < 10; h++)
             {
-                #region Add addresses ...
-                List<DbMain_Address> addresses2 = Generate_Addresses2(25);
-                _dbMain_Context.Addresses.AddRange(addresses2);
-                _dbMain_Context.SaveChanges();
-                #endregion
+                //#region Add addresses ...
+                //List<DbMain_Address> addresses2 = Generate_Addresses2(25);
+                //_dbMain_Context.Addresses.AddRange(addresses2);
+                //_dbMain_Context.SaveChanges();
+                //#endregion
 
-                #region Add locations ...
-                List<DbMain_Location> locations2 = Generate_Locations2(25, addresses2);
-                _dbMain_Context.Locations.AddRange(locations2);
-                _dbMain_Context.SaveChanges();
-                #endregion
+                //#region Add locations ...
+                //List<DbMain_Location> locations2 = Generate_Locations2(25, addresses2);
+                //_dbMain_Context.Locations.AddRange(locations2);
+                //_dbMain_Context.SaveChanges();
+                //#endregion
 
-                #region Add rganizations ...
-                List<DbMain_Organization> organization2 = Generate_Organization2(250, locations2);
-                _dbMain_Context.Organizations.AddRange(organization2);
-                _dbMain_Context.SaveChanges();
-                #endregion
+                //#region Add rganizations ...
+                //List<DbMain_Organization> organization2 = Generate_Organization2(250, locations2);
+                //_dbMain_Context.Organizations.AddRange(organization2);
+                //_dbMain_Context.SaveChanges();
+                //#endregion
 
-                #region Add projects ...
-                List<DbMain_Organization> projects2 = Generate_Project2(250, locations2);
-                _dbMain_Context.Organizations.AddRange(projects2);
-                _dbMain_Context.SaveChanges();
-                #endregion
+                //#region Add projects ...
+                //List<DbMain_Project> projects2 = Generate_Project2(250, locations2);
+                //_dbMain_Context.Projects.AddRange(projects2);
+                //_dbMain_Context.SaveChanges();
+                //#endregion
 
-                addresses2.RemoveAll(p => true);
-                locations2.RemoveAll(p => true);
-                organization2.RemoveAll(p => true);
-                projects2.RemoveAll(p => true);
+                //addresses2.RemoveAll(p => true);
+                //locations2.RemoveAll(p => true);
+                //organization2.RemoveAll(p => true);
+                //projects2.RemoveAll(p => true);
 
                 // Clear the ChangeTracker to reduce memory usage
                 _dbMain_Context.ChangeTracker.Clear();
@@ -235,46 +235,46 @@ namespace PSGM.Sample.Model.DbStorage
 
             //var asdasd = _dbMain_Context.Files.ToList();
 
-            var asd = _dbMain_Context.Files.Where(f => f.ExtId3.Contains("e"))
-                                                    .Include(p => p.SubDirectory)
-                                                        .ThenInclude(p => p.RootDirectory)
-                                                    .Include(p => p.RootDirectory)
-                                                    .Include(p => p.MetadataLinks)
-                                                        .ThenInclude(p => p.Metadata)
-                                                    .Include(p => p.QrCode)
-                                                    .ToList();
+            //var asd = _dbMain_Context.Files.Where(f => f.ExtId3.Contains("e"))
+            //                                        .Include(p => p.SubDirectory)
+            //                                            .ThenInclude(p => p.RootDirectory)
+            //                                        .Include(p => p.RootDirectory)
+            //                                        .Include(p => p.MetadataLinks)
+            //                                            .ThenInclude(p => p.Metadata)
+            //                                        .Include(p => p.QrCode)
+            //                                        .ToList();
 
             //var asdsa = asd[0].Authorization_UsersIdExt;
             //var asddsdfsa = asd[0].NotificationUserGroupIdsExt;
             //var asadfdsa = asd[0].JobIdsExt;
             ////var asdadssa = asd[0].GetLastModificationChanges();
 
-            var asdasd = _dbMain_Context.Files.Where(p => p.AuthorizationUserLinks.Any(p => p.AuthorizationUser.UserIdExt == Guid.Parse("aa4590f8-5ce6-4e95-aa78-0dda009d629b")))
-                                                        .Include(p => p.SubDirectory)
-                                                            .ThenInclude(p => p.RootDirectory)
-                                                        .Include(p => p.RootDirectory)
-                                                        .Include(p => p.MetadataLinks)
-                                                            .ThenInclude(p => p.Metadata)
-                                                        .Include(p => p.QrCode)
-                                                        .Include(p => p.Quality)
-                                                        .Include(p => p.AuthorizationUserLinks)
-                                                            .ThenInclude(p => p.AuthorizationUser)
-                                                        .Include(p => p.AuthorizationUserGroupLinks)
-                                                            .ThenInclude(p => p.AuthorizationUserGroup)
-                                                        .Include(p => p.NotificationUserLinks)
-                                                            .ThenInclude(p => p.NotificationUser)
-                                                        .Include(p => p.NotificationUserGroupLinks)
-                                                            .ThenInclude(p => p.NotificationUserGroup)
-                                                        .ToList();
+            //var asdasd = _dbMain_Context.Files.Where(p => p.AuthorizationUserLinks.Any(p => p.AuthorizationUser.UserIdExt == Guid.Parse("aa4590f8-5ce6-4e95-aa78-0dda009d629b")))
+            //                                            .Include(p => p.SubDirectory)
+            //                                                .ThenInclude(p => p.RootDirectory)
+            //                                            .Include(p => p.RootDirectory)
+            //                                            .Include(p => p.MetadataLinks)
+            //                                                .ThenInclude(p => p.Metadata)
+            //                                            .Include(p => p.QrCode)
+            //                                            .Include(p => p.Quality)
+            //                                            .Include(p => p.AuthorizationUserLinks)
+            //                                                .ThenInclude(p => p.AuthorizationUser)
+            //                                            .Include(p => p.AuthorizationUserGroupLinks)
+            //                                                .ThenInclude(p => p.AuthorizationUserGroup)
+            //                                            .Include(p => p.NotificationUserLinks)
+            //                                                .ThenInclude(p => p.NotificationUser)
+            //                                            .Include(p => p.NotificationUserGroupLinks)
+            //                                                .ThenInclude(p => p.NotificationUserGroup)
+            //                                            .ToList();
 
 
 
-            var asd2 = _dbMain_Context.RootDirectories.ToList();
-            var asdasd2 = _dbMain_Context.SubDirectories.OrderBy(item => item.Id)
-                                                                .Take(100)
-                                                                .ToList();
+            //var asd2 = _dbMain_Context.RootDirectories.ToList();
+            //var asdasd2 = _dbMain_Context.SubDirectories.OrderBy(item => item.Id)
+            //                                                    .Take(100)
+            //                                                    .ToList();
 
-            var asdsad = _dbMain_Context.Files.ToList();
+            //var asdsad = _dbMain_Context.Files.ToList();
 
             ;
         }

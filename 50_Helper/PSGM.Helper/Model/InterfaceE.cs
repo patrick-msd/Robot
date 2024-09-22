@@ -1,6 +1,6 @@
 ﻿namespace PSGM.Helper
 {
-    public enum InterfaceManufacturer : uint
+    public enum InterfaceManufacturer : int
     {
         Undefined = 0,
 

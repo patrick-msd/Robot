@@ -4,8 +4,9 @@
     {
         None = -1,
 
-        PerOrder = 10000,
-        PerScanUnit = 20000,
+        PerDeliverySlip = 10000,
+
+        PerNaturalUnit = 20000,
     }
 
     public enum AqlInspectionLevel : int

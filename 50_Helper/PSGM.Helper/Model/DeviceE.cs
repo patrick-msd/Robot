@@ -1,6 +1,6 @@
 ﻿namespace PSGM.Helper
 {
-    public enum DeviceGroupeType : uint
+    public enum DeviceGroupeType : int
     {
         Undefined = 0,
 
@@ -11,7 +11,7 @@
         SheetCradle = 30000,
     }
 
-    public enum DeviceLocation : uint
+    public enum DeviceLocation : int
     {
         Undefined = 0,
 
@@ -19,7 +19,7 @@
 
         MainFrame = 20000,
 
-        SheetCrad = 30000,
+        SheetCradle = 30000,
         SheetCradleLeft = 30001,
         SheetCradleRight = 30002,
 
@@ -31,7 +31,7 @@
         Magazine = 90000,
     }
 
-    public enum DeviceCategory : uint
+    public enum DeviceCategory : int
     {
         Undefined = 0,
 
@@ -46,7 +46,7 @@
         Vision = 50000,
     }
 
-    public enum DeviceManufacturer : uint
+    public enum DeviceManufacturer : int
     {
         Undefined = 0,
 
@@ -72,7 +72,7 @@
         IXXAT = 90000,
     }
 
-    public enum DeviceType : uint
+    public enum DeviceType : int
     {
         Undefined = 0,
 

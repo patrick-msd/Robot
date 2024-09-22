@@ -1,6 +1,6 @@
 ﻿namespace PSGM.Helper
 {
-    public enum DirectoryState : uint
+    public enum DirectoryState : int
     {
         Undefined = 0,
 

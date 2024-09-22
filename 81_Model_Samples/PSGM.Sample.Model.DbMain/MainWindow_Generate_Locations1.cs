@@ -11,8 +11,9 @@ namespace PSGM.Sample.Model.DbStorage
             DbMain_Location locationUIBK = new DbMain_Location()
             {
                 Id = new Guid(),
-
+                
                 Name = "Headquarter",
+
                 AddressLink = new DbMain_Location_Address_Link()
                 {
                     Id = new Guid(),
@@ -20,7 +21,7 @@ namespace PSGM.Sample.Model.DbStorage
                     // FK
                     Address = addresses.Where(p => p.Line1.Contains("Innrain 52d")).First(),
                     //AddressId = Guid.Empty,
-
+                    
                     Location = null,
                     LocationId = null,
                 },

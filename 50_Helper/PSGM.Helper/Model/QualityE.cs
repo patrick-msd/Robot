@@ -1,6 +1,6 @@
 ﻿namespace PSGM.Helper
 {
-    public enum QualityState : uint
+    public enum QualityState : int
     {
         Undefined = 0,
 

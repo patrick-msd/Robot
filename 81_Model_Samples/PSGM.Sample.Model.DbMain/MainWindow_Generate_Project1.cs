@@ -5,7 +5,7 @@ namespace PSGM.Sample.Model.DbStorage
 {
     public partial class MainWindow : System.Windows.Window
     {
-        public List<DbMain_Project> Generate_Project1(List<DbMain_Location> locations)
+        public List<DbMain_Project> Generate_Project1(List<DbMain_Location> locations, List<DbMain_Organization> organizations)
         {
             Random random = new Random();
 
@@ -19,7 +19,7 @@ namespace PSGM.Sample.Model.DbStorage
                 Name = "Meldezettel",
                 Description = "Digitalisierung der Meldezettel von ...",
 
-                Organization = dbMain_organizationTLA,
+                Organization = organizations.Where(p => p.Acronym.Contains("TLA")).First(),
                 Contributors = new List<DbMain_Contributors>()
                 {
                     new  DbMain_Contributors()
@@ -31,162 +31,323 @@ namespace PSGM.Sample.Model.DbStorage
 
                         ContributorType = ContributorType.ServiceProviderScanning,
 
-                        Organization = dbMain_organizationUIBK,
+                        Organization = organizations.Where(p => p.Acronym.Contains("UIBK")).First(),
 
                         // FK
                         //Project=null,
                     }
                 },
 
-                Status = ProjectStatus.Created,
-                Started = DateTime.Now,
-                Finished = DateTime.MinValue,
-
-                WorkflowIdExt = _dbWorkflow_Context.Workflows.FirstOrDefault().Id,
-                WorkflowApplyLevel = WorkflowApplyLevel.File,
-
-                Order = null,
-
-                AuthorizationUser = new List<DbMain_Project_Authorization_User>()
+                LocationLinks = new List<DbMain_Project_Location_Link>()
                 {
-                    new DbMain_Project_Authorization_User()
+                    new DbMain_Project_Location_Link()
                     {
                         Id = Guid.NewGuid(),
-                        UserIdExt = _gertraudZeindlId,
-                        Permissions = PermissionType.Owner,
-
-                        Description = string.Empty,
 
                         // FK
-                        //Project = null,
-                        //ProjectId = Guid.Empty
+                        Location =  locations.Where(p => p.AddressLink.Address.Line1.Contains("Innrain 52d")).First(),
+                        //LocationId = null,
+
+                        Project = null,
+                        ProjectId = null
                     },
-                    new DbMain_Project_Authorization_User()
+
+                    new DbMain_Project_Location_Link()
                     {
                         Id = Guid.NewGuid(),
 
-                        UserIdExt = _christophHaidacherId,
-                        Permissions = PermissionType.Admin,
-
-                        Description = string.Empty,
-
                         // FK
-                        //Project = null,
-                        //ProjectId = Guid.Empty
-                    },
-                    new DbMain_Project_Authorization_User()
-                    {
-                        Id = Guid.NewGuid(),
+                        Location = locations.Where(p => p.AddressLink.Address.Line1.Contains("Michael-Gaismair-Straße 1")).First(),
+                        //LocationId = null,
 
-                        UserIdExt = _patrickSchoeneggerId,
-                        Permissions = PermissionType.ServiceProviderInfrastructure,
-
-                        Description = string.Empty,
-                        
-                        // FK
-                        //Project = null,
-                        //ProjectId = Guid.Empty
-                    },
-                    new DbMain_Project_Authorization_User()
-                    {
-                        Id = Guid.NewGuid(),
-
-                        UserIdExt = _guenterMuehlbergerId,
-                        Permissions = PermissionType.ServiceProviderInfrastructure,
-
-                        Description = string.Empty,
-
-                        // FK
-                        //Project = null,
-                        //ProjectId = Guid.Empty
+                        Project = null,
+                        ProjectId = null
                     }
                 },
-                AuthorizationUserGroup = null,
 
-                NotificationUser = new List<DbMain_Project_Notification_User>()
-                {
-                    new DbMain_Project_Notification_User()
-                    {
-                        Id = Guid.NewGuid(),
+                Status = ProjectStatus.Created,
+                Started = DateTime.MinValue,
+                Finished = DateTime.MinValue,
 
-                        UserIdExt = _gertraudZeindlId,
+                MaxDirectorySize = 125000000,
 
-                        Description = string.Empty,
+                AqlQuantityImage = AqlQuantity.PerNaturalUnit,
+                AqlInspectionLevelImage = AqlInspectionLevel.I,
+                AqlAcceptableQualityLevelImage = AcceptableQualityLevel.ZeroPointZeroSixtyFive,
+                AqlStateImage = AqlState.None,
+                AqlStateLastChangeImage = DateTime.MinValue,
 
-                        Notifications = new List<Notification>
-                        {
-                            new Notification() { NotificationType = NotificationType.None, EMail = false, Slack = false, Teams = false, SMS = false, WhatsApp = false, Telegram = false, Gotify = false },
-                        }, 
-                        //NotificationString = string.Empty,
-                        
-                        // FK
-                        //Project = null,
-                        //ProjectId = Guid.Empty
-                    },
-                    new DbMain_Project_Notification_User()
-                    {
-                        Id = Guid.NewGuid(),
+                AqlQuantityTranscription = AqlQuantity.PerNaturalUnit,
+                AqlInspectionLevelTranscription = AqlInspectionLevel.I,
+                AqlAcceptableQualityLevelTranscription = AcceptableQualityLevel.ZeroPointZeroSixtyFive,
+                AqlStateTranscription = AqlState.None,
+                AqlStateLastChangeTranscription = DateTime.MinValue,
 
-                        UserIdExt = _christophHaidacherId,
-
-                        Description = string.Empty,
-
-                        Notifications = new List<Notification>
-                        {
-                            new Notification() { NotificationType = NotificationType.None, EMail = false, Slack = false, Teams = false, SMS = false, WhatsApp = false, Telegram = false, Gotify = false },
-                        },
-                        //NotificationString = string.Empty,
-                        
-                        // FK
-                        //Project = null,
-                        //ProjectId = Guid.Empty
-                    },
-                    new DbMain_Project_Notification_User()
-                    {
-                        Id = Guid.NewGuid(),
-
-                        UserIdExt = _patrickSchoeneggerId,
-
-                        Description = string.Empty,
-
-                        Notifications = new List<Notification>
-                        {
-                            new Notification() { NotificationType = NotificationType.All, EMail = true, Slack = true, Teams = true, SMS = true, WhatsApp = true, Telegram = true, Gotify = true },
-                        },    
-                        //NotificationString = string.Empty,
-                        
-                        // FK
-                        //Project = null,
-                        //ProjectId = Guid.Empty
-                    },
-                    new DbMain_Project_Notification_User()
-                    {
-                        Id = Guid.NewGuid(),
-
-                        UserIdExt = _guenterMuehlbergerId,
-
-                        Description = string.Empty,
-
-                        Notifications = new List<Notification>
-                        {
-                            new Notification() { NotificationType = NotificationType.All, EMail = true, Slack = false, Teams = false, SMS = false, WhatsApp = false, Telegram = false, Gotify = false },
-                        },    
-                        //NotificationString = string.Empty,
-
-                        // FK
-                        //Project = null,
-                        //ProjectId = Guid.Empty
-                    },
-                },
-                NotificationUserGroup = null,
+                //WorkflowIdExt = _dbWorkflow_Context.Workflows.FirstOrDefault().Id,
+                WorkflowApplyLevel = WorkflowApplyLevel.File,
 
                 MachinesExt = new List<Guid>()
                 {
                     _machineId
                 },
-                //MachinesExtString = string.Empty,   
+                //MachinesExtString = string.Empty,
 
-                // FK                
+                DeliverySlip = null,
+
+                AuthorizationUserLinks = new List<DbMain_Project_Authorization_User_Link>()
+                {
+                    new DbMain_Project_Authorization_User_Link()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        // FK
+                        AuthorizationUser = new DbMain_Project_Authorization_User ()
+                        {
+                            Id = Guid.NewGuid(),
+
+                            UserIdExt = _patrickSchoeneggerId,
+                            Permissions = PermissionType.Owner,
+
+                            Description = string.Empty,
+
+                            //CreatedByUserIdExtAutoFill = Guid.Empty,
+                            //CreatedDateTimeAutoFill = DateTime.Now,
+                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                            //ModifiedDateTimeAutoFill = DateTime.Now,
+                        },
+                        //AuthorizationUserId = null,
+                        
+                        Project = null,
+                        ProjectId = null
+                    },
+                    new DbMain_Project_Authorization_User_Link()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        // FK
+                        AuthorizationUser = new DbMain_Project_Authorization_User ()
+                        {
+                            Id = Guid.NewGuid(),
+
+                            UserIdExt = _guenterMuehlbergerId,
+                            Permissions = PermissionType.Owner,
+
+                            Description = string.Empty,
+
+                            //CreatedByUserIdExtAutoFill = Guid.Empty,
+                            //CreatedDateTimeAutoFill = DateTime.Now,
+                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                            //ModifiedDateTimeAutoFill = DateTime.Now,
+                        },
+                        //AuthorizationUserId = null,
+
+                        Project = null,
+                        ProjectId = null
+                    },
+                    new DbMain_Project_Authorization_User_Link()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        // FK
+                        AuthorizationUser = new DbMain_Project_Authorization_User ()
+                        {
+                            Id = Guid.NewGuid(),
+
+                            UserIdExt = _gertraudZeindlId,
+                            Permissions = PermissionType.Owner,
+
+                            Description = string.Empty,
+
+                            //CreatedByUserIdExtAutoFill = Guid.Empty,
+                            //CreatedDateTimeAutoFill = DateTime.Now,
+                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                            //ModifiedDateTimeAutoFill = DateTime.Now,
+                        },
+                        //AuthorizationUserId = null,
+
+                        Project = null,
+                        ProjectId = null
+                    },
+                    new DbMain_Project_Authorization_User_Link()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        // FK
+                        AuthorizationUser = new DbMain_Project_Authorization_User ()
+                        {
+                            Id = Guid.NewGuid(),
+
+                            UserIdExt = _christophHaidacherId,
+                            Permissions = PermissionType.Owner,
+
+                            Description = string.Empty,
+
+                            //CreatedByUserIdExtAutoFill = Guid.Empty,
+                            //CreatedDateTimeAutoFill = DateTime.Now,
+                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                            //ModifiedDateTimeAutoFill = DateTime.Now,
+                        },
+                        //AuthorizationUserId = null,
+
+                        Project = null,
+                        ProjectId = null
+                    }
+                },
+                AuthorizationUserGroupLinks = null,
+
+                NotificationUserLinks = new List<DbMain_Project_Notification_User_Link>()
+                {
+                    new DbMain_Project_Notification_User_Link()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        NotificationUser = new DbMain_Project_Notification_User()
+                        {
+                            Id = Guid.NewGuid(),
+
+                            UserIdExt = _patrickSchoeneggerId,
+
+                            Description = string.Empty,
+
+                            NotificationType = (NotificationType)values1.GetValue(random.Next(values1.Length)),
+
+                            EMail = random.Next(100) <= 50 ? true : false,
+                            Slack = random.Next(100) <= 50 ? true : false,
+                            Teams = random.Next(100) <= 50 ? true : false,
+                            SMS = random.Next(100) <= 50 ? true : false,
+                            WhatsApp = random.Next(100) <= 50 ? true : false,
+                            Telegram = random.Next(100) <= 50 ? true : false,
+                            Gotify = random.Next(100) <= 50 ? true : false,
+
+                            NotificationUserLinks = null,
+                            
+                            //CreatedByUserIdExtAutoFill = Guid.Empty,
+                            //CreatedDateTimeAutoFill = DateTime.Now,
+                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                            //ModifiedDateTimeAutoFill = DateTime.Now,
+                        },
+                        //NotificationUserId = null,
+                        
+                        // FK
+                        
+                        Project = null,
+                        ProjectId = null,
+                    },
+                    new DbMain_Project_Notification_User_Link()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        NotificationUser = new DbMain_Project_Notification_User()
+                        {
+                            Id = Guid.NewGuid(),
+
+                            UserIdExt = _patrickSchoeneggerId,
+
+                            Description = string.Empty,
+
+                            NotificationType = (NotificationType)values1.GetValue(random.Next(values1.Length)),
+
+                            EMail = random.Next(100) <= 50 ? true : false,
+                            Slack = random.Next(100) <= 50 ? true : false,
+                            Teams = random.Next(100) <= 50 ? true : false,
+                            SMS = random.Next(100) <= 50 ? true : false,
+                            WhatsApp = random.Next(100) <= 50 ? true : false,
+                            Telegram = random.Next(100) <= 50 ? true : false,
+                            Gotify = random.Next(100) <= 50 ? true : false,
+
+                            NotificationUserLinks = null,
+                            
+                            //CreatedByUserIdExtAutoFill = Guid.Empty,
+                            //CreatedDateTimeAutoFill = DateTime.Now,
+                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                            //ModifiedDateTimeAutoFill = DateTime.Now,
+                        },
+                        //NotificationUserId = null,
+                        
+                        // FK
+                        
+                        Project = null,
+                        ProjectId = null,
+                    },
+                    new DbMain_Project_Notification_User_Link()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        NotificationUser = new DbMain_Project_Notification_User()
+                        {
+                            Id = Guid.NewGuid(),
+
+                            UserIdExt = _patrickSchoeneggerId,
+
+                            Description = string.Empty,
+
+                            NotificationType = (NotificationType)values1.GetValue(random.Next(values1.Length)),
+
+                            EMail = random.Next(100) <= 50 ? true : false,
+                            Slack = random.Next(100) <= 50 ? true : false,
+                            Teams = random.Next(100) <= 50 ? true : false,
+                            SMS = random.Next(100) <= 50 ? true : false,
+                            WhatsApp = random.Next(100) <= 50 ? true : false,
+                            Telegram = random.Next(100) <= 50 ? true : false,
+                            Gotify = random.Next(100) <= 50 ? true : false,
+
+                            NotificationUserLinks = null,
+                            
+                            //CreatedByUserIdExtAutoFill = Guid.Empty,
+                            //CreatedDateTimeAutoFill = DateTime.Now,
+                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                            //ModifiedDateTimeAutoFill = DateTime.Now,
+                        },
+                        //NotificationUserId = null,
+                        
+                        // FK
+                        
+                        Project = null,
+                        ProjectId = null,
+                    },
+                    new DbMain_Project_Notification_User_Link()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        NotificationUser = new DbMain_Project_Notification_User()
+                        {
+                            Id = Guid.NewGuid(),
+
+                            UserIdExt = _patrickSchoeneggerId,
+
+                            Description = string.Empty,
+
+                            NotificationType = (NotificationType)values1.GetValue(random.Next(values1.Length)),
+
+                            EMail = random.Next(100) <= 50 ? true : false,
+                            Slack = random.Next(100) <= 50 ? true : false,
+                            Teams = random.Next(100) <= 50 ? true : false,
+                            SMS = random.Next(100) <= 50 ? true : false,
+                            WhatsApp = random.Next(100) <= 50 ? true : false,
+                            Telegram = random.Next(100) <= 50 ? true : false,
+                            Gotify = random.Next(100) <= 50 ? true : false,
+
+                            NotificationUserLinks = null,
+                            
+                            //CreatedByUserIdExtAutoFill = Guid.Empty,
+                            //CreatedDateTimeAutoFill = DateTime.Now,
+                            //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                            //ModifiedDateTimeAutoFill = DateTime.Now,
+                        },
+                        //NotificationUserId = null,
+                        
+                        // FK
+                        
+                        Project = null,
+                        ProjectId = null,
+                    },
+                },
+                NotificationUserGroupLinks = null,
+
+                //CreatedByUserIdExtAutoFill = Guid.Empty,
+                //CreatedDateTimeAutoFill = DateTime.Now,
+                //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                //ModifiedDateTimeAutoFill = DateTime.Now,               
             };
 
             List<DbMain_Project> tmp = new List<DbMain_Project>()

@@ -1,6 +1,6 @@
 ﻿namespace PSGM.Helper
 {
-    public enum WorkflowApplyLevel : uint
+    public enum WorkflowApplyLevel : int
     {
         Undefined = 0,
 
@@ -14,7 +14,7 @@
         Organization = 40000,
     }
 
-    public enum WorkflowExecutionLevel : uint
+    public enum WorkflowExecutionLevel : int
     {
         Undefined = 0,
 

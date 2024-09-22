@@ -1,6 +1,6 @@
 ﻿namespace PSGM.Helper
 {
-    public enum FileExtension : uint
+    public enum FileExtension : int
     {
         Undefined = 0,
 

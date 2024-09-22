@@ -1,13 +1,13 @@
 ﻿namespace PSGM.Helper
 {
-    public enum SoftwareType : uint
+    public enum SoftwareType : int
     {
         Unknown = 0,
 
         SheetScanner = 10000,
     }
 
-    public enum ReleaseChannel : uint
+    public enum ReleaseChannel : int
     {
         Unknown = 0,
 

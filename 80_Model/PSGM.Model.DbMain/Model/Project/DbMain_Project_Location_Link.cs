@@ -24,7 +24,7 @@ namespace PSGM.Model.DbMain
         public virtual DbMain_Project? Project { get; set; }
 
         [ForeignKey("Location")]
-        public Guid LocationId { get; set; } = Guid.Empty;
+        public Guid? LocationId { get; set; } = Guid.Empty;
         public virtual DbMain_Location? Location { get; set; }
         #endregion
 

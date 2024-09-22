@@ -949,9 +949,9 @@ namespace PSGM.MultiTestApp1
                     }
                 },
 
-                AuthorizationUser = new List<DbMain_Organization_Authorization_User>()
+                AuthorizationUser = new List<DbMain_Organization_Employee>()
                 {
-                    new DbMain_Organization_Authorization_User()
+                    new DbMain_Organization_Employee()
                     {
                         Id = Guid.NewGuid(),
 
@@ -961,7 +961,7 @@ namespace PSGM.MultiTestApp1
                         // FK
                         //Project=null,
                     },
-                    new DbMain_Organization_Authorization_User()
+                    new DbMain_Organization_Employee()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1043,9 +1043,9 @@ namespace PSGM.MultiTestApp1
                     }
                 },
 
-                AuthorizationUser = new List<DbMain_Organization_Authorization_User>()
+                AuthorizationUser = new List<DbMain_Organization_Employee>()
                 {
-                    new DbMain_Organization_Authorization_User()
+                    new DbMain_Organization_Employee()
                     {
                         Id = Guid.NewGuid(),
 
@@ -1056,7 +1056,7 @@ namespace PSGM.MultiTestApp1
                         //Project=null,
                     },
 
-                    new DbMain_Organization_Authorization_User()
+                    new DbMain_Organization_Employee()
                     {
                         Id = Guid.NewGuid(),
 

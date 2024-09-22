@@ -1,6 +1,6 @@
 ﻿namespace PSGM.Helper
 {
-    public enum ProjectStatus : uint
+    public enum ProjectStatus : int
     {
         Undefined = 0,
 

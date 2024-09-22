@@ -88,10 +88,10 @@ namespace PSGM.Model.DbMain
 
         #region Links (Outside DB)
         [InverseProperty("Organization")]
-        public virtual ICollection<DbMain_Organization_Authorization_User_Link>? AuthorizationUserLinks { get; set; }
+        public virtual ICollection<DbMain_Organization_Employee_Link>? EmployeeLinks { get; set; }
 
         [InverseProperty("Organization")]
-        public virtual ICollection<DbMain_Organization_Authorization_UserGroup_Link>? AuthorizationUserGroupLinks { get; set; }
+        public virtual ICollection<DbMain_Organization_EmployeeGroup_Link>? EmployeeGroupLinks { get; set; }
 
         [InverseProperty("Organization")]
         public virtual ICollection<DbMain_Organization_Notification_User_Link>? NotificationUserLinks { get; set; }

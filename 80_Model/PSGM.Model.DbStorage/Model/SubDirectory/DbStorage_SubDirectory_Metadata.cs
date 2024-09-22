@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.HighPerformance.Helpers;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using PSGM.Helper;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -32,25 +31,17 @@ namespace PSGM.Model.DbStorage
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
-        [Column("Hidden")]
-        [Display(Name = "Hidden")]
-        public bool Hidden { get; set; } = false;
+        [Column("MetadataType")]
+        [Display(Name = "MetadataType")]
+        public MetadataType MetadataType { get; set; } = MetadataType.Unknown;
 
-        [Column("EditAll")]
-        [Display(Name = "EditAll")]
-        public bool EditAll { get; set; } = false;
-
-        [Column("ViewAll")]
-        [Display(Name = "ViewAll")]
-        public bool ViewAll { get; set; } = false;
+        [Column("MetadataPermissions")]
+        [Display(Name = "MetadataPermissions")]
+        public MetadataPermissions MetadataPermissions { get; set; } = MetadataPermissions.Unknown;
 
         [Column("ApplicableForFiles")]
         [Display(Name = "ApplicableForFiles")]
         public bool ApplicableForFiles { get; set; } = false;
-
-        [Column("MetadataType")]
-        [Display(Name = "MetadataType")]
-        public MetadataType MetadataType { get; set; } = MetadataType.Unknown;
 
         [Column("Stars")]
         [Display(Name = "Stars")]

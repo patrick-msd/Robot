@@ -39,61 +39,77 @@ namespace PSGM.Sample.Model.DbStorage
                     }
                 },
 
-                AuthorizationUserLinks = new List<DbMain_Organization_Authorization_User_Link>()
+                EmployeeLinks = new List<DbMain_Organization_Employee_Link>()
                 {
-                    new DbMain_Organization_Authorization_User_Link()
+                    new DbMain_Organization_Employee_Link()
                     {
                         Id = Guid.NewGuid(),
 
-                        AuthorizationUser = new DbMain_Organization_Authorization_User ()
+                        Employee = new DbMain_Organization_Employee ()
                         {
                             Id = Guid.NewGuid(),
 
-                            UserIdExt = _patrickSchoeneggerId,
-                            Permissions = PermissionType.Owner,
+                            Acronym = "PS",
 
-                            Description = string.Empty,
+                            EMail = "",
+                            DaytimePhoneNumber = "+43 512 123456789",
+                            EveningPhoneNumber = "+43 512 123456789",
+
+                            EmployeeType = EmployeeType.Owner,
+
+                            UserIdExt = _patrickSchoeneggerId,
 
                             //CreatedByUserIdExtAutoFill = Guid.Empty,
                             //CreatedDateTimeAutoFill = DateTime.Now,
                             //ModifiedByUserIdExtAutoFill = Guid.Empty,
                             //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                            // FK
+                            EmployeeLinks = null,
                         },
-                        //AuthorizationUserId = null,
+                        //EmployeeId = null,
                         
                         // FK
                         Organization = null,
                         OrganizationId = null,
                     },
 
-                    new DbMain_Organization_Authorization_User_Link()
+                    new DbMain_Organization_Employee_Link()
                     {
                         Id = Guid.NewGuid(),
 
-                        AuthorizationUser = new DbMain_Organization_Authorization_User ()
+                        Employee = new DbMain_Organization_Employee ()
                         {
                             Id = Guid.NewGuid(),
 
-                            UserIdExt = _guenterMuehlbergerId,
-                            Permissions = PermissionType.Owner,
+                            Acronym = "PS",
 
-                            Description = string.Empty,
+                            EMail = "",
+                            DaytimePhoneNumber = "+43 512 123456789",
+                            EveningPhoneNumber = "+43 512 123456789",
+
+                            EmployeeType = EmployeeType.Owner,
+
+                            UserIdExt = _guenterMuehlbergerId,
 
                             //CreatedByUserIdExtAutoFill = Guid.Empty,
                             //CreatedDateTimeAutoFill = DateTime.Now,
                             //ModifiedByUserIdExtAutoFill = Guid.Empty,
                             //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                            // FK
+                            EmployeeLinks = null,
                         },
-                        //AuthorizationUserId = null,
+                        //EmployeeId = null,
                         
                         // FK
                         Organization = null,
                         OrganizationId = null,
                     },
                 },
-                AuthorizationUserGroupLinks = null,
+                EmployeeGroupLinks = null,
 
-                NotificationUserLinks = new List<DbMain_Organization_Notification_User_Link>()
+hgjhgj               NotificationUserLinks = new List<DbMain_Organization_Notification_User_Link>()
                 {
                     new DbMain_Organization_Notification_User_Link()
                     {
@@ -167,7 +183,7 @@ namespace PSGM.Sample.Model.DbStorage
                         OrganizationId = null,
                     },
                 },
-                NotificationUserGroupLinks = null,
+fghj              NotificationUserGroupLinks = null,
 
                 Contributors = null,
 
@@ -209,61 +225,77 @@ namespace PSGM.Sample.Model.DbStorage
                     }
                 },
 
-                AuthorizationUserLinks = new List<DbMain_Organization_Authorization_User_Link>()
+                EmployeeLinks = new List<DbMain_Organization_Employee_Link>()
                 {
-                    new DbMain_Organization_Authorization_User_Link()
+                    new DbMain_Organization_Employee_Link()
                     {
                         Id = Guid.NewGuid(),
 
-                        AuthorizationUser = new DbMain_Organization_Authorization_User ()
+                        Employee = new DbMain_Organization_Employee ()
                         {
                             Id = Guid.NewGuid(),
 
-                            UserIdExt = _gertraudZeindlId,
-                            Permissions = PermissionType.Owner,
+                            Acronym = "PS",
 
-                            Description = string.Empty,
+                            EMail = "",
+                            DaytimePhoneNumber = "+43 512 123456789",
+                            EveningPhoneNumber = "+43 512 123456789",
+
+                            EmployeeType = EmployeeType.Owner,
+
+                            UserIdExt = _gertraudZeindlId,
 
                             //CreatedByUserIdExtAutoFill = Guid.Empty,
                             //CreatedDateTimeAutoFill = DateTime.Now,
                             //ModifiedByUserIdExtAutoFill = Guid.Empty,
                             //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                            // FK
+                            EmployeeLinks = null,
                         },
-                        //AuthorizationUserId = null,
+                        //EmployeeId = null,
                         
                         // FK
                         Organization = null,
                         OrganizationId = null,
                     },
 
-                    new DbMain_Organization_Authorization_User_Link()
+                    new DbMain_Organization_Employee_Link()
                     {
                         Id = Guid.NewGuid(),
 
-                        AuthorizationUser = new DbMain_Organization_Authorization_User ()
+                        Employee = new DbMain_Organization_Employee ()
                         {
                             Id = Guid.NewGuid(),
 
-                            UserIdExt = _christophHaidacherId,
-                            Permissions = PermissionType.Owner,
+                            Acronym = "PS",
 
-                            Description = string.Empty,
+                            EMail = "",
+                            DaytimePhoneNumber = "+43 512 123456789",
+                            EveningPhoneNumber = "+43 512 123456789",
+
+                            EmployeeType = EmployeeType.Owner,
+
+                            UserIdExt = _christophHaidacherId,
 
                             //CreatedByUserIdExtAutoFill = Guid.Empty,
                             //CreatedDateTimeAutoFill = DateTime.Now,
                             //ModifiedByUserIdExtAutoFill = Guid.Empty,
                             //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                            // FK
+                            EmployeeLinks = null,
                         },
-                        //AuthorizationUserId = null,
+                        //EmployeeId = null,
                         
                         // FK
                         Organization = null,
                         OrganizationId = null,
                     },
                 },
-                AuthorizationUserGroupLinks = null,
+                EmployeeGroupLinks = null,
 
-                NotificationUserLinks = new List<DbMain_Organization_Notification_User_Link>()
+gfh               NotificationUserLinks = new List<DbMain_Organization_Notification_User_Link>()
                 {
                     new DbMain_Organization_Notification_User_Link()
                     {
@@ -337,7 +369,7 @@ namespace PSGM.Sample.Model.DbStorage
                         OrganizationId = null,
                     },
                 },
-                NotificationUserGroupLinks = null,
+fdhg               NotificationUserGroupLinks = null,
 
                 Contributors = null,
 

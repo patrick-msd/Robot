@@ -1,6 +1,6 @@
 ﻿namespace PSGM.Helper
 {
-    public enum QrCodeType : uint
+    public enum QrCodeType : int
     {
         Undefined = 0,
 
@@ -8,7 +8,7 @@
         ScanUnit = 10001,
 
         // Scan Types
-        IgnoreDoublepageSensor = 50000,
+        IgnoreDoublePageSensor = 50000,
         ReplaceImage = 50001,
 
     }

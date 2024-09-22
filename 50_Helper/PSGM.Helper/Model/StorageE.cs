@@ -1,6 +1,6 @@
 ﻿namespace PSGM.Helper
 {
-    public enum StorageType : uint
+    public enum StorageType : int
     {
         Unknown = 0,
 
@@ -11,7 +11,7 @@
         S3 = 20000,
     }
 
-    public enum StorageClass : uint
+    public enum StorageClass : int
     {
         Unknown = 0,
 
@@ -26,7 +26,7 @@
         DataAndDataThumbnail = 30002,
     }
 
-    public enum StorageTier : uint
+    public enum StorageTier : int
     {
         Unknown = 0,
 
