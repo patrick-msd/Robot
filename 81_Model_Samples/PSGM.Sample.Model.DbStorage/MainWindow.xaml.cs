@@ -171,7 +171,7 @@ namespace PSGM.Sample.Model.DbStorage
                 #region Add files ...
                 for (int i = 0; i < 10; i++)
                 {
-                    List<DbStorage_File> files = Generate_Files1(1000, rootDirectory, subDirectories);
+                    List<DbStorage_File> files = Generate_Files(1000, rootDirectory, subDirectories);
                     _dbStorage_Data_Context.Files.AddRange(files);
                     _dbStorage_Data_Context.SaveChanges();
                     files.RemoveAll(p => true);
@@ -179,7 +179,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 for (int i = 0; i < 10; i++)
                 {
-                    List<DbStorage_File> files = Generate_Files1(100, rootDirectory, subsubDirectories);
+                    List<DbStorage_File> files = Generate_Files(100, rootDirectory, subsubDirectories);
                     _dbStorage_Data_Context.Files.AddRange(files);
                     _dbStorage_Data_Context.SaveChanges();
                     files.RemoveAll(p => true);
@@ -230,23 +230,23 @@ namespace PSGM.Sample.Model.DbStorage
             //var asadfdsa = asd[0].JobIdsExt;
             ////var asdadssa = asd[0].GetLastModificationChanges();
 
-            var asdasd = _dbStorage_Data_Context.Files.Where(p => p.AuthorizationUserLinks.Any(p => p.AuthorizationUser.UserIdExt == Guid.Parse("aa4590f8-5ce6-4e95-aa78-0dda009d629b")))
-                                                        .Include(p => p.SubDirectory)
-                                                            .ThenInclude(p => p.RootDirectory)
-                                                        .Include(p => p.RootDirectory)
-                                                        .Include(p => p.MetadataLinks)
-                                                            .ThenInclude(p => p.Metadata)
-                                                        .Include(p => p.QrCode)
-                                                        .Include(p => p.Quality)
-                                                        .Include(p => p.AuthorizationUserLinks)
-                                                            .ThenInclude(p => p.AuthorizationUser)
-                                                        .Include(p => p.AuthorizationUserGroupLinks)
-                                                            .ThenInclude(p => p.AuthorizationUserGroup)
-                                                        .Include(p => p.NotificationUserLinks)
-                                                            .ThenInclude(p => p.NotificationUser)
-                                                        .Include(p => p.NotificationUserGroupLinks)
-                                                            .ThenInclude(p => p.NotificationUserGroup)
-                                                        .ToList();
+            //var asdasd = _dbStorage_Data_Context.Files.Where(p => p.AuthorizationUserLinks.Any(p => p.AuthorizationUser.UserIdExt == Guid.Parse("aa4590f8-5ce6-4e95-aa78-0dda009d629b")))
+            //                                            .Include(p => p.SubDirectory)
+            //                                                .ThenInclude(p => p.RootDirectory)
+            //                                            .Include(p => p.RootDirectory)
+            //                                            .Include(p => p.MetadataLinks)
+            //                                                .ThenInclude(p => p.Metadata)
+            //                                            .Include(p => p.QrCode)
+            //                                            .Include(p => p.Quality)
+            //                                            .Include(p => p.AuthorizationUserLinks)
+            //                                                .ThenInclude(p => p.AuthorizationUser)
+            //                                            .Include(p => p.AuthorizationUserGroupLinks)
+            //                                                .ThenInclude(p => p.AuthorizationUserGroup)
+            //                                            .Include(p => p.NotificationUserLinks)
+            //                                                .ThenInclude(p => p.NotificationUser)
+            //                                            .Include(p => p.NotificationUserGroupLinks)
+            //                                                .ThenInclude(p => p.NotificationUserGroup)
+            //                                            .ToList();
 
 
 

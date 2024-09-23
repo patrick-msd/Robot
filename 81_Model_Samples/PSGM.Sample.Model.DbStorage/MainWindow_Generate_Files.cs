@@ -5,7 +5,7 @@ namespace PSGM.Sample.Model.DbStorage
 {
     public partial class MainWindow : System.Windows.Window
     {
-        public List<DbStorage_File> Generate_Files2(int count, List<DbStorage_RootDirectory> rootDirectories, List<DbStorage_SubDirectory> subDirectories)
+        public List<DbStorage_File> Generate_Files(int count, List<DbStorage_RootDirectory> rootDirectories, List<DbStorage_SubDirectory> subDirectories)
         {
             Random random = new Random();
 
@@ -220,7 +220,7 @@ namespace PSGM.Sample.Model.DbStorage
                         // FK
                         File = null,
                         FileId = null,
-
+                        
                         Metadata = fileMetadata[random.Next(0, fileMetadata.Count())],
                         //MetadataId = Guid.Empty,
                     });
@@ -375,14 +375,13 @@ namespace PSGM.Sample.Model.DbStorage
 
                     MetadataLinks = fileMetadataLinkLoop,
 
-                    MachineIdExt = Guid.NewGuid(),
-                    DeviceIdExt = Guid.NewGuid(),
-                    SoftwareIdExt = Guid.NewGuid(),
+                    UserLinks = usersLoop,
+                    UserGroupLinks = userGroupsLoop,
 
                     ObjectExtension = FileExtension.JSON,
 
-                    ObjectSize = 34235,
-
+                    ObjectSize = random.Next(34235, 4415674),
+                    
                     StorageObjectName = Common.RandomString(random.Next(10, 100)),
                     StorageObjectVersion = random.Next(0, 100),
                     StorageObjectUrl = Common.RandomString(random.Next(10, 200)),
@@ -399,20 +398,18 @@ namespace PSGM.Sample.Model.DbStorage
                     ExtId9 = Guid.NewGuid().ToString(),
                     ExtId10 = Guid.NewGuid().ToString(),
 
-                    AuthorizationUserLinks = authorization_UsersLoop,
-                    AuthorizationUserGroupLinks = authorization_UserGroupsLoop,
+                    MachineId_Ext = Guid.NewGuid(),
+                    DeviceId_Ext = Guid.NewGuid(),
+                    SoftwareId_Ext = Guid.NewGuid(),
 
-                    NotificationUserLinks = notification_UsersLoop,
-                    NotificationUserGroupLinks = notification_UserGroupsLoop,
+                    JobIds_Ext = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
+                    //JobIds_ExtString = string.Empty,
 
-                    JobIdsExt = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
-                    //JobIdsExtString = string.Empty,
+                    WorkflowItemIds_Ext = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
+                    //WorkflowItemIds_ExtString = string.Empty,
 
-                    WorkflowItemIdsExt = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
-                    //WorkflowItemIdsExtString = string.Empty,
-
-                    BackupIdsExt = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
-                    //BackupIdsExtString = string.Empty,
+                    ArchiveIds_Ext = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
+                    //ArchiveIds_ExtString = string.Empty,
 
                     QrCode = new DbStorage_File_QrCode()
                     {
@@ -435,7 +432,7 @@ namespace PSGM.Sample.Model.DbStorage
                     //CreatedDateTimeAutoFill = DateTime.Now,
                     //ModifiedByUserIdExtAutoFill = Guid.Empty,
                     //ModifiedDateTimeAutoFill = DateTime.Now,
-
+                    
                     // FK
                     RootDirectory = null,
                     RootDirectoryId = null,
