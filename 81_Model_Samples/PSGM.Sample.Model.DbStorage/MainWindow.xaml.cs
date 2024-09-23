@@ -19,7 +19,6 @@ namespace PSGM.Sample.Model.DbStorage
         string _lokiUri;
         string _lokiOutputTemplate;
 
-
         ConfigFile _configFile;
 
         private DbStorage_Context _dbStorage_Data_Context;

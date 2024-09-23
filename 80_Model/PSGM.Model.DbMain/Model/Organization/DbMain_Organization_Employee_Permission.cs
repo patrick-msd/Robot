@@ -21,63 +21,63 @@ namespace PSGM.Model.DbMain
         public string Description { get; set; } = string.Empty;
 
         #region Project specific permissions
-        [Column("Addresses")]
-        [Display(Name = "Addresses")]
-        public PermissionType Addresses { get; set; } = PermissionType.None;
+        [Column("PermissionAddresses")]
+        [Display(Name = "PermissionAddresses")]
+        public PermissionType PermissionAddresses { get; set; } = PermissionType.None;
 
-        [Column("Contributors")]
-        [Display(Name = "Contributors")]
-        public PermissionType Contributors { get; set; } = PermissionType.None;
+        [Column("PermissionContributors")]
+        [Display(Name = "PermissionContributors")]
+        public PermissionType PermissionContributors { get; set; } = PermissionType.None;
 
-        [Column("DeliverySlips")]
-        [Display(Name = "DeliverySlips")]
-        public PermissionType DeliverySlips { get; set; } = PermissionType.None;
+        [Column("PermissionDeliverySlips")]
+        [Display(Name = "PermissionDeliverySlips")]
+        public PermissionType PermissionDeliverySlips { get; set; } = PermissionType.None;
 
-        [Column("Locations")]
-        [Display(Name = "Locations")]
-        public PermissionType Locations { get; set; } = PermissionType.None;
+        [Column("PermissionLocations")]
+        [Display(Name = "PermissionLocations")]
+        public PermissionType PermissionLocations { get; set; } = PermissionType.None;
 
-        [Column("Organizations")]
-        [Display(Name = "Organizations")]
-        public PermissionType Organizations { get; set; } = PermissionType.None;
+        [Column("PermissionOrganizations")]
+        [Display(Name = "PermissionOrganizations")]
+        public PermissionType PermissionOrganizations { get; set; } = PermissionType.None;
 
-        [Column("Units")]
-        [Display(Name = "Units")]
-        public PermissionType Units { get; set; } = PermissionType.None;
+        [Column("PermissionUnits")]
+        [Display(Name = "PermissionUnits")]
+        public PermissionType PermissionUnits { get; set; } = PermissionType.None;
         #endregion
 
         #region Common permissions
-        [Column("Archive")]
-        [Display(Name = "Archive")]
-        public PermissionType Archive { get; set; } = PermissionType.None;
+        [Column("PermissionArchive")]
+        [Display(Name = "PermissionArchive")]
+        public PermissionType PermissionArchive { get; set; } = PermissionType.None;
 
-        [Column("Job")]
-        [Display(Name = "Job")]
-        public PermissionType Job { get; set; } = PermissionType.None;
+        [Column("PermissionJob")]
+        [Display(Name = "PermissionJob")]
+        public PermissionType PermissionJob { get; set; } = PermissionType.None;
 
-        [Column("Machine")]
-        [Display(Name = "Machine")]
-        public PermissionType Machine { get; set; } = PermissionType.None;
+        [Column("PermissionMachine")]
+        [Display(Name = "PermissionMachine")]
+        public PermissionType PermissionMachine { get; set; } = PermissionType.None;
 
-        [Column("Software")]
-        [Display(Name = "Software")]
-        public PermissionType Software { get; set; } = PermissionType.None;
+        [Column("PermissionSoftware")]
+        [Display(Name = "PermissionSoftware")]
+        public PermissionType PermissionSoftware { get; set; } = PermissionType.None;
 
-        [Column("Storage")]
-        [Display(Name = "Storage")]
-        public PermissionType Storage { get; set; } = PermissionType.None;
+        [Column("PermissionStorage")]
+        [Display(Name = "PermissionStorage")]
+        public PermissionType PermissionStorage { get; set; } = PermissionType.None;
 
-        [Column("StorageDirectories")]
-        [Display(Name = "StorageDirectories")]
-        public PermissionType StorageDirectories { get; set; } = PermissionType.None;
+        [Column("PermissionStorageDirectories")]
+        [Display(Name = "PermissionStorageDirectories")]
+        public PermissionType PermissionStorageDirectories { get; set; } = PermissionType.None;
 
-        [Column("StorageFiles")]
-        [Display(Name = "StorageFiles")]
-        public PermissionType StorageFiles { get; set; } = PermissionType.None;
+        [Column("PermissionStorageFiles")]
+        [Display(Name = "PermissionStorageFiles")]
+        public PermissionType PermissionStorageFiles { get; set; } = PermissionType.None;
 
-        [Column("Workflow")]
-        [Display(Name = "Workflow")]
-        public PermissionType Workflow { get; set; } = PermissionType.None;
+        [Column("PermissionWorkflow")]
+        [Display(Name = "PermissionWorkflow")]
+        public PermissionType PermissionWorkflow { get; set; } = PermissionType.None;
         #endregion
 
         #region Audit details for faster file audit information

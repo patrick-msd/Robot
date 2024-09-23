@@ -25,9 +25,9 @@ namespace PSGM.Model.DbMain
         [StringLength(16384, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
-        [Column("Permission")]
-        [Display(Name = "Permission")]
-        public PermissionType Permission { get; set; } = PermissionType.None;
+        [Column("PermissionRootUnit")]
+        [Display(Name = "PermissionRootUnit")]
+        public PermissionType PermissionRootUnit { get; set; } = PermissionType.None;
 
         #region Audit details for faster file audit information
         [Required]

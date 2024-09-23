@@ -201,26 +201,32 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Links
-        [InverseProperty("File")]
-        public virtual ICollection<DbStorage_File_Authorization_User_Link>? AuthorizationUserLinks { get; set; }
+        //[InverseProperty("File")]
+        //public virtual ICollection<DbStorage_File_Authorization_User_Link>? AuthorizationUserLinks { get; set; }
 
-        [InverseProperty("File")]
-        public virtual ICollection<DbStorage_File_Authorization_UserGroup_Link>? AuthorizationUserGroupLinks { get; set; }
+        //[InverseProperty("File")]
+        //public virtual ICollection<DbStorage_File_Authorization_UserGroup_Link>? AuthorizationUserGroupLinks { get; set; }
 
         [InverseProperty("File")]
         public virtual ICollection<DbStorage_File_Metadata_Link>? MetadataLinks { get; set; }
 
-        [InverseProperty("File")]
-        public virtual ICollection<DbStorage_File_Notification_User_Link>? NotificationUserLinks { get; set; }
+        //[InverseProperty("File")]
+        //public virtual ICollection<DbStorage_File_Notification_User_Link>? NotificationUserLinks { get; set; }
 
-        [InverseProperty("File")]
-        public virtual ICollection<DbStorage_File_Notification_UserGroup_Link>? NotificationUserGroupLinks { get; set; }
+        //[InverseProperty("File")]
+        //public virtual ICollection<DbStorage_File_Notification_UserGroup_Link>? NotificationUserGroupLinks { get; set; }
 
         [InverseProperty("File")]
         public virtual DbStorage_File_QrCode? QrCode { get; set; }
 
         [InverseProperty("File")]
         public virtual DbStorage_File_Quality? Quality { get; set; }
+
+        [InverseProperty("File")]
+        public virtual ICollection<DbStorage_File_User_Link>? UserLinks { get; set; }
+
+        [InverseProperty("File")]
+        public virtual ICollection<DbStorage_File_UserGroup_Link>? UserGroupLinks { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
