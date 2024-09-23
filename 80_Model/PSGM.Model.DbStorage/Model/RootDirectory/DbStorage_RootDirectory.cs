@@ -107,17 +107,17 @@ namespace PSGM.Model.DbStorage
         public DateTime CreatedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
         [Required]
-        [Column("CreatedByUserIdExtAutoFill")]
-        [Display(Name = "CreatedByUserIdExtAutoFill")]
-        public Guid CreatedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        [Column("CreatedByUserId_ExtAutoFill")]
+        [Display(Name = "CreatedByUserId_ExtAutoFill")]
+        public Guid CreatedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
 
         [Column("ModifiedDateTimeAutoFill")]
         [Display(Name = "ModifiedDateTimeAutoFill")]
         public DateTime ModifiedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
-        [Column("ModifiedByUserIdExtAutoFill")]
-        [Display(Name = "ModifiedByUserIdExtAutoFill")]
-        public Guid ModifiedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        [Column("ModifiedByUserId_ExtAutoFill")]
+        [Display(Name = "ModifiedByUserId_ExtAutoFill")]
+        public Guid ModifiedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
         #endregion
         #endregion
 
@@ -132,25 +132,19 @@ namespace PSGM.Model.DbStorage
         public virtual DbStorage_RootDirectory_Quality? Quality { get; set; }
 
         [InverseProperty("RootDirectory")]
-        public virtual ICollection<DbStorage_RootDirectory_Authorization_User_Link>? AuthorizationUserLinks { get; set; }
-
-        [InverseProperty("RootDirectory")]
-        public virtual ICollection<DbStorage_RootDirectory_Authorization_UserGroup_Link>? AuthorizationUserGroupLinks { get; set; }
-
-        [InverseProperty("RootDirectory")]
         public virtual ICollection<DbStorage_RootDirectory_Metadata_Link>? MetadataLinks { get; set; }
-
-        [InverseProperty("RootDirectory")]
-        public virtual ICollection<DbStorage_RootDirectory_Notification_User_Link>? NotificationUserLinks { get; set; }
-
-        [InverseProperty("RootDirectory")]
-        public virtual ICollection<DbStorage_RootDirectory_Notification_UserGroup_Link>? NotificationUserGroupLinks { get; set; }
 
         [InverseProperty("RootDirectory")]
         public virtual ICollection<DbStorage_RootDirectory_VirtualRootUnit>? VirtualRootUnits { get; set; }
 
         [InverseProperty("RootDirectory")]
         public virtual ICollection<DbStorage_SubDirectory>? SubDirectories { get; set; }
+
+        [InverseProperty("RootDirectory")]
+        public virtual ICollection<DbStorage_RootDirectory_User_Link>? UserLinks { get; set; }
+
+        [InverseProperty("RootDirectory")]
+        public virtual ICollection<DbStorage_RootDirectory_UserGroup_Link>? UserGroupLinks { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
@@ -165,7 +159,7 @@ namespace PSGM.Model.DbStorage
         }
 
         [NotMapped]
-        public List<Guid>? WorkflowItemIdsExt
+        public List<Guid>? WorkflowItemIds_Ext
         {
             get { return WorkflowItemIds_ExtString != string.Empty ? WorkflowItemIds_ExtString.Split(',').Select(Guid.Parse).ToList() : null; }
             set { WorkflowItemIds_ExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }

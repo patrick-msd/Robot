@@ -58,27 +58,21 @@ namespace PSGM.Model.DbStorage
         public DateTime CreatedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
         [Required]
-        [Column("CreatedByUserIdExtAutoFill")]
-        [Display(Name = "CreatedByUserIdExtAutoFill")]
-        public Guid CreatedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        [Column("CreatedByUserId_ExtAutoFill")]
+        [Display(Name = "CreatedByUserId_ExtAutoFill")]
+        public Guid CreatedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
 
         [Column("ModifiedDateTimeAutoFill")]
         [Display(Name = "ModifiedDateTimeAutoFill")]
         public DateTime ModifiedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
-        [Column("ModifiedByUserIdExtAutoFill")]
-        [Display(Name = "ModifiedByUserIdExtAutoFill")]
-        public Guid ModifiedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        [Column("ModifiedByUserId_ExtAutoFill")]
+        [Display(Name = "ModifiedByUserId_ExtAutoFill")]
+        public Guid ModifiedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
         #endregion
         #endregion
 
         #region Links
-        [InverseProperty("Metadata")]
-        public virtual ICollection<DbStorage_SubDirectory_Metadata_Authorization_User_Link>? AuthorizationUserLinks { get; set; }
-
-        [InverseProperty("Metadata")]
-        public virtual ICollection<DbStorage_SubDirectory_Metadata_Authorization_UserGroup_Link>? AuthorizationUserGroupLinks { get; set; }
-
         [InverseProperty("Metadata")]
         public virtual ICollection<DbStorage_SubDirectory_Metadata_Link>? MetadataLinks { get; set; }
         #endregion

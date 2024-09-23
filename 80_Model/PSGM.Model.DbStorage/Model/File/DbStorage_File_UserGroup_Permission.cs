@@ -24,6 +24,10 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "PermissionFile")]
         public PermissionType PermissionFile { get; set; } = PermissionType.None;
 
+        [Column("PermissionMetadata")]
+        [Display(Name = "PermissionMetadata")]
+        public PermissionType PermissionMetadata { get; set; } = PermissionType.None;
+
         #region Audit details for faster file audit information
         [Required]
         [Column("CreatedDateTimeAutoFill")]

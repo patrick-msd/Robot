@@ -153,9 +153,9 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "DeviceIdExt")]
         public Guid DeviceIdExt { get; set; } = Guid.Empty;
 
-        [Column("SoftwareIdExt")]
-        [Display(Name = "SoftwareIdExt")]
-        public Guid SoftwareIdExt { get; set; } = Guid.Empty;
+        [Column("SoftwareId_Ext")]
+        [Display(Name = "SoftwareId_Ext")]
+        public Guid SoftwareId_Ext { get; set; } = Guid.Empty;
 
         #region No direct access
         [Column("RawFileIdsString")]
@@ -186,35 +186,23 @@ namespace PSGM.Model.DbStorage
         public DateTime CreatedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
         [Required]
-        [Column("CreatedByUserIdExtAutoFill")]
-        [Display(Name = "CreatedByUserIdExtAutoFill")]
-        public Guid CreatedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        [Column("CreatedByUserId_ExtAutoFill")]
+        [Display(Name = "CreatedByUserId_ExtAutoFill")]
+        public Guid CreatedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
 
         [Column("ModifiedDateTimeAutoFill")]
         [Display(Name = "ModifiedDateTimeAutoFill")]
         public DateTime ModifiedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
-        [Column("ModifiedByUserIdExtAutoFill")]
-        [Display(Name = "ModifiedByUserIdExtAutoFill")]
-        public Guid ModifiedByUserIdExtAutoFill { get; set; } = Guid.Empty;
+        [Column("ModifiedByUserId_ExtAutoFill")]
+        [Display(Name = "ModifiedByUserId_ExtAutoFill")]
+        public Guid ModifiedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
         #endregion
         #endregion
 
         #region Links
-        //[InverseProperty("File")]
-        //public virtual ICollection<DbStorage_File_Authorization_User_Link>? AuthorizationUserLinks { get; set; }
-
-        //[InverseProperty("File")]
-        //public virtual ICollection<DbStorage_File_Authorization_UserGroup_Link>? AuthorizationUserGroupLinks { get; set; }
-
         [InverseProperty("File")]
         public virtual ICollection<DbStorage_File_Metadata_Link>? MetadataLinks { get; set; }
-
-        //[InverseProperty("File")]
-        //public virtual ICollection<DbStorage_File_Notification_User_Link>? NotificationUserLinks { get; set; }
-
-        //[InverseProperty("File")]
-        //public virtual ICollection<DbStorage_File_Notification_UserGroup_Link>? NotificationUserGroupLinks { get; set; }
 
         [InverseProperty("File")]
         public virtual DbStorage_File_QrCode? QrCode { get; set; }
