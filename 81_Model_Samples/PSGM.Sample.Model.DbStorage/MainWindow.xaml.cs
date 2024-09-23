@@ -179,7 +179,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 for (int i = 0; i < 10; i++)
                 {
-                    List<DbStorage_File> files = Generate_Files2(100, rootDirectory, subsubDirectories);
+                    List<DbStorage_File> files = Generate_Files1(100, rootDirectory, subsubDirectories);
                     _dbStorage_Data_Context.Files.AddRange(files);
                     _dbStorage_Data_Context.SaveChanges();
                     files.RemoveAll(p => true);

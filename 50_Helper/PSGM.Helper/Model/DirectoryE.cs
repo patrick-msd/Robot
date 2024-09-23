@@ -4,7 +4,7 @@
     {
         Undefined = 0,
 
-        DeliveryBillCreated = 10000,
+        DeliverSlipCreated = 10000,
         InPreparation = 10001,
 
         WaitingForScanning = 20001,

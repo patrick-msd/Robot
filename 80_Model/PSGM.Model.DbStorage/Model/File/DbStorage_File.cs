@@ -145,13 +145,13 @@ namespace PSGM.Model.DbStorage
         [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string ExtId10 { get; set; } = string.Empty;
 
-        [Column("MachineIdExt")]
-        [Display(Name = "MachineIdExt")]
-        public Guid MachineIdExt { get; set; } = Guid.Empty;
+        [Column("MachineId_Ext")]
+        [Display(Name = "MachineId_Ext")]
+        public Guid MachineId_Ext { get; set; } = Guid.Empty;
 
-        [Column("DeviceIdExt")]
-        [Display(Name = "DeviceIdExt")]
-        public Guid DeviceIdExt { get; set; } = Guid.Empty;
+        [Column("DeviceId_Ext")]
+        [Display(Name = "DeviceId_Ext")]
+        public Guid DeviceId_Ext { get; set; } = Guid.Empty;
 
         [Column("SoftwareId_Ext")]
         [Display(Name = "SoftwareId_Ext")]

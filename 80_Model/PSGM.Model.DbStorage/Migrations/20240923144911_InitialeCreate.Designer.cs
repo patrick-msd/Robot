@@ -59,9 +59,9 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(8191)")
                         .HasColumnName("DescriptionProjectOwner");
 
-                    b.Property<Guid>("DeviceIdExt")
+                    b.Property<Guid>("DeviceId_Ext")
                         .HasColumnType("uuid")
-                        .HasColumnName("DeviceIdExt");
+                        .HasColumnName("DeviceId_Ext");
 
                     b.Property<string>("ExtId1")
                         .IsRequired()
@@ -129,9 +129,9 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(65532)")
                         .HasColumnName("JobIdsExt_String");
 
-                    b.Property<Guid>("MachineIdExt")
+                    b.Property<Guid>("MachineId_Ext")
                         .HasColumnType("uuid")
-                        .HasColumnName("MachineIdExt");
+                        .HasColumnName("MachineId_Ext");
 
                     b.Property<Guid>("ModifiedByUserId_ExtAutoFill")
                         .HasColumnType("uuid")
