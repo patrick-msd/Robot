@@ -144,7 +144,7 @@ namespace PSGM.Model.DbStorage
         public virtual ICollection<DbStorage_RootDirectory_UserGroup_Link>? UserGroupLinks { get; set; }
 
         [InverseProperty("RootDirectory")]
-        public virtual ICollection<DbStorage_RootDirectory_VirtualRootUnit>? VirtualRootUnits { get; set; }
+        public virtual ICollection<DbStorage_RootDirectory_VirtualUnit>? VirtualUnits { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)

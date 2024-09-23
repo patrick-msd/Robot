@@ -367,7 +367,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "File_VirtualSubUnit_AuditLog",
+                name: "File_VirtualUnit_AuditLog",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -381,11 +381,11 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_File_VirtualSubUnit_AuditLog", x => x.Id);
+                    table.PrimaryKey("PK_File_VirtualUnit_AuditLog", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "File_VirtualSubUnit_User",
+                name: "File_VirtualUnit_User",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -402,11 +402,11 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_File_VirtualSubUnit_User", x => x.Id);
+                    table.PrimaryKey("PK_File_VirtualUnit_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "File_VirtualSubUnit_UserGroup",
+                name: "File_VirtualUnit_UserGroup",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -418,11 +418,11 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_File_VirtualSubUnit_UserGroup", x => x.Id);
+                    table.PrimaryKey("PK_File_VirtualUnit_UserGroup", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "File_VirtualSubUnit_UserGroup_User",
+                name: "File_VirtualUnit_UserGroup_User",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -439,7 +439,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_File_VirtualSubUnit_UserGroup_User", x => x.Id);
+                    table.PrimaryKey("PK_File_VirtualUnit_UserGroup_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -828,7 +828,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RootDirectory_VirtualRootUnit_AuditLog",
+                name: "RootDirectory_VirtualUnit_AuditLog",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -842,11 +842,11 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RootDirectory_VirtualRootUnit_AuditLog", x => x.Id);
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_AuditLog", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "RootDirectory_VirtualRootUnit_User",
+                name: "RootDirectory_VirtualUnit_User",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -863,11 +863,11 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RootDirectory_VirtualRootUnit_User", x => x.Id);
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "RootDirectory_VirtualRootUnit_UserGroup",
+                name: "RootDirectory_VirtualUnit_UserGroup",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -879,11 +879,11 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RootDirectory_VirtualRootUnit_UserGroup", x => x.Id);
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_UserGroup", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "RootDirectory_VirtualRootUnit_UserGroup_User",
+                name: "RootDirectory_VirtualUnit_UserGroup_User",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -900,7 +900,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RootDirectory_VirtualRootUnit_UserGroup_User", x => x.Id);
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_UserGroup_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -1256,7 +1256,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubDirectory_VirtualSubUnit_AuditLog",
+                name: "SubDirectory_VirtualUnit_AuditLog",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -1270,11 +1270,11 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubDirectory_VirtualSubUnit_AuditLog", x => x.Id);
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_AuditLog", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubDirectory_VirtualSubUnit_User",
+                name: "SubDirectory_VirtualUnit_User",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -1291,11 +1291,11 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubDirectory_VirtualSubUnit_User", x => x.Id);
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubDirectory_VirtualSubUnit_UserGroup",
+                name: "SubDirectory_VirtualUnit_UserGroup",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -1307,11 +1307,11 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubDirectory_VirtualSubUnit_UserGroup", x => x.Id);
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubDirectory_VirtualSubUnit_UserGroup_User",
+                name: "SubDirectory_VirtualUnit_UserGroup_User",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -1328,7 +1328,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubDirectory_VirtualSubUnit_UserGroup_User", x => x.Id);
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -1477,7 +1477,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "File_VirtualSubUnit_User_Notification",
+                name: "File_VirtualUnit_User_Notification",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -1500,17 +1500,17 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_File_VirtualSubUnit_User_Notification", x => x.Id);
+                    table.PrimaryKey("PK_File_VirtualUnit_User_Notification", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_File_VirtualSubUnit_User_Notification_File_VirtualSubUnit_U~",
+                        name: "FK_File_VirtualUnit_User_Notification_File_VirtualUnit_U~",
                         column: x => x.UserId,
                         principalSchema: "psgm",
-                        principalTable: "File_VirtualSubUnit_User",
+                        principalTable: "File_VirtualUnit_User",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "File_VirtualSubUnit_User_Permission",
+                name: "File_VirtualUnit_User_Permission",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -1526,17 +1526,17 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_File_VirtualSubUnit_User_Permission", x => x.Id);
+                    table.PrimaryKey("PK_File_VirtualUnit_User_Permission", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_File_VirtualSubUnit_User_Permission_File_VirtualSubUnit_Use~",
+                        name: "FK_File_VirtualUnit_User_Permission_File_VirtualUnit_Use~",
                         column: x => x.UserId,
                         principalSchema: "psgm",
-                        principalTable: "File_VirtualSubUnit_User",
+                        principalTable: "File_VirtualUnit_User",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "File_VirtualSubUnit_UserGroup_Notification",
+                name: "File_VirtualUnit_UserGroup_Notification",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -1559,17 +1559,17 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_File_VirtualSubUnit_UserGroup_Notification", x => x.Id);
+                    table.PrimaryKey("PK_File_VirtualUnit_UserGroup_Notification", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_File_VirtualSubUnit_UserGroup_Notification_File_VirtualSubU~",
+                        name: "FK_File_VirtualUnit_UserGroup_Notification_File_VirtualSubU~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
-                        principalTable: "File_VirtualSubUnit_UserGroup",
+                        principalTable: "File_VirtualUnit_UserGroup",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "File_VirtualSubUnit_UserGroup_Permission",
+                name: "File_VirtualUnit_UserGroup_Permission",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -1585,17 +1585,17 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_File_VirtualSubUnit_UserGroup_Permission", x => x.Id);
+                    table.PrimaryKey("PK_File_VirtualUnit_UserGroup_Permission", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_File_VirtualSubUnit_UserGroup_Permission_File_VirtualSubUni~",
+                        name: "FK_File_VirtualUnit_UserGroup_Permission_File_VirtualSubUni~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
-                        principalTable: "File_VirtualSubUnit_UserGroup",
+                        principalTable: "File_VirtualUnit_UserGroup",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "File_VirtualSubUnit_UserGroup_User_Link",
+                name: "File_VirtualUnit_UserGroup_User_Link",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -1605,18 +1605,18 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_File_VirtualSubUnit_UserGroup_User_Link", x => x.Id);
+                    table.PrimaryKey("PK_File_VirtualUnit_UserGroup_User_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_File_VirtualSubUnit_UserGroup_User_Link_File_VirtualSubUnit~",
+                        name: "FK_File_VirtualUnit_UserGroup_User_Link_File_VirtualUnit~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
-                        principalTable: "File_VirtualSubUnit_UserGroup",
+                        principalTable: "File_VirtualUnit_UserGroup",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_File_VirtualSubUnit_UserGroup_User_Link_File_VirtualSubUni~1",
+                        name: "FK_File_VirtualUnit_UserGroup_User_Link_File_VirtualSubUni~1",
                         column: x => x.UserId,
                         principalSchema: "psgm",
-                        principalTable: "File_VirtualSubUnit_UserGroup_User",
+                        principalTable: "File_VirtualUnit_UserGroup_User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -1673,12 +1673,12 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RootDirectory_VirtualRootUnit",
+                name: "RootDirectory_VirtualUnit",
                 schema: "psgm",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    VirtualRootUnitId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    VirtualUnitId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
                     ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -1687,9 +1687,9 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RootDirectory_VirtualRootUnit", x => x.Id);
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualRootUnit_RootDirectory_RootDirectoryId",
+                        name: "FK_RootDirectory_VirtualUnit_RootDirectory_RootDirectoryId",
                         column: x => x.RootDirectoryId,
                         principalSchema: "psgm",
                         principalTable: "RootDirectory",
@@ -1968,7 +1968,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RootDirectory_VirtualRootUnit_User_Notification",
+                name: "RootDirectory_VirtualUnit_User_Notification",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -1991,17 +1991,17 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RootDirectory_VirtualRootUnit_User_Notification", x => x.Id);
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_User_Notification", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualRootUnit_User_Notification_RootDirecto~",
+                        name: "FK_RootDirectory_VirtualUnit_User_Notification_RootDirecto~",
                         column: x => x.UserId,
                         principalSchema: "psgm",
-                        principalTable: "RootDirectory_VirtualRootUnit_User",
+                        principalTable: "RootDirectory_VirtualUnit_User",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "RootDirectory_VirtualRootUnit_User_Permission",
+                name: "RootDirectory_VirtualUnit_User_Permission",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -2017,17 +2017,17 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RootDirectory_VirtualRootUnit_User_Permission", x => x.Id);
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_User_Permission", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualRootUnit_User_Permission_RootDirectory~",
+                        name: "FK_RootDirectory_VirtualUnit_User_Permission_RootDirectory~",
                         column: x => x.UserId,
                         principalSchema: "psgm",
-                        principalTable: "RootDirectory_VirtualRootUnit_User",
+                        principalTable: "RootDirectory_VirtualUnit_User",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "RootDirectory_VirtualRootUnit_UserGroup_Notification",
+                name: "RootDirectory_VirtualUnit_UserGroup_Notification",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -2050,17 +2050,17 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RootDirectory_VirtualRootUnit_UserGroup_Notification", x => x.Id);
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_UserGroup_Notification", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualRootUnit_UserGroup_Notification_RootDi~",
+                        name: "FK_RootDirectory_VirtualUnit_UserGroup_Notification_RootDi~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
-                        principalTable: "RootDirectory_VirtualRootUnit_UserGroup",
+                        principalTable: "RootDirectory_VirtualUnit_UserGroup",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "RootDirectory_VirtualRootUnit_UserGroup_Permission",
+                name: "RootDirectory_VirtualUnit_UserGroup_Permission",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -2076,17 +2076,17 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RootDirectory_VirtualRootUnit_UserGroup_Permission", x => x.Id);
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_UserGroup_Permission", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualRootUnit_UserGroup_Permission_RootDire~",
+                        name: "FK_RootDirectory_VirtualUnit_UserGroup_Permission_RootDire~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
-                        principalTable: "RootDirectory_VirtualRootUnit_UserGroup",
+                        principalTable: "RootDirectory_VirtualUnit_UserGroup",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "RootDirectory_VirtualRootUnit_UserGroup_User_Link",
+                name: "RootDirectory_VirtualUnit_UserGroup_User_Link",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -2096,18 +2096,18 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RootDirectory_VirtualRootUnit_UserGroup_User_Link", x => x.Id);
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_UserGroup_User_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualRootUnit_UserGroup_User_Link_RootDirec~",
+                        name: "FK_RootDirectory_VirtualUnit_UserGroup_User_Link_RootDirec~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
-                        principalTable: "RootDirectory_VirtualRootUnit_UserGroup",
+                        principalTable: "RootDirectory_VirtualUnit_UserGroup",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualRootUnit_UserGroup_User_Link_RootDire~1",
+                        name: "FK_RootDirectory_VirtualUnit_UserGroup_User_Link_RootDire~1",
                         column: x => x.UserId,
                         principalSchema: "psgm",
-                        principalTable: "RootDirectory_VirtualRootUnit_UserGroup_User",
+                        principalTable: "RootDirectory_VirtualUnit_UserGroup_User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -2258,7 +2258,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubDirectory_VirtualSubUnit_User_Notification",
+                name: "SubDirectory_VirtualUnit_User_Notification",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -2281,17 +2281,17 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubDirectory_VirtualSubUnit_User_Notification", x => x.Id);
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_User_Notification", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualSubUnit_User_Notification_SubDirectory_~",
+                        name: "FK_SubDirectory_VirtualUnit_User_Notification_SubDirectory_~",
                         column: x => x.UserId,
                         principalSchema: "psgm",
-                        principalTable: "SubDirectory_VirtualSubUnit_User",
+                        principalTable: "SubDirectory_VirtualUnit_User",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubDirectory_VirtualSubUnit_User_Permission",
+                name: "SubDirectory_VirtualUnit_User_Permission",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -2307,17 +2307,17 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubDirectory_VirtualSubUnit_User_Permission", x => x.Id);
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_User_Permission", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualSubUnit_User_Permission_SubDirectory_Vi~",
+                        name: "FK_SubDirectory_VirtualUnit_User_Permission_SubDirectory_Vi~",
                         column: x => x.UserId,
                         principalSchema: "psgm",
-                        principalTable: "SubDirectory_VirtualSubUnit_User",
+                        principalTable: "SubDirectory_VirtualUnit_User",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubDirectory_VirtualSubUnit_UserGroup_Notification",
+                name: "SubDirectory_VirtualUnit_UserGroup_Notification",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -2340,17 +2340,17 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubDirectory_VirtualSubUnit_UserGroup_Notification", x => x.Id);
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup_Notification", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualSubUnit_UserGroup_Notification_SubDirec~",
+                        name: "FK_SubDirectory_VirtualUnit_UserGroup_Notification_SubDirec~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
-                        principalTable: "SubDirectory_VirtualSubUnit_UserGroup",
+                        principalTable: "SubDirectory_VirtualUnit_UserGroup",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubDirectory_VirtualSubUnit_UserGroup_Permission",
+                name: "SubDirectory_VirtualUnit_UserGroup_Permission",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -2366,17 +2366,17 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubDirectory_VirtualSubUnit_UserGroup_Permission", x => x.Id);
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup_Permission", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualSubUnit_UserGroup_Permission_SubDirecto~",
+                        name: "FK_SubDirectory_VirtualUnit_UserGroup_Permission_SubDirecto~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
-                        principalTable: "SubDirectory_VirtualSubUnit_UserGroup",
+                        principalTable: "SubDirectory_VirtualUnit_UserGroup",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubDirectory_VirtualSubUnit_UserGroup_User_Link",
+                name: "SubDirectory_VirtualUnit_UserGroup_User_Link",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -2386,24 +2386,24 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubDirectory_VirtualSubUnit_UserGroup_User_Link", x => x.Id);
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup_User_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualSubUnit_UserGroup_User_Link_SubDirector~",
+                        name: "FK_SubDirectory_VirtualUnit_UserGroup_User_Link_SubDirector~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
-                        principalTable: "SubDirectory_VirtualSubUnit_UserGroup",
+                        principalTable: "SubDirectory_VirtualUnit_UserGroup",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualSubUnit_UserGroup_User_Link_SubDirecto~1",
+                        name: "FK_SubDirectory_VirtualUnit_UserGroup_User_Link_SubDirecto~1",
                         column: x => x.UserId,
                         principalSchema: "psgm",
-                        principalTable: "SubDirectory_VirtualSubUnit_UserGroup_User",
+                        principalTable: "SubDirectory_VirtualUnit_UserGroup_User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "RootDirectory_VirtualRootUnit_User_Link",
+                name: "RootDirectory_VirtualUnit_User_Link",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -2413,23 +2413,23 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RootDirectory_VirtualRootUnit_User_Link", x => x.Id);
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_User_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualRootUnit_User_Link_RootDirectory_Virtu~",
+                        name: "FK_RootDirectory_VirtualUnit_User_Link_RootDirectory_Virtu~",
                         column: x => x.FileId,
                         principalSchema: "psgm",
-                        principalTable: "RootDirectory_VirtualRootUnit",
+                        principalTable: "RootDirectory_VirtualUnit",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualRootUnit_User_Link_RootDirectory_Virt~1",
+                        name: "FK_RootDirectory_VirtualUnit_User_Link_RootDirectory_Virt~1",
                         column: x => x.UserId,
                         principalSchema: "psgm",
-                        principalTable: "RootDirectory_VirtualRootUnit_User",
+                        principalTable: "RootDirectory_VirtualUnit_User",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "RootDirectory_VirtualRootUnit_UserGroup_Link",
+                name: "RootDirectory_VirtualUnit_UserGroup_Link",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -2439,18 +2439,18 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RootDirectory_VirtualRootUnit_UserGroup_Link", x => x.Id);
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_UserGroup_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualRootUnit_UserGroup_Link_RootDirectory_~",
+                        name: "FK_RootDirectory_VirtualUnit_UserGroup_Link_RootDirectory_~",
                         column: x => x.FileId,
                         principalSchema: "psgm",
-                        principalTable: "RootDirectory_VirtualRootUnit",
+                        principalTable: "RootDirectory_VirtualUnit",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualRootUnit_UserGroup_Link_RootDirectory~1",
+                        name: "FK_RootDirectory_VirtualUnit_UserGroup_Link_RootDirectory~1",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
-                        principalTable: "RootDirectory_VirtualRootUnit_UserGroup",
+                        principalTable: "RootDirectory_VirtualUnit_UserGroup",
                         principalColumn: "Id");
                 });
 
@@ -2648,12 +2648,12 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubDirectory_VirtualSubUnit",
+                name: "SubDirectory_VirtualUnit",
                 schema: "psgm",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    VirtualSubUnitId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    VirtualUnitId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
                     ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -2662,9 +2662,9 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubDirectory_VirtualSubUnit", x => x.Id);
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualSubUnit_SubDirectory_SubDirectoryId",
+                        name: "FK_SubDirectory_VirtualUnit_SubDirectory_SubDirectoryId",
                         column: x => x.SubDirectoryId,
                         principalSchema: "psgm",
                         principalTable: "SubDirectory",
@@ -2802,12 +2802,12 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "File_VirtualSubUnit",
+                name: "File_VirtualUnit",
                 schema: "psgm",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    VirtualSubUnitId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    VirtualUnitId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
                     ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -2816,9 +2816,9 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_File_VirtualSubUnit", x => x.Id);
+                    table.PrimaryKey("PK_File_VirtualUnit", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_File_VirtualSubUnit_File_FileId",
+                        name: "FK_File_VirtualUnit_File_FileId",
                         column: x => x.FileId,
                         principalSchema: "psgm",
                         principalTable: "File",
@@ -2826,7 +2826,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubDirectory_VirtualSubUnit_User_Link",
+                name: "SubDirectory_VirtualUnit_User_Link",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -2836,23 +2836,23 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubDirectory_VirtualSubUnit_User_Link", x => x.Id);
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_User_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualSubUnit_User_Link_SubDirectory_VirtualS~",
+                        name: "FK_SubDirectory_VirtualUnit_User_Link_SubDirectory_VirtualS~",
                         column: x => x.FileId,
                         principalSchema: "psgm",
-                        principalTable: "SubDirectory_VirtualSubUnit",
+                        principalTable: "SubDirectory_VirtualUnit",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualSubUnit_User_Link_SubDirectory_Virtual~1",
+                        name: "FK_SubDirectory_VirtualUnit_User_Link_SubDirectory_Virtual~1",
                         column: x => x.UserId,
                         principalSchema: "psgm",
-                        principalTable: "SubDirectory_VirtualSubUnit_User",
+                        principalTable: "SubDirectory_VirtualUnit_User",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubDirectory_VirtualSubUnit_UserGroup_Link",
+                name: "SubDirectory_VirtualUnit_UserGroup_Link",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -2862,23 +2862,23 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubDirectory_VirtualSubUnit_UserGroup_Link", x => x.Id);
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualSubUnit_UserGroup_Link_SubDirectory_Vir~",
+                        name: "FK_SubDirectory_VirtualUnit_UserGroup_Link_SubDirectory_Vir~",
                         column: x => x.FileId,
                         principalSchema: "psgm",
-                        principalTable: "SubDirectory_VirtualSubUnit",
+                        principalTable: "SubDirectory_VirtualUnit",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualSubUnit_UserGroup_Link_SubDirectory_Vi~1",
+                        name: "FK_SubDirectory_VirtualUnit_UserGroup_Link_SubDirectory_Vi~1",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
-                        principalTable: "SubDirectory_VirtualSubUnit_UserGroup",
+                        principalTable: "SubDirectory_VirtualUnit_UserGroup",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "File_VirtualSubUnit_User_Link",
+                name: "File_VirtualUnit_User_Link",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -2888,44 +2888,44 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_File_VirtualSubUnit_User_Link", x => x.Id);
+                    table.PrimaryKey("PK_File_VirtualUnit_User_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_File_VirtualSubUnit_User_Link_File_VirtualSubUnit_FileId",
+                        name: "FK_File_VirtualUnit_User_Link_File_VirtualUnit_FileId",
                         column: x => x.FileId,
                         principalSchema: "psgm",
-                        principalTable: "File_VirtualSubUnit",
+                        principalTable: "File_VirtualUnit",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_File_VirtualSubUnit_User_Link_File_VirtualSubUnit_User_User~",
+                        name: "FK_File_VirtualUnit_User_Link_File_VirtualUnit_User_User~",
                         column: x => x.UserId,
                         principalSchema: "psgm",
-                        principalTable: "File_VirtualSubUnit_User",
+                        principalTable: "File_VirtualUnit_User",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "File_VirtualSubUnit_UserGroup_Link",
+                name: "File_VirtualUnit_UserGroup_Link",
                 schema: "psgm",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    VirtualSubUnitId = table.Column<Guid>(type: "uuid", nullable: true),
+                    VirtualUnitId = table.Column<Guid>(type: "uuid", nullable: true),
                     UserGroupId = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_File_VirtualSubUnit_UserGroup_Link", x => x.Id);
+                    table.PrimaryKey("PK_File_VirtualUnit_UserGroup_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_File_VirtualSubUnit_UserGroup_Link_File_VirtualSubUnit_User~",
+                        name: "FK_File_VirtualUnit_UserGroup_Link_File_VirtualUnit_User~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
-                        principalTable: "File_VirtualSubUnit_UserGroup",
+                        principalTable: "File_VirtualUnit_UserGroup",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_File_VirtualSubUnit_UserGroup_Link_File_VirtualSubUnit_Virt~",
-                        column: x => x.VirtualSubUnitId,
+                        name: "FK_File_VirtualUnit_UserGroup_Link_File_VirtualUnit_Virt~",
+                        column: x => x.VirtualUnitId,
                         principalSchema: "psgm",
-                        principalTable: "File_VirtualSubUnit",
+                        principalTable: "File_VirtualUnit",
                         principalColumn: "Id");
                 });
 
@@ -3030,71 +3030,71 @@ namespace PSGM.Model.DbStorage.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_File_VirtualSubUnit_FileId",
+                name: "IX_File_VirtualUnit_FileId",
                 schema: "psgm",
-                table: "File_VirtualSubUnit",
+                table: "File_VirtualUnit",
                 column: "FileId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_File_VirtualSubUnit_User_Link_FileId",
+                name: "IX_File_VirtualUnit_User_Link_FileId",
                 schema: "psgm",
-                table: "File_VirtualSubUnit_User_Link",
+                table: "File_VirtualUnit_User_Link",
                 column: "FileId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_File_VirtualSubUnit_User_Link_UserId",
+                name: "IX_File_VirtualUnit_User_Link_UserId",
                 schema: "psgm",
-                table: "File_VirtualSubUnit_User_Link",
+                table: "File_VirtualUnit_User_Link",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_File_VirtualSubUnit_User_Notification_UserId",
+                name: "IX_File_VirtualUnit_User_Notification_UserId",
                 schema: "psgm",
-                table: "File_VirtualSubUnit_User_Notification",
+                table: "File_VirtualUnit_User_Notification",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_File_VirtualSubUnit_User_Permission_UserId",
+                name: "IX_File_VirtualUnit_User_Permission_UserId",
                 schema: "psgm",
-                table: "File_VirtualSubUnit_User_Permission",
+                table: "File_VirtualUnit_User_Permission",
                 column: "UserId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_File_VirtualSubUnit_UserGroup_Link_UserGroupId",
+                name: "IX_File_VirtualUnit_UserGroup_Link_UserGroupId",
                 schema: "psgm",
-                table: "File_VirtualSubUnit_UserGroup_Link",
+                table: "File_VirtualUnit_UserGroup_Link",
                 column: "UserGroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_File_VirtualSubUnit_UserGroup_Link_VirtualSubUnitId",
+                name: "IX_File_VirtualUnit_UserGroup_Link_VirtualUnitId",
                 schema: "psgm",
-                table: "File_VirtualSubUnit_UserGroup_Link",
-                column: "VirtualSubUnitId");
+                table: "File_VirtualUnit_UserGroup_Link",
+                column: "VirtualUnitId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_File_VirtualSubUnit_UserGroup_Notification_UserGroupId",
+                name: "IX_File_VirtualUnit_UserGroup_Notification_UserGroupId",
                 schema: "psgm",
-                table: "File_VirtualSubUnit_UserGroup_Notification",
+                table: "File_VirtualUnit_UserGroup_Notification",
                 column: "UserGroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_File_VirtualSubUnit_UserGroup_Permission_UserGroupId",
+                name: "IX_File_VirtualUnit_UserGroup_Permission_UserGroupId",
                 schema: "psgm",
-                table: "File_VirtualSubUnit_UserGroup_Permission",
+                table: "File_VirtualUnit_UserGroup_Permission",
                 column: "UserGroupId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_File_VirtualSubUnit_UserGroup_User_Link_UserGroupId",
+                name: "IX_File_VirtualUnit_UserGroup_User_Link_UserGroupId",
                 schema: "psgm",
-                table: "File_VirtualSubUnit_UserGroup_User_Link",
+                table: "File_VirtualUnit_UserGroup_User_Link",
                 column: "UserGroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_File_VirtualSubUnit_UserGroup_User_Link_UserId",
+                name: "IX_File_VirtualUnit_UserGroup_User_Link_UserId",
                 schema: "psgm",
-                table: "File_VirtualSubUnit_UserGroup_User_Link",
+                table: "File_VirtualUnit_UserGroup_User_Link",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -3186,71 +3186,71 @@ namespace PSGM.Model.DbStorage.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RootDirectory_VirtualRootUnit_RootDirectoryId",
+                name: "IX_RootDirectory_VirtualUnit_RootDirectoryId",
                 schema: "psgm",
-                table: "RootDirectory_VirtualRootUnit",
+                table: "RootDirectory_VirtualUnit",
                 column: "RootDirectoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RootDirectory_VirtualRootUnit_User_Link_FileId",
+                name: "IX_RootDirectory_VirtualUnit_User_Link_FileId",
                 schema: "psgm",
-                table: "RootDirectory_VirtualRootUnit_User_Link",
+                table: "RootDirectory_VirtualUnit_User_Link",
                 column: "FileId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RootDirectory_VirtualRootUnit_User_Link_UserId",
+                name: "IX_RootDirectory_VirtualUnit_User_Link_UserId",
                 schema: "psgm",
-                table: "RootDirectory_VirtualRootUnit_User_Link",
+                table: "RootDirectory_VirtualUnit_User_Link",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RootDirectory_VirtualRootUnit_User_Notification_UserId",
+                name: "IX_RootDirectory_VirtualUnit_User_Notification_UserId",
                 schema: "psgm",
-                table: "RootDirectory_VirtualRootUnit_User_Notification",
+                table: "RootDirectory_VirtualUnit_User_Notification",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RootDirectory_VirtualRootUnit_User_Permission_UserId",
+                name: "IX_RootDirectory_VirtualUnit_User_Permission_UserId",
                 schema: "psgm",
-                table: "RootDirectory_VirtualRootUnit_User_Permission",
+                table: "RootDirectory_VirtualUnit_User_Permission",
                 column: "UserId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_RootDirectory_VirtualRootUnit_UserGroup_Link_FileId",
+                name: "IX_RootDirectory_VirtualUnit_UserGroup_Link_FileId",
                 schema: "psgm",
-                table: "RootDirectory_VirtualRootUnit_UserGroup_Link",
+                table: "RootDirectory_VirtualUnit_UserGroup_Link",
                 column: "FileId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RootDirectory_VirtualRootUnit_UserGroup_Link_UserGroupId",
+                name: "IX_RootDirectory_VirtualUnit_UserGroup_Link_UserGroupId",
                 schema: "psgm",
-                table: "RootDirectory_VirtualRootUnit_UserGroup_Link",
+                table: "RootDirectory_VirtualUnit_UserGroup_Link",
                 column: "UserGroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RootDirectory_VirtualRootUnit_UserGroup_Notification_UserGr~",
+                name: "IX_RootDirectory_VirtualUnit_UserGroup_Notification_UserGr~",
                 schema: "psgm",
-                table: "RootDirectory_VirtualRootUnit_UserGroup_Notification",
+                table: "RootDirectory_VirtualUnit_UserGroup_Notification",
                 column: "UserGroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RootDirectory_VirtualRootUnit_UserGroup_Permission_UserGrou~",
+                name: "IX_RootDirectory_VirtualUnit_UserGroup_Permission_UserGrou~",
                 schema: "psgm",
-                table: "RootDirectory_VirtualRootUnit_UserGroup_Permission",
+                table: "RootDirectory_VirtualUnit_UserGroup_Permission",
                 column: "UserGroupId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_RootDirectory_VirtualRootUnit_UserGroup_User_Link_UserGroup~",
+                name: "IX_RootDirectory_VirtualUnit_UserGroup_User_Link_UserGroup~",
                 schema: "psgm",
-                table: "RootDirectory_VirtualRootUnit_UserGroup_User_Link",
+                table: "RootDirectory_VirtualUnit_UserGroup_User_Link",
                 column: "UserGroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RootDirectory_VirtualRootUnit_UserGroup_User_Link_UserId",
+                name: "IX_RootDirectory_VirtualUnit_UserGroup_User_Link_UserId",
                 schema: "psgm",
-                table: "RootDirectory_VirtualRootUnit_UserGroup_User_Link",
+                table: "RootDirectory_VirtualUnit_UserGroup_User_Link",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -3354,71 +3354,71 @@ namespace PSGM.Model.DbStorage.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubDirectory_VirtualSubUnit_SubDirectoryId",
+                name: "IX_SubDirectory_VirtualUnit_SubDirectoryId",
                 schema: "psgm",
-                table: "SubDirectory_VirtualSubUnit",
+                table: "SubDirectory_VirtualUnit",
                 column: "SubDirectoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubDirectory_VirtualSubUnit_User_Link_FileId",
+                name: "IX_SubDirectory_VirtualUnit_User_Link_FileId",
                 schema: "psgm",
-                table: "SubDirectory_VirtualSubUnit_User_Link",
+                table: "SubDirectory_VirtualUnit_User_Link",
                 column: "FileId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubDirectory_VirtualSubUnit_User_Link_UserId",
+                name: "IX_SubDirectory_VirtualUnit_User_Link_UserId",
                 schema: "psgm",
-                table: "SubDirectory_VirtualSubUnit_User_Link",
+                table: "SubDirectory_VirtualUnit_User_Link",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubDirectory_VirtualSubUnit_User_Notification_UserId",
+                name: "IX_SubDirectory_VirtualUnit_User_Notification_UserId",
                 schema: "psgm",
-                table: "SubDirectory_VirtualSubUnit_User_Notification",
+                table: "SubDirectory_VirtualUnit_User_Notification",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubDirectory_VirtualSubUnit_User_Permission_UserId",
+                name: "IX_SubDirectory_VirtualUnit_User_Permission_UserId",
                 schema: "psgm",
-                table: "SubDirectory_VirtualSubUnit_User_Permission",
+                table: "SubDirectory_VirtualUnit_User_Permission",
                 column: "UserId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubDirectory_VirtualSubUnit_UserGroup_Link_FileId",
+                name: "IX_SubDirectory_VirtualUnit_UserGroup_Link_FileId",
                 schema: "psgm",
-                table: "SubDirectory_VirtualSubUnit_UserGroup_Link",
+                table: "SubDirectory_VirtualUnit_UserGroup_Link",
                 column: "FileId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubDirectory_VirtualSubUnit_UserGroup_Link_UserGroupId",
+                name: "IX_SubDirectory_VirtualUnit_UserGroup_Link_UserGroupId",
                 schema: "psgm",
-                table: "SubDirectory_VirtualSubUnit_UserGroup_Link",
+                table: "SubDirectory_VirtualUnit_UserGroup_Link",
                 column: "UserGroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubDirectory_VirtualSubUnit_UserGroup_Notification_UserGrou~",
+                name: "IX_SubDirectory_VirtualUnit_UserGroup_Notification_UserGrou~",
                 schema: "psgm",
-                table: "SubDirectory_VirtualSubUnit_UserGroup_Notification",
+                table: "SubDirectory_VirtualUnit_UserGroup_Notification",
                 column: "UserGroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubDirectory_VirtualSubUnit_UserGroup_Permission_UserGroupId",
+                name: "IX_SubDirectory_VirtualUnit_UserGroup_Permission_UserGroupId",
                 schema: "psgm",
-                table: "SubDirectory_VirtualSubUnit_UserGroup_Permission",
+                table: "SubDirectory_VirtualUnit_UserGroup_Permission",
                 column: "UserGroupId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubDirectory_VirtualSubUnit_UserGroup_User_Link_UserGroupId",
+                name: "IX_SubDirectory_VirtualUnit_UserGroup_User_Link_UserGroupId",
                 schema: "psgm",
-                table: "SubDirectory_VirtualSubUnit_UserGroup_User_Link",
+                table: "SubDirectory_VirtualUnit_UserGroup_User_Link",
                 column: "UserGroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubDirectory_VirtualSubUnit_UserGroup_User_Link_UserId",
+                name: "IX_SubDirectory_VirtualUnit_UserGroup_User_Link_UserId",
                 schema: "psgm",
-                table: "SubDirectory_VirtualSubUnit_UserGroup_User_Link",
+                table: "SubDirectory_VirtualUnit_UserGroup_User_Link",
                 column: "UserId");
         }
 
@@ -3526,35 +3526,35 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "File_VirtualSubUnit_AuditLog",
+                name: "File_VirtualUnit_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "File_VirtualSubUnit_User_Link",
+                name: "File_VirtualUnit_User_Link",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "File_VirtualSubUnit_User_Notification",
+                name: "File_VirtualUnit_User_Notification",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "File_VirtualSubUnit_User_Permission",
+                name: "File_VirtualUnit_User_Permission",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "File_VirtualSubUnit_UserGroup_Link",
+                name: "File_VirtualUnit_UserGroup_Link",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "File_VirtualSubUnit_UserGroup_Notification",
+                name: "File_VirtualUnit_UserGroup_Notification",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "File_VirtualSubUnit_UserGroup_Permission",
+                name: "File_VirtualUnit_UserGroup_Permission",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "File_VirtualSubUnit_UserGroup_User_Link",
+                name: "File_VirtualUnit_UserGroup_User_Link",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3658,35 +3658,35 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "RootDirectory_VirtualRootUnit_AuditLog",
+                name: "RootDirectory_VirtualUnit_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "RootDirectory_VirtualRootUnit_User_Link",
+                name: "RootDirectory_VirtualUnit_User_Link",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "RootDirectory_VirtualRootUnit_User_Notification",
+                name: "RootDirectory_VirtualUnit_User_Notification",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "RootDirectory_VirtualRootUnit_User_Permission",
+                name: "RootDirectory_VirtualUnit_User_Permission",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "RootDirectory_VirtualRootUnit_UserGroup_Link",
+                name: "RootDirectory_VirtualUnit_UserGroup_Link",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "RootDirectory_VirtualRootUnit_UserGroup_Notification",
+                name: "RootDirectory_VirtualUnit_UserGroup_Notification",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "RootDirectory_VirtualRootUnit_UserGroup_Permission",
+                name: "RootDirectory_VirtualUnit_UserGroup_Permission",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "RootDirectory_VirtualRootUnit_UserGroup_User_Link",
+                name: "RootDirectory_VirtualUnit_UserGroup_User_Link",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3790,35 +3790,35 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "SubDirectory_VirtualSubUnit_AuditLog",
+                name: "SubDirectory_VirtualUnit_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "SubDirectory_VirtualSubUnit_User_Link",
+                name: "SubDirectory_VirtualUnit_User_Link",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "SubDirectory_VirtualSubUnit_User_Notification",
+                name: "SubDirectory_VirtualUnit_User_Notification",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "SubDirectory_VirtualSubUnit_User_Permission",
+                name: "SubDirectory_VirtualUnit_User_Permission",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "SubDirectory_VirtualSubUnit_UserGroup_Link",
+                name: "SubDirectory_VirtualUnit_UserGroup_Link",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "SubDirectory_VirtualSubUnit_UserGroup_Notification",
+                name: "SubDirectory_VirtualUnit_UserGroup_Notification",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "SubDirectory_VirtualSubUnit_UserGroup_Permission",
+                name: "SubDirectory_VirtualUnit_UserGroup_Permission",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "SubDirectory_VirtualSubUnit_UserGroup_User_Link",
+                name: "SubDirectory_VirtualUnit_UserGroup_User_Link",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3838,19 +3838,19 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "File_VirtualSubUnit_User",
+                name: "File_VirtualUnit_User",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "File_VirtualSubUnit",
+                name: "File_VirtualUnit",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "File_VirtualSubUnit_UserGroup",
+                name: "File_VirtualUnit_UserGroup",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "File_VirtualSubUnit_UserGroup_User",
+                name: "File_VirtualUnit_UserGroup_User",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3870,19 +3870,19 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "RootDirectory_VirtualRootUnit_User",
+                name: "RootDirectory_VirtualUnit_User",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "RootDirectory_VirtualRootUnit",
+                name: "RootDirectory_VirtualUnit",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "RootDirectory_VirtualRootUnit_UserGroup",
+                name: "RootDirectory_VirtualUnit_UserGroup",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "RootDirectory_VirtualRootUnit_UserGroup_User",
+                name: "RootDirectory_VirtualUnit_UserGroup_User",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3902,19 +3902,19 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "SubDirectory_VirtualSubUnit_User",
+                name: "SubDirectory_VirtualUnit_User",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "SubDirectory_VirtualSubUnit",
+                name: "SubDirectory_VirtualUnit",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "SubDirectory_VirtualSubUnit_UserGroup",
+                name: "SubDirectory_VirtualUnit_UserGroup",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "SubDirectory_VirtualSubUnit_UserGroup_User",
+                name: "SubDirectory_VirtualUnit_UserGroup_User",
                 schema: "psgm");
 
             migrationBuilder.DropTable(

@@ -1480,7 +1480,7 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.ToTable("file_User_Permission_AuditLog", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1506,18 +1506,18 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("ModifiedDateTimeAutoFill");
 
-                    b.Property<Guid>("VirtualSubUnitId_Ext")
+                    b.Property<Guid>("VirtualUnitId_Ext")
                         .HasColumnType("uuid")
-                        .HasColumnName("VirtualSubUnitId_Ext");
+                        .HasColumnName("VirtualUnitId_Ext");
 
                     b.HasKey("Id");
 
                     b.HasIndex("FileId");
 
-                    b.ToTable("File_VirtualSubUnit", "psgm");
+                    b.ToTable("File_VirtualUnit", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_AuditLog", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1554,10 +1554,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("File_VirtualSubUnit_AuditLog", "psgm");
+                    b.ToTable("File_VirtualUnit_AuditLog", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1610,10 +1610,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("File_VirtualSubUnit_User", "psgm");
+                    b.ToTable("File_VirtualUnit_User", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1638,10 +1638,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("File_VirtualSubUnit_UserGroup", "psgm");
+                    b.ToTable("File_VirtualUnit_UserGroup", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup_Link", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1651,19 +1651,19 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Property<Guid?>("UserGroupId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("VirtualSubUnitId")
+                    b.Property<Guid?>("VirtualUnitId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserGroupId");
 
-                    b.HasIndex("VirtualSubUnitId");
+                    b.HasIndex("VirtualUnitId");
 
-                    b.ToTable("File_VirtualSubUnit_UserGroup_Link", "psgm");
+                    b.ToTable("File_VirtualUnit_UserGroup_Link", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup_Notification", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup_Notification", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1735,10 +1735,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("UserGroupId");
 
-                    b.ToTable("File_VirtualSubUnit_UserGroup_Notification", "psgm");
+                    b.ToTable("File_VirtualUnit_UserGroup_Notification", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup_Permission", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup_Permission", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1783,10 +1783,10 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.HasIndex("UserGroupId")
                         .IsUnique();
 
-                    b.ToTable("File_VirtualSubUnit_UserGroup_Permission", "psgm");
+                    b.ToTable("File_VirtualUnit_UserGroup_Permission", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup_User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1839,10 +1839,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("File_VirtualSubUnit_UserGroup_User", "psgm");
+                    b.ToTable("File_VirtualUnit_UserGroup_User", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup_User_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup_User_Link", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1861,10 +1861,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("File_VirtualSubUnit_UserGroup_User_Link", "psgm");
+                    b.ToTable("File_VirtualUnit_UserGroup_User_Link", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_User_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_User_Link", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1883,10 +1883,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("File_VirtualSubUnit_User_Link", "psgm");
+                    b.ToTable("File_VirtualUnit_User_Link", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_User_Notification", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_User_Notification", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1958,10 +1958,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("File_VirtualSubUnit_User_Notification", "psgm");
+                    b.ToTable("File_VirtualUnit_User_Notification", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_User_Permission", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_User_Permission", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -2006,7 +2006,7 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("File_VirtualSubUnit_User_Permission", "psgm");
+                    b.ToTable("File_VirtualUnit_User_Permission", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory", b =>
@@ -3361,7 +3361,7 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.ToTable("RootDirectory_User_Permission_AuditLog", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -3387,18 +3387,18 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Property<Guid?>("RootDirectoryId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("VirtualRootUnitId_Ext")
+                    b.Property<Guid>("VirtualUnitId_Ext")
                         .HasColumnType("uuid")
-                        .HasColumnName("VirtualRootUnitId_Ext");
+                        .HasColumnName("VirtualUnitId_Ext");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RootDirectoryId");
 
-                    b.ToTable("RootDirectory_VirtualRootUnit", "psgm");
+                    b.ToTable("RootDirectory_VirtualUnit", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_AuditLog", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -3435,10 +3435,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RootDirectory_VirtualRootUnit_AuditLog", "psgm");
+                    b.ToTable("RootDirectory_VirtualUnit_AuditLog", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -3491,10 +3491,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RootDirectory_VirtualRootUnit_User", "psgm");
+                    b.ToTable("RootDirectory_VirtualUnit_User", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -3519,10 +3519,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RootDirectory_VirtualRootUnit_UserGroup", "psgm");
+                    b.ToTable("RootDirectory_VirtualUnit_UserGroup", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup_Link", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -3541,10 +3541,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("UserGroupId");
 
-                    b.ToTable("RootDirectory_VirtualRootUnit_UserGroup_Link", "psgm");
+                    b.ToTable("RootDirectory_VirtualUnit_UserGroup_Link", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup_Notification", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup_Notification", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -3616,10 +3616,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("UserGroupId");
 
-                    b.ToTable("RootDirectory_VirtualRootUnit_UserGroup_Notification", "psgm");
+                    b.ToTable("RootDirectory_VirtualUnit_UserGroup_Notification", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup_Permission", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup_Permission", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -3664,10 +3664,10 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.HasIndex("UserGroupId")
                         .IsUnique();
 
-                    b.ToTable("RootDirectory_VirtualRootUnit_UserGroup_Permission", "psgm");
+                    b.ToTable("RootDirectory_VirtualUnit_UserGroup_Permission", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup_User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -3720,10 +3720,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RootDirectory_VirtualRootUnit_UserGroup_User", "psgm");
+                    b.ToTable("RootDirectory_VirtualUnit_UserGroup_User", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup_User_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup_User_Link", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -3742,10 +3742,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("RootDirectory_VirtualRootUnit_UserGroup_User_Link", "psgm");
+                    b.ToTable("RootDirectory_VirtualUnit_UserGroup_User_Link", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_User_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_User_Link", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -3764,10 +3764,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("RootDirectory_VirtualRootUnit_User_Link", "psgm");
+                    b.ToTable("RootDirectory_VirtualUnit_User_Link", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_User_Notification", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_User_Notification", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -3839,10 +3839,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("RootDirectory_VirtualRootUnit_User_Notification", "psgm");
+                    b.ToTable("RootDirectory_VirtualUnit_User_Notification", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_User_Permission", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_User_Permission", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -3887,7 +3887,7 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("RootDirectory_VirtualRootUnit_User_Permission", "psgm");
+                    b.ToTable("RootDirectory_VirtualUnit_User_Permission", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory", b =>
@@ -5252,7 +5252,7 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.ToTable("SubDirectory_User_Permission_AuditLog", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -5278,18 +5278,18 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Property<Guid?>("SubDirectoryId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("VirtualSubUnitId_Ext")
+                    b.Property<Guid>("VirtualUnitId_Ext")
                         .HasColumnType("uuid")
-                        .HasColumnName("VirtualSubUnitId_Ext");
+                        .HasColumnName("VirtualUnitId_Ext");
 
                     b.HasKey("Id");
 
                     b.HasIndex("SubDirectoryId");
 
-                    b.ToTable("SubDirectory_VirtualSubUnit", "psgm");
+                    b.ToTable("SubDirectory_VirtualUnit", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_AuditLog", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -5326,10 +5326,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SubDirectory_VirtualSubUnit_AuditLog", "psgm");
+                    b.ToTable("SubDirectory_VirtualUnit_AuditLog", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -5382,10 +5382,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SubDirectory_VirtualSubUnit_User", "psgm");
+                    b.ToTable("SubDirectory_VirtualUnit_User", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -5410,10 +5410,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SubDirectory_VirtualSubUnit_UserGroup", "psgm");
+                    b.ToTable("SubDirectory_VirtualUnit_UserGroup", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup_Link", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -5432,10 +5432,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("UserGroupId");
 
-                    b.ToTable("SubDirectory_VirtualSubUnit_UserGroup_Link", "psgm");
+                    b.ToTable("SubDirectory_VirtualUnit_UserGroup_Link", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup_Notification", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup_Notification", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -5507,10 +5507,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("UserGroupId");
 
-                    b.ToTable("SubDirectory_VirtualSubUnit_UserGroup_Notification", "psgm");
+                    b.ToTable("SubDirectory_VirtualUnit_UserGroup_Notification", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup_Permission", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup_Permission", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -5555,10 +5555,10 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.HasIndex("UserGroupId")
                         .IsUnique();
 
-                    b.ToTable("SubDirectory_VirtualSubUnit_UserGroup_Permission", "psgm");
+                    b.ToTable("SubDirectory_VirtualUnit_UserGroup_Permission", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup_User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -5611,10 +5611,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SubDirectory_VirtualSubUnit_UserGroup_User", "psgm");
+                    b.ToTable("SubDirectory_VirtualUnit_UserGroup_User", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup_User_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup_User_Link", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -5633,10 +5633,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("SubDirectory_VirtualSubUnit_UserGroup_User_Link", "psgm");
+                    b.ToTable("SubDirectory_VirtualUnit_UserGroup_User_Link", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_User_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_User_Link", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -5655,10 +5655,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("SubDirectory_VirtualSubUnit_User_Link", "psgm");
+                    b.ToTable("SubDirectory_VirtualUnit_User_Link", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_User_Notification", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_User_Notification", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -5730,10 +5730,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("SubDirectory_VirtualSubUnit_User_Notification", "psgm");
+                    b.ToTable("SubDirectory_VirtualUnit_User_Notification", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_User_Permission", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_User_Permission", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -5778,7 +5778,7 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("SubDirectory_VirtualSubUnit_User_Permission", "psgm");
+                    b.ToTable("SubDirectory_VirtualUnit_User_Permission", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File", b =>
@@ -5914,95 +5914,95 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit", b =>
                 {
                     b.HasOne("PSGM.Model.DbStorage.DbStorage_File", "File")
-                        .WithMany("VirtualSubUnits")
+                        .WithMany("VirtualUnits")
                         .HasForeignKey("FileId");
 
                     b.Navigation("File");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup_Link", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup", "UserGroup")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup", "UserGroup")
                         .WithMany("UserGroupLinks")
                         .HasForeignKey("UserGroupId");
 
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit", "VirtualSubUnit")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit", "VirtualUnit")
                         .WithMany("UserGroupLinks")
-                        .HasForeignKey("VirtualSubUnitId");
+                        .HasForeignKey("VirtualUnitId");
 
                     b.Navigation("UserGroup");
 
-                    b.Navigation("VirtualSubUnit");
+                    b.Navigation("VirtualUnit");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup_Notification", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup_Notification", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup", "UserGroup")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup", "UserGroup")
                         .WithMany("Notifications")
                         .HasForeignKey("UserGroupId");
 
                     b.Navigation("UserGroup");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup_Permission", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup_Permission", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup", "UserGroup")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup", "UserGroup")
                         .WithOne("Permissions")
-                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup_Permission", "UserGroupId");
+                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup_Permission", "UserGroupId");
 
                     b.Navigation("UserGroup");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup_User_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup_User_Link", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup", "UserGroup")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup", "UserGroup")
                         .WithMany("UserLinks")
                         .HasForeignKey("UserGroupId");
 
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup_User", "User")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup_User", "User")
                         .WithMany("UserLinks")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("FK_File_VirtualSubUnit_UserGroup_User_Link_File_VirtualSubUni~1");
+                        .HasConstraintName("FK_File_VirtualUnit_UserGroup_User_Link_File_VirtualSubUni~1");
 
                     b.Navigation("User");
 
                     b.Navigation("UserGroup");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_User_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_User_Link", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit", "VirtualSubUnit")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit", "VirtualUnit")
                         .WithMany("UserLinks")
                         .HasForeignKey("FileId");
 
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_User", "User")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_User", "User")
                         .WithMany("UserLinks")
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
 
-                    b.Navigation("VirtualSubUnit");
+                    b.Navigation("VirtualUnit");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_User_Notification", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_User_Notification", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_User", "User")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_User", "User")
                         .WithMany("Notifications")
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_User_Permission", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_User_Permission", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_User", "User")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_User", "User")
                         .WithOne("Permissions")
-                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_User_Permission", "UserId");
+                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_User_Permission", "UserId");
 
                     b.Navigation("User");
                 });
@@ -6126,97 +6126,97 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit", b =>
                 {
                     b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory", "RootDirectory")
-                        .WithMany("VirtualRootUnits")
+                        .WithMany("VirtualUnits")
                         .HasForeignKey("RootDirectoryId");
 
                     b.Navigation("RootDirectory");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup_Link", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit", "VirtualSubUnit")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit", "VirtualUnit")
                         .WithMany("UserGroupLinks")
                         .HasForeignKey("FileId");
 
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup", "UserGroup")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup", "UserGroup")
                         .WithMany("UserGroupLinks")
                         .HasForeignKey("UserGroupId")
-                        .HasConstraintName("FK_RootDirectory_VirtualRootUnit_UserGroup_Link_RootDirectory~1");
+                        .HasConstraintName("FK_RootDirectory_VirtualUnit_UserGroup_Link_RootDirectory~1");
 
                     b.Navigation("UserGroup");
 
-                    b.Navigation("VirtualSubUnit");
+                    b.Navigation("VirtualUnit");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup_Notification", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup_Notification", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup", "UserGroup")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup", "UserGroup")
                         .WithMany("Notifications")
                         .HasForeignKey("UserGroupId");
 
                     b.Navigation("UserGroup");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup_Permission", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup_Permission", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup", "UserGroup")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup", "UserGroup")
                         .WithOne("Permissions")
-                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup_Permission", "UserGroupId");
+                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup_Permission", "UserGroupId");
 
                     b.Navigation("UserGroup");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup_User_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup_User_Link", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup", "UserGroup")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup", "UserGroup")
                         .WithMany("UserLinks")
                         .HasForeignKey("UserGroupId");
 
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup_User", "User")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup_User", "User")
                         .WithMany("UserLinks")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("FK_RootDirectory_VirtualRootUnit_UserGroup_User_Link_RootDire~1");
+                        .HasConstraintName("FK_RootDirectory_VirtualUnit_UserGroup_User_Link_RootDire~1");
 
                     b.Navigation("User");
 
                     b.Navigation("UserGroup");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_User_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_User_Link", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit", "VirtualSubUnit")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit", "VirtualUnit")
                         .WithMany("UserLinks")
                         .HasForeignKey("FileId");
 
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_User", "User")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_User", "User")
                         .WithMany("UserLinks")
                         .HasForeignKey("UserId")
-                        .HasConstraintName("FK_RootDirectory_VirtualRootUnit_User_Link_RootDirectory_Virt~1");
+                        .HasConstraintName("FK_RootDirectory_VirtualUnit_User_Link_RootDirectory_Virt~1");
 
                     b.Navigation("User");
 
-                    b.Navigation("VirtualSubUnit");
+                    b.Navigation("VirtualUnit");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_User_Notification", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_User_Notification", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_User", "User")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_User", "User")
                         .WithMany("Notifications")
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_User_Permission", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_User_Permission", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_User", "User")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_User", "User")
                         .WithOne("Permissions")
-                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_User_Permission", "UserId");
+                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_User_Permission", "UserId");
 
                     b.Navigation("User");
                 });
@@ -6355,97 +6355,97 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit", b =>
                 {
                     b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory", "SubDirectory")
-                        .WithMany("VirtualSubUnits")
+                        .WithMany("VirtualUnits")
                         .HasForeignKey("SubDirectoryId");
 
                     b.Navigation("SubDirectory");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup_Link", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit", "VirtualSubUnit")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit", "VirtualUnit")
                         .WithMany("UserGroupLinks")
                         .HasForeignKey("FileId");
 
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup", "UserGroup")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup", "UserGroup")
                         .WithMany("UserGroupLinks")
                         .HasForeignKey("UserGroupId")
-                        .HasConstraintName("FK_SubDirectory_VirtualSubUnit_UserGroup_Link_SubDirectory_Vi~1");
+                        .HasConstraintName("FK_SubDirectory_VirtualUnit_UserGroup_Link_SubDirectory_Vi~1");
 
                     b.Navigation("UserGroup");
 
-                    b.Navigation("VirtualSubUnit");
+                    b.Navigation("VirtualUnit");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup_Notification", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup_Notification", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup", "UserGroup")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup", "UserGroup")
                         .WithMany("Notifications")
                         .HasForeignKey("UserGroupId");
 
                     b.Navigation("UserGroup");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup_Permission", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup_Permission", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup", "UserGroup")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup", "UserGroup")
                         .WithOne("Permissions")
-                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup_Permission", "UserGroupId");
+                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup_Permission", "UserGroupId");
 
                     b.Navigation("UserGroup");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup_User_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup_User_Link", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup", "UserGroup")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup", "UserGroup")
                         .WithMany("UserLinks")
                         .HasForeignKey("UserGroupId");
 
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup_User", "User")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup_User", "User")
                         .WithMany("UserLinks")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("FK_SubDirectory_VirtualSubUnit_UserGroup_User_Link_SubDirecto~1");
+                        .HasConstraintName("FK_SubDirectory_VirtualUnit_UserGroup_User_Link_SubDirecto~1");
 
                     b.Navigation("User");
 
                     b.Navigation("UserGroup");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_User_Link", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_User_Link", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit", "VirtualSubUnit")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit", "VirtualUnit")
                         .WithMany("UserLinks")
                         .HasForeignKey("FileId");
 
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_User", "User")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_User", "User")
                         .WithMany("UserLinks")
                         .HasForeignKey("UserId")
-                        .HasConstraintName("FK_SubDirectory_VirtualSubUnit_User_Link_SubDirectory_Virtual~1");
+                        .HasConstraintName("FK_SubDirectory_VirtualUnit_User_Link_SubDirectory_Virtual~1");
 
                     b.Navigation("User");
 
-                    b.Navigation("VirtualSubUnit");
+                    b.Navigation("VirtualUnit");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_User_Notification", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_User_Notification", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_User", "User")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_User", "User")
                         .WithMany("Notifications")
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_User_Permission", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_User_Permission", b =>
                 {
-                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_User", "User")
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_User", "User")
                         .WithOne("Permissions")
-                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_User_Permission", "UserId");
+                        .HasForeignKey("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_User_Permission", "UserId");
 
                     b.Navigation("User");
                 });
@@ -6462,7 +6462,7 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.Navigation("UserLinks");
 
-                    b.Navigation("VirtualSubUnits");
+                    b.Navigation("VirtualUnits");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_Metadata", b =>
@@ -6495,14 +6495,14 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("UserLinks");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit", b =>
                 {
                     b.Navigation("UserGroupLinks");
 
                     b.Navigation("UserLinks");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_User", b =>
                 {
                     b.Navigation("Notifications");
 
@@ -6511,7 +6511,7 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("UserLinks");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup", b =>
                 {
                     b.Navigation("Notifications");
 
@@ -6522,7 +6522,7 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("UserLinks");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_UserGroup_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualUnit_UserGroup_User", b =>
                 {
                     b.Navigation("UserLinks");
                 });
@@ -6543,7 +6543,7 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.Navigation("UserLinks");
 
-                    b.Navigation("VirtualRootUnits");
+                    b.Navigation("VirtualUnits");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_Metadata", b =>
@@ -6576,14 +6576,14 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("UserLinks");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit", b =>
                 {
                     b.Navigation("UserGroupLinks");
 
                     b.Navigation("UserLinks");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_User", b =>
                 {
                     b.Navigation("Notifications");
 
@@ -6592,7 +6592,7 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("UserLinks");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup", b =>
                 {
                     b.Navigation("Notifications");
 
@@ -6603,7 +6603,7 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("UserLinks");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_UserGroup_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualUnit_UserGroup_User", b =>
                 {
                     b.Navigation("UserLinks");
                 });
@@ -6624,7 +6624,7 @@ namespace PSGM.Model.DbStorage.Migrations
 
                     b.Navigation("UserLinks");
 
-                    b.Navigation("VirtualSubUnits");
+                    b.Navigation("VirtualUnits");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_Metadata", b =>
@@ -6657,14 +6657,14 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("UserLinks");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit", b =>
                 {
                     b.Navigation("UserGroupLinks");
 
                     b.Navigation("UserLinks");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_User", b =>
                 {
                     b.Navigation("Notifications");
 
@@ -6673,7 +6673,7 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("UserLinks");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup", b =>
                 {
                     b.Navigation("Notifications");
 
@@ -6684,7 +6684,7 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("UserLinks");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_UserGroup_User", b =>
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualUnit_UserGroup_User", b =>
                 {
                     b.Navigation("UserLinks");
                 });

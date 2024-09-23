@@ -217,7 +217,7 @@ namespace PSGM.Model.DbStorage
         public virtual ICollection<DbStorage_File_UserGroup_Link>? UserGroupLinks { get; set; }
 
         [InverseProperty("File")]
-        public virtual ICollection<DbStorage_File_VirtualSubUnit>? VirtualSubUnits { get; set; }
+        public virtual ICollection<DbStorage_File_VirtualUnit>? VirtualUnits { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)

@@ -258,14 +258,17 @@ namespace PSGM.Sample.Model.DbStorage
                     });
                 }
 
-                List<DbStorage_SubDirectory_VirtualSubUnit> virtualSubUnits = new List<DbStorage_SubDirectory_VirtualSubUnit>();
+                List<DbStorage_SubDirectory_VirtualUnit> virtualSubUnits = new List<DbStorage_SubDirectory_VirtualUnit>();
                 for (int j = 0; j < random.Next(25, 250); j++)
                 {
-                    virtualSubUnits.Add(new DbStorage_SubDirectory_VirtualSubUnit()
+                    virtualSubUnits.Add(new DbStorage_SubDirectory_VirtualUnit()
                     {
                         Id = Guid.NewGuid(),
 
-                        VirtualSubUnitId_Ext = Guid.NewGuid(),
+                        VirtualUnitId_Ext = Guid.NewGuid(),
+
+                        UserLinks = null,
+                        UserGroupLinks = null,
 
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
@@ -414,7 +417,7 @@ namespace PSGM.Sample.Model.DbStorage
                         SubDirectoryId = null,
                     },
 
-                    VirtualSubUnits = virtualSubUnits,
+                    VirtualUnits = virtualSubUnits,
 
                     //CreatedByUserIdExtAutoFill = Guid.Empty,
                     //CreatedDateTimeAutoFill = DateTime.Now,

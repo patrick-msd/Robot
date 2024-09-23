@@ -258,14 +258,17 @@ namespace PSGM.Sample.Model.DbStorage
                     });
                 }
 
-                List<DbStorage_RootDirectory_VirtualRootUnit> virtualRootUnits = new List<DbStorage_RootDirectory_VirtualRootUnit>();
+                List<DbStorage_RootDirectory_VirtualUnit> virtualRootUnits = new List<DbStorage_RootDirectory_VirtualUnit>();
                 for (int j = 0; j < random.Next(25, 250); j++)
                 {
-                    virtualRootUnits.Add(new DbStorage_RootDirectory_VirtualRootUnit()
+                    virtualRootUnits.Add(new DbStorage_RootDirectory_VirtualUnit()
                     {
                         Id = Guid.NewGuid(),
 
-                        VirtualRootUnitId_Ext = Guid.NewGuid(),
+                        VirtualUnitId_Ext = Guid.NewGuid(),
+
+                        UserLinks = null,
+                        UserGroupLinks = null,
 
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
@@ -414,8 +417,8 @@ namespace PSGM.Sample.Model.DbStorage
                         RootDirectoryId = null,
                     },
 
-                    VirtualRootUnits = virtualRootUnits,
-
+                    VirtualUnits = virtualRootUnits,
+                    
                     //CreatedByUserIdExtAutoFill = Guid.Empty,
                     //CreatedDateTimeAutoFill = DateTime.Now,
                     //ModifiedByUserIdExtAutoFill = Guid.Empty,

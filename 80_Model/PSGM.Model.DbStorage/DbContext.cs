@@ -90,8 +90,38 @@ namespace PSGM.Model.DbStorage
         public DbSet<DbStorage_File_UserGroup_User_Link> _File_UserGroup_User_Links { get; set; }
         public DbSet<DbStorage_File_UserGroup_User_Link_AuditLog> File_UserGroup_User_Link_AuditLog { get; set; }
 
-        public DbSet<DbStorage_File_VirtualSubUnit> File_VirtualSubUnits { get; set; }
-        public DbSet<DbStorage_File_VirtualSubUnit_AuditLog> File_VirtualSubUnit_AuditLog { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit> File_VirtualUnits { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_AuditLog> File_VirtualUnit_AuditLog { get; set; }
+
+        public DbSet<DbStorage_File_VirtualUnit_User> File_VirtualUnit_User { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_User_AuditLog> File_VirtualUnit_User_AuditLog { get; set; }
+
+        public DbSet<DbStorage_File_VirtualUnit_User_Link> File_VirtualUnit_User_Links { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_User_Link_AuditLog> File_VirtualUnit_User_Link_AuditLog { get; set; }
+
+        public DbSet<DbStorage_File_VirtualUnit_User_Notification> File_VirtualUnit_User_Notifications { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_User_Notification_AuditLog> File_VirtualUnit_User_Notification_AuditLog { get; set; }
+
+        public DbSet<DbStorage_File_VirtualUnit_User_Permission> File_VirtualUnit_User_Permissions { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_User_Permission_AuditLog> File_VirtualUnit_User_Permission_AuditLog { get; set; }
+
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup> File_VirtualUnit_UserGroups { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup_AuditLog> File_VirtualUnit_UserGroup_AuditLog { get; set; }
+
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup_Link> File_VirtualUnit_UserGroup_Links { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup_Link_AuditLog> File_VirtualUnit_UserGroup_Link_AuditLog { get; set; }
+
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup_User> File_VirtualUnit_UserGroup_Users { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup_User_AuditLog> File_VirtualUnit_UserGroup_User_AuditLog { get; set; }
+
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup_User_Link> File_VirtualUnit_UserGroup_User_Links { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup_User_Link_AuditLog> File_VirtualUnit_UserGroup_User_Link_AuditLog { get; set; }
+
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup_Notification> File_VirtualUnit_UserGroup_Notifications { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup_Notification_AuditLog> File_VirtualUnit_UserGroup_Notification_AuditLog { get; set; }
+
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup_Permission> File_VirtualUnit_UserGroup_Permissions { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup_Permission_AuditLog> File_VirtualUnit_UserGroup_Permission_AuditLog { get; set; }
         #endregion
 
         #region RootDirectory
@@ -140,8 +170,38 @@ namespace PSGM.Model.DbStorage
         public DbSet<DbStorage_RootDirectory_UserGroup_User_Link> RootDirectory_UserGroup_User_Links { get; set; }
         public DbSet<DbStorage_RootDirectory_UserGroup_User_Link_AuditLog> RootDirectory_UserGroup_User_Link_AuditLog { get; set; }
 
-        public DbSet<DbStorage_RootDirectory_VirtualRootUnit> RootDirectory_VirtualRootUnits { get; set; }
-        public DbSet<DbStorage_RootDirectory_VirtualRootUnit_AuditLog> RootDirectory_VirtualRootUnit_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit> RootDirectory_VirtualUnits { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_AuditLog> RootDirectory_VirtualUnit_AuditLog { get; set; }
+
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_User> RootDirectory_VirtualUnit_User { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_User_AuditLog> RootDirectory_VirtualUnit_User_AuditLog { get; set; }
+
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_User_Link> RootDirectory_VirtualUnit_User_Links { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_User_Link_AuditLog> RootDirectory_VirtualUnit_User_Link_AuditLog { get; set; }
+
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_User_Notification> RootDirectory_VirtualUnit_User_Notifications { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_User_Notification_AuditLog> RootDirectory_VirtualUnit_User_Notification_AuditLog { get; set; }
+
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_User_Permission> RootDirectory_VirtualUnit_User_Permissions { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_User_Permission_AuditLog> RootDirectory_VirtualUnit_User_Permission_AuditLog { get; set; }
+
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup> RootDirectory_VirtualUnit_UserGroups { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_AuditLog> RootDirectory_VirtualUnit_UserGroup_AuditLog { get; set; }
+
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_Link> RootDirectory_VirtualUnit_UserGroup_Links { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_Link_AuditLog> RootDirectory_VirtualUnit_UserGroup_Link_AuditLog { get; set; }
+
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_User> RootDirectory_VirtualUnit_UserGroup_Users { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_User_AuditLog> RootDirectory_VirtualUnit_UserGroup_User_AuditLog { get; set; }
+
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_User_Link> RootDirectory_VirtualUnit_UserGroup_User_Links { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_User_Link_AuditLog> RootDirectory_VirtualUnit_UserGroup_User_Link_AuditLog { get; set; }
+
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_Notification> RootDirectory_VirtualUnit_UserGroup_Notifications { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_Notification_AuditLog> RootDirectory_VirtualUnit_UserGroup_Notification_AuditLog { get; set; }
+
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_Permission> RootDirectory_VirtualUnit_UserGroup_Permissions { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_Permission_AuditLog> RootDirectory_VirtualUnit_UserGroup_Permission_AuditLog { get; set; }
         #endregion
 
         #region SubDirectory
@@ -190,8 +250,38 @@ namespace PSGM.Model.DbStorage
         public DbSet<DbStorage_SubDirectory_UserGroup_User_Link> SubDirectory_UserGroup_User_Links { get; set; }
         public DbSet<DbStorage_SubDirectory_UserGroup_User_Link_AuditLog> SubDirectory_UserGroup_User_Link_AuditLog { get; set; }
 
-        public DbSet<DbStorage_SubDirectory_VirtualSubUnit> SubDirectory_VirtualSubUnits { get; set; }
-        public DbSet<DbStorage_SubDirectory_VirtualSubUnit_AuditLog> SubDirectory_VirtualSubUnit_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit> SubDirectory_VirtualUnits { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_AuditLog> SubDirectory_VirtualUnit_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_User> SubDirectory_VirtualUnit_User { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_User_AuditLog> SubDirectory_VirtualUnit_User_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_User_Link> SubDirectory_VirtualUnit_User_Links { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_User_Link_AuditLog> SubDirectory_VirtualUnit_User_Link_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_User_Notification> SubDirectory_VirtualUnit_User_Notifications { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_User_Notification_AuditLog> SubDirectory_VirtualUnit_User_Notification_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_User_Permission> SubDirectory_VirtualUnit_User_Permissions { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_User_Permission_AuditLog> SubDirectory_VirtualUnit_User_Permission_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup> SubDirectory_VirtualUnit_UserGroups { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_AuditLog> SubDirectory_VirtualUnit_UserGroup_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_Link> SubDirectory_VirtualUnit_UserGroup_Links { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_Link_AuditLog> SubDirectory_VirtualUnit_UserGroup_Link_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_User> SubDirectory_VirtualUnit_UserGroup_Users { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_User_AuditLog> SubDirectory_VirtualUnit_UserGroup_User_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_User_Link> SubDirectory_VirtualUnit_UserGroup_User_Links { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_User_Link_AuditLog> SubDirectory_VirtualUnit_UserGroup_User_Link_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_Notification> SubDirectory_VirtualUnit_UserGroup_Notifications { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_Notification_AuditLog> SubDirectory_VirtualUnit_UserGroup_Notification_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_Permission> SubDirectory_VirtualUnit_UserGroup_Permissions { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_Permission_AuditLog> SubDirectory_VirtualUnit_UserGroup_Permission_AuditLog { get; set; }
         #endregion
         #endregion
 
@@ -792,25 +882,25 @@ namespace PSGM.Model.DbStorage
                     case DbStorage_File_UserGroup_User_Link_AuditLog file_UserGroup_User_Link_AuditLog:
                         break;
 
-                    case DbStorage_File_VirtualSubUnit file_VirtualSubUnit:
+                    case DbStorage_File_VirtualUnit file_VirtualUnit:
                         #region Automatically added: Audit details for faster file audit information
                         if (entry.State == EntityState.Added)
                         {
-                            file_VirtualSubUnit.CreatedDateTimeAutoFill = DateTime.UtcNow;
-                            file_VirtualSubUnit.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                            file_VirtualUnit.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualUnit.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
                         }
                         else
                         {
-                            file_VirtualSubUnit.ModifiedDateTimeAutoFill = DateTime.UtcNow;
-                            file_VirtualSubUnit.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                            file_VirtualUnit.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualUnit.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
                         }
                         #endregion
 
-                        File_VirtualSubUnit_AuditLog.Add(new DbStorage_File_VirtualSubUnit_AuditLog
+                        File_VirtualUnit_AuditLog.Add(new DbStorage_File_VirtualUnit_AuditLog
                         {
                             Id = new Guid(),
 
-                            SourceId = file_VirtualSubUnit.Id,
+                            SourceId = file_VirtualUnit.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
@@ -819,7 +909,268 @@ namespace PSGM.Model.DbStorage
                         });
                         break;
 
-                    case DbStorage_File_VirtualSubUnit_AuditLog file_VirtualSubUnit_AuditLog:
+                    case DbStorage_File_VirtualUnit_AuditLog file_VirtualUnit_AuditLog:
+                        break;
+
+                    case DbStorage_File_VirtualUnit_User file_VirtualUnit_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            file_VirtualUnit_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualUnit_User.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            file_VirtualUnit_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualUnit_User.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        File_VirtualUnit_User_AuditLog.Add(new DbStorage_File_VirtualUnit_User_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = file_VirtualUnit_User.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_File_VirtualUnit_User_AuditLog file_VirtualUnit_User_AuditLog:
+                        break;
+
+                    case DbStorage_File_VirtualUnit_User_Link file_VirtualUnit_User_Link:
+                        File_VirtualUnit_User_Link_AuditLog.Add(new DbStorage_File_VirtualUnit_User_Link_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = file_VirtualUnit_User_Link.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_File_VirtualUnit_User_Link_AuditLog file_VirtualUnit_User_Link_AuditLog:
+                        break;
+
+                    case DbStorage_File_VirtualUnit_User_Notification file_VirtualUnit_User_Notification:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            file_VirtualUnit_User_Notification.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualUnit_User_Notification.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            file_VirtualUnit_User_Notification.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualUnit_User_Notification.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        File_VirtualUnit_User_Notification_AuditLog.Add(new DbStorage_File_VirtualUnit_User_Notification_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = file_VirtualUnit_User_Notification.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_File_VirtualUnit_User_Notification_AuditLog file_VirtualUnit_User_Notification_AuditLog:
+                        break;
+
+                    case DbStorage_File_VirtualUnit_User_Permission file_VirtualUnit_User_Permission:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            file_VirtualUnit_User_Permission.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualUnit_User_Permission.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            file_VirtualUnit_User_Permission.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualUnit_User_Permission.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        File_VirtualUnit_User_Permission_AuditLog.Add(new DbStorage_File_VirtualUnit_User_Permission_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = file_VirtualUnit_User_Permission.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_File_VirtualUnit_User_Permission_AuditLog file_VirtualUnit_User_Permission_AuditLog:
+                        break;
+
+                    case DbStorage_File_VirtualUnit_UserGroup file_VirtualUnit_UserGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            file_VirtualUnit_UserGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualUnit_UserGroup.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            file_VirtualUnit_UserGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualUnit_UserGroup.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        File_VirtualUnit_UserGroup_AuditLog.Add(new DbStorage_File_VirtualUnit_UserGroup_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = file_VirtualUnit_UserGroup.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_File_VirtualUnit_UserGroup_AuditLog file_VirtualUnit_UserGroup_AuditLog:
+                        break;
+
+                    case DbStorage_File_VirtualUnit_UserGroup_Link file_VirtualUnit_UserGroup_Link:
+                        File_VirtualUnit_UserGroup_Link_AuditLog.Add(new DbStorage_File_VirtualUnit_UserGroup_Link_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = file_VirtualUnit_UserGroup_Link.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_File_VirtualUnit_UserGroup_Link_AuditLog file_VirtualUnit_UserGroup_Link_AuditLog:
+                        break;
+
+                    case DbStorage_File_VirtualUnit_UserGroup_Notification file_VirtualUnit_UserGroup_Notification:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            file_VirtualUnit_UserGroup_Notification.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualUnit_UserGroup_Notification.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            file_VirtualUnit_UserGroup_Notification.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualUnit_UserGroup_Notification.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        File_VirtualUnit_UserGroup_Notification_AuditLog.Add(new DbStorage_File_VirtualUnit_UserGroup_Notification_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = file_VirtualUnit_UserGroup_Notification.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_File_VirtualUnit_UserGroup_Notification_AuditLog file_VirtualUnit_UserGroup_Notification_AuditLog:
+                        break;
+
+                    case DbStorage_File_VirtualUnit_UserGroup_Permission file_VirtualUnit_UserGroup_Permission:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            file_VirtualUnit_UserGroup_Permission.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualUnit_UserGroup_Permission.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            file_VirtualUnit_UserGroup_Permission.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualUnit_UserGroup_Permission.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        File_VirtualUnit_UserGroup_Permission_AuditLog.Add(new DbStorage_File_VirtualUnit_UserGroup_Permission_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = file_VirtualUnit_UserGroup_Permission.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_File_VirtualUnit_UserGroup_Permission_AuditLog file_VirtualUnit_UserGroup_Permission_AuditLog:
+                        break;
+
+                    case DbStorage_File_VirtualUnit_UserGroup_User file_VirtualUnit_UserGroup_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            file_VirtualUnit_UserGroup_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualUnit_UserGroup_User.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            file_VirtualUnit_UserGroup_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualUnit_UserGroup_User.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        File_VirtualUnit_UserGroup_User_AuditLog.Add(new DbStorage_File_VirtualUnit_UserGroup_User_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = file_VirtualUnit_UserGroup_User.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_File_VirtualUnit_UserGroup_User_AuditLog file_VirtualUnit_UserGroup_User_AuditLog:
+                        break;
+
+                    case DbStorage_File_VirtualUnit_UserGroup_User_Link file_VirtualUnit_UserGroup_User_Link:
+                        File_VirtualUnit_UserGroup_User_Link_AuditLog.Add(new DbStorage_File_VirtualUnit_UserGroup_User_Link_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = file_VirtualUnit_UserGroup_User_Link.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_File_VirtualUnit_UserGroup_User_Link_AuditLog file_VirtualUnit_UserGroup_User_Link_AuditLog:
                         break;
                     #endregion
 
@@ -1222,25 +1573,25 @@ namespace PSGM.Model.DbStorage
                     case DbStorage_RootDirectory_UserGroup_User_Link_AuditLog RootDirectory_UserGroup_User_Link_AuditLog:
                         break;
 
-                    case DbStorage_RootDirectory_VirtualRootUnit rootDirectory_VirtualRootUnit:
+                    case DbStorage_RootDirectory_VirtualUnit rootDirectory_VirtualUnit:
                         #region Automatically added: Audit details for faster file audit information
                         if (entry.State == EntityState.Added)
                         {
-                            rootDirectory_VirtualRootUnit.CreatedDateTimeAutoFill = DateTime.UtcNow;
-                            rootDirectory_VirtualRootUnit.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                            rootDirectory_VirtualUnit.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualUnit.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
                         }
                         else
                         {
-                            rootDirectory_VirtualRootUnit.ModifiedDateTimeAutoFill = DateTime.UtcNow;
-                            rootDirectory_VirtualRootUnit.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                            rootDirectory_VirtualUnit.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualUnit.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
                         }
                         #endregion
 
-                        RootDirectory_VirtualRootUnit_AuditLog.Add(new DbStorage_RootDirectory_VirtualRootUnit_AuditLog
+                        RootDirectory_VirtualUnit_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_AuditLog
                         {
                             Id = new Guid(),
 
-                            SourceId = rootDirectory_VirtualRootUnit.Id,
+                            SourceId = rootDirectory_VirtualUnit.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
@@ -1249,7 +1600,268 @@ namespace PSGM.Model.DbStorage
                         });
                         break;
 
-                    case DbStorage_RootDirectory_VirtualRootUnit_AuditLog rootDirectory_VirtualRootUnit_AuditLog:
+                    case DbStorage_RootDirectory_VirtualUnit_AuditLog rootDirectory_VirtualUnit_AuditLog:
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_User rootDirectory_VirtualUnit_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory_VirtualUnit_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualUnit_User.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory_VirtualUnit_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualUnit_User.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        RootDirectory_VirtualUnit_User_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_User_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectory_VirtualUnit_User.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_User_AuditLog rootDirectory_VirtualUnit_User_AuditLog:
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_User_Link rootDirectory_VirtualUnit_User_Link:
+                        RootDirectory_VirtualUnit_User_Link_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_User_Link_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectory_VirtualUnit_User_Link.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_User_Link_AuditLog rootDirectory_VirtualUnit_User_Link_AuditLog:
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_User_Notification rootDirectory_VirtualUnit_User_Notification:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory_VirtualUnit_User_Notification.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualUnit_User_Notification.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory_VirtualUnit_User_Notification.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualUnit_User_Notification.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        RootDirectory_VirtualUnit_User_Notification_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_User_Notification_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectory_VirtualUnit_User_Notification.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_User_Notification_AuditLog rootDirectory_VirtualUnit_User_Notification_AuditLog:
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_User_Permission rootDirectory_VirtualUnit_User_Permission:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory_VirtualUnit_User_Permission.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualUnit_User_Permission.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory_VirtualUnit_User_Permission.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualUnit_User_Permission.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        RootDirectory_VirtualUnit_User_Permission_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_User_Permission_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectory_VirtualUnit_User_Permission.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_User_Permission_AuditLog rootDirectory_VirtualUnit_User_Permission_AuditLog:
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_UserGroup rootDirectory_VirtualUnit_UserGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory_VirtualUnit_UserGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualUnit_UserGroup.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory_VirtualUnit_UserGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualUnit_UserGroup.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        RootDirectory_VirtualUnit_UserGroup_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectory_VirtualUnit_UserGroup.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_UserGroup_AuditLog rootDirectory_VirtualUnit_UserGroup_AuditLog:
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_UserGroup_Link rootDirectory_VirtualUnit_UserGroup_Link:
+                        RootDirectory_VirtualUnit_UserGroup_Link_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_Link_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectory_VirtualUnit_UserGroup_Link.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_UserGroup_Link_AuditLog rootDirectory_VirtualUnit_UserGroup_Link_AuditLog:
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_UserGroup_Notification rootDirectory_VirtualUnit_UserGroup_Notification:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory_VirtualUnit_UserGroup_Notification.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualUnit_UserGroup_Notification.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory_VirtualUnit_UserGroup_Notification.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualUnit_UserGroup_Notification.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        RootDirectory_VirtualUnit_UserGroup_Notification_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_Notification_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectory_VirtualUnit_UserGroup_Notification.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_UserGroup_Notification_AuditLog rootDirectory_VirtualUnit_UserGroup_Notification_AuditLog:
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_UserGroup_Permission rootDirectory_VirtualUnit_UserGroup_Permission:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory_VirtualUnit_UserGroup_Permission.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualUnit_UserGroup_Permission.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory_VirtualUnit_UserGroup_Permission.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualUnit_UserGroup_Permission.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        RootDirectory_VirtualUnit_UserGroup_Permission_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_Permission_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectory_VirtualUnit_UserGroup_Permission.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_UserGroup_Permission_AuditLog rootDirectory_VirtualUnit_UserGroup_Permission_AuditLog:
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_UserGroup_User rootDirectory_VirtualUnit_UserGroup_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory_VirtualUnit_UserGroup_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualUnit_UserGroup_User.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory_VirtualUnit_UserGroup_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualUnit_UserGroup_User.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        RootDirectory_VirtualUnit_UserGroup_User_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_User_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectory_VirtualUnit_UserGroup_User.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_UserGroup_User_AuditLog rootDirectory_VirtualUnit_UserGroup_User_AuditLog:
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_UserGroup_User_Link rootDirectory_VirtualUnit_UserGroup_User_Link:
+                        RootDirectory_VirtualUnit_UserGroup_User_Link_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_User_Link_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectory_VirtualUnit_UserGroup_User_Link.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualUnit_UserGroup_User_Link_AuditLog rootDirectory_VirtualUnit_UserGroup_User_Link_AuditLog:
                         break;
                     #endregion
 
@@ -1652,25 +2264,25 @@ namespace PSGM.Model.DbStorage
                     case DbStorage_SubDirectory_UserGroup_User_Link_AuditLog SubDirectory_UserGroup_User_Link_AuditLog:
                         break;
 
-                    case DbStorage_SubDirectory_VirtualSubUnit subDirectory_VirtualSubUnit:
+                    case DbStorage_SubDirectory_VirtualUnit subDirectory_VirtualUnit:
                         #region Automatically added: Audit details for faster file audit information
                         if (entry.State == EntityState.Added)
                         {
-                            subDirectory_VirtualSubUnit.CreatedDateTimeAutoFill = DateTime.UtcNow;
-                            subDirectory_VirtualSubUnit.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                            subDirectory_VirtualUnit.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualUnit.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
                         }
                         else
                         {
-                            subDirectory_VirtualSubUnit.ModifiedDateTimeAutoFill = DateTime.UtcNow;
-                            subDirectory_VirtualSubUnit.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                            subDirectory_VirtualUnit.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualUnit.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
                         }
                         #endregion
 
-                        SubDirectory_VirtualSubUnit_AuditLog.Add(new DbStorage_SubDirectory_VirtualSubUnit_AuditLog
+                        SubDirectory_VirtualUnit_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_AuditLog
                         {
                             Id = new Guid(),
 
-                            SourceId = subDirectory_VirtualSubUnit.Id,
+                            SourceId = subDirectory_VirtualUnit.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
@@ -1679,7 +2291,268 @@ namespace PSGM.Model.DbStorage
                         });
                         break;
 
-                    case DbStorage_SubDirectory_VirtualSubUnit_AuditLog subDirectory_VirtualSubUnit_AuditLog:
+                    case DbStorage_SubDirectory_VirtualUnit_AuditLog subDirectory_VirtualUnit_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_User subDirectory_VirtualUnit_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory_VirtualUnit_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualUnit_User.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory_VirtualUnit_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualUnit_User.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        SubDirectory_VirtualUnit_User_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_User_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectory_VirtualUnit_User.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_User_AuditLog subDirectory_VirtualUnit_User_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_User_Link subDirectory_VirtualUnit_User_Link:
+                        SubDirectory_VirtualUnit_User_Link_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_User_Link_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectory_VirtualUnit_User_Link.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_User_Link_AuditLog subDirectory_VirtualUnit_User_Link_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_User_Notification subDirectory_VirtualUnit_User_Notification:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory_VirtualUnit_User_Notification.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualUnit_User_Notification.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory_VirtualUnit_User_Notification.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualUnit_User_Notification.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        SubDirectory_VirtualUnit_User_Notification_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_User_Notification_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectory_VirtualUnit_User_Notification.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_User_Notification_AuditLog subDirectory_VirtualUnit_User_Notification_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_User_Permission subDirectory_VirtualUnit_User_Permission:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory_VirtualUnit_User_Permission.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualUnit_User_Permission.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory_VirtualUnit_User_Permission.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualUnit_User_Permission.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        SubDirectory_VirtualUnit_User_Permission_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_User_Permission_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectory_VirtualUnit_User_Permission.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_User_Permission_AuditLog subDirectory_VirtualUnit_User_Permission_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_UserGroup subDirectory_VirtualUnit_UserGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory_VirtualUnit_UserGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualUnit_UserGroup.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory_VirtualUnit_UserGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualUnit_UserGroup.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        SubDirectory_VirtualUnit_UserGroup_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectory_VirtualUnit_UserGroup.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_UserGroup_AuditLog subDirectory_VirtualUnit_UserGroup_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_UserGroup_Link subDirectory_VirtualUnit_UserGroup_Link:
+                        SubDirectory_VirtualUnit_UserGroup_Link_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_Link_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectory_VirtualUnit_UserGroup_Link.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_UserGroup_Link_AuditLog subDirectory_VirtualUnit_UserGroup_Link_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_UserGroup_Notification subDirectory_VirtualUnit_UserGroup_Notification:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory_VirtualUnit_UserGroup_Notification.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualUnit_UserGroup_Notification.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory_VirtualUnit_UserGroup_Notification.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualUnit_UserGroup_Notification.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        SubDirectory_VirtualUnit_UserGroup_Notification_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_Notification_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectory_VirtualUnit_UserGroup_Notification.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_UserGroup_Notification_AuditLog subDirectory_VirtualUnit_UserGroup_Notification_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_UserGroup_Permission subDirectory_VirtualUnit_UserGroup_Permission:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory_VirtualUnit_UserGroup_Permission.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualUnit_UserGroup_Permission.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory_VirtualUnit_UserGroup_Permission.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualUnit_UserGroup_Permission.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        SubDirectory_VirtualUnit_UserGroup_Permission_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_Permission_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectory_VirtualUnit_UserGroup_Permission.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_UserGroup_Permission_AuditLog subDirectory_VirtualUnit_UserGroup_Permission_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_UserGroup_User subDirectory_VirtualUnit_UserGroup_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory_VirtualUnit_UserGroup_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualUnit_UserGroup_User.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory_VirtualUnit_UserGroup_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualUnit_UserGroup_User.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        SubDirectory_VirtualUnit_UserGroup_User_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_User_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectory_VirtualUnit_UserGroup_User.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_UserGroup_User_AuditLog subDirectory_VirtualUnit_UserGroup_User_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_UserGroup_User_Link subDirectory_VirtualUnit_UserGroup_User_Link:
+                        SubDirectory_VirtualUnit_UserGroup_User_Link_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_User_Link_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectory_VirtualUnit_UserGroup_User_Link.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualUnit_UserGroup_User_Link_AuditLog subDirectory_VirtualUnit_UserGroup_User_Link_AuditLog:
                         break;
                     #endregion
 
