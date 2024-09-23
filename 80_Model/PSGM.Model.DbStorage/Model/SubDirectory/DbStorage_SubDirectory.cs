@@ -138,13 +138,13 @@ namespace PSGM.Model.DbStorage
         public virtual ICollection<DbStorage_SubDirectory>? SubDirectories { get; set; }
 
         [InverseProperty("SubDirectory")]
-        public virtual ICollection<DbStorage_SubDirectory_VirtualSubUnit>? VirtualSubUnits { get; set; }
-
-        [InverseProperty("SubDirectory")]
         public virtual ICollection<DbStorage_SubDirectory_User_Link>? UserLinks { get; set; }
 
         [InverseProperty("SubDirectory")]
         public virtual ICollection<DbStorage_SubDirectory_UserGroup_Link>? UserGroupLinks { get; set; }
+
+        [InverseProperty("SubDirectory")]
+        public virtual ICollection<DbStorage_SubDirectory_VirtualSubUnit>? VirtualSubUnits { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)

@@ -12,65 +12,65 @@ namespace PSGM.Sample.Model.DbStorage
             List<DbStorage_File> tmp = new List<DbStorage_File>();
 
             #region Create Data User ...
-            List<DbStorage_File_User_Permission> userPermissions = new List<DbStorage_File_User_Permission>();
-            for (int i = 0; i < 250; i++)
-            {
-                Array values = Enum.GetValues(typeof(PermissionType));
-
-                userPermissions.Add(new DbStorage_File_User_Permission()
-                {
-                    Id = Guid.NewGuid(),
-
-                    Description = string.Empty,
-
-                    PermissionFile = (PermissionType)values.GetValue(random.Next(values.Length)),
-                    PermissionMetadata = (PermissionType)values.GetValue(random.Next(values.Length)),
-
-                    //CreatedByUserIdExtAutoFill = Guid.Empty,
-                    //CreatedDateTimeAutoFill = DateTime.Now,
-                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
-                    //ModifiedDateTimeAutoFill = DateTime.Now,
-
-                    // FK
-                    User = null,
-                    UserId = null,
-                });
-            }
-
-            List<DbStorage_File_User_Notification> userNotifications = new List<DbStorage_File_User_Notification>();
-            for (int i = 0; i < 250; i++)
-            {
-                userNotifications.Add(new DbStorage_File_User_Notification()
-                {
-                    Id = Guid.NewGuid(),
-
-                    Description = string.Empty,
-
-                    TriggerType = NotificationTriggerType.WorkflowImage,
-                    TriggerState = NotificationTriggerState.CreatedUpdatedDeleted,
-
-                    EMail = random.Next(100) <= 50 ? true : false,
-                    Slack = random.Next(100) <= 50 ? true : false,
-                    Teams = random.Next(100) <= 50 ? true : false,
-                    SMS = random.Next(100) <= 50 ? true : false,
-                    WhatsApp = random.Next(100) <= 50 ? true : false,
-                    Telegram = random.Next(100) <= 50 ? true : false,
-                    Gotify = random.Next(100) <= 50 ? true : false,
-
-                    //CreatedByUserIdExtAutoFill = Guid.Empty,
-                    //CreatedDateTimeAutoFill = DateTime.Now,
-                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
-                    //ModifiedDateTimeAutoFill = DateTime.Now,
-
-                    // FK
-                    User = null,
-                    UserId = null,
-                });
-            }
-
             List<DbStorage_File_User> users = new List<DbStorage_File_User>();
             for (int i = 0; i < 250; i++)
             {
+                List<DbStorage_File_User_Permission> userPermissions = new List<DbStorage_File_User_Permission>();
+                for (int j = 0; j < 250; j++)
+                {
+                    Array values = Enum.GetValues(typeof(PermissionType));
+
+                    userPermissions.Add(new DbStorage_File_User_Permission()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        Description = string.Empty,
+
+                        PermissionFile = (PermissionType)values.GetValue(random.Next(values.Length)),
+                        PermissionMetadata = (PermissionType)values.GetValue(random.Next(values.Length)),
+
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        User = null,
+                        UserId = null,
+                    });
+                }
+
+                List<DbStorage_File_User_Notification> userNotifications = new List<DbStorage_File_User_Notification>();
+                for (int j = 0; j < 250; j++)
+                {
+                    userNotifications.Add(new DbStorage_File_User_Notification()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        Description = string.Empty,
+
+                        TriggerType = NotificationTriggerType.WorkflowImage,
+                        TriggerState = NotificationTriggerState.CreatedUpdatedDeleted,
+
+                        EMail = random.Next(100) <= 50 ? true : false,
+                        Slack = random.Next(100) <= 50 ? true : false,
+                        Teams = random.Next(100) <= 50 ? true : false,
+                        SMS = random.Next(100) <= 50 ? true : false,
+                        WhatsApp = random.Next(100) <= 50 ? true : false,
+                        Telegram = random.Next(100) <= 50 ? true : false,
+                        Gotify = random.Next(100) <= 50 ? true : false,
+
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        User = null,
+                        UserId = null,
+                    });
+                }
+
                 users.Add(new DbStorage_File_User()
                 {
                     Id = Guid.NewGuid(),
@@ -81,11 +81,11 @@ namespace PSGM.Sample.Model.DbStorage
 
                     EMail = Common.RandomString(random.Next(3, 511)),
 
-                    DaytimePhoneNumber = Common.RandomString(random.Next(3, 255)),
-                    EveningPhoneNumber = Common.RandomString(random.Next(3, 255)),
+                    DaytimePhoneNumber = Common.RandomString(random.Next(3, 100)),
+                    EveningPhoneNumber = Common.RandomString(random.Next(3, 100)),
 
                     Permissions = userPermissions[random.Next(0, userPermissions.Count())],
-                    Notifications = userNotifications.GetRange(0, random.Next()),
+                    Notifications = userNotifications.GetRange(0, random.Next(0, userNotifications.Count())),
 
                     UserLinks = null,
 
@@ -98,71 +98,71 @@ namespace PSGM.Sample.Model.DbStorage
             #endregion
 
             #region Create Data UserGroup ...
-            List<DbStorage_File_UserGroup_Permission> userGroupPermissions = new List<DbStorage_File_UserGroup_Permission>();
-            for (int i = 0; i < 250; i++)
-            {
-                Array values = Enum.GetValues(typeof(PermissionType));
-
-                userGroupPermissions.Add(new DbStorage_File_UserGroup_Permission()
-                {
-                    Id = Guid.NewGuid(),
-
-                    Description = string.Empty,
-
-                    PermissionFile = (PermissionType)values.GetValue(random.Next(values.Length)),
-                    PermissionMetadata = (PermissionType)values.GetValue(random.Next(values.Length)),
-
-                    //CreatedByUserIdExtAutoFill = Guid.Empty,
-                    //CreatedDateTimeAutoFill = DateTime.Now,
-                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
-                    //ModifiedDateTimeAutoFill = DateTime.Now,
-
-                    // FK
-                    UserGroup = null,
-                    UserGroupId = null,
-                });
-            }
-
-            List<DbStorage_File_UserGroup_Notification> userGroupNotifications = new List<DbStorage_File_UserGroup_Notification>();
-            for (int i = 0; i < 250; i++)
-            {
-                userGroupNotifications.Add(new DbStorage_File_UserGroup_Notification()
-                {
-                    Id = Guid.NewGuid(),
-
-                    Description = string.Empty,
-
-                    TriggerType = NotificationTriggerType.WorkflowImage,
-                    TriggerState = NotificationTriggerState.CreatedUpdatedDeleted,
-
-                    EMail = random.Next(100) <= 50 ? true : false,
-                    Slack = random.Next(100) <= 50 ? true : false,
-                    Teams = random.Next(100) <= 50 ? true : false,
-                    SMS = random.Next(100) <= 50 ? true : false,
-                    WhatsApp = random.Next(100) <= 50 ? true : false,
-                    Telegram = random.Next(100) <= 50 ? true : false,
-                    Gotify = random.Next(100) <= 50 ? true : false,
-
-                    //CreatedByUserIdExtAutoFill = Guid.Empty,
-                    //CreatedDateTimeAutoFill = DateTime.Now,
-                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
-                    //ModifiedDateTimeAutoFill = DateTime.Now,
-
-                    // FK
-                    UserGroup = null,
-                    UserGroupId = null,
-                });
-            }
-
             List<DbStorage_File_UserGroup> userGroups = new List<DbStorage_File_UserGroup>();
             for (int i = 0; i < 250; i++)
             {
+                List<DbStorage_File_UserGroup_Permission> userGroupPermissions = new List<DbStorage_File_UserGroup_Permission>();
+                for (int j = 0; j < 250; j++)
+                {
+                    Array values = Enum.GetValues(typeof(PermissionType));
+
+                    userGroupPermissions.Add(new DbStorage_File_UserGroup_Permission()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        Description = string.Empty,
+
+                        PermissionFile = (PermissionType)values.GetValue(random.Next(values.Length)),
+                        PermissionMetadata = (PermissionType)values.GetValue(random.Next(values.Length)),
+
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        UserGroup = null,
+                        UserGroupId = null,
+                    });
+                }
+
+                List<DbStorage_File_UserGroup_Notification> userGroupNotifications = new List<DbStorage_File_UserGroup_Notification>();
+                for (int j = 0; j < 250; j++)
+                {
+                    userGroupNotifications.Add(new DbStorage_File_UserGroup_Notification()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        Description = string.Empty,
+
+                        TriggerType = NotificationTriggerType.WorkflowImage,
+                        TriggerState = NotificationTriggerState.CreatedUpdatedDeleted,
+
+                        EMail = random.Next(100) <= 50 ? true : false,
+                        Slack = random.Next(100) <= 50 ? true : false,
+                        Teams = random.Next(100) <= 50 ? true : false,
+                        SMS = random.Next(100) <= 50 ? true : false,
+                        WhatsApp = random.Next(100) <= 50 ? true : false,
+                        Telegram = random.Next(100) <= 50 ? true : false,
+                        Gotify = random.Next(100) <= 50 ? true : false,
+
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        UserGroup = null,
+                        UserGroupId = null,
+                    });
+                }
+
                 userGroups.Add(new DbStorage_File_UserGroup()
                 {
                     Id = Guid.NewGuid(),
 
                     Permissions = userGroupPermissions[random.Next(0, userGroupPermissions.Count())],
-                    Notifications = userGroupNotifications.GetRange(0, random.Next()),
+                    Notifications = userGroupNotifications.GetRange(0, random.Next(0, userGroupNotifications.Count())),
 
                     UserGroupLinks = null,
                     UserLinks = null,
@@ -220,7 +220,7 @@ namespace PSGM.Sample.Model.DbStorage
                         // FK
                         File = null,
                         FileId = null,
-                        
+
                         Metadata = fileMetadata[random.Next(0, fileMetadata.Count())],
                         //MetadataId = Guid.Empty,
                     });
@@ -381,7 +381,7 @@ namespace PSGM.Sample.Model.DbStorage
                     ObjectExtension = FileExtension.JSON,
 
                     ObjectSize = random.Next(34235, 4415674),
-                    
+
                     StorageObjectName = Common.RandomString(random.Next(10, 100)),
                     StorageObjectVersion = random.Next(0, 100),
                     StorageObjectUrl = Common.RandomString(random.Next(10, 200)),
@@ -428,11 +428,13 @@ namespace PSGM.Sample.Model.DbStorage
                         FileId = null,
                     },
 
+                    VirtualSubUnits = virtualSubUnits,
+
                     //CreatedByUserIdExtAutoFill = Guid.Empty,
                     //CreatedDateTimeAutoFill = DateTime.Now,
                     //ModifiedByUserIdExtAutoFill = Guid.Empty,
                     //ModifiedDateTimeAutoFill = DateTime.Now,
-                    
+
                     // FK
                     RootDirectory = null,
                     RootDirectoryId = null,

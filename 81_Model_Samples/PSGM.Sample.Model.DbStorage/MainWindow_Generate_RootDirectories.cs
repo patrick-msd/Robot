@@ -81,11 +81,11 @@ namespace PSGM.Sample.Model.DbStorage
 
                     EMail = Common.RandomString(random.Next(3, 511)),
 
-                    DaytimePhoneNumber = Common.RandomString(random.Next(3, 255)),
-                    EveningPhoneNumber = Common.RandomString(random.Next(3, 255)),
+                    DaytimePhoneNumber = Common.RandomString(random.Next(3, 100)),
+                    EveningPhoneNumber = Common.RandomString(random.Next(3, 100)),
 
                     Permissions = userPermissions[random.Next(0, userPermissions.Count())],
-                    Notifications = userNotifications.GetRange(0, random.Next()),
+                    Notifications = userNotifications.GetRange(0, random.Next(0, userNotifications.Count())),
 
                     UserLinks = null,
 
@@ -162,7 +162,7 @@ namespace PSGM.Sample.Model.DbStorage
                     Id = Guid.NewGuid(),
 
                     Permissions = userGroupPermissions[random.Next(0, userGroupPermissions.Count())],
-                    Notifications = userGroupNotifications.GetRange(0, random.Next()),
+                    Notifications = userGroupNotifications.GetRange(0, random.Next(0, userGroupNotifications.Count())),
 
                     UserGroupLinks = null,
                     UserLinks = null,

@@ -135,9 +135,6 @@ namespace PSGM.Model.DbStorage
         public virtual ICollection<DbStorage_RootDirectory_Metadata_Link>? MetadataLinks { get; set; }
 
         [InverseProperty("RootDirectory")]
-        public virtual ICollection<DbStorage_RootDirectory_VirtualRootUnit>? VirtualRootUnits { get; set; }
-
-        [InverseProperty("RootDirectory")]
         public virtual ICollection<DbStorage_SubDirectory>? SubDirectories { get; set; }
 
         [InverseProperty("RootDirectory")]
@@ -145,6 +142,9 @@ namespace PSGM.Model.DbStorage
 
         [InverseProperty("RootDirectory")]
         public virtual ICollection<DbStorage_RootDirectory_UserGroup_Link>? UserGroupLinks { get; set; }
+
+        [InverseProperty("RootDirectory")]
+        public virtual ICollection<DbStorage_RootDirectory_VirtualRootUnit>? VirtualRootUnits { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
