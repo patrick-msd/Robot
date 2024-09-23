@@ -97,6 +97,92 @@ namespace PSGM.Sample.Model.DbStorage
             }
             #endregion
 
+            #region Create Data VirtualUnit User ...
+            List<DbStorage_SubDirectory_VirtualUnit_User_Permission> virtualUnitUserPermissions = new List<DbStorage_SubDirectory_VirtualUnit_User_Permission>();
+            for (int i = 0; i < 250; i++)
+            {
+                Array values = Enum.GetValues(typeof(PermissionType));
+
+                virtualUnitUserPermissions.Add(new DbStorage_SubDirectory_VirtualUnit_User_Permission()
+                {
+                    Id = Guid.NewGuid(),
+
+                    Description = string.Empty,
+
+                    PermissionFile = (PermissionType)values.GetValue(random.Next(values.Length)),
+                    PermissionMetadata = (PermissionType)values.GetValue(random.Next(values.Length)),
+
+                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                    //CreatedDateTimeAutoFill = DateTime.Now,
+                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                    //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                    // FK
+                    User = null,
+                    UserId = null,
+                });
+            }
+
+            List<DbStorage_SubDirectory_VirtualUnit_User_Notification> virtualUnitUserNotifications = new List<DbStorage_SubDirectory_VirtualUnit_User_Notification>();
+            for (int i = 0; i < 250; i++)
+            {
+                virtualUnitUserNotifications.Add(new DbStorage_SubDirectory_VirtualUnit_User_Notification()
+                {
+                    Id = Guid.NewGuid(),
+
+                    Description = string.Empty,
+
+                    TriggerType = NotificationTriggerType.WorkflowImage,
+                    TriggerState = NotificationTriggerState.CreatedUpdatedDeleted,
+
+                    EMail = random.Next(100) <= 50 ? true : false,
+                    Slack = random.Next(100) <= 50 ? true : false,
+                    Teams = random.Next(100) <= 50 ? true : false,
+                    SMS = random.Next(100) <= 50 ? true : false,
+                    WhatsApp = random.Next(100) <= 50 ? true : false,
+                    Telegram = random.Next(100) <= 50 ? true : false,
+                    Gotify = random.Next(100) <= 50 ? true : false,
+
+                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                    //CreatedDateTimeAutoFill = DateTime.Now,
+                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                    //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                    // FK
+                    User = null,
+                    UserId = null,
+                });
+            }
+
+            List<DbStorage_SubDirectory_VirtualUnit_User> virtualUnitUsers = new List<DbStorage_SubDirectory_VirtualUnit_User>();
+            for (int i = 0; i < 250; i++)
+            {
+                virtualUnitUsers.Add(new DbStorage_SubDirectory_VirtualUnit_User()
+                {
+                    Id = Guid.NewGuid(),
+
+                    UserId_Ext = Guid.NewGuid(),
+
+                    Acronym = Common.RandomString(random.Next(1, 32)),
+
+                    EMail = Common.RandomString(random.Next(3, 511)),
+
+                    DaytimePhoneNumber = Common.RandomString(random.Next(3, 100)),
+                    EveningPhoneNumber = Common.RandomString(random.Next(3, 100)),
+
+                    Permissions = virtualUnitUserPermissions[random.Next(0, virtualUnitUserPermissions.Count())],
+                    Notifications = virtualUnitUserNotifications.GetRange(0, random.Next(0, virtualUnitUserNotifications.Count())),
+
+                    UserLinks = null,
+
+                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                    //CreatedDateTimeAutoFill = DateTime.Now,
+                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                    //ModifiedDateTimeAutoFill = DateTime.Now,
+                });
+            }
+            #endregion
+
             #region Create Data UserGroup ...
             List<DbStorage_SubDirectory_UserGroup_Permission> userGroupPermissions = new List<DbStorage_SubDirectory_UserGroup_Permission>();
             for (int i = 0; i < 250; i++)
@@ -163,6 +249,84 @@ namespace PSGM.Sample.Model.DbStorage
 
                     Permissions = userGroupPermissions[random.Next(0, userGroupPermissions.Count())],
                     Notifications = userGroupNotifications.GetRange(0, random.Next(0, userGroupNotifications.Count())),
+
+                    UserGroupLinks = null,
+                    UserLinks = null,
+
+                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                    //CreatedDateTimeAutoFill = DateTime.Now,
+                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                    //ModifiedDateTimeAutoFill = DateTime.Now,
+                });
+            }
+            #endregion
+
+            #region Create Data VirtualUnit UserGroup ...
+            List<DbStorage_SubDirectory_VirtualUnit_UserGroup_Permission> virtualUnitUserGroupPermissions = new List<DbStorage_SubDirectory_VirtualUnit_UserGroup_Permission>();
+            for (int i = 0; i < 250; i++)
+            {
+                Array values = Enum.GetValues(typeof(PermissionType));
+
+                virtualUnitUserGroupPermissions.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_Permission()
+                {
+                    Id = Guid.NewGuid(),
+
+                    Description = string.Empty,
+
+                    PermissionFile = (PermissionType)values.GetValue(random.Next(values.Length)),
+                    PermissionMetadata = (PermissionType)values.GetValue(random.Next(values.Length)),
+
+                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                    //CreatedDateTimeAutoFill = DateTime.Now,
+                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                    //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                    // FK
+                    UserGroup = null,
+                    UserGroupId = null,
+                });
+            }
+
+            List<DbStorage_SubDirectory_VirtualUnit_UserGroup_Notification> virtualUnitUserGroupNotifications = new List<DbStorage_SubDirectory_VirtualUnit_UserGroup_Notification>();
+            for (int i = 0; i < 250; i++)
+            {
+                virtualUnitUserGroupNotifications.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_Notification()
+                {
+                    Id = Guid.NewGuid(),
+
+                    Description = string.Empty,
+
+                    TriggerType = NotificationTriggerType.WorkflowImage,
+                    TriggerState = NotificationTriggerState.CreatedUpdatedDeleted,
+
+                    EMail = random.Next(100) <= 50 ? true : false,
+                    Slack = random.Next(100) <= 50 ? true : false,
+                    Teams = random.Next(100) <= 50 ? true : false,
+                    SMS = random.Next(100) <= 50 ? true : false,
+                    WhatsApp = random.Next(100) <= 50 ? true : false,
+                    Telegram = random.Next(100) <= 50 ? true : false,
+                    Gotify = random.Next(100) <= 50 ? true : false,
+
+                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                    //CreatedDateTimeAutoFill = DateTime.Now,
+                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                    //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                    // FK
+                    UserGroup = null,
+                    UserGroupId = null,
+                });
+            }
+
+            List<DbStorage_SubDirectory_VirtualUnit_UserGroup> virtualUnitUserGroups = new List<DbStorage_SubDirectory_VirtualUnit_UserGroup>();
+            for (int i = 0; i < 250; i++)
+            {
+                virtualUnitUserGroups.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup()
+                {
+                    Id = Guid.NewGuid(),
+
+                    Permissions = virtualUnitUserGroupPermissions[random.Next(0, virtualUnitUserGroupPermissions.Count())],
+                    Notifications = virtualUnitUserGroupNotifications.GetRange(0, random.Next(0, virtualUnitUserGroupNotifications.Count())),
 
                     UserGroupLinks = null,
                     UserLinks = null,
@@ -258,6 +422,44 @@ namespace PSGM.Sample.Model.DbStorage
                     });
                 }
 
+
+
+                List<DbStorage_SubDirectory_VirtualUnit_User_Link> virtualUnitUsersLoop = new List<DbStorage_SubDirectory_VirtualUnit_User_Link>();
+                for (int j = 0; j < random.Next(0, users.Count()); j++)
+                {
+                    virtualUnitUsersLoop.Add(new DbStorage_SubDirectory_VirtualUnit_User_Link()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        VirtualUnit = null,
+
+                        FileId = null,
+
+                        // FK
+                        User = virtualUnitUsers[random.Next(0, virtualUnitUsers.Count())],
+                        //UserId = null,
+                    });
+                }
+
+                List<DbStorage_SubDirectory_VirtualUnit_UserGroup_Link> virtualUnitUserGroupsLoop = new List<DbStorage_SubDirectory_VirtualUnit_UserGroup_Link>();
+                for (int j = 0; j < random.Next(0, userGroups.Count()); j++)
+                {
+                    virtualUnitUserGroupsLoop.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_Link()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        VirtualUnit = null,
+
+                        FileId = null,
+
+                        // FK
+                        UserGroup = virtualUnitUserGroups[random.Next(0, virtualUnitUserGroups.Count())],
+                        //GroupId = null,
+                    });
+                }
+
+
+
                 List<DbStorage_SubDirectory_VirtualUnit> virtualSubUnits = new List<DbStorage_SubDirectory_VirtualUnit>();
                 for (int j = 0; j < random.Next(25, 250); j++)
                 {
@@ -267,8 +469,8 @@ namespace PSGM.Sample.Model.DbStorage
 
                         VirtualUnitId_Ext = Guid.NewGuid(),
 
-                        UserLinks = null,
-                        UserGroupLinks = null,
+                        UserLinks = virtualUnitUsersLoop,
+                        UserGroupLinks = virtualUnitUserGroupsLoop,
 
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,

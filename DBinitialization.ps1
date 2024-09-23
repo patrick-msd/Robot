@@ -8,6 +8,15 @@ cd C:\Git\MSD\Robot\80_Model\PSGM.Model.DbArchiv
 dotnet ef migrations add InitialeCreate
 dotnet ef database update
 
+Write-Host "########################### Clean and create DbBackendStructure... ###########################"
+Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbBackendStructure\Migrations' -Recurse -ErrorAction SilentlyContinue -Confirm:$false
+Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbBackendStructure\DbBackendStructure.db' -ErrorAction SilentlyContinue -Confirm:$false
+#Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbBackendStructure\DbBackendStructure.db' -ErrorAction SilentlyContinue -Confirm:$false
+#Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbBackendStructure\DbBackendStructure.db' -ErrorAction SilentlyContinue -Confirm:$false
+cd C:\Git\MSD\Robot\80_Model\PSGM.Model.DbBackendStructure
+dotnet ef migrations add InitialeCreate
+dotnet ef database update
+
 Write-Host "########################### Clean and create DbJob ... ###########################"
 Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbJob\Migrations' -Recurse -ErrorAction SilentlyContinue -Confirm:$false
 Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbJob\DbJob.db' -ErrorAction SilentlyContinue -Confirm:$false
@@ -50,15 +59,6 @@ Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorage\DbStorage.db' 
 #Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorage\DbStorage.db' -ErrorAction SilentlyContinue -Confirm:$false
 #Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorage\DbStorage.db' -ErrorAction SilentlyContinue -Confirm:$false
 cd C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorage
-dotnet ef migrations add InitialeCreate
-dotnet ef database update
-
-Write-Host "########################### Clean and create  DbStorageStructure... ###########################"
-Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorageStructure\Migrations' -Recurse -ErrorAction SilentlyContinue -Confirm:$false
-Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorageStructure\DbStorageStructure.db' -ErrorAction SilentlyContinue -Confirm:$false
-#Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorageStructure\DbStorageStructure.db' -ErrorAction SilentlyContinue -Confirm:$false
-#Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorageStructure\DbStorageStructure.db' -ErrorAction SilentlyContinue -Confirm:$false
-cd C:\Git\MSD\Robot\80_Model\PSGM.Model.DbStorageStructure
 dotnet ef migrations add InitialeCreate
 dotnet ef database update
 

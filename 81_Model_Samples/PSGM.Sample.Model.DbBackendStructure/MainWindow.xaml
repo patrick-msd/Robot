@@ -1,0 +1,23 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PSGM.Sample.Model.DbBackendStructure"
+        xmlns:Wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf" x:Class="PSGM.Sample.Model.DbBackendStructure.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1024" Width="2048">
+    <Grid>
+        <GroupBox HorizontalAlignment="Left" Height="600" Width="280" Header="Database" Margin="10,10,0,0" VerticalAlignment="Top">
+            <StackPanel>
+                <Button x:Name="btnDbCreateConfigFile" Content="Create ConfigFile" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnDbCreateConfigFile_Click"/>
+
+                <Button x:Name="btnDbReadConfigFileAndInit" Content="Read ConfigFile and Init" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,30,0,0" VerticalAlignment="Top" Click="btnDbReadConfigFileAndInit_Click"/>
+
+                <Button x:Name="btnDbGenerateData" Content="Generate Data" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,30,0,0" VerticalAlignment="Top" Click="btnDbGenerateData_Click"/>
+
+                <Button x:Name="btnDbReadData1" Content="Read Data 1" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,50,0,0" Click="btnDbReadData1_Click"/>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>

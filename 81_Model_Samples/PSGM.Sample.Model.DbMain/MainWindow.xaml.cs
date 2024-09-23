@@ -106,8 +106,8 @@ namespace PSGM.Sample.Model.DbStorage
             {
                 _dbMain_Context = new DbMain_Context();
 
-                _dbMain_Context.ConnectionString = _configFile.MainDatabaseConnectionString;
-                _dbMain_Context.DatabaseType = _configFile.MainDatabaseType;
+                _dbMain_Context.DatabaseConnectionString = _configFile.DatabaseConnectionString;
+                _dbMain_Context.DatabaseType = _configFile.DatabaseType;
 
                 _dbMain_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
                 _dbMain_Context.DatabaseSessionParameter_MachineId = _machineId;
@@ -127,8 +127,8 @@ namespace PSGM.Sample.Model.DbStorage
         {
             _configFile = new ConfigFile()
             {
-                MainDatabaseConnectionString = "Host=db-clu001.branch31.psgm.at:50001;Database=DbMain;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
-                MainDatabaseType = DatabaseType.PostgreSQL,
+                DatabaseConnectionString = "Host=db-clu001.branch31.psgm.at:50001;Database=DbMain;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
+                DatabaseType = DatabaseType.PostgreSQL,
             };
 
             _configFile.WriteToFile(Directory.GetCurrentDirectory() + "\\ConfigFile.json");
@@ -137,8 +137,8 @@ namespace PSGM.Sample.Model.DbStorage
         private void btnDbReadConfigFileAndInit_Click(object sender, RoutedEventArgs e)
         {
             _dbMain_Context = new DbMain_Context();
-            _dbMain_Context.ConnectionString = _configFile.MainDatabaseConnectionString;
-            _dbMain_Context.DatabaseType = _configFile.MainDatabaseType;
+            _dbMain_Context.DatabaseConnectionString = _configFile.DatabaseConnectionString;
+            _dbMain_Context.DatabaseType = _configFile.DatabaseType;
             _dbMain_Context.Database.EnsureDeleted();
             _dbMain_Context.Database.EnsureCreated();
             _dbMain_Context.Database.OpenConnection();

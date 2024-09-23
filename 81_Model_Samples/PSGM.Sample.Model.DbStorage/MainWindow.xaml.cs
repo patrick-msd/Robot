@@ -106,8 +106,8 @@ namespace PSGM.Sample.Model.DbStorage
             {
                 _dbStorage_Data_Context = new DbStorage_Context();
 
-                _dbStorage_Data_Context.ConnectionString = _configFile.StorageDataDatabaseConnectionString;
-                _dbStorage_Data_Context.DatabaseType = _configFile.StorageDataDatabaseType;
+                _dbStorage_Data_Context.DatabaseConnectionString = _configFile.DatabaseConnectionString;
+                _dbStorage_Data_Context.DatabaseType = _configFile.DatabaseType;
 
                 _dbStorage_Data_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
                 _dbStorage_Data_Context.DatabaseSessionParameter_MachineId = _machineId;
@@ -127,8 +127,8 @@ namespace PSGM.Sample.Model.DbStorage
         {
             _configFile = new ConfigFile()
             {
-                StorageDataDatabaseConnectionString = "Host=db-clu001.branch31.psgm.at:50001;Database=DbStorage;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
-                StorageDataDatabaseType = DatabaseType.PostgreSQL,
+                DatabaseConnectionString = "Host=db-clu001.branch31.psgm.at:50001;Database=DbStorage;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
+                DatabaseType = DatabaseType.PostgreSQL,
             };
 
             _configFile.WriteToFile(Directory.GetCurrentDirectory() + "\\ConfigFile.json");
@@ -137,8 +137,8 @@ namespace PSGM.Sample.Model.DbStorage
         private void btnDbReadConfigFileAndInit_Click(object sender, RoutedEventArgs e)
         {
             _dbStorage_Data_Context = new DbStorage_Context();
-            _dbStorage_Data_Context.ConnectionString = _configFile.StorageDataDatabaseConnectionString;
-            _dbStorage_Data_Context.DatabaseType = _configFile.StorageDataDatabaseType;
+            _dbStorage_Data_Context.DatabaseConnectionString = _configFile.DatabaseConnectionString;
+            _dbStorage_Data_Context.DatabaseType = _configFile.DatabaseType;
             _dbStorage_Data_Context.Database.EnsureDeleted();
             _dbStorage_Data_Context.Database.EnsureCreated();
             _dbStorage_Data_Context.Database.OpenConnection();

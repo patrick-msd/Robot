@@ -10,18 +10,14 @@ namespace PSGM.Model.DbMain
         public DatabaseType _databaseType = DatabaseType.SQLite;
         public DatabaseType DatabaseType { get { return _databaseType; } set { _databaseType = value; } }
 
-
-        private string _connectionString = string.Empty;
-        public string ConnectionString { get { return _connectionString; } set { _connectionString = value; } }
-
+        private string _databaseConnectionString = string.Empty;
+        public string DatabaseConnectionString { get { return _databaseConnectionString; } set { _databaseConnectionString = value; } }
 
         private Guid _databaseSessionParameter_UserId = Guid.Empty;
         public Guid DatabaseSessionParameter_UserId { get { return _databaseSessionParameter_UserId; } set { _databaseSessionParameter_UserId = value; } }
 
-
         private Guid _databaseSessionParameter_MachineId = Guid.Empty;
         public Guid DatabaseSessionParameter_MachineId { get { return _databaseSessionParameter_MachineId; } set { _databaseSessionParameter_MachineId = value; } }
-
 
         private Guid _databaseSessionParameter_SoftwareId = Guid.Empty;
         public Guid DatabaseSessionParameter_SoftwareId { get { return _databaseSessionParameter_SoftwareId; } set { _databaseSessionParameter_SoftwareId = value; } }
@@ -39,7 +35,7 @@ namespace PSGM.Model.DbMain
         public DbMain_Context(DatabaseType databaseType, string connectionString) : base()
         {
             _databaseType = databaseType;
-            _connectionString = connectionString;
+            _databaseConnectionString = connectionString;
         }
         #endregion
 
@@ -138,19 +134,19 @@ namespace PSGM.Model.DbMain
             switch (_databaseType)
             {
                 case DatabaseType.ConnectionString:
-                    optionsBuilder.UseSqlite(_connectionString);
+                    optionsBuilder.UseSqlite(_databaseConnectionString);
                     break;
 
                 case DatabaseType.SQLite:
-                    optionsBuilder.UseSqlite(_connectionString);
+                    optionsBuilder.UseSqlite(_databaseConnectionString);
                     break;
 
                 case DatabaseType.PostgreSQL:
-                    optionsBuilder.UseNpgsql(_connectionString);
+                    optionsBuilder.UseNpgsql(_databaseConnectionString);
                     break;
 
                 case DatabaseType.SQLServer:
-                    optionsBuilder.UseSqlServer(_connectionString);
+                    optionsBuilder.UseSqlServer(_databaseConnectionString);
                     break;
 
                 default:
@@ -875,7 +871,7 @@ namespace PSGM.Model.DbMain
         #region Functions
         public string GetConnectionString()
         {
-            return _connectionString;
+            return _databaseConnectionString;
         }
         #endregion
     }

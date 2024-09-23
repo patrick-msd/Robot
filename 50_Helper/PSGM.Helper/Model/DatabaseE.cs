@@ -4,7 +4,7 @@
     {
         Undefined = 0,
 
-        ConnectionString = 1000,        
+        ConnectionString = 1000,
 
         SQLite = 10000,
 
