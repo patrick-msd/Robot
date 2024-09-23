@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PSGM.Helper")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d44cdfd688b0d35490986492bd61b1d4c2e1aa28")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d4476a98b37ff373028dbb319dd679a96f73a7be")]
 [assembly: System.Reflection.AssemblyProductAttribute("PSGM.Helper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PSGM.Helper")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

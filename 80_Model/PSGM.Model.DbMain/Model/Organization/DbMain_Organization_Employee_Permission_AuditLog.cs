@@ -54,7 +54,7 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Not Mapped
-        public DbMain_Organization_Employee_Permission GetChanges()
+        public DbMain_Organization_Employee_Permission? GetChanges()
         {
             return JsonConvert.DeserializeObject<DbMain_Organization_Employee_Permission>(Changes);
         }

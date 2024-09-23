@@ -54,7 +54,7 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Not Mapped
-        public DbMain_Address GetChanges()
+        public DbMain_Address? GetChanges()
         {
             return JsonConvert.DeserializeObject<DbMain_Address>(Changes);
         }

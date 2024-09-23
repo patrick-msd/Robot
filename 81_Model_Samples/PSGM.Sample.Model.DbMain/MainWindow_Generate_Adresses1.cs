@@ -20,7 +20,7 @@ namespace PSGM.Sample.Model.DbStorage
                 PostalCode = "6020",
                 RegionCode = string.Empty,
                 RegionName = string.Empty,
-
+                
                 GpsAltitude = 574,
                 GpsLatitudeDegree = 47,
                 GpsLatitudeMinute = 15,

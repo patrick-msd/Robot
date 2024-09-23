@@ -98,11 +98,15 @@ namespace PSGM.Model.DbMain
 
 
 
+        [Column("ArchiveJobStarted")]
+        [Display(Name = "ArchiveJobStarted")]
+        public DateTime ArchiveJobStarted { get; set; } = DateTime.MinValue;
 
+        [Column("ArchiveJobFinished")]
+        [Display(Name = "ArchiveJobFinished")]
+        public DateTime ArchiveJobFinished { get; set; } = DateTime.MinValue;
 
-
-
-
+   
 
         [Column("ObjectsOnStorageInUnit")]
         [Display(Name = "ObjectsOnStorageInUnit")]
@@ -115,16 +119,6 @@ namespace PSGM.Model.DbMain
         [Column("Locked")]
         [Display(Name = "Locked")]
         public bool Locked { get; set; } = false;
-
-        [Column("JobsId_ExtString")]
-        [Display(Name = "JobsId_ExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string JobsId_ExtString { get; private set; } = string.Empty;
-
-        [Column("Backups_ExtString")]
-        [Display(Name = "Backups_ExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string Backups_ExtString { get; private set; } = string.Empty;
 
         #region Audit details for faster file audit information
         [Required]
@@ -149,6 +143,9 @@ namespace PSGM.Model.DbMain
 
         #region Links
         [InverseProperty("Unit")]
+        public virtual ICollection<DbMain_Archive_Job_Link>? ArchiveJobLink { get; set; }
+
+        [InverseProperty("Unit")]
         public virtual DbMain_WorkflowGroup? ApplicableWorkflowGroup { get; set; }
 
         [InverseProperty("ParentUnit")]
@@ -166,19 +163,6 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Not Mapped
-        [NotMapped]
-        public List<Guid>? JobsId_Ext
-        {
-            get { return JobsId_ExtString != string.Empty ? JobsId_ExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { JobsId_ExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        }
-
-        [NotMapped]
-        public List<Guid>? Backups_Ext
-        {
-            get { return Backups_ExtString != string.Empty ? Backups_ExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { Backups_ExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        }
         #endregion
     }
 }

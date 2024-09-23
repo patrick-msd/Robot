@@ -54,7 +54,7 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Not Mapped
-        public DbMain_Organization_EmployeeGroup GetChanges()
+        public DbMain_Organization_EmployeeGroup? GetChanges()
         {
             return JsonConvert.DeserializeObject<DbMain_Organization_EmployeeGroup>(Changes);
         }

@@ -29,9 +29,9 @@ namespace PSGM.Model.DbMain
         [Display(Name = "Contributors")]
         public PermissionType Contributors { get; set; } = PermissionType.None;
 
-        [Column("DeliverySlip")]
-        [Display(Name = "DeliverySlip")]
-        public PermissionType DeliverySlip { get; set; } = PermissionType.None;
+        [Column("DeliverySlips")]
+        [Display(Name = "DeliverySlips")]
+        public PermissionType DeliverySlips { get; set; } = PermissionType.None;
 
         [Column("Locations")]
         [Display(Name = "Locations")]

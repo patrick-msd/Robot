@@ -49,6 +49,14 @@ namespace PSGM.Model.DbMain
         public DbSet<DbMain_Address_AuditLog> Address_AuditLog { get; set; }
         #endregion
 
+        #region Archive
+        public DbSet<DbMain_Archive_Job> Archives_Jobs { get; set; }
+        public DbSet<DbMain_Archive_Job_AuditLog> Archive_Job_AuditLog { get; set; }
+
+        public DbSet<DbMain_Archive_Job_Link> Archive_Job_Links { get; set; }
+        public DbSet<DbMain_Archive_Job_Link_AuditLog> Archive_Job_Link_AuditLog { get; set; }
+        #endregion
+
         #region Contributor
         public DbSet<DbMain_Contributors> Contributors { get; set; }
         public DbSet<DbMain_Contributors_AuditLog> Contributor_AuditLog { get; set; }
@@ -219,6 +227,55 @@ namespace PSGM.Model.DbMain
                         break;
 
                     case DbMain_Address_AuditLog address_AuditLog:
+                        break;
+                    #endregion
+
+                    #region Archive
+                    case DbMain_Archive_Job archive_Job:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            archive_Job.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            archive_Job.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            archive_Job.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            archive_Job.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        Address_AuditLog.Add(new DbMain_Address_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = archive_Job.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMain_Archive_Job_AuditLog archive_Job_AuditLog:
+                        break;
+
+                    case DbMain_Archive_Job_Link archive_Job_Link:
+                        Archive_Job_Link_AuditLog.Add(new DbMain_Archive_Job_Link_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = archive_Job_Link.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMain_Archive_Job_Link_AuditLog archive_Job_Link_AuditLog:
                         break;
                     #endregion
 

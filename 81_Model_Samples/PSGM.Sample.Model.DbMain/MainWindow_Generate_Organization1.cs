@@ -64,7 +64,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                             Addresses = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Contributors = (PermissionType)values.GetValue(random.Next(values.Length)),
-                            DeliverySlip = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            DeliverySlips = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Locations = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Organizations = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Units = (PermissionType)values.GetValue(random.Next(values.Length)),
@@ -82,7 +82,7 @@ namespace PSGM.Sample.Model.DbStorage
                             //CreatedDateTimeAutoFill = DateTime.Now,
                             //ModifiedByUserIdExtAutoFill = Guid.Empty,
                             //ModifiedDateTimeAutoFill = DateTime.Now,
-
+                            
                             // FK
                             Employee = null,
                             EmployeeId = null,
@@ -96,7 +96,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                                 Description = string.Empty,
 
-                                TriggerType = NotificationTriggerType.DeliverySlip,
+                                TriggerType = NotificationTriggerType.WorkflowQualityCheckForImage,
                                 TriggerState = NotificationTriggerState.CreatedUpdatedDeleted,
 
                                 EMail =  random.Next(100) <= 50 ? true : false,
@@ -111,7 +111,7 @@ namespace PSGM.Sample.Model.DbStorage
                                 //CreatedDateTimeAutoFill = DateTime.Now,
                                 //ModifiedByUserIdExtAutoFill = Guid.Empty,
                                 //ModifiedDateTimeAutoFill = DateTime.Now,
-
+                                
                                 // FK
                                 Employee = null,
                                 EmployeeId = null,
@@ -123,7 +123,7 @@ namespace PSGM.Sample.Model.DbStorage
                         //CreatedDateTimeAutoFill = DateTime.Now,
                         //ModifiedByUserIdExtAutoFill = Guid.Empty,
                         //ModifiedDateTimeAutoFill = DateTime.Now,
-
+                        
                         // FK
                         EmployeeGroup = null,
                         EmployeeGroupId = null,
@@ -154,7 +154,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                             Addresses = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Contributors = (PermissionType)values.GetValue(random.Next(values.Length)),
-                            DeliverySlip = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            DeliverySlips = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Locations = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Organizations = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Units = (PermissionType)values.GetValue(random.Next(values.Length)),
@@ -186,7 +186,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                                 Description = string.Empty,
 
-                                TriggerType = NotificationTriggerType.DeliverySlip,
+                                TriggerType = NotificationTriggerType.WorkflowImage,
                                 TriggerState = NotificationTriggerState.CreatedUpdatedDeleted,
 
                                 EMail =  random.Next(100) <= 50 ? true : false,
@@ -233,7 +233,13 @@ namespace PSGM.Sample.Model.DbStorage
 
                 // FK
                 Project = null,
-                ProjectId = null
+                ProjectId = null,
+
+                DeliverySlipCreator = null,
+                DeliverySlipCreatorId = null,
+
+                DeliverySlipRecipient = null,
+                DeliverySlipRecipientId = null,
             };
 
             DbMain_Organization organizationTLA = new DbMain_Organization()
@@ -274,6 +280,8 @@ namespace PSGM.Sample.Model.DbStorage
 
                         Acronym = "ZEG",
 
+                        EMail = "",
+
                         DaytimePhoneNumber = "+43 512 123456789",
                         EveningPhoneNumber = "+43 512 123456789",
 
@@ -287,11 +295,11 @@ namespace PSGM.Sample.Model.DbStorage
 
                             Addresses = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Contributors = (PermissionType)values.GetValue(random.Next(values.Length)),
-                            DeliverySlip = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            DeliverySlips = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Locations = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Organizations = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Units = (PermissionType)values.GetValue(random.Next(values.Length)),
-
+                            
                             Archive = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Job = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Machine = (PermissionType)values.GetValue(random.Next(values.Length)),
@@ -316,9 +324,9 @@ namespace PSGM.Sample.Model.DbStorage
                             new DbMain_Organization_Employee_Notification()
                             {
                                 Id = Guid.NewGuid(),
-
+                                
                                 Description = string.Empty,
-
+                                
                                 TriggerType = NotificationTriggerType.DeliverySlip,
                                 TriggerState = NotificationTriggerState.CreatedUpdatedDeleted,
 
@@ -346,11 +354,11 @@ namespace PSGM.Sample.Model.DbStorage
                         //CreatedDateTimeAutoFill = DateTime.Now,
                         //ModifiedByUserIdExtAutoFill = Guid.Empty,
                         //ModifiedDateTimeAutoFill = DateTime.Now,
-
+                        
                         // FK
                         EmployeeGroup = null,
                         EmployeeGroupId = null,
-
+                        
                         Organization = null,
                         OrganizationId = null,
                     },
@@ -366,7 +374,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                         DaytimePhoneNumber = "+43 512 123456789",
                         EveningPhoneNumber = "+43 512 123456789",
-
+                        
                         FieldOfEmployment = FieldOfEmployment.ProjectEmployee,
 
                         Permissions = new DbMain_Organization_Employee_Permission()
@@ -377,7 +385,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                             Addresses = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Contributors = (PermissionType)values.GetValue(random.Next(values.Length)),
-                            DeliverySlip = (PermissionType)values.GetValue(random.Next(values.Length)),
+                            DeliverySlips = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Locations = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Organizations = (PermissionType)values.GetValue(random.Next(values.Length)),
                             Units = (PermissionType)values.GetValue(random.Next(values.Length)),
@@ -406,7 +414,7 @@ namespace PSGM.Sample.Model.DbStorage
                             new DbMain_Organization_Employee_Notification()
                             {
                                 Id = Guid.NewGuid(),
-
+                                
                                 Description = string.Empty,
 
                                 TriggerType = NotificationTriggerType.DeliverySlip,
@@ -456,7 +464,13 @@ namespace PSGM.Sample.Model.DbStorage
 
                 // FK
                 Project = null,
-                ProjectId = null
+                ProjectId = null,
+
+                DeliverySlipCreator = null,
+                DeliverySlipCreatorId = null,
+                
+                DeliverySlipRecipient = null,
+                DeliverySlipRecipientId = null,
             };
 
             List<DbMain_Organization> tmp = new List<DbMain_Organization>()

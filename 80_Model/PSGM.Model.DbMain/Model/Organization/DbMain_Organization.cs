@@ -91,13 +91,13 @@ namespace PSGM.Model.DbMain
         public Guid? ProjectId { get; set; }
         public virtual DbMain_Project? Project { get; set; }
 
-        [ForeignKey("DeliverySlipInternet")]
-        public Guid? DeliverySlipInternetId { get; set; }
-        public virtual DbMain_DeliverySlip? DeliverySlipInternet { get; set; }
+        [ForeignKey("DeliverySlipCreator")]
+        public Guid? DeliverySlipCreatorId { get; set; }
+        public virtual DbMain_DeliverySlip? DeliverySlipCreator { get; set; }
 
-        [ForeignKey("DeliverySlipExternal")]
-        public Guid? DeliverySlipExternalId { get; set; }
-        public virtual DbMain_DeliverySlip? DeliverySlipExternal { get; set; }
+        [ForeignKey("DeliverySlipRecipient")]
+        public Guid? DeliverySlipRecipientId { get; set; }
+        public virtual DbMain_DeliverySlip? DeliverySlipRecipient { get; set; }
         #endregion
 
         #region Links (Outside DB)

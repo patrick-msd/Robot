@@ -54,7 +54,7 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Not Mapped
-        public DbMain_DeliverySlip_Template GetChanges()
+        public DbMain_DeliverySlip_Template? GetChanges()
         {
             return JsonConvert.DeserializeObject<DbMain_DeliverySlip_Template>(Changes);
         }

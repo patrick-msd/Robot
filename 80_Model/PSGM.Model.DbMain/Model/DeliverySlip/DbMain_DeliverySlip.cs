@@ -25,13 +25,13 @@ namespace PSGM.Model.DbMain
         [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
-        [Column("InternalContactUserId_Ext")]
-        [Display(Name = "InternalContactUserId_Ext")]
-        public Guid InternalContactUserId_Ext { get; set; } = Guid.Empty;
+        [Column("DeliverySlipCreatorUserId_Ext")]
+        [Display(Name = "DeliverySlipCreatorUserId_Ext")]
+        public Guid DeliverySlipCreatorUserId_Ext { get; set; } = Guid.Empty;
 
-        [Column("ExternalContactUserId_Ext")]
-        [Display(Name = "ExternalContactUserId_Ext")]
-        public Guid ExternalContactUserId_Ext { get; set; } = Guid.Empty;
+        [Column("DeliverySlipRecipientUserId_Ext")]
+        [Display(Name = "DeliverySlipRecipientUserId_Ext")]
+        public Guid DeliverySlipRecipientUserId_Ext { get; set; } = Guid.Empty;
 
         [Column("DeliverySlipIsDirectory")]
         [Display(Name = "DeliverySlipIsDirectory")]
@@ -99,11 +99,11 @@ namespace PSGM.Model.DbMain
         [InverseProperty("DeliverySlip")]
         public virtual DbMain_DeliverySlip_Template? CreatedWithDeliverySlipTemplate { get; set; }
 
-        [InverseProperty("DeliverySlipInternet")]
-        public virtual DbMain_Organization? InternalOrganization { get; set; }
+        [InverseProperty("DeliverySlipCreator")]
+        public virtual DbMain_Organization? DeliverySlipCreatorOrganization { get; set; }
 
-        [InverseProperty("DeliverySlipExternal")]
-        public virtual DbMain_Organization? ExternalOrganization { get; set; }
+        [InverseProperty("DeliverySlipRecipient")]
+        public virtual DbMain_Organization? DeliverySlipRecipientOrganization { get; set; }
 
         [InverseProperty("DeliverySlip")]
         public virtual ICollection<DbMain_Unit>? Units { get; set; }

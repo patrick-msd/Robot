@@ -57,7 +57,7 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Not Mapped
-        public DbMain_WorkflowItem_Link GetChanges()
+        public DbMain_WorkflowItem_Link? GetChanges()
         {
             return JsonConvert.DeserializeObject<DbMain_WorkflowItem_Link>(Changes);
         }

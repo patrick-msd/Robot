@@ -410,13 +410,19 @@ namespace PSGM.Sample.Model.DbStorage
             };
             dbWorkflowItemLink_Workflow1_SaveObjectToStorageAndDatabase_DataThumbnail.SetSaveImageV1_0_0Configuration(new ConfigurationSaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
             #endregion
+
+            // ToDo: More Workflow Items ...
+            // 	        --> Freigabe Management (Sharing)
+            // 	        --> Transfer
+            // 	           --> Family Search
+            // 	           --> Archiv
             #endregion
 
             // Root Directory (Bucket) --> ProjectId\\DirectoryIds{1...n}\\FileId ...
             DbMain_Project project = new DbMain_Project()
             {
                 Id = Guid.NewGuid(),
-
+                
                 Name = "Meldezettel",
                 Description = "Digitalisierung der Meldezettel von ...",
 
@@ -446,7 +452,7 @@ namespace PSGM.Sample.Model.DbStorage
                     new DbMain_Project_Location_Link()
                     {
                         Id = Guid.NewGuid(),
-
+                        
                         // FK
                         Location =  locations.Where(p => p.AddressLink.Address.Line1.Contains("Innrain 52d")).First(),
                         //LocationId = null,
@@ -454,7 +460,6 @@ namespace PSGM.Sample.Model.DbStorage
                         Project = null,
                         ProjectId = null
                     },
-
                     new DbMain_Project_Location_Link()
                     {
                         Id = Guid.NewGuid(),
@@ -522,6 +527,12 @@ namespace PSGM.Sample.Model.DbStorage
                             //dbWorkflowItemLink_Workflow1_Sharpen1Image_Data,
                             dbWorkflowItemLink_Workflow1_Sharpen2Image_Data,
                             dbWorkflowItemLink_Workflow1_SaveObjectToStorageAndDatabase_DataThumbnail
+
+                            // ToDo: More Workflow Items ...
+                            // 	        --> Freigabe Management (Sharing)
+                            // 	        --> Transfer
+                            // 	           --> Family Search
+                            // 	           --> Archiv
                         },
                         
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
@@ -556,12 +567,12 @@ namespace PSGM.Sample.Model.DbStorage
                     DeliverySlipState = DeliverySlipType.Created,
 
                     CreatedWithDeliverySlipTemplate = null, // ToDo: ...
-
-                    InternalOrganization = organizations.Where(p => p.Acronym.Contains("TLA")).First(),
-                    InternalContactUserId_Ext = _gertraudZeindlId,
-
-                    ExternalOrganization = organizations.Where(p => p.Acronym.Contains("UIBK")).First(),
-                    ExternalContactUserId_Ext = _patrickSchoeneggerId,
+                    
+                    DeliverySlipCreatorUserId_Ext = _gertraudZeindlId,
+                    DeliverySlipCreatorOrganization = organizations.Where(p => p.Acronym.Contains("TLA")).First(),
+                    
+                    DeliverySlipRecipientUserId_Ext = _patrickSchoeneggerId,
+                    DeliverySlipRecipientOrganization = organizations.Where(p => p.Acronym.Contains("UIBK")).First(),
 
                     NumberOfUnits = 12,
 
@@ -634,11 +645,9 @@ namespace PSGM.Sample.Model.DbStorage
 
                     Locked = false,
 
-                    Backups_Ext = null,
-                    //Backups_ExtString = string.Empty,
-
-                    JobsId_Ext = null,
-                    //JobsId_ExtString = string.Empty,
+                    ArchiveJobLink = null,
+                    ArchiveJobStarted = DateTime.MinValue,
+                    ArchiveJobFinished = DateTime.MinValue,
 
                     Unit = new List<DbMain_Unit>()
                     {
@@ -679,11 +688,9 @@ namespace PSGM.Sample.Model.DbStorage
 
                             Locked = false,
 
-                            Backups_Ext = null,
-                            //Backups_ExtString = string.Empty,
-
-                            JobsId_Ext = null,
-                            //JobsId_ExtString = string.Empty,
+                            ArchiveJobLink = null,
+                            ArchiveJobStarted = DateTime.MinValue,
+                            ArchiveJobFinished = DateTime.MinValue,
 
                             Unit = null,
 
@@ -736,11 +743,9 @@ namespace PSGM.Sample.Model.DbStorage
 
                             Locked = false,
 
-                            Backups_Ext = null,
-                            //Backups_ExtString = string.Empty,
-
-                            JobsId_Ext = null,
-                            //JobsId_ExtString = string.Empty,
+                            ArchiveJobLink = null,
+                            ArchiveJobStarted = DateTime.MinValue,
+                            ArchiveJobFinished = DateTime.MinValue,
 
                             Unit = null,
 

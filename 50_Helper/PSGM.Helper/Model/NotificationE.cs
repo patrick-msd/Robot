@@ -32,7 +32,12 @@
         Storage = 20004,
         StorageDirectories = 20005,
         StorageFiles = 20006,
-        Workflow = 20007,
+
+        Workflow = 30000,
+        WorkflowImage = 30001,
+        WorkflowTranscription = 30002,
+        WorkflowQualityCheckForImage = 30003,
+        WorkflowQualityCheckForTranscription = 30004,
     }
 
     public enum NotificationTriggerState : int

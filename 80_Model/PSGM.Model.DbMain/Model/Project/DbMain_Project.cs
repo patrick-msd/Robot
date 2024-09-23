@@ -111,6 +111,9 @@ namespace PSGM.Model.DbMain
 
         #region Links
         [InverseProperty("Project")]
+        public virtual ICollection<DbMain_Archive_Job_Link>? ArchiveJobLink { get; set; }
+
+        [InverseProperty("Project")]
         public virtual ICollection<DbMain_Contributors>? Contributors { get; set; }
 
         [InverseProperty("Project")]
