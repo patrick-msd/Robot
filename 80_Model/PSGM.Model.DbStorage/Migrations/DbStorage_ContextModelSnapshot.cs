@@ -30,11 +30,11 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
-                    b.Property<string>("BackupIdsExtString")
+                    b.Property<string>("ArchiveIds_ExtString")
                         .IsRequired()
                         .HasMaxLength(32766)
                         .HasColumnType("character varying(32766)")
-                        .HasColumnName("BackupIdsExtString");
+                        .HasColumnName("ArchiveIds_ExtString");
 
                     b.Property<Guid>("CreatedByUserIdExtAutoFill")
                         .HasColumnType("uuid")
@@ -120,11 +120,11 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("ExtId9");
 
-                    b.Property<string>("JobIdsExtString")
+                    b.Property<string>("JobIdsExt_String")
                         .IsRequired()
                         .HasMaxLength(65532)
                         .HasColumnType("character varying(65532)")
-                        .HasColumnName("JobIdsExtString");
+                        .HasColumnName("JobIdsExt_String");
 
                     b.Property<Guid>("MachineIdExt")
                         .HasColumnType("uuid")
@@ -228,11 +228,11 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("SuffixProjectOwner");
 
-                    b.Property<string>("WorkflowItemIdsExtString")
+                    b.Property<string>("WorkflowItemIds_ExtString")
                         .IsRequired()
                         .HasMaxLength(65532)
                         .HasColumnType("character varying(65532)")
-                        .HasColumnName("WorkflowItemIdsExtString");
+                        .HasColumnName("WorkflowItemIds_ExtString");
 
                     b.HasKey("Id");
 
@@ -1545,6 +1545,83 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.ToTable("File_Quality_AuditLog", "psgm");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<Guid?>("FileId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<Guid>("VirtualSubUnitId_Ext")
+                        .HasColumnType("uuid")
+                        .HasColumnName("VirtualSubUnitId_Ext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FileId");
+
+                    b.ToTable("File_VirtualSubUnit", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("File_VirtualSubUnit_AuditLog", "psgm");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1552,11 +1629,11 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
-                    b.Property<string>("BackupIdsExtString")
+                    b.Property<string>("ArchiveIds_ExtString")
                         .IsRequired()
                         .HasMaxLength(32766)
                         .HasColumnType("character varying(32766)")
-                        .HasColumnName("BackupIdsExtString");
+                        .HasColumnName("ArchiveIds_ExtString");
 
                     b.Property<Guid>("CreatedByUserIdExtAutoFill")
                         .HasColumnType("uuid")
@@ -1594,11 +1671,11 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("DirectoryState");
 
-                    b.Property<string>("JobIdsExtString")
+                    b.Property<string>("JobIdsExt_String")
                         .IsRequired()
                         .HasMaxLength(65532)
                         .HasColumnType("character varying(65532)")
-                        .HasColumnName("JobIdsExtString");
+                        .HasColumnName("JobIdsExt_String");
 
                     b.Property<Guid>("ModifiedByUserIdExtAutoFill")
                         .HasColumnType("uuid")
@@ -1652,11 +1729,11 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("SuffixProjectOwner");
 
-                    b.Property<string>("WorkflowItemIdsExtString")
+                    b.Property<string>("WorkflowItemIds_ExtString")
                         .IsRequired()
                         .HasMaxLength(65532)
                         .HasColumnType("character varying(65532)")
-                        .HasColumnName("WorkflowItemIdsExtString");
+                        .HasColumnName("WorkflowItemIds_ExtString");
 
                     b.HasKey("Id");
 
@@ -2965,6 +3042,83 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.ToTable("RootDirectory_Quality_AuditLog", "psgm");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<Guid?>("RootDirectoryId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("VirtualRootUnitId_Ext")
+                        .HasColumnType("uuid")
+                        .HasColumnName("VirtualRootUnitId_Ext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RootDirectoryId");
+
+                    b.ToTable("RootDirectory_VirtualRootUnit", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RootDirectory_VirtualRootUnit_AuditLog", "psgm");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory", b =>
                 {
                     b.Property<Guid>("Id")
@@ -2972,11 +3126,11 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
-                    b.Property<string>("BackupIdsExtString")
+                    b.Property<string>("ArchiveIds_ExtString")
                         .IsRequired()
                         .HasMaxLength(32766)
                         .HasColumnType("character varying(32766)")
-                        .HasColumnName("BackupIdsExtString");
+                        .HasColumnName("ArchiveIds_ExtString");
 
                     b.Property<Guid>("CreatedByUserIdExtAutoFill")
                         .HasColumnType("uuid")
@@ -3014,11 +3168,11 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("DirectoryState");
 
-                    b.Property<string>("JobIdsExtString")
+                    b.Property<string>("JobIdsExt_String")
                         .IsRequired()
                         .HasMaxLength(65532)
                         .HasColumnType("character varying(65532)")
-                        .HasColumnName("JobIdsExtString");
+                        .HasColumnName("JobIdsExt_String");
 
                     b.Property<Guid>("ModifiedByUserIdExtAutoFill")
                         .HasColumnType("uuid")
@@ -3078,11 +3232,11 @@ namespace PSGM.Model.DbStorage.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("SuffixProjectOwner");
 
-                    b.Property<string>("WorkflowItemIdsExtString")
+                    b.Property<string>("WorkflowItemIds_ExtString")
                         .IsRequired()
                         .HasMaxLength(65532)
                         .HasColumnType("character varying(65532)")
-                        .HasColumnName("WorkflowItemIdsExtString");
+                        .HasColumnName("WorkflowItemIds_ExtString");
 
                     b.HasKey("Id");
 
@@ -4395,6 +4549,83 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.ToTable("SubDirectory_QualityAuditLog", "psgm");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<Guid>("ModifiedByUserIdExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserIdExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<Guid?>("SubDirectoryId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("VirtualSubUnitId_Ext")
+                        .HasColumnType("uuid")
+                        .HasColumnName("VirtualSubUnitId_Ext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SubDirectoryId");
+
+                    b.ToTable("SubDirectory_VirtualSubUnit", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareIdExt");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserIdExt")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserIdExt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SubDirectory_VirtualSubUnit_AuditLog", "psgm");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File", b =>
                 {
                     b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory", "RootDirectory")
@@ -4547,6 +4778,15 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("File");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File_VirtualSubUnit", b =>
+                {
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_File", "File")
+                        .WithMany()
+                        .HasForeignKey("FileId");
+
+                    b.Navigation("File");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_Authorization_UserGroup_Link", b =>
                 {
                     b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory_Authorization_UserGroup", "AuthorizationUserGroup")
@@ -4682,6 +4922,15 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory", "RootDirectory")
                         .WithOne("Quality")
                         .HasForeignKey("PSGM.Model.DbStorage.DbStorage_RootDirectory_Quality", "RootDirectoryId");
+
+                    b.Navigation("RootDirectory");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_VirtualRootUnit", b =>
+                {
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_RootDirectory", "RootDirectory")
+                        .WithMany("VirtualRootUnits")
+                        .HasForeignKey("RootDirectoryId");
 
                     b.Navigation("RootDirectory");
                 });
@@ -4840,6 +5089,15 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("SubDirectory");
                 });
 
+            modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_VirtualSubUnit", b =>
+                {
+                    b.HasOne("PSGM.Model.DbStorage.DbStorage_SubDirectory", "SubDirectory")
+                        .WithMany("VirtualSubUnits")
+                        .HasForeignKey("SubDirectoryId");
+
+                    b.Navigation("SubDirectory");
+                });
+
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_File", b =>
                 {
                     b.Navigation("AuthorizationUserGroupLinks");
@@ -4915,6 +5173,8 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("Quality");
 
                     b.Navigation("SubDirectories");
+
+                    b.Navigation("VirtualRootUnits");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_RootDirectory_Authorization_User", b =>
@@ -4975,6 +5235,8 @@ namespace PSGM.Model.DbStorage.Migrations
                     b.Navigation("Quality");
 
                     b.Navigation("SubDirectories");
+
+                    b.Navigation("VirtualSubUnits");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbStorage.DbStorage_SubDirectory_Authorization_User", b =>

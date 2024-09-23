@@ -21,7 +21,7 @@ namespace PSGM.Model.DbMain
 
         [Required]
         [Column("Action")]
-        [Display(Name = "EntityName")]
+        [Display(Name = "Action")]
         [StringLength(256, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Action { get; set; } = string.Empty;
 

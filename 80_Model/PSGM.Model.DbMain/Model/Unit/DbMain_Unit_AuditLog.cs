@@ -19,21 +19,9 @@ namespace PSGM.Model.DbMain
         [Display(Name = "SourceId")]
         public Guid SourceId { get; set; } = Guid.Empty;
 
-        //[Required]
-        //[Column("TableName")]
-        //[Display(Name = "TableName")]
-        //[StringLength(256, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string TableName { get; set; } = string.Empty;
-
-        //[Required]
-        //[Column("EntityName")]
-        //[Display(Name = "EntityName")]
-        //[StringLength(256, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string EntityName { get; set; } = string.Empty;
-
         [Required]
         [Column("Action")]
-        [Display(Name = "EntityName")]
+        [Display(Name = "Action")]
         [StringLength(256, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Action { get; set; } = string.Empty;
 

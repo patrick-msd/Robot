@@ -59,7 +59,7 @@ namespace PSGM.Model.DbStorageStructure
         #endregion
 
         #region Not Mapped
-        public DbStorageStructure_Storage GetChagnes()
+        public DbStorageStructure_Storage GetChanges()
         {
             return JsonConvert.DeserializeObject<DbStorageStructure_Storage>(Changes);
         }

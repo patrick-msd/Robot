@@ -59,7 +59,7 @@ namespace PSGM.Model.DbWorkflow
         #endregion
 
         #region Not Mapped
-        public DbWorkflow_WorkflowItem GetChagnes()
+        public DbWorkflow_WorkflowItem GetChanges()
         {
             return JsonConvert.DeserializeObject<DbWorkflow_WorkflowItem>(Changes);
         }

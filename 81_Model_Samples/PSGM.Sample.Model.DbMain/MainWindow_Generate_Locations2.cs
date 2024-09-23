@@ -34,8 +34,6 @@ namespace PSGM.Sample.Model.DbStorage
 
                     OrganizationLocationLink = null,
 
-                    ProjectLocationLink = null,
-
                     //CreatedByUserIdExtAutoFill = Guid.Empty,
                     //CreatedDateTimeAutoFill = DateTime.Now,
                     //ModifiedByUserIdExtAutoFill = Guid.Empty,

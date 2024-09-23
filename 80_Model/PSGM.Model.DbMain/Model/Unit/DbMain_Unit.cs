@@ -80,6 +80,11 @@ namespace PSGM.Model.DbMain
         [Display(Name = "DetectedDefectsDuringPreparation")]
         public int DetectedDefectsDuringPreparation { get; set; } = 0;
 
+        [Column("PreparationNotes")]
+        [Display(Name = "PreparationNotes")]
+        [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string PreparationNotes { get; set; } = string.Empty;
+
         [Column("AqlStateImage")]
         [Display(Name = "AqlStateImage")]
         public AqlState AqlStateImage { get; set; } = AqlState.None;
@@ -96,25 +101,21 @@ namespace PSGM.Model.DbMain
         [Display(Name = "AqlStateLastChangeTranscription")]
         public DateTime AqlStateLastChangeTranscription { get; set; } = DateTime.MinValue;
 
-
-
         [Column("ArchiveJobStarted")]
         [Display(Name = "ArchiveJobStarted")]
-        public DateTime ArchiveJobStarted { get; set; } = DateTime.MinValue;
+        public DateTime LastArchiveJobStarted { get; set; } = DateTime.MinValue;
 
         [Column("ArchiveJobFinished")]
         [Display(Name = "ArchiveJobFinished")]
-        public DateTime ArchiveJobFinished { get; set; } = DateTime.MinValue;
-
-   
+        public DateTime LastArchiveJobFinished { get; set; } = DateTime.MinValue;   
 
         [Column("ObjectsOnStorageInUnit")]
         [Display(Name = "ObjectsOnStorageInUnit")]
         public int ObjectsOnStorageInUnit { get; set; } = 0;
 
-        [Column("DirectorySizeOnStorage")]
-        [Display(Name = "DirectorySizeOnStorage")]
-        public long DirectorySizeOnStorage { get; set; } = 0;
+        [Column("DirectorySizeOnStorageInUnit")]
+        [Display(Name = "DirectorySizeOnStorageInUnit")]
+        public long DirectorySizeOnStorageInUnit { get; set; } = 0;
 
         [Column("Locked")]
         [Display(Name = "Locked")]
@@ -143,7 +144,7 @@ namespace PSGM.Model.DbMain
 
         #region Links
         [InverseProperty("Unit")]
-        public virtual ICollection<DbMain_Archive_Job_Link>? ArchiveJobLink { get; set; }
+        public virtual ICollection<DbMain_Archive_Job_Link>? ArchiveJobLinks { get; set; }
 
         [InverseProperty("Unit")]
         public virtual DbMain_WorkflowGroup? ApplicableWorkflowGroup { get; set; }

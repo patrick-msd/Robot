@@ -74,20 +74,20 @@ namespace PSGM.Model.DbStorage
         public bool DirectoryLocked { get; set; } = false;
 
         #region No direct access
-        [Column("JobIdsExtString")]
-        [Display(Name = "JobIdsExtString")]
-        [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string JobIdsExtString { get; private set; } = string.Empty;
-
-        [Column("WorkflowItemIdsExtString")]
-        [Display(Name = "WorkflowItemIdsExtString")]
-        [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string WorkflowItemIdsExtString { get; private set; } = string.Empty;
-
-        [Column("BackupIdsExtString")]
-        [Display(Name = "BackupIdsExtString")]
+        [Column("ArchiveIds_ExtString")]
+        [Display(Name = "ArchiveIds_ExtString")]
         [StringLength(32766, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string BackupIdsExtString { get; private set; } = string.Empty;
+        public string ArchiveIds_ExtString { get; private set; } = string.Empty;
+
+        [Column("JobIdsExt_String")]
+        [Display(Name = "JobIdsExt_String")]
+        [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string JobIdsExt_String { get; private set; } = string.Empty;
+
+        [Column("WorkflowItemIds_ExtString")]
+        [Display(Name = "WorkflowItemIds_ExtString")]
+        [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string WorkflowItemIds_ExtString { get; private set; } = string.Empty;
         #endregion
 
         #region Autofill
@@ -147,6 +147,9 @@ namespace PSGM.Model.DbStorage
         public virtual ICollection<DbStorage_RootDirectory_Notification_UserGroup_Link>? NotificationUserGroupLinks { get; set; }
 
         [InverseProperty("RootDirectory")]
+        public virtual ICollection<DbStorage_RootDirectory_VirtualRootUnit>? VirtualRootUnits { get; set; }
+
+        [InverseProperty("RootDirectory")]
         public virtual ICollection<DbStorage_SubDirectory>? SubDirectories { get; set; }
         #endregion
 
@@ -155,24 +158,24 @@ namespace PSGM.Model.DbStorage
 
         #region Not Mapped
         [NotMapped]
-        public List<Guid>? JobIdsExt
+        public List<Guid>? JobIds_Ext
         {
-            get { return JobIdsExtString != string.Empty ? JobIdsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { JobIdsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+            get { return JobIdsExt_String != string.Empty ? JobIdsExt_String.Split(',').Select(Guid.Parse).ToList() : null; }
+            set { JobIdsExt_String = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
         }
 
         [NotMapped]
         public List<Guid>? WorkflowItemIdsExt
         {
-            get { return WorkflowItemIdsExtString != string.Empty ? WorkflowItemIdsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { WorkflowItemIdsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+            get { return WorkflowItemIds_ExtString != string.Empty ? WorkflowItemIds_ExtString.Split(',').Select(Guid.Parse).ToList() : null; }
+            set { WorkflowItemIds_ExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
         }
 
         [NotMapped]
-        public List<Guid>? BackupIdsExt
+        public List<Guid>? ArchiveIds_Ext
         {
-            get { return BackupIdsExtString != string.Empty ? BackupIdsExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { BackupIdsExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+            get { return ArchiveIds_ExtString != string.Empty ? ArchiveIds_ExtString.Split(',').Select(Guid.Parse).ToList() : null; }
+            set { ArchiveIds_ExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
         }
         #endregion
     }

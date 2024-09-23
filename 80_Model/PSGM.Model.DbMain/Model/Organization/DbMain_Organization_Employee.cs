@@ -14,6 +14,11 @@ namespace PSGM.Model.DbMain
         [Display(Name = "Id")]
         public Guid Id { get; set; }
 
+        [Required]
+        [Column("UserId_Ext")]
+        [Display(Name = "UserId_Ext")]
+        public Guid UserId_Ext { get; set; } = Guid.Empty;
+
         [Column("Acronym")]
         [Display(Name = "Acronym")]
         [StringLength(32, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 1)]
@@ -39,11 +44,6 @@ namespace PSGM.Model.DbMain
         [Column("FieldOfEmployment")]
         [Display(Name = "FieldOfEmployment")]
         public FieldOfEmployment FieldOfEmployment { get; set; } = FieldOfEmployment.Unknown;
-
-        [Required]
-        [Column("UserId_Ext")]
-        [Display(Name = "UserId_Ext")]
-        public Guid UserId_Ext { get; set; } = Guid.Empty;
 
         #region Audit details for faster file audit information
         [Required]

@@ -54,7 +54,7 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Not Mapped
-        public DbStorage_File_QrCode GetChanges()
+        public DbStorage_File_QrCode? GetChanges()
         {
             return JsonConvert.DeserializeObject<DbStorage_File_QrCode>(Changes);
         }

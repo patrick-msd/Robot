@@ -54,7 +54,7 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Not Mapped
-        public DbStorage_File_Notification_User GetChagnes()
+        public DbStorage_File_Notification_User? GetChanges()
         {
             return JsonConvert.DeserializeObject<DbStorage_File_Notification_User>(Changes);
         }

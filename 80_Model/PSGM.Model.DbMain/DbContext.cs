@@ -101,14 +101,23 @@ namespace PSGM.Model.DbMain
         #region Project
         public DbSet<DbMain_Project> Projects { get; set; }
         public DbSet<DbMain_Project_AuditLog> Project_AuditLog { get; set; }
-
-        public DbSet<DbMain_Project_Location_Link> Project_Location_Link { get; set; }
-        public DbSet<DbMain_Project_Location_Link_AuditLog> Project_Location_Link_AuditLog { get; set; }
         #endregion
 
         #region Unit
         public DbSet<DbMain_Unit> Units { get; set; }
         public DbSet<DbMain_Unit_AuditLog> Unit_AuditLog { get; set; }
+
+        public DbSet<DbMain_VirtualRootUnit> VirtualRootUnits { get; set; }
+        public DbSet<DbMain_VirtualRootUnit_AuditLog> VirtualRootUnit_AuditLog { get; set; }
+
+        public DbSet<DbMain_VirtualRootUnit_User_Permission> VirtualRootUnit_User_Permissions { get; set; }
+        public DbSet<DbMain_VirtualRootUnit_User_Permission_AuditLog> VirtualRootUnit_User_Permission_AuditLog { get; set; }
+
+        public DbSet<DbMain_VirtualSubUnit> VirtualSubUnits { get; set; }
+        public DbSet<DbMain_VirtualSubUnit_AuditLog> VirtualSubUnit_AuditLog { get; set; }
+
+        public DbSet<DbMain_VirtualSubUnit_User_Permission> VirtualSubUnit_User_Permissions { get; set; }
+        public DbSet<DbMain_VirtualSubUnit_User_Permission_AuditLog> VirtualSubUnit_User_Permission_AuditLog { get; set; }
         #endregion
 
         #region Workflow
@@ -245,7 +254,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        Address_AuditLog.Add(new DbMain_Address_AuditLog
+                        Archive_Job_AuditLog.Add(new DbMain_Archive_Job_AuditLog
                         {
                             Id = new Guid(),
 
@@ -621,23 +630,6 @@ namespace PSGM.Model.DbMain
 
                     case DbMain_Project_AuditLog project_AuditLog:
                         break;
-
-                    case DbMain_Project_Location_Link project_Location_Link:
-                        Project_Location_Link_AuditLog.Add(new DbMain_Project_Location_Link_AuditLog
-                        {
-                            Id = new Guid(),
-
-                            SourceId = project_Location_Link.Id,
-                            Action = entry.State.ToString(),
-                            DateTime = DateTime.UtcNow,
-                            UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
-                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
-                        });
-                        break;
-
-                    case DbMain_Project_Location_Link_AuditLog project_Location_Link_AuditLog:
-                        break;
                     #endregion
 
                     #region Unit
@@ -669,6 +661,126 @@ namespace PSGM.Model.DbMain
                         break;
 
                     case DbMain_Unit_AuditLog unit_AuditLog:
+                        break;
+
+                    case DbMain_VirtualRootUnit virtualRootUnit:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            virtualRootUnit.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            virtualRootUnit.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            virtualRootUnit.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            virtualRootUnit.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        VirtualRootUnit_AuditLog.Add(new DbMain_VirtualRootUnit_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = virtualRootUnit.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMain_VirtualRootUnit_AuditLog virtualUnit_AuditLog:
+                        break;
+
+                    case DbMain_VirtualRootUnit_User_Permission virtualRootUnit_User_Permission:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            virtualRootUnit_User_Permission.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            virtualRootUnit_User_Permission.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            virtualRootUnit_User_Permission.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            virtualRootUnit_User_Permission.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        VirtualRootUnit_User_Permission_AuditLog.Add(new DbMain_VirtualRootUnit_User_Permission_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = virtualRootUnit_User_Permission.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMain_VirtualRootUnit_User_Permission_AuditLog virtualRootUnit_User_Permission_AuditLog:
+                        break;
+
+                    case DbMain_VirtualSubUnit virtualSubUnit:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            virtualSubUnit.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            virtualSubUnit.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            virtualSubUnit.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            virtualSubUnit.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        VirtualSubUnit_AuditLog.Add(new DbMain_VirtualSubUnit_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = virtualSubUnit.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMain_VirtualSubUnit_AuditLog virtualSubUnit_AuditLog:
+                        break;
+
+                    case DbMain_VirtualSubUnit_User_Permission virtualSubUnit_User_Permission:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            virtualSubUnit_User_Permission.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            virtualSubUnit_User_Permission.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            virtualSubUnit_User_Permission.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            virtualSubUnit_User_Permission.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        VirtualSubUnit_User_Permission_AuditLog.Add(new DbMain_VirtualSubUnit_User_Permission_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = virtualSubUnit_User_Permission.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMain_VirtualSubUnit_User_Permission_AuditLog virtualSubUnit_User_Permission_AuditLog:
                         break;
                     #endregion
 

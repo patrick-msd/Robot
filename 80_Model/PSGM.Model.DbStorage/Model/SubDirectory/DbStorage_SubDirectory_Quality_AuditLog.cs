@@ -54,7 +54,7 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Not Mapped
-        public DbStorage_SubDirectory_Quality GetChanges()
+        public DbStorage_SubDirectory_Quality? GetChanges()
         {
             return JsonConvert.DeserializeObject<DbStorage_SubDirectory_Quality>(Changes);
         }

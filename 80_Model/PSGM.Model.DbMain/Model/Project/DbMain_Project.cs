@@ -31,6 +31,11 @@ namespace PSGM.Model.DbMain
         [Display(Name = "Status")]
         public ProjectStatus Status { get; set; } = ProjectStatus.Undefined;
 
+        [Required]
+        [Column("Permissions")]
+        [Display(Name = "Permissions")]
+        public ProjectPermissions Permissions { get; set; } = ProjectPermissions.Undefined;
+
         [Column("Started")]
         [Display(Name = "Started")]
         public DateTime Started { get; set; } = DateTime.MinValue;
@@ -83,10 +88,13 @@ namespace PSGM.Model.DbMain
         [Display(Name = "MaxDirectorySize")]
         public long MaxDirectorySize { get; set; } = 125000000;     // Byte
 
-        [Column("Machines_ExtString")]
-        [Display(Name = "Machines_ExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string Machines_ExtString { get; private set; } = string.Empty;
+        [Column("ArchiveJobStarted")]
+        [Display(Name = "ArchiveJobStarted")]
+        public DateTime LastArchiveJobStarted { get; set; } = DateTime.MinValue;
+
+        [Column("ArchiveJobFinished")]
+        [Display(Name = "ArchiveJobFinished")]
+        public DateTime LastArchiveJobFinished { get; set; } = DateTime.MinValue;
 
         #region Audit details for faster file audit information
         [Required]
@@ -111,7 +119,7 @@ namespace PSGM.Model.DbMain
 
         #region Links
         [InverseProperty("Project")]
-        public virtual ICollection<DbMain_Archive_Job_Link>? ArchiveJobLink { get; set; }
+        public virtual ICollection<DbMain_Archive_Job_Link>? ArchiveJobLinks { get; set; }
 
         [InverseProperty("Project")]
         public virtual ICollection<DbMain_Contributors>? Contributors { get; set; }
@@ -120,25 +128,19 @@ namespace PSGM.Model.DbMain
         public virtual ICollection<DbMain_DeliverySlip>? DeliverySlips { get; set; }
 
         [InverseProperty("Project")]
-        public virtual ICollection<DbMain_Project_Location_Link>? LocationLinks { get; set; }
-
-        [InverseProperty("Project")]
         public virtual DbMain_Organization? Organization { get; set; }
 
         [InverseProperty("Project")]
         public virtual ICollection<DbMain_WorkflowGroup>? WorkflowGroups { get; set; }
+
+        [InverseProperty("Project")]
+        public virtual ICollection<DbMain_VirtualRootUnit>? VirtualRootUnits { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
         #endregion
 
         #region Not Mapped
-        [NotMapped]
-        public List<Guid>? Machines_Ext
-        {
-            get { return Machines_ExtString != string.Empty ? Machines_ExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { Machines_ExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        }
         #endregion
     }
 }

@@ -59,7 +59,7 @@ namespace PSGM.Model.DbMachine
         #endregion
 
         #region Not Mapped
-        public DbMachine_Location GetChagnes()
+        public DbMachine_Location GetChanges()
         {
             return JsonConvert.DeserializeObject<DbMachine_Location>(Changes);
         }

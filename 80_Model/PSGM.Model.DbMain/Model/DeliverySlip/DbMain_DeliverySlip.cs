@@ -41,25 +41,25 @@ namespace PSGM.Model.DbMain
         [Display(Name = "NumberOfUnits")]
         public int NumberOfUnits { get; set; } = 0;
 
+        [Column("Notes")]
+        [Display(Name = "Notes")]
+        [StringLength(4096, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Notes { get; set; } = string.Empty;
+
+        [Column("UnitDescription")]
+        [Display(Name = "UnitDescription")]
+        [StringLength(1024, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string UnitDescription { get; set; } = string.Empty;
+
         [Column("DeliverySlipState")]
         [Display(Name = "DeliverySlipState")]
         [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public DeliverySlipType DeliverySlipState { get; set; } = DeliverySlipType.Undefined;
 
-        [Column("DocumentObjectName")]
-        [Display(Name = "DocumentObjectName")]
-        [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string DocumentObjectName { get; set; } = string.Empty;
-
         [Column("ProcessingStartedDateTime")]
         [Display(Name = "ProcessingStartedDateTime")]
         [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public DateTime ProcessingStartedDateTime { get; set; } = DateTime.MinValue;
-
-        [Column("Machines_ExtString")]
-        [Display(Name = "Machines_ExtString")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string Machines_ExtString { get; private set; } = string.Empty;
 
         [Column("ProcessingStartedUserId_Ext")]
         [Display(Name = "ProcessingStartedUserId_Ext")]
@@ -119,12 +119,6 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Not Mapped
-        [NotMapped]
-        public List<Guid>? Machines_Ext
-        {
-            get { return Machines_ExtString != string.Empty ? Machines_ExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { Machines_ExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        }
         #endregion
     }
 }

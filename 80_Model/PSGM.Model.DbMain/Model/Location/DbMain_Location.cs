@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PSGM.Helper;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbMain
@@ -23,6 +24,10 @@ namespace PSGM.Model.DbMain
         [Display(Name = "Description")]
         [StringLength(16384, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
+
+        [Column("LocationType")]
+        [Display(Name = "LocationType")]
+        public LocationTypeE LocationType { get; set; } = LocationTypeE.Unknown;
 
         #region Audit details for faster file audit information
         [Required]
@@ -51,9 +56,6 @@ namespace PSGM.Model.DbMain
 
         [InverseProperty("Location")]
         public virtual ICollection<DbMain_Organization_Location_Link>? OrganizationLocationLink { get; set; }
-
-        [InverseProperty("Location")]
-        public virtual ICollection<DbMain_Project_Location_Link>? ProjectLocationLink { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)

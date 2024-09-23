@@ -95,6 +95,9 @@ namespace PSGM.Model.DbStorage
 
         public DbSet<DbStorage_File_Quality> File_Qualities { get; set; }
         public DbSet<DbStorage_File_Quality_AuditLog> File_Quality_AuditLog { get; set; }
+
+        public DbSet<DbStorage_File_VirtualSubUnit> File_VirtualSubUnits { get; set; }
+        public DbSet<DbStorage_File_VirtualSubUnit_AuditLog> File_VirtualSubUnit_AuditLog { get; set; }
         #endregion
 
         #region RootDirectory
@@ -148,6 +151,9 @@ namespace PSGM.Model.DbStorage
 
         public DbSet<DbStorage_RootDirectory_Quality> RootDirectory_Qualities { get; set; }
         public DbSet<DbStorage_RootDirectory_Quality_AuditLog> RootDirectory_Quality_AuditLog { get; set; }
+
+        public DbSet<DbStorage_RootDirectory_VirtualRootUnit> RootDirectory_VirtualRootUnits { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualRootUnit_AuditLog> RootDirectory_VirtualRootUnit_AuditLog { get; set; }
         #endregion
 
         #region SubDirectory
@@ -201,6 +207,9 @@ namespace PSGM.Model.DbStorage
 
         public DbSet<DbStorage_SubDirectory_Quality> SubDirectory_Qualities { get; set; }
         public DbSet<DbStorage_SubDirectory_Quality_AuditLog> SubDirectory_Quality_AuditLog { get; set; }
+
+        public DbSet<DbStorage_SubDirectory_VirtualSubUnit> SubDirectory_VirtualSubUnits { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualSubUnit_AuditLog> SubDirectory_VirtualSubUnit_AuditLog { get; set; }
         #endregion
         #endregion
 
@@ -821,6 +830,36 @@ namespace PSGM.Model.DbStorage
 
                     case DbStorage_File_Quality_AuditLog file_Quality_AuditLog:
                         break;
+
+                    case DbStorage_File_VirtualSubUnit file_VirtualSubUnit:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            file_VirtualSubUnit.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualSubUnit.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            file_VirtualSubUnit.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            file_VirtualSubUnit.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        File_VirtualSubUnit_AuditLog.Add(new DbStorage_File_VirtualSubUnit_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = file_VirtualSubUnit.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_File_VirtualSubUnit_AuditLog file_VirtualSubUnit_AuditLog:
+                        break;
                     #endregion
 
                     #region RootDirectory
@@ -1242,6 +1281,36 @@ namespace PSGM.Model.DbStorage
 
                     case DbStorage_RootDirectory_Quality_AuditLog rootDirectory_Quality_AuditLog:
                         break;
+
+                    case DbStorage_RootDirectory_VirtualRootUnit rootDirectory_VirtualRootUnit:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            rootDirectory_VirtualRootUnit.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualRootUnit.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            rootDirectory_VirtualRootUnit.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            rootDirectory_VirtualRootUnit.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        RootDirectory_VirtualRootUnit_AuditLog.Add(new DbStorage_RootDirectory_VirtualRootUnit_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = rootDirectory_VirtualRootUnit.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_RootDirectory_VirtualRootUnit_AuditLog rootDirectory_VirtualRootUnit_AuditLog:
+                        break;
                     #endregion
 
                     #region SubDirectory
@@ -1412,7 +1481,7 @@ namespace PSGM.Model.DbStorage
                             subDirectory_MetadataAuthorization_User.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
                         }
                         #endregion
-                        
+
                         SubDirectory_MetadataAuthorization_User_AuditLog.Add(new DbStorage_SubDirectory_Metadata_Authorization_User_AuditLog
                         {
                             Id = new Guid(),
@@ -1662,6 +1731,36 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectory_Quality_AuditLog subDirectory_Quality_AuditLog:
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualSubUnit subDirectory_VirtualSubUnit:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            subDirectory_VirtualSubUnit.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualSubUnit.CreatedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            subDirectory_VirtualSubUnit.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            subDirectory_VirtualSubUnit.ModifiedByUserIdExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        SubDirectory_VirtualSubUnit_AuditLog.Add(new DbStorage_SubDirectory_VirtualSubUnit_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = subDirectory_VirtualSubUnit.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserIdExt = DatabaseSessionParameter_UserId,
+                            SoftwareIdExt = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_SubDirectory_VirtualSubUnit_AuditLog subDirectory_VirtualSubUnit_AuditLog:
                         break;
                     #endregion
 

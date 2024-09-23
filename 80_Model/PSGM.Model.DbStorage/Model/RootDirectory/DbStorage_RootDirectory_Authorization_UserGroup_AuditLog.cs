@@ -54,7 +54,7 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Not Mapped
-        public DbStorage_RootDirectory_Authorization_UserGroup GetChanges()
+        public DbStorage_RootDirectory_Authorization_UserGroup? GetChanges()
         {
             return JsonConvert.DeserializeObject<DbStorage_RootDirectory_Authorization_UserGroup>(Changes);
         }

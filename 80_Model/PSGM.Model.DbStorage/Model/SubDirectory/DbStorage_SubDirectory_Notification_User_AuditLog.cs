@@ -54,7 +54,7 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Not Mapped
-        public DbStorage_SubDirectory_Notification_User GetChanges()
+        public DbStorage_SubDirectory_Notification_User? GetChanges()
         {
             return JsonConvert.DeserializeObject<DbStorage_SubDirectory_Notification_User>(Changes);
         }

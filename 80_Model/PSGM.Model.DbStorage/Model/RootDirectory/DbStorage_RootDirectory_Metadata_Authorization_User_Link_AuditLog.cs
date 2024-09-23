@@ -54,7 +54,7 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Not Mapped
-        public DbStorage_RootDirectory_Metadata_Authorization_User_Link GetChanges()
+        public DbStorage_RootDirectory_Metadata_Authorization_User_Link? GetChanges()
         {
             return JsonConvert.DeserializeObject<DbStorage_RootDirectory_Metadata_Authorization_User_Link>(Changes);
         }

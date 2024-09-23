@@ -1,4 +1,5 @@
-﻿using PSGM.Model.DbMain;
+﻿using PSGM.Helper;
+using PSGM.Model.DbMain;
 
 namespace PSGM.Sample.Model.DbStorage
 {
@@ -8,12 +9,16 @@ namespace PSGM.Sample.Model.DbStorage
         {
             Random random = new Random();
 
-            DbMain_Location locationUIBK = new DbMain_Location()
+            DbMain_Location locationUIBK_Headquarter = new DbMain_Location()
             {
                 Id = new Guid(),
                 
-                Name = "Headquarter",
+                Name = "",
                 
+                Description = string.Empty,
+
+                LocationType = LocationTypeE.Headquarter,
+
                 AddressLink = new DbMain_Location_Address_Link()
                 {
                     Id = new Guid(),
@@ -26,11 +31,7 @@ namespace PSGM.Sample.Model.DbStorage
                     LocationId = null,
                 },
 
-                Description = string.Empty,
-
-                OrganizationLocationLink = null,
-                
-                ProjectLocationLink = null,
+                OrganizationLocationLink = null,              
 
                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -38,11 +39,45 @@ namespace PSGM.Sample.Model.DbStorage
                 //ModifiedDateTimeAutoFill = DateTime.Now,               
             };
 
-            DbMain_Location locationTLA = new DbMain_Location()
+            //DbMain_Location locationUIBK_ScanningStation = new DbMain_Location()
+            //{
+            //    Id = new Guid(),
+
+            //    Name = "",
+
+            //    Description = string.Empty,
+
+            //    LocationType = LocationTypeE.ScanningStation,
+
+            //    AddressLink = new DbMain_Location_Address_Link()
+            //    {
+            //        Id = new Guid(),
+
+            //        // FK
+            //        Address = addresses.Where(p => p.Line1.Contains("Innrain 52d")).First(),
+            //        //AddressId = Guid.Empty,
+
+            //        Location = null,
+            //        LocationId = null,
+            //    },
+
+            //    OrganizationLocationLink = null,
+
+            //    //CreatedByUserIdExtAutoFill = Guid.Empty,
+            //    //CreatedDateTimeAutoFill = DateTime.Now,
+            //    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+            //    //ModifiedDateTimeAutoFill = DateTime.Now,               
+            //};
+
+            DbMain_Location locationTLA_Headquarter = new DbMain_Location()
             {
                 Id = new Guid(),
 
                 Name = "Headquarter",
+
+                Description = string.Empty,
+
+                LocationType = LocationTypeE.Headquarter,
 
                 AddressLink = new DbMain_Location_Address_Link()
                 {
@@ -56,11 +91,7 @@ namespace PSGM.Sample.Model.DbStorage
                     LocationId = null,
                 },
 
-                Description = string.Empty,
-
                 OrganizationLocationLink = null,
-
-                ProjectLocationLink = null,
 
                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -68,10 +99,43 @@ namespace PSGM.Sample.Model.DbStorage
                 //ModifiedDateTimeAutoFill = DateTime.Now,   
             };
 
+            //DbMain_Location locationTLA_Archive = new DbMain_Location()
+            //{
+            //    Id = new Guid(),
+
+            //    Name = "",
+
+            //    Description = string.Empty,
+
+            //    LocationType = LocationTypeE.Archive,
+
+            //    AddressLink = new DbMain_Location_Address_Link()
+            //    {
+            //        Id = new Guid(),
+
+            //        // FK
+            //        Address = addresses.Where(p => p.Line1.Contains("Michael-Gaismair-Straße 1")).First(),
+            //        //AddressId = Guid.Empty,
+
+            //        Location = null,
+            //        LocationId = null,
+            //    },
+
+            //    OrganizationLocationLink = null,
+
+            //    //CreatedByUserIdExtAutoFill = Guid.Empty,
+            //    //CreatedDateTimeAutoFill = DateTime.Now,
+            //    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+            //    //ModifiedDateTimeAutoFill = DateTime.Now,   
+            //};
+
             List<DbMain_Location> tmp = new List<DbMain_Location>()
             {
-                locationUIBK,
-                locationTLA
+                locationUIBK_Headquarter,
+                //locationUIBK_ScanningStation,
+
+                locationTLA_Headquarter,
+                //locationTLA_Archive
             };
 
             return tmp;

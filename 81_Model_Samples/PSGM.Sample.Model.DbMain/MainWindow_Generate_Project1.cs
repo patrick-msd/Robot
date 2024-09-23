@@ -426,6 +426,8 @@ namespace PSGM.Sample.Model.DbStorage
                 Name = "Meldezettel",
                 Description = "Digitalisierung der Meldezettel von ...",
 
+                Permissions = ProjectPermissions.Private,
+
                 Organization = organizations.Where(p => p.Acronym.Contains("TLA")).First(),
                 Contributors = new List<DbMain_Contributors>()
                 {
@@ -442,32 +444,6 @@ namespace PSGM.Sample.Model.DbStorage
                         Organization = organizations.Where(p => p.Acronym.Contains("UIBK")).First(),
                         //OrganizationId = null,
                  
-                        Project = null,
-                        ProjectId = null
-                    }
-                },
-
-                LocationLinks = new List<DbMain_Project_Location_Link>()
-                {
-                    new DbMain_Project_Location_Link()
-                    {
-                        Id = Guid.NewGuid(),
-                        
-                        // FK
-                        Location =  locations.Where(p => p.AddressLink.Address.Line1.Contains("Innrain 52d")).First(),
-                        //LocationId = null,
-
-                        Project = null,
-                        ProjectId = null
-                    },
-                    new DbMain_Project_Location_Link()
-                    {
-                        Id = Guid.NewGuid(),
-
-                        // FK
-                        Location = locations.Where(p => p.AddressLink.Address.Line1.Contains("Michael-Gaismair-Straße 1")).First(),
-                        //LocationId = null,
-
                         Project = null,
                         ProjectId = null
                     }
@@ -490,12 +466,6 @@ namespace PSGM.Sample.Model.DbStorage
                 AqlAcceptableQualityLevelTranscription = AcceptableQualityLevel.ZeroPointZeroSixtyFive,
                 AqlStateTranscription = AqlState.None,
                 AqlStateLastChangeTranscription = DateTime.MinValue,
-
-                Machines_Ext = new List<Guid>()
-                {
-                    _machineId
-                },
-                //MachinesExtString = string.Empty,
 
                 WorkflowGroups = new List<DbMain_WorkflowGroup>()
                 {
@@ -529,6 +499,9 @@ namespace PSGM.Sample.Model.DbStorage
                             dbWorkflowItemLink_Workflow1_SaveObjectToStorageAndDatabase_DataThumbnail
 
                             // ToDo: More Workflow Items ...
+                            // 	        --> Sharpening
+                            // 	        --> Exposure
+                            // 	        --> ...
                             // 	        --> Freigabe Management (Sharing)
                             // 	        --> Transfer
                             // 	           --> Family Search
@@ -539,12 +512,28 @@ namespace PSGM.Sample.Model.DbStorage
                         //CreatedDateTimeAutoFill = DateTime.Now,
                         //ModifiedByUserIdExtAutoFill = Guid.Empty,
                         //ModifiedDateTimeAutoFill = DateTime.Now,   
+                        
+                        // FK
+                        DeliverySlip = null,
+                        DeliverySlipId = null,
+                        
+                        Unit = null,
+                        UnitId  = null,                        
+
+                        Project = null,
+                        ProjectId = null
                     }
                     // More Workflow Groups ...
                 },
 
                 DeliverySlips = null,
 
+                VirtualRootUnits = null,
+                
+                ArchiveJobLinks = null,
+                LastArchiveJobStarted = DateTime.MinValue,
+                LastArchiveJobFinished = DateTime.MinValue,
+                
                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                 //CreatedDateTimeAutoFill = DateTime.Now,
                 //ModifiedByUserIdExtAutoFill = Guid.Empty,
@@ -562,26 +551,24 @@ namespace PSGM.Sample.Model.DbStorage
 
                     Description = "Delivery Slip 1 Description",
 
-                    DocumentObjectName  = "",
-
                     DeliverySlipState = DeliverySlipType.Created,
 
                     CreatedWithDeliverySlipTemplate = null, // ToDo: ...
                     
                     DeliverySlipCreatorUserId_Ext = _gertraudZeindlId,
                     DeliverySlipCreatorOrganization = organizations.Where(p => p.Acronym.Contains("TLA")).First(),
-                    
+
                     DeliverySlipRecipientUserId_Ext = _patrickSchoeneggerId,
-                    DeliverySlipRecipientOrganization = organizations.Where(p => p.Acronym.Contains("UIBK")).First(),
+                    DeliverySlipRecipientOrganization = organizations.Where(p => p.Acronym.Contains("UIBK")).First(),               
+                    
+                    Units = null,
 
                     NumberOfUnits = 12,
+                    UnitDescription = "Unit Description",
 
-                    ApplicableWorkflowGroup =null,
+                    Notes = "Notes",
 
-                    Machines_Ext = null,
-                    //MachinesExtString = string.Empty,
-
-                    Units = null,
+                    ApplicableWorkflowGroup = null,
 
                     DeliverySlipIsDirectory = false,
 
@@ -595,7 +582,7 @@ namespace PSGM.Sample.Model.DbStorage
                     //CreatedDateTimeAutoFill = DateTime.Now,
                     //ModifiedByUserIdExtAutoFill = Guid.Empty,
                     //ModifiedDateTimeAutoFill = DateTime.Now,   
-
+                    
                     // FK
                     Project = null,
                     ProjectId = null
@@ -603,15 +590,13 @@ namespace PSGM.Sample.Model.DbStorage
                 // More Delivery Slips
             };
 
-            // Create First Boxen und Schieber per Delivery Slip for processing with parameter --> PSGM
-            project.DeliverySlips.First().Machines_Ext = new List<Guid>() { _machineId };
-            project.DeliverySlips.First().ApplicableWorkflowGroup = project.WorkflowGroups.First();
+            // Create First Boxen und Schieber per Delivery Slip for processing with parameter --> PSGM    
             project.DeliverySlips.First().Units = new List<DbMain_Unit>()
             {
                 new DbMain_Unit()
                 {
                     Id = Guid.NewGuid(),
-
+                    
                     Suffix = "",
                     Name = "Box 1",
                     Prefix = "",
@@ -623,31 +608,33 @@ namespace PSGM.Sample.Model.DbStorage
                     DescriptionProjectOwner = "Box 1 Description",
 
                     Stars = 4,
-
+                    
                     Order = -1,
 
                     NaturalUnit = false,
 
                     PreparationDateTime = DateTime.MinValue,
                     PreparationUserId_Ext = Guid.Empty,
+
                     DetectedDefectsDuringPreparation = 0,
+                    PreparationNotes = "Detected Notes During Preparation ...",
 
                     AqlStateImage = AqlState.None,
                     AqlStateLastChangeImage = DateTime.MinValue,
 
                     AqlStateTranscription = AqlState.None,
                     AqlStateLastChangeTranscription = DateTime.MinValue,
-
-                    ObjectsOnStorageInUnit = 0,
-                    DirectorySizeOnStorage = 0,
                     
+                    ObjectsOnStorageInUnit = 0,
+                    DirectorySizeOnStorageInUnit = 0,
+
                     ApplicableWorkflowGroup = null,
 
                     Locked = false,
 
-                    ArchiveJobLink = null,
-                    ArchiveJobStarted = DateTime.MinValue,
-                    ArchiveJobFinished = DateTime.MinValue,
+                    ArchiveJobLinks = null,
+                    LastArchiveJobStarted = DateTime.MinValue,
+                    LastArchiveJobFinished = DateTime.MinValue,
 
                     Unit = new List<DbMain_Unit>()
                     {
@@ -668,12 +655,14 @@ namespace PSGM.Sample.Model.DbStorage
                             Stars = 4,
 
                             Order = -1,
-
+                            
                             NaturalUnit = true,
 
                             PreparationDateTime = DateTime.MinValue,
                             PreparationUserId_Ext = Guid.Empty,
+
                             DetectedDefectsDuringPreparation = 0,
+                            PreparationNotes = "Detected Notes During Preparation ...",
 
                             AqlStateImage = AqlState.None,
                             AqlStateLastChangeImage = DateTime.MinValue,
@@ -682,18 +671,18 @@ namespace PSGM.Sample.Model.DbStorage
                             AqlStateLastChangeTranscription = DateTime.MinValue,
 
                             ObjectsOnStorageInUnit = 0,
-                            DirectorySizeOnStorage = 0,
+                            DirectorySizeOnStorageInUnit = 0,
 
                             ApplicableWorkflowGroup = null,
 
                             Locked = false,
 
-                            ArchiveJobLink = null,
-                            ArchiveJobStarted = DateTime.MinValue,
-                            ArchiveJobFinished = DateTime.MinValue,
+                            ArchiveJobLinks = null,
+                            LastArchiveJobStarted = DateTime.MinValue,
+                            LastArchiveJobFinished = DateTime.MinValue,
 
                             Unit = null,
-
+                            
                             //CreatedByUserIdExtAutoFill = Guid.Empty,
                             //CreatedDateTimeAutoFill = DateTime.Now,
                             //ModifiedByUserIdExtAutoFill = Guid.Empty,
@@ -728,7 +717,9 @@ namespace PSGM.Sample.Model.DbStorage
 
                             PreparationDateTime = DateTime.MinValue,
                             PreparationUserId_Ext = Guid.Empty,
+
                             DetectedDefectsDuringPreparation = 0,
+                            PreparationNotes = "Detected Notes During Preparation ...",
 
                             AqlStateImage = AqlState.None,
                             AqlStateLastChangeImage = DateTime.MinValue,
@@ -737,15 +728,15 @@ namespace PSGM.Sample.Model.DbStorage
                             AqlStateLastChangeTranscription = DateTime.MinValue,
 
                             ObjectsOnStorageInUnit = 0,
-                            DirectorySizeOnStorage = 0,
+                            DirectorySizeOnStorageInUnit = 0,
 
                             ApplicableWorkflowGroup = null,
 
                             Locked = false,
 
-                            ArchiveJobLink = null,
-                            ArchiveJobStarted = DateTime.MinValue,
-                            ArchiveJobFinished = DateTime.MinValue,
+                            ArchiveJobLinks = null,
+                            LastArchiveJobStarted = DateTime.MinValue,
+                            LastArchiveJobFinished = DateTime.MinValue,
 
                             Unit = null,
 
@@ -757,7 +748,7 @@ namespace PSGM.Sample.Model.DbStorage
                             // FK
                             DeliverySlip = null,
                             DeliverySlipId = null,
-
+                            
                             ParentUnit = null,
                             ParentUnitId = null,
                         },
@@ -771,11 +762,12 @@ namespace PSGM.Sample.Model.DbStorage
                     // FK
                     DeliverySlip = null,
                     DeliverySlipId = null,
-
+                    
                     ParentUnit = null,
                     ParentUnitId = null,
                 },
             };
+            project.DeliverySlips.First().ApplicableWorkflowGroup = project.WorkflowGroups.First();
 
             List<DbMain_Project> tmp = new List<DbMain_Project>()
             {

@@ -59,7 +59,7 @@ namespace PSGM.Model.DbSoftware
         #endregion
 
         #region Not Mapped
-        public DbSoftware_Software GetChagnes()
+        public DbSoftware_Software GetChanges()
         {
             return JsonConvert.DeserializeObject<DbSoftware_Software>(Changes);
         }

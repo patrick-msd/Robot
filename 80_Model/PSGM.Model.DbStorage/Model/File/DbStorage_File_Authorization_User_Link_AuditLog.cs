@@ -54,7 +54,7 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Not Mapped
-        public DbStorage_File_Authorization_User_Link GetChanges()
+        public DbStorage_File_Authorization_User_Link? GetChanges()
         {
             return JsonConvert.DeserializeObject<DbStorage_File_Authorization_User_Link>(Changes);
         }

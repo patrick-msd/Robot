@@ -189,6 +189,7 @@ namespace PSGM.Model.DbMain.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
+                    LocationType = table.Column<int>(type: "integer", nullable: false),
                     CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
                     ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -352,6 +353,7 @@ namespace PSGM.Model.DbMain.Migrations
                     Name = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: false),
                     Description = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
                     Status = table.Column<int>(type: "integer", nullable: false),
+                    Permissions = table.Column<int>(type: "integer", nullable: false),
                     Started = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Finished = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     AqlQuantityImage = table.Column<int>(type: "integer", nullable: false),
@@ -365,7 +367,8 @@ namespace PSGM.Model.DbMain.Migrations
                     AqlStateTranscription = table.Column<int>(type: "integer", nullable: false),
                     AqlStateLastChangeTranscription = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     MaxDirectorySize = table.Column<long>(type: "bigint", nullable: false),
-                    Machines_ExtString = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
+                    ArchiveJobStarted = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ArchiveJobFinished = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
                     ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -395,24 +398,6 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Project_Location_Link_AuditLog",
-                schema: "psgm",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
-                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
-                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
-                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Project_Location_Link_AuditLog", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Unit_AuditLog",
                 schema: "psgm",
                 columns: table => new
@@ -428,6 +413,42 @@ namespace PSGM.Model.DbMain.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Unit_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VirtualRootUnit_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VirtualRootUnit_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VirtualSubUnit_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VirtualSubUnit_AuditLog", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -539,14 +560,14 @@ namespace PSGM.Model.DbMain.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     Description = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
-                    InternalContactUserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
-                    ExternalContactUserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    DeliverySlipCreatorUserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    DeliverySlipRecipientUserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
                     DeliverySlipIsDirectory = table.Column<bool>(type: "boolean", nullable: false),
                     NumberOfUnits = table.Column<int>(type: "integer", nullable: false),
+                    Notes = table.Column<string>(type: "character varying(4096)", maxLength: 4096, nullable: false),
+                    UnitDescription = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: false),
                     DeliverySlipState = table.Column<int>(type: "integer", maxLength: 1023, nullable: false),
-                    DocumentObjectName = table.Column<string>(type: "character varying(1023)", maxLength: 1023, nullable: false),
                     ProcessingStartedDateTime = table.Column<DateTime>(type: "timestamp with time zone", maxLength: 1023, nullable: false),
-                    Machines_ExtString = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
                     ProcessingStartedUserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
                     ProcessingFinishedDateTime = table.Column<DateTime>(type: "timestamp with time zone", maxLength: 1023, nullable: false),
                     ProcessingFinishedUserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
@@ -568,25 +589,29 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Project_Location_Link",
+                name: "VirtualRootUnit",
                 schema: "psgm",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    ProjectId = table.Column<Guid>(type: "uuid", nullable: true),
-                    LocationId = table.Column<Guid>(type: "uuid", nullable: true)
+                    Suffix = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    Name = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    Prefix = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    Description = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
+                    Stars = table.Column<int>(type: "integer", nullable: false),
+                    Order = table.Column<int>(type: "integer", nullable: false),
+                    Permissions = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ProjectId = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Project_Location_Link", x => x.Id);
+                    table.PrimaryKey("PK_VirtualRootUnit", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Project_Location_Link_Location_LocationId",
-                        column: x => x.LocationId,
-                        principalSchema: "psgm",
-                        principalTable: "Location",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Project_Location_Link_Project_ProjectId",
+                        name: "FK_VirtualRootUnit_Project_ProjectId",
                         column: x => x.ProjectId,
                         principalSchema: "psgm",
                         principalTable: "Project",
@@ -646,21 +671,21 @@ namespace PSGM.Model.DbMain.Migrations
                     ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
                     ProjectId = table.Column<Guid>(type: "uuid", nullable: true),
-                    DeliverySlipInternetId = table.Column<Guid>(type: "uuid", nullable: true),
-                    DeliverySlipExternalId = table.Column<Guid>(type: "uuid", nullable: true)
+                    DeliverySlipCreatorId = table.Column<Guid>(type: "uuid", nullable: true),
+                    DeliverySlipRecipientId = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Organization", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Organization_DeliverySlip_DeliverySlipExternalId",
-                        column: x => x.DeliverySlipExternalId,
+                        name: "FK_Organization_DeliverySlip_DeliverySlipCreatorId",
+                        column: x => x.DeliverySlipCreatorId,
                         principalSchema: "psgm",
                         principalTable: "DeliverySlip",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Organization_DeliverySlip_DeliverySlipInternetId",
-                        column: x => x.DeliverySlipInternetId,
+                        name: "FK_Organization_DeliverySlip_DeliverySlipRecipientId",
+                        column: x => x.DeliverySlipRecipientId,
                         principalSchema: "psgm",
                         principalTable: "DeliverySlip",
                         principalColumn: "Id");
@@ -692,6 +717,7 @@ namespace PSGM.Model.DbMain.Migrations
                     PreparationDateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     PreparationUserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
                     DetectedDefectsDuringPreparation = table.Column<int>(type: "integer", nullable: false),
+                    PreparationNotes = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
                     AqlStateImage = table.Column<int>(type: "integer", nullable: false),
                     AqlStateLastChangeImage = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     AqlStateTranscription = table.Column<int>(type: "integer", nullable: false),
@@ -699,7 +725,7 @@ namespace PSGM.Model.DbMain.Migrations
                     ArchiveJobStarted = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ArchiveJobFinished = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ObjectsOnStorageInUnit = table.Column<int>(type: "integer", nullable: false),
-                    DirectorySizeOnStorage = table.Column<long>(type: "bigint", nullable: false),
+                    DirectorySizeOnStorageInUnit = table.Column<long>(type: "bigint", nullable: false),
                     Locked = table.Column<bool>(type: "boolean", nullable: false),
                     CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
@@ -722,6 +748,69 @@ namespace PSGM.Model.DbMain.Migrations
                         column: x => x.ParentUnitId,
                         principalSchema: "psgm",
                         principalTable: "Unit",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VirtualRootUnit_User_Permission",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Permission = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    RootUnitId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VirtualRootUnit_User_Permission", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_VirtualRootUnit_User_Permission_VirtualRootUnit_RootUnitId",
+                        column: x => x.RootUnitId,
+                        principalSchema: "psgm",
+                        principalTable: "VirtualRootUnit",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VirtualSubUnit",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Suffix = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    Name = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    Prefix = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    Description = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
+                    Stars = table.Column<int>(type: "integer", nullable: false),
+                    Order = table.Column<int>(type: "integer", nullable: false),
+                    Permissions = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    RootUnitId = table.Column<Guid>(type: "uuid", nullable: true),
+                    ParentSubUnitId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VirtualSubUnit", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_VirtualSubUnit_VirtualRootUnit_RootUnitId",
+                        column: x => x.RootUnitId,
+                        principalSchema: "psgm",
+                        principalTable: "VirtualRootUnit",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_VirtualSubUnit_VirtualSubUnit_ParentSubUnitId",
+                        column: x => x.ParentSubUnitId,
+                        principalSchema: "psgm",
+                        principalTable: "VirtualSubUnit",
                         principalColumn: "Id");
                 });
 
@@ -884,6 +973,32 @@ namespace PSGM.Model.DbMain.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "VirtualSubUnit_User_Permission",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Permission = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    SubUnitId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VirtualSubUnit_User_Permission", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_VirtualSubUnit_User_Permission_VirtualSubUnit_SubUnitId",
+                        column: x => x.SubUnitId,
+                        principalSchema: "psgm",
+                        principalTable: "VirtualSubUnit",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Organization_Employee",
                 schema: "psgm",
                 columns: table => new
@@ -994,7 +1109,7 @@ namespace PSGM.Model.DbMain.Migrations
                     Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
                     Addresses = table.Column<int>(type: "integer", nullable: false),
                     Contributors = table.Column<int>(type: "integer", nullable: false),
-                    DeliverySlip = table.Column<int>(type: "integer", nullable: false),
+                    DeliverySlips = table.Column<int>(type: "integer", nullable: false),
                     Locations = table.Column<int>(type: "integer", nullable: false),
                     Organizations = table.Column<int>(type: "integer", nullable: false),
                     Units = table.Column<int>(type: "integer", nullable: false),
@@ -1099,17 +1214,17 @@ namespace PSGM.Model.DbMain.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Organization_DeliverySlipExternalId",
+                name: "IX_Organization_DeliverySlipCreatorId",
                 schema: "psgm",
                 table: "Organization",
-                column: "DeliverySlipExternalId",
+                column: "DeliverySlipCreatorId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Organization_DeliverySlipInternetId",
+                name: "IX_Organization_DeliverySlipRecipientId",
                 schema: "psgm",
                 table: "Organization",
-                column: "DeliverySlipInternetId",
+                column: "DeliverySlipRecipientId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -1163,18 +1278,6 @@ namespace PSGM.Model.DbMain.Migrations
                 column: "OrganizationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Project_Location_Link_LocationId",
-                schema: "psgm",
-                table: "Project_Location_Link",
-                column: "LocationId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Project_Location_Link_ProjectId",
-                schema: "psgm",
-                table: "Project_Location_Link",
-                column: "ProjectId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Unit_DeliverySlipId",
                 schema: "psgm",
                 table: "Unit",
@@ -1185,6 +1288,36 @@ namespace PSGM.Model.DbMain.Migrations
                 schema: "psgm",
                 table: "Unit",
                 column: "ParentUnitId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VirtualRootUnit_ProjectId",
+                schema: "psgm",
+                table: "VirtualRootUnit",
+                column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VirtualRootUnit_User_Permission_RootUnitId",
+                schema: "psgm",
+                table: "VirtualRootUnit_User_Permission",
+                column: "RootUnitId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VirtualSubUnit_ParentSubUnitId",
+                schema: "psgm",
+                table: "VirtualSubUnit",
+                column: "ParentSubUnitId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VirtualSubUnit_RootUnitId",
+                schema: "psgm",
+                table: "VirtualSubUnit",
+                column: "RootUnitId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VirtualSubUnit_User_Permission_SubUnitId",
+                schema: "psgm",
+                table: "VirtualSubUnit_User_Permission",
+                column: "SubUnitId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_WorkflowGroup_DeliverySlipId",
@@ -1311,15 +1444,23 @@ namespace PSGM.Model.DbMain.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "Project_Location_Link",
-                schema: "psgm");
-
-            migrationBuilder.DropTable(
-                name: "Project_Location_Link_AuditLog",
-                schema: "psgm");
-
-            migrationBuilder.DropTable(
                 name: "Unit_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "VirtualRootUnit_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "VirtualRootUnit_User_Permission",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "VirtualSubUnit_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "VirtualSubUnit_User_Permission",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -1355,6 +1496,10 @@ namespace PSGM.Model.DbMain.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
+                name: "VirtualSubUnit",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
                 name: "WorkflowGroup",
                 schema: "psgm");
 
@@ -1364,6 +1509,10 @@ namespace PSGM.Model.DbMain.Migrations
 
             migrationBuilder.DropTable(
                 name: "Organization_EmployeeGroup",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "VirtualRootUnit",
                 schema: "psgm");
 
             migrationBuilder.DropTable(

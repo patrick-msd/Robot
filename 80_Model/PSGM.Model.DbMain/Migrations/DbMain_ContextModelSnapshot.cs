@@ -456,9 +456,17 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("CreatedDateTimeAutoFill");
 
+                    b.Property<Guid>("DeliverySlipCreatorUserId_Ext")
+                        .HasColumnType("uuid")
+                        .HasColumnName("DeliverySlipCreatorUserId_Ext");
+
                     b.Property<bool>("DeliverySlipIsDirectory")
                         .HasColumnType("boolean")
                         .HasColumnName("DeliverySlipIsDirectory");
+
+                    b.Property<Guid>("DeliverySlipRecipientUserId_Ext")
+                        .HasColumnType("uuid")
+                        .HasColumnName("DeliverySlipRecipientUserId_Ext");
 
                     b.Property<int>("DeliverySlipState")
                         .HasMaxLength(1023)
@@ -470,26 +478,6 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasMaxLength(8191)
                         .HasColumnType("character varying(8191)")
                         .HasColumnName("Description");
-
-                    b.Property<string>("DocumentObjectName")
-                        .IsRequired()
-                        .HasMaxLength(1023)
-                        .HasColumnType("character varying(1023)")
-                        .HasColumnName("DocumentObjectName");
-
-                    b.Property<Guid>("ExternalContactUserId_Ext")
-                        .HasColumnType("uuid")
-                        .HasColumnName("ExternalContactUserId_Ext");
-
-                    b.Property<Guid>("InternalContactUserId_Ext")
-                        .HasColumnType("uuid")
-                        .HasColumnName("InternalContactUserId_Ext");
-
-                    b.Property<string>("Machines_ExtString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("Machines_ExtString");
 
                     b.Property<Guid>("ModifiedByUserId_ExtAutoFill")
                         .HasColumnType("uuid")
@@ -504,6 +492,12 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("character varying(255)")
                         .HasColumnName("Name");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasMaxLength(4096)
+                        .HasColumnType("character varying(4096)")
+                        .HasColumnName("Notes");
 
                     b.Property<int>("NumberOfUnits")
                         .HasColumnType("integer")
@@ -529,6 +523,12 @@ namespace PSGM.Model.DbMain.Migrations
 
                     b.Property<Guid?>("ProjectId")
                         .HasColumnType("uuid");
+
+                    b.Property<string>("UnitDescription")
+                        .IsRequired()
+                        .HasMaxLength(1024)
+                        .HasColumnType("character varying(1024)")
+                        .HasColumnName("UnitDescription");
 
                     b.HasKey("Id");
 
@@ -729,6 +729,10 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("character varying(16384)")
                         .HasColumnName("Description");
 
+                    b.Property<int>("LocationType")
+                        .HasColumnType("integer")
+                        .HasColumnName("LocationType");
+
                     b.Property<Guid>("ModifiedByUserId_ExtAutoFill")
                         .HasColumnType("uuid")
                         .HasColumnName("ModifiedByUserId_ExtAutoFill");
@@ -879,10 +883,10 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("DaytimePhoneNumber");
 
-                    b.Property<Guid?>("DeliverySlipExternalId")
+                    b.Property<Guid?>("DeliverySlipCreatorId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("DeliverySlipInternetId")
+                    b.Property<Guid?>("DeliverySlipRecipientId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Description")
@@ -928,10 +932,10 @@ namespace PSGM.Model.DbMain.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DeliverySlipExternalId")
+                    b.HasIndex("DeliverySlipCreatorId")
                         .IsUnique();
 
-                    b.HasIndex("DeliverySlipInternetId")
+                    b.HasIndex("DeliverySlipRecipientId")
                         .IsUnique();
 
                     b.HasIndex("ProjectId")
@@ -1319,9 +1323,9 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("CreatedDateTimeAutoFill");
 
-                    b.Property<int>("DeliverySlip")
+                    b.Property<int>("DeliverySlips")
                         .HasColumnType("integer")
-                        .HasColumnName("DeliverySlip");
+                        .HasColumnName("DeliverySlips");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -1555,11 +1559,13 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("Finished");
 
-                    b.Property<string>("Machines_ExtString")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("Machines_ExtString");
+                    b.Property<DateTime>("LastArchiveJobFinished")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ArchiveJobFinished");
+
+                    b.Property<DateTime>("LastArchiveJobStarted")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ArchiveJobStarted");
 
                     b.Property<long>("MaxDirectorySize")
                         .HasColumnType("bigint")
@@ -1578,6 +1584,10 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasMaxLength(1024)
                         .HasColumnType("character varying(1024)")
                         .HasColumnName("Name");
+
+                    b.Property<int>("Permissions")
+                        .HasColumnType("integer")
+                        .HasColumnName("Permissions");
 
                     b.Property<DateTime>("Started")
                         .HasColumnType("timestamp with time zone")
@@ -1632,68 +1642,6 @@ namespace PSGM.Model.DbMain.Migrations
                     b.ToTable("Project_AuditLog", "psgm");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Location_Link", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<Guid?>("LocationId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid?>("ProjectId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LocationId");
-
-                    b.HasIndex("ProjectId");
-
-                    b.ToTable("Project_Location_Link", "psgm");
-                });
-
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Location_Link_AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)")
-                        .HasColumnName("Action");
-
-                    b.Property<string>("Changes")
-                        .IsRequired()
-                        .HasMaxLength(16383)
-                        .HasColumnType("character varying(16383)")
-                        .HasColumnName("Changes");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("DateTime");
-
-                    b.Property<Guid>("SoftwareId_Ext")
-                        .HasColumnType("uuid")
-                        .HasColumnName("SoftwareId_Ext");
-
-                    b.Property<Guid>("SourceId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("SourceId");
-
-                    b.Property<Guid>("UserId_Ext")
-                        .HasColumnType("uuid")
-                        .HasColumnName("UserId_Ext");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Project_Location_Link_AuditLog", "psgm");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Unit", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1716,14 +1664,6 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Property<int>("AqlStateTranscription")
                         .HasColumnType("integer")
                         .HasColumnName("AqlStateTranscription");
-
-                    b.Property<DateTime>("ArchiveJobFinished")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("ArchiveJobFinished");
-
-                    b.Property<DateTime>("ArchiveJobStarted")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("ArchiveJobStarted");
 
                     b.Property<Guid>("CreatedByUserId_ExtAutoFill")
                         .HasColumnType("uuid")
@@ -1752,9 +1692,17 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("DetectedDefectsDuringPreparation");
 
-                    b.Property<long>("DirectorySizeOnStorage")
+                    b.Property<long>("DirectorySizeOnStorageInUnit")
                         .HasColumnType("bigint")
-                        .HasColumnName("DirectorySizeOnStorage");
+                        .HasColumnName("DirectorySizeOnStorageInUnit");
+
+                    b.Property<DateTime>("LastArchiveJobFinished")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ArchiveJobFinished");
+
+                    b.Property<DateTime>("LastArchiveJobStarted")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ArchiveJobStarted");
 
                     b.Property<bool>("Locked")
                         .HasColumnType("boolean")
@@ -1810,6 +1758,12 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Property<DateTime>("PreparationDateTime")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("PreparationDateTime");
+
+                    b.Property<string>("PreparationNotes")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("character varying(8191)")
+                        .HasColumnName("PreparationNotes");
 
                     b.Property<Guid>("PreparationUserId_Ext")
                         .HasColumnType("uuid")
@@ -1878,6 +1832,323 @@ namespace PSGM.Model.DbMain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Unit_AuditLog", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_VirtualRootUnit", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserId_ExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserId_ExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("character varying(8191)")
+                        .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserId_ExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserId_ExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("Name");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("integer")
+                        .HasColumnName("Order");
+
+                    b.Property<int>("Permissions")
+                        .HasColumnType("integer")
+                        .HasColumnName("Permissions");
+
+                    b.Property<string>("Prefix")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("Prefix");
+
+                    b.Property<Guid?>("ProjectId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Stars")
+                        .HasColumnType("integer")
+                        .HasColumnName("Stars");
+
+                    b.Property<string>("Suffix")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("Suffix");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("VirtualRootUnit", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_VirtualRootUnit_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareId_Ext")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareId_Ext");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserId_Ext")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserId_Ext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("VirtualRootUnit_AuditLog", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_VirtualRootUnit_User_Permission", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserId_ExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserId_ExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("character varying(16384)")
+                        .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserId_ExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserId_ExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<int>("Permission")
+                        .HasColumnType("integer")
+                        .HasColumnName("Permission");
+
+                    b.Property<Guid?>("RootUnitId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("UserId_Ext")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserId_Ext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RootUnitId");
+
+                    b.ToTable("VirtualRootUnit_User_Permission", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_VirtualSubUnit", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserId_ExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserId_ExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(8191)
+                        .HasColumnType("character varying(8191)")
+                        .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserId_ExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserId_ExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("Name");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("integer")
+                        .HasColumnName("Order");
+
+                    b.Property<Guid?>("ParentSubUnitId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Permissions")
+                        .HasColumnType("integer")
+                        .HasColumnName("Permissions");
+
+                    b.Property<string>("Prefix")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("Prefix");
+
+                    b.Property<Guid?>("RootUnitId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Stars")
+                        .HasColumnType("integer")
+                        .HasColumnName("Stars");
+
+                    b.Property<string>("Suffix")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("Suffix");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentSubUnitId");
+
+                    b.HasIndex("RootUnitId");
+
+                    b.ToTable("VirtualSubUnit", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_VirtualSubUnit_AuditLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("Action");
+
+                    b.Property<string>("Changes")
+                        .IsRequired()
+                        .HasMaxLength(16383)
+                        .HasColumnType("character varying(16383)")
+                        .HasColumnName("Changes");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("DateTime");
+
+                    b.Property<Guid>("SoftwareId_Ext")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SoftwareId_Ext");
+
+                    b.Property<Guid>("SourceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("SourceId");
+
+                    b.Property<Guid>("UserId_Ext")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserId_Ext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("VirtualSubUnit_AuditLog", "psgm");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_VirtualSubUnit_User_Permission", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CreatedByUserId_ExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatedByUserId_ExtAutoFill");
+
+                    b.Property<DateTime>("CreatedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("CreatedDateTimeAutoFill");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(16384)
+                        .HasColumnType("character varying(16384)")
+                        .HasColumnName("Description");
+
+                    b.Property<Guid>("ModifiedByUserId_ExtAutoFill")
+                        .HasColumnType("uuid")
+                        .HasColumnName("ModifiedByUserId_ExtAutoFill");
+
+                    b.Property<DateTime>("ModifiedDateTimeAutoFill")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ModifiedDateTimeAutoFill");
+
+                    b.Property<int>("Permission")
+                        .HasColumnType("integer")
+                        .HasColumnName("Permission");
+
+                    b.Property<Guid?>("SubUnitId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("UserId_Ext")
+                        .HasColumnType("uuid")
+                        .HasColumnName("UserId_Ext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SubUnitId");
+
+                    b.ToTable("VirtualSubUnit_User_Permission", "psgm");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_WorkflowGroup", b =>
@@ -2302,11 +2573,11 @@ namespace PSGM.Model.DbMain.Migrations
                         .HasForeignKey("ArchiveJobId");
 
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
-                        .WithMany("ArchiveJobLink")
+                        .WithMany("ArchiveJobLinks")
                         .HasForeignKey("ProjectId");
 
                     b.HasOne("PSGM.Model.DbMain.DbMain_Unit", "Unit")
-                        .WithMany("ArchiveJobLink")
+                        .WithMany("ArchiveJobLinks")
                         .HasForeignKey("UnitId");
 
                     b.Navigation("ArchiveJob");
@@ -2366,21 +2637,21 @@ namespace PSGM.Model.DbMain.Migrations
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization", b =>
                 {
-                    b.HasOne("PSGM.Model.DbMain.DbMain_DeliverySlip", "DeliverySlipExternal")
-                        .WithOne("ExternalOrganization")
-                        .HasForeignKey("PSGM.Model.DbMain.DbMain_Organization", "DeliverySlipExternalId");
+                    b.HasOne("PSGM.Model.DbMain.DbMain_DeliverySlip", "DeliverySlipCreator")
+                        .WithOne("DeliverySlipCreatorOrganization")
+                        .HasForeignKey("PSGM.Model.DbMain.DbMain_Organization", "DeliverySlipCreatorId");
 
-                    b.HasOne("PSGM.Model.DbMain.DbMain_DeliverySlip", "DeliverySlipInternet")
-                        .WithOne("InternalOrganization")
-                        .HasForeignKey("PSGM.Model.DbMain.DbMain_Organization", "DeliverySlipInternetId");
+                    b.HasOne("PSGM.Model.DbMain.DbMain_DeliverySlip", "DeliverySlipRecipient")
+                        .WithOne("DeliverySlipRecipientOrganization")
+                        .HasForeignKey("PSGM.Model.DbMain.DbMain_Organization", "DeliverySlipRecipientId");
 
                     b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
                         .WithOne("Organization")
                         .HasForeignKey("PSGM.Model.DbMain.DbMain_Organization", "ProjectId");
 
-                    b.Navigation("DeliverySlipExternal");
+                    b.Navigation("DeliverySlipCreator");
 
-                    b.Navigation("DeliverySlipInternet");
+                    b.Navigation("DeliverySlipRecipient");
 
                     b.Navigation("Project");
                 });
@@ -2444,21 +2715,6 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project_Location_Link", b =>
-                {
-                    b.HasOne("PSGM.Model.DbMain.DbMain_Location", "Location")
-                        .WithMany("ProjectLocationLink")
-                        .HasForeignKey("LocationId");
-
-                    b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
-                        .WithMany("LocationLinks")
-                        .HasForeignKey("ProjectId");
-
-                    b.Navigation("Location");
-
-                    b.Navigation("Project");
-                });
-
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Unit", b =>
                 {
                     b.HasOne("PSGM.Model.DbMain.DbMain_DeliverySlip", "DeliverySlip")
@@ -2472,6 +2728,48 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("DeliverySlip");
 
                     b.Navigation("ParentUnit");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_VirtualRootUnit", b =>
+                {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_Project", "Project")
+                        .WithMany("VirtualRootUnits")
+                        .HasForeignKey("ProjectId");
+
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_VirtualRootUnit_User_Permission", b =>
+                {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_VirtualRootUnit", "RootUnit")
+                        .WithMany("UserPermissions")
+                        .HasForeignKey("RootUnitId");
+
+                    b.Navigation("RootUnit");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_VirtualSubUnit", b =>
+                {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_VirtualSubUnit", "ParentSubUnit")
+                        .WithMany("Unit")
+                        .HasForeignKey("ParentSubUnitId");
+
+                    b.HasOne("PSGM.Model.DbMain.DbMain_VirtualRootUnit", "RootUnit")
+                        .WithMany("SubUnit")
+                        .HasForeignKey("RootUnitId");
+
+                    b.Navigation("ParentSubUnit");
+
+                    b.Navigation("RootUnit");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_VirtualSubUnit_User_Permission", b =>
+                {
+                    b.HasOne("PSGM.Model.DbMain.DbMain_VirtualSubUnit", "SubUnit")
+                        .WithMany("UserPermissions")
+                        .HasForeignKey("SubUnitId");
+
+                    b.Navigation("SubUnit");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_WorkflowGroup", b =>
@@ -2526,9 +2824,9 @@ namespace PSGM.Model.DbMain.Migrations
 
                     b.Navigation("CreatedWithDeliverySlipTemplate");
 
-                    b.Navigation("ExternalOrganization");
+                    b.Navigation("DeliverySlipCreatorOrganization");
 
-                    b.Navigation("InternalOrganization");
+                    b.Navigation("DeliverySlipRecipientOrganization");
 
                     b.Navigation("Units");
                 });
@@ -2538,8 +2836,6 @@ namespace PSGM.Model.DbMain.Migrations
                     b.Navigation("AddressLink");
 
                     b.Navigation("OrganizationLocationLink");
-
-                    b.Navigation("ProjectLocationLink");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Organization", b =>
@@ -2567,15 +2863,15 @@ namespace PSGM.Model.DbMain.Migrations
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_Project", b =>
                 {
-                    b.Navigation("ArchiveJobLink");
+                    b.Navigation("ArchiveJobLinks");
 
                     b.Navigation("Contributors");
 
                     b.Navigation("DeliverySlips");
 
-                    b.Navigation("LocationLinks");
-
                     b.Navigation("Organization");
+
+                    b.Navigation("VirtualRootUnits");
 
                     b.Navigation("WorkflowGroups");
                 });
@@ -2584,9 +2880,23 @@ namespace PSGM.Model.DbMain.Migrations
                 {
                     b.Navigation("ApplicableWorkflowGroup");
 
-                    b.Navigation("ArchiveJobLink");
+                    b.Navigation("ArchiveJobLinks");
 
                     b.Navigation("Unit");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_VirtualRootUnit", b =>
+                {
+                    b.Navigation("SubUnit");
+
+                    b.Navigation("UserPermissions");
+                });
+
+            modelBuilder.Entity("PSGM.Model.DbMain.DbMain_VirtualSubUnit", b =>
+                {
+                    b.Navigation("Unit");
+
+                    b.Navigation("UserPermissions");
                 });
 
             modelBuilder.Entity("PSGM.Model.DbMain.DbMain_WorkflowGroup", b =>

@@ -66,7 +66,7 @@ namespace PSGM.Model.DbArchiv
         #endregion
 
         #region Not Mapped
-        public DbArchiv_Job GetChagnes()
+        public DbArchiv_Job GetChanges()
         {
             return JsonConvert.DeserializeObject<DbArchiv_Job>(Changes);
         }

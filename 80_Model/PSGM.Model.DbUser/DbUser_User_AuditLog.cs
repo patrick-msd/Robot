@@ -59,7 +59,7 @@ namespace PSGM.Model.DbUser
         #endregion
 
         #region Not Mapped
-        public DbUser_User GetChagnes()
+        public DbUser_User GetChanges()
         {
             return JsonConvert.DeserializeObject<DbUser_User>(Changes);
         }

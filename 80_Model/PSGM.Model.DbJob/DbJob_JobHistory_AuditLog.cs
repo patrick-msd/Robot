@@ -69,7 +69,7 @@ namespace PSGM.Model.DbJob
         #endregion
 
         #region Not Mapped
-        public DbJob_Job GetChagnes()
+        public DbJob_Job GetChanges()
         {
             return JsonConvert.DeserializeObject<DbJob_Job>(Changes);
         }

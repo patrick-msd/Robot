@@ -24,13 +24,13 @@ namespace PSGM.Sample.Model.DbStorage
 
                 DaytimePhoneNumber = "+43 512 123456789",
                 EveningPhoneNumber = "+43 512 123456789",
-
+                
                 LocationLinks = new List<DbMain_Organization_Location_Link>()
                 {
                     new DbMain_Organization_Location_Link()
                     {
                         Id = Guid.NewGuid(),
-
+                        
                         Location = locations.Where(p => p.AddressLink.Address.Line1.Contains("Innrain 52d")).First(),
                         //LocationId = null,
 
@@ -269,7 +269,7 @@ namespace PSGM.Sample.Model.DbStorage
                         OrganizationId = null,
                     }
                 },
-
+                
                 Employees = new List<DbMain_Organization_Employee>()
                 {
                     new DbMain_Organization_Employee ()
@@ -279,7 +279,7 @@ namespace PSGM.Sample.Model.DbStorage
                         UserId_Ext = _gertraudZeindlId,
 
                         Acronym = "ZEG",
-
+                        
                         EMail = "",
 
                         DaytimePhoneNumber = "+43 512 123456789",

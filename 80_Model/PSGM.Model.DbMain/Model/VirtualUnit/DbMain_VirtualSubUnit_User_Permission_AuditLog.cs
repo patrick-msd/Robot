@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbMain
 {
-    [Table("Project_Location_Link_AuditLog")]
-    public class DbMain_Project_Location_Link_AuditLog
+    [Table("VirtualSubUnit_User_Permission_AuditLog")]
+    public class DbMain_VirtualSubUnit_User_Permission_AuditLog
     {
         #region Entities
         [Key]
@@ -21,7 +21,7 @@ namespace PSGM.Model.DbMain
 
         [Required]
         [Column("Action")]
-        [Display(Name = "EntityName")]
+        [Display(Name = "Action")]
         [StringLength(256, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Action { get; set; } = string.Empty;
 
@@ -29,6 +29,12 @@ namespace PSGM.Model.DbMain
         [Column("DateTime")]
         [Display(Name = "DateTime")]
         public DateTime DateTime { get; set; } = DateTime.MinValue;
+
+        [Required]
+        [Column("Changes")]
+        [Display(Name = "Changes")]
+        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Changes { get; set; } = string.Empty;
 
         [Required]
         [Column("UserId_Ext")]
@@ -39,12 +45,6 @@ namespace PSGM.Model.DbMain
         [Column("SoftwareId_Ext")]
         [Display(Name = "SoftwareId_Ext")]
         public Guid SoftwareId_Ext { get; set; } = Guid.Empty;
-
-        [Required]
-        [Column("Changes")]
-        [Display(Name = "Changes")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string Changes { get; set; } = string.Empty;
         #endregion
 
         #region Links
@@ -54,9 +54,9 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Not Mapped
-        public DbMain_Project_Location_Link? GetChanges()
+        public DbMain_VirtualSubUnit_User_Permission? GetChanges()
         {
-            return JsonConvert.DeserializeObject<DbMain_Project_Location_Link>(Changes);
+            return JsonConvert.DeserializeObject<DbMain_VirtualSubUnit_User_Permission>(Changes);
         }
         #endregion
     }
