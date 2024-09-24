@@ -45,31 +45,31 @@ namespace PSGM.Model.DbMachine
 
         #region DataSets
         public DbSet<DbMachine_Address> Addresses { get; set; }
-        public DbSet<DbMachine_Address_AuditLog> Address_AuditLog { get; set; }
+        public DbSet<DbMachine_Address_AuditLog> Address_AuditLogs { get; set; }
 
         public DbSet<DbMachine_Device> Devices { get; set; }
-        public DbSet<DbMachine_Device_AuditLog> Device_AuditLog { get; set; }
+        public DbSet<DbMachine_Device_AuditLog> Device_AuditLogs { get; set; }
 
         public DbSet<DbMachine_DeviceGroup> DeviceGroups { get; set; }
-        public DbSet<DbMachine_DeviceGroup_AuditLog> DeviceGroup_AuditLog { get; set; }
+        public DbSet<DbMachine_DeviceGroup_AuditLog> DeviceGroup_AuditLogs { get; set; }
 
         public DbSet<DbMachine_Interface_Can> Interfaces_Can { get; set; }
-        public DbSet<DbMachine_Interface_Can_AuditLog> Interface_Can_AuditLog { get; set; }
+        public DbSet<DbMachine_Interface_Can_AuditLog> Interface_Can_AuditLogs { get; set; }
 
         public DbSet<DbMachine_Interface_CanDevice> Interfaces_CanDevice { get; set; }
-        public DbSet<DbMachine_Interface_CanDevice_AuditLog> Interfaces_CanDevice_AuditLog { get; set; }
+        public DbSet<DbMachine_Interface_CanDevice_AuditLog> Interfaces_CanDevice_AuditLogs { get; set; }
 
         public DbSet<DbMachine_Interface_Ethernet> Interfaces_Ethernet { get; set; }
-        public DbSet<DbMachine_Interface_Ethernet_AuditLog> Interface_Ethernet_AuditLog { get; set; }
+        public DbSet<DbMachine_Interface_Ethernet_AuditLog> Interface_Ethernet_AuditLogs { get; set; }
 
         public DbSet<DbMachine_Interface_Serial> Interfaces_Serial { get; set; }
-        public DbSet<DbMachine_Interface_Serial_AuditLog> Interface_Serial_AuditLog { get; set; }
+        public DbSet<DbMachine_Interface_Serial_AuditLog> Interface_Serial_AuditLogs { get; set; }
 
         public DbSet<DbMachine_Location> Locations { get; set; }
-        public DbSet<DbMachine_Location_AuditLog> Location_AuditLog { get; set; }
+        public DbSet<DbMachine_Location_AuditLog> Location_AuditLogs { get; set; }
 
         public DbSet<DbMachine_Machine> Machines { get; set; }
-        public DbSet<DbMachine_Machine_AuditLog> Machine_AuditLog { get; set; }
+        public DbSet<DbMachine_Machine_AuditLog> Machine_AuditLogs { get; set; }
         #endregion
 
         #region Overrides
@@ -143,7 +143,7 @@ namespace PSGM.Model.DbMachine
                 switch (entry.Entity)
                 {
                     case DbMachine_Address address:
-                        Address_AuditLog.Add(new DbMachine_Address_AuditLog
+                        Address_AuditLogs.Add(new DbMachine_Address_AuditLog
                         {
                             Id = new Guid(),
 
@@ -160,7 +160,7 @@ namespace PSGM.Model.DbMachine
                         break;
 
                     case DbMachine_Device device:
-                        Device_AuditLog.Add(new DbMachine_Device_AuditLog
+                        Device_AuditLogs.Add(new DbMachine_Device_AuditLog
                         {
                             Id = new Guid(),
 
@@ -177,7 +177,7 @@ namespace PSGM.Model.DbMachine
                         break;
 
                     case DbMachine_DeviceGroup deviceGroup:
-                        DeviceGroup_AuditLog.Add(new DbMachine_DeviceGroup_AuditLog
+                        DeviceGroup_AuditLogs.Add(new DbMachine_DeviceGroup_AuditLog
                         {
                             Id = new Guid(),
 
@@ -194,7 +194,7 @@ namespace PSGM.Model.DbMachine
                         break;
 
                     case DbMachine_Interface_Can interface_Can:
-                        Interface_Can_AuditLog.Add(new DbMachine_Interface_Can_AuditLog
+                        Interface_Can_AuditLogs.Add(new DbMachine_Interface_Can_AuditLog
                         {
                             Id = new Guid(),
 
@@ -211,7 +211,7 @@ namespace PSGM.Model.DbMachine
                         break;
 
                     case DbMachine_Interface_CanDevice interface_CanDevice:
-                        Interfaces_CanDevice_AuditLog.Add(new DbMachine_Interface_CanDevice_AuditLog
+                        Interfaces_CanDevice_AuditLogs.Add(new DbMachine_Interface_CanDevice_AuditLog
                         {
                             Id = new Guid(),
 
@@ -228,7 +228,7 @@ namespace PSGM.Model.DbMachine
                         break;
 
                     case DbMachine_Interface_Ethernet interface_Ethernet:
-                        Interface_Ethernet_AuditLog.Add(new DbMachine_Interface_Ethernet_AuditLog
+                        Interface_Ethernet_AuditLogs.Add(new DbMachine_Interface_Ethernet_AuditLog
                         {
                             Id = new Guid(),
 
@@ -245,7 +245,7 @@ namespace PSGM.Model.DbMachine
                         break;
 
                     case DbMachine_Interface_Serial interface_Serial:
-                        Interface_Serial_AuditLog.Add(new DbMachine_Interface_Serial_AuditLog
+                        Interface_Serial_AuditLogs.Add(new DbMachine_Interface_Serial_AuditLog
                         {
                             Id = new Guid(),
 
@@ -262,7 +262,7 @@ namespace PSGM.Model.DbMachine
                         break;
 
                     case DbMachine_Location location:
-                        Location_AuditLog.Add(new DbMachine_Location_AuditLog
+                        Location_AuditLogs.Add(new DbMachine_Location_AuditLog
                         {
                             Id = new Guid(),
 
@@ -279,7 +279,7 @@ namespace PSGM.Model.DbMachine
                         break;
 
                     case DbMachine_Machine machine:
-                        Machine_AuditLog.Add(new DbMachine_Machine_AuditLog
+                        Machine_AuditLogs.Add(new DbMachine_Machine_AuditLog
                         {
                             Id = new Guid(),
 

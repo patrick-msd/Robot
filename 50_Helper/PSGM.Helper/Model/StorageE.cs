@@ -17,6 +17,7 @@
 
         DataMain = 10000,
 
+
         DataRaw = 20000,
         DataRawThumbnail = 20001,
         DataRawAndDataRawThumbnail = 20002,
@@ -24,6 +25,8 @@
         Data = 30000,
         DataThumbnail = 30001,
         DataAndDataThumbnail = 30002,
+
+        DataTranscription = 40000,
     }
 
     public enum StorageTier : int

@@ -60,7 +60,7 @@ namespace PSGM.Model.DbSoftware
 
         #region DataSets
         public DbSet<DbSoftware_Software> Software { get; set; }
-        public DbSet<DbSoftware_Software_AuditLog> Software_AuditLog { get; set; }
+        public DbSet<DbSoftware_Software_AuditLog> Software_AuditLogs { get; set; }
         #endregion
 
         #region Overrides
@@ -134,7 +134,7 @@ namespace PSGM.Model.DbSoftware
                 switch (entry.Entity)
                 {
                     case DbSoftware_Software software:
-                        Software_AuditLog.Add(new DbSoftware_Software_AuditLog
+                        Software_AuditLogs.Add(new DbSoftware_Software_AuditLog
                         {
                             Id = new Guid(),
 

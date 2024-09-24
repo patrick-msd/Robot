@@ -45,10 +45,10 @@ namespace PSGM.Model.DbUser
 
         #region DataSets
         public DbSet<DbUser_User> Users { get; set; }
-        public DbSet<DbUser_User_AuditLog> User_AuditLog { get; set; }
+        public DbSet<DbUser_User_AuditLog> User_AuditLogs { get; set; }
 
         public DbSet<DbUser_UserGroup> UserGroups { get; set; }
-        public DbSet<DbUser_UserGroup_AuditLog> UserGroup_AuditLog { get; set; }
+        public DbSet<DbUser_UserGroup_AuditLog> UserGroup_AuditLogs { get; set; }
         #endregion
 
         #region Overrides
@@ -122,7 +122,7 @@ namespace PSGM.Model.DbUser
                 switch (entry.Entity)
                 {
                     case DbUser_User user:
-                        User_AuditLog.Add(new DbUser_User_AuditLog
+                        User_AuditLogs.Add(new DbUser_User_AuditLog
                         {
                             Id = new Guid(),
 
@@ -139,7 +139,7 @@ namespace PSGM.Model.DbUser
                         break;
 
                     case DbUser_UserGroup userGroup:
-                        UserGroup_AuditLog.Add(new DbUser_UserGroup_AuditLog
+                        UserGroup_AuditLogs.Add(new DbUser_UserGroup_AuditLog
                         {
                             Id = new Guid(),
 

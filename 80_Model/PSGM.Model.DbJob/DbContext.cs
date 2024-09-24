@@ -63,10 +63,10 @@ namespace PSGM.Model.DbJob
 
         #region DataSets
         public DbSet<DbJob_Job> Jobs { get; set; }
-        public DbSet<DbJob_Job_AuditLog> Job_AuditLog { get; set; }
+        public DbSet<DbJob_Job_AuditLog> Job_AuditLogs { get; set; }
 
         public DbSet<DbJob_JobHistory> Jobs_History { get; set; }
-        public DbSet<DbJob_JobHistory_AuditLog> JobHistoy_AuditLog { get; set; }
+        public DbSet<DbJob_JobHistory_AuditLog> JobHistoy_AuditLogs { get; set; }
         #endregion
 
         #region Overrides
@@ -140,7 +140,7 @@ namespace PSGM.Model.DbJob
                 switch (entry.Entity)
                 {
                     case DbJob_Job job:
-                        Job_AuditLog.Add(new DbJob_Job_AuditLog
+                        Job_AuditLogs.Add(new DbJob_Job_AuditLog
                         {
                             Id = new Guid(),
 
@@ -175,7 +175,7 @@ namespace PSGM.Model.DbJob
                         break;
 
                     case DbJob_JobHistory jobHistory:
-                        Job_AuditLog.Add(new DbJob_Job_AuditLog
+                        Job_AuditLogs.Add(new DbJob_Job_AuditLog
                         {
                             Id = new Guid(),
 

@@ -42,242 +42,242 @@ namespace PSGM.Model.DbStorage
         #region DataSets
         #region File
         public DbSet<DbStorage_File> Files { get; set; }
-        public DbSet<DbStorage_File_AuditLog> File_AuditLog { get; set; }
+        public DbSet<DbStorage_File_AuditLog> File_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_Metadata> File_Metadata { get; set; }
-        public DbSet<DbStorage_File_Metadata_AuditLog> File_Metadata_AuditLog { get; set; }
+        public DbSet<DbStorage_File_Metadata_AuditLog> File_Metadata_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_Metadata_Link> File_Metadata_Link { get; set; }
-        public DbSet<DbStorage_File_Metadata_Link_AuditLog> File_Metadata_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_File_Metadata_Link_AuditLog> File_Metadata_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_QrCode> File_QrCodes { get; set; }
-        public DbSet<DbStorage_File_QrCode_AuditLog> File_QrCode_AuditLog { get; set; }
+        public DbSet<DbStorage_File_QrCode_AuditLog> File_QrCode_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_Quality> File_Qualities { get; set; }
-        public DbSet<DbStorage_File_Quality_AuditLog> File_Quality_AuditLog { get; set; }
+        public DbSet<DbStorage_File_Quality_AuditLog> File_Quality_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_User> File_Users { get; set; }
-        public DbSet<DbStorage_File_User_AuditLog> File_User_AuditLog { get; set; }
+        public DbSet<DbStorage_File_User_AuditLog> File_User_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_User_Link> File_User_Links { get; set; }
-        public DbSet<DbStorage_File_User_Link_AuditLog> File_User_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_File_User_Link_AuditLog> File_User_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_User_Notification> File_User_Notifications { get; set; }
-        public DbSet<DbStorage_File_User_Notification_AuditLog> File_User_Notification_AuditLog { get; set; }
+        public DbSet<DbStorage_File_User_Notification_AuditLog> File_User_Notification_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_User_Permission> File_User_Permissions { get; set; }
-        public DbSet<DbStorage_File_User_Permission_AuditLog> File_User_Permission_AuditLog { get; set; }
+        public DbSet<DbStorage_File_User_Permission_AuditLog> File_User_Permission_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_UserGroup> File_UserGroups { get; set; }
-        public DbSet<DbStorage_File_UserGroup_AuditLog> File_UserGroup_AuditLog { get; set; }
+        public DbSet<DbStorage_File_UserGroup_AuditLog> File_UserGroup_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_UserGroup_Link> File_UserGroup_Links { get; set; }
-        public DbSet<DbStorage_File_UserGroup_Link_AuditLog> File_UserGroup_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_File_UserGroup_Link_AuditLog> File_UserGroup_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_UserGroup_Notification> File_UserGroup_Notifications { get; set; }
-        public DbSet<DbStorage_File_UserGroup_Notification_AuditLog> File_UserGroup_Notification_AuditLog { get; set; }
+        public DbSet<DbStorage_File_UserGroup_Notification_AuditLog> File_UserGroup_Notification_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_UserGroup_Permission> File_UserGroup_Permissions { get; set; }
-        public DbSet<DbStorage_File_UserGroup_Permission_AuditLog> File_UserGroup_Permission_AuditLog { get; set; }
+        public DbSet<DbStorage_File_UserGroup_Permission_AuditLog> File_UserGroup_Permission_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_UserGroup_User> _File_UserGroup_Users { get; set; }
-        public DbSet<DbStorage_File_UserGroup_User_AuditLog> File_UserGroup_User_AuditLog { get; set; }
+        public DbSet<DbStorage_File_UserGroup_User_AuditLog> File_UserGroup_User_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_UserGroup_User_Link> _File_UserGroup_User_Links { get; set; }
-        public DbSet<DbStorage_File_UserGroup_User_Link_AuditLog> File_UserGroup_User_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_File_UserGroup_User_Link_AuditLog> File_UserGroup_User_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_VirtualUnit> File_VirtualUnits { get; set; }
-        public DbSet<DbStorage_File_VirtualUnit_AuditLog> File_VirtualUnit_AuditLog { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_AuditLog> File_VirtualUnit_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_VirtualUnit_User> File_VirtualUnit_User { get; set; }
-        public DbSet<DbStorage_File_VirtualUnit_User_AuditLog> File_VirtualUnit_User_AuditLog { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_User_AuditLog> File_VirtualUnit_User_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_VirtualUnit_User_Link> File_VirtualUnit_User_Links { get; set; }
-        public DbSet<DbStorage_File_VirtualUnit_User_Link_AuditLog> File_VirtualUnit_User_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_User_Link_AuditLog> File_VirtualUnit_User_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_VirtualUnit_User_Notification> File_VirtualUnit_User_Notifications { get; set; }
-        public DbSet<DbStorage_File_VirtualUnit_User_Notification_AuditLog> File_VirtualUnit_User_Notification_AuditLog { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_User_Notification_AuditLog> File_VirtualUnit_User_Notification_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_VirtualUnit_User_Permission> File_VirtualUnit_User_Permissions { get; set; }
-        public DbSet<DbStorage_File_VirtualUnit_User_Permission_AuditLog> File_VirtualUnit_User_Permission_AuditLog { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_User_Permission_AuditLog> File_VirtualUnit_User_Permission_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_VirtualUnit_UserGroup> File_VirtualUnit_UserGroups { get; set; }
-        public DbSet<DbStorage_File_VirtualUnit_UserGroup_AuditLog> File_VirtualUnit_UserGroup_AuditLog { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup_AuditLog> File_VirtualUnit_UserGroup_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_VirtualUnit_UserGroup_Link> File_VirtualUnit_UserGroup_Links { get; set; }
-        public DbSet<DbStorage_File_VirtualUnit_UserGroup_Link_AuditLog> File_VirtualUnit_UserGroup_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup_Link_AuditLog> File_VirtualUnit_UserGroup_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_VirtualUnit_UserGroup_User> File_VirtualUnit_UserGroup_Users { get; set; }
-        public DbSet<DbStorage_File_VirtualUnit_UserGroup_User_AuditLog> File_VirtualUnit_UserGroup_User_AuditLog { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup_User_AuditLog> File_VirtualUnit_UserGroup_User_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_VirtualUnit_UserGroup_User_Link> File_VirtualUnit_UserGroup_User_Links { get; set; }
-        public DbSet<DbStorage_File_VirtualUnit_UserGroup_User_Link_AuditLog> File_VirtualUnit_UserGroup_User_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup_User_Link_AuditLog> File_VirtualUnit_UserGroup_User_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_VirtualUnit_UserGroup_Notification> File_VirtualUnit_UserGroup_Notifications { get; set; }
-        public DbSet<DbStorage_File_VirtualUnit_UserGroup_Notification_AuditLog> File_VirtualUnit_UserGroup_Notification_AuditLog { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup_Notification_AuditLog> File_VirtualUnit_UserGroup_Notification_AuditLogs { get; set; }
 
         public DbSet<DbStorage_File_VirtualUnit_UserGroup_Permission> File_VirtualUnit_UserGroup_Permissions { get; set; }
-        public DbSet<DbStorage_File_VirtualUnit_UserGroup_Permission_AuditLog> File_VirtualUnit_UserGroup_Permission_AuditLog { get; set; }
+        public DbSet<DbStorage_File_VirtualUnit_UserGroup_Permission_AuditLog> File_VirtualUnit_UserGroup_Permission_AuditLogs { get; set; }
         #endregion
 
         #region RootDirectory
         public DbSet<DbStorage_RootDirectory> RootDirectories { get; set; }
-        public DbSet<DbStorage_RootDirectory_AuditLog> RootDirectory_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_AuditLog> RootDirectory_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_Metadata> RootDirectory_Metadata { get; set; }
-        public DbSet<DbStorage_RootDirectory_Metadata_AuditLog> RootDirectory_Metadata_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_Metadata_AuditLog> RootDirectory_Metadata_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_Metadata_Link> RootDirectory_Metadata_Links { get; set; }
-        public DbSet<DbStorage_RootDirectory_Metadata_Link_AuditLog> RootDirectory_Metadata_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_Metadata_Link_AuditLog> RootDirectory_Metadata_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_QrCode> RootDirectory_QrCodes { get; set; }
-        public DbSet<DbStorage_RootDirectory_QrCode_AuditLog> RootDirectory_QrCode_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_QrCode_AuditLog> RootDirectory_QrCode_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_Quality> RootDirectory_Qualities { get; set; }
-        public DbSet<DbStorage_RootDirectory_Quality_AuditLog> RootDirectory_Quality_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_Quality_AuditLog> RootDirectory_Quality_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_User> RootDirectory_Users { get; set; }
-        public DbSet<DbStorage_RootDirectory_User_AuditLog> RootDirectory_User_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_User_AuditLog> RootDirectory_User_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_User_Link> RootDirectory_User_Links { get; set; }
-        public DbSet<DbStorage_RootDirectory_User_Link_AuditLog> RootDirectory_User_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_User_Link_AuditLog> RootDirectory_User_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_User_Notification> RootDirectory_User_Notifications { get; set; }
-        public DbSet<DbStorage_RootDirectory_User_Notification_AuditLog> RootDirectory_User_Notification_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_User_Notification_AuditLog> RootDirectory_User_Notification_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_User_Permission> RootDirectory_User_Permissions { get; set; }
-        public DbSet<DbStorage_RootDirectory_User_Permission_AuditLog> RootDirectory_User_Permission_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_User_Permission_AuditLog> RootDirectory_User_Permission_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_UserGroup> RootDirectory_UserGroups { get; set; }
-        public DbSet<DbStorage_RootDirectory_UserGroup_AuditLog> RootDirectory_UserGroup_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_UserGroup_AuditLog> RootDirectory_UserGroup_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_UserGroup_Link> RootDirectory_UserGroup_Links { get; set; }
-        public DbSet<DbStorage_RootDirectory_UserGroup_Link_AuditLog> RootDirectory_UserGroup_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_UserGroup_Link_AuditLog> RootDirectory_UserGroup_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_UserGroup_Notification> RootDirectory_UserGroup_Notifications { get; set; }
-        public DbSet<DbStorage_RootDirectory_UserGroup_Notification_AuditLog> RootDirectory_UserGroup_Notification_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_UserGroup_Notification_AuditLog> RootDirectory_UserGroup_Notification_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_UserGroup_Permission> RootDirectory_UserGroup_Permissions { get; set; }
-        public DbSet<DbStorage_RootDirectory_UserGroup_Permission_AuditLog> RootDirectory_UserGroup_Permission_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_UserGroup_Permission_AuditLog> RootDirectory_UserGroup_Permission_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_UserGroup_User> RootDirectory_UserGroup_Users { get; set; }
-        public DbSet<DbStorage_RootDirectory_UserGroup_User_AuditLog> RootDirectory_UserGroup_User_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_UserGroup_User_AuditLog> RootDirectory_UserGroup_User_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_UserGroup_User_Link> RootDirectory_UserGroup_User_Links { get; set; }
-        public DbSet<DbStorage_RootDirectory_UserGroup_User_Link_AuditLog> RootDirectory_UserGroup_User_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_UserGroup_User_Link_AuditLog> RootDirectory_UserGroup_User_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_VirtualUnit> RootDirectory_VirtualUnits { get; set; }
-        public DbSet<DbStorage_RootDirectory_VirtualUnit_AuditLog> RootDirectory_VirtualUnit_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_AuditLog> RootDirectory_VirtualUnit_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_VirtualUnit_User> RootDirectory_VirtualUnit_User { get; set; }
-        public DbSet<DbStorage_RootDirectory_VirtualUnit_User_AuditLog> RootDirectory_VirtualUnit_User_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_User_AuditLog> RootDirectory_VirtualUnit_User_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_VirtualUnit_User_Link> RootDirectory_VirtualUnit_User_Links { get; set; }
-        public DbSet<DbStorage_RootDirectory_VirtualUnit_User_Link_AuditLog> RootDirectory_VirtualUnit_User_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_User_Link_AuditLog> RootDirectory_VirtualUnit_User_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_VirtualUnit_User_Notification> RootDirectory_VirtualUnit_User_Notifications { get; set; }
-        public DbSet<DbStorage_RootDirectory_VirtualUnit_User_Notification_AuditLog> RootDirectory_VirtualUnit_User_Notification_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_User_Notification_AuditLog> RootDirectory_VirtualUnit_User_Notification_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_VirtualUnit_User_Permission> RootDirectory_VirtualUnit_User_Permissions { get; set; }
-        public DbSet<DbStorage_RootDirectory_VirtualUnit_User_Permission_AuditLog> RootDirectory_VirtualUnit_User_Permission_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_User_Permission_AuditLog> RootDirectory_VirtualUnit_User_Permission_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup> RootDirectory_VirtualUnit_UserGroups { get; set; }
-        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_AuditLog> RootDirectory_VirtualUnit_UserGroup_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_AuditLog> RootDirectory_VirtualUnit_UserGroup_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_Link> RootDirectory_VirtualUnit_UserGroup_Links { get; set; }
-        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_Link_AuditLog> RootDirectory_VirtualUnit_UserGroup_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_Link_AuditLog> RootDirectory_VirtualUnit_UserGroup_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_User> RootDirectory_VirtualUnit_UserGroup_Users { get; set; }
-        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_User_AuditLog> RootDirectory_VirtualUnit_UserGroup_User_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_User_AuditLog> RootDirectory_VirtualUnit_UserGroup_User_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_User_Link> RootDirectory_VirtualUnit_UserGroup_User_Links { get; set; }
-        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_User_Link_AuditLog> RootDirectory_VirtualUnit_UserGroup_User_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_User_Link_AuditLog> RootDirectory_VirtualUnit_UserGroup_User_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_Notification> RootDirectory_VirtualUnit_UserGroup_Notifications { get; set; }
-        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_Notification_AuditLog> RootDirectory_VirtualUnit_UserGroup_Notification_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_Notification_AuditLog> RootDirectory_VirtualUnit_UserGroup_Notification_AuditLogs { get; set; }
 
         public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_Permission> RootDirectory_VirtualUnit_UserGroup_Permissions { get; set; }
-        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_Permission_AuditLog> RootDirectory_VirtualUnit_UserGroup_Permission_AuditLog { get; set; }
+        public DbSet<DbStorage_RootDirectory_VirtualUnit_UserGroup_Permission_AuditLog> RootDirectory_VirtualUnit_UserGroup_Permission_AuditLogs { get; set; }
         #endregion
 
         #region SubDirectory
         public DbSet<DbStorage_SubDirectory> SubDirectories { get; set; }
-        public DbSet<DbStorage_SubDirectory_AuditLog> SubDirectory_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_AuditLog> SubDirectory_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_Metadata> SubDirectory_Metadata { get; set; }
-        public DbSet<DbStorage_SubDirectory_Metadata_AuditLog> SubDirectory_Metadata_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_Metadata_AuditLog> SubDirectory_Metadata_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_Metadata_Link> SubDirectory_Metadata_Link { get; set; }
-        public DbSet<DbStorage_SubDirectory_Metadata_Link_AuditLog> SubDirectory_Metadata_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_Metadata_Link_AuditLog> SubDirectory_Metadata_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_QrCode> SubDirectory_QrCodes { get; set; }
-        public DbSet<DbStorage_SubDirectory_QrCode_AuditLog> SubDirectory_QrCode_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_QrCode_AuditLog> SubDirectory_QrCode_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_Quality> SubDirectory_Qualities { get; set; }
-        public DbSet<DbStorage_SubDirectory_Quality_AuditLog> SubDirectory_Quality_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_Quality_AuditLog> SubDirectory_Quality_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_User> SubDirectory_Users { get; set; }
-        public DbSet<DbStorage_SubDirectory_User_AuditLog> SubDirectory_User_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_User_AuditLog> SubDirectory_User_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_User_Link> SubDirectory_User_Links { get; set; }
-        public DbSet<DbStorage_SubDirectory_User_Link_AuditLog> SubDirectory_User_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_User_Link_AuditLog> SubDirectory_User_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_User_Notification> SubDirectory_User_Notifications { get; set; }
-        public DbSet<DbStorage_SubDirectory_User_Notification_AuditLog> SubDirectory_User_Notification_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_User_Notification_AuditLog> SubDirectory_User_Notification_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_User_Permission> SubDirectory_User_Permissions { get; set; }
-        public DbSet<DbStorage_SubDirectory_User_Permission_AuditLog> SubDirectory_User_Permission_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_User_Permission_AuditLog> SubDirectory_User_Permission_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_UserGroup> SubDirectory_UserGroups { get; set; }
-        public DbSet<DbStorage_SubDirectory_UserGroup_AuditLog> SubDirectory_UserGroup_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_UserGroup_AuditLog> SubDirectory_UserGroup_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_UserGroup_Link> SubDirectory_UserGroup_Links { get; set; }
-        public DbSet<DbStorage_SubDirectory_UserGroup_Link_AuditLog> SubDirectory_UserGroup_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_UserGroup_Link_AuditLog> SubDirectory_UserGroup_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_UserGroup_Notification> SubDirectory_UserGroup_Notifications { get; set; }
-        public DbSet<DbStorage_SubDirectory_UserGroup_Notification_AuditLog> SubDirectory_UserGroup_Notification_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_UserGroup_Notification_AuditLog> SubDirectory_UserGroup_Notification_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_UserGroup_Permission> SubDirectory_UserGroup_Permissions { get; set; }
-        public DbSet<DbStorage_SubDirectory_UserGroup_Permission_AuditLog> SubDirectory_UserGroup_Permission_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_UserGroup_Permission_AuditLog> SubDirectory_UserGroup_Permission_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_UserGroup_User> SubDirectory_UserGroup_Users { get; set; }
-        public DbSet<DbStorage_SubDirectory_UserGroup_User_AuditLog> SubDirectory_UserGroup_User_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_UserGroup_User_AuditLog> SubDirectory_UserGroup_User_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_UserGroup_User_Link> SubDirectory_UserGroup_User_Links { get; set; }
-        public DbSet<DbStorage_SubDirectory_UserGroup_User_Link_AuditLog> SubDirectory_UserGroup_User_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_UserGroup_User_Link_AuditLog> SubDirectory_UserGroup_User_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_VirtualUnit> SubDirectory_VirtualUnits { get; set; }
-        public DbSet<DbStorage_SubDirectory_VirtualUnit_AuditLog> SubDirectory_VirtualUnit_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_AuditLog> SubDirectory_VirtualUnit_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_VirtualUnit_User> SubDirectory_VirtualUnit_User { get; set; }
-        public DbSet<DbStorage_SubDirectory_VirtualUnit_User_AuditLog> SubDirectory_VirtualUnit_User_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_User_AuditLog> SubDirectory_VirtualUnit_User_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_VirtualUnit_User_Link> SubDirectory_VirtualUnit_User_Links { get; set; }
-        public DbSet<DbStorage_SubDirectory_VirtualUnit_User_Link_AuditLog> SubDirectory_VirtualUnit_User_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_User_Link_AuditLog> SubDirectory_VirtualUnit_User_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_VirtualUnit_User_Notification> SubDirectory_VirtualUnit_User_Notifications { get; set; }
-        public DbSet<DbStorage_SubDirectory_VirtualUnit_User_Notification_AuditLog> SubDirectory_VirtualUnit_User_Notification_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_User_Notification_AuditLog> SubDirectory_VirtualUnit_User_Notification_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_VirtualUnit_User_Permission> SubDirectory_VirtualUnit_User_Permissions { get; set; }
-        public DbSet<DbStorage_SubDirectory_VirtualUnit_User_Permission_AuditLog> SubDirectory_VirtualUnit_User_Permission_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_User_Permission_AuditLog> SubDirectory_VirtualUnit_User_Permission_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup> SubDirectory_VirtualUnit_UserGroups { get; set; }
-        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_AuditLog> SubDirectory_VirtualUnit_UserGroup_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_AuditLog> SubDirectory_VirtualUnit_UserGroup_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_Link> SubDirectory_VirtualUnit_UserGroup_Links { get; set; }
-        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_Link_AuditLog> SubDirectory_VirtualUnit_UserGroup_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_Link_AuditLog> SubDirectory_VirtualUnit_UserGroup_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_User> SubDirectory_VirtualUnit_UserGroup_Users { get; set; }
-        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_User_AuditLog> SubDirectory_VirtualUnit_UserGroup_User_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_User_AuditLog> SubDirectory_VirtualUnit_UserGroup_User_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_User_Link> SubDirectory_VirtualUnit_UserGroup_User_Links { get; set; }
-        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_User_Link_AuditLog> SubDirectory_VirtualUnit_UserGroup_User_Link_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_User_Link_AuditLog> SubDirectory_VirtualUnit_UserGroup_User_Link_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_Notification> SubDirectory_VirtualUnit_UserGroup_Notifications { get; set; }
-        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_Notification_AuditLog> SubDirectory_VirtualUnit_UserGroup_Notification_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_Notification_AuditLog> SubDirectory_VirtualUnit_UserGroup_Notification_AuditLogs { get; set; }
 
         public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_Permission> SubDirectory_VirtualUnit_UserGroup_Permissions { get; set; }
-        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_Permission_AuditLog> SubDirectory_VirtualUnit_UserGroup_Permission_AuditLog { get; set; }
+        public DbSet<DbStorage_SubDirectory_VirtualUnit_UserGroup_Permission_AuditLog> SubDirectory_VirtualUnit_UserGroup_Permission_AuditLogs { get; set; }
         #endregion
         #endregion
 
@@ -494,7 +494,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_AuditLog.Add(new DbStorage_File_AuditLog
+                        File_AuditLogs.Add(new DbStorage_File_AuditLog
                         {
                             Id = new Guid(),
 
@@ -524,7 +524,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_Metadata_AuditLog.Add(new DbStorage_File_Metadata_AuditLog
+                        File_Metadata_AuditLogs.Add(new DbStorage_File_Metadata_AuditLog
                         {
                             Id = new Guid(),
 
@@ -541,7 +541,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_File_Metadata_Link file_Metadata_Link:
-                        File_Metadata_Link_AuditLog.Add(new DbStorage_File_Metadata_Link_AuditLog
+                        File_Metadata_Link_AuditLogs.Add(new DbStorage_File_Metadata_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -571,7 +571,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_QrCode_AuditLog.Add(new DbStorage_File_QrCode_AuditLog
+                        File_QrCode_AuditLogs.Add(new DbStorage_File_QrCode_AuditLog
                         {
                             Id = new Guid(),
 
@@ -601,7 +601,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_Quality_AuditLog.Add(new DbStorage_File_Quality_AuditLog
+                        File_Quality_AuditLogs.Add(new DbStorage_File_Quality_AuditLog
                         {
                             Id = new Guid(),
 
@@ -631,7 +631,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_User_AuditLog.Add(new DbStorage_File_User_AuditLog
+                        File_User_AuditLogs.Add(new DbStorage_File_User_AuditLog
                         {
                             Id = new Guid(),
 
@@ -648,7 +648,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_File_User_Link file_User_Link:
-                        File_User_Link_AuditLog.Add(new DbStorage_File_User_Link_AuditLog
+                        File_User_Link_AuditLogs.Add(new DbStorage_File_User_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -678,7 +678,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_User_Notification_AuditLog.Add(new DbStorage_File_User_Notification_AuditLog
+                        File_User_Notification_AuditLogs.Add(new DbStorage_File_User_Notification_AuditLog
                         {
                             Id = new Guid(),
 
@@ -708,7 +708,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_User_Permission_AuditLog.Add(new DbStorage_File_User_Permission_AuditLog
+                        File_User_Permission_AuditLogs.Add(new DbStorage_File_User_Permission_AuditLog
                         {
                             Id = new Guid(),
 
@@ -738,7 +738,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_UserGroup_AuditLog.Add(new DbStorage_File_UserGroup_AuditLog
+                        File_UserGroup_AuditLogs.Add(new DbStorage_File_UserGroup_AuditLog
                         {
                             Id = new Guid(),
 
@@ -755,7 +755,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_File_UserGroup_Link file_UserGroup_Link:
-                        File_UserGroup_Link_AuditLog.Add(new DbStorage_File_UserGroup_Link_AuditLog
+                        File_UserGroup_Link_AuditLogs.Add(new DbStorage_File_UserGroup_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -785,7 +785,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_UserGroup_Notification_AuditLog.Add(new DbStorage_File_UserGroup_Notification_AuditLog
+                        File_UserGroup_Notification_AuditLogs.Add(new DbStorage_File_UserGroup_Notification_AuditLog
                         {
                             Id = new Guid(),
 
@@ -815,7 +815,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_UserGroup_Permission_AuditLog.Add(new DbStorage_File_UserGroup_Permission_AuditLog
+                        File_UserGroup_Permission_AuditLogs.Add(new DbStorage_File_UserGroup_Permission_AuditLog
                         {
                             Id = new Guid(),
 
@@ -845,7 +845,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_UserGroup_User_AuditLog.Add(new DbStorage_File_UserGroup_User_AuditLog
+                        File_UserGroup_User_AuditLogs.Add(new DbStorage_File_UserGroup_User_AuditLog
                         {
                             Id = new Guid(),
 
@@ -862,7 +862,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_File_UserGroup_User_Link file_UserGroup_User_Link:
-                        File_UserGroup_User_Link_AuditLog.Add(new DbStorage_File_UserGroup_User_Link_AuditLog
+                        File_UserGroup_User_Link_AuditLogs.Add(new DbStorage_File_UserGroup_User_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -892,7 +892,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_VirtualUnit_AuditLog.Add(new DbStorage_File_VirtualUnit_AuditLog
+                        File_VirtualUnit_AuditLogs.Add(new DbStorage_File_VirtualUnit_AuditLog
                         {
                             Id = new Guid(),
 
@@ -922,7 +922,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_VirtualUnit_User_AuditLog.Add(new DbStorage_File_VirtualUnit_User_AuditLog
+                        File_VirtualUnit_User_AuditLogs.Add(new DbStorage_File_VirtualUnit_User_AuditLog
                         {
                             Id = new Guid(),
 
@@ -939,7 +939,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_File_VirtualUnit_User_Link file_VirtualUnit_User_Link:
-                        File_VirtualUnit_User_Link_AuditLog.Add(new DbStorage_File_VirtualUnit_User_Link_AuditLog
+                        File_VirtualUnit_User_Link_AuditLogs.Add(new DbStorage_File_VirtualUnit_User_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -969,7 +969,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_VirtualUnit_User_Notification_AuditLog.Add(new DbStorage_File_VirtualUnit_User_Notification_AuditLog
+                        File_VirtualUnit_User_Notification_AuditLogs.Add(new DbStorage_File_VirtualUnit_User_Notification_AuditLog
                         {
                             Id = new Guid(),
 
@@ -999,7 +999,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_VirtualUnit_User_Permission_AuditLog.Add(new DbStorage_File_VirtualUnit_User_Permission_AuditLog
+                        File_VirtualUnit_User_Permission_AuditLogs.Add(new DbStorage_File_VirtualUnit_User_Permission_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1029,7 +1029,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_VirtualUnit_UserGroup_AuditLog.Add(new DbStorage_File_VirtualUnit_UserGroup_AuditLog
+                        File_VirtualUnit_UserGroup_AuditLogs.Add(new DbStorage_File_VirtualUnit_UserGroup_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1046,7 +1046,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_File_VirtualUnit_UserGroup_Link file_VirtualUnit_UserGroup_Link:
-                        File_VirtualUnit_UserGroup_Link_AuditLog.Add(new DbStorage_File_VirtualUnit_UserGroup_Link_AuditLog
+                        File_VirtualUnit_UserGroup_Link_AuditLogs.Add(new DbStorage_File_VirtualUnit_UserGroup_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1076,7 +1076,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_VirtualUnit_UserGroup_Notification_AuditLog.Add(new DbStorage_File_VirtualUnit_UserGroup_Notification_AuditLog
+                        File_VirtualUnit_UserGroup_Notification_AuditLogs.Add(new DbStorage_File_VirtualUnit_UserGroup_Notification_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1106,7 +1106,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_VirtualUnit_UserGroup_Permission_AuditLog.Add(new DbStorage_File_VirtualUnit_UserGroup_Permission_AuditLog
+                        File_VirtualUnit_UserGroup_Permission_AuditLogs.Add(new DbStorage_File_VirtualUnit_UserGroup_Permission_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1136,7 +1136,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        File_VirtualUnit_UserGroup_User_AuditLog.Add(new DbStorage_File_VirtualUnit_UserGroup_User_AuditLog
+                        File_VirtualUnit_UserGroup_User_AuditLogs.Add(new DbStorage_File_VirtualUnit_UserGroup_User_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1153,7 +1153,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_File_VirtualUnit_UserGroup_User_Link file_VirtualUnit_UserGroup_User_Link:
-                        File_VirtualUnit_UserGroup_User_Link_AuditLog.Add(new DbStorage_File_VirtualUnit_UserGroup_User_Link_AuditLog
+                        File_VirtualUnit_UserGroup_User_Link_AuditLogs.Add(new DbStorage_File_VirtualUnit_UserGroup_User_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1185,7 +1185,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_AuditLog.Add(new DbStorage_RootDirectory_AuditLog
+                        RootDirectory_AuditLogs.Add(new DbStorage_RootDirectory_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1215,7 +1215,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_Metadata_AuditLog.Add(new DbStorage_RootDirectory_Metadata_AuditLog
+                        RootDirectory_Metadata_AuditLogs.Add(new DbStorage_RootDirectory_Metadata_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1232,7 +1232,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_RootDirectory_Metadata_Link rootDirectory_Metadata_Link:
-                        RootDirectory_Metadata_Link_AuditLog.Add(new DbStorage_RootDirectory_Metadata_Link_AuditLog
+                        RootDirectory_Metadata_Link_AuditLogs.Add(new DbStorage_RootDirectory_Metadata_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1262,7 +1262,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_QrCode_AuditLog.Add(new DbStorage_RootDirectory_QrCode_AuditLog
+                        RootDirectory_QrCode_AuditLogs.Add(new DbStorage_RootDirectory_QrCode_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1292,7 +1292,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_Quality_AuditLog.Add(new DbStorage_RootDirectory_Quality_AuditLog
+                        RootDirectory_Quality_AuditLogs.Add(new DbStorage_RootDirectory_Quality_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1322,7 +1322,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_User_AuditLog.Add(new DbStorage_RootDirectory_User_AuditLog
+                        RootDirectory_User_AuditLogs.Add(new DbStorage_RootDirectory_User_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1339,7 +1339,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_RootDirectory_User_Link RootDirectory_User_Link:
-                        RootDirectory_User_Link_AuditLog.Add(new DbStorage_RootDirectory_User_Link_AuditLog
+                        RootDirectory_User_Link_AuditLogs.Add(new DbStorage_RootDirectory_User_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1369,7 +1369,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_User_Notification_AuditLog.Add(new DbStorage_RootDirectory_User_Notification_AuditLog
+                        RootDirectory_User_Notification_AuditLogs.Add(new DbStorage_RootDirectory_User_Notification_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1399,7 +1399,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_User_Permission_AuditLog.Add(new DbStorage_RootDirectory_User_Permission_AuditLog
+                        RootDirectory_User_Permission_AuditLogs.Add(new DbStorage_RootDirectory_User_Permission_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1429,7 +1429,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_UserGroup_AuditLog.Add(new DbStorage_RootDirectory_UserGroup_AuditLog
+                        RootDirectory_UserGroup_AuditLogs.Add(new DbStorage_RootDirectory_UserGroup_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1446,7 +1446,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_RootDirectory_UserGroup_Link RootDirectory_UserGroup_Link:
-                        RootDirectory_UserGroup_Link_AuditLog.Add(new DbStorage_RootDirectory_UserGroup_Link_AuditLog
+                        RootDirectory_UserGroup_Link_AuditLogs.Add(new DbStorage_RootDirectory_UserGroup_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1476,7 +1476,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_UserGroup_Notification_AuditLog.Add(new DbStorage_RootDirectory_UserGroup_Notification_AuditLog
+                        RootDirectory_UserGroup_Notification_AuditLogs.Add(new DbStorage_RootDirectory_UserGroup_Notification_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1506,7 +1506,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_UserGroup_Permission_AuditLog.Add(new DbStorage_RootDirectory_UserGroup_Permission_AuditLog
+                        RootDirectory_UserGroup_Permission_AuditLogs.Add(new DbStorage_RootDirectory_UserGroup_Permission_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1536,7 +1536,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_UserGroup_User_AuditLog.Add(new DbStorage_RootDirectory_UserGroup_User_AuditLog
+                        RootDirectory_UserGroup_User_AuditLogs.Add(new DbStorage_RootDirectory_UserGroup_User_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1553,7 +1553,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_RootDirectory_UserGroup_User_Link RootDirectory_UserGroup_User_Link:
-                        RootDirectory_UserGroup_User_Link_AuditLog.Add(new DbStorage_RootDirectory_UserGroup_User_Link_AuditLog
+                        RootDirectory_UserGroup_User_Link_AuditLogs.Add(new DbStorage_RootDirectory_UserGroup_User_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1583,7 +1583,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_VirtualUnit_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_AuditLog
+                        RootDirectory_VirtualUnit_AuditLogs.Add(new DbStorage_RootDirectory_VirtualUnit_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1613,7 +1613,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_VirtualUnit_User_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_User_AuditLog
+                        RootDirectory_VirtualUnit_User_AuditLogs.Add(new DbStorage_RootDirectory_VirtualUnit_User_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1630,7 +1630,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_RootDirectory_VirtualUnit_User_Link rootDirectory_VirtualUnit_User_Link:
-                        RootDirectory_VirtualUnit_User_Link_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_User_Link_AuditLog
+                        RootDirectory_VirtualUnit_User_Link_AuditLogs.Add(new DbStorage_RootDirectory_VirtualUnit_User_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1660,7 +1660,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_VirtualUnit_User_Notification_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_User_Notification_AuditLog
+                        RootDirectory_VirtualUnit_User_Notification_AuditLogs.Add(new DbStorage_RootDirectory_VirtualUnit_User_Notification_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1690,7 +1690,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_VirtualUnit_User_Permission_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_User_Permission_AuditLog
+                        RootDirectory_VirtualUnit_User_Permission_AuditLogs.Add(new DbStorage_RootDirectory_VirtualUnit_User_Permission_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1720,7 +1720,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_VirtualUnit_UserGroup_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_AuditLog
+                        RootDirectory_VirtualUnit_UserGroup_AuditLogs.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1737,7 +1737,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_RootDirectory_VirtualUnit_UserGroup_Link rootDirectory_VirtualUnit_UserGroup_Link:
-                        RootDirectory_VirtualUnit_UserGroup_Link_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_Link_AuditLog
+                        RootDirectory_VirtualUnit_UserGroup_Link_AuditLogs.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1767,7 +1767,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_VirtualUnit_UserGroup_Notification_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_Notification_AuditLog
+                        RootDirectory_VirtualUnit_UserGroup_Notification_AuditLogs.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_Notification_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1797,7 +1797,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_VirtualUnit_UserGroup_Permission_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_Permission_AuditLog
+                        RootDirectory_VirtualUnit_UserGroup_Permission_AuditLogs.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_Permission_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1827,7 +1827,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        RootDirectory_VirtualUnit_UserGroup_User_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_User_AuditLog
+                        RootDirectory_VirtualUnit_UserGroup_User_AuditLogs.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_User_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1844,7 +1844,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_RootDirectory_VirtualUnit_UserGroup_User_Link rootDirectory_VirtualUnit_UserGroup_User_Link:
-                        RootDirectory_VirtualUnit_UserGroup_User_Link_AuditLog.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_User_Link_AuditLog
+                        RootDirectory_VirtualUnit_UserGroup_User_Link_AuditLogs.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_User_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1876,7 +1876,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_AuditLog.Add(new DbStorage_SubDirectory_AuditLog
+                        SubDirectory_AuditLogs.Add(new DbStorage_SubDirectory_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1906,7 +1906,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_Metadata_AuditLog.Add(new DbStorage_SubDirectory_Metadata_AuditLog
+                        SubDirectory_Metadata_AuditLogs.Add(new DbStorage_SubDirectory_Metadata_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1923,7 +1923,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectory_Metadata_Link subDirectory_Metadata_Link:
-                        SubDirectory_Metadata_Link_AuditLog.Add(new DbStorage_SubDirectory_Metadata_Link_AuditLog
+                        SubDirectory_Metadata_Link_AuditLogs.Add(new DbStorage_SubDirectory_Metadata_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1953,7 +1953,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_QrCode_AuditLog.Add(new DbStorage_SubDirectory_QrCode_AuditLog
+                        SubDirectory_QrCode_AuditLogs.Add(new DbStorage_SubDirectory_QrCode_AuditLog
                         {
                             Id = new Guid(),
 
@@ -1983,7 +1983,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_Quality_AuditLog.Add(new DbStorage_SubDirectory_Quality_AuditLog
+                        SubDirectory_Quality_AuditLogs.Add(new DbStorage_SubDirectory_Quality_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2013,7 +2013,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_User_AuditLog.Add(new DbStorage_SubDirectory_User_AuditLog
+                        SubDirectory_User_AuditLogs.Add(new DbStorage_SubDirectory_User_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2030,7 +2030,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectory_User_Link SubDirectory_User_Link:
-                        SubDirectory_User_Link_AuditLog.Add(new DbStorage_SubDirectory_User_Link_AuditLog
+                        SubDirectory_User_Link_AuditLogs.Add(new DbStorage_SubDirectory_User_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2060,7 +2060,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_User_Notification_AuditLog.Add(new DbStorage_SubDirectory_User_Notification_AuditLog
+                        SubDirectory_User_Notification_AuditLogs.Add(new DbStorage_SubDirectory_User_Notification_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2090,7 +2090,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_User_Permission_AuditLog.Add(new DbStorage_SubDirectory_User_Permission_AuditLog
+                        SubDirectory_User_Permission_AuditLogs.Add(new DbStorage_SubDirectory_User_Permission_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2120,7 +2120,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_UserGroup_AuditLog.Add(new DbStorage_SubDirectory_UserGroup_AuditLog
+                        SubDirectory_UserGroup_AuditLogs.Add(new DbStorage_SubDirectory_UserGroup_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2137,7 +2137,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectory_UserGroup_Link SubDirectory_UserGroup_Link:
-                        SubDirectory_UserGroup_Link_AuditLog.Add(new DbStorage_SubDirectory_UserGroup_Link_AuditLog
+                        SubDirectory_UserGroup_Link_AuditLogs.Add(new DbStorage_SubDirectory_UserGroup_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2167,7 +2167,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_UserGroup_Notification_AuditLog.Add(new DbStorage_SubDirectory_UserGroup_Notification_AuditLog
+                        SubDirectory_UserGroup_Notification_AuditLogs.Add(new DbStorage_SubDirectory_UserGroup_Notification_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2197,7 +2197,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_UserGroup_Permission_AuditLog.Add(new DbStorage_SubDirectory_UserGroup_Permission_AuditLog
+                        SubDirectory_UserGroup_Permission_AuditLogs.Add(new DbStorage_SubDirectory_UserGroup_Permission_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2227,7 +2227,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_UserGroup_User_AuditLog.Add(new DbStorage_SubDirectory_UserGroup_User_AuditLog
+                        SubDirectory_UserGroup_User_AuditLogs.Add(new DbStorage_SubDirectory_UserGroup_User_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2244,7 +2244,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectory_UserGroup_User_Link SubDirectory_UserGroup_User_Link:
-                        SubDirectory_UserGroup_User_Link_AuditLog.Add(new DbStorage_SubDirectory_UserGroup_User_Link_AuditLog
+                        SubDirectory_UserGroup_User_Link_AuditLogs.Add(new DbStorage_SubDirectory_UserGroup_User_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2274,7 +2274,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_VirtualUnit_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_AuditLog
+                        SubDirectory_VirtualUnit_AuditLogs.Add(new DbStorage_SubDirectory_VirtualUnit_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2304,7 +2304,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_VirtualUnit_User_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_User_AuditLog
+                        SubDirectory_VirtualUnit_User_AuditLogs.Add(new DbStorage_SubDirectory_VirtualUnit_User_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2321,7 +2321,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectory_VirtualUnit_User_Link subDirectory_VirtualUnit_User_Link:
-                        SubDirectory_VirtualUnit_User_Link_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_User_Link_AuditLog
+                        SubDirectory_VirtualUnit_User_Link_AuditLogs.Add(new DbStorage_SubDirectory_VirtualUnit_User_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2351,7 +2351,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_VirtualUnit_User_Notification_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_User_Notification_AuditLog
+                        SubDirectory_VirtualUnit_User_Notification_AuditLogs.Add(new DbStorage_SubDirectory_VirtualUnit_User_Notification_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2381,7 +2381,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_VirtualUnit_User_Permission_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_User_Permission_AuditLog
+                        SubDirectory_VirtualUnit_User_Permission_AuditLogs.Add(new DbStorage_SubDirectory_VirtualUnit_User_Permission_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2411,7 +2411,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_VirtualUnit_UserGroup_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_AuditLog
+                        SubDirectory_VirtualUnit_UserGroup_AuditLogs.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2428,7 +2428,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectory_VirtualUnit_UserGroup_Link subDirectory_VirtualUnit_UserGroup_Link:
-                        SubDirectory_VirtualUnit_UserGroup_Link_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_Link_AuditLog
+                        SubDirectory_VirtualUnit_UserGroup_Link_AuditLogs.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2458,7 +2458,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_VirtualUnit_UserGroup_Notification_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_Notification_AuditLog
+                        SubDirectory_VirtualUnit_UserGroup_Notification_AuditLogs.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_Notification_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2488,7 +2488,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_VirtualUnit_UserGroup_Permission_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_Permission_AuditLog
+                        SubDirectory_VirtualUnit_UserGroup_Permission_AuditLogs.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_Permission_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2518,7 +2518,7 @@ namespace PSGM.Model.DbStorage
                         }
                         #endregion
 
-                        SubDirectory_VirtualUnit_UserGroup_User_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_User_AuditLog
+                        SubDirectory_VirtualUnit_UserGroup_User_AuditLogs.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_User_AuditLog
                         {
                             Id = new Guid(),
 
@@ -2535,7 +2535,7 @@ namespace PSGM.Model.DbStorage
                         break;
 
                     case DbStorage_SubDirectory_VirtualUnit_UserGroup_User_Link subDirectory_VirtualUnit_UserGroup_User_Link:
-                        SubDirectory_VirtualUnit_UserGroup_User_Link_AuditLog.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_User_Link_AuditLog
+                        SubDirectory_VirtualUnit_UserGroup_User_Link_AuditLogs.Add(new DbStorage_SubDirectory_VirtualUnit_UserGroup_User_Link_AuditLog
                         {
                             Id = new Guid(),
 

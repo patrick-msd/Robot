@@ -34,7 +34,7 @@ namespace PSGM.Model.DbStorage
 
         [Column("Description")]
         [Display(Name = "Description")]
-        [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
         [Column("SuffixProjectOwner")]
@@ -55,7 +55,7 @@ namespace PSGM.Model.DbStorage
 
         [Column("DescriptionProjectOwner")]
         [Display(Name = "DescriptionProjectOwner")]
-        [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string DescriptionProjectOwner { get; set; } = string.Empty;
 
         [Column("Stars")]
@@ -78,7 +78,7 @@ namespace PSGM.Model.DbStorage
 
         [Column("StorageObjectName")]
         [Display(Name = "StorageObjectName")]
-        [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string StorageObjectName { get; set; } = string.Empty;
 
         [Column("StorageObjectVersion")]
@@ -87,12 +87,12 @@ namespace PSGM.Model.DbStorage
 
         [Column("StorageObjectUrl")]
         [Display(Name = "StorageObjectUrl")]
-        [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string StorageObjectUrl { get; set; } = string.Empty;
 
         [Column("StorageObjectUrlPublic")]
         [Display(Name = "StorageObjectUrlPublic")]
-        [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string StorageObjectUrlPublic { get; set; } = string.Empty;
 
         [Column("ExtId1")]

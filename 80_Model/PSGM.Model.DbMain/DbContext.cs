@@ -42,89 +42,89 @@ namespace PSGM.Model.DbMain
         #region DataSets
         #region Address
         public DbSet<DbMain_Address> Addresses { get; set; }
-        public DbSet<DbMain_Address_AuditLog> Address_AuditLog { get; set; }
+        public DbSet<DbMain_Address_AuditLog> Address_AuditLogs { get; set; }
         #endregion
 
         #region Archive
         public DbSet<DbMain_Archive_Job> Archives_Jobs { get; set; }
-        public DbSet<DbMain_Archive_Job_AuditLog> Archive_Job_AuditLog { get; set; }
+        public DbSet<DbMain_Archive_Job_AuditLog> Archive_Job_AuditLogs { get; set; }
 
         public DbSet<DbMain_Archive_Job_Link> Archive_Job_Links { get; set; }
-        public DbSet<DbMain_Archive_Job_Link_AuditLog> Archive_Job_Link_AuditLog { get; set; }
+        public DbSet<DbMain_Archive_Job_Link_AuditLog> Archive_Job_Link_AuditLogs { get; set; }
         #endregion
 
         #region Contributor
         public DbSet<DbMain_Contributors> Contributors { get; set; }
-        public DbSet<DbMain_Contributors_AuditLog> Contributor_AuditLog { get; set; }
+        public DbSet<DbMain_Contributors_AuditLog> Contributor_AuditLogs { get; set; }
         #endregion
 
         #region Delivery Slip
         public DbSet<DbMain_DeliverySlip> DeliverySlip { get; set; }
-        public DbSet<DbMain_DeliverySlip_AuditLog> DeliverySlip_AuditLog { get; set; }
+        public DbSet<DbMain_DeliverySlip_AuditLog> DeliverySlip_AuditLogs { get; set; }
 
         public DbSet<DbMain_DeliverySlip_Template> DeliverySlip_Templates { get; set; }
-        public DbSet<DbMain_DeliverySlip_Template_AuditLog> DeliverySlip_Template_AuditLog { get; set; }
+        public DbSet<DbMain_DeliverySlip_Template_AuditLog> DeliverySlip_Template_AuditLogs { get; set; }
         #endregion
 
         #region Location
         public DbSet<DbMain_Location> Locations { get; set; }
-        public DbSet<DbMain_Location_AuditLog> Location_AuditLog { get; set; }
+        public DbSet<DbMain_Location_AuditLog> Location_AuditLogs { get; set; }
 
         public DbSet<DbMain_Location_Address_Link> Location_Address_Links { get; set; }
-        public DbSet<DbMain_Location_Address_Link_AuditLog> Location_Address_Link_AuditLog { get; set; }
+        public DbSet<DbMain_Location_Address_Link_AuditLog> Location_Address_Link_AuditLogs { get; set; }
         #endregion
 
         #region Organization
         public DbSet<DbMain_Organization> Organizations { get; set; }
-        public DbSet<DbMain_Organization_AuditLog> Organization_AuditLog { get; set; }
+        public DbSet<DbMain_Organization_AuditLog> Organization_AuditLogs { get; set; }
 
         public DbSet<DbMain_Organization_Employee> Organization_Employee { get; set; }
-        public DbSet<DbMain_Organization_Employee_AuditLog> Organization_Employee_AuditLog { get; set; }
+        public DbSet<DbMain_Organization_Employee_AuditLog> Organization_Employee_AuditLogs { get; set; }
 
         public DbSet<DbMain_Organization_Employee_Notification> Organization_Employee_Notification { get; set; }
-        public DbSet<DbMain_Organization_Employee_Notification_AuditLog> Organization_Employee_Notification_AuditLog { get; set; }
+        public DbSet<DbMain_Organization_Employee_Notification_AuditLog> Organization_Employee_Notification_AuditLogs { get; set; }
 
         public DbSet<DbMain_Organization_Employee_Permission> Organization_Employee_Permission { get; set; }
-        public DbSet<DbMain_Organization_Employee_Permission_AuditLog> Organization_Employee_Permission_AuditLog { get; set; }
+        public DbSet<DbMain_Organization_Employee_Permission_AuditLog> Organization_Employee_Permission_AuditLogs { get; set; }
 
         public DbSet<DbMain_Organization_EmployeeGroup> Organization_EmployeeGroup { get; set; }
-        public DbSet<DbMain_Organization_EmployeeGroup_AuditLog> Organization_EmployeeGroup_AuditLog { get; set; }
+        public DbSet<DbMain_Organization_EmployeeGroup_AuditLog> Organization_EmployeeGroup_AuditLogs { get; set; }
 
         public DbSet<DbMain_Organization_Location_Link> Organization_Location_Links { get; set; }
-        public DbSet<DbMain_Organization_Location_Link_AuditLog> Organization_Location_Link_AuditLog { get; set; }
+        public DbSet<DbMain_Organization_Location_Link_AuditLog> Organization_Location_Link_AuditLogs { get; set; }
         #endregion
 
         #region Project
         public DbSet<DbMain_Project> Projects { get; set; }
-        public DbSet<DbMain_Project_AuditLog> Project_AuditLog { get; set; }
+        public DbSet<DbMain_Project_AuditLog> Project_AuditLogs { get; set; }
         #endregion
 
         #region Unit
         public DbSet<DbMain_Unit> Units { get; set; }
-        public DbSet<DbMain_Unit_AuditLog> Unit_AuditLog { get; set; }
+        public DbSet<DbMain_Unit_AuditLog> Unit_AuditLogs { get; set; }
 
         public DbSet<DbMain_VirtualRootUnit> VirtualRootUnits { get; set; }
-        public DbSet<DbMain_VirtualRootUnit_AuditLog> VirtualRootUnit_AuditLog { get; set; }
+        public DbSet<DbMain_VirtualRootUnit_AuditLog> VirtualRootUnit_AuditLogs { get; set; }
 
         public DbSet<DbMain_VirtualRootUnit_User_Permission> VirtualRootUnit_User_Permissions { get; set; }
-        public DbSet<DbMain_VirtualRootUnit_User_Permission_AuditLog> VirtualRootUnit_User_Permission_AuditLog { get; set; }
+        public DbSet<DbMain_VirtualRootUnit_User_Permission_AuditLog> VirtualRootUnit_User_Permission_AuditLogs { get; set; }
 
         public DbSet<DbMain_VirtualSubUnit> VirtualSubUnits { get; set; }
-        public DbSet<DbMain_VirtualSubUnit_AuditLog> VirtualSubUnit_AuditLog { get; set; }
+        public DbSet<DbMain_VirtualSubUnit_AuditLog> VirtualSubUnit_AuditLogs { get; set; }
 
         public DbSet<DbMain_VirtualSubUnit_User_Permission> VirtualSubUnit_User_Permissions { get; set; }
-        public DbSet<DbMain_VirtualSubUnit_User_Permission_AuditLog> VirtualSubUnit_User_Permission_AuditLog { get; set; }
+        public DbSet<DbMain_VirtualSubUnit_User_Permission_AuditLog> VirtualSubUnit_User_Permission_AuditLogs { get; set; }
         #endregion
 
         #region Workflow
         public DbSet<DbMain_WorkflowGroup> dbMain_WorkflowGroups { get; set; }
-        public DbSet<DbMain_WorkflowGroup_AuditLog> WorkflowGroup_AuditLog { get; set; }
+        public DbSet<DbMain_WorkflowGroup_AuditLog> WorkflowGroup_AuditLogs { get; set; }
 
         public DbSet<DbMain_WorkflowItem> WorkflowItems { get; set; }
-        public DbSet<DbMain_WorkflowItem_AuditLog> WorkflowItem_AuditLog { get; set; }
+        public DbSet<DbMain_WorkflowItem_AuditLog> WorkflowItem_AuditLogs { get; set; }
 
         public DbSet<DbMain_WorkflowItem_Link> WorkflowItem_Links { get; set; }
-        public DbSet<DbMain_WorkflowItem_Link_AuditLog> WorkflowItem_Link_AuditLog { get; set; }
+        public DbSet<DbMain_WorkflowItem_Link_AuditLog> WorkflowItem_Link_AuditLogs { get; set; }
         #endregion
         #endregion
 
@@ -218,7 +218,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        Address_AuditLog.Add(new DbMain_Address_AuditLog
+                        Address_AuditLogs.Add(new DbMain_Address_AuditLog
                         {
                             Id = new Guid(),
 
@@ -250,7 +250,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        Archive_Job_AuditLog.Add(new DbMain_Archive_Job_AuditLog
+                        Archive_Job_AuditLogs.Add(new DbMain_Archive_Job_AuditLog
                         {
                             Id = new Guid(),
 
@@ -267,7 +267,7 @@ namespace PSGM.Model.DbMain
                         break;
 
                     case DbMain_Archive_Job_Link archive_Job_Link:
-                        Archive_Job_Link_AuditLog.Add(new DbMain_Archive_Job_Link_AuditLog
+                        Archive_Job_Link_AuditLogs.Add(new DbMain_Archive_Job_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -299,7 +299,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        Contributor_AuditLog.Add(new DbMain_Contributors_AuditLog
+                        Contributor_AuditLogs.Add(new DbMain_Contributors_AuditLog
                         {
                             Id = new Guid(),
 
@@ -331,7 +331,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        DeliverySlip_AuditLog.Add(new DbMain_DeliverySlip_AuditLog
+                        DeliverySlip_AuditLogs.Add(new DbMain_DeliverySlip_AuditLog
                         {
                             Id = new Guid(),
 
@@ -361,7 +361,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        DeliverySlip_Template_AuditLog.Add(new DbMain_DeliverySlip_Template_AuditLog
+                        DeliverySlip_Template_AuditLogs.Add(new DbMain_DeliverySlip_Template_AuditLog
                         {
                             Id = new Guid(),
 
@@ -393,7 +393,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        Location_AuditLog.Add(new DbMain_Location_AuditLog
+                        Location_AuditLogs.Add(new DbMain_Location_AuditLog
                         {
                             Id = new Guid(),
 
@@ -410,7 +410,7 @@ namespace PSGM.Model.DbMain
                         break;
 
                     case DbMain_Location_Address_Link location_Address_Link:
-                        Location_Address_Link_AuditLog.Add(new DbMain_Location_Address_Link_AuditLog
+                        Location_Address_Link_AuditLogs.Add(new DbMain_Location_Address_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -442,7 +442,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        Organization_AuditLog.Add(new DbMain_Organization_AuditLog
+                        Organization_AuditLogs.Add(new DbMain_Organization_AuditLog
                         {
                             Id = new Guid(),
 
@@ -472,7 +472,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        Organization_Employee_AuditLog.Add(new DbMain_Organization_Employee_AuditLog
+                        Organization_Employee_AuditLogs.Add(new DbMain_Organization_Employee_AuditLog
                         {
                             Id = new Guid(),
 
@@ -502,7 +502,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        Organization_Employee_Notification_AuditLog.Add(new DbMain_Organization_Employee_Notification_AuditLog
+                        Organization_Employee_Notification_AuditLogs.Add(new DbMain_Organization_Employee_Notification_AuditLog
                         {
                             Id = new Guid(),
 
@@ -532,7 +532,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        Organization_Employee_Permission_AuditLog.Add(new DbMain_Organization_Employee_Permission_AuditLog
+                        Organization_Employee_Permission_AuditLogs.Add(new DbMain_Organization_Employee_Permission_AuditLog
                         {
                             Id = new Guid(),
 
@@ -562,7 +562,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        Organization_EmployeeGroup_AuditLog.Add(new DbMain_Organization_EmployeeGroup_AuditLog
+                        Organization_EmployeeGroup_AuditLogs.Add(new DbMain_Organization_EmployeeGroup_AuditLog
                         {
                             Id = new Guid(),
 
@@ -579,7 +579,7 @@ namespace PSGM.Model.DbMain
                         break;
 
                     case DbMain_Organization_Location_Link organization_Location_Link:
-                        Organization_Location_Link_AuditLog.Add(new DbMain_Organization_Location_Link_AuditLog
+                        Organization_Location_Link_AuditLogs.Add(new DbMain_Organization_Location_Link_AuditLog
                         {
                             Id = new Guid(),
 
@@ -611,7 +611,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        Project_AuditLog.Add(new DbMain_Project_AuditLog
+                        Project_AuditLogs.Add(new DbMain_Project_AuditLog
                         {
                             Id = new Guid(),
 
@@ -643,7 +643,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        Unit_AuditLog.Add(new DbMain_Unit_AuditLog
+                        Unit_AuditLogs.Add(new DbMain_Unit_AuditLog
                         {
                             Id = new Guid(),
 
@@ -673,7 +673,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        VirtualRootUnit_AuditLog.Add(new DbMain_VirtualRootUnit_AuditLog
+                        VirtualRootUnit_AuditLogs.Add(new DbMain_VirtualRootUnit_AuditLog
                         {
                             Id = new Guid(),
 
@@ -703,7 +703,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        VirtualRootUnit_User_Permission_AuditLog.Add(new DbMain_VirtualRootUnit_User_Permission_AuditLog
+                        VirtualRootUnit_User_Permission_AuditLogs.Add(new DbMain_VirtualRootUnit_User_Permission_AuditLog
                         {
                             Id = new Guid(),
 
@@ -733,7 +733,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        VirtualSubUnit_AuditLog.Add(new DbMain_VirtualSubUnit_AuditLog
+                        VirtualSubUnit_AuditLogs.Add(new DbMain_VirtualSubUnit_AuditLog
                         {
                             Id = new Guid(),
 
@@ -763,7 +763,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        VirtualSubUnit_User_Permission_AuditLog.Add(new DbMain_VirtualSubUnit_User_Permission_AuditLog
+                        VirtualSubUnit_User_Permission_AuditLogs.Add(new DbMain_VirtualSubUnit_User_Permission_AuditLog
                         {
                             Id = new Guid(),
 
@@ -795,7 +795,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        WorkflowGroup_AuditLog.Add(new DbMain_WorkflowGroup_AuditLog
+                        WorkflowGroup_AuditLogs.Add(new DbMain_WorkflowGroup_AuditLog
                         {
                             Id = new Guid(),
 
@@ -825,7 +825,7 @@ namespace PSGM.Model.DbMain
                         }
                         #endregion
 
-                        WorkflowItem_AuditLog.Add(new DbMain_WorkflowItem_AuditLog
+                        WorkflowItem_AuditLogs.Add(new DbMain_WorkflowItem_AuditLog
                         {
                             Id = new Guid(),
 
@@ -842,7 +842,7 @@ namespace PSGM.Model.DbMain
                         break;
 
                     case DbMain_WorkflowItem_Link workflowItem_Link:
-                        WorkflowItem_Link_AuditLog.Add(new DbMain_WorkflowItem_Link_AuditLog
+                        WorkflowItem_Link_AuditLogs.Add(new DbMain_WorkflowItem_Link_AuditLog
                         {
                             Id = new Guid(),
 

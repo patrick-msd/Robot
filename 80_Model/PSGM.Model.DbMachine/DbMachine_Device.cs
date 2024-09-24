@@ -23,7 +23,7 @@ namespace PSGM.Model.DbMachine
 
         [Column("DeviceDescription")]
         [Display(Name = "DeviceDescription")]
-        [StringLength(8191, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string DeviceDescription { get; set; } = string.Empty;
 
         [Column("DeviceLocation")]

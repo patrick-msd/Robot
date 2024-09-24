@@ -8,12 +8,12 @@ cd C:\Git\MSD\Robot\80_Model\PSGM.Model.DbArchiv
 dotnet ef migrations add InitialeCreate
 dotnet ef database update
 
-Write-Host "########################### Clean and create DbBackendStructure... ###########################"
-Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbBackendStructure\Migrations' -Recurse -ErrorAction SilentlyContinue -Confirm:$false
-Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbBackendStructure\DbBackendStructure.db' -ErrorAction SilentlyContinue -Confirm:$false
-#Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbBackendStructure\DbBackendStructure.db' -ErrorAction SilentlyContinue -Confirm:$false
-#Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbBackendStructure\DbBackendStructure.db' -ErrorAction SilentlyContinue -Confirm:$false
-cd C:\Git\MSD\Robot\80_Model\PSGM.Model.DbBackendStructure
+Write-Host "########################### Clean and create DbBackend... ###########################"
+Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbBackend\Migrations' -Recurse -ErrorAction SilentlyContinue -Confirm:$false
+Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbBackend\DbBackend.db' -ErrorAction SilentlyContinue -Confirm:$false
+#Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbBackend\DbBackend.db' -ErrorAction SilentlyContinue -Confirm:$false
+#Remove-Item -Path 'C:\Git\MSD\Robot\80_Model\PSGM.Model.DbBackend\DbBackend.db' -ErrorAction SilentlyContinue -Confirm:$false
+cd C:\Git\MSD\Robot\80_Model\PSGM.Model.DbBackend
 dotnet ef migrations add InitialeCreate
 dotnet ef database update
 
