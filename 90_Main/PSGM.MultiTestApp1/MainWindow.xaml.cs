@@ -1592,6 +1592,10 @@ namespace PSGM.MultiTestApp1
             _dbStorageStructure_Context.SaveChanges();
 
 
+
+
+
+
             _dbStorage_Data_Context.ConnectionStringSQLite = storageStructure_Project.Storages.Where(p => p.StorageClass == StorageClass.Data).FirstOrDefault().DatabaseFilePath;
             _dbStorage_DataRaw_Context.ConnectionStringSQLite = storageStructure_Project.Storages.Where(p => p.StorageClass == StorageClass.DataRaw).FirstOrDefault().DatabaseFilePath;
 

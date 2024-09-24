@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbBackendStructure
 {
-    [Table("Storage_AuditLog")]
+    [Table("Structure_AuditLog")]
     public class DbBackendStructure_Structure_AuditLog
     {
         #region Entities

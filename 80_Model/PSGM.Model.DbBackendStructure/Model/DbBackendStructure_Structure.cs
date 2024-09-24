@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbBackendStructure
 {
-    [Table("Storage")]
+    [Table("Structure")]
     public class DbBackendStructure_Structure
     {
         #region Entities
@@ -73,10 +73,10 @@ namespace PSGM.Model.DbBackendStructure
         [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string StorageS3Endpoint { get; set; } = string.Empty;
 
-        //[Column("StorageS3BucketName")]
-        //[Display(Name = "StorageS3BucketName")]
-        //[StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string StorageS3BucketName { get; set; } = string.Empty;
+        [Column("StorageS3BucketName")]
+        [Display(Name = "StorageS3BucketName")]
+        [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string StorageS3BucketName { get; set; } = string.Empty;
 
         [Column("StorageS3AccessKey")]
         [Display(Name = "StorageS3AccessKey")]

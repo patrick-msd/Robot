@@ -6,8 +6,7 @@
 
         Main = 10000,
 
-        DataRaw = 11000,
-        Data = 11001,
+        Storage = 11000,
 
         Archive  = 12000, 
         

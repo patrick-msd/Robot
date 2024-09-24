@@ -148,20 +148,41 @@ namespace PSGM.Sample.Model.DbBackendStructure
         {
             Random random = new Random();
 
-            for (int h = 0; h < 10; h++)
-            {
-                #region Add project ...
-                List<DbBackendStructure_Project> projects = Generate_Project(250);
-                _dbBackendStructure_Context.Projects.AddRange(projects);
-                _dbBackendStructure_Context.SaveChanges();
-                #endregion
+            #region Add project ...
+            DbBackendStructure_Project projects1 = Generate_Project1(250, new Guid("79A0FD7A-5D68-4095-A309-F4E92426E657"));
+            _dbBackendStructure_Context.Projects.AddRange(projects1);
+            _dbBackendStructure_Context.SaveChanges();
+            #endregion
 
-                #region Add structure ...
-                List<DbBackendStructure_Structure> subDirectories = Generate_Structure(10000, projects);
-                _dbBackendStructure_Context.Structures.AddRange(subDirectories);
-                _dbBackendStructure_Context.SaveChanges();
-                #endregion
-            }
+            #region Add structure ...
+            List<DbBackendStructure_Structure> subDirectories1 = Generate_Structure1(10000, projects1);
+            _dbBackendStructure_Context.Structures.AddRange(subDirectories1);
+            _dbBackendStructure_Context.SaveChanges();
+            #endregion
+
+            //for (int h = 0; h < 10; h++)
+            //{
+            //    #region Add project ...
+            //    List<DbBackendStructure_Project> projects2 = Generate_Project2(250);
+            //    _dbBackendStructure_Context.Projects.AddRange(projects2);
+            //    _dbBackendStructure_Context.SaveChanges();
+            //    #endregion
+
+            //    #region Add structure ...
+            //    List<DbBackendStructure_Structure> subDirectories2 = Generate_Structure2(10000, projects2);
+            //    _dbBackendStructure_Context.Structures.AddRange(subDirectories2);
+            //    _dbBackendStructure_Context.SaveChanges();
+            //    #endregion
+            //}
+        }
+
+        private void btnSetupStorage_Click(object sender, RoutedEventArgs e)
+        {
+            DbBackendStructure_Project project = _dbBackendStructure_Context.Projects.Where(p => p.ProjectId_Ext == new Guid("79A0FD7A-5D68-4095-A309-F4E92426E657"))
+                                                                                        .Include(p => p.Structures)
+                                                                                        .First();
+
+            Setup_Storage1(project);
         }
 
         private void btnDbReadData1_Click(object sender, RoutedEventArgs e)

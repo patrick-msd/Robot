@@ -16,6 +16,8 @@
 
                 <Button x:Name="btnDbGenerateData" Content="Generate Data" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,30,0,0" VerticalAlignment="Top" Click="btnDbGenerateData_Click"/>
 
+                <Button x:Name="btnSetupStorage" Content="Setup Storage" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,30,0,0" VerticalAlignment="Top" Click="btnSetupStorage_Click"/>
+
                 <Button x:Name="btnDbReadData1" Content="Read Data 1" HorizontalAlignment="Left" Height="40" Width="250" Margin="10,50,0,0" Click="btnDbReadData1_Click"/>
             </StackPanel>
         </GroupBox>
