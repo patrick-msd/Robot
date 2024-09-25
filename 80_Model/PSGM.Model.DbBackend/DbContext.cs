@@ -40,14 +40,23 @@ namespace PSGM.Model.DbBackend
         #endregion
 
         #region DataSets
-        public DbSet<DbBackend_Cluster> Clusters { get; set; }
-        public DbSet<DbBackend_Cluster_AuditLog> Cluster_AuditLogs { get; set; }
+        public DbSet<DbBackend_Backend> Backends { get; set; }
+        public DbSet<DbBackend_Backend_AuditLog> Backend_AuditLogs { get; set; }
+
+        public DbSet<DbBackend_Database_Cluster> Clusters { get; set; }
+        public DbSet<DbBackend_Database_Cluster_AuditLog> Cluster_AuditLogs { get; set; }
+
+        public DbSet<DbBackend_Database_Server> Database_Servers { get; set; }
+        public DbSet<DbBackend_Database_Server_AuditLog> Database_Server_AuditLogs { get; set; }
 
         public DbSet<DbBackend_Project> Projects { get; set; }
         public DbSet<DbBackend_Project_AuditLog> Project_AuditLogs { get; set; }
 
-        public DbSet<DbBackend_Server> Servers { get; set; }
-        public DbSet<DbBackend_Server_AuditLog> Server_AuditLogs { get; set; }
+        public DbSet<DbBackend_Storage_Cluster> Storage_Cluster { get; set; }
+        public DbSet<DbBackend_Storage_Cluster_AuditLog> Storage_Cluster_AuditLogs { get; set; }
+
+        public DbSet<DbBackend_Storage_Server> Storage_Servers { get; set; }
+        public DbSet<DbBackend_Storage_Server_AuditLog> Storage_Server_AuditLogs { get; set; }
         #endregion
 
         #region Overrides
@@ -125,7 +134,37 @@ namespace PSGM.Model.DbBackend
             {
                 switch (entry.Entity)
                 {
-                    case DbBackend_Cluster cluster:
+                    case DbBackend_Backend backend:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            backend.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            backend.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            backend.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            backend.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        Backend_AuditLogs.Add(new DbBackend_Backend_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = backend.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbBackend_Backend_AuditLog backend_AuditLog:
+                        break;
+
+                    case DbBackend_Database_Cluster cluster:
                         #region Automatically added: Audit details for faster file audit information
                         if (entry.State == EntityState.Added)
                         {
@@ -139,7 +178,7 @@ namespace PSGM.Model.DbBackend
                         }
                         #endregion
 
-                        Cluster_AuditLogs.Add(new DbBackend_Cluster_AuditLog
+                        Cluster_AuditLogs.Add(new DbBackend_Database_Cluster_AuditLog
                         {
                             Id = new Guid(),
 
@@ -152,7 +191,37 @@ namespace PSGM.Model.DbBackend
                         });
                         break;
 
-                    case DbBackend_Cluster_AuditLog cluster_AuditLog:
+                    case DbBackend_Database_Cluster_AuditLog cluster_AuditLog:
+                        break;
+
+                    case DbBackend_Database_Server database_Server:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            database_Server.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            database_Server.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            database_Server.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            database_Server.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        Database_Server_AuditLogs.Add(new DbBackend_Database_Server_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = database_Server.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbBackend_Database_Server_AuditLog database_Server_AuditLog:
                         break;
 
                     case DbBackend_Project project:
@@ -185,25 +254,25 @@ namespace PSGM.Model.DbBackend
                     case DbBackend_Project_AuditLog project_AuditLog:
                         break;
 
-                    case DbBackend_Server server:
+                    case DbBackend_Storage_Cluster storage_Cluster:
                         #region Automatically added: Audit details for faster file audit information
                         if (entry.State == EntityState.Added)
                         {
-                            server.CreatedDateTimeAutoFill = DateTime.UtcNow;
-                            server.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                            storage_Cluster.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            storage_Cluster.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
                         }
                         else
                         {
-                            server.ModifiedDateTimeAutoFill = DateTime.UtcNow;
-                            server.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                            storage_Cluster.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            storage_Cluster.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
                         }
                         #endregion
 
-                        Server_AuditLogs.Add(new DbBackend_Server_AuditLog
+                        Storage_Cluster_AuditLogs.Add(new DbBackend_Storage_Cluster_AuditLog
                         {
                             Id = new Guid(),
 
-                            SourceId = server.Id,
+                            SourceId = storage_Cluster.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
@@ -212,7 +281,37 @@ namespace PSGM.Model.DbBackend
                         });
                         break;
 
-                    case DbBackend_Server_AuditLog server_AuditLog:
+                    case DbBackend_Storage_Cluster_AuditLog storage_Cluster_AuditLog:
+                        break;
+
+                    case DbBackend_Storage_Server storage_Server:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            storage_Server.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            storage_Server.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            storage_Server.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            storage_Server.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        Storage_Server_AuditLogs.Add(new DbBackend_Storage_Server_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = storage_Server.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbBackend_Storage_Server_AuditLog storage_Server_AuditLog:
                         break;
 
                     default:

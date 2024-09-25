@@ -113,22 +113,30 @@ namespace PSGM.Sample.Model.DbBackend
                 _dbBackend_Context.DatabaseSessionParameter_MachineId = _machineId;
                 _dbBackend_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
 
-                if (_dbBackend_Context.Database.EnsureCreated())
+                try
                 {
-                    _dbBackend_Context.Database.OpenConnection();
+                    if (_dbBackend_Context.Database.EnsureCreated())
+                    {
+                        _dbBackend_Context.Database.OpenConnection();
+                    }
+                    //_dbStorage_Data_Context.Database.EnsureDeleted();
+                    //_dbStorage_Data_Context.Database.EnsureCreated();
                 }
-                //_dbStorage_Data_Context.Database.EnsureDeleted();
-                //_dbStorage_Data_Context.Database.EnsureCreated();
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
             }
             #endregion
         }
-       
+
         private void btnDbCreateConfigFile_Click(object sender, RoutedEventArgs e)
         {
             _configFile = new ConfigFile()
             {
                 DatabaseType = DatabaseType.PostgreSQL,
-                DatabaseConnectionString = "Host=db-clu-c6e1c3e3-f49d-4edc-b3a2-2ed50174e3c8.branch031.psgm.at:50001;Database=DbBackend-c6e1c3e3-f49d-4edc-b3a2-2ed50174e3c8;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
+                //DatabaseConnectionString = "Host=db-backend-clu001.branch031.psgm.at:50001;Database=DbBackend-clu001;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
+                DatabaseConnectionString = "Host=db-backend-c6e1c3e3-f49d-4edc-b3a2-2ed50174e3c8.branch031.psgm.at:50001;Database=db-backend-c6e1c3e3-f49d-4edc-b3a2-2ed50174e3c8;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
             };
 
             _configFile.WriteToFile(Directory.GetCurrentDirectory() + "\\ConfigFile.json");
@@ -149,14 +157,14 @@ namespace PSGM.Sample.Model.DbBackend
             Random random = new Random();
 
             #region Add project ...
-            DbBackend_Project projects1 = Generate_Project1(250, new Guid("79A0FD7A-5D68-4095-A309-F4E92426E657"));
+            DbBackend_Project projects1 = Generate_Project1(new Guid("79A0FD7A-5D68-4095-A309-F4E92426E657"));
             _dbBackend_Context.Projects.AddRange(projects1);
             _dbBackend_Context.SaveChanges();
             #endregion
 
             #region Add structure ...
-            List<DbBackend_Cluster> subDirectories1 = Generate_Structure1(10000, projects1);
-            _dbBackend_Context.Clusters.AddRange(subDirectories1);
+            List<DbBackend_Backend> backends1 = Generate_Backend1(projects1);
+            _dbBackend_Context.Backends.AddRange(backends1);
             _dbBackend_Context.SaveChanges();
             #endregion
 
@@ -179,23 +187,52 @@ namespace PSGM.Sample.Model.DbBackend
         private void btnSetupStorage_Click(object sender, RoutedEventArgs e)
         {
             DbBackend_Project project = _dbBackend_Context.Projects.Where(p => p.ProjectId_Ext == new Guid("79A0FD7A-5D68-4095-A309-F4E92426E657"))
-                                                                                        .Include(p => p.Cluster)
-                                                                                        .FirstOrDefault(p => p.Cluster.Any(s => s.BranchNumber == 31));
+                                                                    .Include(p => p.Backends)
+                                                                        .ThenInclude(p => p.DatabaseClusters)
+                                                                            .ThenInclude(p => p.DatabaseServers)
+                                                                    .Include(p => p.Backends)
+                                                                        .ThenInclude(p => p.StorageClusters)
+                                                                            .ThenInclude(p => p.StorageServers)
+                                                                    .FirstOrDefault();
+            //.FirstOrDefault(p => p.Cluster.Any(s => s.BranchNumber == 31));
 
             Debug.WriteLine("@@@");
             Debug.WriteLine("@@@");
 
-            foreach (var item in project.Cluster)
+            if (project.Backends != null)
             {
-                Debug.WriteLine($"{Enum.GetName(typeof(BackendType), item.BackendType)} - {Enum.GetName(typeof(StorageClass), item.StorageClass)}");
-                Debug.WriteLine("---");
-                Debug.WriteLine(item.GetDatabaseConnection(true));
-                Debug.WriteLine(item.GetStorageS3Endpoint(true));
-                Debug.WriteLine("---");
-                Debug.WriteLine(item.GetDatabaseConnection(false));
-                Debug.WriteLine(item.GetStorageS3Endpoint(false));
-                Debug.WriteLine("###");
-                Debug.WriteLine("###");
+                Debug.WriteLine($"Project: {project.ProjectId_Ext}");
+                Debug.WriteLine("@@@");
+                Debug.WriteLine("@@@");
+
+                foreach (var item in project.Backends)
+                {
+                    if (item is not null)
+                    {
+                        Debug.WriteLine($"{Enum.GetName(typeof(BackendType), item.BackendType)} - Databases:");
+                        Debug.WriteLine(item.DatabaseClusters.ToList()[0].GetDatabaseConnection(false));
+                        Debug.WriteLine(item.DatabaseClusters.ToList()[0].GetDatabaseConnection(true));
+                        Debug.Write("Server: ");
+                        foreach (var server in item.DatabaseClusters.ToList()[0].DatabaseServers)
+                        {
+                            Debug.Write($" {server.GetServerName()} - {server.GetIpAddress()},");
+                        }
+                        Debug.WriteLine("");
+
+                        Debug.WriteLine($"{Enum.GetName(typeof(BackendType), item.BackendType)} - Storages:");
+                        Debug.WriteLine(item.StorageClusters.ToList()[0].GetStorageS3Endpoint(false));
+                        Debug.WriteLine(item.StorageClusters.ToList()[0].GetStorageS3Endpoint(true));
+                        Debug.Write("Server: ");
+                        foreach (var server in item.StorageClusters.ToList()[0].StorageServers)
+                        {
+                            Debug.Write($" {server.GetServerName()} - {server.GetIpAddress()},");
+                        }
+                        Debug.WriteLine("");
+
+                        Debug.WriteLine("###");
+                        Debug.WriteLine("###");
+                    }
+                }
             }
 
             if (project != null)
@@ -212,9 +249,9 @@ namespace PSGM.Sample.Model.DbBackend
             ;
 
 
-            var asd = _dbBackend_Context.Projects.Include(p => p.Cluster)
-                                                    .ThenInclude(p => p.Server)
-                                                    .ToList();
+            //var asd = _dbBackend_Context.Projects.Include(p => p.Cluster)
+            //                                        .ThenInclude(p => p.Server)
+            //                                        .ToList();
 
 
             //var asdasd = _dbStorage_Data_Context.Files.ToList();

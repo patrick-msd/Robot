@@ -13,13 +13,13 @@ namespace PSGM.Sample.Model.DbBackend
         {
             IMinioClient minioClient;
 
-            DbBackend_Cluster? structure = projects.Cluster.Where(p => p.StorageClass == StorageClass.Data).FirstOrDefault();
+            //DbBackend_Backend? structure = projects.Cluster.Where(p => p.StorageClass == StorageClass.Data).FirstOrDefault();
 
-            minioClient = new MinioClient().WithEndpoint(structure.GetStorageS3Endpoint(true))
-                                            .WithCredentials(structure.StorageS3AccessKey, structure.StorageS3SecretKey)
-                                            .WithSSL(structure.StorageS3Secure)
-                                            .WithRegion(structure.StorageS3Region)
-                                            .Build();
+            //minioClient = new MinioClient().WithEndpoint(structure.GetStorageS3Endpoint(true))
+            //                                .WithCredentials(structure.StorageS3AccessKey, structure.StorageS3SecretKey)
+            //                                .WithSSL(structure.StorageS3Secure)
+            //                                .WithRegion(structure.StorageS3Region)
+            //                                .Build();
 
             //#region List and remove all buckets
             //try
@@ -54,25 +54,25 @@ namespace PSGM.Sample.Model.DbBackend
             //}
             //#endregion
 
-            #region Add project bucket
-            try
-            {
-                bool found = await minioClient.BucketExistsAsync(new BucketExistsArgs().WithBucket(structure.ProjectId.ToString()));
+            //#region Add project bucket
+            //try
+            //{
+            //    bool found = await minioClient.BucketExistsAsync(new BucketExistsArgs().WithBucket(structure.ProjectId.ToString()));
 
-                if (found)
-                {
-                    Debug.WriteLine($"{structure.ProjectId.ToString()} already exists");
-                }
-                else
-                {
-                    await MakeBucket.Run(minioClient, structure.ProjectId.ToString(), structure.StorageS3Region);
-                }
-            }
-            catch (MinioException ex)
-            {
-                Debug.WriteLine("Error occurred: " + ex);
-            }
-            #endregion
+            //    if (found)
+            //    {
+            //        Debug.WriteLine($"{structure.ProjectId.ToString()} already exists");
+            //    }
+            //    else
+            //    {
+            //        await MakeBucket.Run(minioClient, structure.ProjectId.ToString(), structure.StorageS3Region);
+            //    }
+            //}
+            //catch (MinioException ex)
+            //{
+            //    Debug.WriteLine("Error occurred: " + ex);
+            //}
+            //#endregion
         }
     }
 }

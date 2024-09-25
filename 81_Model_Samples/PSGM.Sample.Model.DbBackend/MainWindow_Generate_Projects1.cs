@@ -4,7 +4,7 @@ namespace PSGM.Sample.Model.DbBackend
 {
     public partial class MainWindow : System.Windows.Window
     {
-        public DbBackend_Project Generate_Project1(int count, Guid projectId)
+        public DbBackend_Project Generate_Project1(Guid projectId)
         {
             Random random = new Random();
 
@@ -13,9 +13,9 @@ namespace PSGM.Sample.Model.DbBackend
                 Id = Guid.NewGuid(),
 
                 ProjectId_Ext = projectId,
-                
-                Cluster = null,                              
 
+                Backends = null,
+                
                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                 //CreatedDateTimeAutoFill = DateTime.Now,
                 //ModifiedByUserIdExtAutoFill = Guid.Empty,

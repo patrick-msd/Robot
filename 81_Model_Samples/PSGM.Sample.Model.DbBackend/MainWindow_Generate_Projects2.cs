@@ -18,7 +18,7 @@ namespace PSGM.Sample.Model.DbBackend
 
                     ProjectId_Ext = Guid.NewGuid(),
 
-                    Cluster = null,
+                    Backends = null,
                     
                     //CreatedByUserIdExtAutoFill = Guid.Empty,
                     //CreatedDateTimeAutoFill = DateTime.Now,

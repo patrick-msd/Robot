@@ -40,7 +40,7 @@ namespace PSGM.Model.DbBackend
 
         #region Links
         [InverseProperty("Project")]
-        public virtual ICollection<DbBackend_Cluster>? Cluster { get; set; }
+        public virtual ICollection<DbBackend_Backend>? Backends { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
