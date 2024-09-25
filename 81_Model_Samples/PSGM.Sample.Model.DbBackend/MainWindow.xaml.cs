@@ -122,13 +122,13 @@ namespace PSGM.Sample.Model.DbBackend
             }
             #endregion
         }
-
+       
         private void btnDbCreateConfigFile_Click(object sender, RoutedEventArgs e)
         {
             _configFile = new ConfigFile()
             {
                 DatabaseType = DatabaseType.PostgreSQL,
-                DatabaseConnectionString = "Host=db-clu001.branch31.psgm.at:50001;Database=DbBackendStructure;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
+                DatabaseConnectionString = "Host=db-clu-c6e1c3e3-f49d-4edc-b3a2-2ed50174e3c8.branch031.psgm.at:50001;Database=DbBackend-c6e1c3e3-f49d-4edc-b3a2-2ed50174e3c8;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
             };
 
             _configFile.WriteToFile(Directory.GetCurrentDirectory() + "\\ConfigFile.json");
@@ -182,18 +182,21 @@ namespace PSGM.Sample.Model.DbBackend
                                                                                         .Include(p => p.Cluster)
                                                                                         .FirstOrDefault(p => p.Cluster.Any(s => s.BranchNumber == 31));
 
+            Debug.WriteLine("@@@");
+            Debug.WriteLine("@@@");
 
             foreach (var item in project.Cluster)
             {
-                Debug.WriteLine(item.GetDatabaseConnectionStringWithBranch());
-                Debug.WriteLine(item.GetStorageS3EndpointWithBranch());
+                Debug.WriteLine($"{Enum.GetName(typeof(BackendType), item.BackendType)} - {Enum.GetName(typeof(StorageClass), item.StorageClass)}");
                 Debug.WriteLine("---");
-                Debug.WriteLine(item.GetDatabaseConnectionStringWithoutBranch());
-                Debug.WriteLine(item.GetStorageS3EndpointWithoutBranch());
+                Debug.WriteLine(item.GetDatabaseConnection(true));
+                Debug.WriteLine(item.GetStorageS3Endpoint(true));
+                Debug.WriteLine("---");
+                Debug.WriteLine(item.GetDatabaseConnection(false));
+                Debug.WriteLine(item.GetStorageS3Endpoint(false));
                 Debug.WriteLine("###");
                 Debug.WriteLine("###");
             }
-
 
             if (project != null)
             {

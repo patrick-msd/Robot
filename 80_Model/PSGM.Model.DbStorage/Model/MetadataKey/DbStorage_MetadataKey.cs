@@ -73,8 +73,20 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Links
-        [InverseProperty("Metadata")]
-        public virtual ICollection<DbStorage_File_Metadata_Link>? MetadataLinks { get; set; }
+        [InverseProperty("MetadataKey")]
+        public virtual ICollection<DbStorage_File_Metadata>? FileMetadata { get; set; }
+
+        [InverseProperty("MetadataKey")]
+        public virtual ICollection<DbStorage_MetadataKey_User_Link>? UserLinks { get; set; }
+
+        [InverseProperty("MetadataKey")]
+        public virtual ICollection<DbStorage_MetadataKey_UserGroup_Link>? UserGroupLinks { get; set; }
+
+        [InverseProperty("MetadataKey")]
+        public virtual ICollection<DbStorage_RootDirectory_Metadata>? RootDirectoryMetadata { get; set; }
+
+        [InverseProperty("MetadataKey")]
+        public virtual ICollection<DbStorage_SubDirectory_Metadata>? SubDirectoryMetadata { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)

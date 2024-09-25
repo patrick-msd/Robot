@@ -33,30 +33,6 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "File_Metadata",
-                schema: "psgm",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Key = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: false),
-                    Value = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
-                    Description = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
-                    MetadataType = table.Column<int>(type: "integer", nullable: false),
-                    MetadataPermissions = table.Column<int>(type: "integer", nullable: false),
-                    ApplicableForFiles = table.Column<bool>(type: "boolean", nullable: false),
-                    Stars = table.Column<int>(type: "integer", nullable: false),
-                    Order = table.Column<int>(type: "integer", nullable: false),
-                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_File_Metadata", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "File_Metadata_AuditLog",
                 schema: "psgm",
                 columns: table => new
@@ -204,7 +180,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "file_User_Permission_AuditLog",
+                name: "File_User_Permission_AuditLog",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -218,7 +194,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_file_User_Permission_AuditLog", x => x.Id);
+                    table.PrimaryKey("PK_File_User_Permission_AuditLog", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -292,7 +268,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "file_UserGroup_Permission_AuditLog",
+                name: "File_UserGroup_Permission_AuditLog",
                 schema: "psgm",
                 columns: table => new
                 {
@@ -306,7 +282,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_file_UserGroup_Permission_AuditLog", x => x.Id);
+                    table.PrimaryKey("PK_File_UserGroup_Permission_AuditLog", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -406,6 +382,78 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "File_VirtualUnit_User_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_File_VirtualUnit_User_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "File_VirtualUnit_User_Link_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_File_VirtualUnit_User_Link_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "File_VirtualUnit_User_Notification_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_File_VirtualUnit_User_Notification_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "File_VirtualUnit_User_Permission_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_File_VirtualUnit_User_Permission_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "File_VirtualUnit_UserGroup",
                 schema: "psgm",
                 columns: table => new
@@ -419,6 +467,78 @@ namespace PSGM.Model.DbStorage.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_File_VirtualUnit_UserGroup", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "File_VirtualUnit_UserGroup_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_File_VirtualUnit_UserGroup_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "File_VirtualUnit_UserGroup_Link_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_File_VirtualUnit_UserGroup_Link_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "File_VirtualUnit_UserGroup_Notification_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_File_VirtualUnit_UserGroup_Notification_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "File_VirtualUnit_UserGroup_Permission_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_File_VirtualUnit_UserGroup_Permission_AuditLog", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -443,6 +563,124 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "File_VirtualUnit_UserGroup_User_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_File_VirtualUnit_UserGroup_User_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "File_VirtualUnit_UserGroup_User_Link_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_File_VirtualUnit_UserGroup_User_Link_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MetadataKey",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Key = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: false),
+                    Value = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
+                    Description = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
+                    MetadataType = table.Column<int>(type: "integer", nullable: false),
+                    MetadataPermissions = table.Column<int>(type: "integer", nullable: false),
+                    ApplicableForFiles = table.Column<bool>(type: "boolean", nullable: false),
+                    Stars = table.Column<int>(type: "integer", nullable: false),
+                    Order = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MetadataKey", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MetadataKey_User",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Acronym = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    DaytimePhoneNumber = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    EveningPhoneNumber = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    EMail = table.Column<string>(type: "character varying(511)", maxLength: 511, nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MetadataKey_User", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MetadataKey_UserGroup",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MetadataKey_UserGroup", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MetadataKey_UserGroup_User",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Acronym = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    DaytimePhoneNumber = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    EveningPhoneNumber = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    EMail = table.Column<string>(type: "character varying(511)", maxLength: 511, nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MetadataKey_UserGroup_User", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RootDirectory",
                 schema: "psgm",
                 columns: table => new
@@ -451,15 +689,16 @@ namespace PSGM.Model.DbStorage.Migrations
                     Suffix = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     Name = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     Prefix = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    Description = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
+                    Description = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
                     SuffixProjectOwner = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     NameProjectOwner = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     PrefixProjectOwner = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    DescriptionProjectOwner = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
+                    DescriptionProjectOwner = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
                     Stars = table.Column<int>(type: "integer", nullable: false),
                     Order = table.Column<int>(type: "integer", nullable: false),
                     DirectoryState = table.Column<int>(type: "integer", nullable: false),
-                    DirectoryLocked = table.Column<bool>(type: "boolean", nullable: false),
+                    Locked = table.Column<bool>(type: "boolean", nullable: false),
+                    LockedDescription = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
                     ArchiveIds_ExtString = table.Column<string>(type: "character varying(32766)", maxLength: 32766, nullable: false),
                     JobIdsExt_String = table.Column<string>(type: "character varying(65532)", maxLength: 65532, nullable: false),
                     WorkflowItemIds_ExtString = table.Column<string>(type: "character varying(65532)", maxLength: 65532, nullable: false),
@@ -491,30 +730,6 @@ namespace PSGM.Model.DbStorage.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RootDirectory_AuditLog", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RootDirectory_Metadata",
-                schema: "psgm",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Key = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: false),
-                    Value = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
-                    Description = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
-                    MetadataType = table.Column<int>(type: "integer", nullable: false),
-                    MetadataPermissions = table.Column<int>(type: "integer", nullable: false),
-                    ApplicableForFiles = table.Column<bool>(type: "boolean", nullable: false),
-                    Stars = table.Column<int>(type: "integer", nullable: false),
-                    Order = table.Column<int>(type: "integer", nullable: false),
-                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RootDirectory_Metadata", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -867,6 +1082,78 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RootDirectory_VirtualUnit_User_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_User_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RootDirectory_VirtualUnit_User_Link_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_User_Link_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RootDirectory_VirtualUnit_User_Notification_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_User_Notification_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RootDirectory_VirtualUnit_User_Permission_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_User_Permission_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RootDirectory_VirtualUnit_UserGroup",
                 schema: "psgm",
                 columns: table => new
@@ -880,6 +1167,78 @@ namespace PSGM.Model.DbStorage.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RootDirectory_VirtualUnit_UserGroup", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RootDirectory_VirtualUnit_UserGroup_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_UserGroup_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RootDirectory_VirtualUnit_UserGroup_Link_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_UserGroup_Link_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RootDirectory_VirtualUnit_UserGroup_Notification_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_UserGroup_Notification_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RootDirectory_VirtualUnit_UserGroup_Permission_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_UserGroup_Permission_AuditLog", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -904,6 +1263,42 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RootDirectory_VirtualUnit_UserGroup_User_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_UserGroup_User_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RootDirectory_VirtualUnit_UserGroup_User_Link_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RootDirectory_VirtualUnit_UserGroup_User_Link_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SubDirectory_AuditLog",
                 schema: "psgm",
                 columns: table => new
@@ -919,30 +1314,6 @@ namespace PSGM.Model.DbStorage.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SubDirectory_AuditLog", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "SubDirectory_Metadata",
-                schema: "psgm",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Key = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: false),
-                    Value = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
-                    Description = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
-                    MetadataType = table.Column<int>(type: "integer", nullable: false),
-                    MetadataPermissions = table.Column<int>(type: "integer", nullable: false),
-                    ApplicableForFiles = table.Column<bool>(type: "boolean", nullable: false),
-                    Stars = table.Column<int>(type: "integer", nullable: false),
-                    Order = table.Column<int>(type: "integer", nullable: false),
-                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
-                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SubDirectory_Metadata", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -1295,6 +1666,78 @@ namespace PSGM.Model.DbStorage.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SubDirectory_VirtualUnit_User_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_User_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SubDirectory_VirtualUnit_User_Link_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_User_Link_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SubDirectory_VirtualUnit_User_Notification_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_User_Notification_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SubDirectory_VirtualUnit_User_Permission_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_User_Permission_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SubDirectory_VirtualUnit_UserGroup",
                 schema: "psgm",
                 columns: table => new
@@ -1308,6 +1751,78 @@ namespace PSGM.Model.DbStorage.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SubDirectory_VirtualUnit_UserGroup_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SubDirectory_VirtualUnit_UserGroup_Link_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup_Link_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SubDirectory_VirtualUnit_UserGroup_Notification_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup_Notification_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SubDirectory_VirtualUnit_UserGroup_Permission_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup_Permission_AuditLog", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -1329,6 +1844,42 @@ namespace PSGM.Model.DbStorage.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup_User", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SubDirectory_VirtualUnit_UserGroup_User_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup_User_AuditLog", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SubDirectory_VirtualUnit_UserGroup_User_Link_AuditLog",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SourceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Action = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    DateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Changes = table.Column<string>(type: "character varying(16383)", maxLength: 16383, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup_User_Link_AuditLog", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -1502,7 +2053,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_File_VirtualUnit_User_Notification", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_File_VirtualUnit_User_Notification_File_VirtualUnit_U~",
+                        name: "FK_File_VirtualUnit_User_Notification_File_VirtualUnit_User_Us~",
                         column: x => x.UserId,
                         principalSchema: "psgm",
                         principalTable: "File_VirtualUnit_User",
@@ -1528,7 +2079,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_File_VirtualUnit_User_Permission", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_File_VirtualUnit_User_Permission_File_VirtualUnit_Use~",
+                        name: "FK_File_VirtualUnit_User_Permission_File_VirtualUnit_User_User~",
                         column: x => x.UserId,
                         principalSchema: "psgm",
                         principalTable: "File_VirtualUnit_User",
@@ -1561,7 +2112,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_File_VirtualUnit_UserGroup_Notification", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_File_VirtualUnit_UserGroup_Notification_File_VirtualSubU~",
+                        name: "FK_File_VirtualUnit_UserGroup_Notification_File_VirtualUnit_Us~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
                         principalTable: "File_VirtualUnit_UserGroup",
@@ -1587,7 +2138,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_File_VirtualUnit_UserGroup_Permission", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_File_VirtualUnit_UserGroup_Permission_File_VirtualSubUni~",
+                        name: "FK_File_VirtualUnit_UserGroup_Permission_File_VirtualUnit_User~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
                         principalTable: "File_VirtualUnit_UserGroup",
@@ -1607,16 +2158,306 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_File_VirtualUnit_UserGroup_User_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_File_VirtualUnit_UserGroup_User_Link_File_VirtualUnit~",
+                        name: "FK_File_VirtualUnit_UserGroup_User_Link_File_VirtualUnit_UserG~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
                         principalTable: "File_VirtualUnit_UserGroup",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_File_VirtualUnit_UserGroup_User_Link_File_VirtualSubUni~1",
+                        name: "FK_File_VirtualUnit_UserGroup_User_Link_File_VirtualUnit_User~1",
                         column: x => x.UserId,
                         principalSchema: "psgm",
                         principalTable: "File_VirtualUnit_UserGroup_User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "File_Metadata",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Key = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: false),
+                    Value = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
+                    Description = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
+                    MetadataType = table.Column<int>(type: "integer", nullable: false),
+                    MetadataPermissions = table.Column<int>(type: "integer", nullable: false),
+                    ApplicableForFiles = table.Column<bool>(type: "boolean", nullable: false),
+                    Stars = table.Column<int>(type: "integer", nullable: false),
+                    Order = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    MetadataKeyId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_File_Metadata", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_File_Metadata_MetadataKey_MetadataKeyId",
+                        column: x => x.MetadataKeyId,
+                        principalSchema: "psgm",
+                        principalTable: "MetadataKey",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RootDirectory_Metadata",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Key = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: false),
+                    Value = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
+                    Description = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
+                    MetadataType = table.Column<int>(type: "integer", nullable: false),
+                    MetadataPermissions = table.Column<int>(type: "integer", nullable: false),
+                    ApplicableForFiles = table.Column<bool>(type: "boolean", nullable: false),
+                    Stars = table.Column<int>(type: "integer", nullable: false),
+                    Order = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    MetadataKeyId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RootDirectory_Metadata", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RootDirectory_Metadata_MetadataKey_MetadataKeyId",
+                        column: x => x.MetadataKeyId,
+                        principalSchema: "psgm",
+                        principalTable: "MetadataKey",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SubDirectory_Metadata",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Key = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: false),
+                    Value = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
+                    Description = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
+                    MetadataType = table.Column<int>(type: "integer", nullable: false),
+                    MetadataPermissions = table.Column<int>(type: "integer", nullable: false),
+                    ApplicableForFiles = table.Column<bool>(type: "boolean", nullable: false),
+                    Stars = table.Column<int>(type: "integer", nullable: false),
+                    Order = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    MetadataKeyId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SubDirectory_Metadata", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SubDirectory_Metadata_MetadataKey_MetadataKeyId",
+                        column: x => x.MetadataKeyId,
+                        principalSchema: "psgm",
+                        principalTable: "MetadataKey",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MetadataKey_User_Link",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    MetadataKeyId = table.Column<Guid>(type: "uuid", nullable: true),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MetadataKey_User_Link", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MetadataKey_User_Link_MetadataKey_MetadataKeyId",
+                        column: x => x.MetadataKeyId,
+                        principalSchema: "psgm",
+                        principalTable: "MetadataKey",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_MetadataKey_User_Link_MetadataKey_User_UserId",
+                        column: x => x.UserId,
+                        principalSchema: "psgm",
+                        principalTable: "MetadataKey_User",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MetadataKey_User_Notification",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
+                    TriggerType = table.Column<int>(type: "integer", nullable: false),
+                    TriggerState = table.Column<int>(type: "integer", nullable: false),
+                    EMail = table.Column<bool>(type: "boolean", nullable: false),
+                    Slack = table.Column<bool>(type: "boolean", nullable: false),
+                    Teams = table.Column<bool>(type: "boolean", nullable: false),
+                    SMS = table.Column<bool>(type: "boolean", nullable: false),
+                    WhatsApp = table.Column<bool>(type: "boolean", nullable: false),
+                    Telegram = table.Column<bool>(type: "boolean", nullable: false),
+                    Gotify = table.Column<bool>(type: "boolean", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MetadataKey_User_Notification", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MetadataKey_User_Notification_MetadataKey_User_UserId",
+                        column: x => x.UserId,
+                        principalSchema: "psgm",
+                        principalTable: "MetadataKey_User",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MetadataKey_User_Permission",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
+                    PermissionFile = table.Column<int>(type: "integer", nullable: false),
+                    PermissionMetadata = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MetadataKey_User_Permission", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MetadataKey_User_Permission_MetadataKey_User_UserId",
+                        column: x => x.UserId,
+                        principalSchema: "psgm",
+                        principalTable: "MetadataKey_User",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MetadataKey_UserGroup_Link",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    MetadataKeyId = table.Column<Guid>(type: "uuid", nullable: true),
+                    UserGroupId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MetadataKey_UserGroup_Link", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MetadataKey_UserGroup_Link_MetadataKey_MetadataKeyId",
+                        column: x => x.MetadataKeyId,
+                        principalSchema: "psgm",
+                        principalTable: "MetadataKey",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_MetadataKey_UserGroup_Link_MetadataKey_UserGroup_UserGroupId",
+                        column: x => x.UserGroupId,
+                        principalSchema: "psgm",
+                        principalTable: "MetadataKey_UserGroup",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MetadataKey_UserGroup_Notification",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
+                    TriggerType = table.Column<int>(type: "integer", nullable: false),
+                    TriggerState = table.Column<int>(type: "integer", nullable: false),
+                    EMail = table.Column<bool>(type: "boolean", nullable: false),
+                    Slack = table.Column<bool>(type: "boolean", nullable: false),
+                    Teams = table.Column<bool>(type: "boolean", nullable: false),
+                    SMS = table.Column<bool>(type: "boolean", nullable: false),
+                    WhatsApp = table.Column<bool>(type: "boolean", nullable: false),
+                    Telegram = table.Column<bool>(type: "boolean", nullable: false),
+                    Gotify = table.Column<bool>(type: "boolean", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    UserGroupId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MetadataKey_UserGroup_Notification", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MetadataKey_UserGroup_Notification_MetadataKey_UserGroup_Us~",
+                        column: x => x.UserGroupId,
+                        principalSchema: "psgm",
+                        principalTable: "MetadataKey_UserGroup",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MetadataKey_UserGroup_Permission",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Description = table.Column<string>(type: "character varying(16384)", maxLength: 16384, nullable: false),
+                    PermissionFile = table.Column<int>(type: "integer", nullable: false),
+                    PermissionMetadata = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
+                    UserGroupId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MetadataKey_UserGroup_Permission", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MetadataKey_UserGroup_Permission_MetadataKey_UserGroup_User~",
+                        column: x => x.UserGroupId,
+                        principalSchema: "psgm",
+                        principalTable: "MetadataKey_UserGroup",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MetadataKey_UserGroup_User_Link",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    UserGroupId = table.Column<Guid>(type: "uuid", nullable: true),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MetadataKey_UserGroup_User_Link", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MetadataKey_UserGroup_User_Link_MetadataKey_UserGroup_UserG~",
+                        column: x => x.UserGroupId,
+                        principalSchema: "psgm",
+                        principalTable: "MetadataKey_UserGroup",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_MetadataKey_UserGroup_User_Link_MetadataKey_UserGroup_User_~",
+                        column: x => x.UserId,
+                        principalSchema: "psgm",
+                        principalTable: "MetadataKey_UserGroup_User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -1628,7 +2469,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    Description = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
+                    Description = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
                     QrCodeType = table.Column<int>(type: "integer", nullable: false),
                     CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
@@ -1654,7 +2495,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     QualityState = table.Column<int>(type: "integer", nullable: false),
-                    Description = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
+                    Description = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
                     CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
                     ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -1705,15 +2546,16 @@ namespace PSGM.Model.DbStorage.Migrations
                     Suffix = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     Name = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     Prefix = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    Description = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
+                    Description = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
                     SuffixProjectOwner = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     NameProjectOwner = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     PrefixProjectOwner = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    DescriptionProjectOwner = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
+                    DescriptionProjectOwner = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
                     Stars = table.Column<int>(type: "integer", nullable: false),
                     Order = table.Column<int>(type: "integer", nullable: false),
                     DirectoryState = table.Column<int>(type: "integer", nullable: false),
-                    DirectoryLocked = table.Column<bool>(type: "boolean", nullable: false),
+                    Locked = table.Column<bool>(type: "boolean", nullable: false),
+                    LockedDescription = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
                     ArchiveIds_ExtString = table.Column<string>(type: "character varying(32766)", maxLength: 32766, nullable: false),
                     JobIdsExt_String = table.Column<string>(type: "character varying(65532)", maxLength: 65532, nullable: false),
                     WorkflowItemIds_ExtString = table.Column<string>(type: "character varying(65532)", maxLength: 65532, nullable: false),
@@ -1740,33 +2582,6 @@ namespace PSGM.Model.DbStorage.Migrations
                         column: x => x.ParentSubDirectoryId,
                         principalSchema: "psgm",
                         principalTable: "SubDirectory",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RootDirectory_Metadata_Link",
-                schema: "psgm",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    RootDirectoryId = table.Column<Guid>(type: "uuid", nullable: true),
-                    MetadataId = table.Column<Guid>(type: "uuid", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RootDirectory_Metadata_Link", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_RootDirectory_Metadata_Link_RootDirectory_Metadata_Metadata~",
-                        column: x => x.MetadataId,
-                        principalSchema: "psgm",
-                        principalTable: "RootDirectory_Metadata",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_RootDirectory_Metadata_Link_RootDirectory_RootDirectoryId",
-                        column: x => x.RootDirectoryId,
-                        principalSchema: "psgm",
-                        principalTable: "RootDirectory",
                         principalColumn: "Id");
                 });
 
@@ -1993,7 +2808,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_RootDirectory_VirtualUnit_User_Notification", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualUnit_User_Notification_RootDirecto~",
+                        name: "FK_RootDirectory_VirtualUnit_User_Notification_RootDirectory_V~",
                         column: x => x.UserId,
                         principalSchema: "psgm",
                         principalTable: "RootDirectory_VirtualUnit_User",
@@ -2019,7 +2834,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_RootDirectory_VirtualUnit_User_Permission", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualUnit_User_Permission_RootDirectory~",
+                        name: "FK_RootDirectory_VirtualUnit_User_Permission_RootDirectory_Vir~",
                         column: x => x.UserId,
                         principalSchema: "psgm",
                         principalTable: "RootDirectory_VirtualUnit_User",
@@ -2052,7 +2867,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_RootDirectory_VirtualUnit_UserGroup_Notification", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualUnit_UserGroup_Notification_RootDi~",
+                        name: "FK_RootDirectory_VirtualUnit_UserGroup_Notification_RootDirect~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
                         principalTable: "RootDirectory_VirtualUnit_UserGroup",
@@ -2078,7 +2893,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_RootDirectory_VirtualUnit_UserGroup_Permission", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualUnit_UserGroup_Permission_RootDire~",
+                        name: "FK_RootDirectory_VirtualUnit_UserGroup_Permission_RootDirector~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
                         principalTable: "RootDirectory_VirtualUnit_UserGroup",
@@ -2098,13 +2913,13 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_RootDirectory_VirtualUnit_UserGroup_User_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualUnit_UserGroup_User_Link_RootDirec~",
+                        name: "FK_RootDirectory_VirtualUnit_UserGroup_User_Link_RootDirectory~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
                         principalTable: "RootDirectory_VirtualUnit_UserGroup",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualUnit_UserGroup_User_Link_RootDire~1",
+                        name: "FK_RootDirectory_VirtualUnit_UserGroup_User_Link_RootDirector~1",
                         column: x => x.UserId,
                         principalSchema: "psgm",
                         principalTable: "RootDirectory_VirtualUnit_UserGroup_User",
@@ -2283,7 +3098,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_SubDirectory_VirtualUnit_User_Notification", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualUnit_User_Notification_SubDirectory_~",
+                        name: "FK_SubDirectory_VirtualUnit_User_Notification_SubDirectory_Vir~",
                         column: x => x.UserId,
                         principalSchema: "psgm",
                         principalTable: "SubDirectory_VirtualUnit_User",
@@ -2309,7 +3124,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_SubDirectory_VirtualUnit_User_Permission", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualUnit_User_Permission_SubDirectory_Vi~",
+                        name: "FK_SubDirectory_VirtualUnit_User_Permission_SubDirectory_Virtu~",
                         column: x => x.UserId,
                         principalSchema: "psgm",
                         principalTable: "SubDirectory_VirtualUnit_User",
@@ -2342,7 +3157,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup_Notification", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualUnit_UserGroup_Notification_SubDirec~",
+                        name: "FK_SubDirectory_VirtualUnit_UserGroup_Notification_SubDirector~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
                         principalTable: "SubDirectory_VirtualUnit_UserGroup",
@@ -2368,7 +3183,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup_Permission", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualUnit_UserGroup_Permission_SubDirecto~",
+                        name: "FK_SubDirectory_VirtualUnit_UserGroup_Permission_SubDirectory_~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
                         principalTable: "SubDirectory_VirtualUnit_UserGroup",
@@ -2388,18 +3203,45 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup_User_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualUnit_UserGroup_User_Link_SubDirector~",
+                        name: "FK_SubDirectory_VirtualUnit_UserGroup_User_Link_SubDirectory_V~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
                         principalTable: "SubDirectory_VirtualUnit_UserGroup",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualUnit_UserGroup_User_Link_SubDirecto~1",
+                        name: "FK_SubDirectory_VirtualUnit_UserGroup_User_Link_SubDirectory_~1",
                         column: x => x.UserId,
                         principalSchema: "psgm",
                         principalTable: "SubDirectory_VirtualUnit_UserGroup_User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RootDirectory_Metadata_Link",
+                schema: "psgm",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    RootDirectoryId = table.Column<Guid>(type: "uuid", nullable: true),
+                    MetadataId = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RootDirectory_Metadata_Link", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RootDirectory_Metadata_Link_RootDirectory_Metadata_Metadata~",
+                        column: x => x.MetadataId,
+                        principalSchema: "psgm",
+                        principalTable: "RootDirectory_Metadata",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RootDirectory_Metadata_Link_RootDirectory_RootDirectoryId",
+                        column: x => x.RootDirectoryId,
+                        principalSchema: "psgm",
+                        principalTable: "RootDirectory",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -2415,13 +3257,13 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_RootDirectory_VirtualUnit_User_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualUnit_User_Link_RootDirectory_Virtu~",
+                        name: "FK_RootDirectory_VirtualUnit_User_Link_RootDirectory_VirtualUn~",
                         column: x => x.FileId,
                         principalSchema: "psgm",
                         principalTable: "RootDirectory_VirtualUnit",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualUnit_User_Link_RootDirectory_Virt~1",
+                        name: "FK_RootDirectory_VirtualUnit_User_Link_RootDirectory_VirtualU~1",
                         column: x => x.UserId,
                         principalSchema: "psgm",
                         principalTable: "RootDirectory_VirtualUnit_User",
@@ -2441,13 +3283,13 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_RootDirectory_VirtualUnit_UserGroup_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualUnit_UserGroup_Link_RootDirectory_~",
+                        name: "FK_RootDirectory_VirtualUnit_UserGroup_Link_RootDirectory_Virt~",
                         column: x => x.FileId,
                         principalSchema: "psgm",
                         principalTable: "RootDirectory_VirtualUnit",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_RootDirectory_VirtualUnit_UserGroup_Link_RootDirectory~1",
+                        name: "FK_RootDirectory_VirtualUnit_UserGroup_Link_RootDirectory_Vir~1",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
                         principalTable: "RootDirectory_VirtualUnit_UserGroup",
@@ -2463,19 +3305,19 @@ namespace PSGM.Model.DbStorage.Migrations
                     Suffix = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     Name = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     Prefix = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    Description = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
+                    Description = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
                     SuffixProjectOwner = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     NameProjectOwner = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     PrefixProjectOwner = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    DescriptionProjectOwner = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
+                    DescriptionProjectOwner = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
                     Stars = table.Column<int>(type: "integer", nullable: false),
                     Order = table.Column<int>(type: "integer", nullable: false),
                     ObjectExtension = table.Column<int>(type: "integer", nullable: false),
                     ObjectSize = table.Column<long>(type: "bigint", nullable: false),
-                    StorageObjectName = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
+                    StorageObjectName = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
                     StorageObjectVersion = table.Column<int>(type: "integer", nullable: false),
-                    StorageObjectUrl = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
-                    StorageObjectUrlPublic = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
+                    StorageObjectUrl = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
+                    StorageObjectUrlPublic = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
                     ExtId1 = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     ExtId2 = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     ExtId3 = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
@@ -2489,6 +3331,8 @@ namespace PSGM.Model.DbStorage.Migrations
                     MachineId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
                     DeviceId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
                     SoftwareId_Ext = table.Column<Guid>(type: "uuid", nullable: false),
+                    Locked = table.Column<bool>(type: "boolean", nullable: false),
+                    LockedDescription = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
                     RawFileIdsString = table.Column<string>(type: "character varying(2048)", maxLength: 2048, nullable: false),
                     ArchiveIds_ExtString = table.Column<string>(type: "character varying(32766)", maxLength: 32766, nullable: false),
                     JobIdsExt_String = table.Column<string>(type: "character varying(65532)", maxLength: 65532, nullable: false),
@@ -2551,7 +3395,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    Description = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
+                    Description = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
                     QrCodeType = table.Column<int>(type: "integer", nullable: false),
                     CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
@@ -2577,7 +3421,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     QualityState = table.Column<int>(type: "integer", nullable: false),
-                    Description = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
+                    Description = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
                     CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
                     ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -2705,7 +3549,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    Description = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
+                    Description = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
                     QrCodeType = table.Column<int>(type: "integer", nullable: false),
                     CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
@@ -2731,7 +3575,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     QualityState = table.Column<int>(type: "integer", nullable: false),
-                    Description = table.Column<string>(type: "character varying(8191)", maxLength: 8191, nullable: false),
+                    Description = table.Column<string>(type: "character varying(8192)", maxLength: 8192, nullable: false),
                     CreatedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedByUserId_ExtAutoFill = table.Column<Guid>(type: "uuid", nullable: false),
                     ModifiedDateTimeAutoFill = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -2838,13 +3682,13 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_SubDirectory_VirtualUnit_User_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualUnit_User_Link_SubDirectory_VirtualS~",
+                        name: "FK_SubDirectory_VirtualUnit_User_Link_SubDirectory_VirtualUnit~",
                         column: x => x.FileId,
                         principalSchema: "psgm",
                         principalTable: "SubDirectory_VirtualUnit",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualUnit_User_Link_SubDirectory_Virtual~1",
+                        name: "FK_SubDirectory_VirtualUnit_User_Link_SubDirectory_VirtualUni~1",
                         column: x => x.UserId,
                         principalSchema: "psgm",
                         principalTable: "SubDirectory_VirtualUnit_User",
@@ -2864,13 +3708,13 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_SubDirectory_VirtualUnit_UserGroup_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualUnit_UserGroup_Link_SubDirectory_Vir~",
+                        name: "FK_SubDirectory_VirtualUnit_UserGroup_Link_SubDirectory_Virtua~",
                         column: x => x.FileId,
                         principalSchema: "psgm",
                         principalTable: "SubDirectory_VirtualUnit",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_SubDirectory_VirtualUnit_UserGroup_Link_SubDirectory_Vi~1",
+                        name: "FK_SubDirectory_VirtualUnit_UserGroup_Link_SubDirectory_Virtu~1",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
                         principalTable: "SubDirectory_VirtualUnit_UserGroup",
@@ -2896,7 +3740,7 @@ namespace PSGM.Model.DbStorage.Migrations
                         principalTable: "File_VirtualUnit",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_File_VirtualUnit_User_Link_File_VirtualUnit_User_User~",
+                        name: "FK_File_VirtualUnit_User_Link_File_VirtualUnit_User_UserId",
                         column: x => x.UserId,
                         principalSchema: "psgm",
                         principalTable: "File_VirtualUnit_User",
@@ -2916,13 +3760,13 @@ namespace PSGM.Model.DbStorage.Migrations
                 {
                     table.PrimaryKey("PK_File_VirtualUnit_UserGroup_Link", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_File_VirtualUnit_UserGroup_Link_File_VirtualUnit_User~",
+                        name: "FK_File_VirtualUnit_UserGroup_Link_File_VirtualUnit_UserGroup_~",
                         column: x => x.UserGroupId,
                         principalSchema: "psgm",
                         principalTable: "File_VirtualUnit_UserGroup",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_File_VirtualUnit_UserGroup_Link_File_VirtualUnit_Virt~",
+                        name: "FK_File_VirtualUnit_UserGroup_Link_File_VirtualUnit_VirtualUni~",
                         column: x => x.VirtualUnitId,
                         principalSchema: "psgm",
                         principalTable: "File_VirtualUnit",
@@ -2940,6 +3784,12 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm",
                 table: "File",
                 column: "SubDirectoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_File_Metadata_MetadataKeyId",
+                schema: "psgm",
+                table: "File_Metadata",
+                column: "MetadataKeyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_File_Metadata_Link_FileId",
@@ -3098,6 +3948,74 @@ namespace PSGM.Model.DbStorage.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_MetadataKey_User_Link_MetadataKeyId",
+                schema: "psgm",
+                table: "MetadataKey_User_Link",
+                column: "MetadataKeyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MetadataKey_User_Link_UserId",
+                schema: "psgm",
+                table: "MetadataKey_User_Link",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MetadataKey_User_Notification_UserId",
+                schema: "psgm",
+                table: "MetadataKey_User_Notification",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MetadataKey_User_Permission_UserId",
+                schema: "psgm",
+                table: "MetadataKey_User_Permission",
+                column: "UserId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MetadataKey_UserGroup_Link_MetadataKeyId",
+                schema: "psgm",
+                table: "MetadataKey_UserGroup_Link",
+                column: "MetadataKeyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MetadataKey_UserGroup_Link_UserGroupId",
+                schema: "psgm",
+                table: "MetadataKey_UserGroup_Link",
+                column: "UserGroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MetadataKey_UserGroup_Notification_UserGroupId",
+                schema: "psgm",
+                table: "MetadataKey_UserGroup_Notification",
+                column: "UserGroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MetadataKey_UserGroup_Permission_UserGroupId",
+                schema: "psgm",
+                table: "MetadataKey_UserGroup_Permission",
+                column: "UserGroupId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MetadataKey_UserGroup_User_Link_UserGroupId",
+                schema: "psgm",
+                table: "MetadataKey_UserGroup_User_Link",
+                column: "UserGroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MetadataKey_UserGroup_User_Link_UserId",
+                schema: "psgm",
+                table: "MetadataKey_UserGroup_User_Link",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RootDirectory_Metadata_MetadataKeyId",
+                schema: "psgm",
+                table: "RootDirectory_Metadata",
+                column: "MetadataKeyId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_RootDirectory_Metadata_Link_MetadataId",
                 schema: "psgm",
                 table: "RootDirectory_Metadata_Link",
@@ -3229,20 +4147,20 @@ namespace PSGM.Model.DbStorage.Migrations
                 column: "UserGroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RootDirectory_VirtualUnit_UserGroup_Notification_UserGr~",
+                name: "IX_RootDirectory_VirtualUnit_UserGroup_Notification_UserGroupId",
                 schema: "psgm",
                 table: "RootDirectory_VirtualUnit_UserGroup_Notification",
                 column: "UserGroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RootDirectory_VirtualUnit_UserGroup_Permission_UserGrou~",
+                name: "IX_RootDirectory_VirtualUnit_UserGroup_Permission_UserGroupId",
                 schema: "psgm",
                 table: "RootDirectory_VirtualUnit_UserGroup_Permission",
                 column: "UserGroupId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_RootDirectory_VirtualUnit_UserGroup_User_Link_UserGroup~",
+                name: "IX_RootDirectory_VirtualUnit_UserGroup_User_Link_UserGroupId",
                 schema: "psgm",
                 table: "RootDirectory_VirtualUnit_UserGroup_User_Link",
                 column: "UserGroupId");
@@ -3264,6 +4182,12 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm",
                 table: "SubDirectory",
                 column: "RootDirectoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SubDirectory_Metadata_MetadataKeyId",
+                schema: "psgm",
+                table: "SubDirectory_Metadata",
+                column: "MetadataKeyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SubDirectory_Metadata_Link_MetadataId",
@@ -3397,7 +4321,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 column: "UserGroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubDirectory_VirtualUnit_UserGroup_Notification_UserGrou~",
+                name: "IX_SubDirectory_VirtualUnit_UserGroup_Notification_UserGroupId",
                 schema: "psgm",
                 table: "SubDirectory_VirtualUnit_UserGroup_Notification",
                 column: "UserGroupId");
@@ -3482,7 +4406,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "file_User_Permission_AuditLog",
+                name: "File_User_Permission_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3510,7 +4434,7 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
-                name: "file_UserGroup_Permission_AuditLog",
+                name: "File_UserGroup_Permission_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3530,7 +4454,15 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
+                name: "File_VirtualUnit_User_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
                 name: "File_VirtualUnit_User_Link",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "File_VirtualUnit_User_Link_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3538,7 +4470,19 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
+                name: "File_VirtualUnit_User_Notification_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
                 name: "File_VirtualUnit_User_Permission",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "File_VirtualUnit_User_Permission_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "File_VirtualUnit_UserGroup_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3546,7 +4490,15 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
+                name: "File_VirtualUnit_UserGroup_Link_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
                 name: "File_VirtualUnit_UserGroup_Notification",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "File_VirtualUnit_UserGroup_Notification_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3554,7 +4506,47 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
+                name: "File_VirtualUnit_UserGroup_Permission_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "File_VirtualUnit_UserGroup_User_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
                 name: "File_VirtualUnit_UserGroup_User_Link",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "File_VirtualUnit_UserGroup_User_Link_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "MetadataKey_User_Link",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "MetadataKey_User_Notification",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "MetadataKey_User_Permission",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "MetadataKey_UserGroup_Link",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "MetadataKey_UserGroup_Notification",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "MetadataKey_UserGroup_Permission",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "MetadataKey_UserGroup_User_Link",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3662,7 +4654,15 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
+                name: "RootDirectory_VirtualUnit_User_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
                 name: "RootDirectory_VirtualUnit_User_Link",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "RootDirectory_VirtualUnit_User_Link_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3670,7 +4670,19 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
+                name: "RootDirectory_VirtualUnit_User_Notification_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
                 name: "RootDirectory_VirtualUnit_User_Permission",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "RootDirectory_VirtualUnit_User_Permission_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "RootDirectory_VirtualUnit_UserGroup_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3678,7 +4690,15 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
+                name: "RootDirectory_VirtualUnit_UserGroup_Link_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
                 name: "RootDirectory_VirtualUnit_UserGroup_Notification",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "RootDirectory_VirtualUnit_UserGroup_Notification_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3686,7 +4706,19 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
+                name: "RootDirectory_VirtualUnit_UserGroup_Permission_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "RootDirectory_VirtualUnit_UserGroup_User_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
                 name: "RootDirectory_VirtualUnit_UserGroup_User_Link",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "RootDirectory_VirtualUnit_UserGroup_User_Link_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3794,7 +4826,15 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
+                name: "SubDirectory_VirtualUnit_User_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
                 name: "SubDirectory_VirtualUnit_User_Link",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "SubDirectory_VirtualUnit_User_Link_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3802,7 +4842,19 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
+                name: "SubDirectory_VirtualUnit_User_Notification_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
                 name: "SubDirectory_VirtualUnit_User_Permission",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "SubDirectory_VirtualUnit_User_Permission_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "SubDirectory_VirtualUnit_UserGroup_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3810,7 +4862,15 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
+                name: "SubDirectory_VirtualUnit_UserGroup_Link_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
                 name: "SubDirectory_VirtualUnit_UserGroup_Notification",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "SubDirectory_VirtualUnit_UserGroup_Notification_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3818,7 +4878,19 @@ namespace PSGM.Model.DbStorage.Migrations
                 schema: "psgm");
 
             migrationBuilder.DropTable(
+                name: "SubDirectory_VirtualUnit_UserGroup_Permission_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "SubDirectory_VirtualUnit_UserGroup_User_AuditLog",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
                 name: "SubDirectory_VirtualUnit_UserGroup_User_Link",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "SubDirectory_VirtualUnit_UserGroup_User_Link_AuditLog",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3851,6 +4923,18 @@ namespace PSGM.Model.DbStorage.Migrations
 
             migrationBuilder.DropTable(
                 name: "File_VirtualUnit_UserGroup_User",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "MetadataKey_User",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "MetadataKey_UserGroup",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "MetadataKey_UserGroup_User",
                 schema: "psgm");
 
             migrationBuilder.DropTable(
@@ -3919,6 +5003,10 @@ namespace PSGM.Model.DbStorage.Migrations
 
             migrationBuilder.DropTable(
                 name: "File",
+                schema: "psgm");
+
+            migrationBuilder.DropTable(
+                name: "MetadataKey",
                 schema: "psgm");
 
             migrationBuilder.DropTable(

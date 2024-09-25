@@ -5,8 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbStorage
 {
-    [Table("File_User_Notification")]
-    public class DbStorage_File_User_Notification
+    [Table("MetadataKey_UserGroup_Notification")]
+    public class DbStorage_MetadataKey_UserGroup_Notification
     {
         #region Entities
         [Key]
@@ -81,9 +81,9 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [ForeignKey("User")]
-        public Guid? UserId { get; set; }
-        public virtual DbStorage_File_User? User { get; set; }
+        [ForeignKey("UserGroup")]
+        public Guid? UserGroupId { get; set; }
+        public virtual DbStorage_MetadataKey_UserGroup? UserGroup { get; set; }
         #endregion
 
         #region Not Mapped

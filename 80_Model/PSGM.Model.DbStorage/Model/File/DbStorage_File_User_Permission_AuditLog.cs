@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbStorage
 {
-    [Table("file_User_Permission_AuditLog")]
+    [Table("File_User_Permission_AuditLog")]
     public class DbStorage_File_User_Permission_AuditLog
     {
         #region Entities

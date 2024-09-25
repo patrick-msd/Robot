@@ -5,8 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbStorage
 {
-    [Table("File_UserGroup_Permission")]
-    public class DbStorage_File_UserGroup_Permission
+    [Table("MetadataKey_User_Permission")]
+    public class DbStorage_MetadataKey_User_Permission
     {
         #region Entities
         [Key]
@@ -53,9 +53,9 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [ForeignKey("UserGroup")]
-        public Guid? UserGroupId { get; set; }
-        public virtual DbStorage_File_UserGroup? UserGroup { get; set; }
+        [ForeignKey("User")]
+        public Guid? UserId { get; set; }
+        public virtual DbStorage_MetadataKey_User? User { get; set; }
         #endregion
 
         #region Not Mapped

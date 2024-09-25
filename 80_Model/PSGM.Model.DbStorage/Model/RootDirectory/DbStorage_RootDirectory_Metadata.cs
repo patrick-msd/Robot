@@ -79,6 +79,9 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Backlinks (ForeignKeys)
+        [ForeignKey("MetadataKey")]
+        public Guid? MetadataKeyId { get; set; }
+        public virtual DbStorage_MetadataKey? MetadataKey { get; set; }
         #endregion
 
         #region Not Mapped

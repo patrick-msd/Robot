@@ -69,9 +69,14 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "DirectoryState")]
         public DirectoryState DirectoryState { get; set; } = DirectoryState.Undefined;
 
-        [Column("DirectoryLocked")]
-        [Display(Name = "DirectoryLocked")]
-        public bool DirectoryLocked { get; set; } = false;
+        [Column("Locked")]
+        [Display(Name = "Locked")]
+        public bool Locked { get; set; } = false;
+
+        [Column("LockedDescription")]
+        [Display(Name = "LockedDescription")]
+        [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string LockedDescription { get; set; } = string.Empty;
 
         #region No direct access
         [Column("ArchiveIds_ExtString")]

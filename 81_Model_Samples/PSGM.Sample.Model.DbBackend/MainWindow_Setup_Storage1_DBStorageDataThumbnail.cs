@@ -15,7 +15,7 @@ namespace PSGM.Sample.Model.DbBackend
 
             DbBackend_Cluster? structure = projects.Cluster.Where(p => p.StorageClass == StorageClass.DataThumbnail).FirstOrDefault();
 
-            minioClient = new MinioClient().WithEndpoint(structure.GetStorageS3EndpointWithBranch())
+            minioClient = new MinioClient().WithEndpoint(structure.GetStorageS3Endpoint(true))
                                             .WithCredentials(structure.StorageS3AccessKey, structure.StorageS3SecretKey)
                                             .WithSSL(structure.StorageS3Secure)
                                             .WithRegion(structure.StorageS3Region)

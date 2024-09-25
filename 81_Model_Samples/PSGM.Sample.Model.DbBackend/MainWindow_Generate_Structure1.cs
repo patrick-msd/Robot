@@ -12,7 +12,7 @@ namespace PSGM.Sample.Model.DbBackend
             // Main
             DbBackend_Cluster main = new DbBackend_Cluster()
             {
-                Id = Guid.NewGuid(),
+                Id = new Guid("29000f47-e4dc-4101-965c-af8624d29495"),
 
                 Name = "Name",
                 Description = "Description",
@@ -21,11 +21,10 @@ namespace PSGM.Sample.Model.DbBackend
                 Order = 1,
 
                 BranchNumber = 31,
-                ClusterNumber = 1,
                 Domain = "psgm.at",
 
                 BackendType = BackendType.Main,
-
+                
                 DatabaseType = DatabaseType.PostgreSQL,
                 DatabaseFilePath = string.Empty,
                 DatabasePort = 50001,
@@ -46,6 +45,7 @@ namespace PSGM.Sample.Model.DbBackend
 
                 ReadOnlyMode = false,
                 Locked = false,
+                LockedDescription = string.Empty,
 
                 Url = string.Empty,
                 UrlPublic = string.Empty,
@@ -65,27 +65,8 @@ namespace PSGM.Sample.Model.DbBackend
                         LastIpSegment = 100,
                         VLAN = 30,
 
-                        //CreatedByUserIdExtAutoFill = Guid.Empty,
-                        //CreatedDateTimeAutoFill = DateTime.Now,
-                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
-                        //ModifiedDateTimeAutoFill = DateTime.Now,
-
-                        // FK
-                        Cluster = null,
-                        ClusterId = null,
-                    },
-                    new DbBackend_Server()
-                    {
-                        Id = Guid.NewGuid(),
-
-                        Name = "Name",
-                        Description = "Description",
-
-                        //DNS = = string.Empty,
-                        //IpAddress = "10.31.30.100",
-                        FirstIpSegment = 10,
-                        LastIpSegment = 100,
-                        VLAN = 30,
+                        Locked = false,
+                        LockedDescription = string.Empty,
 
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
@@ -108,6 +89,34 @@ namespace PSGM.Sample.Model.DbBackend
                         FirstIpSegment = 10,
                         LastIpSegment = 100,
                         VLAN = 30,
+
+                        Locked = false,
+                        LockedDescription = string.Empty,
+
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        Cluster = null,
+                        ClusterId = null,
+                    },
+                    new DbBackend_Server()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        Name = "Name",
+                        Description = "Description",
+
+                        //DNS = = string.Empty,
+                        //IpAddress = "10.31.30.100",
+                        FirstIpSegment = 10,
+                        LastIpSegment = 100,
+                        VLAN = 30,
+
+                        Locked = false,
+                        LockedDescription = string.Empty,
 
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
@@ -133,7 +142,7 @@ namespace PSGM.Sample.Model.DbBackend
             // Storage Data Raw
             DbBackend_Cluster dataRaw = new DbBackend_Cluster()
             {
-                Id = Guid.NewGuid(),
+                Id = new Guid("9e05de17-2d39-47fd-a1f2-f4c274b8f44c"),
 
                 Name = "Name",
                 Description = "Description",
@@ -142,7 +151,6 @@ namespace PSGM.Sample.Model.DbBackend
                 Order = 1,
 
                 BranchNumber = 31,
-                ClusterNumber = 1,
                 Domain = "psgm.at",
 
                 BackendType = BackendType.Storage,
@@ -167,6 +175,7 @@ namespace PSGM.Sample.Model.DbBackend
 
                 ReadOnlyMode = false,
                 Locked = false,
+                LockedDescription = string.Empty,
 
                 Url = string.Empty,
                 UrlPublic = string.Empty,
@@ -183,7 +192,7 @@ namespace PSGM.Sample.Model.DbBackend
             // Storage Data Raw Thumbnail
             DbBackend_Cluster dataRawThumbnail = new DbBackend_Cluster()
             {
-                Id = Guid.NewGuid(),
+                Id = new Guid("aedb88bc-c17d-49f1-879c-c595ad758aef"),
 
                 Name = "Name",
                 Description = "Description",
@@ -192,7 +201,6 @@ namespace PSGM.Sample.Model.DbBackend
                 Order = 1,
 
                 BranchNumber = 31,
-                ClusterNumber = 1,
                 Domain = "psgm.at",
 
                 BackendType = BackendType.Storage,
@@ -217,6 +225,7 @@ namespace PSGM.Sample.Model.DbBackend
 
                 ReadOnlyMode = false,
                 Locked = false,
+                LockedDescription = string.Empty,
 
                 Url = string.Empty,
                 UrlPublic = string.Empty,
@@ -233,7 +242,7 @@ namespace PSGM.Sample.Model.DbBackend
             // Storage Data
             DbBackend_Cluster data = new DbBackend_Cluster()
             {
-                Id = Guid.NewGuid(),
+                Id = new Guid("8611b52b-b27f-4ccf-847b-a17eb590bbe9"),
 
                 Name = "Name",
                 Description = "Description",
@@ -242,7 +251,6 @@ namespace PSGM.Sample.Model.DbBackend
                 Order = 1,
 
                 BranchNumber = 31,
-                ClusterNumber = 1,
                 Domain = "psgm.at",
 
                 BackendType = BackendType.Storage,
@@ -267,6 +275,7 @@ namespace PSGM.Sample.Model.DbBackend
 
                 ReadOnlyMode = false,
                 Locked = false,
+                LockedDescription = string.Empty,
 
                 Url = string.Empty,
                 UrlPublic = string.Empty,
@@ -283,7 +292,7 @@ namespace PSGM.Sample.Model.DbBackend
             // Storage Data Thumbnail
             DbBackend_Cluster dataThumbnail = new DbBackend_Cluster()
             {
-                Id = Guid.NewGuid(),
+                Id = new Guid("739570fa-ef7e-41bc-9b79-b4753dc04527"),
 
                 Name = "Name",
                 Description = "Description",
@@ -292,7 +301,6 @@ namespace PSGM.Sample.Model.DbBackend
                 Order = 1,
 
                 BranchNumber = 31,
-                ClusterNumber = 1,
                 Domain = "psgm.at",
 
                 BackendType = BackendType.Storage,
@@ -317,6 +325,57 @@ namespace PSGM.Sample.Model.DbBackend
 
                 ReadOnlyMode = false,
                 Locked = false,
+                LockedDescription = string.Empty,
+
+                Url = string.Empty,
+                UrlPublic = string.Empty,
+
+                Project = projects,
+                //ProjectId = null,
+
+                //CreatedByUserIdExtAutoFill = Guid.Empty,
+                //CreatedDateTimeAutoFill = DateTime.Now,
+                //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                //ModifiedDateTimeAutoFill = DateTime.Now,
+            };
+
+            // Transcription
+            DbBackend_Cluster transcription = new DbBackend_Cluster()
+            {
+                Id = new Guid("20d16641-3d52-40ce-87ad-621d29d7245f"),
+
+                Name = "Name",
+                Description = "Description",
+
+                Stars = 0,
+                Order = 1,
+
+                BranchNumber = 31,
+                Domain = "psgm.at",
+
+                BackendType = BackendType.Transcription,
+
+                DatabaseType = DatabaseType.PostgreSQL,
+                DatabaseFilePath = string.Empty,
+                DatabasePort = 50001,
+                DatabaseUsername = "postgres",
+                DatabasePassword = "fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
+
+                StorageType = StorageType.S3,
+                StorageClass = StorageClass.DataTranscription,
+                StorageTier = StorageTier.Hot,
+
+                StorageFilePath = string.Empty,
+
+                StorageS3BucketName = string.Empty,                             // BucketName is Project Id
+                StorageS3AccessKey = string.Empty,
+                StorageS3SecretKey = string.Empty,
+                StorageS3Secure = false,
+                StorageS3Region = string.Empty,
+
+                ReadOnlyMode = false,
+                Locked = false,
+                LockedDescription = string.Empty,
 
                 Url = string.Empty,
                 UrlPublic = string.Empty,
@@ -334,7 +393,7 @@ namespace PSGM.Sample.Model.DbBackend
             // Job
             DbBackend_Cluster job = new DbBackend_Cluster()
             {
-                Id = Guid.NewGuid(),
+                Id = new Guid("ca878289-9b96-457f-a486-f53aed0da113"),
 
                 Name = "Name",
                 Description = "Description",
@@ -343,7 +402,6 @@ namespace PSGM.Sample.Model.DbBackend
                 Order = 1,
 
                 BranchNumber = 31,
-                ClusterNumber = 1,
                 Domain = "psgm.at",
 
                 BackendType = BackendType.Job,
@@ -368,6 +426,7 @@ namespace PSGM.Sample.Model.DbBackend
 
                 ReadOnlyMode = false,
                 Locked = false,
+                LockedDescription = string.Empty,
 
                 Url = string.Empty,
                 UrlPublic = string.Empty,
@@ -385,7 +444,7 @@ namespace PSGM.Sample.Model.DbBackend
             // Machine
             DbBackend_Cluster machine = new DbBackend_Cluster()
             {
-                Id = Guid.NewGuid(),
+                Id = new Guid("09c02b16-bb49-40ba-89b7-40504327565d"),
 
                 Name = "Name",
                 Description = "Description",
@@ -394,7 +453,6 @@ namespace PSGM.Sample.Model.DbBackend
                 Order = 1,
 
                 BranchNumber = 31,
-                ClusterNumber = 1,
                 Domain = "psgm.at",
 
                 BackendType = BackendType.Machine,
@@ -419,6 +477,7 @@ namespace PSGM.Sample.Model.DbBackend
 
                 ReadOnlyMode = false,
                 Locked = false,
+                LockedDescription = string.Empty,
 
                 Url = string.Empty,
                 UrlPublic = string.Empty,
@@ -436,7 +495,7 @@ namespace PSGM.Sample.Model.DbBackend
             // Software
             DbBackend_Cluster software = new DbBackend_Cluster()
             {
-                Id = Guid.NewGuid(),
+                Id = new Guid("3f7c76da-0854-43c4-b85c-410b9b5d17fc"),
 
                 Name = "Name",
                 Description = "Description",
@@ -445,7 +504,6 @@ namespace PSGM.Sample.Model.DbBackend
                 Order = 1,
 
                 BranchNumber = 31,
-                ClusterNumber = 1,
                 Domain = "psgm.at",
 
                 BackendType = BackendType.Software,
@@ -470,6 +528,7 @@ namespace PSGM.Sample.Model.DbBackend
 
                 ReadOnlyMode = false,
                 Locked = false,
+                LockedDescription = string.Empty,
 
                 Url = string.Empty,
                 UrlPublic = string.Empty,
@@ -484,55 +543,7 @@ namespace PSGM.Sample.Model.DbBackend
             };
 
 
-            // Workflow
-            DbBackend_Cluster workflow = new DbBackend_Cluster()
-            {
-                Id = Guid.NewGuid(),
 
-                Name = "Name",
-                Description = "Description",
-
-                Stars = 0,
-                Order = 1,
-
-                BranchNumber = 31,
-                ClusterNumber = 1,
-                Domain = "psgm.at",
-
-                BackendType = BackendType.Workflow,
-
-                DatabaseType = DatabaseType.PostgreSQL,
-                DatabaseFilePath = string.Empty,
-                DatabasePort = 50001,
-                DatabaseUsername = "postgres",
-                DatabasePassword = "fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
-
-                StorageType = StorageType.Unknown,
-                StorageClass = StorageClass.Unknown,
-                StorageTier = StorageTier.Unknown,
-
-                StorageFilePath = string.Empty,
-
-                StorageS3BucketName = string.Empty,                             // BucketName is Project Id
-                StorageS3AccessKey = string.Empty,
-                StorageS3SecretKey = string.Empty,
-                StorageS3Secure = false,
-                StorageS3Region = string.Empty,
-
-                ReadOnlyMode = false,
-                Locked = false,
-
-                Url = string.Empty,
-                UrlPublic = string.Empty,
-
-                Project = projects,
-                //ProjectId = null,
-
-                //CreatedByUserIdExtAutoFill = Guid.Empty,
-                //CreatedDateTimeAutoFill = DateTime.Now,
-                //ModifiedByUserIdExtAutoFill = Guid.Empty,
-                //ModifiedDateTimeAutoFill = DateTime.Now,
-            };
 
 
             List<DbBackend_Cluster> tmp = new List<DbBackend_Cluster>(new List<DbBackend_Cluster>()
@@ -545,13 +556,13 @@ namespace PSGM.Sample.Model.DbBackend
                 data,
                 dataThumbnail,
 
+                transcription,
+
                 job,
 
                 machine,
 
-                software,
-
-                workflow
+                software
             });
 
             return tmp;

@@ -120,6 +120,41 @@ namespace PSGM.Model.DbStorage
         public DbSet<DbStorage_File_VirtualUnit_UserGroup_Permission_AuditLog> File_VirtualUnit_UserGroup_Permission_AuditLogs { get; set; }
         #endregion
 
+        #region Metadata Keys
+        public DbSet<DbStorage_MetadataKey> MetadataKeys { get; set; }
+        public DbSet<DbStorage_MetadataKey_AuditLog> MetadataKey_AuditLogs { get; set; }
+
+        public DbSet<DbStorage_MetadataKey_User> MetadataKey_Users { get; set; }
+        public DbSet<DbStorage_MetadataKey_User_AuditLog> MetadataKey_User_AuditLogs { get; set; }
+
+        public DbSet<DbStorage_MetadataKey_User_Link> MetadataKey_User_Links { get; set; }
+        public DbSet<DbStorage_MetadataKey_User_Link_AuditLog> MetadataKey_User_Link_AuditLogs { get; set; }
+
+        public DbSet<DbStorage_MetadataKey_User_Notification> MetadataKey_User_Notifications { get; set; }
+        public DbSet<DbStorage_MetadataKey_User_Notification_AuditLog> MetadataKey_User_Notification_AuditLogs { get; set; }
+
+        public DbSet<DbStorage_MetadataKey_User_Permission> MetadataKey_User_Permissions { get; set; }
+        public DbSet<DbStorage_MetadataKey_User_Permission_AuditLog> MetadataKey_User_Permission_AuditLogs { get; set; }
+
+        public DbSet<DbStorage_MetadataKey_UserGroup> MetadataKey_UserGroups { get; set; }
+        public DbSet<DbStorage_MetadataKey_UserGroup_AuditLog> MetadataKey_UserGroup_AuditLogs { get; set; }
+
+        public DbSet<DbStorage_MetadataKey_UserGroup_Link> MetadataKey_UserGroup_Links { get; set; }
+        public DbSet<DbStorage_MetadataKey_UserGroup_Link_AuditLog> MetadataKey_UserGroup_Link_AuditLogs { get; set; }
+
+        public DbSet<DbStorage_MetadataKey_UserGroup_Notification> MetadataKey_UserGroup_Notifications { get; set; }
+        public DbSet<DbStorage_MetadataKey_UserGroup_Notification_AuditLog> MetadataKey_UserGroup_Notification_AuditLogs { get; set; }
+
+        public DbSet<DbStorage_MetadataKey_UserGroup_Permission> MetadataKey_UserGroup_Permissions { get; set; }
+        public DbSet<DbStorage_MetadataKey_UserGroup_Permission_AuditLog> MetadataKey_UserGroup_Permission_AuditLogs { get; set; }
+
+        public DbSet<DbStorage_MetadataKey_UserGroup_User> MetadataKey_UserGroup_Users { get; set; }
+        public DbSet<DbStorage_MetadataKey_UserGroup_User_AuditLog> MetadataKey_UserGroup_User_AuditLogs { get; set; }
+
+        public DbSet<DbStorage_MetadataKey_UserGroup_User_Link> MetadataKey_UserGroup_User_Links { get; set; }
+        public DbSet<DbStorage_MetadataKey_UserGroup_User_Link_AuditLog> MetadataKey_UserGroup_User_Link_AuditLogs { get; set; }
+        #endregion
+
         #region RootDirectory
         public DbSet<DbStorage_RootDirectory> RootDirectories { get; set; }
         public DbSet<DbStorage_RootDirectory_AuditLog> RootDirectory_AuditLogs { get; set; }
@@ -410,7 +445,7 @@ namespace PSGM.Model.DbStorage
                         }
                         else if (entry.State == EntityState.Modified)
                         {
-                            DbStorage_File fileOld = File_AuditLog.Where(f => f.SourceId == file.Id).Last().GetChanges();
+                            DbStorage_File fileOld = File_AuditLogs.Where(f => f.SourceId == file.Id).Last().GetChanges();
 
                             // Update changes on sub directory
                             if (file.SubDirectory is not null)
@@ -1168,6 +1203,309 @@ namespace PSGM.Model.DbStorage
 
                     case DbStorage_File_VirtualUnit_UserGroup_User_Link_AuditLog file_VirtualUnit_UserGroup_User_Link_AuditLog:
                         break;
+                    #endregion
+
+                    #region Metadata Keys
+                    case DbStorage_MetadataKey metadataKey:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            metadataKey.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            metadataKey.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            metadataKey.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            metadataKey.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        MetadataKey_AuditLogs.Add(new DbStorage_MetadataKey_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = metadataKey.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_MetadataKey_AuditLog metadataKey_AuditLog:
+                        break;
+
+                    case DbStorage_MetadataKey_User metadataKey_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            metadataKey_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            metadataKey_User.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            metadataKey_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            metadataKey_User.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        MetadataKey_User_AuditLogs.Add(new DbStorage_MetadataKey_User_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = metadataKey_User.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_MetadataKey_User_AuditLog metadataKey_User_AuditLog:
+                        break;
+
+                    case DbStorage_MetadataKey_User_Link metadataKey_User_Link:
+                        MetadataKey_User_Link_AuditLogs.Add(new DbStorage_MetadataKey_User_Link_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = metadataKey_User_Link.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_MetadataKey_User_Link_AuditLog metadataKey_User_Link_AuditLog:
+                        break;
+
+                    case DbStorage_MetadataKey_User_Notification metadataKey_User_Notification:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            metadataKey_User_Notification.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            metadataKey_User_Notification.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            metadataKey_User_Notification.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            metadataKey_User_Notification.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        MetadataKey_User_Notification_AuditLogs.Add(new DbStorage_MetadataKey_User_Notification_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = metadataKey_User_Notification.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_MetadataKey_User_Notification_AuditLog metadataKey_User_Notification_AuditLog:
+                        break;
+
+                    case DbStorage_MetadataKey_User_Permission metadataKey_User_Permission:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            metadataKey_User_Permission.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            metadataKey_User_Permission.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            metadataKey_User_Permission.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            metadataKey_User_Permission.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        MetadataKey_User_Permission_AuditLogs.Add(new DbStorage_MetadataKey_User_Permission_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = metadataKey_User_Permission.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_MetadataKey_User_Permission_AuditLog metadataKey_User_Permission_AuditLog:
+                        break;
+
+                    case DbStorage_MetadataKey_UserGroup metadataKey_UserGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            metadataKey_UserGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            metadataKey_UserGroup.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            metadataKey_UserGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            metadataKey_UserGroup.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        MetadataKey_UserGroup_AuditLogs.Add(new DbStorage_MetadataKey_UserGroup_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = metadataKey_UserGroup.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_MetadataKey_UserGroup_AuditLog metadataKey_UserGroup_AuditLog:
+                        break;
+
+                    case DbStorage_MetadataKey_UserGroup_Link metadataKey_UserGroup_Link:
+                        MetadataKey_UserGroup_Link_AuditLogs.Add(new DbStorage_MetadataKey_UserGroup_Link_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = metadataKey_UserGroup_Link.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_MetadataKey_UserGroup_Link_AuditLog metadataKey_UserGroup_Link_AuditLog:
+                        break;
+
+                    case DbStorage_MetadataKey_UserGroup_Notification metadataKey_UserGroup_Notification:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            metadataKey_UserGroup_Notification.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            metadataKey_UserGroup_Notification.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            metadataKey_UserGroup_Notification.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            metadataKey_UserGroup_Notification.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        MetadataKey_UserGroup_Notification_AuditLogs.Add(new DbStorage_MetadataKey_UserGroup_Notification_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = metadataKey_UserGroup_Notification.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_MetadataKey_UserGroup_Notification_AuditLog metadataKey_UserGroup_Notification_AuditLog:
+                        break;
+
+                    case DbStorage_MetadataKey_UserGroup_Permission metadataKey_UserGroup_Permission:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            metadataKey_UserGroup_Permission.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            metadataKey_UserGroup_Permission.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            metadataKey_UserGroup_Permission.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            metadataKey_UserGroup_Permission.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        MetadataKey_UserGroup_Permission_AuditLogs.Add(new DbStorage_MetadataKey_UserGroup_Permission_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = metadataKey_UserGroup_Permission.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_MetadataKey_UserGroup_Permission_AuditLog metadataKey_UserGroup_Permission_AuditLog:
+                        break;
+
+                    case DbStorage_MetadataKey_UserGroup_User metadataKey_UserGroup_User:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            metadataKey_UserGroup_User.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            metadataKey_UserGroup_User.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            metadataKey_UserGroup_User.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            metadataKey_UserGroup_User.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        MetadataKey_UserGroup_User_AuditLogs.Add(new DbStorage_MetadataKey_UserGroup_User_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = metadataKey_UserGroup_User.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_MetadataKey_UserGroup_User_AuditLog metadataKey_UserGroup_User_AuditLog:
+                        break;
+
+                    case DbStorage_MetadataKey_UserGroup_User_Link metadataKey_UserGroup_User_Link:
+                        MetadataKey_UserGroup_User_Link_AuditLogs.Add(new DbStorage_MetadataKey_UserGroup_User_Link_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = metadataKey_UserGroup_User_Link.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbStorage_MetadataKey_UserGroup_User_Link_AuditLog metadataKey_UserGroup_User_Link_AuditLog:
+                        break;
+
+
+
+
+
+
+
+
+                        _AuditLogs
+
                     #endregion
 
                     #region RootDirectory

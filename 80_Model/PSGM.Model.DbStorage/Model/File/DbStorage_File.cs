@@ -157,6 +157,15 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "SoftwareId_Ext")]
         public Guid SoftwareId_Ext { get; set; } = Guid.Empty;
 
+        [Column("Locked")]
+        [Display(Name = "Locked")]
+        public bool Locked { get; set; } = false;
+
+        [Column("LockedDescription")]
+        [Display(Name = "LockedDescription")]
+        [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string LockedDescription { get; set; } = string.Empty;
+
         #region No direct access
         [Column("RawFileIdsString")]
         [Display(Name = "RawFileIdsString")]

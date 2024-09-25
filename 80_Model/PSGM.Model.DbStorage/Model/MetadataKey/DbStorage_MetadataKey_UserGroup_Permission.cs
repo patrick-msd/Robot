@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using PSGM.Helper;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbStorage
 {
-    [Table("File_UserGroup")]
-    public class DbStorage_File_UserGroup
+    [Table("MetadataKey_UserGroup_Permission")]
+    public class DbStorage_MetadataKey_UserGroup_Permission
     {
         #region Entities
         [Key]
@@ -12,6 +14,19 @@ namespace PSGM.Model.DbStorage
         [Column("Id")]
         [Display(Name = "Id")]
         public Guid Id { get; set; }
+
+        [Column("Description")]
+        [Display(Name = "Description")]
+        [StringLength(16384, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Description { get; set; } = string.Empty;
+
+        [Column("PermissionFile")]
+        [Display(Name = "PermissionFile")]
+        public PermissionType PermissionFile { get; set; } = PermissionType.None;
+
+        [Column("PermissionMetadata")]
+        [Display(Name = "PermissionMetadata")]
+        public PermissionType PermissionMetadata { get; set; } = PermissionType.None;
 
         #region Audit details for faster file audit information
         [Required]
@@ -35,21 +50,16 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Links
+        #endregion
 
-        [InverseProperty("UserGroup")]
-        public virtual ICollection<DbStorage_File_UserGroup_Notification>? Notifications { get; set; }
-
-        [InverseProperty("UserGroup")]
-        public virtual DbStorage_File_UserGroup_Permission? Permissions { get; set; }
-
-        [InverseProperty("UserGroup")]
-        public virtual ICollection<DbStorage_File_UserGroup_Link>? UserGroupLinks { get; set; }
-
-        [InverseProperty("UserGroup")]
-        public virtual ICollection<DbStorage_File_UserGroup_User_Link>? UserLinks { get; set; }
+        #region Backlinks (ForeignKeys)
+        [ForeignKey("UserGroup")]
+        public Guid? UserGroupId { get; set; }
+        public virtual DbStorage_MetadataKey_UserGroup? UserGroup { get; set; }
         #endregion
 
         #region Not Mapped
         #endregion
     }
 }
+

@@ -377,7 +377,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                     MetadataLinks = subDirectoryMetadataLinkLoop,
 
-                    DirectoryLocked = false,
+                    Locked = false,
 
                     UserLinks = usersLoop,
                     UserGroupLinks = userGroupsLoop,

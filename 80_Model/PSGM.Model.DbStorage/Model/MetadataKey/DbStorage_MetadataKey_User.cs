@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbStorage
 {
-    [Table("File_User")]
-    public class DbStorage_File_User
+    [Table("MetadataKey_User")]
+    public class DbStorage_MetadataKey_User
     {
         #region Entities
         [Key]
@@ -62,13 +62,13 @@ namespace PSGM.Model.DbStorage
 
         #region Links
         [InverseProperty("User")]
-        public virtual ICollection<DbStorage_File_User_Notification>? Notifications { get; set; }
+        public virtual ICollection<DbStorage_MetadataKey_User_Notification>? Notifications { get; set; }
 
         [InverseProperty("User")]
-        public virtual DbStorage_File_User_Permission? Permissions { get; set; }
+        public virtual DbStorage_MetadataKey_User_Permission? Permissions { get; set; }
 
         [InverseProperty("User")]
-        public virtual ICollection<DbStorage_File_User_Link>? UserLinks { get; set; }
+        public virtual ICollection<DbStorage_MetadataKey_User_Link>? UserLinks { get; set; }
         #endregion
 
         #region Not Mapped

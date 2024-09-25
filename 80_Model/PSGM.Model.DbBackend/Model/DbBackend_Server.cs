@@ -24,16 +24,6 @@ namespace PSGM.Model.DbBackend
         [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
-        //[Column("DNS")]
-        //[Display(Name = "DNS")]
-        //[StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string DNS { get; set; } = string.Empty;
-
-        //[Column("IpAddress")]
-        //[Display(Name = "IpAddress")]
-        //[StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        //public string IpAddress { get; set; } = string.Empty;
-
         [Column("FirstIpSegment")]
         [Display(Name = "FirstIpSegment")]
         public int FirstIpSegment { get; set; } = 0;
@@ -45,6 +35,15 @@ namespace PSGM.Model.DbBackend
         [Column("VLAN")]
         [Display(Name = "VLAN")]
         public int VLAN { get; set; } = 0;
+
+        [Column("Locked")]
+        [Display(Name = "Locked")]
+        public bool Locked { get; set; } = false;
+
+        [Column("LockedDescription")]
+        [Display(Name = "LockedDescription")]
+        [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string LockedDescription { get; set; } = string.Empty;
 
         #region Audit details for faster file audit information
         [Required]

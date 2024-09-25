@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbStorage
 {
-    [Table("file_UserGroup_Permission_AuditLog")]
-    public class DbStorage_File_UserGroup_Permission_AuditLog
+    [Table("MetadataKey_AuditLog")]
+    public class DbStorage_MetadataKey_AuditLog
     {
         #region Entities
         [Key]
@@ -21,7 +21,7 @@ namespace PSGM.Model.DbStorage
 
         [Required]
         [Column("Action")]
-        [Display(Name = "Action")]
+        [Display(Name = "EntityName")]
         [StringLength(256, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Action { get; set; } = string.Empty;
 
@@ -29,12 +29,6 @@ namespace PSGM.Model.DbStorage
         [Column("DateTime")]
         [Display(Name = "DateTime")]
         public DateTime DateTime { get; set; } = DateTime.MinValue;
-
-        [Required]
-        [Column("Changes")]
-        [Display(Name = "Changes")]
-        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string Changes { get; set; } = string.Empty;
 
         [Required]
         [Column("UserId_Ext")]
@@ -45,6 +39,12 @@ namespace PSGM.Model.DbStorage
         [Column("SoftwareId_Ext")]
         [Display(Name = "SoftwareId_Ext")]
         public Guid SoftwareId_Ext { get; set; } = Guid.Empty;
+
+        [Required]
+        [Column("Changes")]
+        [Display(Name = "Changes")]
+        [StringLength(16383, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Changes { get; set; } = string.Empty;
         #endregion
 
         #region Links
@@ -54,9 +54,9 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Not Mapped
-        public DbStorage_File_UserGroup_Permission? GetChanges()
+        public DbStorage_MetadataKey? GetChanges()
         {
-            return JsonConvert.DeserializeObject<DbStorage_File_UserGroup_Permission>(Changes);
+            return JsonConvert.DeserializeObject<DbStorage_MetadataKey>(Changes);
         }
         #endregion
     }

@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbStorage
 {
-    [Table("File_UserGroup_Link")]
-    public class DbStorage_File_UserGroup_Link
+    [Table("MetadataKey_UserGroup_Link")]
+    public class DbStorage_MetadataKey_UserGroup_Link
     {
         #region Entities
         [Key]
@@ -19,13 +19,13 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [ForeignKey("File")]
-        public Guid? FileId { get; set; }
-        public virtual DbStorage_File? File { get; set; }
+        [ForeignKey("MetadataKey")]
+        public Guid? MetadataKeyId { get; set; }
+        public virtual DbStorage_MetadataKey? MetadataKey { get; set; }
 
         [ForeignKey("UserGroup")]
         public Guid? UserGroupId { get; set; } = Guid.Empty;
-        public virtual DbStorage_File_UserGroup? UserGroup { get; set; }
+        public virtual DbStorage_MetadataKey_UserGroup? UserGroup { get; set; }
         #endregion
 
         #region Not Mapped

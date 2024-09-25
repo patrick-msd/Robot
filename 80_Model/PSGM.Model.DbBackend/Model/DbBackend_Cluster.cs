@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbBackend
 {
-    [Table("Structure")]
+    [Table("Cluster")]
     public class DbBackend_Cluster
     {
         #region Entities
@@ -24,10 +24,6 @@ namespace PSGM.Model.DbBackend
         [Display(Name = "Description")]
         [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
-
-        [Column("ClusterNumber")]
-        [Display(Name = "ClusterNumber")]
-        public int ClusterNumber { get; set; } = 0;
 
         [Column("BranchNumber")]
         [Display(Name = "BranchNumber")]
@@ -123,6 +119,11 @@ namespace PSGM.Model.DbBackend
         [Display(Name = "Locked")]
         public bool Locked { get; set; } = false;
 
+        [Column("LockedDescription")]
+        [Display(Name = "LockedDescription")]
+        [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string LockedDescription { get; set; } = string.Empty;
+
         [Column("Url")]
         [Display(Name = "Url")]
         [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
@@ -166,37 +167,23 @@ namespace PSGM.Model.DbBackend
         #endregion
 
         #region Not Mapped
-        public string GetDatabaseConnectionStringWithoutBranch()
+        public string GetDatabaseConnection(bool withBranch)
         {
             if (this.Project is not null)
             {
-                if (this.StorageClass == StorageClass.Data || this.StorageClass == StorageClass.DataThumbnail || this.StorageClass == StorageClass.DataAndDataThumbnail)
+                if (withBranch)
                 {
-                    string host = $"{this.Project.Id}-db-clu{this.ClusterNumber.ToString("D3")}.{this.Domain}";
-                    string database = Enum.GetName(typeof(BackendType), this.BackendType);
+                    string host = $"db-clu-{this.Id.ToString()}.branch{this.BranchNumber.ToString("D3")}.{this.Domain}:{this.DatabasePort.ToString()}";
+                    string database = $"Db{Enum.GetName(typeof(BackendType), this.BackendType)}-{this.Id.ToString()}";
 
-                    return $"Host={host}:{this.DatabasePort};Database=Db{database}_{this.Project.Id};Username={this.DatabaseUsername};Password={this.DatabasePassword}";
-                }
-                else if (this.StorageClass == StorageClass.DataRaw || this.StorageClass == StorageClass.DataRawThumbnail || this.StorageClass == StorageClass.DataRawAndDataRawThumbnail)
-                {
-                    string host = $"{this.Project.Id}-db-clu{this.ClusterNumber.ToString("D3")}.{this.Domain}";
-                    string database = Enum.GetName(typeof(BackendType), this.BackendType);
-
-                    return $"Host={host}:{this.DatabasePort};Database=Db{database}_{this.Project.Id};Username={this.DatabaseUsername};Password={this.DatabasePassword}";
-                }
-                else if (this.StorageClass == StorageClass.DataTranscription)
-                {
-                    string host = $"{this.Project.Id}-db-clu{this.ClusterNumber.ToString("D3")}.{this.Domain}";
-                    string database = Enum.GetName(typeof(BackendType), this.BackendType);
-
-                    return $"Host={host}:{this.DatabasePort};Database=Db{database}_{this.Project.Id};Username={this.DatabaseUsername};Password={this.DatabasePassword}";
+                    return $"Host={host};Database={database};Username={this.DatabaseUsername};Password={this.DatabasePassword}";
                 }
                 else
                 {
-                    string host = $"{Enum.GetName(typeof(BackendType), this.BackendType).ToLower()}-db-clu{this.ClusterNumber.ToString("D3")}.{this.Domain}";
-                    string database = Enum.GetName(typeof(BackendType), this.BackendType);
+                    string host = $"db-clu-{this.Id.ToString()}.{this.Domain}:{this.DatabasePort.ToString()}";
+                    string database = $"Db{Enum.GetName(typeof(BackendType), this.BackendType)}-{this.Id.ToString()}";
 
-                    return $"Host={host}:{this.DatabasePort};Database=Db{database}_{this.Project.Id};Username={this.DatabaseUsername};Password={this.DatabasePassword}";
+                    return $"Host={host};Database={database};Username={this.DatabaseUsername};Password={this.DatabasePassword}";
                 }
             }
             else
@@ -205,91 +192,17 @@ namespace PSGM.Model.DbBackend
             }
         }
 
-        public string GetDatabaseConnectionStringWithBranch()
+        public string GetStorageS3Endpoint(bool withBranch = true)
         {
             if (this.Project is not null)
             {
-                if (this.StorageClass == StorageClass.Data || this.StorageClass == StorageClass.DataThumbnail || this.StorageClass == StorageClass.DataAndDataThumbnail)
+                if (withBranch)
                 {
-                    string host = $"{this.Project.Id}-db-clu{this.ClusterNumber.ToString("D3")}.branch{this.BranchNumber.ToString("D3")}.{this.Domain}";
-                    string database = Enum.GetName(typeof(BackendType), this.BackendType);
-
-                    return $"Host={host}:{this.DatabasePort};Database=Db{database}_{this.Project.Id};Username={this.DatabaseUsername};Password={this.DatabasePassword}";
-                }
-                else if (this.StorageClass == StorageClass.DataRaw || this.StorageClass == StorageClass.DataRawThumbnail || this.StorageClass == StorageClass.DataRawAndDataRawThumbnail)
-                {
-                    string host = $"{this.Project.Id}-db-clu{this.ClusterNumber.ToString("D3")}.branch{this.BranchNumber.ToString("D3")}.{this.Domain}";
-                    string database = Enum.GetName(typeof(BackendType), this.BackendType);
-
-                    return $"Host={host}:{this.DatabasePort};Database=Db{database}_{this.Project.Id};Username={this.DatabaseUsername};Password={this.DatabasePassword}";
-                }
-                else if (this.StorageClass == StorageClass.DataTranscription)
-                {
-                    string host = $"{this.Project.Id}-db-clu{this.ClusterNumber.ToString("D3")}.branch{this.BranchNumber.ToString("D3")}.{this.Domain}";
-                    string database = Enum.GetName(typeof(BackendType), this.BackendType);
-
-                    return $"Host={host}:{this.DatabasePort};Database=Db{database}_{this.Project.Id};Username={this.DatabaseUsername};Password={this.DatabasePassword}";
+                    return $"s3-clu-{this.Id.ToString()}.branch{this.BranchNumber.ToString("D3")}.{this.Domain}:{this.DatabasePort.ToString()}";
                 }
                 else
                 {
-                    string host = $"{Enum.GetName(typeof(BackendType), this.BackendType).ToLower()}-db-clu{this.ClusterNumber.ToString("D3")}.branch{this.BranchNumber.ToString("D3")}.{this.Domain}";
-                    string database = Enum.GetName(typeof(BackendType), this.BackendType);
-
-                    return $"Host={host}:{this.DatabasePort};Database=Db{database}_{this.Project.Id};Username={this.DatabaseUsername};Password={this.DatabasePassword}";
-                }
-            }
-            else
-            {
-                return string.Empty;
-            }
-        }
-
-        public string GetStorageS3EndpointWithoutBranch()
-        {
-            if (this.Project is not null)
-            {
-                if (this.StorageClass == StorageClass.Data || this.StorageClass == StorageClass.DataThumbnail || this.StorageClass == StorageClass.DataAndDataThumbnail)
-                {
-                    return $"{this.Project.Id}-s3-clu{this.ClusterNumber.ToString("D3")}.{this.Domain}";
-                }
-                else if (this.StorageClass == StorageClass.DataRaw || this.StorageClass == StorageClass.DataRawThumbnail || this.StorageClass == StorageClass.DataRawAndDataRawThumbnail)
-                {
-                    return $"{this.Project.Id}-s3-clu{this.ClusterNumber.ToString("D3")}.{this.Domain}";
-                }
-                else if (this.StorageClass == StorageClass.DataTranscription)
-                {
-                    return $"{this.Project.Id}-s3-clu{this.ClusterNumber.ToString("D3")}.{this.Domain}";
-                }
-                else
-                {
-                    return $"{Enum.GetName(typeof(BackendType), BackendType.Main).ToLower()}-s3-clu{this.ClusterNumber.ToString("D3")}.{this.Domain}";
-                }
-            }
-            else
-            {
-                return string.Empty;
-            }
-        }
-
-        public string GetStorageS3EndpointWithBranch()
-        {
-            if (this.Project is not null)
-            {
-                if (this.StorageClass == StorageClass.Data || this.StorageClass == StorageClass.DataThumbnail || this.StorageClass == StorageClass.DataAndDataThumbnail)
-                {
-                    return $"{this.Project.Id}-s3-clu{this.ClusterNumber.ToString("D3")}.branch{this.BranchNumber.ToString("D3")}.{this.Domain}";
-                }
-                else if (this.StorageClass == StorageClass.DataRaw || this.StorageClass == StorageClass.DataRawThumbnail || this.StorageClass == StorageClass.DataRawAndDataRawThumbnail)
-                {
-                    return $"{this.Project.Id}-s3-clu{this.ClusterNumber.ToString("D3")}.branch{this.BranchNumber.ToString("D3")}.{this.Domain}";
-                }
-                else if (this.StorageClass == StorageClass.DataTranscription)
-                {
-                    return $"{this.Project.Id}-s3-clu{this.ClusterNumber.ToString("D3")}.branch{this.BranchNumber.ToString("D3")}.{this.Domain}";
-                }
-                else
-                {
-                    return $"{Enum.GetName(typeof(BackendType), BackendType.Main).ToLower()}-s3-clu{this.ClusterNumber.ToString("D3")}.branch{this.BranchNumber.ToString("D3")}.{this.Domain}";
+                    return $"s3-clu-{this.Id.ToString()}.{this.Domain}:{this.DatabasePort.ToString()}";
                 }
             }
             else

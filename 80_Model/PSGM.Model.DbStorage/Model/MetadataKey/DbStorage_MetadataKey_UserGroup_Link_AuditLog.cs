@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbStorage
 {
-    [Table("MetadataKey_AuditLog")]
-    public class DbStorage_MetadataKey_AuditLog
+    [Table("MetadataKey_UserGroup_Link_AuditLog")]
+    public class DbStorage_MetadataKey_UserGroup_Link_AuditLog
     {
         #region Entities
         [Key]
@@ -54,9 +54,9 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Not Mapped
-        public DbStorage_File_Metadata? GetChanges()
+        public DbStorage_MetadataKey_UserGroup_Link? GetChanges()
         {
-            return JsonConvert.DeserializeObject<DbStorage_File_Metadata>(Changes);
+            return JsonConvert.DeserializeObject<DbStorage_MetadataKey_UserGroup_Link>(Changes);
         }
         #endregion
     }

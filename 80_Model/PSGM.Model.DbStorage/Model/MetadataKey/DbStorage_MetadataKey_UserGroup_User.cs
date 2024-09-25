@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbStorage
 {
-    [Table("File_UserGroup_User")]
-    public class DbStorage_File_UserGroup_User
+    [Table("MetadataKey_UserGroup_User")]
+    public class DbStorage_MetadataKey_UserGroup_User
     {
         #region Entities
         [Key]
@@ -62,7 +62,7 @@ namespace PSGM.Model.DbStorage
 
         #region Links
         [InverseProperty("User")]
-        public virtual ICollection<DbStorage_File_UserGroup_User_Link>? UserLinks { get; set; }
+        public virtual ICollection<DbStorage_MetadataKey_UserGroup_User_Link>? UserLinks { get; set; }
         #endregion
 
         #region Not Mapped
