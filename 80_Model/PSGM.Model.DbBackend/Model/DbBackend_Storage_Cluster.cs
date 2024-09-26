@@ -84,6 +84,10 @@ namespace PSGM.Model.DbBackend
         [StringLength(256, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string StorageS3Region { get; set; } = string.Empty;
 
+        [Column("Internal")]
+        [Display(Name = "Internal")]
+        public bool Internal { get; set; } = true;
+
         [Column("ReadOnlyMode")]
         [Display(Name = "ReadOnlyMode")]
         public bool ReadOnlyMode { get; set; } = false;

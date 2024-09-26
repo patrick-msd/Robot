@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PSGM.Helper;
+using PSGM.Model.DbBackend;
 using PSGM.Model.DbMain;
 using Serilog;
 using Serilog.Debugging;
@@ -21,6 +22,7 @@ namespace PSGM.Sample.Model.DbStorage
 
         ConfigFile _configFile;
 
+        private DbBackend_Context _dbBackend_Context;
         private DbMain_Context _dbMain_Context;
 
         Guid _softwareId;
@@ -104,10 +106,32 @@ namespace PSGM.Sample.Model.DbStorage
             #region Initialize Databases
             if (_configFile.ConfigFileExists(Directory.GetCurrentDirectory() + "\\ConfigFile.json"))
             {
-                _dbMain_Context = new DbMain_Context();
+                #region Backend
+                _dbBackend_Context = new DbBackend_Context();
 
-                _dbMain_Context.DatabaseConnectionString = _configFile.DatabaseConnectionString;
-                _dbMain_Context.DatabaseType = _configFile.DatabaseType;
+                _dbBackend_Context.DatabaseConnectionString = _configFile.DatabaseConnectionString;
+                _dbBackend_Context.DatabaseType = _configFile.DatabaseType;
+
+                _dbBackend_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
+                _dbBackend_Context.DatabaseSessionParameter_MachineId = _machineId;
+                _dbBackend_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
+
+                _dbBackend_Context.Database.OpenConnection();
+                #endregion
+
+                List<DbBackend_Backend>? backend = _dbBackend_Context.Backends.Where(p => p.Project.ProjectId_Ext == new Guid("79A0FD7A-5D68-4095-A309-F4E92426E657"))
+                                                                                .Include(p => p.DatabaseClusters)
+                                                                                    .ThenInclude(p => p.DatabaseServers)
+                                                                                .Include(p => p.StorageClusters)
+                                                                                    .ThenInclude(p => p.StorageServers)
+                                                                                .ToList();
+
+                DbBackend_Database_Cluster? databaseMain = backend.Where(p => p.BackendType == BackendType.Main).FirstOrDefault().DatabaseClusters.FirstOrDefault();
+
+                _dbMain_Context = new DbMain_Context();
+                
+                _dbMain_Context.DatabaseConnectionString = databaseMain.GetDatabaseConnection(true);
+                _dbMain_Context.DatabaseType = databaseMain.DatabaseType;
 
                 _dbMain_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
                 _dbMain_Context.DatabaseSessionParameter_MachineId = _machineId;
@@ -127,8 +151,8 @@ namespace PSGM.Sample.Model.DbStorage
         {
             _configFile = new ConfigFile()
             {
-                DatabaseConnectionString = "Host=db-clu001.branch31.psgm.at:50001;Database=DbMain;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
                 DatabaseType = DatabaseType.PostgreSQL,
+                DatabaseConnectionString = "Host=db-backend-c6e1c3e3-f49d-4edc-b3a2-2ed50174e3c8.branch031.psgm.at:50001;Database=db-backend-c6e1c3e3-f49d-4edc-b3a2-2ed50174e3c8;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
             };
 
             _configFile.WriteToFile(Directory.GetCurrentDirectory() + "\\ConfigFile.json");
@@ -136,9 +160,37 @@ namespace PSGM.Sample.Model.DbStorage
 
         private void btnDbReadConfigFileAndInit_Click(object sender, RoutedEventArgs e)
         {
+            #region Backend
+            _dbBackend_Context = new DbBackend_Context();
+
+            _dbBackend_Context.DatabaseConnectionString = _configFile.DatabaseConnectionString;
+            _dbBackend_Context.DatabaseType = _configFile.DatabaseType;
+
+            _dbBackend_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
+            _dbBackend_Context.DatabaseSessionParameter_MachineId = _machineId;
+            _dbBackend_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
+
+            _dbBackend_Context.Database.OpenConnection();
+            #endregion
+
+            List<DbBackend_Backend>? backend = _dbBackend_Context.Backends.Where(p => p.Project.ProjectId_Ext == new Guid("79A0FD7A-5D68-4095-A309-F4E92426E657"))
+                                                                            .Include(p => p.DatabaseClusters)
+                                                                                .ThenInclude(p => p.DatabaseServers)
+                                                                            .Include(p => p.StorageClusters)
+                                                                                .ThenInclude(p => p.StorageServers)
+                                                                            .ToList();
+
+            DbBackend_Database_Cluster? databaseMain = backend.Where(p => p.BackendType == BackendType.Main).FirstOrDefault().DatabaseClusters.FirstOrDefault();
+
             _dbMain_Context = new DbMain_Context();
-            _dbMain_Context.DatabaseConnectionString = _configFile.DatabaseConnectionString;
-            _dbMain_Context.DatabaseType = _configFile.DatabaseType;
+
+            _dbMain_Context.DatabaseConnectionString = databaseMain.GetDatabaseConnection(true);
+            _dbMain_Context.DatabaseType = databaseMain.DatabaseType;
+
+            _dbMain_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
+            _dbMain_Context.DatabaseSessionParameter_MachineId = _machineId;
+            _dbMain_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
+
             _dbMain_Context.Database.EnsureDeleted();
             _dbMain_Context.Database.EnsureCreated();
             _dbMain_Context.Database.OpenConnection();

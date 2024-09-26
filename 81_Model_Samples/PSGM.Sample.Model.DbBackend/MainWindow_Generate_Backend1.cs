@@ -31,7 +31,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Database_Cluster()
                     {
-                        Id = Guid.NewGuid(),
+                        Id = new Guid("a9976223-8737-46e5-a2c8-e2a677551f49"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -165,7 +165,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Storage_Cluster()
                     {
-                        Id = Guid.NewGuid(),
+                        Id = new Guid("c2ec198a-2d7f-4c2f-8073-46a196d2e0a4"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -187,6 +187,8 @@ namespace PSGM.Sample.Model.DbBackend
                         StorageS3SecretKey = "1Xq3G7az3QC3R0wKTBbwNHPNawhA16j1cx0n0a",
                         StorageS3Secure = false,
                         StorageS3Region = "eu-central-1",
+
+                        Internal = true,
 
                         ReadOnlyMode = false,
 
@@ -312,10 +314,10 @@ namespace PSGM.Sample.Model.DbBackend
             };
 
 
-            // Storage Data Raw
-            DbBackend_Backend backendStorageDataRaw = new DbBackend_Backend()
+            // Storage Data
+            DbBackend_Backend backendStorageData = new DbBackend_Backend()
             {
-                Id = new Guid("9e05de17-2d39-47fd-a1f2-f4c274b8f44c"),
+                Id = new Guid("8611b52b-b27f-4ccf-847b-a17eb590bbe9"),
 
                 Name = string.Empty,
                 Description = string.Empty,
@@ -334,7 +336,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Database_Cluster()
                     {
-                        Id = Guid.NewGuid(),
+                        Id = new Guid("baf4e09e-eb5f-4c62-817e-dfa1d9fe3266"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -468,7 +470,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Storage_Cluster()
                     {
-                        Id = Guid.NewGuid(),
+                        Id = new Guid("d0e989bf-7e46-4064-903d-a5e27a276c4a"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -480,7 +482,7 @@ namespace PSGM.Sample.Model.DbBackend
                         Domain = "psgm.at",
 
                         StorageType = StorageType.S3,
-                        StorageClass = StorageClass.DataRaw,
+                        StorageClass = StorageClass.Data,
                         StorageTier = StorageTier.Hot,
 
                         StorageFilePath = string.Empty,
@@ -490,6 +492,8 @@ namespace PSGM.Sample.Model.DbBackend
                         StorageS3SecretKey = "iuVv7TMZA0Oaky7bgXE6mdejI9Xnu40KGMrFve",
                         StorageS3Secure = false,
                         StorageS3Region = "eu-central-1",
+
+                        Internal = true,
 
                         ReadOnlyMode = false,
 
@@ -614,10 +618,10 @@ namespace PSGM.Sample.Model.DbBackend
                 //ProjectId = null,
             };
 
-            // Storage Data Raw Thumbnail
-            DbBackend_Backend backendStorageDataRawThumbnail = new DbBackend_Backend()
+            // Storage Data Thumbnail
+            DbBackend_Backend backendStorageDataThumbnail = new DbBackend_Backend()
             {
-                Id = new Guid("aedb88bc-c17d-49f1-879c-c595ad758aef"),
+                Id = new Guid("739570fa-ef7e-41bc-9b79-b4753dc04527"),
 
                 Name = string.Empty,
                 Description = string.Empty,
@@ -636,7 +640,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Database_Cluster()
                     {
-                        Id = Guid.NewGuid(),
+                          Id = new Guid("b63d6be2-4bbf-420d-b8d3-1e78a57a6bd1"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -770,7 +774,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Storage_Cluster()
                     {
-                        Id = Guid.NewGuid(),
+                                       Id = new Guid("8ba313b7-618d-41c4-98b7-968295299505"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -782,7 +786,7 @@ namespace PSGM.Sample.Model.DbBackend
                         Domain = "psgm.at",
 
                         StorageType = StorageType.S3,
-                        StorageClass = StorageClass.DataRawThumbnail,
+                        StorageClass = StorageClass.DataThumbnail,
                         StorageTier = StorageTier.Hot,
 
                         StorageFilePath = string.Empty,
@@ -792,6 +796,8 @@ namespace PSGM.Sample.Model.DbBackend
                         StorageS3SecretKey = "YCVcvjFidGNneQVPTJ0LUhDM1Nxj9Y5fD5RMCh",
                         StorageS3Secure = false,
                         StorageS3Region = "eu-central-1",
+
+                        Internal = true,
 
                         ReadOnlyMode = false,
 
@@ -917,10 +923,10 @@ namespace PSGM.Sample.Model.DbBackend
             };
 
 
-            // Storage Data
-            DbBackend_Backend backendStorageData = new DbBackend_Backend()
+            // Storage Data Raw
+            DbBackend_Backend backendStorageDataRaw = new DbBackend_Backend()
             {
-                Id = new Guid("8611b52b-b27f-4ccf-847b-a17eb590bbe9"),
+                Id = new Guid("9e05de17-2d39-47fd-a1f2-f4c274b8f44c"),
 
                 Name = string.Empty,
                 Description = string.Empty,
@@ -939,7 +945,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Database_Cluster()
                     {
-                        Id = Guid.NewGuid(),
+                             Id = new Guid("50b7e775-1b84-41aa-b0b1-4280351c3b05"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -1073,7 +1079,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Storage_Cluster()
                     {
-                        Id = Guid.NewGuid(),
+                         Id = new Guid("7a9bbb27-bad4-41bc-b281-e8410db84c4f"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -1085,7 +1091,7 @@ namespace PSGM.Sample.Model.DbBackend
                         Domain = "psgm.at",
 
                         StorageType = StorageType.S3,
-                        StorageClass = StorageClass.Data,
+                        StorageClass = StorageClass.DataRaw,
                         StorageTier = StorageTier.Hot,
 
                         StorageFilePath = string.Empty,
@@ -1095,6 +1101,8 @@ namespace PSGM.Sample.Model.DbBackend
                         StorageS3SecretKey = "LcBxrCot4ekVhNXOQ5pF6cXakToEilbEmXpX3G",
                         StorageS3Secure = false,
                         StorageS3Region = "eu-central-1",
+
+                        Internal = true,
 
                         ReadOnlyMode = false,
 
@@ -1219,10 +1227,10 @@ namespace PSGM.Sample.Model.DbBackend
                 //ProjectId = null,
             };
 
-            // Storage Data Thumbnail
-            DbBackend_Backend backendStorageDataThumbnail = new DbBackend_Backend()
+            // Storage Data Raw Thumbnail
+            DbBackend_Backend backendStorageDataRawThumbnail = new DbBackend_Backend()
             {
-                Id = new Guid("739570fa-ef7e-41bc-9b79-b4753dc04527"),
+                Id = new Guid("aedb88bc-c17d-49f1-879c-c595ad758aef"),
 
                 Name = string.Empty,
                 Description = string.Empty,
@@ -1241,7 +1249,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Database_Cluster()
                     {
-                        Id = Guid.NewGuid(),
+                        Id = new Guid("afbd8a86-67a8-4b92-9ddb-9f4b8ef8be63"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -1375,7 +1383,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Storage_Cluster()
                     {
-                        Id = Guid.NewGuid(),
+                             Id = new Guid("a13006e1-2808-4620-b9bb-6a78193a3099"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -1387,7 +1395,7 @@ namespace PSGM.Sample.Model.DbBackend
                         Domain = "psgm.at",
 
                         StorageType = StorageType.S3,
-                        StorageClass = StorageClass.DataThumbnail,
+                        StorageClass = StorageClass.DataRawThumbnail,
                         StorageTier = StorageTier.Hot,
 
                         StorageFilePath = string.Empty,
@@ -1397,6 +1405,8 @@ namespace PSGM.Sample.Model.DbBackend
                         StorageS3SecretKey = "jgn0MHMHgMg9MtldqVVCPuNU2ahOVDdQpvm4g9",
                         StorageS3Secure = false,
                         StorageS3Region = "eu-central-1",
+
+                        Internal = true,
 
                         ReadOnlyMode = false,
 
@@ -1544,7 +1554,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Database_Cluster()
                     {
-                        Id = Guid.NewGuid(),
+                              Id = new Guid("b69ab40f-8c21-4916-b019-260a081e1a0f"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -1678,7 +1688,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Storage_Cluster()
                     {
-                        Id = Guid.NewGuid(),
+                     Id = new Guid("968d6641-4119-4d4c-9bc0-2ced7beffd43"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -1696,10 +1706,12 @@ namespace PSGM.Sample.Model.DbBackend
                         StorageFilePath = string.Empty,
 
                         StorageS3BucketName = string.Empty,                                 // BucketName is Project Id
-                        StorageS3AccessKey = "vRq5oKX0jphGaCvGdGMz",
-                        StorageS3SecretKey = "uimrR6RKkVgUL9QL4XcNRyucP4r0jeajzwxfwT",
+                        StorageS3AccessKey = "fAWtO1ZgyPt0GQZ2B4yO",
+                        StorageS3SecretKey = "n2p9FmJM7o68t8jzHEMP1Z5RO5RnJxFFKxva0M",
                         StorageS3Secure = false,
                         StorageS3Region = "eu-central-1",
+
+                        Internal = true,
 
                         ReadOnlyMode = false,
 
@@ -1847,7 +1859,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Database_Cluster()
                     {
-                        Id = Guid.NewGuid(),
+                          Id = new Guid("216ea8ad-5e98-414f-9c7c-cdb3fb9dffdb"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -2012,7 +2024,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Database_Cluster()
                     {
-                        Id = Guid.NewGuid(),
+                           Id = new Guid("50c221c0-715a-4b62-b85e-fbff5ea22697"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -2177,7 +2189,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Database_Cluster()
                     {
-                        Id = Guid.NewGuid(),
+                        Id = new Guid("b054b335-4f51-4e23-b6fa-454ca3ad7e10"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -2325,11 +2337,11 @@ namespace PSGM.Sample.Model.DbBackend
             {
                 backendMain,
 
-                backendStorageDataRaw,
-                backendStorageDataRawThumbnail,
-
                 backendStorageData,
                 backendStorageDataThumbnail,
+
+                backendStorageDataRaw,
+                backendStorageDataRawThumbnail,
 
                 backendTranscription,
 

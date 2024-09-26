@@ -11,7 +11,7 @@ namespace PSGM.Sample.Model.DbBackend
 {
     public partial class MainWindow : System.Windows.Window
     {
-        public async void Setup_Storage_DBStorageData(DbBackend_Project projects)
+        public async void Setup_Storage_DBStorageMain(DbBackend_Project projects)
         {
             IMinioClient minioClient;
 
@@ -19,7 +19,7 @@ namespace PSGM.Sample.Model.DbBackend
                                                                                 .Include(p => p.StorageServers)
                                                                                 .ToList();
 
-            DbBackend_Storage_Cluster cluster = clusters.Where(p => p.StorageClass == StorageClass.Data).FirstOrDefault();
+            DbBackend_Storage_Cluster cluster = clusters.Where(p => p.StorageClass == StorageClass.DataMain).FirstOrDefault();
 
             minioClient = new MinioClient().WithEndpoint(cluster.GetStorageS3Endpoint(true))
                                             .WithCredentials(cluster.StorageS3AccessKey, cluster.StorageS3SecretKey)
@@ -27,38 +27,39 @@ namespace PSGM.Sample.Model.DbBackend
                                             .WithRegion(cluster.StorageS3Region)
                                             .Build();
 
-            #region List and remove all buckets
-            try
-            {
-                var list = await minioClient.ListBucketsAsync();
+            //#region List and remove all buckets
+            //try
+            //{
+            //    var list = await minioClient.ListBucketsAsync();
 
-                if (list.Buckets is not null)
-                {
-                    if (list.Buckets.Count > 0)
-                    {
-                        foreach (Bucket bucket in list.Buckets)
-                        {
-                            //Log.Information("Bucket: " + bucket.Name + " " + bucket.CreationDateDateTime);
+            //    if (list.Buckets is not null)
+            //    {
+            //        if (list.Buckets.Count > 0)
+            //        {
+            //            foreach (Bucket bucket in list.Buckets)
+            //            {
+            //                //Log.Information("Bucket: " + bucket.Name + " " + bucket.CreationDateDateTime);
 
-                            List<Tuple<string, string>> objects1 = await ListObjectsWithVersions.Run(minioClient, bucket.Name, null, true);
-                            RemoveObjectsWithVersions.Run(minioClient, bucket.Name, objects1).Wait();
+            //                List<Tuple<string, string>> objects1 = await ListObjectsWithVersions.Run(minioClient, bucket.Name, null, true);
 
-                            List<Tuple<string, string>> objects2 = await ListObjectsWithVersions.Run(minioClient, bucket.Name, null, false);
-                            RemoveObjectsWithVersions.Run(minioClient, bucket.Name, objects2).Wait();
+            //                RemoveObjectsWithVersions.Run(minioClient, bucket.Name, objects1).Wait();
 
-                            List<string> objects3 = await ListObjectsWithoutVersion.Run(minioClient, bucket.Name, null, false);
-                            RemoveObjectsWithoutVersions.Run(minioClient, bucket.Name, objects3).Wait();
+            //                List<Tuple<string, string>> objects2 = await ListObjectsWithVersions.Run(minioClient, bucket.Name, null, false);
+            //                RemoveObjectsWithVersions.Run(minioClient, bucket.Name, objects2).Wait();
 
-                            RemoveBucket.Run(minioClient, bucket.Name).Wait();
-                        }
-                    }
-                }
-            }
-            catch (MinioException ex)
-            {
-                Debug.WriteLine("Error occurred: " + ex);
-            }
-            #endregion
+            //                List<string> objects3 = await ListObjectsWithoutVersion.Run(minioClient, bucket.Name, null, false);
+            //                RemoveObjectsWithoutVersions.Run(minioClient, bucket.Name, objects3).Wait();
+
+            //                RemoveBucket.Run(minioClient, bucket.Name).Wait();
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (MinioException ex)
+            //{
+            //    Debug.WriteLine("Error occurred: " + ex);
+            //}
+            //#endregion
 
             #region Add project bucket
             try

@@ -11,7 +11,7 @@ namespace PSGM.Sample.Model.DbBackend
 {
     public partial class MainWindow : System.Windows.Window
     {
-        public async void Setup_Storage_DBStorageData(DbBackend_Project projects)
+        public async void Setup_Storage_DBStorageTranscription(DbBackend_Project projects)
         {
             IMinioClient minioClient;
 
@@ -19,7 +19,7 @@ namespace PSGM.Sample.Model.DbBackend
                                                                                 .Include(p => p.StorageServers)
                                                                                 .ToList();
 
-            DbBackend_Storage_Cluster cluster = clusters.Where(p => p.StorageClass == StorageClass.Data).FirstOrDefault();
+            DbBackend_Storage_Cluster cluster = clusters.Where(p => p.StorageClass == StorageClass.DataTranscription).FirstOrDefault();
 
             minioClient = new MinioClient().WithEndpoint(cluster.GetStorageS3Endpoint(true))
                                             .WithCredentials(cluster.StorageS3AccessKey, cluster.StorageS3SecretKey)
@@ -41,6 +41,7 @@ namespace PSGM.Sample.Model.DbBackend
                             //Log.Information("Bucket: " + bucket.Name + " " + bucket.CreationDateDateTime);
 
                             List<Tuple<string, string>> objects1 = await ListObjectsWithVersions.Run(minioClient, bucket.Name, null, true);
+
                             RemoveObjectsWithVersions.Run(minioClient, bucket.Name, objects1).Wait();
 
                             List<Tuple<string, string>> objects2 = await ListObjectsWithVersions.Run(minioClient, bucket.Name, null, false);

@@ -1496,16 +1496,6 @@ namespace PSGM.Model.DbStorage
 
                     case DbStorage_MetadataKey_UserGroup_User_Link_AuditLog metadataKey_UserGroup_User_Link_AuditLog:
                         break;
-
-
-
-
-
-
-
-
-                        _AuditLogs
-
                     #endregion
 
                     #region RootDirectory

@@ -135,7 +135,6 @@ namespace PSGM.Sample.Model.DbBackend
             _configFile = new ConfigFile()
             {
                 DatabaseType = DatabaseType.PostgreSQL,
-                //DatabaseConnectionString = "Host=db-backend-clu001.branch031.psgm.at:50001;Database=DbBackend-clu001;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
                 DatabaseConnectionString = "Host=db-backend-c6e1c3e3-f49d-4edc-b3a2-2ed50174e3c8.branch031.psgm.at:50001;Database=db-backend-c6e1c3e3-f49d-4edc-b3a2-2ed50174e3c8;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
             };
 
@@ -209,25 +208,31 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     if (item is not null)
                     {
-                        Debug.WriteLine($"{Enum.GetName(typeof(BackendType), item.BackendType)} - Databases:");
-                        Debug.WriteLine(item.DatabaseClusters.ToList()[0].GetDatabaseConnection(false));
-                        Debug.WriteLine(item.DatabaseClusters.ToList()[0].GetDatabaseConnection(true));
-                        Debug.Write("Server: ");
-                        foreach (var server in item.DatabaseClusters.ToList()[0].DatabaseServers)
+                        if (item.DatabaseClusters.ToList().Count() > 0)
                         {
-                            Debug.Write($" {server.GetServerName()} - {server.GetIpAddress()},");
+                            Debug.WriteLine($"{Enum.GetName(typeof(BackendType), item.BackendType)} - Databases:");
+                            Debug.WriteLine(item.DatabaseClusters.ToList()[0].GetDatabaseConnection(false));
+                            Debug.WriteLine(item.DatabaseClusters.ToList()[0].GetDatabaseConnection(true));
+                            Debug.Write("Server: ");
+                            foreach (var server in item.DatabaseClusters.ToList()[0].DatabaseServers)
+                            {
+                                Debug.Write($" {server.GetServerName()} - {server.GetIpAddress()},");
+                            }
+                            Debug.WriteLine("");
                         }
-                        Debug.WriteLine("");
 
-                        Debug.WriteLine($"{Enum.GetName(typeof(BackendType), item.BackendType)} - Storages:");
-                        Debug.WriteLine(item.StorageClusters.ToList()[0].GetStorageS3Endpoint(false));
-                        Debug.WriteLine(item.StorageClusters.ToList()[0].GetStorageS3Endpoint(true));
-                        Debug.Write("Server: ");
-                        foreach (var server in item.StorageClusters.ToList()[0].StorageServers)
+                        if (item.StorageClusters.ToList().Count() > 0)
                         {
-                            Debug.Write($" {server.GetServerName()} - {server.GetIpAddress()},");
+                            Debug.WriteLine($"{Enum.GetName(typeof(BackendType), item.BackendType)} - Storages:");
+                            Debug.WriteLine(item.StorageClusters.ToList()[0].GetStorageS3Endpoint(false));
+                            Debug.WriteLine(item.StorageClusters.ToList()[0].GetStorageS3Endpoint(true));
+                            Debug.Write("Server: ");
+                            foreach (var server in item.StorageClusters.ToList()[0].StorageServers)
+                            {
+                                Debug.Write($" {server.GetServerName()} - {server.GetIpAddress()},");
+                            }
+                            Debug.WriteLine("");
                         }
-                        Debug.WriteLine("");
 
                         Debug.WriteLine("###");
                         Debug.WriteLine("###");
@@ -237,10 +242,15 @@ namespace PSGM.Sample.Model.DbBackend
 
             if (project != null)
             {
-                Setup_Storage_DBStorageDataRaw(project);
+                Setup_Storage_DBStorageMain(project);
 
                 Setup_Storage_DBStorageData(project);
                 Setup_Storage_DBStorageDataThumbnail(project);
+
+                Setup_Storage_DBStorageDataRaw(project);
+                Setup_Storage_DBStorageDataRawThumbnail(project);
+
+                Setup_Storage_DBStorageTranscription(project);
             }
         }
 

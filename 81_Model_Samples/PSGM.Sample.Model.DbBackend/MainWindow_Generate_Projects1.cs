@@ -10,7 +10,7 @@ namespace PSGM.Sample.Model.DbBackend
 
             DbBackend_Project element = new DbBackend_Project()
             {
-                Id = Guid.NewGuid(),
+                Id = projectId,
 
                 ProjectId_Ext = projectId,
 
