@@ -10,21 +10,17 @@ namespace PSGM.Model.DbMachine
         public DatabaseType _databaseType = DatabaseType.SQLite;
         public DatabaseType DatabaseType { get { return _databaseType; } set { _databaseType = value; } }
 
+        private string _databaseConnectionString = string.Empty;
+        public string DatabaseConnectionString { get { return _databaseConnectionString; } set { _databaseConnectionString = value; } }
 
-        private string _connectionString = string.Empty;
-        public string ConnectionString { get { return _connectionString; } set { _connectionString = value; } }
+        private Guid _databaseSessionParameter_UserId = Guid.Empty;
+        public Guid DatabaseSessionParameter_UserId { get { return _databaseSessionParameter_UserId; } set { _databaseSessionParameter_UserId = value; } }
 
+        private Guid _databaseSessionParameter_MachineId = Guid.Empty;
+        public Guid DatabaseSessionParameter_MachineId { get { return _databaseSessionParameter_MachineId; } set { _databaseSessionParameter_MachineId = value; } }
 
-        private string _connectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbMachine\\DbMachine.db";
-        public string ConnectionStringSQLite { get { return _connectionStringSQLite; } set { _connectionStringSQLite = value; } }
-
-
-        private string _connectionStringPostgreSQL = "Host=server;Database=database;Username=user;Password=password";
-        public string ConnectionStringPostgreSQL { get { return _connectionStringPostgreSQL; } set { _connectionStringPostgreSQL = value; } }
-
-
-        private string _connectionStringSQLServer = "Server=(localdb)\\mssqllocaldb;Database=database;Trusted_Connection=True;";
-        public string ConnectionStringSQLServer { get { return _connectionStringSQLServer; } set { _connectionStringSQLServer = value; } }
+        private Guid _databaseSessionParameter_SoftwareId = Guid.Empty;
+        public Guid DatabaseSessionParameter_SoftwareId { get { return _databaseSessionParameter_SoftwareId; } set { _databaseSessionParameter_SoftwareId = value; } }
         #endregion
 
         #region Context
@@ -39,7 +35,7 @@ namespace PSGM.Model.DbMachine
         public DbMachine_Context(DatabaseType databaseType, string connectionString) : base()
         {
             _databaseType = databaseType;
-            _connectionString = connectionString;
+            _databaseConnectionString = connectionString;
         }
         #endregion
 
@@ -78,19 +74,19 @@ namespace PSGM.Model.DbMachine
             switch (_databaseType)
             {
                 case DatabaseType.ConnectionString:
-                    optionsBuilder.UseSqlite(_connectionString);
+                    optionsBuilder.UseSqlite(_databaseConnectionString);
                     break;
 
                 case DatabaseType.SQLite:
-                    optionsBuilder.UseSqlite(_connectionStringSQLite);
+                    optionsBuilder.UseSqlite(_databaseConnectionString);
                     break;
 
                 case DatabaseType.PostgreSQL:
-                    optionsBuilder.UseNpgsql(_connectionStringPostgreSQL);
+                    optionsBuilder.UseNpgsql(_databaseConnectionString);
                     break;
 
                 case DatabaseType.SQLServer:
-                    optionsBuilder.UseSqlServer(_connectionStringSQLServer);
+                    optionsBuilder.UseSqlServer(_databaseConnectionString);
                     break;
 
                 default:
@@ -103,6 +99,9 @@ namespace PSGM.Model.DbMachine
             // https://learn.microsoft.com/en-us/ef/core/modeling/data-seeding
             // https://www.learnentityframeworkcore.com/migrations/seeding
             // https://www.learnentityframeworkcore.com/configuration/data-annotation-attributes
+
+            modelBuilder.HasDefaultSchema("psgm");
+
 
             //modelBuilder.ApplyConfiguration(new ModelLogTypeConfiguration());
             //modelBuilder.ApplyConfiguration(new ModelObjectTypeConfiguration());
@@ -307,23 +306,7 @@ namespace PSGM.Model.DbMachine
         #region Functions
         public string GetConnectionString()
         {
-            switch (DatabaseType)
-            {
-                case DatabaseType.ConnectionString:
-                    return _connectionString;
-
-                case DatabaseType.SQLite:
-                    return _connectionStringSQLite;
-
-                case DatabaseType.PostgreSQL:
-                    return _connectionStringPostgreSQL;
-
-                case DatabaseType.SQLServer:
-                    return _connectionStringSQLServer;
-
-                default:
-                    throw new Exception("Unsupported database type");
-            }
+            return _databaseConnectionString;
         }
         #endregion
     }

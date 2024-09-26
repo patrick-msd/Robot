@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Git\\MSD\\Robot\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{977FB3F5-9DB5-4113-AB22-6568F75DC2AF}|81_Model_Samples\\PSGM.Sample.Model.DbMain\\PSGM.Sample.Model.DbMain.csproj|c:\\git\\msd\\robot\\81_model_samples\\psgm.sample.model.dbmain\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{977FB3F5-9DB5-4113-AB22-6568F75DC2AF}|81_Model_Samples\\PSGM.Sample.Model.DbMain\\PSGM.Sample.Model.DbMain.csproj|solutionrelative:81_model_samples\\psgm.sample.model.dbmain\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{977FB3F5-9DB5-4113-AB22-6568F75DC2AF}|81_Model_Samples\\PSGM.Sample.Model.DbMain\\PSGM.Sample.Model.DbMain.csproj|c:\\git\\msd\\robot\\81_model_samples\\psgm.sample.model.dbmain\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{977FB3F5-9DB5-4113-AB22-6568F75DC2AF}|81_Model_Samples\\PSGM.Sample.Model.DbMain\\PSGM.Sample.Model.DbMain.csproj|solutionrelative:81_model_samples\\psgm.sample.model.dbmain\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0437BDA5-5753-4C3B-A818-1B8E70A30C59}|81_Model_Samples\\PSGM.Sample.Model.DbStorage\\PSGM.Sample.Model.DbStorage.csproj|c:\\git\\msd\\robot\\81_model_samples\\psgm.sample.model.dbstorage\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0437BDA5-5753-4C3B-A818-1B8E70A30C59}|81_Model_Samples\\PSGM.Sample.Model.DbStorage\\PSGM.Sample.Model.DbStorage.csproj|solutionrelative:81_model_samples\\psgm.sample.model.dbstorage\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F7B4BA89-3324-4158-AE2E-1611DA36F16B}|81_Model_Samples\\PSGM.Sample.Model.DbMachine\\PSGM.Sample.Model.DbMachine.csproj|c:\\git\\msd\\robot\\81_model_samples\\psgm.sample.model.dbmachine\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7B4BA89-3324-4158-AE2E-1611DA36F16B}|81_Model_Samples\\PSGM.Sample.Model.DbMachine\\PSGM.Sample.Model.DbMachine.csproj|solutionrelative:81_model_samples\\psgm.sample.model.dbmachine\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0437BDA5-5753-4C3B-A818-1B8E70A30C59}|81_Model_Samples\\PSGM.Sample.Model.DbStorage\\PSGM.Sample.Model.DbStorage.csproj|c:\\git\\msd\\robot\\81_model_samples\\psgm.sample.model.dbstorage\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{0437BDA5-5753-4C3B-A818-1B8E70A30C59}|81_Model_Samples\\PSGM.Sample.Model.DbStorage\\PSGM.Sample.Model.DbStorage.csproj|solutionrelative:81_model_samples\\psgm.sample.model.dbstorage\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{977FB3F5-9DB5-4113-AB22-6568F75DC2AF}|81_Model_Samples\\PSGM.Sample.Model.DbMain\\PSGM.Sample.Model.DbMain.csproj|c:\\git\\msd\\robot\\81_model_samples\\psgm.sample.model.dbmain\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{977FB3F5-9DB5-4113-AB22-6568F75DC2AF}|81_Model_Samples\\PSGM.Sample.Model.DbMain\\PSGM.Sample.Model.DbMain.csproj|solutionrelative:81_model_samples\\psgm.sample.model.dbmain\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7B4BA89-3324-4158-AE2E-1611DA36F16B}|81_Model_Samples\\PSGM.Sample.Model.DbMachine\\PSGM.Sample.Model.DbMachine.csproj|c:\\git\\msd\\robot\\81_model_samples\\psgm.sample.model.dbmachine\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F7B4BA89-3324-4158-AE2E-1611DA36F16B}|81_Model_Samples\\PSGM.Sample.Model.DbMachine\\PSGM.Sample.Model.DbMachine.csproj|solutionrelative:81_model_samples\\psgm.sample.model.dbmachine\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{04F7059F-85E8-4AF8-A5A7-E9BCC32CB2FF}|80_Model\\PSGM.Model.DbStorage\\PSGM.Model.DbStorage.csproj|c:\\git\\msd\\robot\\80_model\\psgm.model.dbstorage\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -70,7 +70,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -98,52 +98,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow.xaml",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow.xaml",
-              "RelativeToolTip": "81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-26T16:53:03.458Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow.xaml.cs",
-              "RelativeToolTip": "81_Model_Samples\\PSGM.Sample.Model.DbStorage\\MainWindow.xaml.cs",
-              "ViewState": "AgIAALkAAAAAAAAAAAAtwJkAAABWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T16:16:41.787Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbMain\\MainWindow.xaml",
               "RelativeDocumentMoniker": "81_Model_Samples\\PSGM.Sample.Model.DbMain\\MainWindow.xaml",
               "ToolTip": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbMain\\MainWindow.xaml",
               "RelativeToolTip": "81_Model_Samples\\PSGM.Sample.Model.DbMain\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-26T16:32:52.151Z",
+              "WhenOpened": "2024-09-26T19:55:24.154Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbMain\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "81_Model_Samples\\PSGM.Sample.Model.DbMain\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbMain\\MainWindow.xaml.cs",
               "RelativeToolTip": "81_Model_Samples\\PSGM.Sample.Model.DbMain\\MainWindow.xaml.cs",
-              "ViewState": "AgIAANIAAAAAAAAAAAAswN0AAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T16:32:52.87Z",
+              "WhenOpened": "2024-09-26T19:55:24.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow.xaml",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow.xaml",
+              "RelativeToolTip": "81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-26T19:54:43.907Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow.xaml.cs",
+              "RelativeToolTip": "81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAgwIoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T19:54:43.266Z",
               "EditorCaption": ""
             }
           ]
@@ -155,12 +155,12 @@
       "VerticalTabListWidth": 256,
       "FloatingWindowState": {
         "Id": "b5e78949-b116-4e5e-adc0-70826c1b493a",
-        "Display": 3,
-        "X": -5,
+        "Display": 0,
+        "X": 3835,
         "Y": 7,
         "Width": 1918,
         "Height": 1030,
-        "WindowState": 2
+        "WindowState": 0
       },
       "DocumentGroups": [
         {
@@ -280,12 +280,12 @@
       "VerticalTabListWidth": 256,
       "FloatingWindowState": {
         "Id": "4e5c6159-e82d-478e-8e3c-0b5d133506d6",
-        "Display": 3,
-        "X": 513,
+        "Display": 0,
+        "X": 4353,
         "Y": 155,
         "Width": 970,
         "Height": 521,
-        "WindowState": 2
+        "WindowState": 0
       },
       "DocumentGroups": [
         {
@@ -326,12 +326,12 @@
       "VerticalTabListWidth": 256,
       "FloatingWindowState": {
         "Id": "15a8e373-5f35-43d2-a47f-b5d0138c5635",
-        "Display": 3,
+        "Display": 0,
         "X": 583,
         "Y": 256,
         "Width": 1342,
         "Height": 781,
-        "WindowState": 2
+        "WindowState": 0
       },
       "DocumentGroups": [
         {
