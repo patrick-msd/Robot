@@ -1,21 +1,21 @@
-﻿using PSGM.Model.DbBackend;
+﻿using PSGM.Model.DbMachine;
 
-namespace PSGM.Sample.Model.DbBackend
+namespace PSGM.Sample.Model.DbMachine
 {
     public partial class MainWindow : System.Windows.Window
     {
-        public DbBackend_Project Generate_Project1(Guid projectId)
+        public DbMachine_Project Generate_Project1(Guid projectId)
         {
             Random random = new Random();
 
-            DbBackend_Project element = new DbBackend_Project()
+            DbMachine_Project element = new DbMachine_Project()
             {
                 Id = projectId,
 
                 ProjectId_Ext = projectId,
 
-                Backends = null,
-                
+                Machines = null,
+
                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                 //CreatedDateTimeAutoFill = DateTime.Now,
                 //ModifiedByUserIdExtAutoFill = Guid.Empty,

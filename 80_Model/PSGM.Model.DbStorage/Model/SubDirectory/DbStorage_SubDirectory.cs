@@ -71,7 +71,7 @@ namespace PSGM.Model.DbStorage
 
         [Column("Locked")]
         [Display(Name = "Locked")]
-        public bool LLocked { get; set; } = false;
+        public bool Locked { get; set; } = false;
 
         [Column("LockedDescription")]
         [Display(Name = "LockedDescription")]

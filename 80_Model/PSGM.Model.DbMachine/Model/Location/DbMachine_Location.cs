@@ -27,7 +27,7 @@ namespace PSGM.Model.DbMachine
 
         [Column("LocationType")]
         [Display(Name = "LocationType")]
-        public LocationTypeE LocationType { get; set; } = LocationTypeE.Unknown;
+        public LocationType LocationType { get; set; } = LocationType.Unknown;
 
         #region Audit details for faster file audit information
         [Required]

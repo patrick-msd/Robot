@@ -376,8 +376,8 @@ namespace PSGM.Sample.Model.DbStorage
                     Quality = quality,
 
                     MetadataLinks = rootDirectoryMetadataLinkLoop,
-
-                    DirectoryLocked = false,
+                    
+                    Locked = false,
 
                     UserLinks = usersLoop,
                     UserGroupLinks = userGroupsLoop,

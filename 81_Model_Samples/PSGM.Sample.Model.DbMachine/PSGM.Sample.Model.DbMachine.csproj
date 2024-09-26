@@ -38,6 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.Vision.SVSVistek\PSGM.Lib.Vision.SVSVistek.csproj" />
     <ProjectReference Include="..\..\50_Helper\PSGM.Helper\PSGM.Helper.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DbBackend\PSGM.Model.DbBackend.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DbMachine\PSGM.Model.DbMachine.csproj" />

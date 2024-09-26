@@ -24,7 +24,7 @@ namespace PSGM.Model.DbMachine
         public virtual DbMachine_Machine? Machine { get; set; }
 
         [ForeignKey("Location")]
-        public Guid LocationId { get; set; } = Guid.Empty;
+        public Guid? LocationId { get; set; } = Guid.Empty;
         public virtual DbMachine_Location? Location { get; set; }
         #endregion
 

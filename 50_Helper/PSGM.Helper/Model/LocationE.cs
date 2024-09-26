@@ -1,6 +1,6 @@
 ﻿namespace PSGM.Helper
 {
-    public enum LocationTypeE : int
+    public enum LocationType : int
     {
         Unknown = 0,
 

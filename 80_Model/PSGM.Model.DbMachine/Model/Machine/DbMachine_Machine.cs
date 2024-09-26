@@ -81,7 +81,7 @@ namespace PSGM.Model.DbMachine
 
         #region Backlinks (ForeignKeys)
         [ForeignKey("Project")]
-        public Guid ProjectId { get; set; } = Guid.Empty;
+        public Guid? ProjectId { get; set; } = Guid.Empty;
         public virtual DbMachine_Project? Project { get; set; }
         #endregion
 

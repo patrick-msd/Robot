@@ -126,7 +126,7 @@ namespace PSGM.Sample.Model.DbMachine
                                                                                     .ThenInclude(p => p.StorageServers)
                                                                                 .ToList();
 
-                DbBackend_Database_Cluster? databaseMain = backend.Where(p => p.BackendType == BackendType.Main).FirstOrDefault().DatabaseClusters.FirstOrDefault();
+                DbBackend_Database_Cluster? databaseMain = backend.Where(p => p.BackendType == BackendType.Machine).FirstOrDefault().DatabaseClusters.FirstOrDefault();
 
                 _dbMachine_Context = new DbMachine_Context();
 
@@ -139,7 +139,7 @@ namespace PSGM.Sample.Model.DbMachine
 
                 if (_dbMachine_Context.Database.EnsureCreated())
                 {
-                    _dbMain_Context.Database.OpenConnection();
+                    _dbMachine_Context.Database.OpenConnection();
                 }
                 //_dbMachine_Context.Database.EnsureDeleted();
                 //_dbMachine_Context.Database.EnsureCreated();
@@ -160,12 +160,45 @@ namespace PSGM.Sample.Model.DbMachine
 
         private void btnDbReadConfigFileAndInit_Click(object sender, RoutedEventArgs e)
         {
-            _dbBackend_Context = new DbBackend_Context();
-            _dbBackend_Context.DatabaseConnectionString = _configFile.DatabaseConnectionString;
-            _dbBackend_Context.DatabaseType = _configFile.DatabaseType;
-            _dbBackend_Context.Database.EnsureDeleted();
-            _dbBackend_Context.Database.EnsureCreated();
-            _dbBackend_Context.Database.OpenConnection();
+            #region Initialize Databases
+            if (_configFile.ConfigFileExists(Directory.GetCurrentDirectory() + "\\ConfigFile.json"))
+            {
+                #region Backend
+                _dbBackend_Context = new DbBackend_Context();
+
+                _dbBackend_Context.DatabaseConnectionString = _configFile.DatabaseConnectionString;
+                _dbBackend_Context.DatabaseType = _configFile.DatabaseType;
+
+                _dbBackend_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
+                _dbBackend_Context.DatabaseSessionParameter_MachineId = _machineId;
+                _dbBackend_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
+
+                _dbBackend_Context.Database.OpenConnection();
+                #endregion
+
+                List<DbBackend_Backend>? backend = _dbBackend_Context.Backends.Where(p => p.Project.ProjectId_Ext == new Guid("79A0FD7A-5D68-4095-A309-F4E92426E657"))
+                                                                                .Include(p => p.DatabaseClusters)
+                                                                                    .ThenInclude(p => p.DatabaseServers)
+                                                                                .Include(p => p.StorageClusters)
+                                                                                    .ThenInclude(p => p.StorageServers)
+                                                                                .ToList();
+
+                DbBackend_Database_Cluster? databaseMain = backend.Where(p => p.BackendType == BackendType.Main).FirstOrDefault().DatabaseClusters.FirstOrDefault();
+
+                _dbMachine_Context = new DbMachine_Context();
+
+                _dbMachine_Context.DatabaseConnectionString = databaseMain.GetDatabaseConnection(true);
+                _dbMachine_Context.DatabaseType = databaseMain.DatabaseType;
+
+                _dbMachine_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
+                _dbMachine_Context.DatabaseSessionParameter_MachineId = _machineId;
+                _dbMachine_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
+
+                _dbMachine_Context.Database.EnsureDeleted();
+                _dbMachine_Context.Database.EnsureCreated();
+                _dbMachine_Context.Database.OpenConnection();
+            }
+            #endregion
         }
 
         private void btnDbGenerateData_Click(object sender, RoutedEventArgs e)
@@ -173,15 +206,15 @@ namespace PSGM.Sample.Model.DbMachine
             Random random = new Random();
 
             #region Add project ...
-            DbBackend_Project projects1 = Generate_Project1(new Guid("79A0FD7A-5D68-4095-A309-F4E92426E657"));
-            _dbBackend_Context.Projects.AddRange(projects1);
-            _dbBackend_Context.SaveChanges();
+            DbMachine_Project projects1 = Generate_Project1(new Guid("79A0FD7A-5D68-4095-A309-F4E92426E657"));
+            _dbMachine_Context.Projects.AddRange(projects1);
+            _dbMachine_Context.SaveChanges();
             #endregion
 
             #region Add structure ...
-            List<DbBackend_Backend> backends1 = Generate_Backend1(projects1);
-            _dbBackend_Context.Backends.AddRange(backends1);
-            _dbBackend_Context.SaveChanges();
+            DbMachine_Machine machine1 = Generate_Machine1(projects1);
+            _dbMachine_Context.Machines.Add(machine1);
+            _dbMachine_Context.SaveChanges();
             #endregion
 
             //for (int h = 0; h < 10; h++)
@@ -198,77 +231,6 @@ namespace PSGM.Sample.Model.DbMachine
             //    _dbBackendStructure_Context.SaveChanges();
             //    #endregion
             //}
-        }
-
-        private void btnSetupStorage_Click(object sender, RoutedEventArgs e)
-        {
-            DbBackend_Project project = _dbBackend_Context.Projects.Where(p => p.ProjectId_Ext == new Guid("79A0FD7A-5D68-4095-A309-F4E92426E657"))
-                                                                    .Include(p => p.Backends)
-                                                                        .ThenInclude(p => p.DatabaseClusters)
-                                                                            .ThenInclude(p => p.DatabaseServers)
-                                                                    .Include(p => p.Backends)
-                                                                        .ThenInclude(p => p.StorageClusters)
-                                                                            .ThenInclude(p => p.StorageServers)
-                                                                    .FirstOrDefault();
-            //.FirstOrDefault(p => p.Cluster.Any(s => s.BranchNumber == 31));
-
-            Debug.WriteLine("@@@");
-            Debug.WriteLine("@@@");
-
-            if (project.Backends != null)
-            {
-                Debug.WriteLine($"Project: {project.ProjectId_Ext}");
-                Debug.WriteLine("@@@");
-                Debug.WriteLine("@@@");
-
-                foreach (var item in project.Backends)
-                {
-                    if (item is not null)
-                    {
-                        if (item.DatabaseClusters.ToList().Count() > 0)
-                        {
-                            Debug.WriteLine($"{Enum.GetName(typeof(BackendType), item.BackendType)} - Databases:");
-                            Debug.WriteLine(item.DatabaseClusters.ToList()[0].GetDatabaseConnection(false));
-                            Debug.WriteLine(item.DatabaseClusters.ToList()[0].GetDatabaseConnection(true));
-                            Debug.Write("Server: ");
-                            foreach (var server in item.DatabaseClusters.ToList()[0].DatabaseServers)
-                            {
-                                Debug.Write($" {server.GetServerName()} - {server.GetIpAddress()},");
-                            }
-                            Debug.WriteLine("");
-                        }
-
-                        if (item.StorageClusters.ToList().Count() > 0)
-                        {
-                            Debug.WriteLine($"{Enum.GetName(typeof(BackendType), item.BackendType)} - Storages:");
-                            Debug.WriteLine(item.StorageClusters.ToList()[0].GetStorageS3Endpoint(false));
-                            Debug.WriteLine(item.StorageClusters.ToList()[0].GetStorageS3Endpoint(true));
-                            Debug.Write("Server: ");
-                            foreach (var server in item.StorageClusters.ToList()[0].StorageServers)
-                            {
-                                Debug.Write($" {server.GetServerName()} - {server.GetIpAddress()},");
-                            }
-                            Debug.WriteLine("");
-                        }
-
-                        Debug.WriteLine("###");
-                        Debug.WriteLine("###");
-                    }
-                }
-            }
-
-            if (project != null)
-            {
-                Setup_Storage_DBStorageMain(project);
-
-                Setup_Storage_DBStorageData(project);
-                Setup_Storage_DBStorageDataThumbnail(project);
-
-                Setup_Storage_DBStorageDataRaw(project);
-                Setup_Storage_DBStorageDataRawThumbnail(project);
-
-                Setup_Storage_DBStorageTranscription(project);
-            }
         }
 
         private void btnDbReadData1_Click(object sender, RoutedEventArgs e)

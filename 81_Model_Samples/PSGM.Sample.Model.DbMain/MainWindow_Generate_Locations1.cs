@@ -17,7 +17,7 @@ namespace PSGM.Sample.Model.DbStorage
                 
                 Description = string.Empty,
 
-                LocationType = LocationTypeE.Headquarter,
+                LocationType = LocationType.Headquarter,
 
                 AddressLink = new DbMain_Location_Address_Link()
                 {
@@ -77,7 +77,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 Description = string.Empty,
 
-                LocationType = LocationTypeE.Headquarter,
+                LocationType = LocationType.Headquarter,
 
                 AddressLink = new DbMain_Location_Address_Link()
                 {
