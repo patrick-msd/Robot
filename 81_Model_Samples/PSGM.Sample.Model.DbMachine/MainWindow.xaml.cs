@@ -183,7 +183,7 @@ namespace PSGM.Sample.Model.DbMachine
                                                                                     .ThenInclude(p => p.StorageServers)
                                                                                 .ToList();
 
-                DbBackend_Database_Cluster? databaseMain = backend.Where(p => p.BackendType == BackendType.Main).FirstOrDefault().DatabaseClusters.FirstOrDefault();
+                DbBackend_Database_Cluster? databaseMain = backend.Where(p => p.BackendType == BackendType.Machine).FirstOrDefault().DatabaseClusters.FirstOrDefault();
 
                 _dbMachine_Context = new DbMachine_Context();
 

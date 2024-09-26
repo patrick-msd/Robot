@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PSGM.Helper;
+using PSGM.Model.DbBackend;
 using PSGM.Model.DbStorage;
 using Serilog;
 using Serilog.Debugging;
@@ -21,7 +22,8 @@ namespace PSGM.Sample.Model.DbStorage
 
         ConfigFile _configFile;
 
-        private DbStorage_Context _dbStorage_Data_Context;
+        private DbBackend_Context _dbBackend_Context;
+        private DbStorage_Context _dbStorage_Context;
 
         Guid _softwareId;
         Guid _machineId;
@@ -104,21 +106,47 @@ namespace PSGM.Sample.Model.DbStorage
             #region Initialize Databases
             if (_configFile.ConfigFileExists(Directory.GetCurrentDirectory() + "\\ConfigFile.json"))
             {
-                _dbStorage_Data_Context = new DbStorage_Context();
+                #region Backend
+                _dbBackend_Context = new DbBackend_Context();
 
-                _dbStorage_Data_Context.DatabaseConnectionString = _configFile.DatabaseConnectionString;
-                _dbStorage_Data_Context.DatabaseType = _configFile.DatabaseType;
+                _dbBackend_Context.DatabaseConnectionString = _configFile.DatabaseConnectionString;
+                _dbBackend_Context.DatabaseType = _configFile.DatabaseType;
 
-                _dbStorage_Data_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
-                _dbStorage_Data_Context.DatabaseSessionParameter_MachineId = _machineId;
-                _dbStorage_Data_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
+                _dbBackend_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
+                _dbBackend_Context.DatabaseSessionParameter_MachineId = _machineId;
+                _dbBackend_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
 
-                if (_dbStorage_Data_Context.Database.EnsureCreated())
+                _dbBackend_Context.Database.OpenConnection();
+                #endregion
+
+                List<DbBackend_Backend>? backend = _dbBackend_Context.Backends.Where(p => p.Project.ProjectId_Ext == new Guid("79A0FD7A-5D68-4095-A309-F4E92426E657"))
+                                                                                .Include(p => p.DatabaseClusters)
+                                                                                    .ThenInclude(p => p.DatabaseServers)
+                                                                                .Include(p => p.StorageClusters)
+                                                                                    .ThenInclude(p => p.StorageServers)
+                                                                                .ToList();
+
+                //DbBackend_Database_Cluster? databaseMain = backend.Where(p => p.BackendType == BackendType.Storage).FirstOrDefault().DatabaseClusters.FirstOrDefault();
+                List<DbBackend_Backend> databaseBackend = backend.Where(p => p.BackendType == BackendType.Storage).ToList();
+
+                foreach (var item in databaseBackend)
                 {
-                    _dbStorage_Data_Context.Database.OpenConnection();
+                    _dbStorage_Context = new DbStorage_Context();
+
+                    _dbStorage_Context.DatabaseConnectionString = item.DatabaseClusters.FirstOrDefault().GetDatabaseConnection(true);
+                    _dbStorage_Context.DatabaseType = item.DatabaseClusters.FirstOrDefault().DatabaseType;
+
+                    _dbStorage_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
+                    _dbStorage_Context.DatabaseSessionParameter_MachineId = _machineId;
+                    _dbStorage_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
+
+                    if (_dbStorage_Context.Database.EnsureCreated())
+                    {
+                        _dbStorage_Context.Database.OpenConnection();
+                    }
+                    //_dbStorage_Context.Database.EnsureDeleted();
+                    //_dbStorage_Context.Database.EnsureCreated();
                 }
-                //_dbStorage_Data_Context.Database.EnsureDeleted();
-                //_dbStorage_Data_Context.Database.EnsureCreated();
             }
             #endregion
         }
@@ -127,8 +155,8 @@ namespace PSGM.Sample.Model.DbStorage
         {
             _configFile = new ConfigFile()
             {
-                DatabaseConnectionString = "Host=db-clu001.branch31.psgm.at:50001;Database=DbStorage;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
                 DatabaseType = DatabaseType.PostgreSQL,
+                DatabaseConnectionString = "Host=db-backend-c6e1c3e3-f49d-4edc-b3a2-2ed50174e3c8.branch031.psgm.at:50001;Database=db-backend-c6e1c3e3-f49d-4edc-b3a2-2ed50174e3c8;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
             };
 
             _configFile.WriteToFile(Directory.GetCurrentDirectory() + "\\ConfigFile.json");
@@ -136,12 +164,48 @@ namespace PSGM.Sample.Model.DbStorage
 
         private void btnDbReadConfigFileAndInit_Click(object sender, RoutedEventArgs e)
         {
-            _dbStorage_Data_Context = new DbStorage_Context();
-            _dbStorage_Data_Context.DatabaseConnectionString = _configFile.DatabaseConnectionString;
-            _dbStorage_Data_Context.DatabaseType = _configFile.DatabaseType;
-            _dbStorage_Data_Context.Database.EnsureDeleted();
-            _dbStorage_Data_Context.Database.EnsureCreated();
-            _dbStorage_Data_Context.Database.OpenConnection();
+            #region Initialize Databases
+            if (_configFile.ConfigFileExists(Directory.GetCurrentDirectory() + "\\ConfigFile.json"))
+            {
+                #region Backend
+                _dbBackend_Context = new DbBackend_Context();
+
+                _dbBackend_Context.DatabaseConnectionString = _configFile.DatabaseConnectionString;
+                _dbBackend_Context.DatabaseType = _configFile.DatabaseType;
+
+                _dbBackend_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
+                _dbBackend_Context.DatabaseSessionParameter_MachineId = _machineId;
+                _dbBackend_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
+
+                _dbBackend_Context.Database.OpenConnection();
+                #endregion
+
+                List<DbBackend_Backend>? backend = _dbBackend_Context.Backends.Where(p => p.Project.ProjectId_Ext == new Guid("79A0FD7A-5D68-4095-A309-F4E92426E657"))
+                                                                                .Include(p => p.DatabaseClusters)
+                                                                                    .ThenInclude(p => p.DatabaseServers)
+                                                                                .Include(p => p.StorageClusters)
+                                                                                    .ThenInclude(p => p.StorageServers)
+                                                                                .ToList();
+
+                List<DbBackend_Backend> databaseBackend = backend.Where(p => p.BackendType == BackendType.Storage).ToList();
+
+                foreach (var item in databaseBackend)
+                {
+                    _dbStorage_Context = new DbStorage_Context();
+
+                    _dbStorage_Context.DatabaseConnectionString = item.DatabaseClusters.FirstOrDefault().GetDatabaseConnection(true);
+                    _dbStorage_Context.DatabaseType = item.DatabaseClusters.FirstOrDefault().DatabaseType;
+
+                    _dbStorage_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
+                    _dbStorage_Context.DatabaseSessionParameter_MachineId = _machineId;
+                    _dbStorage_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
+
+                    _dbStorage_Context.Database.EnsureDeleted();
+                    _dbStorage_Context.Database.EnsureCreated();
+                    _dbStorage_Context.Database.OpenConnection();
+                }
+            }
+            #endregion
         }
 
         private void btnDbGenerateData_Click(object sender, RoutedEventArgs e)
@@ -152,36 +216,36 @@ namespace PSGM.Sample.Model.DbStorage
             {
                 #region Add root directories ...
                 List<DbStorage_RootDirectory> rootDirectory = Generate_RootDirectories(5);
-                _dbStorage_Data_Context.RootDirectories.AddRange(rootDirectory);
-                _dbStorage_Data_Context.SaveChanges();
+                _dbStorage_Context.RootDirectories.AddRange(rootDirectory);
+                _dbStorage_Context.SaveChanges();
                 #endregion
 
                 #region Add sub directories ...
                 List<DbStorage_SubDirectory> subDirectories = Generate_SubDirectories(50, rootDirectory);
-                _dbStorage_Data_Context.SubDirectories.AddRange(subDirectories);
-                _dbStorage_Data_Context.SaveChanges();
+                _dbStorage_Context.SubDirectories.AddRange(subDirectories);
+                _dbStorage_Context.SaveChanges();
                 #endregion
 
                 #region Add sub sub directories ...
                 List<DbStorage_SubDirectory> subsubDirectories = Generate_SubSubDirectories(25, rootDirectory);
-                _dbStorage_Data_Context.SubDirectories.AddRange(subsubDirectories);
-                _dbStorage_Data_Context.SaveChanges();
+                _dbStorage_Context.SubDirectories.AddRange(subsubDirectories);
+                _dbStorage_Context.SaveChanges();
                 #endregion
 
                 #region Add files ...
                 for (int i = 0; i < 10; i++)
                 {
                     List<DbStorage_File> files = Generate_Files(1000, rootDirectory, subDirectories);
-                    _dbStorage_Data_Context.Files.AddRange(files);
-                    _dbStorage_Data_Context.SaveChanges();
+                    _dbStorage_Context.Files.AddRange(files);
+                    _dbStorage_Context.SaveChanges();
                     files.RemoveAll(p => true);
                 }
 
                 for (int i = 0; i < 10; i++)
                 {
                     List<DbStorage_File> files = Generate_Files(100, rootDirectory, subsubDirectories);
-                    _dbStorage_Data_Context.Files.AddRange(files);
-                    _dbStorage_Data_Context.SaveChanges();
+                    _dbStorage_Context.Files.AddRange(files);
+                    _dbStorage_Context.SaveChanges();
                     files.RemoveAll(p => true);
                 }
                 #endregion
@@ -191,22 +255,22 @@ namespace PSGM.Sample.Model.DbStorage
                 rootDirectory.RemoveAll(p => true);
 
                 // Clear the ChangeTracker to reduce memory usage
-                _dbStorage_Data_Context.ChangeTracker.Clear();
+                _dbStorage_Context.ChangeTracker.Clear();
 
-                //_dbStorage_Data_Context.Database.CloseConnection();
-                //_dbStorage_Data_Context.Dispose();
-                //_dbStorage_Data_Context = null;
+                //_dbStorage_Context.Database.CloseConnection();
+                //_dbStorage_Context.Dispose();
+                //_dbStorage_Context = null;
 
-                //_dbStorage_Data_Context = new DbStorage_Context();
+                //_dbStorage_Context = new DbStorage_Context();
 
-                //_dbStorage_Data_Context.ConnectionString = _configFile.StorageDataDatabaseConnectionString;
-                //_dbStorage_Data_Context.DatabaseType = _configFile.StorageDataDatabaseType;
+                //_dbStorage_Context.ConnectionString = _configFile.StorageDataDatabaseConnectionString;
+                //_dbStorage_Context.DatabaseType = _configFile.StorageDataDatabaseType;
 
-                //_dbStorage_Data_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
-                //_dbStorage_Data_Context.DatabaseSessionParameter_MachineId = _machineId;
-                //_dbStorage_Data_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
+                //_dbStorage_Data_Co_dbStorage_Contexttext.DatabaseSessionParameter_SoftwareId = _softwareId;
+                //_dbStorage_Context.DatabaseSessionParameter_MachineId = _machineId;
+                //_dbStorage_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
 
-                //_dbStorage_Data_Context.Database.OpenConnection();
+                //_dbStorage_Context.Database.OpenConnection();
             }
         }
 
@@ -216,7 +280,7 @@ namespace PSGM.Sample.Model.DbStorage
 
             //var asdasd = _dbStorage_Data_Context.Files.ToList();
 
-            var asd = _dbStorage_Data_Context.Files.Where(f => f.ExtId3.Contains("e"))
+            var asd = _dbStorage_Context.Files.Where(f => f.ExtId3.Contains("e"))
                                                     .Include(p => p.SubDirectory)
                                                         .ThenInclude(p => p.RootDirectory)
                                                     .Include(p => p.RootDirectory)
@@ -250,12 +314,12 @@ namespace PSGM.Sample.Model.DbStorage
 
 
 
-            var asd2 = _dbStorage_Data_Context.RootDirectories.ToList();
-            var asdasd2 = _dbStorage_Data_Context.SubDirectories.OrderBy(item => item.Id)
+            var asd2 = _dbStorage_Context.RootDirectories.ToList();
+            var asdasd2 = _dbStorage_Context.SubDirectories.OrderBy(item => item.Id)
                                                                 .Take(100)
                                                                 .ToList();
 
-            var asdsad = _dbStorage_Data_Context.Files.ToList();
+            var asdsad = _dbStorage_Context.Files.ToList();
 
             ;
         }

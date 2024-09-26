@@ -39,6 +39,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\50_Helper\PSGM.Helper\PSGM.Helper.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbBackend\PSGM.Model.DbBackend.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DBStorage\PSGM.Model.DbStorage.csproj" />
   </ItemGroup>
 
