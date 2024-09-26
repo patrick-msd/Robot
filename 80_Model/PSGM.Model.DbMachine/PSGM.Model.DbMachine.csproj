@@ -29,9 +29,6 @@
 
   <ItemGroup>
     <Folder Include="Helper\" />
-    <Folder Include="Model\Device\" />
-    <Folder Include="Model\Machine\" />
-    <Folder Include="Model\Interface\" />
   </ItemGroup>
 
 </Project>

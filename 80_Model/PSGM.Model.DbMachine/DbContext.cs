@@ -40,15 +40,20 @@ namespace PSGM.Model.DbMachine
         #endregion
 
         #region DataSets
+        #region Address
         public DbSet<DbMachine_Address> Addresses { get; set; }
         public DbSet<DbMachine_Address_AuditLog> Address_AuditLogs { get; set; }
+        #endregion
 
+        #region Device
         public DbSet<DbMachine_Device> Devices { get; set; }
         public DbSet<DbMachine_Device_AuditLog> Device_AuditLogs { get; set; }
 
         public DbSet<DbMachine_DeviceGroup> DeviceGroups { get; set; }
         public DbSet<DbMachine_DeviceGroup_AuditLog> DeviceGroup_AuditLogs { get; set; }
+        #endregion
 
+        #region Interface
         public DbSet<DbMachine_Interface_Can> Interfaces_Can { get; set; }
         public DbSet<DbMachine_Interface_Can_AuditLog> Interface_Can_AuditLogs { get; set; }
 
@@ -60,12 +65,26 @@ namespace PSGM.Model.DbMachine
 
         public DbSet<DbMachine_Interface_Serial> Interfaces_Serial { get; set; }
         public DbSet<DbMachine_Interface_Serial_AuditLog> Interface_Serial_AuditLogs { get; set; }
+        #endregion
 
+        #region Location
         public DbSet<DbMachine_Location> Locations { get; set; }
+        public DbSet<DbMachine_Location_Address_Link> Location_Address_Links { get; set; }
+        public DbSet<DbMachine_Location_Address_Link_AuditLog> Location_Address_Link_AuditLogs { get; set; }
         public DbSet<DbMachine_Location_AuditLog> Location_AuditLogs { get; set; }
+        #endregion
 
+        #region Machine
         public DbSet<DbMachine_Machine> Machines { get; set; }
         public DbSet<DbMachine_Machine_AuditLog> Machine_AuditLogs { get; set; }
+        public DbSet<DbMachine_Machine_Location_Link> Machine_Location_Links { get; set; }
+        public DbSet<DbMachine_Machine_Location_Link_AuditLog> Machine_Location_Link_AuditLogs { get; set; }
+        #endregion
+
+        #region Project
+        public DbSet<DbMachine_Project> Projects { get; set; }
+        public DbSet<DbMachine_Project_AuditLog> Project_AuditLogs { get; set; }
+        #endregion
         #endregion
 
         #region Overrides
@@ -141,33 +160,62 @@ namespace PSGM.Model.DbMachine
             {
                 switch (entry.Entity)
                 {
+                    #region Address
                     case DbMachine_Address address:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            address.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            address.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            address.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            address.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         Address_AuditLogs.Add(new DbMachine_Address_AuditLog
                         {
                             Id = new Guid(),
 
                             SourceId = address.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = address.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
                     case DbMachine_Address_AuditLog address_AuditLog:
                         break;
+                    #endregion
 
+                    #region Device
                     case DbMachine_Device device:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            device.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            device.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            device.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            device.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         Device_AuditLogs.Add(new DbMachine_Device_AuditLog
                         {
                             Id = new Guid(),
 
                             SourceId = device.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = device.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -176,32 +224,60 @@ namespace PSGM.Model.DbMachine
                         break;
 
                     case DbMachine_DeviceGroup deviceGroup:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            deviceGroup.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            deviceGroup.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            deviceGroup.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            deviceGroup.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         DeviceGroup_AuditLogs.Add(new DbMachine_DeviceGroup_AuditLog
                         {
                             Id = new Guid(),
 
                             SourceId = deviceGroup.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = deviceGroup.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
                     case DbMachine_DeviceGroup_AuditLog deviceGroup_AuditLog:
                         break;
+                    #endregion
 
+                    #region Interfaces
                     case DbMachine_Interface_Can interface_Can:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            interface_Can.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            interface_Can.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            interface_Can.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            interface_Can.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         Interface_Can_AuditLogs.Add(new DbMachine_Interface_Can_AuditLog
                         {
                             Id = new Guid(),
 
                             SourceId = interface_Can.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = interface_Can.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -210,15 +286,28 @@ namespace PSGM.Model.DbMachine
                         break;
 
                     case DbMachine_Interface_CanDevice interface_CanDevice:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            interface_CanDevice.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            interface_CanDevice.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            interface_CanDevice.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            interface_CanDevice.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         Interfaces_CanDevice_AuditLogs.Add(new DbMachine_Interface_CanDevice_AuditLog
                         {
                             Id = new Guid(),
 
                             SourceId = interface_CanDevice.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = interface_CanDevice.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -227,15 +316,28 @@ namespace PSGM.Model.DbMachine
                         break;
 
                     case DbMachine_Interface_Ethernet interface_Ethernet:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            interface_Ethernet.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            interface_Ethernet.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            interface_Ethernet.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            interface_Ethernet.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         Interface_Ethernet_AuditLogs.Add(new DbMachine_Interface_Ethernet_AuditLog
                         {
                             Id = new Guid(),
 
                             SourceId = interface_Ethernet.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = interface_Ethernet.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -244,32 +346,60 @@ namespace PSGM.Model.DbMachine
                         break;
 
                     case DbMachine_Interface_Serial interface_Serial:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            interface_Serial.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            interface_Serial.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            interface_Serial.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            interface_Serial.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         Interface_Serial_AuditLogs.Add(new DbMachine_Interface_Serial_AuditLog
                         {
                             Id = new Guid(),
 
                             SourceId = interface_Serial.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = interface_Serial.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
                     case DbMachine_Interface_Serial_AuditLog interface_Serial_AuditLog:
                         break;
+                    #endregion
 
+                    #region Location
                     case DbMachine_Location location:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            location.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            location.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            location.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            location.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         Location_AuditLogs.Add(new DbMachine_Location_AuditLog
                         {
                             Id = new Guid(),
 
                             SourceId = location.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = intelocationrfaceCan.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -277,22 +407,104 @@ namespace PSGM.Model.DbMachine
                     case DbMachine_Location_AuditLog location_AuditLog:
                         break;
 
+                    case DbMachine_Location_Address_Link location_Address_Link:
+                        Location_Address_Link_AuditLogs.Add(new DbMachine_Location_Address_Link_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = location_Address_Link.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMachine_Location_Address_Link_AuditLog location_Address_Link_AuditLog:
+                        break;
+                    #endregion
+
+                    #region Machine
                     case DbMachine_Machine machine:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            machine.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            machine.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            machine.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            machine.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
                         Machine_AuditLogs.Add(new DbMachine_Machine_AuditLog
                         {
                             Id = new Guid(),
 
                             SourceId = machine.Id,
-                            //TableName = entry.Metadata.GetTableName(),
-                            //EntityName = machine.GetType().Name,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
                     case DbMachine_Machine_AuditLog machine_AuditLog:
                         break;
+
+                    case DbMachine_Machine_Location_Link machine_Location_Link:
+                        Machine_Location_Link_AuditLogs.Add(new DbMachine_Machine_Location_Link_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = machine_Location_Link.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMachine_Machine_Location_Link_AuditLog machine_Location_Link_AuditLog:
+                        break;
+                    #endregion
+
+                    #region Project
+                    case DbMachine_Project project:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            project.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            project.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            project.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            project.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        Project_AuditLogs.Add(new DbMachine_Project_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = project.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMachine_Project_AuditLog project_AuditLog:
+                        break;
+                    #endregion
 
                     default:
                         break;
