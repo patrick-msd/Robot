@@ -48,7 +48,7 @@ namespace PSGM.Model.DbMain
 
         #region Links
         [InverseProperty("WorkflowGroup")]
-        public virtual ICollection<DbMain_WorkflowItem_Link>? WorkflowItem_Links { get; set; }
+        public virtual ICollection<DbMain_WorkflowItem>? WorkflowItem { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)

@@ -1,5 +1,4 @@
-﻿using PSGM.Helper;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbMain
@@ -26,15 +25,15 @@ namespace PSGM.Model.DbMain
         [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
-        [Required]
-        [Column("WorkflowApplyLevel")]
-        [Display(Name = "WorkflowApplyLevel")]
-        public WorkflowApplyLevel WorkflowApplyLevel { get; set; } = WorkflowApplyLevel.Undefined;
+        [Column("WorkflowApplyLevel_String")]
+        [Display(Name = "WorkflowApplyLevel_String")]
+        [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string WorkflowApplyLevel_String { get; private set; } = string.Empty;
 
-        [Required]
-        [Column("WorkflowExecutionLevel")]
-        [Display(Name = "WorkflowExecutionLevel")]
-        public WorkflowExecutionLevel WorkflowExecutionLevel { get; set; } = WorkflowExecutionLevel.Undefined;
+        [Column("WorkflowExecutionLevel_String")]
+        [Display(Name = "WorkflowExecutionLevel_String")]
+        [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string WorkflowExecutionLevel_String { get; private set; } = string.Empty;
 
         #region Audit details for faster file audit information
         [Required]
@@ -58,14 +57,28 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Links
-        [InverseProperty("WorkflowItem")]
-        public virtual ICollection<DbMain_WorkflowItem_Link>? WorkflowItemLinks { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
+        [ForeignKey("WorkflowItem")]
+        public Guid? WorkflowItemId { get; set; }
+        public virtual DbMain_Unit? WorkflowItem { get; set; }
         #endregion
 
         #region Not Mapped
+        [NotMapped]
+        public List<Guid>? WorkflowApplyLevel
+        {
+            get { return WorkflowApplyLevel_String != string.Empty ? WorkflowApplyLevel_String.Split(',').Select(Guid.Parse).ToList() : null; }
+            set { WorkflowApplyLevel_String = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+        }
+
+        [NotMapped]
+        public List<Guid>? WorkflowExecutionLevel
+        {
+            get { return WorkflowExecutionLevel_String != string.Empty ? WorkflowExecutionLevel_String.Split(',').Select(Guid.Parse).ToList() : null; }
+            set { WorkflowExecutionLevel_String = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+        }
         #endregion
     }
 }

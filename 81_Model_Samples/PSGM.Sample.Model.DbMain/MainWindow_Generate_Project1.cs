@@ -11,7 +11,7 @@ namespace PSGM.Sample.Model.DbStorage
 
             Array values1 = Enum.GetValues(typeof(NotificationType));
 
-            #region WorkflowItemLinks
+            #region WorkflowItemLinks Image capturing ...
             #region Raw images
             DbMain_WorkflowItem_Link dbWorkflowItemLink_Vision2D_GrabImage_DataRaw = new DbMain_WorkflowItem_Link()
             {
@@ -27,7 +27,7 @@ namespace PSGM.Sample.Model.DbStorage
                 WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
 
                 Configuration = string.Empty,
-
+                
                 // FK
                 //WorkflowItem = null,
                 WorkflowItemId = WorkflowItem_Id.Vision2D_GrabImage_V1_0_0,
