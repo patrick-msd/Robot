@@ -25,9 +25,9 @@ namespace PSGM.Model.DbStorage
         [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
 
-        [Column("MetadataType")]
-        [Display(Name = "MetadataType")]
-        public MetadataType MetadataType { get; set; } = MetadataType.Unknown;
+        [Column("MetadataSource")]
+        [Display(Name = "MetadataSource")]
+        public MetadataSource MetadataSource { get; set; } = MetadataSource.Unknown;
 
         [Column("MetadataPermissions")]
         [Display(Name = "MetadataPermissions")]

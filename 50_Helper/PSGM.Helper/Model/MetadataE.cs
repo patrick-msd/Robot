@@ -1,6 +1,6 @@
 ﻿namespace PSGM.Helper
 {
-    public enum MetadataType : int
+    public enum MetadataSource : int
     {
         Unknown = 0,
 

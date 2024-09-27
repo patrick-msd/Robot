@@ -20,7 +20,7 @@ namespace PSGM.Model.DbStorage
 
         #region Backlinks (ForeignKeys)
         [ForeignKey("VirtualUnit")]
-        public Guid? FileId { get; set; }
+        public Guid? VirtualUnitId { get; set; }
         public virtual DbStorage_SubDirectory_VirtualUnit? VirtualUnit { get; set; }
 
         [ForeignKey("UserGroup")]
