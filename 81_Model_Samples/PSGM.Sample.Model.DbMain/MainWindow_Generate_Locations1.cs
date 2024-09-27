@@ -78,7 +78,7 @@ namespace PSGM.Sample.Model.DbStorage
                 Description = string.Empty,
 
                 LocationType = LocationType.Headquarter,
-
+                
                 AddressLink = new DbMain_Location_Address_Link()
                 {
                     Id = new Guid(),

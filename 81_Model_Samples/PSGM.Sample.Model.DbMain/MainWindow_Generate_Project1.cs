@@ -30,7 +30,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 // FK
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.Vision2D_GrabImage_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.Vision2D_GrabImage_V1_0_0,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -54,7 +54,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 // FK
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.StorageAndDatabase_Save_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.StorageAndDatabase_Save_V1_0_0,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -80,7 +80,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 // FK
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.Image_HDR_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.Image_HDR_V1_0_0,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -103,7 +103,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 // FK
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.StorageAndDatabase_Save_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.StorageAndDatabase_Save_V1_0_0,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -129,7 +129,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 // FK
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.Image_Darktable_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.Image_Darktable_V1_0_0,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -169,7 +169,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 // FK
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.StorageAndDatabase_Save_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.StorageAndDatabase_Save_V1_0_0,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -195,7 +195,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 // FK
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.Image_Crop_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.Image_Crop_V1_0_0,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -245,7 +245,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 // FK
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.Image_Rotate_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.Image_Rotate_V1_0_0,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -283,7 +283,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 // FK
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.Image_Rotate_V2_0_0,
+                WorkflowItemId = WorkflowItem_Id.Image_Rotate_V2_0_0,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -321,7 +321,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 // FK
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.Image_Sharpen_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.Image_Sharpen_V1_0_0,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -363,7 +363,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 // FK
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.Image_Sharpen_V2_0_0,
+                WorkflowItemId = WorkflowItem_Id.Image_Sharpen_V2_0_0,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -403,7 +403,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 // FK
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.StorageAndDatabase_Save_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.StorageAndDatabase_Save_V1_0_0,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -636,7 +636,7 @@ namespace PSGM.Sample.Model.DbStorage
                     LastArchiveJobStarted = DateTime.MinValue,
                     LastArchiveJobFinished = DateTime.MinValue,
 
-                    Unit = new List<DbMain_Unit>()
+                    Units = new List<DbMain_Unit>()
                     {
                         new DbMain_Unit()
                         {
@@ -681,7 +681,7 @@ namespace PSGM.Sample.Model.DbStorage
                             LastArchiveJobStarted = DateTime.MinValue,
                             LastArchiveJobFinished = DateTime.MinValue,
 
-                            Unit = null,
+                            Units = null,
                             
                             //CreatedByUserIdExtAutoFill = Guid.Empty,
                             //CreatedDateTimeAutoFill = DateTime.Now,
@@ -738,7 +738,7 @@ namespace PSGM.Sample.Model.DbStorage
                             LastArchiveJobStarted = DateTime.MinValue,
                             LastArchiveJobFinished = DateTime.MinValue,
 
-                            Unit = null,
+                            Units = null,
 
                             //CreatedByUserIdExtAutoFill = Guid.Empty,
                             //CreatedDateTimeAutoFill = DateTime.Now,

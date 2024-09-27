@@ -76,10 +76,6 @@ namespace PSGM.Model.DbMain
         [Display(Name = "PreparationUserId_Ext")]
         public Guid PreparationUserId_Ext { get; set; } = Guid.Empty;
 
-        [Column("DetectedDefectsDuringPreparation")]
-        [Display(Name = "DetectedDefectsDuringPreparation")]
-        public int DetectedDefectsDuringPreparation { get; set; } = 0;
-
         [Column("PreparationNotes")]
         [Display(Name = "PreparationNotes")]
         [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
@@ -150,7 +146,13 @@ namespace PSGM.Model.DbMain
         public virtual DbMain_WorkflowGroup? ApplicableWorkflowGroup { get; set; }
 
         [InverseProperty("ParentUnit")]
-        public virtual ICollection<DbMain_Unit>? Unit { get; set; }
+        public virtual ICollection<DbMain_Unit>? Units { get; set; }
+
+        [InverseProperty("Unit")]
+        public virtual ICollection<DbMain_QrCode>? QrCodes { get; set; }
+
+        [InverseProperty("Unit")]
+        public virtual ICollection<DbMain_Unit_Defect>? UnitDefects { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)

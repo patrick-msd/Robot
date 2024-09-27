@@ -177,10 +177,10 @@ namespace PSGM.Model.DbStorage
         [StringLength(32766, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string ArchiveIds_ExtString { get; private set; } = string.Empty;
 
-        [Column("JobIdsExt_String")]
-        [Display(Name = "JobIdsExt_String")]
+        [Column("JobIds_ExtString")]
+        [Display(Name = "JobIds_ExtString")]
         [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string JobIdsExt_String { get; private set; } = string.Empty;
+        public string JobIds_ExtString { get; private set; } = string.Empty;
 
         [Column("WorkflowItemIds_ExtString")]
         [Display(Name = "WorkflowItemIds_ExtString")]
@@ -257,8 +257,8 @@ namespace PSGM.Model.DbStorage
         [NotMapped]
         public List<Guid>? JobIds_Ext
         {
-            get { return JobIdsExt_String != string.Empty ? JobIdsExt_String.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { JobIdsExt_String = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+            get { return JobIds_ExtString != string.Empty ? JobIds_ExtString.Split(',').Select(Guid.Parse).ToList() : null; }
+            set { JobIds_ExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
         }
 
         [NotMapped]

@@ -318,7 +318,7 @@ namespace PSGM.Helper.Workflow
                 #endregion
 
                 #region Storage & Database
-                case Guid guid when guid == Workflow_DbMain_RootDirectories.StorageAndDatabase_Save_V1_0_0:
+                case Guid guid when guid == WorkflowItem_Id.StorageAndDatabase_Save_V1_0_0:
                     StorageAndDatabase_Save_V1_0_0(workflowItemLink);
 
                     // Reset the list of unsaved workflow items
@@ -327,41 +327,41 @@ namespace PSGM.Helper.Workflow
                 #endregion
 
                 #region Vison2D
-                case Guid guid when guid == Workflow_DbMain_RootDirectories.Vision2D_GrabImage_V1_0_0:
+                case Guid guid when guid == WorkflowItem_Id.Vision2D_GrabImage_V1_0_0:
                     Vision2D_GrabImage_V1_0_0();
                     break;
                 #endregion
 
                 #region Images
-                case Guid guid when guid == Workflow_DbMain_RootDirectories.Image_Resize_V1_0_0:
+                case Guid guid when guid == WorkflowItem_Id.Image_Resize_V1_0_0:
                     Image_Resize_V1_0_0(workflowItemLink);
                     break;
 
-                case Guid guid when guid == Workflow_DbMain_RootDirectories.Image_HDR_V1_0_0:
+                case Guid guid when guid == WorkflowItem_Id.Image_HDR_V1_0_0:
                     Image_HDR_V1_0_0();
                     break;
 
-                case Guid guid when guid == Workflow_DbMain_RootDirectories.Image_Darktable_V1_0_0:
+                case Guid guid when guid == WorkflowItem_Id.Image_Darktable_V1_0_0:
                     Image_Darktable_V1_0_0(workflowItemLink);
                     break;
 
-                case Guid guid when guid == Workflow_DbMain_RootDirectories.Image_Crop_V1_0_0:
+                case Guid guid when guid == WorkflowItem_Id.Image_Crop_V1_0_0:
                     Image_Crop_V1_0_0(workflowItemLink);
                     break;
 
-                case Guid guid when guid == Workflow_DbMain_RootDirectories.Image_Rotate_V1_0_0:
+                case Guid guid when guid == WorkflowItem_Id.Image_Rotate_V1_0_0:
                     Image_Rotate_V1_0_0(workflowItemLink);
                     break;
 
-                case Guid guid when guid == Workflow_DbMain_RootDirectories.Image_Rotate_V2_0_0:
+                case Guid guid when guid == WorkflowItem_Id.Image_Rotate_V2_0_0:
                     Image_Rotate_V2_0_0(workflowItemLink);
                     break;
 
-                case Guid guid when guid == Workflow_DbMain_RootDirectories.Image_Sharpen_V1_0_0:
+                case Guid guid when guid == WorkflowItem_Id.Image_Sharpen_V1_0_0:
                     Image_Sharpen_V1_0_0(workflowItemLink);
                     break;
 
-                case Guid guid when guid == Workflow_DbMain_RootDirectories.Image_Sharpen_V2_0_0:
+                case Guid guid when guid == WorkflowItem_Id.Image_Sharpen_V2_0_0:
                     Image_Sharpen_V2_0_0(workflowItemLink);
                     break;
                 #endregion

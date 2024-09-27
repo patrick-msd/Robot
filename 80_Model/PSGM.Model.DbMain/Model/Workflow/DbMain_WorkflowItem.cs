@@ -41,6 +41,33 @@ namespace PSGM.Model.DbMain
         [StringLength(65536, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Configuration { get; set; } = string.Empty;
 
+
+
+
+
+        [Required]
+        [Column("JobStatus")]
+        [Display(Name = "JobStatus")]
+        public JobStatus JobStatus { get; set; } = JobStatus.Unknown;
+
+        [Required]
+        [Column("JobStarted")]
+        [Display(Name = "JobStarted")]
+        public DateTime JobStarted { get; set; } = DateTime.MinValue;
+
+        [Column("JobFinished")]
+        [Display(Name = "JobFinished")]
+        public DateTime JobFinished { get; set; } = DateTime.MinValue;
+
+        [Column("MachineId_Ext")]
+        [Display(Name = "MachineId_Ext")]
+        public Guid MachineId_Ext { get; set; } = Guid.Empty;
+
+
+
+
+
+
         #region Audit details for faster file audit information
         [Required]
         [Column("CreatedDateTimeAutoFill")]
@@ -65,6 +92,9 @@ namespace PSGM.Model.DbMain
         #region Links
         [InverseProperty("WorkflowItem")]
         public virtual ICollection<DbMain_WorkflowItem_Link>? WorkflowItemLinks { get; set; }
+
+        [InverseProperty("WorkflowType")]
+        public virtual ICollection<DbMain_WorkflowType>? WorkflowType { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)

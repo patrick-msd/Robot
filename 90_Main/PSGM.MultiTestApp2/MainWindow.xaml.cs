@@ -467,7 +467,7 @@ namespace PSGM.MultiTestApp1
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.Vision2D_GrabImage_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.Vision2D_GrabImage_V1_0_0,
 
                 // FK
                 //Workflow = null,
@@ -488,7 +488,7 @@ namespace PSGM.MultiTestApp1
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.StorageAndDatabase_Save_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.StorageAndDatabase_Save_V1_0_0,
 
                 // FK
                 //Workflow = null,
@@ -511,7 +511,7 @@ namespace PSGM.MultiTestApp1
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.Image_HDR_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.Image_HDR_V1_0_0,
 
                 // FK
                 //Workflow = null,
@@ -531,7 +531,7 @@ namespace PSGM.MultiTestApp1
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.StorageAndDatabase_Save_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.StorageAndDatabase_Save_V1_0_0,
 
                 // FK
                 //Workflow = null,
@@ -554,7 +554,7 @@ namespace PSGM.MultiTestApp1
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.Image_Darktable_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.Image_Darktable_V1_0_0,
 
                 // FK
                 //Workflow = null,
@@ -591,7 +591,7 @@ namespace PSGM.MultiTestApp1
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.StorageAndDatabase_Save_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.StorageAndDatabase_Save_V1_0_0,
 
                 // FK
                 //Workflow = null,
@@ -614,7 +614,7 @@ namespace PSGM.MultiTestApp1
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.Image_Crop_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.Image_Crop_V1_0_0,
 
                 // FK
                 //Workflow = null,
@@ -661,7 +661,7 @@ namespace PSGM.MultiTestApp1
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.Image_Rotate_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.Image_Rotate_V1_0_0,
 
                 // FK
                 //Workflow = null,
@@ -696,7 +696,7 @@ namespace PSGM.MultiTestApp1
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.Image_Rotate_V2_0_0,
+                WorkflowItemId = WorkflowItem_Id.Image_Rotate_V2_0_0,
 
                 // FK
                 //Workflow = null,
@@ -731,7 +731,7 @@ namespace PSGM.MultiTestApp1
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.Image_Sharpen_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.Image_Sharpen_V1_0_0,
 
                 // FK
                 //Workflow = null,
@@ -770,7 +770,7 @@ namespace PSGM.MultiTestApp1
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.Image_Sharpen_V2_0_0,
+                WorkflowItemId = WorkflowItem_Id.Image_Sharpen_V2_0_0,
 
                 // FK
                 //Workflow = null,
@@ -807,7 +807,7 @@ namespace PSGM.MultiTestApp1
                 Configuration = string.Empty,
 
                 //WorkflowItem = null,
-                WorkflowItemId = Workflow_DbMain_RootDirectories.StorageAndDatabase_Save_V1_0_0,
+                WorkflowItemId = WorkflowItem_Id.StorageAndDatabase_Save_V1_0_0,
 
                 // FK
                 //Workflow = null,

@@ -14,7 +14,7 @@ namespace PSGM.Sample.Model.DbStorage
             DbMain_Organization organizationUIBK = new DbMain_Organization()
             {
                 Id = Guid.NewGuid(),
-
+                
                 Name = "University Innsbruck (DEA)",
                 Description = "",
                 Acronym = "UIBK",
@@ -46,7 +46,7 @@ namespace PSGM.Sample.Model.DbStorage
                         Id = Guid.NewGuid(),
 
                         UserId_Ext = _guenterMuehlbergerId,
-
+                        
                         Acronym = "MUG",
 
                         EMail = "",
@@ -196,7 +196,7 @@ namespace PSGM.Sample.Model.DbStorage
                                 WhatsApp = random.Next(100) <= 50 ? true : false,
                                 Telegram = random.Next(100) <= 50 ? true : false,
                                 Gotify = random.Next(100) <= 50 ? true : false,
-
+                                
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
                                 //ModifiedByUserIdExtAutoFill = Guid.Empty,
@@ -237,7 +237,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 DeliverySlipCreator = null,
                 DeliverySlipCreatorId = null,
-
+                
                 DeliverySlipRecipient = null,
                 DeliverySlipRecipientId = null,
             };
@@ -255,7 +255,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 DaytimePhoneNumber = "+43 512 123456789",
                 EveningPhoneNumber = "+43 512 123456789",
-
+                
                 LocationLinks = new List<DbMain_Organization_Location_Link>()
                 {
                     new DbMain_Organization_Location_Link()
@@ -376,7 +376,7 @@ namespace PSGM.Sample.Model.DbStorage
                         EveningPhoneNumber = "+43 512 123456789",
 
                         FieldOfEmployment = FieldOfEmployment.ProjectEmployee,
-
+                        
                         Permissions = new DbMain_Organization_Employee_Permission()
                         {
                             Id = Guid.NewGuid(),
@@ -468,7 +468,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                 DeliverySlipCreator = null,
                 DeliverySlipCreatorId = null,
-
+                
                 DeliverySlipRecipient = null,
                 DeliverySlipRecipientId = null,
             };
