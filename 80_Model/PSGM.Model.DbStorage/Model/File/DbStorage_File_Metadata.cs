@@ -15,12 +15,6 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "Id")]
         public Guid Id { get; set; }
 
-        [Required]
-        [Column("Key")]
-        [Display(Name = "Key")]
-        [StringLength(1024, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string Key { get; set; } = string.Empty;
-
         [Column("Value")]
         [Display(Name = "Value")]
         [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
@@ -78,9 +72,9 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [ForeignKey("MetadataKey")]
-        public Guid? MetadataKeyId { get; set; }
-        public virtual DbStorage_MetadataKey? MetadataKey { get; set; }
+        [ForeignKey("Key")]
+        public Guid? KeyId { get; set; }
+        public virtual DbStorage_MetadataKey? Key { get; set; }
         #endregion
 
         #region Not Mapped

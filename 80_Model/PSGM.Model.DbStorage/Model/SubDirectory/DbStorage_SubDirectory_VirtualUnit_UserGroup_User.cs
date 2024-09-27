@@ -18,27 +18,6 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "UserId_Ext")]
         public Guid UserId_Ext { get; set; } = Guid.Empty;
 
-        [Column("Acronym")]
-        [Display(Name = "Acronym")]
-        [StringLength(32, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 1)]
-        public string Acronym { get; set; } = string.Empty;
-
-        [Column("DaytimePhoneNumber")]
-        [Display(Name = "DaytimePhoneNumber")]
-        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string DaytimePhoneNumber { get; set; } = string.Empty;
-
-        [Column("EveningPhoneNumber")]
-        [Display(Name = "EveningPhoneNumber")]
-        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string EveningPhoneNumber { get; set; } = string.Empty;
-
-        [Required]
-        [Column("EMail")]
-        [Display(Name = "EMail")]
-        [StringLength(511, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string EMail { get; set; } = string.Empty;
-
         #region Audit details for faster file audit information
         [Required]
         [Column("CreatedDateTimeAutoFill")]

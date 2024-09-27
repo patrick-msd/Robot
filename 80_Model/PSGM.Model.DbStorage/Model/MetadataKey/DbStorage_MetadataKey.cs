@@ -15,41 +15,21 @@ namespace PSGM.Model.DbStorage
         [Display(Name = "Id")]
         public Guid Id { get; set; }
 
-        [Required]
-        [Column("Key")]
-        [Display(Name = "Key")]
-        [StringLength(1024, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string Key { get; set; } = string.Empty;
+        //[Required]
+        //[Column("Key")]
+        //[Display(Name = "Key")]
+        //[StringLength(1024, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        //public string Key { get; set; } = string.Empty;
 
-        [Column("Value")]
-        [Display(Name = "Value")]
+        [Column("Name")]
+        [Display(Name = "Name")]
         [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string Value { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
 
         [Column("Description")]
         [Display(Name = "Description")]
         [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description { get; set; } = string.Empty;
-
-        [Column("MetadataType")]
-        [Display(Name = "MetadataType")]
-        public MetadataType MetadataType { get; set; } = MetadataType.Unknown;
-
-        [Column("MetadataPermissions")]
-        [Display(Name = "MetadataPermissions")]
-        public MetadataPermissions MetadataPermissions { get; set; } = MetadataPermissions.Unknown;
-
-        [Column("ApplicableForFiles")]
-        [Display(Name = "ApplicableForFiles")]
-        public bool ApplicableForFiles { get; set; } = false;
-
-        [Column("Stars")]
-        [Display(Name = "Stars")]
-        public int Stars { get; set; } = -1;
-
-        [Column("Order")]
-        [Display(Name = "Order")]
-        public int Order { get; set; } = -1;
 
         #region Audit details for faster file audit information
         [Required]
@@ -73,7 +53,7 @@ namespace PSGM.Model.DbStorage
         #endregion
 
         #region Links
-        [InverseProperty("MetadataKey")]
+        [InverseProperty("Key")]
         public virtual ICollection<DbStorage_File_Metadata>? FileMetadata { get; set; }
 
         [InverseProperty("MetadataKey")]
@@ -82,10 +62,10 @@ namespace PSGM.Model.DbStorage
         [InverseProperty("MetadataKey")]
         public virtual ICollection<DbStorage_MetadataKey_UserGroup_Link>? UserGroupLinks { get; set; }
 
-        [InverseProperty("MetadataKey")]
+        [InverseProperty("Key")]
         public virtual ICollection<DbStorage_RootDirectory_Metadata>? RootDirectoryMetadata { get; set; }
 
-        [InverseProperty("MetadataKey")]
+        [InverseProperty("Key")]
         public virtual ICollection<DbStorage_SubDirectory_Metadata>? SubDirectoryMetadata { get; set; }
         #endregion
 

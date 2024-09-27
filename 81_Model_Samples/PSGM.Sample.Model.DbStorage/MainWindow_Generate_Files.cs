@@ -1,5 +1,6 @@
 ﻿using PSGM.Helper;
 using PSGM.Model.DbStorage;
+using Windows.UI.Notifications;
 
 namespace PSGM.Sample.Model.DbStorage
 {
@@ -157,6 +158,48 @@ namespace PSGM.Sample.Model.DbStorage
                     });
                 }
 
+                List<DbStorage_File_UserGroup_User> userGroup_User = new List<DbStorage_File_UserGroup_User>();
+                for (int j = 0; j < 250; j++)
+                {
+                    userGroup_User.Add(new DbStorage_File_UserGroup_User()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        UserId_Ext = Guid.NewGuid(),
+
+                        Acronym = Common.RandomString(random.Next(1, 32)),
+
+                        EMail = Common.RandomString(random.Next(3, 511)),
+                        
+                        DaytimePhoneNumber = Common.RandomString(random.Next(3, 100)),
+                        EveningPhoneNumber = Common.RandomString(random.Next(3, 100)),
+                        
+                        UserLinks = null,
+
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+                    });
+                }                
+
+                List<DbStorage_File_UserGroup_User_Link> usersLoop = new List<DbStorage_File_UserGroup_User_Link>();
+                for (int j = 0; j < random.Next(0, users.Count()); j++)
+                {
+                    usersLoop.Add(new DbStorage_File_UserGroup_User_Link()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        // FK
+                        User = userGroup_User[random.Next(0, userGroup_User.Count())],
+                        //UserId = null,
+
+                        UserGroup = null,
+                        UserGroupId = null,
+                    });
+                }
+
+
                 userGroups.Add(new DbStorage_File_UserGroup()
                 {
                     Id = Guid.NewGuid(),
@@ -164,7 +207,93 @@ namespace PSGM.Sample.Model.DbStorage
                     Permissions = userGroupPermissions[random.Next(0, userGroupPermissions.Count())],
                     Notifications = userGroupNotifications.GetRange(0, random.Next(0, userGroupNotifications.Count())),
 
+                    UserLinks = usersLoop,
                     UserGroupLinks = null,
+
+                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                    //CreatedDateTimeAutoFill = DateTime.Now,
+                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                    //ModifiedDateTimeAutoFill = DateTime.Now,
+                });
+            }
+            #endregion
+
+            #region Create Metadata Key User ...
+            List<DbStorage_MetadataKey_User> usersMetadataKey = new List<DbStorage_MetadataKey_User>();
+            for (int i = 0; i < 250; i++)
+            {
+                List<DbStorage_MetadataKey_User_Permission> userPermissions = new List<DbStorage_MetadataKey_User_Permission>();
+                for (int j = 0; j < 250; j++)
+                {
+                    Array values = Enum.GetValues(typeof(PermissionType));
+
+                    userPermissions.Add(new DbStorage_MetadataKey_User_Permission()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        Description = string.Empty,
+
+                        PermissionFile = (PermissionType)values.GetValue(random.Next(values.Length)),
+                        PermissionMetadata = (PermissionType)values.GetValue(random.Next(values.Length)),
+
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        User = null,
+                        UserId = null,
+                    });
+                }
+
+                List<DbStorage_MetadataKey_User_Notification> userNotifications = new List<DbStorage_MetadataKey_User_Notification>();
+                for (int j = 0; j < 250; j++)
+                {
+                    userNotifications.Add(new DbStorage_MetadataKey_User_Notification()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        Description = string.Empty,
+
+                        TriggerType = NotificationTriggerType.WorkflowImage,
+                        TriggerState = NotificationTriggerState.CreatedUpdatedDeleted,
+
+                        EMail = random.Next(100) <= 50 ? true : false,
+                        Slack = random.Next(100) <= 50 ? true : false,
+                        Teams = random.Next(100) <= 50 ? true : false,
+                        SMS = random.Next(100) <= 50 ? true : false,
+                        WhatsApp = random.Next(100) <= 50 ? true : false,
+                        Telegram = random.Next(100) <= 50 ? true : false,
+                        Gotify = random.Next(100) <= 50 ? true : false,
+
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        User = null,
+                        UserId = null,
+                    });
+                }
+
+                usersMetadataKey.Add(new DbStorage_MetadataKey_User()
+                {
+                    Id = Guid.NewGuid(),
+
+                    UserId_Ext = Guid.NewGuid(),
+
+                    Acronym = Common.RandomString(random.Next(1, 32)),
+
+                    EMail = Common.RandomString(random.Next(3, 511)),
+
+                    DaytimePhoneNumber = Common.RandomString(random.Next(3, 100)),
+                    EveningPhoneNumber = Common.RandomString(random.Next(3, 100)),
+
+                    Permissions = userPermissions[random.Next(0, userPermissions.Count())],
+                    Notifications = userNotifications.GetRange(0, random.Next(0, userNotifications.Count())),
+
                     UserLinks = null,
 
                     //CreatedByUserIdExtAutoFill = Guid.Empty,
@@ -175,17 +304,156 @@ namespace PSGM.Sample.Model.DbStorage
             }
             #endregion
 
+            #region Create Metadata Key UserGroup ...
+            List<DbStorage_MetadataKey_UserGroup> userGroupsMetadataKey = new List<DbStorage_MetadataKey_UserGroup>();
+            for (int i = 0; i < 250; i++)
+            {
+                List<DbStorage_MetadataKey_UserGroup_Permission> userGroupPermissions = new List<DbStorage_MetadataKey_UserGroup_Permission>();
+                for (int j = 0; j < 250; j++)
+                {
+                    Array values = Enum.GetValues(typeof(PermissionType));
+
+                    userGroupPermissions.Add(new DbStorage_MetadataKey_UserGroup_Permission()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        Description = string.Empty,
+
+                        PermissionFile = (PermissionType)values.GetValue(random.Next(values.Length)),
+                        PermissionMetadata = (PermissionType)values.GetValue(random.Next(values.Length)),
+
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        UserGroup = null,
+                        UserGroupId = null,
+                    });
+                }
+
+                List<DbStorage_MetadataKey_UserGroup_Notification> userGroupNotifications = new List<DbStorage_MetadataKey_UserGroup_Notification>();
+                for (int j = 0; j < 250; j++)
+                {
+                    userGroupNotifications.Add(new DbStorage_MetadataKey_UserGroup_Notification()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        Description = string.Empty,
+
+                        TriggerType = NotificationTriggerType.WorkflowImage,
+                        TriggerState = NotificationTriggerState.CreatedUpdatedDeleted,
+
+                        EMail = random.Next(100) <= 50 ? true : false,
+                        Slack = random.Next(100) <= 50 ? true : false,
+                        Teams = random.Next(100) <= 50 ? true : false,
+                        SMS = random.Next(100) <= 50 ? true : false,
+                        WhatsApp = random.Next(100) <= 50 ? true : false,
+                        Telegram = random.Next(100) <= 50 ? true : false,
+                        Gotify = random.Next(100) <= 50 ? true : false,
+
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        UserGroup = null,
+                        UserGroupId = null,
+                    });
+                }
+
+                userGroupsMetadataKey.Add(new DbStorage_MetadataKey_UserGroup()
+                {
+                    Id = Guid.NewGuid(),
+
+                    Permissions = userGroupPermissions[random.Next(0, userGroupPermissions.Count())],
+                    Notifications = userGroupNotifications.GetRange(0, random.Next(0, userGroupNotifications.Count())),
+
+                    UserLinks = null,
+                    UserGroupLinks = null,
+
+                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                    //CreatedDateTimeAutoFill = DateTime.Now,
+                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                    //ModifiedDateTimeAutoFill = DateTime.Now,
+                });
+            }
+            #endregion
+
+            #region Create Metadata Key ...
+            List<DbStorage_MetadataKey> metadataKey = new List<DbStorage_MetadataKey>();
+            for (int i = 0; i < 250; i++)
+            {
+                List<DbStorage_MetadataKey_User_Link> usersLoop = new List<DbStorage_MetadataKey_User_Link>();
+                for (int j = 0; j < random.Next(0, usersMetadataKey.Count()); j++)
+                {
+                    usersLoop.Add(new DbStorage_MetadataKey_User_Link()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        // FK
+                        User = usersMetadataKey[random.Next(0, usersMetadataKey.Count())],
+                        //UserId = null,
+
+                        MetadataKey = null,
+                        MetadataKeyId = null,
+                    });
+                }
+
+                List<DbStorage_MetadataKey_UserGroup_Link> userGroupsLoop = new List<DbStorage_MetadataKey_UserGroup_Link>();
+                for (int j = 0; j < random.Next(0, userGroupsMetadataKey.Count()); j++)
+                {
+                    userGroupsLoop.Add(new DbStorage_MetadataKey_UserGroup_Link()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        // FK
+                        UserGroup = userGroupsMetadataKey[random.Next(0, userGroupsMetadataKey.Count())],
+                        //GroupId = null,
+
+                        MetadataKey = null,
+                        MetadataKeyId = null,
+                    });
+                }
+
+                metadataKey.Add(new DbStorage_MetadataKey()
+                {
+                    Id = Guid.NewGuid(),
+
+                    Name = Common.RandomString(random.Next(5, 50)),
+                    Description = Common.RandomString(random.Next(10, 200)),
+
+                    RootDirectoryMetadata = null,
+                    SubDirectoryMetadata = null,
+                    FileMetadata = null,
+
+                    UserLinks = usersLoop,
+                    UserGroupLinks = userGroupsLoop,
+
+                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                    //CreatedDateTimeAutoFill = DateTime.Now,
+                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                    //ModifiedDateTimeAutoFill = DateTime.Now,
+                });
+            }
+            #endregion
+
+            #region Metadata ...
             List<DbStorage_File_Metadata> fileMetadata = new List<DbStorage_File_Metadata>();
             for (int i = 1; i <= 50; i++)
             {
                 Array values1 = Enum.GetValues(typeof(MetadataType));
                 Array values2 = Enum.GetValues(typeof(EmployeeType));
 
+
+
                 fileMetadata.Add(new DbStorage_File_Metadata()
                 {
                     Id = Guid.NewGuid(),
 
-                    Key = Common.RandomString(random.Next(5, 50)),
+                    //Key = Common.RandomString(random.Next(5, 50)),
                     Value = Common.RandomString(random.Next(10, 100)),
 
                     Description = Common.RandomString(random.Next(10, 200)),
@@ -205,8 +473,20 @@ namespace PSGM.Sample.Model.DbStorage
                     //CreatedDateTimeAutoFill = DateTime.Now,
                     //ModifiedByUserIdExtAutoFill = Guid.Empty,
                     //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                    // FK
+                    Key = null,
+                    KeyId = null,
                 });
             }
+            #endregion
+
+
+
+
+
+
+
 
             for (int i = 1; i <= count; i++)
             {
