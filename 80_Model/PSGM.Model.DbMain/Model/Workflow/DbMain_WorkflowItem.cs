@@ -28,55 +28,14 @@ namespace PSGM.Model.DbMain
         public string Description { get; set; } = string.Empty;
 
         [Required]
-        [Column("WorkflowApplyLevel")]
-        [Display(Name = "WorkflowApplyLevel")]
-        public WorkflowApplyLevel WorkflowApplyLevel { get; set; } = WorkflowApplyLevel.Undefined;
+        [Column("ApplyLevel")]
+        [Display(Name = "ApplyLevel")]
+        public WorkflowApplyLevel ApplyLevel { get; set; } = WorkflowApplyLevel.Undefined;
 
         [Required]
         [Column("WorkflowExecutionLevel")]
         [Display(Name = "WorkflowExecutionLevel")]
         public WorkflowExecutionLevel WorkflowExecutionLevel { get; set; } = WorkflowExecutionLevel.Undefined;
-
-        [Column("Configuration")]
-        [Display(Name = "Configuration")]
-        [StringLength(65536, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string Configuration { get; set; } = string.Empty;
-
-
-
-
-
-        [Required]
-        [Column("JobStatus")]
-        [Display(Name = "JobStatus")]
-        public JobStatus JobStatus { get; set; } = JobStatus.Unknown;
-
-        [Required]
-        [Column("JobStarted")]
-        [Display(Name = "JobStarted")]
-        public DateTime JobStarted { get; set; } = DateTime.MinValue;
-
-        [Column("JobFinished")]
-        [Display(Name = "JobFinished")]
-        public DateTime JobFinished { get; set; } = DateTime.MinValue;
-
-        [Column("MachineId_Ext")]
-        [Display(Name = "MachineId_Ext")]
-        public Guid MachineId_Ext { get; set; } = Guid.Empty;
-
-
-
-
-
-
-
-
-
-
-        [Required]
-        [Column("ApplyLevel")]
-        [Display(Name = "ApplyLevel")]
-        public WorkflowApplyLevel ApplyLevel { get; set; } = WorkflowApplyLevel.Undefined;
 
         [Required]
         [Column("StorageType")]
@@ -93,15 +52,32 @@ namespace PSGM.Model.DbMain
         [Display(Name = "Permissions")]
         public EmployeeType Permissions { get; set; } = EmployeeType.None;
 
-        [Required]
-        [Column("WorkflowExecutionLevel")]
-        [Display(Name = "WorkflowExecutionLevel")]
-        public WorkflowExecutionLevel WorkflowExecutionLevel { get; set; } = WorkflowExecutionLevel.Undefined;
-
         [Column("Configuration")]
         [Display(Name = "Configuration")]
         [StringLength(65536, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Configuration { get; set; } = string.Empty;
+
+
+
+
+
+        [Required]
+        [Column("WorkflowStatus")]
+        [Display(Name = "WorkflowStatus")]
+        public WorkflowStatus WorkflowStatus { get; set; } = WorkflowStatus.Unknown;
+
+        [Required]
+        [Column("WorkflowStarted")]
+        [Display(Name = "WorkflowStarted")]
+        public DateTime WorkflowStarted { get; set; } = DateTime.MinValue;
+
+        [Column("WorkflowFinished")]
+        [Display(Name = "WorkflowFinished")]
+        public DateTime WorkflowFinished { get; set; } = DateTime.MinValue;
+
+        [Column("MachineId_Ext")]
+        [Display(Name = "MachineId_Ext")]
+        public Guid MachineId_Ext { get; set; } = Guid.Empty;
 
 
 

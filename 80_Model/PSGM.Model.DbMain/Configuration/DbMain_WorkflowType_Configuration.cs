@@ -63,6 +63,9 @@ namespace PSGM.Model.DbMain
                 },
                 #endregion
 
+                #region Vision 3D
+                #endregion
+
                 #region Images
                 // Calculate HDR image - V1.0.0
                 new DbMain_WorkflowType
@@ -223,6 +226,12 @@ namespace PSGM.Model.DbMain
                     // FK
                     WorkflowItemLinks = null,
                 }
+                #endregion
+
+                #region Achive
+                #endregion
+
+                #region Data transfer
                 #endregion
             );
         }
