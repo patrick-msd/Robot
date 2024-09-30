@@ -16,8 +16,8 @@ namespace PSGM.Model.DbBackend
         private Guid _databaseSessionParameter_UserId = Guid.Empty;
         public Guid DatabaseSessionParameter_UserId { get { return _databaseSessionParameter_UserId; } set { _databaseSessionParameter_UserId = value; } }
 
-        private Guid _databaseSessionParameter_MachineId = Guid.Empty;
-        public Guid DatabaseSessionParameter_MachineId { get { return _databaseSessionParameter_MachineId; } set { _databaseSessionParameter_MachineId = value; } }
+        private Guid _databaseSessionParameter_ComputerId = Guid.Empty;
+        public Guid DatabaseSessionParameter_ComputerId { get { return _databaseSessionParameter_ComputerId; } set { _databaseSessionParameter_ComputerId = value; } }
 
         private Guid _databaseSessionParameter_SoftwareId = Guid.Empty;
         public Guid DatabaseSessionParameter_SoftwareId { get { return _databaseSessionParameter_SoftwareId; } set { _databaseSessionParameter_SoftwareId = value; } }

@@ -20,6 +20,7 @@
     <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.Vision.SVSVistek\PSGM.Lib.Vision.SVSVistek.csproj" />
     <ProjectReference Include="..\..\50_Helper\PSGM.Helper.Workflow\PSGM.Helper.Workflow.csproj" />
     <ProjectReference Include="..\..\50_Helper\PSGM.Helper\PSGM.Helper.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbBackend\PSGM.Model.DbBackend.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DBJob\PSGM.Model.DbJob.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DBMachine\PSGM.Model.DbMachine.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DBMain\PSGM.Model.DbMain.csproj" />

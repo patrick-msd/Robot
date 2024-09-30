@@ -1360,7 +1360,7 @@ namespace RC.Scan_SingleSolution
                                                                               //.Include(p => p.Locations)
                                                                               .ToList();
 
-            List<DbStorage_RootDirectory> storage = Globals.DbStorage_Context.RootDirectories.Where(p => p.Id == projects.FirstOrDefault().Id)
+            List<DbStorage_RootDirectory> storage = Globals.DbStorageData_Context.RootDirectories.Where(p => p.Id == projects.FirstOrDefault().Id)
                                                                                                 .Include(p => p.SubDirectories)
                                                                                                     .ThenInclude(d => d.Files)
                                                                                                         .ThenInclude(f => f.QrCode)

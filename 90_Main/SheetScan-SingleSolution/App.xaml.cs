@@ -1,11 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PSGM.Helper;
+using PSGM.Model.DbBackend;
+using PSGM.Model.DbJob;
+using PSGM.Model.DbMachine;
+using PSGM.Model.DbMain;
+using PSGM.Model.DbSoftware;
+using PSGM.Model.DbStorage;
+using PSGM.Model.DbUser;
 using Serilog;
 using Serilog.Debugging;
 using Serilog.Sinks.Grafana.Loki;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows;
 
 namespace RC.Scan_SingleSolution
@@ -26,10 +35,18 @@ namespace RC.Scan_SingleSolution
             Globals.ApplicationTitle = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
             Globals.ApplicationVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
 
+            Globals.SoftwareId = Guid.NewGuid();
+            Globals.ComputerId = ComputerInfo.GetComputerUUID();
+
+            Globals.OrganizationId = Guid.Empty;
+            Globals.UserId = Guid.Empty;
+
+            Globals.ProjectId = Guid.Empty;
+            Globals.DirectoryId = Guid.Empty;
+            Globals.UnitId = Guid.Empty;
+
             Globals.Machine = new Globals_Machine()
             {
-                MachineId = ComputerInfo.GetComputerUUID(),
-
                 Control = null,
                 Motion = null,
                 PowerSupply = null,
@@ -37,57 +54,14 @@ namespace RC.Scan_SingleSolution
                 Vision = null
             };
 
-            Globals.DbMachine_Context = new PSGM.Model.DbMachine.DbMachine_Context();
-            Globals.DbJob_Context = new PSGM.Model.DbJob.DbJob_Context();
-            Globals.DbMain_Context = new PSGM.Model.DbMain.DbMain_Context();
-            Globals.DbSoftware_Context = new PSGM.Model.DbSoftware.DbSoftware_Context();
-            Globals.DbStorage_Context = new PSGM.Model.DbStorage.DbStorage_Context();
-            Globals.DbStorageRaw_Context = new PSGM.Model.DbStorage.DbStorage_Context();
-            Globals.DbUser_Context = new PSGM.Model.DbUser.DbUser_Context();
-            Globals.DbWorkflow_Context = new PSGM.Model.DbWorkflow.DbWorkflow_Context();
-
-            //string envDatabaseType=Environment.GetEnvironmentVariable("PSGM_DbMAIN_DATABSETYPE");
-
-            //Globals.DbJob_Context.ConnectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbJob\\DbJob.db";
-            //Globals.DbMachine_Context.ConnectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbMachine\\DbMachine.db";
-            //// Globals.DbMachine_Context.ConnectionStringPostgreSQL="Host=db-clu001.branch31.psgm.at;Port=50001;Database=MainDb;Username=ef.core;Password=Ulexxubih4LOdKuhC8Hx33d4zA4";
-            ////_dbMainCon Globals.DbMachine_Context.ConnectionStringSQLServer="Server=(localdb)\\mssqllocaldb;Database=database;Trusted_Connection=True;";
-            //Globals.DbMain_Context.ConnectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbMain\\DbMain.db";
-            //Globals.DbSoftware_Context.ConnectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbSoftware\\DbSoftware.db";
-            //Globals.DbStorage_Context.ConnectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorage.db";
-            //Globals.DbStorageRaw_Context.ConnectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbStorage\\DbStorageRaw.db";
-            //Globals.DbUser_Context.ConnectionStringSQLite = "Data Source=C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbUser\\DbUser.db";
-
-            string path = "C:\\Git\\MSD\\Robot\\90_Main\\PSGM.MultiTestApp1\\bin\\Debug\\net8.0-windows10.0.22621.0";
-
-            Globals.DbJob_Context.ConnectionStringSQLite = $"Data Source={path}\\DbJob.db";
-            Globals.DbMachine_Context.ConnectionStringSQLite = $"Data Source={path}\\DbMachine.db";
-            // Globals.DbMachine_Context.ConnectionStringPostgreSQL="Host=db-clu001.branch31.psgm.at;Port=50001;Database=MainDb;Username=ef.core;Password=Ulexxubih4LOdKuhC8Hx33d4zA4";
-            //_dbMainCon Globals.DbMachine_Context.ConnectionStringSQLServer="Server=(localdb)\\mssqllocaldb;Database=database;Trusted_Connection=True;";
-            Globals.DbMain_Context.ConnectionStringSQLite = $"Data Source={path}\\DbMain.db";
-            Globals.DbSoftware_Context.ConnectionStringSQLite = $"Data Source={path}\\DbSoftware.db";
-            Globals.DbStorage_Context.ConnectionStringSQLite = $"Data Source={path}\\DbStorageData.db";
-            Globals.DbStorageRaw_Context.ConnectionStringSQLite = $"Data Source={path}\\DbStorageDataRaw.db";
-            Globals.DbUser_Context.ConnectionStringSQLite = $"Data Source={path}\\DbUser.db";
-            Globals.DbWorkflow_Context.ConnectionStringSQLite = $"Data Source={path}\\DbWorkflow.db";
-
-            Globals.DbMachine_Context.DatabaseType = DatabaseType.SQLite;
-            Globals.DbJob_Context.DatabaseType = DatabaseType.SQLite;
-            Globals.DbMain_Context.DatabaseType = DatabaseType.SQLite;
-            Globals.DbSoftware_Context.DatabaseType = DatabaseType.SQLite;
-            Globals.DbStorage_Context.DatabaseType = DatabaseType.SQLite;
-            Globals.DbStorageRaw_Context.DatabaseType = DatabaseType.SQLite;
-            Globals.DbUser_Context.DatabaseType = DatabaseType.SQLite;
-            Globals.DbWorkflow_Context.DatabaseType = DatabaseType.SQLite;
-
-            Globals.DbJob_Context.Database.OpenConnection();
-            Globals.DbMachine_Context.Database.OpenConnection();
-            Globals.DbMain_Context.Database.OpenConnection();
-            Globals.DbSoftware_Context.Database.OpenConnection();
-            Globals.DbStorage_Context.Database.OpenConnection();
-            Globals.DbStorageRaw_Context.Database.OpenConnection();
-            Globals.DbUser_Context.Database.OpenConnection();
-            Globals.DbWorkflow_Context.Database.OpenConnection();
+            Globals.DbBackend_Context = new DbBackend_Context();
+            Globals.DbJob_Context = new DbJob_Context();
+            Globals.DbMachine_Context = new DbMachine_Context();
+            Globals.DbMain_Context = new DbMain_Context();
+            Globals.DbSoftware_Context = new DbSoftware_Context();
+            Globals.DbStorageData_Context = new DbStorage_Context();
+            Globals.DbStorageDataRaw_Context = new DbStorage_Context();
+            Globals.DbUser_Context = new DbUser_Context();
 
             Globals.LokiLabels = new List<LokiLabel>()
             {
@@ -132,25 +106,53 @@ namespace RC.Scan_SingleSolution
             Log.Information($"Application \"{Globals.ApplicationTitle} V{Globals.ApplicationVersion.ToString()}\" start...");
             #endregion
 
-            #region Initialize Db ...
-            Log.Information("Ensure that the DB is created or migrate ...");
-            //Globals.DBDevice_Context.Database.EnsureCreated();
-            //Globals.DBJob_Context.Database.EnsureCreated();
-            //Globals.DBMain_Context.Database.EnsureCreated();
-            //Globals.DBSoftware_Context.Database.EnsureCreated();
-            //Globals.DBStorage_Context.Database.EnsureCreated();
-            //Globals.DBStorageRaw_Context.Database.EnsureCreated();
-            //Globals.DBUser_Context.Database.EnsureCreated();
+            #region Read application configuration file ...
+            Log.Information("Read application configuration file ...");
 
-            Log.Information("Migrate DB  ...");
-            //Globals.DBDevice_Context..Database.Migrate();
-            //Globals.DBJob_Context..Database.Migrate();
-            //Globals.DBMain_Context..Database.Migrate();
-            //Globals.DBSoftware_Context..Database.Migrate();
-            //Globals.DBStorage_Context..Database.Migrate();
-            //Globals.DBStorageRaw_Context..Database.Migrate();
-            //Globals.DbUser_Context..Database.Migrate();
+            Globals.ConfigFile = new ConfigFile();
+
+            if (Globals.ConfigFile.ConfigFileExists(Directory.GetCurrentDirectory() + "\\ConfigFile.json"))
+            {
+                Globals.ConfigFile.ReadFromFile(Directory.GetCurrentDirectory() + "\\ConfigFile.json");
+            }
             #endregion
+
+            #region Set Software Id ...
+            Log.Information("Set Software Id ...");
+
+            Globals.SoftwareId = Guid.NewGuid();
+            #endregion
+
+            #region Get Project Id ...
+            Log.Information("Get Project Id ...");
+
+            Globals.ProjectId = new Guid("79A0FD7A-5D68-4095-A309-F4E92426E657");
+            #endregion
+
+            #region Connect to Backend Database ...
+            Log.Information("Connect to Backend Database ...");
+
+            Globals.DbBackend_Context.DatabaseConnectionString = Globals.ConfigFile.DatabaseConnectionString;
+            Globals.DbBackend_Context.DatabaseType = Globals.ConfigFile.DatabaseType;
+
+            Globals.DbBackend_Context.DatabaseSessionParameter_SoftwareId = Globals.SoftwareId;
+            Globals.DbBackend_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
+            Globals.DbBackend_Context.DatabaseSessionParameter_UserId = Guid.Empty;
+
+            Globals.DbBackend_Context.Database.OpenConnection();
+            #endregion
+
+            #region Get server from Backend Database ...
+            Log.Information("Get server from Backend Database ...");
+
+            List<DbBackend_Backend>? backend = Globals.DbBackend_Context.Backends.Where(p => p.Project.ProjectId_Ext == Globals.ProjectId)
+                                                                                    .Include(p => p.DatabaseClusters)
+                                                                                        .ThenInclude(p => p.DatabaseServers)
+                                                                                    .Include(p => p.StorageClusters)
+                                                                                        .ThenInclude(p => p.StorageServers)
+                                                                                    .ToList();
+            #endregion
+
 
             #region Printing the arguments to the console ...
             if (e.Args == null)
@@ -185,10 +187,16 @@ namespace RC.Scan_SingleSolution
                 this.MainWindow = splashScreen;
                 splashScreen.ShowDialog();
             }
-            //else if (string.Equals(e.Args[0], "save config file")) // Create application configuration
-            //{
-            //
-            //}
+            else if (string.Equals(e.Args[0], "create and save config file")) // Create application configuration
+            {
+                Globals.ConfigFile = new ConfigFile()
+                {
+                    DatabaseType = DatabaseType.PostgreSQL,
+                    DatabaseConnectionString = "Host=db-backend-c6e1c3e3-f49d-4edc-b3a2-2ed50174e3c8.branch031.psgm.at:50001;Database=db-backend-c6e1c3e3-f49d-4edc-b3a2-2ed50174e3c8;Username=postgres;Password=fU5fUXXNzBMWB0BZ2fvwPdnO9lp4twG7P6DC2V",
+                };
+
+                Globals.ConfigFile.WriteToFile(Directory.GetCurrentDirectory() + "\\ConfigFile.json");
+            }
             #endregion
         }
     }

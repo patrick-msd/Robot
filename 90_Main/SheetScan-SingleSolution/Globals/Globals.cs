@@ -1,4 +1,12 @@
-﻿using Serilog.Sinks.Grafana.Loki;
+﻿using PSGM.Helper;
+using PSGM.Model.DbBackend;
+using PSGM.Model.DbJob;
+using PSGM.Model.DbMachine;
+using PSGM.Model.DbMain;
+using PSGM.Model.DbSoftware;
+using PSGM.Model.DbStorage;
+using PSGM.Model.DbUser;
+using Serilog.Sinks.Grafana.Loki;
 using System;
 using System.Collections.Generic;
 
@@ -14,14 +22,26 @@ namespace RC.Scan_SingleSolution
         public static string? LokiUri { get; set; } = string.Empty;
         public static string? LokiOutputTemplate { get; set; } = string.Empty;
 
-        public static PSGM.Model.DbJob.DbJob_Context? DbJob_Context { get; set; } = null;
-        public static PSGM.Model.DbMachine.DbMachine_Context? DbMachine_Context { get; set; } = null;
-        public static PSGM.Model.DbMain.DbMain_Context? DbMain_Context { get; set; } = null;
-        public static PSGM.Model.DbSoftware.DbSoftware_Context? DbSoftware_Context { get; set; } = null;
-        public static PSGM.Model.DbStorage.DbStorage_Context? DbStorage_Context { get; set; } = null;
-        public static PSGM.Model.DbStorage.DbStorage_Context? DbStorageRaw_Context { get; set; } = null;
-        public static PSGM.Model.DbUser.DbUser_Context? DbUser_Context { get; set; } = null;
-        public static PSGM.Model.DbWorkflow.DbWorkflow_Context? DbWorkflow_Context { get; set; } = null;
+        public static Guid SoftwareId { get; set; } = Guid.Empty;
+        public static Guid ComputerId { get; set; } = Guid.Empty;
+
+        public static Guid OrganizationId { get; set; } = Guid.Empty;
+        public static Guid UserId { get; set; } = Guid.Empty;
+
+        public static Guid ProjectId { get; set; } = Guid.Empty;   
+        public static Guid DirectoryId { get; set; } = Guid.Empty;
+        public static Guid UnitId { get; set; } = Guid.Empty; 
+
+        public static ConfigFile? ConfigFile { get; set; } = null;
+
+        public static DbBackend_Context? DbBackend_Context { get; set; } = null;
+        public static DbJob_Context? DbJob_Context { get; set; } = null;
+        public static DbMachine_Context? DbMachine_Context { get; set; } = null;
+        public static DbMain_Context? DbMain_Context { get; set; } = null;
+        public static DbSoftware_Context? DbSoftware_Context { get; set; } = null;
+        public static DbStorage_Context? DbStorageData_Context { get; set; } = null;
+        public static DbStorage_Context? DbStorageDataRaw_Context { get; set; } = null;
+        public static DbUser_Context? DbUser_Context { get; set; } = null;
 
         public static Globals_Storage? Storage { get; set; } = null;
 
