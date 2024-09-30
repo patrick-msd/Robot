@@ -63,6 +63,11 @@ namespace PSGM.Model.DbBackend
         [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string LockedDescription { get; set; } = string.Empty;
 
+        [Column("Configuration")]
+        [Display(Name = "Configuration")]
+        [StringLength(65536, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Configuration { get; set; } = string.Empty;
+
         #region Audit details for faster file audit information
         [Required]
         [Column("CreatedDateTimeAutoFill")]

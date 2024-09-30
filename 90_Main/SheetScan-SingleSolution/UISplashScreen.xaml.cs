@@ -1,18 +1,25 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Nlc;
 using PSGM.Helper;
+using PSGM.Model.DbBackend;
+using PSGM.Model.DbJob;
 using PSGM.Model.DbMachine;
 using PSGM.Model.DbMain;
+using PSGM.Model.DbSoftware;
+using PSGM.Model.DbStorage;
+using PSGM.Model.DbUser;
 using RC.Lib.Control.Doosan;
 using RC.Lib.Control.RobotElectronics;
 using RC.Lib.Motion;
 using RC.Lib.PowerSupply;
 using RC.Lib.Vision.SVSVistek;
-using RCRobotDoosanControl;
 using Serilog;
+using Serilog.Debugging;
+using Serilog.Sinks.Grafana.Loki;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Threading;
@@ -25,7 +32,7 @@ namespace RC.Scan_SingleSolution
     /// </summary>
     public partial class UISplashScreen : Window
     {
-        #region Global variables
+        #region Global and local variables
         private bool _closeApplication;
 
         private string _stateName;
@@ -35,7 +42,9 @@ namespace RC.Scan_SingleSolution
         private Thread _thrClock;
         private CancellationTokenSource _ctsClock;
 
-        private BackgroundWorker _bgwSplashscreen;
+        private BackgroundWorker _bgwSplashScreen;
+
+        private List<DbBackend_Backend> _backend;
 
         // Global Hardware
         private RobotElectronics_Container? _robotElectronics;
@@ -45,9 +54,9 @@ namespace RC.Scan_SingleSolution
         //private Intel_Container? _intel;
         private SVSVistek_Container? _svsVistek;
 
-        // Global database
-        List<DbMachine_Machine>? _dbMachine_Machine;
-        List<DbMain_Project>? _dbMain_Projects;
+        //// Global database
+        //List<DbMachine_Machine>? _dbMachine_Machine;
+        //List<DbMain_Project>? _dbMain_Projects;
         #endregion
 
         public UISplashScreen()
@@ -85,11 +94,11 @@ namespace RC.Scan_SingleSolution
 
             // Worker splash screen
             Log.Information("Initialize Worker splash screen ...");
-            _bgwSplashscreen = new BackgroundWorker();
-            _bgwSplashscreen.WorkerReportsProgress = true;
-            _bgwSplashscreen.DoWork += WorkerSplashscreen_Function;
-            _bgwSplashscreen.ProgressChanged += WorkerSplashscreen_ProgressChanged;
-            _bgwSplashscreen.RunWorkerAsync();
+            _bgwSplashScreen = new BackgroundWorker();
+            _bgwSplashScreen.WorkerReportsProgress = true;
+            _bgwSplashScreen.DoWork += WorkerSplashscreen_Function;
+            _bgwSplashScreen.ProgressChanged += WorkerSplashScreen_ProgressChanged;
+            _bgwSplashScreen.RunWorkerAsync();
         }
         #endregion
 
@@ -108,6 +117,55 @@ namespace RC.Scan_SingleSolution
         #region Worker functions ...
         void WorkerSplashscreen_Function(object sender, DoWorkEventArgs e)
         {
+            // Step #1
+            UpdateUI("Initialize global variables ...");
+            InitializeGlobalVariables();
+            Thread.Sleep(125);
+
+            UpdateUI("Initialize local variables ...");
+            InitializeLocalVariables();
+            Thread.Sleep(125);
+
+            UpdateUI("Read application configuration file ...");
+            ReadApplicationConfigurationFile();
+            Thread.Sleep(125);
+
+
+
+
+
+
+
+
+
+            UpdateUI("Get backend configuration ...");
+            GetBackendConfiguration();
+            Thread.Sleep(125);
+
+
+            UpdateUI("User login ...");
+            UserLogin();
+            Thread.Sleep(125);
+
+
+
+            // Step #1
+            UpdateUI("Initialize logging ...");
+            InitializeLogging();
+            Thread.Sleep(125);
+
+
+
+
+
+
+
+
+
+
+
+
+
             // Step #1
             UpdateUI("Load data from DB ...");
             LoadDataFromDB();
@@ -178,7 +236,7 @@ namespace RC.Scan_SingleSolution
             Thread.Sleep(125);
         }
 
-        void WorkerSplashscreen_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        void WorkerSplashScreen_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             pgbLoading.Value = _statePercentageValue;
             txbState.Text = _stateName;
@@ -216,8 +274,150 @@ namespace RC.Scan_SingleSolution
             _stateName = stateName;
 
             Log.Information(stateName);
-            _bgwSplashscreen.ReportProgress(_statePercentageValue);
+            _bgwSplashScreen.ReportProgress(_statePercentageValue);
         }
+
+        private void InitializeGlobalVariables()
+        {
+            Globals.ComputerId = ComputerInfo.GetComputerUUID();
+
+            Globals.OrganizationId = Guid.Empty;
+            Globals.UserId = Guid.Empty;
+
+            Globals.ProjectId = Guid.Empty;
+            Globals.DirectoryId = Guid.Empty;
+            Globals.UnitId = Guid.Empty;
+
+            Globals.Machine = new Globals_Machine()
+            {
+                Control = null,
+                Motion = null,
+                PowerSupply = null,
+                Robot = null,
+                Vision = null
+            };
+
+            Globals.ConfigFile = new ConfigFile();
+
+            Globals.DbBackend_Context = new DbBackend_Context();
+            Globals.DbJob_Context = new DbJob_Context();
+            Globals.DbMachine_Context = new DbMachine_Context();
+            Globals.DbMain_Context = new DbMain_Context();
+            Globals.DbSoftware_Context = new DbSoftware_Context();
+            Globals.DbStorageData_Context = new DbStorage_Context();
+            Globals.DbStorageDataRaw_Context = new DbStorage_Context();
+            Globals.DbUser_Context = new DbUser_Context();
+        }
+
+        private void InitializeLocalVariables()
+        {
+            _backend = new List<DbBackend_Backend>();
+
+            _robotElectronics = new RobotElectronics_Container();
+            _nanotec = new List<Nanotec_Container>();
+            _nextys = new Nextys_Container();
+            _doosan = new Doosan_Container();
+            _svsVistek = new SVSVistek_Container();
+
+            _dbMachine_Machine = new List<DbMachine_Machine>();
+            _dbMain_Projects = new List<DbMain_Project>();
+        }
+        private void ReadApplicationConfigurationFile()
+        {
+            if (Globals.ConfigFile.ConfigFileExists(Directory.GetCurrentDirectory() + "\\ConfigFile.json"))
+            {
+                Globals.ConfigFile.ReadFromFile(Directory.GetCurrentDirectory() + "\\ConfigFile.json");
+            }
+        }
+
+        private void GetBackendConfiguration()
+        {
+            Globals.DbBackend_Context.DatabaseType = Globals.ConfigFile.DatabaseType;
+            Globals.DbBackend_Context.DatabaseConnectionString = Globals.ConfigFile.DatabaseConnectionString;
+
+            Globals.DbBackend_Context.DatabaseSessionParameter_UserId = Guid.Empty;
+            Globals.DbBackend_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
+            Globals.DbBackend_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
+
+            Globals.DbBackend_Context.Database.OpenConnection();
+
+            _backend = Globals.DbBackend_Context.Backends.Where(p => p.Project.ProjectId_Ext == Globals.ProjectId)
+                                                            .Include(p => p.DatabaseClusters)
+                                                                .ThenInclude(p => p.DatabaseServers)
+                                                            .Include(p => p.StorageClusters)
+                                                                .ThenInclude(p => p.StorageServers)
+                                                            .ToList();
+        }
+
+        private void InitializeLogging()
+        {
+            Globals.LokiLabels = new List<LokiLabel>()
+            {
+                new LokiLabel()
+                {
+                    Key = "Name",
+                    Value = Globals.ApplicationTitle
+                },
+                new LokiLabel()
+                {
+                    Key = "Version",
+                    Value = Globals.ApplicationVersion.ToString()
+                },
+                new LokiLabel()
+                {
+                    Key = "GUID",
+                    Value =  Globals.ApplicationId.ToString()
+                },
+                new LokiLabel()
+                {
+                    Key = "Computer",
+                    Value =  Globals.ComputerId.ToString()
+                }
+            };
+
+            Globals.LokiUri = "http://10.31.40.101:3100"; fgfsdgfg
+            Globals.LokiOutputTemplate = "[{Timestamp:dd.MM.yyyy - HH:mm:ss.ffff} {Level:u3}] {Message:lj}{NewLine}{Exception}";
+            //Globals.LokiOutputTemplate  = "[{Timestamp:dd.MM.yyyy - HH:mm:ss} {Level:u3}] {Message:lj} {Properties:j}{NewLine}{Exception}";
+
+
+
+
+            #region Inizialize logger
+            // https://github.com/serilog-contrib/serilog-sinks-richtextbox
+            SelfLog.Enable(message => Trace.WriteLine($"INTERNAL ERROR: {message}"));
+
+#if DEBUG
+            Log.Logger = new LoggerConfiguration()
+                                .MinimumLevel.Verbose()
+                                .WriteTo.Debug(outputTemplate: Globals.LokiOutputTemplate)
+                                .WriteTo.GrafanaLoki(Globals.LokiUri, labels: Globals.LokiLabels)
+                                //.WriteTo.GrafanaLoki(Globals.LokiUri, labels: Globals.LokiLabels, textFormatter: new ExpressionTemplate("{ {@t, @mt, @l:u3}, @i, @x, @p} }\n"))
+                                .Enrich.WithThreadId()
+                                .Enrich.WithThreadName()
+                                .CreateLogger();
+#else
+            Log.Logger = new LoggerConfiguration()
+                                .MinimumLevel.Verbose()
+                                .WriteTo.GrafanaLoki(Globals.LokiUri, labels: Globals.LokiLabels)
+                                .Enrich.WithThreadId()
+                                .Enrich.WithThreadName()
+                                .CreateLogger();
+#endif
+
+            Log.Information($"Application \"{Globals.ApplicationTitle} V{Globals.ApplicationVersion.ToString()}\" start...");
+            #endregion
+        }
+
+
+
+
+
+
+
+
+
+
+
 
         private void LoadDataFromDB()
         {
@@ -899,7 +1099,7 @@ namespace RC.Scan_SingleSolution
             }
             else
             {
-               Log.Error("No camera found!");
+                Log.Error("No camera found!");
             }
         }
 

@@ -56,6 +56,8 @@ namespace PSGM.Sample.Model.DbBackend
                         Url = string.Empty,
                         UrlPublic = string.Empty,
 
+                        Configuration = string.Empty,
+
                         DatabaseServers = new List<DbBackend_Database_Server>()
                         {
                             new DbBackend_Database_Server()
@@ -78,6 +80,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -108,6 +112,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -138,6 +144,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -198,6 +206,8 @@ namespace PSGM.Sample.Model.DbBackend
                         Url = string.Empty,
                         UrlPublic = string.Empty,
 
+                        Configuration = string.Empty,
+
                         StorageServers = new List<DbBackend_Storage_Server>()
                         {
                             new DbBackend_Storage_Server()
@@ -220,6 +230,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -250,6 +262,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -280,6 +294,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -302,6 +318,8 @@ namespace PSGM.Sample.Model.DbBackend
                         BackendId = null
                     }
                 },
+
+                ServerClusters = null,
 
                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -361,6 +379,8 @@ namespace PSGM.Sample.Model.DbBackend
                         Url = string.Empty,
                         UrlPublic = string.Empty,
 
+                        Configuration = string.Empty,
+
                         DatabaseServers = new List<DbBackend_Database_Server>()
                         {
                             new DbBackend_Database_Server()
@@ -383,6 +403,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -413,6 +435,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -443,6 +467,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -503,6 +529,8 @@ namespace PSGM.Sample.Model.DbBackend
                         Url = string.Empty,
                         UrlPublic = string.Empty,
 
+                        Configuration = string.Empty,
+
                         StorageServers = new List<DbBackend_Storage_Server>()
                         {
                             new DbBackend_Storage_Server()
@@ -525,6 +553,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -555,6 +585,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -585,6 +617,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -607,6 +641,8 @@ namespace PSGM.Sample.Model.DbBackend
                         BackendId = null
                     }
                 },
+
+                ServerClusters = null,
 
                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -640,7 +676,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Database_Cluster()
                     {
-                          Id = new Guid("b63d6be2-4bbf-420d-b8d3-1e78a57a6bd1"),
+                        Id = new Guid("b63d6be2-4bbf-420d-b8d3-1e78a57a6bd1"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -665,6 +701,8 @@ namespace PSGM.Sample.Model.DbBackend
                         Url = string.Empty,
                         UrlPublic = string.Empty,
 
+                        Configuration = string.Empty,
+
                         DatabaseServers = new List<DbBackend_Database_Server>()
                         {
                             new DbBackend_Database_Server()
@@ -687,6 +725,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -717,6 +757,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -747,6 +789,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -774,7 +818,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Storage_Cluster()
                     {
-                                       Id = new Guid("8ba313b7-618d-41c4-98b7-968295299505"),
+                        Id = new Guid("8ba313b7-618d-41c4-98b7-968295299505"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -807,6 +851,8 @@ namespace PSGM.Sample.Model.DbBackend
                         Url = string.Empty,
                         UrlPublic = string.Empty,
 
+                        Configuration = string.Empty,
+
                         StorageServers = new List<DbBackend_Storage_Server>()
                         {
                             new DbBackend_Storage_Server()
@@ -829,6 +875,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -859,6 +907,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -889,6 +939,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -911,6 +963,8 @@ namespace PSGM.Sample.Model.DbBackend
                         BackendId = null
                     }
                 },
+
+                ServerClusters = null,
 
                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -970,6 +1024,8 @@ namespace PSGM.Sample.Model.DbBackend
                         Url = string.Empty,
                         UrlPublic = string.Empty,
 
+                        Configuration = string.Empty,
+
                         DatabaseServers = new List<DbBackend_Database_Server>()
                         {
                             new DbBackend_Database_Server()
@@ -992,6 +1048,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1022,6 +1080,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1052,6 +1112,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1112,6 +1174,8 @@ namespace PSGM.Sample.Model.DbBackend
                         Url = string.Empty,
                         UrlPublic = string.Empty,
 
+                        Configuration = string.Empty,
+
                         StorageServers = new List<DbBackend_Storage_Server>()
                         {
                             new DbBackend_Storage_Server()
@@ -1134,6 +1198,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1164,6 +1230,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1194,6 +1262,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1216,6 +1286,8 @@ namespace PSGM.Sample.Model.DbBackend
                         BackendId = null
                     }
                 },
+
+                ServerClusters = null,
 
                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1274,6 +1346,8 @@ namespace PSGM.Sample.Model.DbBackend
                         Url = string.Empty,
                         UrlPublic = string.Empty,
 
+                        Configuration = string.Empty,
+
                         DatabaseServers = new List<DbBackend_Database_Server>()
                         {
                             new DbBackend_Database_Server()
@@ -1296,6 +1370,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1326,6 +1402,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1356,6 +1434,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1383,7 +1463,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Storage_Cluster()
                     {
-                             Id = new Guid("a13006e1-2808-4620-b9bb-6a78193a3099"),
+                        Id = new Guid("a13006e1-2808-4620-b9bb-6a78193a3099"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -1416,6 +1496,8 @@ namespace PSGM.Sample.Model.DbBackend
                         Url = string.Empty,
                         UrlPublic = string.Empty,
 
+                        Configuration = string.Empty,
+
                         StorageServers = new List<DbBackend_Storage_Server>()
                         {
                             new DbBackend_Storage_Server()
@@ -1438,6 +1520,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1468,6 +1552,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1498,6 +1584,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1520,6 +1608,8 @@ namespace PSGM.Sample.Model.DbBackend
                         BackendId = null
                     }
                 },
+
+                ServerClusters = null,
 
                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1579,6 +1669,8 @@ namespace PSGM.Sample.Model.DbBackend
                         Url = string.Empty,
                         UrlPublic = string.Empty,
 
+                        Configuration = string.Empty,
+
                         DatabaseServers = new List<DbBackend_Database_Server>()
                         {
                             new DbBackend_Database_Server()
@@ -1601,6 +1693,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1631,6 +1725,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1661,6 +1757,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1721,6 +1819,8 @@ namespace PSGM.Sample.Model.DbBackend
                         Url = string.Empty,
                         UrlPublic = string.Empty,
 
+                        Configuration = string.Empty,
+
                         StorageServers = new List<DbBackend_Storage_Server>()
                         {
                             new DbBackend_Storage_Server()
@@ -1743,6 +1843,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1773,6 +1875,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1803,6 +1907,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1825,6 +1931,8 @@ namespace PSGM.Sample.Model.DbBackend
                         BackendId = null
                     }
                 },
+
+                ServerClusters = null,
 
                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1859,7 +1967,7 @@ namespace PSGM.Sample.Model.DbBackend
                 {
                     new DbBackend_Database_Cluster()
                     {
-                          Id = new Guid("216ea8ad-5e98-414f-9c7c-cdb3fb9dffdb"),
+                        Id = new Guid("216ea8ad-5e98-414f-9c7c-cdb3fb9dffdb"),
 
                         Name = string.Empty,
                         Description = string.Empty,
@@ -1884,6 +1992,8 @@ namespace PSGM.Sample.Model.DbBackend
                         Url = string.Empty,
                         UrlPublic = string.Empty,
 
+                        Configuration = string.Empty,
+
                         DatabaseServers = new List<DbBackend_Database_Server>()
                         {
                             new DbBackend_Database_Server()
@@ -1906,6 +2016,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1936,6 +2048,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1966,6 +2080,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -1990,6 +2106,8 @@ namespace PSGM.Sample.Model.DbBackend
                 },
 
                 StorageClusters = null,
+
+                ServerClusters = null,
 
                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -2049,6 +2167,8 @@ namespace PSGM.Sample.Model.DbBackend
                         Url = string.Empty,
                         UrlPublic = string.Empty,
 
+                        Configuration = string.Empty,
+
                         DatabaseServers = new List<DbBackend_Database_Server>()
                         {
                             new DbBackend_Database_Server()
@@ -2071,6 +2191,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -2101,6 +2223,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -2131,6 +2255,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -2155,6 +2281,8 @@ namespace PSGM.Sample.Model.DbBackend
                 },
 
                 StorageClusters = null,
+
+                ServerClusters = null,
 
                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -2214,6 +2342,8 @@ namespace PSGM.Sample.Model.DbBackend
                         Url = string.Empty,
                         UrlPublic = string.Empty,
 
+                        Configuration = string.Empty,
+
                         DatabaseServers = new List<DbBackend_Database_Server>()
                         {
                             new DbBackend_Database_Server()
@@ -2236,6 +2366,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -2266,6 +2398,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -2296,6 +2430,8 @@ namespace PSGM.Sample.Model.DbBackend
 
                                 Locked = false,
                                 LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
                                 
                                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -2320,6 +2456,182 @@ namespace PSGM.Sample.Model.DbBackend
                 },
 
                 StorageClusters = null,
+
+                ServerClusters = null,
+
+                //CreatedByUserIdExtAutoFill = Guid.Empty,
+                //CreatedDateTimeAutoFill = DateTime.Now,
+                //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                // FK
+                Project = projects,
+                //ProjectId = null,
+            };
+
+
+            // Loki
+            DbBackend_Backend backendLoki = new DbBackend_Backend()
+            {
+                Id = new Guid("799854dd-b158-4b84-a5bd-1a704f90a53a"),
+
+                Name = string.Empty,
+                Description = string.Empty,
+
+                BackendType = BackendType.Logging,
+
+                ReadOnlyMode = false,
+
+                Locked = false,
+                LockedDescription = string.Empty,
+
+                Url = string.Empty,
+                UrlPublic = string.Empty,
+
+                DatabaseClusters = null,
+
+                StorageClusters = null,
+
+                ServerClusters = new List<DbBackend_Server_Cluster>()
+                {
+                    new DbBackend_Server_Cluster()
+                    {
+                        Id = new Guid("deabaee7-3eeb-449c-a6b1-f4d1ce27870a"),
+
+                        Name = string.Empty,
+                        Description = string.Empty,
+
+                        Stars = 0,
+                        Order = 1,
+
+                        BranchNumber = 31,
+                        Domain = "psgm.at",
+
+                        ServerType = ServerType.Loki,
+                        ServerPort = 3100,
+                        ServerUsername = string.Empty,
+                        ServerPassword = string.Empty,
+
+                        ReadOnlyMode = false,
+
+                        Locked = false,
+                        LockedDescription = string.Empty,
+
+                        Url = string.Empty,
+                        UrlPublic = string.Empty,
+
+                        Configuration = "[{Timestamp:dd.MM.yyyy - HH:mm:ss.ffff} {Level:u3}] {Message:lj}{NewLine}{Exception}",
+
+                        ServerServers = new List<DbBackend_Server_Server>()
+                        {
+                            new DbBackend_Server_Server()
+                            {
+                                Id = Guid.NewGuid(),
+
+                                Name = "",
+                                Description = "",
+
+                                Node = 1,
+
+                                FirstIpSegment = 10,
+                                LastIpSegment = 113,
+                                VLAN = 40,
+
+                                ServerIP = string.Empty,
+                                ServerDNS = string.Empty,
+
+                                ReadOnlyMode = false,
+
+                                Locked = false,
+                                LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
+                                
+                                //CreatedByUserIdExtAutoFill = Guid.Empty,
+                                //CreatedDateTimeAutoFill = DateTime.Now,
+                                //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                                //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                                // FK
+                                Cluster = null,
+                                ClusterId = null,
+                            },
+                            new DbBackend_Server_Server()
+                            {
+                                Id = Guid.NewGuid(),
+
+                                Name = string.Empty,
+                                Description = string.Empty,
+
+                                Node = 2,
+
+                                FirstIpSegment = 10,
+                                LastIpSegment = 114,
+                                VLAN = 40,
+
+                                ServerIP = string.Empty,
+                                ServerDNS = string.Empty,
+
+                                ReadOnlyMode = false,
+
+                                Locked = false,
+                                LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
+                                
+                                //CreatedByUserIdExtAutoFill = Guid.Empty,
+                                //CreatedDateTimeAutoFill = DateTime.Now,
+                                //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                                //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                                // FK
+                                Cluster = null,
+                                ClusterId = null,
+                            },
+                            new DbBackend_Server_Server()
+                            {
+                                Id = Guid.NewGuid(),
+
+                                Name = string.Empty,
+                                Description = string.Empty,
+
+                                Node = 3,
+
+                                FirstIpSegment = 10,
+                                LastIpSegment = 115,
+                                VLAN = 40,
+
+                                ServerIP = string.Empty,
+                                ServerDNS = string.Empty,
+
+                                ReadOnlyMode = false,
+
+                                Locked = false,
+                                LockedDescription = string.Empty,
+
+                                Configuration = string.Empty,
+                                
+                                //CreatedByUserIdExtAutoFill = Guid.Empty,
+                                //CreatedDateTimeAutoFill = DateTime.Now,
+                                //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                                //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                                // FK
+                                Cluster = null,
+                                ClusterId = null,
+                            }
+                        },
+                        
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        Backend = null,
+                        BackendId = null
+                    }
+                },
 
                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                 //CreatedDateTimeAutoFill = DateTime.Now,
@@ -2349,7 +2661,9 @@ namespace PSGM.Sample.Model.DbBackend
 
                 backendMachine,
 
-                backendSoftware
+                backendSoftware,
+
+                beackendLoki
             });
 
             return tmp;

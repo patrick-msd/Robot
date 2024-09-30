@@ -19,8 +19,8 @@ namespace PSGM.Model.DbBackend
         private Guid _databaseSessionParameter_ComputerId = Guid.Empty;
         public Guid DatabaseSessionParameter_ComputerId { get { return _databaseSessionParameter_ComputerId; } set { _databaseSessionParameter_ComputerId = value; } }
 
-        private Guid _databaseSessionParameter_SoftwareId = Guid.Empty;
-        public Guid DatabaseSessionParameter_SoftwareId { get { return _databaseSessionParameter_SoftwareId; } set { _databaseSessionParameter_SoftwareId = value; } }
+        private Guid _databaseSessionParameter_ApplicationId = Guid.Empty;
+        public Guid DatabaseSessionParameter_ApplicationId { get { return _databaseSessionParameter_ApplicationId; } set { _databaseSessionParameter_ApplicationId = value; } }
         #endregion
 
         #region Context
@@ -43,14 +43,20 @@ namespace PSGM.Model.DbBackend
         public DbSet<DbBackend_Backend> Backends { get; set; }
         public DbSet<DbBackend_Backend_AuditLog> Backend_AuditLogs { get; set; }
 
-        public DbSet<DbBackend_Database_Cluster> Clusters { get; set; }
-        public DbSet<DbBackend_Database_Cluster_AuditLog> Cluster_AuditLogs { get; set; }
+        public DbSet<DbBackend_Database_Cluster> Database_Clusters { get; set; }
+        public DbSet<DbBackend_Database_Cluster_AuditLog> Database_Cluster_AuditLogs { get; set; }
 
         public DbSet<DbBackend_Database_Server> Database_Servers { get; set; }
         public DbSet<DbBackend_Database_Server_AuditLog> Database_Server_AuditLogs { get; set; }
 
         public DbSet<DbBackend_Project> Projects { get; set; }
         public DbSet<DbBackend_Project_AuditLog> Project_AuditLogs { get; set; }
+
+        public DbSet<DbBackend_Server_Cluster> Server_Cluster { get; set; }
+        public DbSet<DbBackend_Server_Cluster_AuditLog> Server_Cluster_AuditLogs { get; set; }
+
+        public DbSet<DbBackend_Server_Server> Server_Servers { get; set; }
+        public DbSet<DbBackend_Server_Server_AuditLog> Server_Server_AuditLogs { get; set; }
 
         public DbSet<DbBackend_Storage_Cluster> Storage_Cluster { get; set; }
         public DbSet<DbBackend_Storage_Cluster_AuditLog> Storage_Cluster_AuditLogs { get; set; }
@@ -156,7 +162,7 @@ namespace PSGM.Model.DbBackend
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -164,34 +170,34 @@ namespace PSGM.Model.DbBackend
                     case DbBackend_Backend_AuditLog backend_AuditLog:
                         break;
 
-                    case DbBackend_Database_Cluster cluster:
+                    case DbBackend_Database_Cluster database_cluster:
                         #region Automatically added: Audit details for faster file audit information
                         if (entry.State == EntityState.Added)
                         {
-                            cluster.CreatedDateTimeAutoFill = DateTime.UtcNow;
-                            cluster.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                            database_cluster.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            database_cluster.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
                         }
                         else
                         {
-                            cluster.ModifiedDateTimeAutoFill = DateTime.UtcNow;
-                            cluster.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                            database_cluster.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            database_cluster.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
                         }
                         #endregion
 
-                        Cluster_AuditLogs.Add(new DbBackend_Database_Cluster_AuditLog
+                        Database_Cluster_AuditLogs.Add(new DbBackend_Database_Cluster_AuditLog
                         {
                             Id = new Guid(),
 
-                            SourceId = cluster.Id,
+                            SourceId = database_cluster.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
-                    case DbBackend_Database_Cluster_AuditLog cluster_AuditLog:
+                    case DbBackend_Database_Cluster_AuditLog database_cluster_AuditLog:
                         break;
 
                     case DbBackend_Database_Server database_Server:
@@ -216,7 +222,7 @@ namespace PSGM.Model.DbBackend
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -246,12 +252,71 @@ namespace PSGM.Model.DbBackend
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
                     case DbBackend_Project_AuditLog project_AuditLog:
+                        break;
+
+                    case DbBackend_Server_Cluster server_Cluster:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            server_Cluster.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            server_Cluster.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            server_Cluster.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            server_Cluster.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+                        Server_Cluster_AuditLogs.Add(new DbBackend_Server_Cluster_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = server_Cluster.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbBackend_Server_Cluster_AuditLog server_Cluster_AuditLog:
+                        break;
+
+                    case DbBackend_Server_Server server_Server:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            server_Server.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            server_Server.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            server_Server.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            server_Server.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        Server_Server_AuditLogs.Add(new DbBackend_Server_Server_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = server_Server.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbBackend_Server_Server_AuditLog server_Server_AuditLog:
                         break;
 
                     case DbBackend_Storage_Cluster storage_Cluster:
@@ -276,7 +341,7 @@ namespace PSGM.Model.DbBackend
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -306,7 +371,7 @@ namespace PSGM.Model.DbBackend
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;

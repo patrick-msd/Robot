@@ -22,7 +22,7 @@ namespace RC.Scan_SingleSolution
         public static string? LokiUri { get; set; } = string.Empty;
         public static string? LokiOutputTemplate { get; set; } = string.Empty;
 
-        public static Guid SoftwareId { get; set; } = Guid.Empty;
+        public static Guid ApplicationId { get; set; } = Guid.Empty;
         public static Guid ComputerId { get; set; } = Guid.Empty;
 
         public static Guid OrganizationId { get; set; } = Guid.Empty;

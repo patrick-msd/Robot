@@ -8,19 +8,22 @@
 
         Main = 10000,
 
-        Storage = 11000,
+        Storage = 1100,
 
-        Archive  = 12000, 
+        Archive  = 1200, 
         
-        Job = 13000,
+        Job = 1300,
 
-        Machine = 14000,
+        Machine = 1400,
 
-        Software = 15000,
+        Software = 1500,
 
-        Transcription = 16000,
+        Transcription = 1600,
 
 
-        User = 90000
+        Logging = 5000,
+
+
+        //User = 90000
     }
 }

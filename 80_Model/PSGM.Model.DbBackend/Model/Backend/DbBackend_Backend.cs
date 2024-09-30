@@ -78,6 +78,9 @@ namespace PSGM.Model.DbBackend
         public virtual ICollection<DbBackend_Database_Cluster>? DatabaseClusters { get; set; }
 
         [InverseProperty("Backend")]
+        public virtual ICollection<DbBackend_Server_Cluster>? ServerClusters { get; set; }
+
+        [InverseProperty("Backend")]
         public virtual ICollection<DbBackend_Storage_Cluster>? StorageClusters { get; set; }
         #endregion
 

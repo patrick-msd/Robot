@@ -109,7 +109,7 @@ namespace PSGM.Sample.Model.DbBackend
                 _dbBackend_Context.DatabaseConnectionString = _configFile.DatabaseConnectionString;
                 _dbBackend_Context.DatabaseType = _configFile.DatabaseType;
 
-                _dbBackend_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
+                _dbBackend_Context.DatabaseSessionParameter_ApplicationId = _softwareId;
                 _dbBackend_Context.DatabaseSessionParameter_ComputerId = _machineId;
                 _dbBackend_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
 

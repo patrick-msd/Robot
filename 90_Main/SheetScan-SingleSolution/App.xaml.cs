@@ -26,102 +26,24 @@ namespace RC.Scan_SingleSolution
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            #region Initialize golbal variables ...
+            #region Application initialization ...
             string[] _arg = new string[] { "true" };
 
-            Log.Information("Initialize global variables ...");
-            Globals.ApplicationPath = Directory.GetCurrentDirectory();
-
-            Globals.ApplicationTitle = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
-            Globals.ApplicationVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-
-            Globals.SoftwareId = Guid.NewGuid();
-            Globals.ComputerId = ComputerInfo.GetComputerUUID();
-
-            Globals.OrganizationId = Guid.Empty;
-            Globals.UserId = Guid.Empty;
-
-            Globals.ProjectId = Guid.Empty;
-            Globals.DirectoryId = Guid.Empty;
-            Globals.UnitId = Guid.Empty;
-
-            Globals.Machine = new Globals_Machine()
-            {
-                Control = null,
-                Motion = null,
-                PowerSupply = null,
-                Robot = null,
-                Vision = null
-            };
-
-            Globals.DbBackend_Context = new DbBackend_Context();
-            Globals.DbJob_Context = new DbJob_Context();
-            Globals.DbMachine_Context = new DbMachine_Context();
-            Globals.DbMain_Context = new DbMain_Context();
-            Globals.DbSoftware_Context = new DbSoftware_Context();
-            Globals.DbStorageData_Context = new DbStorage_Context();
-            Globals.DbStorageDataRaw_Context = new DbStorage_Context();
-            Globals.DbUser_Context = new DbUser_Context();
-
-            Globals.LokiLabels = new List<LokiLabel>()
-            {
-                new LokiLabel()
-                {
-                    Key = "Software",
-                    Value = Globals.ApplicationTitle
-                },
-                new LokiLabel()
-                {
-                    Key = "Version",
-                    Value = Globals.ApplicationVersion.ToString()
-                }
-            };
-            Globals.LokiUri = "http://10.31.40.101:3100";
-            Globals.LokiOutputTemplate = "[{Timestamp:dd.MM.yyyy - HH:mm:ss.ffff} {Level:u3}] {Message:lj}{NewLine}{Exception}";
-            //Globals.LokiOutputTemplate  = "[{Timestamp:dd.MM.yyyy - HH:mm:ss} {Level:u3}] {Message:lj} {Properties:j}{NewLine}{Exception}";
-            #endregion
-
-            #region Inizialize logger
-            // https://github.com/serilog-contrib/serilog-sinks-richtextbox
-            SelfLog.Enable(message => Trace.WriteLine($"INTERNAL ERROR: {message}"));
-
 #if DEBUG
-            Log.Logger = new LoggerConfiguration()
-                                .MinimumLevel.Verbose()
-                                .WriteTo.Debug(outputTemplate: Globals.LokiOutputTemplate)
-                                .WriteTo.GrafanaLoki(Globals.LokiUri, labels: Globals.LokiLabels)
-                                //.WriteTo.GrafanaLoki(Globals.LokiUri, labels: Globals.LokiLabels, textFormatter: new ExpressionTemplate("{ {@t, @mt, @l:u3}, @i, @x, @p} }\n"))
-                                .Enrich.WithThreadId()
-                                .Enrich.WithThreadName()
-                                .CreateLogger();
+            Globals.ApplicationId = new Guid("df90e47e-57e8-4278-b838-386c62f34971");
 #else
-            Log.Logger = new LoggerConfiguration()
-                                .MinimumLevel.Verbose()
-                                .WriteTo.GrafanaLoki(Globals.LokiUri, labels: Globals.LokiLabels)
-                                .Enrich.WithThreadId()
-                                .Enrich.WithThreadName()
-                                .CreateLogger();
+            Globals.ApplicationId = new NewGuid("Replace_ApplicationGuid");
 #endif
 
-            Log.Information($"Application \"{Globals.ApplicationTitle} V{Globals.ApplicationVersion.ToString()}\" start...");
+            Globals.ApplicationPath = Directory.GetCurrentDirectory();
+            Globals.ApplicationTitle = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+            Globals.ApplicationVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             #endregion
 
-            #region Read application configuration file ...
-            Log.Information("Read application configuration file ...");
 
-            Globals.ConfigFile = new ConfigFile();
 
-            if (Globals.ConfigFile.ConfigFileExists(Directory.GetCurrentDirectory() + "\\ConfigFile.json"))
-            {
-                Globals.ConfigFile.ReadFromFile(Directory.GetCurrentDirectory() + "\\ConfigFile.json");
-            }
-            #endregion
 
-            #region Set Software Id ...
-            Log.Information("Set Software Id ...");
 
-            Globals.SoftwareId = Guid.NewGuid();
-            #endregion
 
             #region Get Project Id ...
             Log.Information("Get Project Id ...");
@@ -129,29 +51,7 @@ namespace RC.Scan_SingleSolution
             Globals.ProjectId = new Guid("79A0FD7A-5D68-4095-A309-F4E92426E657");
             #endregion
 
-            #region Connect to Backend Database ...
-            Log.Information("Connect to Backend Database ...");
 
-            Globals.DbBackend_Context.DatabaseConnectionString = Globals.ConfigFile.DatabaseConnectionString;
-            Globals.DbBackend_Context.DatabaseType = Globals.ConfigFile.DatabaseType;
-
-            Globals.DbBackend_Context.DatabaseSessionParameter_SoftwareId = Globals.SoftwareId;
-            Globals.DbBackend_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
-            Globals.DbBackend_Context.DatabaseSessionParameter_UserId = Guid.Empty;
-
-            Globals.DbBackend_Context.Database.OpenConnection();
-            #endregion
-
-            #region Get server from Backend Database ...
-            Log.Information("Get server from Backend Database ...");
-
-            List<DbBackend_Backend>? backend = Globals.DbBackend_Context.Backends.Where(p => p.Project.ProjectId_Ext == Globals.ProjectId)
-                                                                                    .Include(p => p.DatabaseClusters)
-                                                                                        .ThenInclude(p => p.DatabaseServers)
-                                                                                    .Include(p => p.StorageClusters)
-                                                                                        .ThenInclude(p => p.StorageServers)
-                                                                                    .ToList();
-            #endregion
 
 
             #region Printing the arguments to the console ...
