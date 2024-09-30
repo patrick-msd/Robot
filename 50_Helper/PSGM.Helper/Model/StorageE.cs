@@ -2,18 +2,20 @@
 {
     public enum StorageType : int
     {
-        Unknown = 0,
+        Undefined = 0,
 
         Inherited = 10,
 
         Filesystem = 10000,
 
         S3 = 20000,
+
+        Tape = 90000,
     }
 
     public enum StorageClass : int
     {
-        Unknown = 0,
+        Undefined = 0,
 
         DataMain = 10000,
 
@@ -26,12 +28,13 @@
         DataThumbnail = 30001,
         DataAndDataThumbnail = 30002,
 
+
         DataTranscription = 40000,
     }
 
     public enum StorageTier : int
     {
-        Unknown = 0,
+        Undefined = 0,
 
         // https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview
         // https://www.techtarget.com/searchstorage/definition/tiered-storage

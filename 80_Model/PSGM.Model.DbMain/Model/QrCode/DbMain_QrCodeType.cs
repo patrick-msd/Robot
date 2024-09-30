@@ -74,15 +74,34 @@ namespace PSGM.Model.DbMain
         [Display(Name = "WorkflowExecutionLevel_String")]
         [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string WorkflowExecutionLevel_String { get; private set; } = string.Empty;
+
+        #region Audit details for faster file audit information
+        [Required]
+        [Column("CreatedDateTimeAutoFill")]
+        [Display(Name = "CreatedDateTimeAutoFill")]
+        public DateTime CreatedDateTimeAutoFill { get; set; } = DateTime.MinValue;
+
+        [Required]
+        [Column("CreatedByUserId_ExtAutoFill")]
+        [Display(Name = "CreatedByUserId_ExtAutoFill")]
+        public Guid CreatedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
+
+        [Column("ModifiedDateTimeAutoFill")]
+        [Display(Name = "ModifiedDateTimeAutoFill")]
+        public DateTime ModifiedDateTimeAutoFill { get; set; } = DateTime.MinValue;
+
+        [Column("ModifiedByUserId_ExtAutoFill")]
+        [Display(Name = "ModifiedByUserId_ExtAutoFill")]
+        public Guid ModifiedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
+        #endregion
         #endregion
 
         #region Links
+        [InverseProperty("QrCodeType")]
+        public virtual ICollection<DbMain_QrCode>? QrCodes { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [ForeignKey("QrCode")]
-        public Guid? QrCodeId { get; set; }
-        public virtual DbMain_QrCode? QrCode { get; set; }
         #endregion
 
         #region Not Mapped

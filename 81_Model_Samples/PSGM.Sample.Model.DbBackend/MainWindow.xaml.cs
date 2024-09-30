@@ -37,7 +37,7 @@ namespace PSGM.Sample.Model.DbBackend
         {
             InitializeComponent();
 
-            _machineId = MachineInfo.GetMachineUUID();
+            _machineId = ComputerInfo.GetComputerUUID();
 
             #region Initialize golbal variables ...
 

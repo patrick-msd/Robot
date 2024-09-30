@@ -1,5 +1,4 @@
-﻿using PSGM.Helper;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PSGM.Model.DbMain
@@ -51,14 +50,16 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Links
-        [InverseProperty("UnitDefect")]
-        public virtual DbMain_Unit_DefectType? DefectType { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
         [ForeignKey("Unit")]
         public Guid? UnitId { get; set; }
         public virtual DbMain_Unit? Unit { get; set; }
+
+        [ForeignKey("Unit_DefectType")]
+        public Guid? Unit_DefectTypeId { get; set; }
+        public virtual DbMain_Unit_DefectType? Unit_DefectType { get; set; }
         #endregion
 
         #region Not Mapped

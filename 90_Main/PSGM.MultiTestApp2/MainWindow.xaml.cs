@@ -59,7 +59,7 @@ namespace PSGM.MultiTestApp1
         {
             InitializeComponent();
 
-            _machineId = MachineInfo.GetMachineUUID();
+            _machineId = ComputerInfo.GetComputerUUID();
 
             #region Initialize golbal variables ...
 

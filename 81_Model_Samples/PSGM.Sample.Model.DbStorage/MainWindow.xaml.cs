@@ -39,7 +39,7 @@ namespace PSGM.Sample.Model.DbStorage
         {
             InitializeComponent();
 
-            _machineId = MachineInfo.GetMachineUUID();
+            _machineId = ComputerInfo.GetComputerUUID();
 
             #region Initialize golbal variables ...
 

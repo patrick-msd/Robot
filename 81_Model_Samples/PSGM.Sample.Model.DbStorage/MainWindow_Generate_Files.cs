@@ -883,6 +883,9 @@ namespace PSGM.Sample.Model.DbStorage
                     Quality = quality,
 
                     MetadataLinks = fileMetadataLinkLoop,
+                    
+                    Locked = false,
+                    LockedDescription = string.Empty,
 
                     UserLinks = usersLoop,
                     UserGroupLinks = userGroupsLoop,
@@ -911,21 +914,11 @@ namespace PSGM.Sample.Model.DbStorage
                     DeviceId_Ext = Guid.NewGuid(),
                     SoftwareId_Ext = Guid.NewGuid(),
 
-                    JobIds_Ext = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
-                    //JobIds_ExtString = string.Empty,
-
-                    WorkflowItemIds_Ext = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
-                    //WorkflowItemIds_ExtString = string.Empty,
-
-                    ArchiveIds_Ext = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
-                    //ArchiveIds_ExtString = string.Empty,
-
                     QrCode = new DbStorage_File_QrCode()
                     {
                         Id = Guid.NewGuid(),
 
-                        Name = "QrCode " + i.ToString(),
-                        Description = "QrCode " + i.ToString() + " " + Common.RandomString(random.Next(10, 100)),
+                        QrCode_Ext = Guid.NewGuid(),
 
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
@@ -939,6 +932,10 @@ namespace PSGM.Sample.Model.DbStorage
 
                     VirtualUnits = virtualSubUnits,
 
+                    ArchiveLinks = null,
+                    JobLinks = null,
+                    WorkflowLinks = null,
+                    
                     //CreatedByUserIdExtAutoFill = Guid.Empty,
                     //CreatedDateTimeAutoFill = DateTime.Now,
                     //ModifiedByUserIdExtAutoFill = Guid.Empty,

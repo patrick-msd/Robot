@@ -39,7 +39,7 @@ namespace PSGM.Sample.Model.DbStorage
         {
             InitializeComponent();
 
-            _machineId = MachineInfo.GetMachineUUID();
+            _machineId = ComputerInfo.GetComputerUUID();
 
             #region Initialize golbal variables ...
 
@@ -128,21 +128,41 @@ namespace PSGM.Sample.Model.DbStorage
 
                 DbBackend_Database_Cluster? databaseMain = backend.Where(p => p.BackendType == BackendType.Main).FirstOrDefault().DatabaseClusters.FirstOrDefault();
 
-                _dbMain_Context = new DbMain_Context();
-
-                _dbMain_Context.DatabaseConnectionString = databaseMain.GetDatabaseConnection(true);
-                _dbMain_Context.DatabaseType = databaseMain.DatabaseType;
-
-                _dbMain_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
-                _dbMain_Context.DatabaseSessionParameter_MachineId = _machineId;
-                _dbMain_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
-
-                if (_dbMain_Context.Database.EnsureCreated())
+                try
                 {
+                    _dbMain_Context = new DbMain_Context();
+
+                    _dbMain_Context.DatabaseConnectionString = databaseMain.GetDatabaseConnection(true);
+                    _dbMain_Context.DatabaseType = databaseMain.DatabaseType;
+
+                    _dbMain_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
+                    _dbMain_Context.DatabaseSessionParameter_MachineId = _machineId;
+                    _dbMain_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
+
                     _dbMain_Context.Database.OpenConnection();
+                    var pendingMigrations = _dbMain_Context.Database.GetPendingMigrations();
+                    if (pendingMigrations.Any())
+                    {
+                        // Es gibt ausstehende Migrationen, die Datenbank existiert noch nicht.
+
+                        var asd = _dbMain_Context.Database.GetAppliedMigrations();
+                        var asdsad = pendingMigrations.Any();
+                    }
+                    else
+                    {
+                        // Es gibt keine ausstehenden Migrationen, die Datenbank existiert bereits.
+
+                        var asd = _dbMain_Context.Database.GetAppliedMigrations();
+                        var asdsad = pendingMigrations.Any();
+                    }
+
+                    //_dbMain_Context.Database.EnsureDeleted();
+                    //_dbMain_Context.Database.EnsureCreated();
                 }
-                //_dbMain_Context.Database.EnsureDeleted();
-                //_dbMain_Context.Database.EnsureCreated();
+                catch (Exception ex)
+                {
+                    Log.Error(ex, "Error while initializing the main database context ...");
+                }
             }
             #endregion
         }

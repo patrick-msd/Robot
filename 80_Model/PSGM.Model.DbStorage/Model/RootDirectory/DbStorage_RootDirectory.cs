@@ -78,23 +78,6 @@ namespace PSGM.Model.DbStorage
         [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string LockedDescription { get; set; } = string.Empty;
 
-        #region No direct access
-        [Column("ArchiveIds_ExtString")]
-        [Display(Name = "ArchiveIds_ExtString")]
-        [StringLength(32766, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string ArchiveIds_ExtString { get; private set; } = string.Empty;
-
-        [Column("JobIds_ExtString")]
-        [Display(Name = "JobIds_ExtString")]
-        [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string JobIds_ExtString { get; private set; } = string.Empty;
-
-        [Column("WorkflowItemIds_ExtString")]
-        [Display(Name = "WorkflowItemIds_ExtString")]
-        [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string WorkflowItemIds_ExtString { get; private set; } = string.Empty;
-        #endregion
-
         #region Autofill
         [Column("ObjectsAutofill")]
         [Display(Name = "ObjectsAutofill")]
@@ -128,6 +111,12 @@ namespace PSGM.Model.DbStorage
 
         #region Links
         [InverseProperty("RootDirectory")]
+        public virtual ICollection<DbStorage_RootDirectory_Archive_Link>? ArchiveLinks { get; set; }
+
+        [InverseProperty("RootDirectory")]
+        public virtual ICollection<DbStorage_RootDirectory_Job_Link>? JobLinks { get; set; }
+
+        [InverseProperty("RootDirectory")]
         public virtual ICollection<DbStorage_File>? Files { get; set; }
 
         [InverseProperty("RootDirectory")]
@@ -150,32 +139,15 @@ namespace PSGM.Model.DbStorage
 
         [InverseProperty("RootDirectory")]
         public virtual ICollection<DbStorage_RootDirectory_VirtualUnit>? VirtualUnits { get; set; }
+
+        [InverseProperty("RootDirectory")]
+        public virtual ICollection<DbStorage_RootDirectory_Workflow_Link>? WorkflowLinks { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
         #endregion
 
         #region Not Mapped
-        [NotMapped]
-        public List<Guid>? JobIds_Ext
-        {
-            get { return JobIds_ExtString != string.Empty ? JobIds_ExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { JobIds_ExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        }
-
-        [NotMapped]
-        public List<Guid>? WorkflowItemIds_Ext
-        {
-            get { return WorkflowItemIds_ExtString != string.Empty ? WorkflowItemIds_ExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { WorkflowItemIds_ExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        }
-
-        [NotMapped]
-        public List<Guid>? ArchiveIds_Ext
-        {
-            get { return ArchiveIds_ExtString != string.Empty ? ArchiveIds_ExtString.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { ArchiveIds_ExtString = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        }
         #endregion
     }
 }

@@ -56,7 +56,7 @@ namespace PSGM.Model.DbMain
         #region Not Mapped
         public DbMain_Unit_DefectType? GetChanges()
         {
-            return JsonConvert.DeserializeObject<DbMain_Unit_Defect>(DbMain_Unit_DefectType);
+            return JsonConvert.DeserializeObject<DbMain_Unit_DefectType>(Changes);
         }
         #endregion
     }

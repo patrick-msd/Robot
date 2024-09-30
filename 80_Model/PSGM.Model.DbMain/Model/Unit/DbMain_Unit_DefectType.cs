@@ -14,15 +14,56 @@ namespace PSGM.Model.DbMain
         public Guid Id { get; set; }
 
         [Required]
-        [Column("Name")]
-        [Display(Name = "Name")]
+        [Column("Name_EN")]
+        [Display(Name = "Name_EN")]
         [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string Name { get; set; } = string.Empty;
+        public string Name_EN { get; set; } = string.Empty;
 
-        [Column("Description")]
-        [Display(Name = "Description")]
+        [Required]
+        [Column("Description_EN")]
+        [Display(Name = "Description_EN")]
         [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string Description { get; set; } = string.Empty;
+        public string Description_EN { get; set; } = string.Empty;
+
+        [Column("Name_DE")]
+        [Display(Name = "Name_DE")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Name_DE { get; set; } = string.Empty;
+
+        [Column("Description_DE")]
+        [Display(Name = "Description_DE")]
+        [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Description_DE { get; set; } = string.Empty;
+
+        [Column("Name_FR")]
+        [Display(Name = "Name_FR")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Name_FR { get; set; } = string.Empty;
+
+        [Column("Description_FR")]
+        [Display(Name = "Description_FR")]
+        [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Description_FR { get; set; } = string.Empty;
+
+        [Column("Name_SP")]
+        [Display(Name = "Name_SP")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Name_SP { get; set; } = string.Empty;
+
+        [Column("Description_SP")]
+        [Display(Name = "Description_SP")]
+        [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Description_SP { get; set; } = string.Empty;
+
+        [Column("Name_IT")]
+        [Display(Name = "Name_IT")]
+        [StringLength(255, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Name_IT { get; set; } = string.Empty;
+
+        [Column("Description_IT")]
+        [Display(Name = "Description_IT")]
+        [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string Description_IT { get; set; } = string.Empty;
 
         #region Audit details for faster file audit information
         [Required]
@@ -46,12 +87,11 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Links
+        [InverseProperty("Unit_DefectType")]
+        public virtual ICollection<DbMain_Unit_Defect>? UnitDefects { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [ForeignKey("UnitDefect")]
-        public Guid? UnitId { get; set; }
-        public virtual DbMain_Unit_Defect? Unit { get; set; }
         #endregion
 
         #region Not Mapped

@@ -4,7 +4,7 @@ namespace PSGM.Helper.Workflow
 {
     public class StorageConnector
     {
-        public StorageClass StorageClass = StorageClass.Unknown;
+        public StorageClass StorageClass = StorageClass.Undefined;
 
         public string FilePath = string.Empty;
 

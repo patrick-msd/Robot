@@ -28,7 +28,7 @@ namespace RC.PowerSupply.Nextys.Sample
 
             Globals.Machine = new Globals_Machine()
             {
-                MachineId = MachineInfo.GetMachineUUID(),
+                MachineId = ComputerInfo.GetComputerUUID(),
 
                 PowerSupply = null,
             };

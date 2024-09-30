@@ -104,7 +104,7 @@ namespace PSGM.Sample.Model.DbStorage
                         Id = Guid.NewGuid(),
 
                         Description = string.Empty,
-                        
+
                         PermissionFile = (PermissionType)values.GetValue(random.Next(values.Length)),
                         PermissionMetadata = (PermissionType)values.GetValue(random.Next(values.Length)),
 
@@ -125,7 +125,7 @@ namespace PSGM.Sample.Model.DbStorage
                     userGroupNotifications.Add(new DbStorage_RootDirectory_UserGroup_Notification()
                     {
                         Id = Guid.NewGuid(),
-                        
+
                         Description = string.Empty,
 
                         TriggerType = NotificationTriggerType.WorkflowImage,
@@ -156,7 +156,7 @@ namespace PSGM.Sample.Model.DbStorage
                     userGroup_User.Add(new DbStorage_RootDirectory_UserGroup_User()
                     {
                         Id = Guid.NewGuid(),
-                        
+
                         UserId_Ext = Guid.NewGuid(),
 
                         UserLinks = null,
@@ -174,7 +174,7 @@ namespace PSGM.Sample.Model.DbStorage
                     usersLoop.Add(new DbStorage_RootDirectory_UserGroup_User_Link()
                     {
                         Id = Guid.NewGuid(),
-                        
+
                         // FK
                         User = userGroup_User[random.Next(0, userGroup_User.Count())],
                         //UserId = null,
@@ -754,11 +754,11 @@ namespace PSGM.Sample.Model.DbStorage
                     virtualUnitUserGroupsLoop.Add(new DbStorage_RootDirectory_VirtualUnit_UserGroup_Link()
                     {
                         Id = Guid.NewGuid(),
-   
+
                         // FK
                         VirtualUnit = null,
-                        VirtualUnitId = null,   
-                      
+                        VirtualUnitId = null,
+
                         UserGroup = userGroupsVirtualUnit[random.Next(0, userGroupsVirtualUnit.Count())],
                         //UserGroup = null,
                     });
@@ -880,22 +880,14 @@ namespace PSGM.Sample.Model.DbStorage
                     DirectoryState = DirectoryState.Undefined,
 
                     Quality = quality,
-                    
+
                     MetadataLinks = rootDirectoryMetadataLinkLoop,
 
                     Locked = false,
+                    LockedDescription = string.Empty,
 
                     UserLinks = usersLoop,
                     UserGroupLinks = userGroupsLoop,
-
-                    JobIds_Ext = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
-                    //JobIds_ExtString = string.Empty,
-
-                    WorkflowItemIds_Ext = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
-                    //WorkflowItemIds_ExtString = string.Empty,
-
-                    ArchiveIds_Ext = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
-                    //ArchiveIds_ExtString = string.Empty,
 
                     SubDirectories = null,
 
@@ -903,15 +895,12 @@ namespace PSGM.Sample.Model.DbStorage
 
                     DirectoryObjectsAutofill = 0,
                     DirectorySizeAutofill = 0,
-                    
+
                     QrCode = new DbStorage_RootDirectory_QrCode()
                     {
                         Id = Guid.NewGuid(),
 
-                        Name = "QrCode " + i.ToString(),
-                        Description = "QrCode " + i.ToString() + " " + Common.RandomString(random.Next(10, 100)),
-
-                        QrCodeType = QrCodeType.Undefined,
+                        QrCode_Ext = Guid.NewGuid(),
 
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
@@ -924,6 +913,11 @@ namespace PSGM.Sample.Model.DbStorage
                     },
 
                     VirtualUnits = virtualRootUnits,
+
+                    ArchiveLinks = null,
+                    JobLinks = null,
+                    WorkflowLinks = null,
+
 
                     //CreatedByUserIdExtAutoFill = Guid.Empty,
                     //CreatedDateTimeAutoFill = DateTime.Now,

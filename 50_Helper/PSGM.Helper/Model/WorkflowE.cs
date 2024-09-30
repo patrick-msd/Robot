@@ -4,14 +4,17 @@
     {
         Undefined = 0,
 
-        File = 10000,
+        Project = 10000,
 
-        RootDirectory = 20000,
-        Subdirectory = 20001,
+        Organization = 20000,
+        Contributor = 20001,
 
-        Project = 30000,
+        Unit = 30001,
 
-        Organization = 40000,
+        RootDirectory = 40000,
+        Subdirectory = 40001,
+
+        File = 50000,
     }
 
     public enum WorkflowExecutionLevel : int
@@ -23,5 +26,20 @@
         Manually = 20000,
 
         ManuallyAndAutomatically = 90000,
+    }
+
+    public enum WorkflowStatus : int
+    {
+        Undefined = 0,
+
+        Created = 20000,
+        Updated = 20001,
+        Deleted = 20002,
+
+        Started = 30000,
+        InProgress = 30001,
+        Hold = 30002,
+        Stopped = 30003,
+        Finished = 30004,
     }
 }

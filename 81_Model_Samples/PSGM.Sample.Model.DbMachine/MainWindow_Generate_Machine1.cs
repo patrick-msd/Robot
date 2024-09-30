@@ -1,4 +1,5 @@
-﻿using PSGM.Model.DbMachine;
+﻿using PSGM.Helper;
+using PSGM.Model.DbMachine;
 
 namespace PSGM.Sample.Model.DbMachine
 {
@@ -7,6 +8,8 @@ namespace PSGM.Sample.Model.DbMachine
         public DbMachine_Machine Generate_Machine1(DbMachine_Project projects)
         {
             Random random = new Random();
+
+            DbMachine_Computer computer = Generate_Machine1_Computer(ComputerInfo.GetComputerUUID());
 
             DbMachine_Address addressUIBK = Generate_Machine1_Address();
 
@@ -62,6 +65,9 @@ namespace PSGM.Sample.Model.DbMachine
                 //ModifiedDateTimeAutoFill = DateTime.Now,
 
                 // FK
+                Computer = new List<DbMachine_Computer>() { computer },
+                //ComputerId = null,
+
                 Project = projects,
                 //ProjectId = null
             };

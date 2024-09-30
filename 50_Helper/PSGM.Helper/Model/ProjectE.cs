@@ -14,6 +14,7 @@
         Stopped = 30003,
         Finished = 30004,
     }
+
     public enum ProjectPermissions : int
     {
         Undefined = 0,
@@ -21,5 +22,4 @@
         Private = 20000,
         Public = 20001,
     }
-
 }

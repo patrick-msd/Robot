@@ -46,11 +46,13 @@ namespace PSGM.Model.DbMain
         #endregion
 
         #region Links
-        [InverseProperty("QrCode")]
-        public virtual DbMain_QrCodeType? QrCodeType { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
+        [ForeignKey("QrCodeType")]
+        public Guid? QrCodeTypeId { get; set; }
+        public virtual DbMain_QrCodeType? QrCodeType { get; set; }
+
         [ForeignKey("Unit")]
         public Guid? UnitId { get; set; }
         public virtual DbMain_Unit? Unit { get; set; }

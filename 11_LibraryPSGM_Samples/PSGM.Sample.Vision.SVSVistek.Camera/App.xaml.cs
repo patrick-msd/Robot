@@ -28,7 +28,7 @@ namespace RC.Vision.SVSVistek.Sample
 
             Globals.Machine = new Globals_Machine()
             {
-                MachineId = MachineInfo.GetMachineUUID(),
+                MachineId = ComputerInfo.GetComputerUUID(),
 
                 Vision = null
             };

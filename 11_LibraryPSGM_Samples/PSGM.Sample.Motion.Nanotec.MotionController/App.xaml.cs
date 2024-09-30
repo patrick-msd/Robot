@@ -28,7 +28,7 @@ namespace RC.Motion.Nanotec.Sample
 
             Globals.Machine = new Globals_Machine()
             {
-                MachineId = MachineInfo.GetMachineUUID(),
+                MachineId = ComputerInfo.GetComputerUUID(),
 
                 Motion = null,
             };

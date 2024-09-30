@@ -13,7 +13,6 @@ using RC.Lib.Motion;
 using RC.Lib.PowerSupply;
 using RC.Lib.Vision.SVSVistek;
 using RC.Vision.Intel.RealSense;
-using RCRobotDoosanControl;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using Serilog;
@@ -1350,7 +1349,7 @@ namespace RC.Scan_SingleSolution
 
             Workflow workflow;
 
-            Guid machineId = MachineInfo.GetMachineUUID();
+            Guid machineId = ComputerInfo.GetComputerUUID();
             Guid patrickSchoeneggerId = Globals.DbUser_Context.Users.Where(u => u.LoginName == "patrick.schoenegger").FirstOrDefault().Id;
             Guid softwareId = new Guid();
 

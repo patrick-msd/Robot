@@ -44,15 +44,15 @@ namespace PSGM.Model.DbBackend
 
         [Column("StorageType")]
         [Display(Name = "StorageType")]
-        public StorageType StorageType { get; set; } = StorageType.Unknown;
+        public StorageType StorageType { get; set; } = StorageType.Undefined;
 
         [Column("StorageClass")]
         [Display(Name = "StorageClass")]
-        public StorageClass StorageClass { get; set; } = StorageClass.Unknown;
+        public StorageClass StorageClass { get; set; } = StorageClass.Undefined;
 
         [Column("StorageTier")]
         [Display(Name = "StorageTier")]
-        public StorageTier StorageTier { get; set; } = StorageTier.Unknown;
+        public StorageTier StorageTier { get; set; } = StorageTier.Undefined;
 
         [Column("StorageFilePath")]
         [Display(Name = "StorageFilePath")]

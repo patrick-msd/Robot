@@ -3,22 +3,23 @@
     public enum EmployeeType : int
     {
         None = 0,
-        Inherited = 1,
+        Inherited = 10,
 
         SuperAdmin = 10000,
         Admin = 10001,
 
-        Owner = 20000,
+        ProjectAdmin = 20000,
+        ContributorAdmin = 20001,
 
-        Read = 30000,
-        ReadWrite = 30000,
-        ReadWriteDelete = 30001,
+        Owner = 50000,
 
-        WorkflowAdmin = 80000,
-        WorkflowContributor = 80001,
+        WorkflowAdmin = 60000,
+        WorkflowContributor = 60001,
 
-        ServiceProviderScanning = 90000,
-        ServiceProviderInfrastructure = 90001,
+        Contributor = 70000,
+
+        ServiceProviderScanning = 80000,
+        ServiceProviderInfrastructure = 80001,
     }
 
     public enum PermissionType : int

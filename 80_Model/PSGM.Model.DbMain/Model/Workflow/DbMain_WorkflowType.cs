@@ -66,18 +66,15 @@ namespace PSGM.Model.DbMain
         [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string Description_IT { get; set; } = string.Empty;
 
-        [Column("WorkflowApplyLevel_String")]
-        [Display(Name = "WorkflowApplyLevel_String")]
+        [Column("ApplyLevel_String")]
+        [Display(Name = "ApplyLevel_String")]
         [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string WorkflowApplyLevel_String { get; private set; } = string.Empty;
+        public string ApplyLevel_String { get; private set; } = string.Empty;
 
-        [Column("WorkflowExecutionLevel_String")]
-        [Display(Name = "WorkflowExecutionLevel_String")]
+        [Column("ExecutionLevel_String")]
+        [Display(Name = "ExecutionLevel_String")]
         [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string WorkflowExecutionLevel_String { get; private set; } = string.Empty;
-
-
-
+        public string ExecutionLevel_String { get; private set; } = string.Empty;
 
         [Column("StorageType_String")]
         [Display(Name = "StorageType_String")]
@@ -89,61 +86,62 @@ namespace PSGM.Model.DbMain
         [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string StorageClass_String { get; private set; } = string.Empty;
 
-        [Column("Permissions")]
-        [Display(Name = "Permissions")]
-        [StringLength(65532, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string Permissions_String { get; private set; } = string.Empty;
+        #region Audit details for faster file audit information
+        [Required]
+        [Column("CreatedDateTimeAutoFill")]
+        [Display(Name = "CreatedDateTimeAutoFill")]
+        public DateTime CreatedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
+        [Required]
+        [Column("CreatedByUserId_ExtAutoFill")]
+        [Display(Name = "CreatedByUserId_ExtAutoFill")]
+        public Guid CreatedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
 
+        [Column("ModifiedDateTimeAutoFill")]
+        [Display(Name = "ModifiedDateTimeAutoFill")]
+        public DateTime ModifiedDateTimeAutoFill { get; set; } = DateTime.MinValue;
 
-
-
-
+        [Column("ModifiedByUserId_ExtAutoFill")]
+        [Display(Name = "ModifiedByUserId_ExtAutoFill")]
+        public Guid ModifiedByUserId_ExtAutoFill { get; set; } = Guid.Empty;
+        #endregion
         #endregion
 
         #region Links
+        [InverseProperty("WorkflowType")]
+        public virtual ICollection<DbMain_WorkflowItem>? WorkflowItems { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [ForeignKey("WorkflowItem")]
-        public Guid? WorkflowItemId { get; set; }
-        public virtual DbMain_Unit? WorkflowItem { get; set; }
         #endregion
 
         #region Not Mapped
         [NotMapped]
-        public List<Guid>? WorkflowApplyLevel
+        public List<WorkflowApplyLevel>? ApplyLevel
         {
-            get { return WorkflowApplyLevel_String != string.Empty ? WorkflowApplyLevel_String.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { WorkflowApplyLevel_String = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+            get { return ApplyLevel_String != string.Empty ? ApplyLevel_String.Split(',').Select(x => (WorkflowApplyLevel)Enum.Parse(typeof(WorkflowApplyLevel), x)).ToList() : null; }
+            set { ApplyLevel_String = value != null ? string.Join(',', value) : string.Empty; }
         }
 
         [NotMapped]
-        public List<Guid>? WorkflowExecutionLevel
+        public List<WorkflowExecutionLevel>? ExecutionLevel
         {
-            get { return WorkflowExecutionLevel_String != string.Empty ? WorkflowExecutionLevel_String.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { WorkflowExecutionLevel_String = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+            get { return ExecutionLevel_String != string.Empty ? ExecutionLevel_String.Split(',').Select(x => (WorkflowExecutionLevel)Enum.Parse(typeof(WorkflowExecutionLevel), x)).ToList() : null; }
+            set { ExecutionLevel_String = value != null ? string.Join(',', value) : string.Empty; }
         }
 
         [NotMapped]
-        public List<Guid>? StorageType
+        public List<StorageType>? StorageType
         {
-            get { return StorageType_String != string.Empty ? StorageType_String.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { StorageType_String = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+            get { return StorageType_String != string.Empty ? StorageType_String.Split(',').Select(x => (StorageType)Enum.Parse(typeof(StorageType), x)).ToList() : null; }
+            set { StorageType_String = value != null ? string.Join(',', value) : string.Empty; }
         }
 
         [NotMapped]
-        public List<Guid>? StorageClass
+        public List<StorageClass>? StorageClass
         {
-            get { return StorageClass_String != string.Empty ? StorageClass_String.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { StorageClass_String = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
-        }
-
-        [NotMapped]
-        public List<Guid>? Permissions
-        {
-            get { return Permissions_String != string.Empty ? Permissions_String.Split(',').Select(Guid.Parse).ToList() : null; }
-            set { Permissions_String = value != null ? string.Join(',', value.Select(x => x.ToString())) : string.Empty; }
+            get { return StorageClass_String != string.Empty ? StorageClass_String.Split(',').Select(x => (StorageClass)Enum.Parse(typeof(StorageClass), x)).ToList() : null; }
+            set { StorageClass_String = value != null ? string.Join(',', value) : string.Empty; }
         }
         #endregion
     }

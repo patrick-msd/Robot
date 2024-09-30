@@ -884,20 +884,12 @@ namespace PSGM.Sample.Model.DbStorage
                     MetadataLinks = subDirectoryMetadataLinkLoop,
 
                     Locked = false,
-                    
+                    LockedDescription = string.Empty,
+
                     UserLinks = usersLoop,
                     UserGroupLinks = userGroupsLoop,
 
-                    JobIds_Ext = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
-                    //JobIds_ExtString = string.Empty,
-
-                    WorkflowItemIds_Ext = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
-                    //WorkflowItemIds_ExtString = string.Empty,
-
-                    ArchiveIds_Ext = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
-                    //ArchiveIds_ExtString = string.Empty,
-
-                    SubDirectories = null,
+                        SubDirectories = null,
 
                     Files = null,
 
@@ -908,10 +900,7 @@ namespace PSGM.Sample.Model.DbStorage
                     {
                         Id = Guid.NewGuid(),
 
-                        Name = "QrCode " + i.ToString(),
-                        Description = "QrCode " + i.ToString() + " " + Common.RandomString(random.Next(10, 100)),
-
-                        QrCodeType = QrCodeType.Undefined,
+                        QrCode_Ext = Guid.NewGuid(),
 
                         //CreatedByUserIdExtAutoFill = Guid.Empty,
                         //CreatedDateTimeAutoFill = DateTime.Now,
@@ -925,6 +914,10 @@ namespace PSGM.Sample.Model.DbStorage
 
                     VirtualUnits = virtualSubUnits,
 
+                    ArchiveLinks = null,
+                    JobLinks = null,
+                    WorkflowLinks = null,
+
                     //CreatedByUserIdExtAutoFill = Guid.Empty,
                     //CreatedDateTimeAutoFill = DateTime.Now,
                     //ModifiedByUserIdExtAutoFill = Guid.Empty,
@@ -936,6 +929,8 @@ namespace PSGM.Sample.Model.DbStorage
 
                     ParentSubDirectory = null,
                     ParentSubDirectoryId = null,
+
+
                 };
 
                 //_dbStorage_Data_Context.SubDirectories.Add(element);

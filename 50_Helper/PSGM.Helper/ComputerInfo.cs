@@ -3,9 +3,9 @@ using System.Management;
 
 namespace PSGM.Helper
 {
-    public static class MachineInfo
+    public static class ComputerInfo
     {
-        public static Guid GetMachineUUID()
+        public static Guid GetComputerUUID()
         {
             Guid uuid = Guid.Empty;
 

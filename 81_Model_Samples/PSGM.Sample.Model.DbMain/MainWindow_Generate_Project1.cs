@@ -13,123 +13,168 @@ namespace PSGM.Sample.Model.DbStorage
 
             #region WorkflowItemLinks Image capturing ...
             #region Raw images
-            DbMain_WorkflowItem_Link dbWorkflowItemLink_Vision2D_GrabImage_DataRaw = new DbMain_WorkflowItem_Link()
+            DbMain_WorkflowItem dbWorkflowItem_Vision2D_GrabImage_DataRaw = new DbMain_WorkflowItem()
             {
                 Id = Guid.NewGuid(),
+
+                Name = "Grab image - V1.0.0",
+                Description = "Grab image with specified camera ...",
+
+                Enable = true,
 
                 Order = 1,
-                ApplyLevel = WorkflowApplyLevel.Organization,
+
+                ApplyLevel = WorkflowApplyLevel.File,
+                ExecutionLevel = WorkflowExecutionLevel.Automatically,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.DataRaw,
 
-                Permissions = EmployeeType.None,
-                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+                WorkflowStatus = WorkflowStatus.Undefined,
+                WorkflowStarted = DateTime.MinValue,
+                WorkflowFinished = DateTime.MinValue,
 
                 Configuration = string.Empty,
-                
+
+                //CreatedByUserIdExtAutoFill = Guid.Empty,
+                //CreatedDateTimeAutoFill = DateTime.Now,
+                //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                //ModifiedDateTimeAutoFill = DateTime.Now,
+
                 // FK
-                //WorkflowItem = null,
-                WorkflowItemId = WorkflowItem_Id.Vision2D_GrabImage_V1_0_0,
+                //WorkflowType = WorkflowType.Vision2D_GrabImage_V1_0_0(),
+                WorkflowTypeId = WorkflowType.Vision2D_GrabImage_V1_0_0().Id,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
             };
 
-            DbMain_WorkflowItem_Link dbWorkflowItemLink_Vision2D_SaveObjectToStorageAndDatabase_DataRaw = new DbMain_WorkflowItem_Link()
+            DbMain_WorkflowItem dbWorkflowItem_Vision2D_SaveObjectToStorageAndDatabase_DataRaw = new DbMain_WorkflowItem()
             {
                 Id = Guid.NewGuid(),
 
+                Name = "Save image - V1.0.0",
+                Description = "Save image to storage and database ...",
+
+                Enable = true,
+
                 Order = 4,
-                ApplyLevel = WorkflowApplyLevel.Organization,
+
+                ApplyLevel = WorkflowApplyLevel.File,
+                ExecutionLevel = WorkflowExecutionLevel.Automatically,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.DataRaw,
-                //StorageClass = StorageClass.DataRawAndDataRawThumbnail, 
 
-                Permissions = EmployeeType.None,
-                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+                WorkflowStatus = WorkflowStatus.Undefined,
+                WorkflowStarted = DateTime.MinValue,
+                WorkflowFinished = DateTime.MinValue,
 
                 Configuration = string.Empty,
 
                 // FK
-                //WorkflowItem = null,
-                WorkflowItemId = WorkflowItem_Id.StorageAndDatabase_Save_V1_0_0,
+                //WorkflowType =  null,           
+                //WorkflowType = WorkflowType.StorageAndDatabase_Save_V1_0_0(),
+                WorkflowTypeId = WorkflowType.StorageAndDatabase_Save_V1_0_0().Id,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
             };
-            dbWorkflowItemLink_Vision2D_SaveObjectToStorageAndDatabase_DataRaw.SetSaveImageV1_0_0Configuration(new ConfigurationSaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
+            dbWorkflowItem_Vision2D_SaveObjectToStorageAndDatabase_DataRaw.SetSaveImageConfigurationV1_0_0(new ConfigurationSaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
             #endregion
 
             #region HDR Image
-            DbMain_WorkflowItem_Link dbWorkflowItemLink_HDR_CreateImage_Data = new DbMain_WorkflowItem_Link()
+            DbMain_WorkflowItem dbWorkflowItemLink_HDR_CreateImage_Data = new DbMain_WorkflowItem()
             {
                 Id = Guid.NewGuid(),
 
+                Name = "Calculate darktable image - V1.0.0",
+                Description = "Calculate darktable image according to the sidecar file ...",
+
+                Enable = true,
+
                 Order = 5,
-                ApplyLevel = WorkflowApplyLevel.Organization,
+
+                ApplyLevel = WorkflowApplyLevel.File,
+                ExecutionLevel = WorkflowExecutionLevel.Automatically,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
 
-                Permissions = EmployeeType.None,
-                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+                WorkflowStatus = WorkflowStatus.Undefined,
+                WorkflowStarted = DateTime.MinValue,
+                WorkflowFinished = DateTime.MinValue,
 
                 Configuration = string.Empty,
 
                 // FK
-                //WorkflowItem = null,
-                WorkflowItemId = WorkflowItem_Id.Image_HDR_V1_0_0,
+                //WorkflowType = WorkflowType.Image_HDR_V1_0_0(),
+                WorkflowTypeId = WorkflowType.Image_HDR_V1_0_0().Id,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
             };
 
-            DbMain_WorkflowItem_Link dbWorkflowItemLink_HDR_SaveObjectToStorageAndDatabase_Data_DataThumbnail = new DbMain_WorkflowItem_Link()
+            DbMain_WorkflowItem dbWorkflowItemLink_HDR_SaveObjectToStorageAndDatabase_Data_DataThumbnail = new DbMain_WorkflowItem()
             {
                 Id = Guid.NewGuid(),
 
+                Name = "Save image - V1.0.0",
+                Description = "Save image to storage and database ...",
+
+                Enable = true,
+
                 Order = 8,
-                ApplyLevel = WorkflowApplyLevel.Organization,
+
+                ApplyLevel = WorkflowApplyLevel.File,
+                ExecutionLevel = WorkflowExecutionLevel.Automatically,
 
                 StorageType = StorageType.S3,
-                StorageClass = StorageClass.DataAndDataThumbnail,
+                StorageClass = StorageClass.Data,
 
-                Permissions = EmployeeType.None,
-                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+                WorkflowStatus = WorkflowStatus.Undefined,
+                WorkflowStarted = DateTime.MinValue,
+                WorkflowFinished = DateTime.MinValue,
 
                 Configuration = string.Empty,
 
                 // FK
-                //WorkflowItem = null,
-                WorkflowItemId = WorkflowItem_Id.StorageAndDatabase_Save_V1_0_0,
+                //WorkflowType = WorkflowType.StorageAndDatabase_Save_V1_0_0(),
+                WorkflowTypeId = WorkflowType.StorageAndDatabase_Save_V1_0_0().Id,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
             };
-            dbWorkflowItemLink_HDR_SaveObjectToStorageAndDatabase_Data_DataThumbnail.SetSaveImageV1_0_0Configuration(new ConfigurationSaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
+            dbWorkflowItemLink_HDR_SaveObjectToStorageAndDatabase_Data_DataThumbnail.SetSaveImageConfigurationV1_0_0(new ConfigurationSaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
             #endregion
 
             #region Darktable Image
-            DbMain_WorkflowItem_Link dbWorkflowItemLink_Darktable_CreateImage_Data = new DbMain_WorkflowItem_Link()
+            DbMain_WorkflowItem dbWorkflowItemLink_Darktable_CreateImage_Data = new DbMain_WorkflowItem()
             {
                 Id = Guid.NewGuid(),
 
+                Name = "Calculate darktable image - V1.0.0",
+                Description = "Calculate darktable image according to the sidecar file ...",
+
+                Enable = true,
+
                 Order = 9,
-                ApplyLevel = WorkflowApplyLevel.Organization,
+
+                ApplyLevel = WorkflowApplyLevel.File,
+                ExecutionLevel = WorkflowExecutionLevel.Automatically,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
 
-                Permissions = EmployeeType.None,
-                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+                WorkflowStatus = WorkflowStatus.Undefined,
+                WorkflowStarted = DateTime.MinValue,
+                WorkflowFinished = DateTime.MinValue,
 
                 Configuration = string.Empty,
 
                 // FK
-                //WorkflowItem = null,
-                WorkflowItemId = WorkflowItem_Id.Image_Darktable_V1_0_0,
+                //WorkflowType = WorkflowType.Image_Darktable_V1_0_0(),
+                WorkflowTypeId = WorkflowType.Image_Darktable_V1_0_0().Id,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -152,50 +197,66 @@ namespace PSGM.Sample.Model.DbStorage
             //    }
             //});
 
-            DbMain_WorkflowItem_Link dbWorkflowItemLink_Darktable_SaveObjectToStorageAndDatabase_Thumbnail = new DbMain_WorkflowItem_Link()
+            DbMain_WorkflowItem dbWorkflowItemLink_Darktable_SaveObjectToStorageAndDatabase_DataThumbnail = new DbMain_WorkflowItem()
             {
                 Id = Guid.NewGuid(),
+
+                Name = "Save Object To Storage And Database Thumbnail",
+                Description = "Save Object To Storage And Database Thumbnail",
+
+                Enable = true,
 
                 Order = 12,
-                ApplyLevel = WorkflowApplyLevel.Organization,
 
-                StorageType = StorageType.S3,
-                StorageClass = StorageClass.DataAndDataThumbnail,
-
-                Permissions = EmployeeType.None,
-                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
-
-                Configuration = string.Empty,
-
-                // FK
-                //WorkflowItem = null,
-                WorkflowItemId = WorkflowItem_Id.StorageAndDatabase_Save_V1_0_0,
-
-                WorkflowGroup = null,
-                WorkflowGroupId = null
-            };
-            dbWorkflowItemLink_Darktable_SaveObjectToStorageAndDatabase_Thumbnail.SetSaveImageV1_0_0Configuration(new ConfigurationSaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
-            #endregion
-
-            #region Workflow 1 Image
-            DbMain_WorkflowItem_Link dbWorkflowItemLink_Workflow1_CropImage_Data = new DbMain_WorkflowItem_Link()
-            {
-                Id = Guid.NewGuid(),
-
-                Order = 13,
-                ApplyLevel = WorkflowApplyLevel.Organization,
+                ApplyLevel = WorkflowApplyLevel.File,
+                ExecutionLevel = WorkflowExecutionLevel.Automatically,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
 
-                Permissions = EmployeeType.None,
-                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+                WorkflowStatus = WorkflowStatus.Undefined,
+                WorkflowStarted = DateTime.MinValue,
+                WorkflowFinished = DateTime.MinValue,
 
                 Configuration = string.Empty,
 
                 // FK
-                //WorkflowItem = null,
-                WorkflowItemId = WorkflowItem_Id.Image_Crop_V1_0_0,
+                //WorkflowType = WorkflowType.StorageAndDatabase_Save_V1_0_0(),
+                WorkflowTypeId = WorkflowType.StorageAndDatabase_Save_V1_0_0().Id,
+
+                WorkflowGroup = null,
+                WorkflowGroupId = null
+            };
+            dbWorkflowItemLink_Darktable_SaveObjectToStorageAndDatabase_DataThumbnail.SetSaveImageConfigurationV1_0_0(new ConfigurationSaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
+            #endregion
+
+            #region Workflow 1 Image
+            DbMain_WorkflowItem dbWorkflowItemLink_Workflow1_CropImage_Data = new DbMain_WorkflowItem()
+            {
+                Id = Guid.NewGuid(),
+
+                Name = "Crop image - V1.0.0",
+                Description = "Crop image with specified camera ...",
+
+                Enable = true,
+
+                Order = 13,
+
+                ApplyLevel = WorkflowApplyLevel.File,
+                ExecutionLevel = WorkflowExecutionLevel.Automatically,
+
+                StorageType = StorageType.S3,
+                StorageClass = StorageClass.Data,
+
+                WorkflowStatus = WorkflowStatus.Undefined,
+                WorkflowStarted = DateTime.MinValue,
+                WorkflowFinished = DateTime.MinValue,
+
+                Configuration = string.Empty,
+
+                // FK
+                //WorkflowType = WorkflowType.Image_Crop_V1_0_0(),
+                WorkflowTypeId = WorkflowType.Image_Crop_V1_0_0().Id,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -228,24 +289,32 @@ namespace PSGM.Sample.Model.DbStorage
             //    }
             //});
 
-            DbMain_WorkflowItem_Link dbWorkflowItemLink_Workflow1_Rotate1Image_Data = new DbMain_WorkflowItem_Link()
+            DbMain_WorkflowItem dbWorkflowItemLink_Workflow1_Rotate1Image_Data = new DbMain_WorkflowItem()
             {
                 Id = Guid.NewGuid(),
 
+                Name = "Rotate image - V1.0.0",
+                Description = "Rotate image with specified camera ...",
+
+                Enable = true,
+
                 Order = 14,
-                ApplyLevel = WorkflowApplyLevel.Organization,
+
+                ApplyLevel = WorkflowApplyLevel.File,
+                ExecutionLevel = WorkflowExecutionLevel.Automatically,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
 
-                Permissions = EmployeeType.None,
-                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+                WorkflowStatus = WorkflowStatus.Undefined,
+                WorkflowStarted = DateTime.MinValue,
+                WorkflowFinished = DateTime.MinValue,
 
                 Configuration = string.Empty,
 
                 // FK
-                //WorkflowItem = null,
-                WorkflowItemId = WorkflowItem_Id.Image_Rotate_V1_0_0,
+                //WorkflowType = WorkflowType.Image_Rotate_V1_0_0(),
+                WorkflowTypeId = WorkflowType.Image_Rotate_V1_0_0().Id,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -266,24 +335,32 @@ namespace PSGM.Sample.Model.DbStorage
             //    }
             //});
 
-            DbMain_WorkflowItem_Link dbWorkflowItemLink_Workflow1_Rotate2Image_Data = new DbMain_WorkflowItem_Link()
+            DbMain_WorkflowItem dbWorkflowItemLink_Workflow1_Rotate2Image_Data = new DbMain_WorkflowItem()
             {
                 Id = Guid.NewGuid(),
 
+                Name = "Rotate image - V2.0.0",
+                Description = "Rotate image with specified camera ...",
+
+                Enable = true,
+
                 Order = 15,
-                ApplyLevel = WorkflowApplyLevel.Organization,
+
+                ApplyLevel = WorkflowApplyLevel.File,
+                ExecutionLevel = WorkflowExecutionLevel.Automatically,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
 
-                Permissions = EmployeeType.None,
-                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+                WorkflowStatus = WorkflowStatus.Undefined,
+                WorkflowStarted = DateTime.MinValue,
+                WorkflowFinished = DateTime.MinValue,
 
                 Configuration = string.Empty,
 
                 // FK
-                //WorkflowItem = null,
-                WorkflowItemId = WorkflowItem_Id.Image_Rotate_V2_0_0,
+                //WorkflowType = WorkflowType.Image_Rotate_V2_0_0(),
+                WorkflowTypeId = WorkflowType.Image_Rotate_V2_0_0().Id,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -304,24 +381,32 @@ namespace PSGM.Sample.Model.DbStorage
             //    }
             //});
 
-            DbMain_WorkflowItem_Link dbWorkflowItemLink_Workflow1_Sharpen1Image_Data = new DbMain_WorkflowItem_Link()
+            DbMain_WorkflowItem dbWorkflowItemLink_Workflow1_Sharpen1Image_Data = new DbMain_WorkflowItem()
             {
                 Id = Guid.NewGuid(),
 
+                Name = "Sharpen image - V1.0.0",
+                Description = "Sharpen image with specified camera ...",
+
+                Enable = true,
+
                 Order = 16,
-                ApplyLevel = WorkflowApplyLevel.Organization,
+
+                ApplyLevel = WorkflowApplyLevel.File,
+                ExecutionLevel = WorkflowExecutionLevel.Automatically,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
 
-                Permissions = EmployeeType.None,
-                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+                WorkflowStatus = WorkflowStatus.Undefined,
+                WorkflowStarted = DateTime.MinValue,
+                WorkflowFinished = DateTime.MinValue,
 
                 Configuration = string.Empty,
 
                 // FK
-                //WorkflowItem = null,
-                WorkflowItemId = WorkflowItem_Id.Image_Sharpen_V1_0_0,
+                //WorkflowType = WorkflowType.Image_Sharpen_V1_0_0(),
+                WorkflowTypeId = WorkflowType.Image_Sharpen_V1_0_0().Id,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -346,24 +431,32 @@ namespace PSGM.Sample.Model.DbStorage
             //    }
             //});
 
-            DbMain_WorkflowItem_Link dbWorkflowItemLink_Workflow1_Sharpen2Image_Data = new DbMain_WorkflowItem_Link()
+            DbMain_WorkflowItem dbWorkflowItemLink_Workflow1_Sharpen2Image_Data = new DbMain_WorkflowItem()
             {
                 Id = Guid.NewGuid(),
 
+                Name = "Sharpen image - V2.0.0",
+                Description = "Sharpen image with specified camera ...",
+
+                Enable = true,
+
                 Order = 17,
-                ApplyLevel = WorkflowApplyLevel.Organization,
+
+                ApplyLevel = WorkflowApplyLevel.File,
+                ExecutionLevel = WorkflowExecutionLevel.Automatically,
 
                 StorageType = StorageType.S3,
                 StorageClass = StorageClass.Data,
 
-                Permissions = EmployeeType.None,
-                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+                WorkflowStatus = WorkflowStatus.Undefined,
+                WorkflowStarted = DateTime.MinValue,
+                WorkflowFinished = DateTime.MinValue,
 
                 Configuration = string.Empty,
 
                 // FK
-                //WorkflowItem = null,
-                WorkflowItemId = WorkflowItem_Id.Image_Sharpen_V2_0_0,
+                //WorkflowType = WorkflowType.Image_Sharpen_V2_0_0(),
+                WorkflowTypeId = WorkflowType.Image_Sharpen_V2_0_0().Id,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
@@ -386,29 +479,37 @@ namespace PSGM.Sample.Model.DbStorage
             //    }
             //});
 
-            DbMain_WorkflowItem_Link dbWorkflowItemLink_Workflow1_SaveObjectToStorageAndDatabase_DataThumbnail = new DbMain_WorkflowItem_Link()
+            DbMain_WorkflowItem dbWorkflowItemLink_Workflow1_SaveObjectToStorageAndDatabase_DataThumbnail = new DbMain_WorkflowItem()
             {
                 Id = Guid.NewGuid(),
 
+                Name = "Save image - V1.0.0",
+                Description = "Save image to storage and database ...",
+
+                Enable = true,
+
                 Order = 20,
-                ApplyLevel = WorkflowApplyLevel.Organization,
+
+                ApplyLevel = WorkflowApplyLevel.File,
+                ExecutionLevel = WorkflowExecutionLevel.Automatically,
 
                 StorageType = StorageType.S3,
-                StorageClass = StorageClass.DataAndDataThumbnail,
+                StorageClass = StorageClass.Data,
 
-                Permissions = EmployeeType.None,
-                WorkflowExecutionLevel = WorkflowExecutionLevel.Automatically,
+                WorkflowStatus = WorkflowStatus.Undefined,
+                WorkflowStarted = DateTime.MinValue,
+                WorkflowFinished = DateTime.MinValue,
 
                 Configuration = string.Empty,
 
                 // FK
-                //WorkflowItem = null,
-                WorkflowItemId = WorkflowItem_Id.StorageAndDatabase_Save_V1_0_0,
+                //WorkflowType = WorkflowType.StorageAndDatabase_Save_V1_0_0(),
+                WorkflowTypeId = WorkflowType.StorageAndDatabase_Save_V1_0_0().Id,
 
                 WorkflowGroup = null,
                 WorkflowGroupId = null
             };
-            dbWorkflowItemLink_Workflow1_SaveObjectToStorageAndDatabase_DataThumbnail.SetSaveImageV1_0_0Configuration(new ConfigurationSaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
+            dbWorkflowItemLink_Workflow1_SaveObjectToStorageAndDatabase_DataThumbnail.SetSaveImageConfigurationV1_0_0(new ConfigurationSaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
             #endregion
 
             // ToDo: More Workflow Items ...
@@ -422,7 +523,7 @@ namespace PSGM.Sample.Model.DbStorage
             DbMain_Project project = new DbMain_Project()
             {
                 Id = Guid.NewGuid(),
-                
+
                 Name = "Meldezettel",
                 Description = "Digitalisierung der Meldezettel von ...",
 
@@ -476,19 +577,19 @@ namespace PSGM.Sample.Model.DbStorage
                         Name = "Workflow Group 1",
                         Description = "Workflow Group 1",
 
-                        WorkflowItem_Links = new List<DbMain_WorkflowItem_Link>()
+                        WorkflowItem = new List<DbMain_WorkflowItem>()
                         {
                             // Grab Image
-                            dbWorkflowItemLink_Vision2D_GrabImage_DataRaw,
-                            dbWorkflowItemLink_Vision2D_SaveObjectToStorageAndDatabase_DataRaw,
+                            dbWorkflowItem_Vision2D_GrabImage_DataRaw,
+                            dbWorkflowItem_Vision2D_SaveObjectToStorageAndDatabase_DataRaw,
                     
                             // HDR Image
                             dbWorkflowItemLink_HDR_CreateImage_Data,
                             dbWorkflowItemLink_HDR_SaveObjectToStorageAndDatabase_Data_DataThumbnail,
 
-                            // Darktable Image
-                            //dbWorkflowItemLink_Darktable_CreateImage_Data,
-                            //dbWorkflowItemLink_Darktable_SaveObjectToStorageAndDatabase_DataThumbnail,
+                             //Darktable Image
+                            dbWorkflowItemLink_Darktable_CreateImage_Data,
+                            dbWorkflowItemLink_Darktable_SaveObjectToStorageAndDatabase_DataThumbnail,
 
                             // Workflow 1
                             dbWorkflowItemLink_Workflow1_CropImage_Data,
@@ -516,9 +617,9 @@ namespace PSGM.Sample.Model.DbStorage
                         // FK
                         DeliverySlip = null,
                         DeliverySlipId = null,
-                        
+
                         Unit = null,
-                        UnitId  = null,                        
+                        UnitId  = null,
 
                         Project = null,
                         ProjectId = null
@@ -529,16 +630,26 @@ namespace PSGM.Sample.Model.DbStorage
                 DeliverySlips = null,
 
                 VirtualRootUnits = null,
-                
-                ArchiveJobLinks = null,
+
                 LastArchiveJobStarted = DateTime.MinValue,
                 LastArchiveJobFinished = DateTime.MinValue,
-                
+
                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                 //CreatedDateTimeAutoFill = DateTime.Now,
                 //ModifiedByUserIdExtAutoFill = Guid.Empty,
                 //ModifiedDateTimeAutoFill = DateTime.Now,               
             };
+
+
+
+
+
+
+
+
+
+
+
 
             // Create first Delivery Slip --> TLA
             project.DeliverySlips = new List<DbMain_DeliverySlip>()
@@ -559,8 +670,8 @@ namespace PSGM.Sample.Model.DbStorage
                     DeliverySlipCreatorOrganization = organizations.Where(p => p.Acronym.Contains("TLA")).First(),
 
                     DeliverySlipRecipientUserId_Ext = _patrickSchoeneggerId,
-                    DeliverySlipRecipientOrganization = organizations.Where(p => p.Acronym.Contains("UIBK")).First(),               
-                    
+                    DeliverySlipRecipientOrganization = organizations.Where(p => p.Acronym.Contains("UIBK")).First(),
+
                     Units = null,
 
                     NumberOfUnits = 12,
@@ -590,13 +701,24 @@ namespace PSGM.Sample.Model.DbStorage
                 // More Delivery Slips
             };
 
+
+
+
+
+
+
+
+
+
+
+
             // Create First Boxen und Schieber per Delivery Slip for processing with parameter --> PSGM    
             project.DeliverySlips.First().Units = new List<DbMain_Unit>()
             {
                 new DbMain_Unit()
                 {
                     Id = Guid.NewGuid(),
-                    
+
                     Suffix = "",
                     Name = "Box 1",
                     Prefix = "",
@@ -608,7 +730,7 @@ namespace PSGM.Sample.Model.DbStorage
                     DescriptionProjectOwner = "Box 1 Description",
 
                     Stars = 4,
-                    
+
                     Order = -1,
 
                     NaturalUnit = false,
@@ -616,7 +738,6 @@ namespace PSGM.Sample.Model.DbStorage
                     PreparationDateTime = DateTime.MinValue,
                     PreparationUserId_Ext = Guid.Empty,
 
-                    DetectedDefectsDuringPreparation = 0,
                     PreparationNotes = "Detected Notes During Preparation ...",
 
                     AqlStateImage = AqlState.None,
@@ -624,7 +745,7 @@ namespace PSGM.Sample.Model.DbStorage
 
                     AqlStateTranscription = AqlState.None,
                     AqlStateLastChangeTranscription = DateTime.MinValue,
-                    
+
                     ObjectsOnStorageInUnit = 0,
                     DirectorySizeOnStorageInUnit = 0,
 
@@ -632,9 +753,11 @@ namespace PSGM.Sample.Model.DbStorage
 
                     Locked = false,
 
-                    ArchiveJobLinks = null,
                     LastArchiveJobStarted = DateTime.MinValue,
                     LastArchiveJobFinished = DateTime.MinValue,
+
+                    QrCodes = null,
+                    UnitDefects = null,
 
                     Units = new List<DbMain_Unit>()
                     {
@@ -655,13 +778,12 @@ namespace PSGM.Sample.Model.DbStorage
                             Stars = 4,
 
                             Order = -1,
-                            
+
                             NaturalUnit = true,
 
                             PreparationDateTime = DateTime.MinValue,
                             PreparationUserId_Ext = Guid.Empty,
 
-                            DetectedDefectsDuringPreparation = 0,
                             PreparationNotes = "Detected Notes During Preparation ...",
 
                             AqlStateImage = AqlState.None,
@@ -677,11 +799,54 @@ namespace PSGM.Sample.Model.DbStorage
 
                             Locked = false,
 
-                            ArchiveJobLinks = null,
                             LastArchiveJobStarted = DateTime.MinValue,
                             LastArchiveJobFinished = DateTime.MinValue,
 
                             Units = null,
+
+                            QrCodes = new List<DbMain_QrCode>()
+                            {
+                                new DbMain_QrCode()
+                                {
+                                    Id = Guid.NewGuid(),
+
+                                    Name = "QrCode 1",
+                                    Description = "QrCode 1 Description",                                  
+
+                                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                                    //CreatedDateTimeAutoFill = DateTime.Now,
+                                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                                    //ModifiedDateTimeAutoFill = DateTime.Now,   
+                             
+                                    // FK
+                                    //QrCodeType = QrCodeType.Batch_V1_0_0(),
+                                    QrCodeTypeId = QrCodeType.Batch_V1_0_0().Id,
+
+                                    Unit = null,
+                                    UnitId = null,
+                                }
+                            },
+                            UnitDefects = new List<DbMain_Unit_Defect>(){
+                                new DbMain_Unit_Defect()
+                                {
+                                    Id = Guid.NewGuid(),
+
+                                    Name = "Defect 1",
+                                    Description = "Defect 1 Description",
+
+                                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                                    //CreatedDateTimeAutoFill = DateTime.Now,
+                                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                                    //ModifiedDateTimeAutoFill = DateTime.Now,   
+                             
+                                    // FK
+                                    Unit = null,
+                                    UnitId = null,
+
+                                    //Unit_DefectType = UnitDefectType.Defect1_V1_0_0(),
+                                    Unit_DefectTypeId = Unit_DefectType.Defect1_V1_0_0().Id,
+                                }
+                            },
                             
                             //CreatedByUserIdExtAutoFill = Guid.Empty,
                             //CreatedDateTimeAutoFill = DateTime.Now,
@@ -718,7 +883,6 @@ namespace PSGM.Sample.Model.DbStorage
                             PreparationDateTime = DateTime.MinValue,
                             PreparationUserId_Ext = Guid.Empty,
 
-                            DetectedDefectsDuringPreparation = 0,
                             PreparationNotes = "Detected Notes During Preparation ...",
 
                             AqlStateImage = AqlState.None,
@@ -734,11 +898,54 @@ namespace PSGM.Sample.Model.DbStorage
 
                             Locked = false,
 
-                            ArchiveJobLinks = null,
                             LastArchiveJobStarted = DateTime.MinValue,
                             LastArchiveJobFinished = DateTime.MinValue,
 
                             Units = null,
+
+                            QrCodes = new List<DbMain_QrCode>()
+                            {
+                                new DbMain_QrCode()
+                                {
+                                    Id = Guid.NewGuid(),
+
+                                    Name = "QrCode 1",
+                                    Description = "QrCode 1 Description",
+
+                                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                                    //CreatedDateTimeAutoFill = DateTime.Now,
+                                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                                    //ModifiedDateTimeAutoFill = DateTime.Now,   
+                             
+                                    // FK
+                                    //QrCodeType = QrCodeType.Batch_V1_0_0(),
+                                    QrCodeTypeId = QrCodeType.Batch_V1_0_0().Id,
+
+                                    Unit = null,
+                                    UnitId = null,
+                                }
+                            },
+                            UnitDefects = new List<DbMain_Unit_Defect>(){
+                                new DbMain_Unit_Defect()
+                                {
+                                    Id = Guid.NewGuid(),
+
+                                    Name = "Defect 1",
+                                    Description = "Defect 1 Description",
+
+                                    //CreatedByUserIdExtAutoFill = Guid.Empty,
+                                    //CreatedDateTimeAutoFill = DateTime.Now,
+                                    //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                                    //ModifiedDateTimeAutoFill = DateTime.Now,   
+                             
+                                    // FK
+                                    Unit = null,
+                                    UnitId = null,
+
+                                    //Unit_DefectType = UnitDefectType.Defect2_V1_0_0(),
+                                    Unit_DefectTypeId = Unit_DefectType.Defect2_V1_0_0().Id,
+                                }
+                            },
 
                             //CreatedByUserIdExtAutoFill = Guid.Empty,
                             //CreatedDateTimeAutoFill = DateTime.Now,
@@ -748,7 +955,7 @@ namespace PSGM.Sample.Model.DbStorage
                             // FK
                             DeliverySlip = null,
                             DeliverySlipId = null,
-                            
+
                             ParentUnit = null,
                             ParentUnitId = null,
                         },
@@ -758,16 +965,27 @@ namespace PSGM.Sample.Model.DbStorage
                     //CreatedDateTimeAutoFill = DateTime.Now,
                     //ModifiedByUserIdExtAutoFill = Guid.Empty,
                     //ModifiedDateTimeAutoFill = DateTime.Now,   
-                             
+
                     // FK
                     DeliverySlip = null,
                     DeliverySlipId = null,
-                    
+
                     ParentUnit = null,
                     ParentUnitId = null,
                 },
             };
             project.DeliverySlips.First().ApplicableWorkflowGroup = project.WorkflowGroups.First();
+
+
+
+
+
+
+
+
+
+
+
 
             List<DbMain_Project> tmp = new List<DbMain_Project>()
             {

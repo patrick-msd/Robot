@@ -91,10 +91,26 @@ namespace PSGM.Model.DbMain
         public DbSet<DbMain_Project_AuditLog> Project_AuditLogs { get; set; }
         #endregion
 
+        #region QrCode
+        public DbSet<DbMain_QrCode> QrCodes { get; set; }
+        public DbSet<DbMain_QrCode_AuditLog> QrCode_AuditLogs { get; set; }
+
+        public DbSet<DbMain_QrCodeType> QrCodeTypes { get; set; }
+        public DbSet<DbMain_QrCodeType_AuditLog> QrCodeType_AuditLogs { get; set; }
+        #endregion
+
         #region Unit
         public DbSet<DbMain_Unit> Units { get; set; }
         public DbSet<DbMain_Unit_AuditLog> Unit_AuditLogs { get; set; }
 
+        public DbSet<DbMain_Unit_Defect> UnitDefects { get; set; }
+        public DbSet<DbMain_Unit_Defect_AuditLog> UnitDefect_AuditLogs { get; set; }
+
+        public DbSet<DbMain_Unit_DefectType> UnitDefectTypes { get; set; }
+        public DbSet<DbMain_Unit_DefectType_AuditLog> UnitDefectType_AuditLogs { get; set; }
+        #endregion
+
+        #region Vurtual Unit
         public DbSet<DbMain_VirtualRootUnit> VirtualRootUnits { get; set; }
         public DbSet<DbMain_VirtualRootUnit_AuditLog> VirtualRootUnit_AuditLogs { get; set; }
 
@@ -115,8 +131,8 @@ namespace PSGM.Model.DbMain
         public DbSet<DbMain_WorkflowItem> WorkflowItems { get; set; }
         public DbSet<DbMain_WorkflowItem_AuditLog> WorkflowItem_AuditLogs { get; set; }
 
-        public DbSet<DbMain_WorkflowItem_Link> WorkflowItem_Links { get; set; }
-        public DbSet<DbMain_WorkflowItem_Link_AuditLog> WorkflowItem_Link_AuditLogs { get; set; }
+        public DbSet<DbMain_WorkflowType> WorkflowTypes { get; set; }
+        public DbSet<DbMain_WorkflowType_AuditLog> WorkflowType_AuditLogs { get; set; }
         #endregion
         #endregion
 
@@ -155,6 +171,7 @@ namespace PSGM.Model.DbMain
             modelBuilder.HasDefaultSchema("psgm");
 
             modelBuilder.ApplyConfiguration(new DbMain_QrCodeType_Configuration());
+            modelBuilder.ApplyConfiguration(new DbMain_Unit_DefectType_Configuration());
             modelBuilder.ApplyConfiguration(new DbMain_WorkflowType_Configuration());
 
             //modelBuilder.ApplyConfiguration(new ModelLogTypeConfiguration());
@@ -571,6 +588,68 @@ namespace PSGM.Model.DbMain
                         break;
                     #endregion
 
+                    #region QrCode
+                    case DbMain_QrCode qrCode:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            qrCode.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            qrCode.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            qrCode.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            qrCode.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        QrCode_AuditLogs.Add(new DbMain_QrCode_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = qrCode.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMain_QrCode_AuditLog qrCode_AuditLog:
+                        break;
+
+                    case DbMain_QrCodeType qrCodeType:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            qrCodeType.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            qrCodeType.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            qrCodeType.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            qrCodeType.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        QrCodeType_AuditLogs.Add(new DbMain_QrCodeType_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = qrCodeType.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMain_QrCodeType_AuditLog qrCodeType_AuditLog:
+                        break;
+                    #endregion
+
                     #region Unit
                     case DbMain_Unit unit:
                         #region Automatically added: Audit details for faster file audit information
@@ -602,6 +681,68 @@ namespace PSGM.Model.DbMain
                     case DbMain_Unit_AuditLog unit_AuditLog:
                         break;
 
+                    case DbMain_Unit_Defect unitDefect:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            unitDefect.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            unitDefect.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            unitDefect.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            unitDefect.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        UnitDefect_AuditLogs.Add(new DbMain_Unit_Defect_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = unitDefect.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMain_Unit_Defect_AuditLog unitDefect_AuditLog:
+                        break;
+
+                    case DbMain_Unit_DefectType unitDefectType:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            unitDefectType.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            unitDefectType.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            unitDefectType.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            unitDefectType.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        UnitDefectType_AuditLogs.Add(new DbMain_Unit_DefectType_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = unitDefectType.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMain_Unit_DefectType_AuditLog unitDefectType_AuditLog:
+                        break;
+                    #endregion
+
+                    #region Virtual Unit
                     case DbMain_VirtualRootUnit virtualRootUnit:
                         #region Automatically added: Audit details for faster file audit information
                         if (entry.State == EntityState.Added)
@@ -784,12 +925,25 @@ namespace PSGM.Model.DbMain
                     case DbMain_WorkflowItem_AuditLog workflowItem_AuditLog:
                         break;
 
-                    case DbMain_WorkflowItem_Link workflowItem_Link:
-                        WorkflowItem_Link_AuditLogs.Add(new DbMain_WorkflowItem_Link_AuditLog
+                    case DbMain_WorkflowType workflowType:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            workflowType.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            workflowType.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            workflowType.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            workflowType.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        WorkflowType_AuditLogs.Add(new DbMain_WorkflowType_AuditLog
                         {
                             Id = new Guid(),
 
-                            SourceId = workflowItem_Link.Id,
+                            SourceId = workflowType.Id,
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
@@ -798,7 +952,7 @@ namespace PSGM.Model.DbMain
                         });
                         break;
 
-                    case DbMain_WorkflowItem_Link_AuditLog workflowItem_Link_AuditLog:
+                    case DbMain_WorkflowType_AuditLog workflowType_AuditLog:
                         break;
                     #endregion
 

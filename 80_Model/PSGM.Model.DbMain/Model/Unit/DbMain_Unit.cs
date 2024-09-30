@@ -140,9 +140,6 @@ namespace PSGM.Model.DbMain
 
         #region Links
         [InverseProperty("Unit")]
-        public virtual ICollection<DbMain_Archive_Job_Link>? ArchiveJobLinks { get; set; }
-
-        [InverseProperty("Unit")]
         public virtual DbMain_WorkflowGroup? ApplicableWorkflowGroup { get; set; }
 
         [InverseProperty("ParentUnit")]

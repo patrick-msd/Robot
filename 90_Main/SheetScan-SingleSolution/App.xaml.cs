@@ -28,7 +28,7 @@ namespace RC.Scan_SingleSolution
 
             Globals.Machine = new Globals_Machine()
             {
-                MachineId = MachineInfo.GetMachineUUID(),
+                MachineId = ComputerInfo.GetComputerUUID(),
 
                 Control = null,
                 Motion = null,

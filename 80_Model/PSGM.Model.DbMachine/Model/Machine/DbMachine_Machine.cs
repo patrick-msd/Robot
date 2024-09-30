@@ -72,6 +72,10 @@ namespace PSGM.Model.DbMachine
         #endregion
 
         #region Links
+
+        [InverseProperty("Machine")]
+        public virtual ICollection<DbMachine_Computer>? Computer { get; set; }
+
         [InverseProperty("Machine")]
         public virtual ICollection<DbMachine_Machine_Location_Link>? LocationLinks { get; set; }
 
