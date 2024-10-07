@@ -25,7 +25,6 @@
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DbSoftware\PSGM.Model.DbSoftware.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DbStorage\PSGM.Model.DbStorage.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DbUser\PSGM.Model.DbUser.csproj" />
-    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbWorkflow\PSGM.Model.DbWorkflow.csproj" />
     <ProjectReference Include="..\PSGM.Helper\PSGM.Helper.csproj" />
   </ItemGroup>
 

@@ -14,7 +14,7 @@ namespace PSGM.Sample.Model.DbMachine
 
                 ProjectId_Ext = projectId,
 
-                Machines = null,
+                MachineLinks = null,
 
                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                 //CreatedDateTimeAutoFill = DateTime.Now,

@@ -1,20 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PSGM.Helper;
-using PSGM.Model.DbBackend;
-using PSGM.Model.DbJob;
-using PSGM.Model.DbMachine;
-using PSGM.Model.DbMain;
-using PSGM.Model.DbSoftware;
-using PSGM.Model.DbStorage;
-using PSGM.Model.DbUser;
+﻿using PSGM.Helper;
 using Serilog;
-using Serilog.Debugging;
-using Serilog.Sinks.Grafana.Loki;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Windows;
 
 namespace RC.Scan_SingleSolution
@@ -27,11 +14,12 @@ namespace RC.Scan_SingleSolution
         protected override void OnStartup(StartupEventArgs e)
         {
             #region Application initialization ...
-            string[] _arg = new string[] { "true" };
+            string[] _arg = new string[] { "Start" };
 
 #if DEBUG
             Globals.ApplicationId = new Guid("df90e47e-57e8-4278-b838-386c62f34971");
 #else
+            // Replae GuiD at CICD pipeline
             Globals.ApplicationId = new NewGuid("Replace_ApplicationGuid");
 #endif
 
@@ -39,20 +27,6 @@ namespace RC.Scan_SingleSolution
             Globals.ApplicationTitle = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
             Globals.ApplicationVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             #endregion
-
-
-
-
-
-
-            #region Get Project Id ...
-            Log.Information("Get Project Id ...");
-
-            Globals.ProjectId = new Guid("79A0FD7A-5D68-4095-A309-F4E92426E657");
-            #endregion
-
-
-
 
             #region Printing the arguments to the console ...
             if (e.Args == null)
@@ -72,7 +46,7 @@ namespace RC.Scan_SingleSolution
                 }
                 else
                 {
-                    //_arg = new string[] { "false" };
+                    //_arg = new string[] { "CreateAndSaveConfigFile" };
                 }
             }
             #endregion
@@ -80,14 +54,13 @@ namespace RC.Scan_SingleSolution
             base.OnStartup(e);
 
             #region Run application or create application configuration file ...
-            if (_arg[0] == "true") // Run application
+            if (_arg[0] == "Start") // Run application
             {
-                // Initialize splash screen and set it as the application main window
                 UISplashScreen splashScreen = new UISplashScreen();
                 this.MainWindow = splashScreen;
                 splashScreen.ShowDialog();
             }
-            else if (string.Equals(e.Args[0], "create and save config file")) // Create application configuration
+            else if (string.Equals(_arg[0], "CreateAndSaveConfigFile")) // Create and save application configuration file
             {
                 Globals.ConfigFile = new ConfigFile()
                 {

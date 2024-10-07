@@ -59,6 +59,16 @@ namespace PSGM.Model.DbBackend
         [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string StorageFilePath { get; set; } = string.Empty;
 
+        [Column("StorageUsername")]
+        [Display(Name = "StorageUsername")]
+        [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string StorageUsername { get; set; } = string.Empty;
+
+        [Column("StoragePassword")]
+        [Display(Name = "StoragePassword")]
+        [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string StoragePassword { get; set; } = string.Empty;
+
         [Column("StorageS3BucketName")]
         [Display(Name = "StorageS3BucketName")]
         [StringLength(1023, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]

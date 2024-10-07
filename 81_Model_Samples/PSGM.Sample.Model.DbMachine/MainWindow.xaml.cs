@@ -26,7 +26,7 @@ namespace PSGM.Sample.Model.DbMachine
         private DbMachine_Context _dbMachine_Context;
 
         Guid _softwareId;
-        Guid _machineId;
+        Guid _computerId;
 
         Guid _projectId;
 
@@ -39,7 +39,7 @@ namespace PSGM.Sample.Model.DbMachine
         {
             InitializeComponent();
 
-            _machineId = ComputerInfo.GetComputerUUID();
+            _computerId = ComputerInfo.GetComputerUUID();
 
             #region Initialize golbal variables ...
 
@@ -87,7 +87,7 @@ namespace PSGM.Sample.Model.DbMachine
             #endregion
 
             _softwareId = Guid.NewGuid();
-            _machineId = Guid.NewGuid();
+            _computerId = Guid.NewGuid();
 
             _projectId = Guid.NewGuid();
 
@@ -113,7 +113,7 @@ namespace PSGM.Sample.Model.DbMachine
                 _dbBackend_Context.DatabaseType = _configFile.DatabaseType;
 
                 _dbBackend_Context.DatabaseSessionParameter_ApplicationId = _softwareId;
-                _dbBackend_Context.DatabaseSessionParameter_ComputerId = _machineId;
+                _dbBackend_Context.DatabaseSessionParameter_ComputerId = _computerId;
                 _dbBackend_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
 
                 _dbBackend_Context.Database.OpenConnection();
@@ -133,8 +133,8 @@ namespace PSGM.Sample.Model.DbMachine
                 _dbMachine_Context.DatabaseConnectionString = databaseMain.GetDatabaseConnection(true);
                 _dbMachine_Context.DatabaseType = databaseMain.DatabaseType;
 
-                _dbMachine_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
-                _dbMachine_Context.DatabaseSessionParameter_MachineId = _machineId;
+                _dbMachine_Context.DatabaseSessionParameter_ApplicationId = _softwareId;
+                _dbMachine_Context.DatabaseSessionParameter_ComputerId = _computerId;
                 _dbMachine_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
 
                 if (_dbMachine_Context.Database.EnsureCreated())
@@ -170,7 +170,7 @@ namespace PSGM.Sample.Model.DbMachine
                 _dbBackend_Context.DatabaseType = _configFile.DatabaseType;
 
                 _dbBackend_Context.DatabaseSessionParameter_ApplicationId = _softwareId;
-                _dbBackend_Context.DatabaseSessionParameter_ComputerId = _machineId;
+                _dbBackend_Context.DatabaseSessionParameter_ComputerId = _computerId;
                 _dbBackend_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
 
                 _dbBackend_Context.Database.OpenConnection();
@@ -190,8 +190,8 @@ namespace PSGM.Sample.Model.DbMachine
                 _dbMachine_Context.DatabaseConnectionString = databaseMain.GetDatabaseConnection(true);
                 _dbMachine_Context.DatabaseType = databaseMain.DatabaseType;
 
-                _dbMachine_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
-                _dbMachine_Context.DatabaseSessionParameter_MachineId = _machineId;
+                _dbMachine_Context.DatabaseSessionParameter_ApplicationId = _softwareId;
+                _dbMachine_Context.DatabaseSessionParameter_ComputerId = _computerId;
                 _dbMachine_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
 
                 _dbMachine_Context.Database.EnsureDeleted();

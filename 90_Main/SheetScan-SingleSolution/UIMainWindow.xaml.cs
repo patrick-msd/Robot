@@ -4,7 +4,7 @@ using Intel.RealSense;
 using Microsoft.EntityFrameworkCore;
 using OpenCvSharp.Extensions;
 using PSGM.Helper;
-using PSGM.Helper.Workflow;
+//using PSGM.Helper.Workflow;
 using PSGM.Model.DbMain;
 using PSGM.Model.DbStorage;
 using RC.Lib.Control.Doosan;
@@ -13,6 +13,7 @@ using RC.Lib.Motion;
 using RC.Lib.PowerSupply;
 using RC.Lib.Vision.SVSVistek;
 using RC.Vision.Intel.RealSense;
+using RCRobotDoosanControl;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using Serilog;
@@ -1342,94 +1343,94 @@ namespace RC.Scan_SingleSolution
 
         async Task Worker(int number)
         {
-            int runs = 0;
+            //int runs = 0;
 
-            bool currentValue = false;
-            bool previousValue = false;
+            //bool currentValue = false;
+            //bool previousValue = false;
 
-            Workflow workflow;
+            //Workflow workflow;
 
-            Guid machineId = ComputerInfo.GetComputerUUID();
-            Guid patrickSchoeneggerId = Globals.DbUser_Context.Users.Where(u => u.LoginName == "patrick.schoenegger").FirstOrDefault().Id;
-            Guid softwareId = new Guid();
+            //Guid machineId = ComputerInfo.GetComputerUUID();
+            //Guid patrickSchoeneggerId = Globals.DbUser_Context.Users.Where(u => u.LoginName == "patrick.schoenegger").FirstOrDefault().Id;
+            //Guid softwareId = new Guid();
 
-            List<DbMain_Project> projects = Globals.DbMain_Context.Projects.Where(p => p.Machines_Ext.Contains(machineId))
-                                                                              .Include(p => p.ProjectParameter)
-                                                                              .Include(p => p.Organization)
-                                                                              .Include(p => p.Contributors)
-                                                                              //.Include(p => p.Locations)
-                                                                              .ToList();
+            //List<DbMain_Project> projects = Globals.DbMain_Context.Projects.Where(p => p.Machines_Ext.Contains(machineId))
+            //                                                                  .Include(p => p.ProjectParameter)
+            //                                                                  .Include(p => p.Organization)
+            //                                                                  .Include(p => p.Contributors)
+            //                                                                  //.Include(p => p.Locations)
+            //                                                                  .ToList();
 
-            List<DbStorage_RootDirectory> storage = Globals.DbStorageData_Context.RootDirectories.Where(p => p.Id == projects.FirstOrDefault().Id)
-                                                                                                .Include(p => p.SubDirectories)
-                                                                                                    .ThenInclude(d => d.Files)
-                                                                                                        .ThenInclude(f => f.QrCode)
-                                                                                                .Include(p => p.Files)
-                                                                                                    .ThenInclude(f => f.QrCode)
-                                                                                                .ToList();
+            //List<DbStorage_RootDirectory> storage = Globals.DbStorageData_Context.RootDirectories.Where(p => p.Id == projects.FirstOrDefault().Id)
+            //                                                                                    .Include(p => p.SubDirectories)
+            //                                                                                        .ThenInclude(d => d.Files)
+            //                                                                                            .ThenInclude(f => f.QrCode)
+            //                                                                                    .Include(p => p.Files)
+            //                                                                                        .ThenInclude(f => f.QrCode)
+            //                                                                                    .ToList();
 
-            DbMain_Project projectSelected = projects.FirstOrDefault();                                                             // To specified (Select box)
-            DbStorage_SubDirectory? dataSubdirectorySelected = storage.FirstOrDefault().SubDirectories.FirstOrDefault();            // To specified (Select box)
+            //DbMain_Project projectSelected = projects.FirstOrDefault();                                                             // To specified (Select box)
+            //DbStorage_SubDirectory? dataSubdirectorySelected = storage.FirstOrDefault().SubDirectories.FirstOrDefault();            // To specified (Select box)
 
-            workflow = new Workflow(projectSelected.WorkflowIdExt, patrickSchoeneggerId, machineId, softwareId, Globals.DbMain_Context.ConnectionStringSQLite, Globals.DbMain_Context.DatabaseType, projectSelected.Id, Globals.DbWorkflow_Context.ConnectionStringSQLite, Globals.DbWorkflow_Context.DatabaseType);
+            //workflow = new Workflow(projectSelected.WorkflowIdExt, patrickSchoeneggerId, machineId, softwareId, Globals.DbMain_Context.ConnectionStringSQLite, Globals.DbMain_Context.DatabaseType, projectSelected.Id, Globals.DbWorkflow_Context.ConnectionStringSQLite, Globals.DbWorkflow_Context.DatabaseType);
 
-            while (!_tokenWorker[number].IsCancellationRequested)
-            {
-                if (previousValue && !currentValue)
-                {
-                    List<ImageHelper> imagesHelper = new List<ImageHelper>();
-                    List<Bitmap> imagesHelperBitmap = new List<Bitmap>();
+            //while (!_tokenWorker[number].IsCancellationRequested)
+            //{
+            //    if (previousValue && !currentValue)
+            //    {
+            //        List<ImageHelper> imagesHelper = new List<ImageHelper>();
+            //        List<Bitmap> imagesHelperBitmap = new List<Bitmap>();
 
-                    for (int j = 0; j < _svsVistek.Cameras[number].ImagesRgbCount; j++)
-                    {
-                        imagesHelper.Add(new ImageHelper() { FileId = Guid.NewGuid(), FileRawIds = null, ExposureTime = _svsVistek.Cameras[number].ImagesRgbExposureTime[j], DateDigitized = DateTime.UtcNow, CameraDeviceId = _svsVistek.Cameras[number].IdDb });
-                        imagesHelperBitmap.Add(_svsVistek.Cameras[number].ImagesRgb[j]);
-                    }
+            //        for (int j = 0; j < _svsVistek.Cameras[number].ImagesRgbCount; j++)
+            //        {
+            //            imagesHelper.Add(new ImageHelper() { FileId = Guid.NewGuid(), FileRawIds = null, ExposureTime = _svsVistek.Cameras[number].ImagesRgbExposureTime[j], DateDigitized = DateTime.UtcNow, CameraDeviceId = _svsVistek.Cameras[number].IdDb });
+            //            imagesHelperBitmap.Add(_svsVistek.Cameras[number].ImagesRgb[j]);
+            //        }
 
-                    #region Run workflow
-                    workflow.RunWithCapturedImages(imagesHelper, imagesHelperBitmap, "C:/tmp", dataSubdirectorySelected.Id, "Meldezettel TLA / UIBK", null);
-                    #endregion
+            //        #region Run workflow
+            //        workflow.RunWithCapturedImages(imagesHelper, imagesHelperBitmap, "C:/tmp", dataSubdirectorySelected.Id, "Meldezettel TLA / UIBK", null);
+            //        #endregion
 
-                    // Write values to GUI
-                    if (number == 0)
-                    {
-                        _imageRight = workflow.Image_Data.Image.ToBitmap().ToImage<Bgr, byte>();
+            //        // Write values to GUI
+            //        if (number == 0)
+            //        {
+            //            _imageRight = workflow.Image_Data.Image.ToBitmap().ToImage<Bgr, byte>();
 
-                        this.Dispatcher.Invoke((Action)(() =>
-                        {
-                            imgImage_Copy.Source = ToBitmapSource(_imageRight);
-                        }));
-                    }
+            //            this.Dispatcher.Invoke((Action)(() =>
+            //            {
+            //                imgImage_Copy.Source = ToBitmapSource(_imageRight);
+            //            }));
+            //        }
 
-                    if (number == 1)
-                    {
-                        _imageLeft = workflow.Image_Data.Image.ToBitmap().ToImage<Bgr, byte>();
+            //        if (number == 1)
+            //        {
+            //            _imageLeft = workflow.Image_Data.Image.ToBitmap().ToImage<Bgr, byte>();
 
-                        this.Dispatcher.Invoke((Action)(() =>
-                        {
-                            imgImage_Copy1.Source = ToBitmapSource(_imageLeft);
-                        }));
-                    }
+            //            this.Dispatcher.Invoke((Action)(() =>
+            //            {
+            //                imgImage_Copy1.Source = ToBitmapSource(_imageLeft);
+            //            }));
+            //        }
 
-                    imagesHelper.RemoveAll(x => true);
-                    imagesHelperBitmap.RemoveAll(x => true);
+            //        imagesHelper.RemoveAll(x => true);
+            //        imagesHelperBitmap.RemoveAll(x => true);
 
-                    break;
-                }
+            //        break;
+            //    }
 
-                if (runs >= 100)
-                {
-                    Serilog.Log.Error($"Waiting too long for image from camera {_svsVistek.Cameras[number].GetDeviceSerialNumber}...");
-                    break;
-                }
+            //    if (runs >= 100)
+            //    {
+            //        Serilog.Log.Error($"Waiting too long for image from camera {_svsVistek.Cameras[number].GetDeviceSerialNumber}...");
+            //        break;
+            //    }
 
-                await Task.Delay(25);
+            //    await Task.Delay(25);
 
-                runs++;
+            //    runs++;
 
-                previousValue = currentValue;
-                currentValue = _svsVistek.Cameras[number].IsGrabbingImage;
-            }
+            //    previousValue = currentValue;
+            //    currentValue = _svsVistek.Cameras[number].IsGrabbingImage;
+            //}
         }
 
 

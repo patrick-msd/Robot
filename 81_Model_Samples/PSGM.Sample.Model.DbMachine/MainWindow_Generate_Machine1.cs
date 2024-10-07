@@ -21,7 +21,7 @@ namespace PSGM.Sample.Model.DbMachine
 
             DbMachine_Machine machine = new DbMachine_Machine()
             {
-                Id = _machineId,
+                Id = _computerId,
 
                 Name = "Heja",
                 Description = "Sheet scanning robot ...",
@@ -68,8 +68,25 @@ namespace PSGM.Sample.Model.DbMachine
                 Computer = new List<DbMachine_Computer>() { computer },
                 //ComputerId = null,
 
-                Project = projects,
-                //ProjectId = null
+                ProjectLinks = new List<DbMachine_Machine_Project_Link>()
+                {
+                    new DbMachine_Machine_Project_Link()
+                    {
+                        Id = Guid.NewGuid(),
+
+                        Machine = null,
+                        MachineId = null,
+
+                        //CreatedByUserIdExtAutoFill = Guid.Empty,
+                        //CreatedDateTimeAutoFill = DateTime.Now,
+                        //ModifiedByUserIdExtAutoFill = Guid.Empty,
+                        //ModifiedDateTimeAutoFill = DateTime.Now,
+
+                        // FK
+                        Project = projects,
+                        //ProjectId = null,
+                    }
+                }
             };
 
             return machine;

@@ -19,7 +19,6 @@
     <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.Robot.Doosan\PSGM.Lib.Robot.Doosan.csproj" />
     <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.Vision.Intel.RealSense\PSGM.Lib.Vision.Intel.RealSense.csproj" />
     <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.Vision.SVSVistek\PSGM.Lib.Vision.SVSVistek.csproj" />
-    <ProjectReference Include="..\..\50_Helper\PSGM.Helper.Workflow\PSGM.Helper.Workflow.csproj" />
     <ProjectReference Include="..\..\50_Helper\PSGM.Helper\PSGM.Helper.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DbBackend\PSGM.Model.DbBackend.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DBJob\PSGM.Model.DbJob.csproj" />
@@ -36,6 +35,7 @@
     <PackageReference Include="Emgu.CV.runtime.windows" Version="4.9.0.5494" />
     <PackageReference Include="Emgu.CV.UI" Version="4.9.0.5494" />
     <PackageReference Include="Minio" Version="6.0.3" />
+    <PackageReference Include="OpenCvSharp4.Extensions" Version="4.10.0.20240616" />
     <PackageReference Include="SendGrid" Version="9.29.3" />
     <PackageReference Include="Serilog" Version="4.0.2" />
     <PackageReference Include="Serilog.Enrichers.Thread" Version="4.0.0" />

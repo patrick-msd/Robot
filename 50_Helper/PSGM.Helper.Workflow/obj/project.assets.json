@@ -1587,25 +1587,6 @@
         "runtime": {
           "bin/placeholder/PSGM.Model.DbUser.dll": {}
         }
-      },
-      "PSGM.Model.DbWorkflow/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "8.0.8",
-          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.8",
-          "Microsoft.EntityFrameworkCore.Sqlite": "8.0.8",
-          "Microsoft.Extensions.Configuration": "8.0.0",
-          "Newtonsoft.Json": "13.0.3",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.4",
-          "PSGM.Helper": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/PSGM.Model.DbWorkflow.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/PSGM.Model.DbWorkflow.dll": {}
-        }
       }
     }
   },
@@ -3996,11 +3977,6 @@
       "type": "project",
       "path": "../../80_Model/PSGM.Model.DbUser/PSGM.Model.DbUser.csproj",
       "msbuildProject": "../../80_Model/PSGM.Model.DbUser/PSGM.Model.DbUser.csproj"
-    },
-    "PSGM.Model.DbWorkflow/1.0.0": {
-      "type": "project",
-      "path": "../../80_Model/PSGM.Model.DbWorkflow/PSGM.Model.DbWorkflow.csproj",
-      "msbuildProject": "../../80_Model/PSGM.Model.DbWorkflow/PSGM.Model.DbWorkflow.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4018,7 +3994,6 @@
       "PSGM.Model.DbSoftware >= 1.0.0",
       "PSGM.Model.DbStorage >= 1.0.0",
       "PSGM.Model.DbUser >= 1.0.0",
-      "PSGM.Model.DbWorkflow >= 1.0.0",
       "Serilog >= 4.0.1",
       "System.Drawing.Common >= 8.0.8",
       "System.Management >= 8.0.0"
@@ -4083,9 +4058,6 @@
             },
             "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbUser\\PSGM.Model.DbUser.csproj": {
               "projectPath": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbUser\\PSGM.Model.DbUser.csproj"
-            },
-            "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbWorkflow\\PSGM.Model.DbWorkflow.csproj": {
-              "projectPath": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbWorkflow\\PSGM.Model.DbWorkflow.csproj"
             }
           }
         }

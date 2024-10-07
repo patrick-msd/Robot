@@ -60,6 +60,16 @@ namespace PSGM.Model.DbBackend
         [StringLength(8192, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string ServerPassword { get; set; } = string.Empty;
 
+        [Column("ServerPublicKey")]
+        [Display(Name = "ServerPublicKey")]
+        [StringLength(32768, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string ServerPublicKey { get; set; } = string.Empty;
+
+        [Column("ServerPrivateKey")]
+        [Display(Name = "ServerPrivateKey")]
+        [StringLength(32768, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
+        public string ServerPrivateKey { get; set; } = string.Empty;
+
         [Column("ReadOnlyMode")]
         [Display(Name = "ReadOnlyMode")]
         public bool ReadOnlyMode { get; set; } = false;
@@ -127,13 +137,13 @@ namespace PSGM.Model.DbBackend
             {
                 if (withBranch)
                 {
-                    string host = $"db-{Enum.GetName(typeof(BackendType), this.Backend.BackendType).ToLower()}-{this.Id.ToString()}.branch{this.BranchNumber.ToString("D3")}.{this.Domain}:{this.ServerPort.ToString()}";
+                    string host = $"{Enum.GetName(typeof(ServerType), this.ServerType).ToLower()}-{this.Id.ToString()}.branch{this.BranchNumber.ToString("D3")}.{this.Domain}:{this.ServerPort.ToString()}";
 
                     return $"{host}";
                 }
                 else
                 {
-                    string host = $"{Enum.GetName(typeof(BackendType), this.Backend.BackendType).ToLower()}-{this.Id.ToString()}.{this.Domain}:{this.ServerPort.ToString()}";
+                    string host = $"{Enum.GetName(typeof(ServerType), this.ServerType).ToLower()}-{this.Id.ToString()}.{this.Domain}:{this.ServerPort.ToString()}";
 
                     return $"{host}";
                 }

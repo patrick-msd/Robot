@@ -135,8 +135,8 @@ namespace PSGM.Sample.Model.DbStorage
                     _dbMain_Context.DatabaseConnectionString = databaseMain.GetDatabaseConnection(true);
                     _dbMain_Context.DatabaseType = databaseMain.DatabaseType;
 
-                    _dbMain_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
-                    _dbMain_Context.DatabaseSessionParameter_MachineId = _machineId;
+                    _dbMain_Context.DatabaseSessionParameter_ApplicationId = _softwareId;
+                    _dbMain_Context.DatabaseSessionParameter_ComputerId = _machineId;
                     _dbMain_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
 
                     _dbMain_Context.Database.OpenConnection();
@@ -210,8 +210,8 @@ namespace PSGM.Sample.Model.DbStorage
                 _dbMain_Context.DatabaseConnectionString = databaseMain.GetDatabaseConnection(true);
                 _dbMain_Context.DatabaseType = databaseMain.DatabaseType;
 
-                _dbMain_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
-                _dbMain_Context.DatabaseSessionParameter_MachineId = _machineId;
+                _dbMain_Context.DatabaseSessionParameter_ApplicationId = _softwareId;
+                _dbMain_Context.DatabaseSessionParameter_ComputerId = _machineId;
                 _dbMain_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
 
                 _dbMain_Context.Database.EnsureDeleted();

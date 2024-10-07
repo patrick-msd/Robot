@@ -136,8 +136,8 @@ namespace PSGM.Sample.Model.DbStorage
                     _dbStorage_Context.DatabaseConnectionString = item.DatabaseClusters.FirstOrDefault().GetDatabaseConnection(true);
                     _dbStorage_Context.DatabaseType = item.DatabaseClusters.FirstOrDefault().DatabaseType;
 
-                    _dbStorage_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
-                    _dbStorage_Context.DatabaseSessionParameter_MachineId = _machineId;
+                    _dbStorage_Context.DatabaseSessionParameter_ApplicationId = _softwareId;
+                    _dbStorage_Context.DatabaseSessionParameter_ComputerId = _machineId;
                     _dbStorage_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
 
                     if (_dbStorage_Context.Database.EnsureCreated())
@@ -196,8 +196,8 @@ namespace PSGM.Sample.Model.DbStorage
                     _dbStorage_Context.DatabaseConnectionString = item.DatabaseClusters.FirstOrDefault().GetDatabaseConnection(true);
                     _dbStorage_Context.DatabaseType = item.DatabaseClusters.FirstOrDefault().DatabaseType;
 
-                    _dbStorage_Context.DatabaseSessionParameter_SoftwareId = _softwareId;
-                    _dbStorage_Context.DatabaseSessionParameter_MachineId = _machineId;
+                    _dbStorage_Context.DatabaseSessionParameter_ApplicationId = _softwareId;
+                    _dbStorage_Context.DatabaseSessionParameter_ComputerId = _machineId;
                     _dbStorage_Context.DatabaseSessionParameter_UserId = _patrickSchoeneggerId;
 
                     _dbStorage_Context.Database.EnsureDeleted();

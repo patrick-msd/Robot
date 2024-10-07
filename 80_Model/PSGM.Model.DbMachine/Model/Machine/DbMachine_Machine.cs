@@ -77,16 +77,17 @@ namespace PSGM.Model.DbMachine
         public virtual ICollection<DbMachine_Computer>? Computer { get; set; }
 
         [InverseProperty("Machine")]
+        public virtual ICollection<DbMachine_DeviceGroup>? DeviceGroups { get; set; }
+
+        [InverseProperty("Machine")]
         public virtual ICollection<DbMachine_Machine_Location_Link>? LocationLinks { get; set; }
 
         [InverseProperty("Machine")]
-        public virtual ICollection<DbMachine_DeviceGroup>? DeviceGroups { get; set; }
+        public virtual ICollection<DbMachine_Machine_Project_Link>? ProjectLinks { get; set; }
+        
         #endregion
 
         #region Backlinks (ForeignKeys)
-        [ForeignKey("Project")]
-        public Guid? ProjectId { get; set; } = Guid.Empty;
-        public virtual DbMachine_Project? Project { get; set; }
         #endregion
 
         #region Not Mapped

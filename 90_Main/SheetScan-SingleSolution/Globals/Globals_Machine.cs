@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace RC.Scan_SingleSolution
+﻿namespace RC.Scan_SingleSolution
 {
     public partial class Globals_Machine
     {

@@ -40,7 +40,7 @@ namespace PSGM.Model.DbMachine
 
         #region Links
         [InverseProperty("Project")]
-        public virtual ICollection<DbMachine_Machine>? Machines { get; set; }
+        public virtual ICollection<DbMachine_Machine_Project_Link>? MachineLinks { get; set; }
         #endregion
 
         #region Backlinks (ForeignKeys)

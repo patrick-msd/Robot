@@ -16,11 +16,11 @@ namespace PSGM.Model.DbMachine
         private Guid _databaseSessionParameter_UserId = Guid.Empty;
         public Guid DatabaseSessionParameter_UserId { get { return _databaseSessionParameter_UserId; } set { _databaseSessionParameter_UserId = value; } }
 
-        private Guid _databaseSessionParameter_MachineId = Guid.Empty;
-        public Guid DatabaseSessionParameter_MachineId { get { return _databaseSessionParameter_MachineId; } set { _databaseSessionParameter_MachineId = value; } }
+        private Guid _databaseSessionParameter_ComputerId = Guid.Empty;
+        public Guid DatabaseSessionParameter_ComputerId { get { return _databaseSessionParameter_ComputerId; } set { _databaseSessionParameter_ComputerId = value; } }
 
-        private Guid _databaseSessionParameter_SoftwareId = Guid.Empty;
-        public Guid DatabaseSessionParameter_SoftwareId { get { return _databaseSessionParameter_SoftwareId; } set { _databaseSessionParameter_SoftwareId = value; } }
+        private Guid _databaseSessionParameter_ApplicationId = Guid.Empty;
+        public Guid DatabaseSessionParameter_ApplicationId { get { return _databaseSessionParameter_ApplicationId; } set { _databaseSessionParameter_ApplicationId = value; } }
         #endregion
 
         #region Context
@@ -43,6 +43,11 @@ namespace PSGM.Model.DbMachine
         #region Address
         public DbSet<DbMachine_Address> Addresses { get; set; }
         public DbSet<DbMachine_Address_AuditLog> Address_AuditLogs { get; set; }
+        #endregion
+
+        #region Computer
+        public DbSet<DbMachine_Computer> Computers { get; set; }
+        public DbSet<DbMachine_Computer_AuditLog> Computer_AuditLogs { get; set; }
         #endregion
 
         #region Device
@@ -70,6 +75,7 @@ namespace PSGM.Model.DbMachine
         #region Location
         public DbSet<DbMachine_Location> Locations { get; set; }
         public DbSet<DbMachine_Location_Address_Link> Location_Address_Links { get; set; }
+
         public DbSet<DbMachine_Location_Address_Link_AuditLog> Location_Address_Link_AuditLogs { get; set; }
         public DbSet<DbMachine_Location_AuditLog> Location_AuditLogs { get; set; }
         #endregion
@@ -77,8 +83,12 @@ namespace PSGM.Model.DbMachine
         #region Machine
         public DbSet<DbMachine_Machine> Machines { get; set; }
         public DbSet<DbMachine_Machine_AuditLog> Machine_AuditLogs { get; set; }
+
         public DbSet<DbMachine_Machine_Location_Link> Machine_Location_Links { get; set; }
         public DbSet<DbMachine_Machine_Location_Link_AuditLog> Machine_Location_Link_AuditLogs { get; set; }
+
+        public DbSet<DbMachine_Machine_Project_Link> Machine_Project_Links { get; set; }
+        public DbSet<DbMachine_Machine_Project_Link_AuditLog> Machine_Project_Link_AuditLogs { get; set; }
         #endregion
 
         #region Project
@@ -183,12 +193,44 @@ namespace PSGM.Model.DbMachine
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
                     case DbMachine_Address_AuditLog address_AuditLog:
+                        break;
+                    #endregion
+
+                    #region Computer
+                    case DbMachine_Computer computer:
+                        #region Automatically added: Audit details for faster file audit information
+                        if (entry.State == EntityState.Added)
+                        {
+                            computer.CreatedDateTimeAutoFill = DateTime.UtcNow;
+                            computer.CreatedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        else
+                        {
+                            computer.ModifiedDateTimeAutoFill = DateTime.UtcNow;
+                            computer.ModifiedByUserId_ExtAutoFill = DatabaseSessionParameter_UserId;
+                        }
+                        #endregion
+
+                        Computer_AuditLogs.Add(new DbMachine_Computer_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = computer.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMachine_Computer_AuditLog computer_AuditLog:
                         break;
                     #endregion
 
@@ -215,7 +257,7 @@ namespace PSGM.Model.DbMachine
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -245,7 +287,7 @@ namespace PSGM.Model.DbMachine
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -277,7 +319,7 @@ namespace PSGM.Model.DbMachine
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -307,7 +349,7 @@ namespace PSGM.Model.DbMachine
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -337,7 +379,7 @@ namespace PSGM.Model.DbMachine
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -367,7 +409,7 @@ namespace PSGM.Model.DbMachine
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -399,7 +441,7 @@ namespace PSGM.Model.DbMachine
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -416,7 +458,7 @@ namespace PSGM.Model.DbMachine
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -448,7 +490,7 @@ namespace PSGM.Model.DbMachine
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
@@ -465,12 +507,29 @@ namespace PSGM.Model.DbMachine
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;
 
                     case DbMachine_Machine_Location_Link_AuditLog machine_Location_Link_AuditLog:
+                        break;
+
+                    case DbMachine_Machine_Project_Link machine_Project_Link:
+                        Machine_Project_Link_AuditLogs.Add(new DbMachine_Machine_Project_Link_AuditLog
+                        {
+                            Id = new Guid(),
+
+                            SourceId = machine_Project_Link.Id,
+                            Action = entry.State.ToString(),
+                            DateTime = DateTime.UtcNow,
+                            UserId_Ext = DatabaseSessionParameter_UserId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
+                            Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
+                        });
+                        break;
+
+                    case DbMachine_Machine_Project_Link_AuditLog machine_Project_Link_AuditLog:
                         break;
                     #endregion
 
@@ -497,7 +556,7 @@ namespace PSGM.Model.DbMachine
                             Action = entry.State.ToString(),
                             DateTime = DateTime.UtcNow,
                             UserId_Ext = DatabaseSessionParameter_UserId,
-                            SoftwareId_Ext = DatabaseSessionParameter_SoftwareId,
+                            SoftwareId_Ext = DatabaseSessionParameter_ApplicationId,
                             Changes = JsonConvert.SerializeObject(entry.CurrentValues.ToObject())
                         });
                         break;

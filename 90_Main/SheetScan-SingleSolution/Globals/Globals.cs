@@ -24,13 +24,14 @@ namespace RC.Scan_SingleSolution
 
         public static Guid ApplicationId { get; set; } = Guid.Empty;
         public static Guid ComputerId { get; set; } = Guid.Empty;
+        public static Guid MachineId { get; set; } = Guid.Empty;
 
         public static Guid OrganizationId { get; set; } = Guid.Empty;
         public static Guid UserId { get; set; } = Guid.Empty;
 
-        public static Guid ProjectId { get; set; } = Guid.Empty;   
+        public static Guid ProjectId { get; set; } = Guid.Empty;
         public static Guid DirectoryId { get; set; } = Guid.Empty;
-        public static Guid UnitId { get; set; } = Guid.Empty; 
+        public static Guid UnitId { get; set; } = Guid.Empty;
 
         public static ConfigFile? ConfigFile { get; set; } = null;
 

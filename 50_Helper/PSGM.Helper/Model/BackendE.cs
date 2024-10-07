@@ -23,6 +23,8 @@
 
         Logging = 5000,
 
+        Authentication = 5100,
+
 
         //User = 90000
     }
