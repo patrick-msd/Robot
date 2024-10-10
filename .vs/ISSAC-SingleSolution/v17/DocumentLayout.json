@@ -3,36 +3,8 @@
   "WorkspaceRootPath": "C:\\Git\\MSD\\Robot\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|c:\\git\\msd\\robot\\90_main\\sheetscan-singlesolution\\uisplashscreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|solutionrelative:90_main\\sheetscan-singlesolution\\uisplashscreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|c:\\git\\msd\\robot\\90_main\\sheetscan-singlesolution\\uimainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|solutionrelative:90_main\\sheetscan-singlesolution\\uimainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|c:\\git\\msd\\robot\\90_main\\sheetscan-singlesolution\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|solutionrelative:90_main\\sheetscan-singlesolution\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|c:\\git\\msd\\robot\\90_main\\sheetscan-singlesolution\\globals\\globals_machine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|solutionrelative:90_main\\sheetscan-singlesolution\\globals\\globals_machine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|c:\\git\\msd\\robot\\90_main\\sheetscan-singlesolution\\globals\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C5D2DFC3-A898-4190-9FE9-64FB589DCCCB}|90_Main\\SheetScan-SingleSolution\\RC.SheetScan-SingleSolution.csproj|solutionrelative:90_main\\sheetscan-singlesolution\\globals\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F7B4BA89-3324-4158-AE2E-1611DA36F16B}|81_Model_Samples\\PSGM.Sample.Model.DbMachine\\PSGM.Sample.Model.DbMachine.csproj|c:\\git\\msd\\robot\\81_model_samples\\psgm.sample.model.dbmachine\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F7B4BA89-3324-4158-AE2E-1611DA36F16B}|81_Model_Samples\\PSGM.Sample.Model.DbMachine\\PSGM.Sample.Model.DbMachine.csproj|solutionrelative:81_model_samples\\psgm.sample.model.dbmachine\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F7B4BA89-3324-4158-AE2E-1611DA36F16B}|81_Model_Samples\\PSGM.Sample.Model.DbMachine\\PSGM.Sample.Model.DbMachine.csproj|c:\\git\\msd\\robot\\81_model_samples\\psgm.sample.model.dbmachine\\mainwindow_generate_machine1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F7B4BA89-3324-4158-AE2E-1611DA36F16B}|81_Model_Samples\\PSGM.Sample.Model.DbMachine\\PSGM.Sample.Model.DbMachine.csproj|solutionrelative:81_model_samples\\psgm.sample.model.dbmachine\\mainwindow_generate_machine1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F7B4BA89-3324-4158-AE2E-1611DA36F16B}|81_Model_Samples\\PSGM.Sample.Model.DbMachine\\PSGM.Sample.Model.DbMachine.csproj|c:\\git\\msd\\robot\\81_model_samples\\psgm.sample.model.dbmachine\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F7B4BA89-3324-4158-AE2E-1611DA36F16B}|81_Model_Samples\\PSGM.Sample.Model.DbMachine\\PSGM.Sample.Model.DbMachine.csproj|solutionrelative:81_model_samples\\psgm.sample.model.dbmachine\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{70FABE30-09D9-4ADB-A015-16C840372F1A}|90_Main\\SheetScan-SingleSolution_OLD\\RC.SheetScan-SingleSolution_OLD.csproj|c:\\git\\msd\\robot\\90_main\\sheetscan-singlesolution_old\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70FABE30-09D9-4ADB-A015-16C840372F1A}|90_Main\\SheetScan-SingleSolution_OLD\\RC.SheetScan-SingleSolution_OLD.csproj|solutionrelative:90_main\\sheetscan-singlesolution_old\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,21 +14,8 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UISplashScreen.xaml.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\UISplashScreen.xaml.cs",
-              "RelativeDocumentMoniker": "90_Main\\SheetScan-SingleSolution\\UISplashScreen.xaml.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\UISplashScreen.xaml.cs",
-              "RelativeToolTip": "90_Main\\SheetScan-SingleSolution\\UISplashScreen.xaml.cs",
-              "ViewState": "AgIAADUCAAAAAAAAAAAUwF4CAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T17:26:13.979Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
@@ -80,95 +39,39 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
-            },
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "8699f168-7bf2-4303-8961-9d4289f4a751",
+        "Display": 3,
+        "X": 547,
+        "Y": 153,
+        "Width": 1378,
+        "Height": 781,
+        "WindowState": 2
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UIMainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\UIMainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "90_Main\\SheetScan-SingleSolution\\UIMainWindow.xaml.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\UIMainWindow.xaml.cs",
-              "RelativeToolTip": "90_Main\\SheetScan-SingleSolution\\UIMainWindow.xaml.cs",
-              "ViewState": "AgIAAL8AAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T17:26:07.145Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "App.xaml.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\App.xaml.cs",
-              "RelativeDocumentMoniker": "90_Main\\SheetScan-SingleSolution\\App.xaml.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\App.xaml.cs",
-              "RelativeToolTip": "90_Main\\SheetScan-SingleSolution\\App.xaml.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAgwD4AAABCAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution_OLD\\App.xaml.cs",
+              "RelativeDocumentMoniker": "90_Main\\SheetScan-SingleSolution_OLD\\App.xaml.cs",
+              "ToolTip": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution_OLD\\App.xaml.cs",
+              "RelativeToolTip": "90_Main\\SheetScan-SingleSolution_OLD\\App.xaml.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-30T16:02:45.045Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Globals_Machine.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\Globals\\Globals_Machine.cs",
-              "RelativeDocumentMoniker": "90_Main\\SheetScan-SingleSolution\\Globals\\Globals_Machine.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\Globals\\Globals_Machine.cs",
-              "RelativeToolTip": "90_Main\\SheetScan-SingleSolution\\Globals\\Globals_Machine.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-30T16:15:14.919Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Globals.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\Globals\\Globals.cs",
-              "RelativeDocumentMoniker": "90_Main\\SheetScan-SingleSolution\\Globals\\Globals.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\90_Main\\SheetScan-SingleSolution\\Globals\\Globals.cs",
-              "RelativeToolTip": "90_Main\\SheetScan-SingleSolution\\Globals\\Globals.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAUwCoAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-30T16:06:29.105Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow.xaml",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow.xaml",
-              "RelativeToolTip": "81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-06T18:17:01.294Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow.xaml.cs",
-              "RelativeToolTip": "81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAK8AAAAAzczMzMwwwMEAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-06T18:17:04.456Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MainWindow_Generate_Machine1.cs",
-              "DocumentMoniker": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow_Generate_Machine1.cs",
-              "RelativeDocumentMoniker": "81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow_Generate_Machine1.cs",
-              "ToolTip": "C:\\Git\\MSD\\Robot\\81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow_Generate_Machine1.cs",
-              "RelativeToolTip": "81_Model_Samples\\PSGM.Sample.Model.DbMachine\\MainWindow_Generate_Machine1.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAowFgAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-06T18:17:32.429Z",
+              "WhenOpened": "2024-10-10T10:36:16.146Z",
               "EditorCaption": ""
             }
           ]

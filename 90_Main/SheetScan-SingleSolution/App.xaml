@@ -1,8 +1,9 @@
-﻿<Application x:Class="RC.Scan_SingleSolution.App"
+﻿<Application x:Class="SheetScan_SingleSolution.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:RC.Scan_SingleSolution">
+             xmlns:local="clr-namespace:SheetScan_SingleSolution"
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
-
+         
     </Application.Resources>
 </Application>

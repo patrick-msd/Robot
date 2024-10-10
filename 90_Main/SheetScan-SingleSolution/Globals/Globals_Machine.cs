@@ -1,4 +1,4 @@
-﻿namespace RC.Scan_SingleSolution
+﻿namespace RC.SheetScan_SingleSolution
 {
     public partial class Globals_Machine
     {

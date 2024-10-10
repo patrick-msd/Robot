@@ -10,7 +10,7 @@ using Serilog.Sinks.Grafana.Loki;
 using System;
 using System.Collections.Generic;
 
-namespace RC.Scan_SingleSolution
+namespace RC.SheetScan_SingleSolution
 {
     public static class Globals
     {
@@ -44,7 +44,12 @@ namespace RC.Scan_SingleSolution
         public static DbStorage_Context? DbStorageDataRaw_Context { get; set; } = null;
         public static DbUser_Context? DbUser_Context { get; set; } = null;
 
-        public static Globals_Storage? Storage { get; set; } = null;
+        public static S3_Client? StorageMain { get; set; } = null;
+        public static S3_Client? StorageDataRaw { get; set; } = null;
+        public static S3_Client? StorageDataRawThumbnail { get; set; } = null;
+        public static S3_Client? StorageData { get; set; } = null;
+        public static S3_Client? StorageDataThumbnail { get; set; } = null;
+        public static S3_Client? StorageTranscription { get; set; } = null;
 
         public static Globals_Machine? Machine { get; set; } = null;
     }

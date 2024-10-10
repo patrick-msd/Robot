@@ -4,3 +4,9 @@ C:\Git\MSD\Robot\50_Helper\PSGM.Workflow\obj\Debug\net8.0\PSGM.Helper.Workflow.A
 C:\Git\MSD\Robot\50_Helper\PSGM.Workflow\obj\Debug\net8.0\PSGM.Helper.Workflow.AssemblyInfo.cs
 C:\Git\MSD\Robot\50_Helper\PSGM.Workflow\obj\Debug\net8.0\PSGM.Helper.Workflow.csproj.CoreCompileInputs.cache
 C:\Git\MSD\Robot\50_Helper\PSGM.Workflow\obj\Debug\net8.0\PSGM.Helper.Workflow.sourcelink.json
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\obj\Debug\net8.0\PSGM.Helper.Workflow.csproj.AssemblyReference.cache
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\obj\Debug\net8.0\PSGM.Helper.Workflow.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\obj\Debug\net8.0\PSGM.Helper.Workflow.AssemblyInfoInputs.cache
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\obj\Debug\net8.0\PSGM.Helper.Workflow.AssemblyInfo.cs
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\obj\Debug\net8.0\PSGM.Helper.Workflow.csproj.CoreCompileInputs.cache
+C:\Git\MSD\Robot\50_Helper\PSGM.Helper.Workflow\obj\Debug\net8.0\PSGM.Helper.Workflow.sourcelink.json

@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
+    <RootNamespace>SheetScan_SingleSolution</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.Control.RobotElectronics\PSGM.Lib.Control.RobotElectronics.csproj" />
+    <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.Motion.Nanotec\PSGM.Lib.Motion.Nanotec.csproj" />
+    <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.PowerSupply.Nextys\PSGM.Lib.PowerSupply.Nextys.csproj" />
+    <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.Robot.Doosan\PSGM.Lib.Robot.Doosan.csproj" />
+    <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.Vision.Intel.RealSense\PSGM.Lib.Vision.Intel.RealSense.csproj" />
+    <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.Vision.SVSVistek\PSGM.Lib.Vision.SVSVistek.csproj" />
+    <ProjectReference Include="..\..\50_Helper\PSGM.Helper\PSGM.Helper.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbBackend\PSGM.Model.DbBackend.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbJob\PSGM.Model.DbJob.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbMachine\PSGM.Model.DbMachine.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbMain\PSGM.Model.DbMain.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbSoftware\PSGM.Model.DbSoftware.csproj" />
+    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbStorage\PSGM.Model.DbStorage.csproj" />
+  </ItemGroup>
+
+</Project>
