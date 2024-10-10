@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Threading;
 
-namespace RC.Vision.Intel.RealSense
+namespace PSGM.Vision.Intel.RealSense
 {
     public partial class RealSense
     {

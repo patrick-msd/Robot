@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Converters;
 using System.Globalization;
 
-namespace RC.Lib.Vision.SVSVistek
+namespace PSGM.Lib.Vision.SVSVistek
 {
     public partial class SVSVistek_Camera_Config
     {

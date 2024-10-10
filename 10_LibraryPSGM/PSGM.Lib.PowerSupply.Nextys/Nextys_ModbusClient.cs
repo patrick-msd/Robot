@@ -1,6 +1,6 @@
 ﻿using System.IO.Ports;
 
-namespace RC.Lib.PowerSupply
+namespace PSGM.Lib.PowerSupply
 {
     public partial class NextysModbusClient
     {

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="90_Datasheets\" />
+    <Compile Remove="90_Datasheets\**" />
+    <EmbeddedResource Remove="90_Datasheets\**" />
+    <None Remove="90_Datasheets\**" />
   </ItemGroup>
 
   <ItemGroup>

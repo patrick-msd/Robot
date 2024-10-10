@@ -1,6 +1,6 @@
 ﻿using Serilog;
 
-namespace RC.Lib.Control.RobotElectronics
+namespace PSGM.Lib.Control.RobotElectronics
 {
     public partial class RobotElectronics_Container
     {

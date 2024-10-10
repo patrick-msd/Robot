@@ -1,4 +1,4 @@
-﻿namespace RC.Lib.Motion
+﻿namespace PSGM.Lib.Motion
 {
     public partial class Nanotec_MotionController
     {

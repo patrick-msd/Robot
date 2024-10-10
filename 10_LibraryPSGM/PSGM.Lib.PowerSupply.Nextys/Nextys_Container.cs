@@ -1,6 +1,6 @@
 ﻿using Serilog;
 
-namespace RC.Lib.PowerSupply
+namespace PSGM.Lib.PowerSupply
 {
     public partial class Nextys_Container
     {

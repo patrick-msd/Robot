@@ -1,4 +1,4 @@
-﻿using RC.Lib.PowerSupply;
+﻿using PSGM.Lib.PowerSupply;
 
 namespace PSGM.SingleSolution.SheetScan
 {

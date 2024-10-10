@@ -1,6 +1,6 @@
-﻿using RCRobotDoosanControl;
+﻿using PSGMRobotDoosanControl;
 
-namespace RC.Lib.Control.Doosan
+namespace PSGM.Lib.Control.Doosan
 {
     public partial class Doosan_Controller
     {
@@ -10,8 +10,8 @@ namespace RC.Lib.Control.Doosan
         public Guid? IdDb { get { return _IdDb; } set { _IdDb = value; } }
 
         // Robot
-        private RCRobotDoosanControl.Doosan _robot;
-        public RCRobotDoosanControl.Doosan Robot { get { return _robot; } set { _robot = value; } }
+        private PSGMRobotDoosanControl.Doosan _robot;
+        public PSGMRobotDoosanControl.Doosan Robot { get { return _robot; } set { _robot = value; } }
 
         // TCP
         private string _ipAddress = "172.0.0.1";
@@ -33,7 +33,7 @@ namespace RC.Lib.Control.Doosan
         #region Instance
         public Doosan_Controller()
         {
-            _robot = new RCRobotDoosanControl.Doosan();
+            _robot = new PSGMRobotDoosanControl.Doosan();
         }
 
         ~Doosan_Controller()

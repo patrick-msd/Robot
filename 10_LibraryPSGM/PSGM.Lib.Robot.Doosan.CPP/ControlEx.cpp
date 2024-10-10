@@ -9,7 +9,7 @@ using namespace std;
 using namespace System;
 using namespace System::IO;
 
-namespace RCRobotDoosanControl
+namespace PSGMRobotDoosanControl
 {
 	////////////////////////////////////////////////////////////////////////////
 	// Instance                                                               //

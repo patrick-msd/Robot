@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace RC.Lib.Vision.SVSVistek
+namespace PSGM.Lib.Vision.SVSVistek
 {
     public class NativeMethods
     {

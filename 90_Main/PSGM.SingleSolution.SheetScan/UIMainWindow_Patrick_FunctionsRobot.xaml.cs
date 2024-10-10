@@ -1,4 +1,4 @@
-﻿using RCRobotDoosanControl;
+﻿using PSGMRobotDoosanControl;
 using System.Windows;
 
 namespace PSGM.SingleSolution.SheetScan
@@ -25,12 +25,12 @@ namespace PSGM.SingleSolution.SheetScan
             if (value == VaccuumVentil.Open)
             {
                 Serilog.Log.Verbose("Open vaccuum ventil ...");
-                _robotElectronics.Controllers[1].SetRelay(RC.Lib.Control.RobotElectronics.Relay.Relay1, true, 0);
+                _robotElectronics.Controllers[1].SetRelay(PSGM.Lib.Control.RobotElectronics.Relay.Relay1, true, 0);
             }
             else
             {
                 Serilog.Log.Verbose("Close vaccuum ventil ...");
-                _robotElectronics.Controllers[1].SetRelay(RC.Lib.Control.RobotElectronics.Relay.Relay1, false, 0);
+                _robotElectronics.Controllers[1].SetRelay(PSGM.Lib.Control.RobotElectronics.Relay.Relay1, false, 0);
             }
         }
     }

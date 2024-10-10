@@ -1,31 +1,19 @@
 ﻿using Emgu.CV;
 using Emgu.CV.Structure;
 using Intel.RealSense;
-using Microsoft.EntityFrameworkCore;
-using OpenCvSharp.Extensions;
-using PSGM.Helper;
-//using PSGM.Helper.Workflow;
-using PSGM.Model.DbMain;
-using PSGM.Model.DbStorage;
-using RC.Lib.Control.Doosan;
-using RC.Lib.Control.RobotElectronics;
-using RC.Lib.Motion;
-using RC.Lib.PowerSupply;
-using RC.Lib.Vision.SVSVistek;
-using RC.Vision.Intel.RealSense;
-using RCRobotDoosanControl;
+using PSGM.Lib.Control.Doosan;
+using PSGM.Lib.Control.RobotElectronics;
+using PSGM.Lib.Motion;
+using PSGM.Lib.PowerSupply;
+using PSGM.Lib.Vision.SVSVistek;
+using PSGM.Vision.Intel.RealSense;
+using PSGMRobotDoosanControl;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using Serilog;
 using Serilog.Core;
 using Serilog.Sinks.RichTextBox.Themes;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -113,7 +101,7 @@ namespace PSGM.SingleSolution.SheetScan
         private int _sheetErrorSolved = 0;
         public int SheetErrorSolved { get { return _sheetErrorSolved1 + _sheetErrorSolved2 + _sheetErrorSolved3; } set { _sheetErrorSolved = value; } }
 
-        public bool _ignoreDoublepageSensor = false;
+        public bool _ignoreDoublePageSensor = false;
         public bool _preparedPage = false;
         public bool _replacedPage = false;
         public bool _scanFinish = false;
@@ -300,6 +288,7 @@ namespace PSGM.SingleSolution.SheetScan
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            #region Close hardware connections
             #region Close control devices
             Serilog.Log.Information("Cotnrol: Close devices and clean up variabels ...");
 
@@ -347,7 +336,7 @@ namespace PSGM.SingleSolution.SheetScan
             #endregion
 
             #region Close power supply devices
-            Serilog.Log.Information("Power Supply: Close devices and clean up variabels ...");
+            Serilog.Log.Information("Power Supply: Close devices and clean up variables ...");
 
             try
             {
@@ -371,14 +360,14 @@ namespace PSGM.SingleSolution.SheetScan
             #endregion
 
             #region Close robot devices
-            Serilog.Log.Information("Robot: Close devices and clean up variabels ...");
+            Serilog.Log.Information("Robot: Close devices and clean up variables ...");
 
             try
             {
-                foreach (Doosan_Controller cotnroller in _doosan.Controllers)
+                foreach (Doosan_Controller? controller in _doosan.Controllers)
                 {
-                    Serilog.Log.Information($"Close connection robot #{cotnroller.IdDb}");
-                    cotnroller.CloseConnection();
+                    Serilog.Log.Information($"Close connection robot #{controller.IdDb}");
+                    //controller.CloseConnection();
                 }
 
                 Thread.Sleep(250);
@@ -392,7 +381,7 @@ namespace PSGM.SingleSolution.SheetScan
             #endregion
 
             #region Close vison devices
-            Serilog.Log.Information("Vision: Close devices and clean up variabels ...");
+            Serilog.Log.Information("Vision: Close devices and clean up variables ...");
 
             try
             {
@@ -425,39 +414,7 @@ namespace PSGM.SingleSolution.SheetScan
                 Serilog.Log.Error(ex.Message);
             }
             #endregion
-
-            //#region Close hardware connections
-            //Serilog.Log.Information("################################# Close hardware connections #################################");
-
-            //#region Close Robot conecttions
-            //for (int i = 0; i < _robots.Controllers.Count; i++)
-            //{
-            //    Serilog.Log.Information("Close connection robot #{0}", i);
-            //    _robots.Controllers[i].Control.CloseConnection();
-            //    //_Robots.ControlDeviceConfigs[i].Control.Dispose();
-            //    //_robots.ControlDeviceConfigs[i] = null;
-            //}
-            //#endregion
-
-            //#region Close Motion controller connections
-            //if (_nanotec != null)
-            //{
-            //    foreach (Globals_Device.Globals_Device_Motion_Nanotec_MotionController item in _nanotec.MotionControllers)
-            //    {
-            //        _nanotec.MotionBusController.DeviceDisconnect(item.DeviceHandle);
-            //    }
-
-            //    if (_nanotec.MotionBusHardwareId != null)
-            //    {
-            //        _nanotec.MotionBusController.CloseBusHardware(_nanotec.MotionBusHardwareId);
-            //    }
-
-            //    _nanotec.MotionBusDeviceIds = null;
-            //    _nanotec.MotionBusHardwareId = null;
-            //    _nanotec.MotionBusController = null;
-            //}
-            //#endregion
-            //#endregion
+            #endregion
         }
 
         #region GUI functions ...

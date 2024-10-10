@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="90_Datasheets\" />
+    <Compile Remove="90_Datasheets\**" />
+    <EmbeddedResource Remove="90_Datasheets\**" />
+    <None Remove="90_Datasheets\**" />
   </ItemGroup>
 
   <ItemGroup>

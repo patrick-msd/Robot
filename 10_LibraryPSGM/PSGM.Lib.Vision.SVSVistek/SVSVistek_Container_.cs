@@ -1,4 +1,4 @@
-﻿namespace RC.Lib.Vision.SVSVistek   
+﻿namespace PSGM.Lib.Vision.SVSVistek   
 {
     //class SVSVistekContainer
     //{

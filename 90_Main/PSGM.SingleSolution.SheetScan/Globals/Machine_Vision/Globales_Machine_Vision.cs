@@ -1,4 +1,4 @@
-﻿using RC.Lib.Vision.SVSVistek;
+﻿using PSGM.Lib.Vision.SVSVistek;
 
 namespace PSGM.SingleSolution.SheetScan
 {

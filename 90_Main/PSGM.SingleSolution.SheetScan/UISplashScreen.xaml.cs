@@ -8,12 +8,12 @@ using PSGM.Model.DbMain;
 using PSGM.Model.DbSoftware;
 using PSGM.Model.DbStorage;
 using PSGM.Model.DbUser;
-using RC.Lib.Control.Doosan;
-using RC.Lib.Control.RobotElectronics;
-using RC.Lib.Motion;
-using RC.Lib.PowerSupply;
-using RC.Lib.Vision.SVSVistek;
-using RCRobotDoosanControl;
+using PSGM.Lib.Control.Doosan;
+using PSGM.Lib.Control.RobotElectronics;
+using PSGM.Lib.Motion;
+using PSGM.Lib.PowerSupply;
+using PSGM.Lib.Vision.SVSVistek;
+using PSGMRobotDoosanControl;
 using Serilog;
 using Serilog.Debugging;
 using Serilog.Sinks.Grafana.Loki;
@@ -22,6 +22,7 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Ports;
 using System.Windows;
+using PSGM.Lib.Storage;
 
 namespace PSGM.SingleSolution.SheetScan
 {
@@ -37,12 +38,11 @@ namespace PSGM.SingleSolution.SheetScan
         private int _statePercentageCount;
         private int _statePercentageValue;
 
+        // Threads and workers
         private Thread _thrClock;
         private CancellationTokenSource _ctsClock;
 
         private BackgroundWorker _bgwSplashScreen;
-
-        private List<DbBackend_Backend> _backend;
 
         // Global Hardware
         private RobotElectronics_Container? _robotElectronics;
@@ -53,6 +53,7 @@ namespace PSGM.SingleSolution.SheetScan
         private SVSVistek_Container? _svsVistek;
 
         // Global database
+        private List<DbBackend_Backend> _backend;
         DbMachine_Machine? _dbMachine_Machine;
         #endregion
 
@@ -204,9 +205,6 @@ namespace PSGM.SingleSolution.SheetScan
             CameraInitializeSdk();
             Thread.Sleep(125);
 
-
-
-
             // Step #19
             UpdateUI("Camera: Discover cameras ...");
             CameraDiscovery();
@@ -218,12 +216,12 @@ namespace PSGM.SingleSolution.SheetScan
             Thread.Sleep(125);
 
             // Step #21
-            UpdateUI("Camera: Start acquision of the cameras ...");
-            CameraStartAcquision();
+            UpdateUI("Camera: Start acquisition of the cameras ...");
+            CameraStartAcquisition();
             Thread.Sleep(125);
 
             // Step #22
-            UpdateUI("Finish splashcreen and open main application ...");
+            UpdateUI("Finish splash screen and open main application ...");
             Thread.Sleep(125);
         }
 
@@ -661,7 +659,7 @@ namespace PSGM.SingleSolution.SheetScan
             {
                 DbBackend_Backend backendMain = backendsMain[0];
 
-                Globals.StorageMain = new S3_Client(backendMain.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendMain.StorageClusters.ToList()[0].StorageS3AccessKey, backendMain.StorageClusters.ToList()[0].StorageS3SecretKey, backendMain.StorageClusters.ToList()[0].StorageS3Secure, backendMain.StorageClusters.ToList()[0].StorageS3Region, backendMain.StorageClusters.ToList()[0].StorageS3BucketName);
+                Globals.StorageMain = new StorageClient(backendMain.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendMain.StorageClusters.ToList()[0].StorageS3AccessKey, backendMain.StorageClusters.ToList()[0].StorageS3SecretKey, backendMain.StorageClusters.ToList()[0].StorageS3Secure, backendMain.StorageClusters.ToList()[0].StorageS3Region, backendMain.StorageClusters.ToList()[0].StorageS3BucketName);
                 Globals.StorageMain.InitializeMinIoClient();
             }
             else
@@ -683,7 +681,7 @@ namespace PSGM.SingleSolution.SheetScan
             {
                 DbBackend_Backend backendStorageData = backendsStorageData[0];
 
-                Globals.StorageData = new S3_Client(backendStorageData.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendStorageData.StorageClusters.ToList()[0].StorageS3AccessKey, backendStorageData.StorageClusters.ToList()[0].StorageS3SecretKey, backendStorageData.StorageClusters.ToList()[0].StorageS3Secure, backendStorageData.StorageClusters.ToList()[0].StorageS3Region, backendStorageData.StorageClusters.ToList()[0].StorageS3BucketName);
+                Globals.StorageData = new StorageClient(backendStorageData.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendStorageData.StorageClusters.ToList()[0].StorageS3AccessKey, backendStorageData.StorageClusters.ToList()[0].StorageS3SecretKey, backendStorageData.StorageClusters.ToList()[0].StorageS3Secure, backendStorageData.StorageClusters.ToList()[0].StorageS3Region, backendStorageData.StorageClusters.ToList()[0].StorageS3BucketName);
                 Globals.StorageData.InitializeMinIoClient();
             }
             else
@@ -705,7 +703,7 @@ namespace PSGM.SingleSolution.SheetScan
             {
                 DbBackend_Backend backendStorageDataThumbnail = backendsStorageDataThumbnail[0];
 
-                Globals.StorageDataThumbnail = new S3_Client(backendStorageDataThumbnail.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendStorageDataThumbnail.StorageClusters.ToList()[0].StorageS3AccessKey, backendStorageDataThumbnail.StorageClusters.ToList()[0].StorageS3SecretKey, backendStorageDataThumbnail.StorageClusters.ToList()[0].StorageS3Secure, backendStorageDataThumbnail.StorageClusters.ToList()[0].StorageS3Region, backendStorageDataThumbnail.StorageClusters.ToList()[0].StorageS3BucketName);
+                Globals.StorageDataThumbnail = new StorageClient(backendStorageDataThumbnail.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendStorageDataThumbnail.StorageClusters.ToList()[0].StorageS3AccessKey, backendStorageDataThumbnail.StorageClusters.ToList()[0].StorageS3SecretKey, backendStorageDataThumbnail.StorageClusters.ToList()[0].StorageS3Secure, backendStorageDataThumbnail.StorageClusters.ToList()[0].StorageS3Region, backendStorageDataThumbnail.StorageClusters.ToList()[0].StorageS3BucketName);
                 Globals.StorageDataThumbnail.InitializeMinIoClient();
             }
             else
@@ -727,7 +725,7 @@ namespace PSGM.SingleSolution.SheetScan
             {
                 DbBackend_Backend backendStorageDataRaw = backendsStorageDataRaw[0];
 
-                Globals.StorageDataRaw = new S3_Client(backendStorageDataRaw.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendStorageDataRaw.StorageClusters.ToList()[0].StorageS3AccessKey, backendStorageDataRaw.StorageClusters.ToList()[0].StorageS3SecretKey, backendStorageDataRaw.StorageClusters.ToList()[0].StorageS3Secure, backendStorageDataRaw.StorageClusters.ToList()[0].StorageS3Region, backendStorageDataRaw.StorageClusters.ToList()[0].StorageS3BucketName);
+                Globals.StorageDataRaw = new StorageClient(backendStorageDataRaw.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendStorageDataRaw.StorageClusters.ToList()[0].StorageS3AccessKey, backendStorageDataRaw.StorageClusters.ToList()[0].StorageS3SecretKey, backendStorageDataRaw.StorageClusters.ToList()[0].StorageS3Secure, backendStorageDataRaw.StorageClusters.ToList()[0].StorageS3Region, backendStorageDataRaw.StorageClusters.ToList()[0].StorageS3BucketName);
                 Globals.StorageDataRaw.InitializeMinIoClient();
             }
             else
@@ -749,7 +747,7 @@ namespace PSGM.SingleSolution.SheetScan
             {
                 DbBackend_Backend backendStorageDataRawThumbnail = backendsStorageDataRawThumbnail[0];
 
-                Globals.StorageDataRawThumbnail = new S3_Client(backendStorageDataRawThumbnail.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendStorageDataRawThumbnail.StorageClusters.ToList()[0].StorageS3AccessKey, backendStorageDataRawThumbnail.StorageClusters.ToList()[0].StorageS3SecretKey, backendStorageDataRawThumbnail.StorageClusters.ToList()[0].StorageS3Secure, backendStorageDataRawThumbnail.StorageClusters.ToList()[0].StorageS3Region, backendStorageDataRawThumbnail.StorageClusters.ToList()[0].StorageS3BucketName);
+                Globals.StorageDataRawThumbnail = new StorageClient(backendStorageDataRawThumbnail.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendStorageDataRawThumbnail.StorageClusters.ToList()[0].StorageS3AccessKey, backendStorageDataRawThumbnail.StorageClusters.ToList()[0].StorageS3SecretKey, backendStorageDataRawThumbnail.StorageClusters.ToList()[0].StorageS3Secure, backendStorageDataRawThumbnail.StorageClusters.ToList()[0].StorageS3Region, backendStorageDataRawThumbnail.StorageClusters.ToList()[0].StorageS3BucketName);
                 Globals.StorageDataRawThumbnail.InitializeMinIoClient();
             }
             else
@@ -771,7 +769,7 @@ namespace PSGM.SingleSolution.SheetScan
             {
                 DbBackend_Backend backendStorageTranscription = backendsStorageTranscription[0];
 
-                Globals.StorageTranscription = new S3_Client(backendStorageTranscription.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendStorageTranscription.StorageClusters.ToList()[0].StorageS3AccessKey, backendStorageTranscription.StorageClusters.ToList()[0].StorageS3SecretKey, backendStorageTranscription.StorageClusters.ToList()[0].StorageS3Secure, backendStorageTranscription.StorageClusters.ToList()[0].StorageS3Region, backendStorageTranscription.StorageClusters.ToList()[0].StorageS3BucketName);
+                Globals.StorageTranscription = new StorageClient(backendStorageTranscription.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendStorageTranscription.StorageClusters.ToList()[0].StorageS3AccessKey, backendStorageTranscription.StorageClusters.ToList()[0].StorageS3SecretKey, backendStorageTranscription.StorageClusters.ToList()[0].StorageS3Secure, backendStorageTranscription.StorageClusters.ToList()[0].StorageS3Region, backendStorageTranscription.StorageClusters.ToList()[0].StorageS3BucketName);
                 Globals.StorageTranscription.InitializeMinIoClient();
             }
             else
@@ -1460,9 +1458,9 @@ namespace PSGM.SingleSolution.SheetScan
                 }
             }
         }
-        private void CameraStartAcquision()
+        private void CameraStartAcquisition()
         {
-            Log.Debug("Start acquision for the cameras ...");
+            Log.Debug("Start acquisition  for the cameras ...");
 
             if (_svsVistek.Cameras != null)
             {
@@ -1488,7 +1486,7 @@ namespace PSGM.SingleSolution.SheetScan
 
                                 if (deviceInfo.Count == 1)
                                 {
-                                    //Log.Debug($"Start camera acquision {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                                    //Log.Debug($"Start camera acquisition {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
                                     cam[0].StartAcquisionContinuously();
 
                                     Thread.Sleep(1250);

@@ -1,4 +1,4 @@
-﻿namespace RC.Lib.PowerSupply
+﻿namespace PSGM.Lib.PowerSupply
 {
     public enum NextysOperationMode : ushort
     {

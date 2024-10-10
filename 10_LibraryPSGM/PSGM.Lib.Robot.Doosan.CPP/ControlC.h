@@ -7,7 +7,7 @@
 // https://stackoverflow.com/questions/35912787/using-c-cli-structs-from-c-sharp
 // https://stackoverflow.com/questions/21460591/wrapping-native-c-struct-in-c-cli
 
-namespace RCRobotDoosanControl
+namespace PSGMRobotDoosanControl
 {
 #ifndef TRUE
 #define TRUE  1

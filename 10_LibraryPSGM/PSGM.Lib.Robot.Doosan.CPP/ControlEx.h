@@ -30,7 +30,7 @@ using namespace System;
 using namespace System::IO;
 using namespace System::Runtime::InteropServices;
 
-namespace RCRobotDoosanControl
+namespace PSGMRobotDoosanControl
 {
 	// Define a delegate type
 	public delegate void ManagedTOnMonitoringStateCB(const RobotState);

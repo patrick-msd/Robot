@@ -1,4 +1,4 @@
-﻿namespace RC.Lib.Control.RobotElectronics
+﻿namespace PSGM.Lib.Control.RobotElectronics
 {
     public enum Commands : byte
     {

@@ -6,9 +6,8 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace RC.Vision.Intel.RealSense
+namespace PSGM.Vision.Intel.RealSense
 {
     public partial class RealSense
     {

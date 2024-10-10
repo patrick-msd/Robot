@@ -528,7 +528,7 @@ namespace PSGM.SingleSolution.SheetScan
             {
                 Serilog.Log.Information("Ignore doublepage sensor ...");
 
-                _ignoreDoublepageSensor = true;
+                _ignoreDoublePageSensor = true;
             }
 
             // Prepared Page

@@ -1,6 +1,6 @@
 ﻿using Serilog;
 
-namespace RC.Lib.Vision.SVSVistek
+namespace PSGM.Lib.Vision.SVSVistek
 {
     public partial class SVSVistek_Container
     {

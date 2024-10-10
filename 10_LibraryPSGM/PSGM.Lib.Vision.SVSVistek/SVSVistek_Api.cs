@@ -10,7 +10,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace RC.Lib.Vision.SVSVistek
+namespace PSGM.Lib.Vision.SVSVistek
 {
     public class SVSVistek_Api
     {

@@ -1,6 +1,6 @@
 ﻿using Intel.RealSense;
 
-namespace RC.Vision.Intel.RealSense
+namespace PSGM.Vision.Intel.RealSense
 {
     /// <summary>
     /// Converts between 2D and 3D RealSense coordinates.

@@ -1,7 +1,7 @@
 ﻿using Nlc;
 using Serilog;
 
-namespace RC.Lib.Motion
+namespace PSGM.Lib.Motion
 {
     /// <summary>
     /// Callback class derived from Nlc.NlcScanBusCallback.

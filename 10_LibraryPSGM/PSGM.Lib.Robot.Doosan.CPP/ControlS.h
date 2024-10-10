@@ -12,7 +12,7 @@ using namespace System;
 using namespace System::IO;
 #endif
 
-namespace RCRobotDoosanControl
+namespace PSGMRobotDoosanControl
 {
 #pragma pack(1)
 

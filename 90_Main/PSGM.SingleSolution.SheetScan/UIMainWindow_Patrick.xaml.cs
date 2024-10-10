@@ -1,7 +1,7 @@
 ﻿using Emgu.CV;
 using Emgu.CV.Structure;
-using RC.Lib.Vision.SVSVistek;
-using RCRobotDoosanControl;
+using PSGM.Lib.Vision.SVSVistek;
+using PSGMRobotDoosanControl;
 using System;
 using System.IO;
 using System.Linq;
@@ -320,7 +320,7 @@ namespace PSGM.SingleSolution.SheetScan
                     _sheetErrorSolved2 = 0;
                     _sheetErrorSolved3 = 0;
 
-                    _ignoreDoublepageSensor = false;
+                    _ignoreDoublePageSensor = false;
                     _preparedPage = false;
                     _replacedPage = false;
                     _scanFinish = false;
@@ -658,7 +658,7 @@ namespace PSGM.SingleSolution.SheetScan
 
                                 //MoveDoublePageSensorASync(doublePageSensorPositon.In);
 
-                                if (!(IgnoreDoublepageSensor || _ignoreDoublepageSensor || (_preparedPage && errorInput1 == true && errorInput2 == true) || (_preparedPage && errorInput1 == false && errorInput2 == true)))
+                                if (!(IgnoreDoublepageSensor || _ignoreDoublePageSensor || (_preparedPage && errorInput1 == true && errorInput2 == true) || (_preparedPage && errorInput1 == false && errorInput2 == true)))
                                 {
                                     if (!(errorInput1 == true && errorInput2 == true))
                                     {

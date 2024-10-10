@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 
-namespace RC.Lib.Control.RobotElectronics
+namespace PSGM.Lib.Control.RobotElectronics
 {
     public partial class RobotElectronics_Controller
     {
