@@ -15,9 +15,13 @@ using RC.Lib.Vision.SVSVistek;
 using Serilog;
 using Serilog.Debugging;
 using Serilog.Sinks.Grafana.Loki;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Threading;
 using System.Windows;
 
 namespace PSGM.SingleSolution.SheetScan
@@ -505,78 +509,215 @@ namespace PSGM.SingleSolution.SheetScan
         {
             // ToDo: Check on all database connections if there are more than one cluster and if the cluster is available
 
-            #region Machine database
-            Log.Information($"Connect to machine database ...");
+            //#region Machine database
+            //Log.Information($"Connect to machine database ...");
 
-            List<DbBackend_Backend> backendMachine = _backend.Where(p => p.BackendType == BackendType.Machine).ToList();
+            //List<DbBackend_Backend> backendsMachine = _backend.Where(p => p.BackendType == BackendType.Machine).ToList();
+            //if (backendsMachine.Count > 0)
+            //{
+            //    DbBackend_Backend backendMachine = backendsMachine[0];
 
-            Globals.DbMachine_Context.DatabaseType = backendMachine[0].DatabaseClusters.ToList()[0].DatabaseType;
-            Globals.DbMachine_Context.DatabaseConnectionString = backendMachine[0].DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
+            //    Globals.DbMachine_Context.DatabaseType = backendMachine.DatabaseClusters.ToList()[0].DatabaseType;
+            //    Globals.DbMachine_Context.DatabaseConnectionString = backendMachine.DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
 
-            Globals.DbMachine_Context.DatabaseSessionParameter_UserId = Globals.UserId;
-            Globals.DbMachine_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
-            Globals.DbMachine_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
-            #endregion
+            //    Globals.DbMachine_Context.DatabaseSessionParameter_UserId = Globals.UserId;
+            //    Globals.DbMachine_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
+            //    Globals.DbMachine_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
+            //}
+            //else
+            //{
+            //    Log.Error("No machine database found in backend ...");
 
-            #region Main database
-            Log.Information($"Connect to main database ...");
+            //    MessageBoxResult result = MessageBox.Show("No machine database found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
-            List<DbBackend_Backend> backendMain = _backend.Where(p => p.BackendType == BackendType.Main).ToList();
+            //    _closeApplication = true;
+            //    return;
+            //}
+            //#endregion
 
-            Globals.DbMain_Context.DatabaseType = backendMain[0].DatabaseClusters.ToList()[0].DatabaseType;
-            Globals.DbMain_Context.DatabaseConnectionString = backendMain[0].DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
+            //#region Main database
+            //Log.Information($"Connect to main database ...");
 
-            Globals.DbMain_Context.DatabaseSessionParameter_UserId = Globals.UserId;
-            Globals.DbMain_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
-            Globals.DbMain_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
-            #endregion
+            //List<DbBackend_Backend> backendsMain = _backend.Where(p => p.BackendType == BackendType.Main).ToList();
+            //if (backendsMain.Count > 0)
+            //{
+            //    DbBackend_Backend backendMain = backendsMain[0];
+            //    Globals.DbMain_Context.DatabaseType = backendMain.DatabaseClusters.ToList()[0].DatabaseType;
+            //    Globals.DbMain_Context.DatabaseConnectionString = backendMain.DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
 
-            #region Storage data database
-            Log.Information($"Connect to storage data databases ...");
+            //    Globals.DbMain_Context.DatabaseSessionParameter_UserId = Globals.UserId;
+            //    Globals.DbMain_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
+            //    Globals.DbMain_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
+            //}
+            //else
+            //{
+            //    Log.Error("No main database found in backend ...");
 
-            List<DbBackend_Backend> backendStorageData = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.Data).Count() > 0).ToList();
+            //    MessageBoxResult result = MessageBox.Show("No main database found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
-            Globals.DbStorageData_Context.DatabaseType = backendStorageData[0].DatabaseClusters.ToList()[0].DatabaseType;
-            Globals.DbStorageData_Context.DatabaseConnectionString = backendStorageData[0].DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
+            //    _closeApplication = true;
+            //    return;
+            //}
+            //#endregion
 
-            Globals.DbStorageData_Context.DatabaseSessionParameter_UserId = Globals.UserId;
-            Globals.DbStorageData_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
-            Globals.DbStorageData_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
-            #endregion
+            //#region Storage data database
+            //Log.Information($"Connect to storage data databases ...");
 
-            #region Storage data raw database
-            Log.Information($"Connect to storage data databases ...");
+            //List<DbBackend_Backend> backendsStorageData = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.Data).Count() > 0).ToList();
+            //if (backendsStorageData.Count > 0)
+            //{
+            //    DbBackend_Backend backendStorageData = backendsStorageData[0];
+            //    Globals.DbStorageData_Context.DatabaseType = backendStorageData.DatabaseClusters.ToList()[0].DatabaseType;
+            //    Globals.DbStorageData_Context.DatabaseConnectionString = backendStorageData.DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
 
-            List<DbBackend_Backend> backendStorageDataRaw = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.DataRaw).Count() > 0).ToList();
+            //    Globals.DbStorageData_Context.DatabaseSessionParameter_UserId = Globals.UserId;
+            //    Globals.DbStorageData_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
+            //    Globals.DbStorageData_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
+            //}
+            //else
+            //{
+            //    Log.Error("No storage data database found in backend ...");
 
-            Globals.DbStorageData_Context.DatabaseType = backendStorageDataRaw[0].DatabaseClusters.ToList()[0].DatabaseType;
-            Globals.DbStorageData_Context.DatabaseConnectionString = backendStorageDataRaw[0].DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
+            //    MessageBoxResult result = MessageBox.Show("No storage data database found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
-            Globals.DbStorageData_Context.DatabaseSessionParameter_UserId = Globals.UserId;
-            Globals.DbStorageData_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
-            Globals.DbStorageData_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
-            #endregion
+            //    _closeApplication = true;
+            //    return;
+            //}
+            //#endregion
 
-            #region Transcription database
-            Log.Information($"Connect to storage data databases ...");
+            //#region Storage data raw database
+            //Log.Information($"Connect to storage data databases ...");
 
-            List<DbBackend_Backend> backendTranscription = _backend.Where(p => p.BackendType == BackendType.Transcription).ToList();
+            //List<DbBackend_Backend> backendsStorageDataRaw = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.DataRaw).Count() > 0).ToList();
+            //if (backendsStorageDataRaw.Count > 0)
+            //{
+            //    DbBackend_Backend backendStorageDataRaw = backendsStorageDataRaw[0];
+            //    Globals.DbStorageData_Context.DatabaseType = backendStorageDataRaw.DatabaseClusters.ToList()[0].DatabaseType;
+            //    Globals.DbStorageData_Context.DatabaseConnectionString = backendStorageDataRaw.DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
 
-            Globals.DbStorageData_Context.DatabaseType = backendTranscription[0].DatabaseClusters.ToList()[0].DatabaseType;
-            Globals.DbStorageData_Context.DatabaseConnectionString = backendTranscription[0].DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
+            //    Globals.DbStorageData_Context.DatabaseSessionParameter_UserId = Globals.UserId;
+            //    Globals.DbStorageData_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
+            //    Globals.DbStorageData_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
+            //}
+            //else
+            //{
+            //    Log.Error("No storage data raw database found in backend ...");
 
-            Globals.DbStorageData_Context.DatabaseSessionParameter_UserId = Globals.UserId;
-            Globals.DbStorageData_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
-            Globals.DbStorageData_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
-            #endregion
+            //    MessageBoxResult result = MessageBox.Show("No storage data raw database found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            //    _closeApplication = true;
+            //    return;
+            //}
+            //#endregion
+
+            //#region Transcription database
+            //Log.Information($"Connect to storage data databases ...");
+
+            //List<DbBackend_Backend> backendsTranscription = _backend.Where(p => p.BackendType == BackendType.Transcription).ToList();
+            //if (backendsTranscription.Count > 0)
+            //{
+            //    DbBackend_Backend backendTranscription = backendsTranscription[0];
+            //    Globals.DbStorageData_Context.DatabaseType = backendTranscription.DatabaseClusters.ToList()[0].DatabaseType;
+            //    Globals.DbStorageData_Context.DatabaseConnectionString = backendTranscription.DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
+
+            //    Globals.DbStorageData_Context.DatabaseSessionParameter_UserId = Globals.UserId;
+            //    Globals.DbStorageData_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
+            //    Globals.DbStorageData_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
+            //}
+            //else
+            //{
+            //    Log.Error("No transcription database found in backend ...");
+
+            //    MessageBoxResult result = MessageBox.Show("No transcription database found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            //    _closeApplication = true;
+            //    return;
+            //}
+            //#endregion
         }
+
         private void ConnectToAllBackendServers()
         {
             // ToDo: ...
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         private void ConnectToAllBackendStorages()
         {
+            //#region Storage main
+            //Log.Information($"Connect to main storage ...");
+
+            //List<DbBackend_Backend> backendsMain = _backend.Where(p => p.BackendType == BackendType.Main).ToList();
+            //if (backendsMain.Count > 0)
+            //{
+            //    DbBackend_Backend backendMain = backendsMain[0];
+
+            //    Globals.StorageMain = new S3_Client(backendMain.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendMain.StorageClusters.ToList()[0].StorageS3AccessKey, backendMain.StorageClusters.ToList()[0].StorageS3SecretKey, backendMain.StorageClusters.ToList()[0].StorageS3Secure, backendMain.StorageClusters.ToList()[0].StorageS3Region, backendMain.StorageClusters.ToList()[0].StorageS3BucketName);
+            //    Globals.StorageMain.InitializeMinIoClient();
+            //}
+            //else
+            //{
+            //    Log.Error("No main storage found in backend ...");
+
+            //    MessageBoxResult result = MessageBox.Show("No main storage found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            //    _closeApplication = true;
+            //    return;
+            //}
+            //#endregion
+
+            //#region Storage data
+            //Log.Information($"Connect to data storage ...");
+
+            ////List<DbBackend_Backend> backendStorageData = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.Data).Count() > 0).ToList();
+
+
+            //#endregion
+
+            //#region Storage data thumbnail
+            //Log.Information($"Connect to data thumbnail storage ...");
+
+            ////List<DbBackend_Backend> backendStorageData = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.Data).Count() > 0).ToList();
+
+
+            //#endregion
+
+            //#region Storage data raw
+            //Log.Information($"Connect to data raw storage ...");
+
+            ////List<DbBackend_Backend> backendStorageDataRaw = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.DataRaw).Count() > 0).ToList();
+
+            //#endregion
+
+            //#region Storage data raw thumbnail
+            //Log.Information($"Connect to data raw thumbnail storage ...");
+
+            ////List<DbBackend_Backend> backendStorageData = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.Data).Count() > 0).ToList();
+
+            //#endregion
+
+            //#region Storage transcription
+            //Log.Information($"Connect to transcription storage ...");
+            ////List<DbBackend_Backend> backendMain = _backend.Where(p => p.BackendType == BackendType.Main).ToList();
+
+
+            //#endregion
 
 
             //Globals.Storage = new Globals_Storage();
@@ -601,11 +742,6 @@ namespace PSGM.SingleSolution.SheetScan
             //{
             //    item.InitilizeMinIoClient();
             //}
-
-
-
-
-
         }
 
 
