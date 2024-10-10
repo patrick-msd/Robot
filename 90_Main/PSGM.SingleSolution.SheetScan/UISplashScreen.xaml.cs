@@ -1,6 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Nlc;
 using PSGM.Helper;
+using PSGM.Lib.Control.Doosan;
+using PSGM.Lib.Control.RobotElectronics;
+using PSGM.Lib.Motion;
+using PSGM.Lib.PowerSupply;
+using PSGM.Lib.Storage;
+using PSGM.Lib.Vision.SVSVistek;
 using PSGM.Model.DbBackend;
 using PSGM.Model.DbJob;
 using PSGM.Model.DbMachine;
@@ -8,12 +14,9 @@ using PSGM.Model.DbMain;
 using PSGM.Model.DbSoftware;
 using PSGM.Model.DbStorage;
 using PSGM.Model.DbUser;
-using PSGM.Lib.Control.Doosan;
-using PSGM.Lib.Control.RobotElectronics;
-using PSGM.Lib.Motion;
-using PSGM.Lib.PowerSupply;
-using PSGM.Lib.Vision.SVSVistek;
 using PSGMRobotDoosanControl;
+using SendGrid.Helpers.Mail;
+using SendGrid;
 using Serilog;
 using Serilog.Debugging;
 using Serilog.Sinks.Grafana.Loki;
@@ -22,7 +25,6 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Ports;
 using System.Windows;
-using PSGM.Lib.Storage;
 
 namespace PSGM.SingleSolution.SheetScan
 {
@@ -77,7 +79,7 @@ namespace PSGM.SingleSolution.SheetScan
             // Calculate percentage and set progress bar
             Log.Information("Initialize and calculate percentage and set progress bar ...");
             _statePercentageValue = 0;
-            _statePercentageCount = 22;
+            _statePercentageCount = 25;
 
             pgbLoading.Minimum = _statePercentageValue;
             pgbLoading.Maximum = _statePercentageCount;
@@ -151,76 +153,91 @@ namespace PSGM.SingleSolution.SheetScan
             Thread.Sleep(125);
 
             // Step #8
+            UpdateUI("Application: Initialize SendGrid ...");
+            InitializeSendGrid();
+            Thread.Sleep(125);
+
+            // Step #9
             UpdateUI("Application: Connect to all backend databases ...");
             ConnectToAllBackendDatabases();
             Thread.Sleep(125);
 
-            // Step #9
+            // Step #10
             UpdateUI("Application: Connect to all backend servers ...");
             ConnectToAllBackendServers();
             Thread.Sleep(125);
 
-            // Step #10
+            // Step #11
             UpdateUI("Application: Connect to all backend storages ...");
             ConnectToAllBackendStorages();
             Thread.Sleep(125);
 
-            // Step #11
+            // Step #12
             UpdateUI("Application: Initialize machine and device variables ...");
             InitializeMachineAndDeviceVariables();
             Thread.Sleep(125);
 
-            // Step #12
+            // Step #13
+            UpdateUI("Application: Load project workflow ...");
+            LoadProjectWorkflow();
+            Thread.Sleep(125);
+
+            // Step #14
             UpdateUI("Control: Initialize and connect devices (USB) ...");
             ControlInitializeAndConnect();
             Thread.Sleep(125);
 
-            // Step #13
+            // Step #15
             UpdateUI("Motion: Initialize and connect bus devices (USB-to-CAN, USB-to-Serial, PICe, ...) ...");
             MotionBusDeviceInitializeAndConnect();
             Thread.Sleep(125);
 
-            // Step #14
+            // Step #16
             UpdateUI("Motion: Discover devices on the bus (CAN, ...) ...");
             MotionDevicesOnTheBusDiscovery();
             Thread.Sleep(125);
 
-            // Step #15
+            // Step #17
             UpdateUI("Motion: Connect to the devices on the bus ...");
             MotionDevicesOnTheBusInitializeAndConnect();
             Thread.Sleep(125);
 
-            // Step #16
+            // Step #18
             UpdateUI("Power Supply: Initialize and connect devices (COM) ...");
             PowerSupplyInitializeAndConnect();
             Thread.Sleep(125);
 
-            // Step #17
+            // Step #19
             UpdateUI("Robot: Initialize and connect devices (Ethernet) ...");
             RobotInitializeAndConnect();
             Thread.Sleep(125);
 
-            // Step #18
+            // Step #20
             UpdateUI("Camera: Initialize SDKs ...");
             CameraInitializeSdk();
             Thread.Sleep(125);
 
-            // Step #19
+            // Step #21
             UpdateUI("Camera: Discover cameras ...");
             CameraDiscovery();
             Thread.Sleep(125);
 
-            // Step #20
+            // Step #22
             UpdateUI("Camera: Initialize and connect to cameras (Ethernet) ...");
             CameraInitializeAndConnect();
             Thread.Sleep(125);
 
-            // Step #21
+            // Step #23
             UpdateUI("Camera: Start acquisition of the cameras ...");
             CameraStartAcquisition();
             Thread.Sleep(125);
 
-            // Step #22
+            // Step #24
+            UpdateUI("Camera: Set startup values for devices ...");
+            SetStartupValuesForDevices();
+            Thread.Sleep(125);
+
+            // Step #25
             UpdateUI("Finish splash screen and open main application ...");
             Thread.Sleep(125);
         }
@@ -507,8 +524,32 @@ namespace PSGM.SingleSolution.SheetScan
                                 .CreateLogger();
 #endif
 
-            Log.Information($"Application \"{Globals.ApplicationTitle} V{Globals.ApplicationVersion.ToString()}\" start...");
+            Log.Information($"Application \"{Globals.ApplicationTitle} V{Globals.ApplicationVersion.ToString()}\" start (Spash Screen) ...");
             #endregion
+        }
+
+        private void InitializeSendGrid()
+        {
+            #region Sendgrid
+            var apiKey = "SheetScanner";
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress("heja@msd.tirol", "Heja");
+            var subject = "Information";
+            var to = new EmailAddress("it@msd.tirol", "Patrick Schönegger");
+            var plainTextContent = "Scan started ...";
+            var htmlContent = "<strong>from Heja</strong>";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var response = client.SendEmailAsync(msg);
+
+            //var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
+            //var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            //var response = await client.SendEmailAsync(msg);
+
+            #endregion
+
+
+
+            ;
         }
 
         private void ConnectToAllBackendDatabases()
@@ -982,6 +1023,14 @@ namespace PSGM.SingleSolution.SheetScan
                 }
             }
             #endregion
+        }
+
+        private void LoadProjectWorkflow()
+        {
+
+
+
+            ;
         }
 
         private void ControlInitializeAndConnect()
@@ -1509,6 +1558,50 @@ namespace PSGM.SingleSolution.SheetScan
                     }
                 }
             }
+        }
+
+        private void SetStartupValuesForDevices()
+        {
+            // Motoren setzen der Max und min werten 
+
+            // Nextys setzen der Max und min werten
+
+            // Doosan setzen der Max und min werten und Endefector
+            //SetEndeffectors();
+
+
+
+            #region 
+            _doosan.Controllers[0].SetAnalogOutput(GpioCtrlboxAnalogIndex.GPIO_CTRLBOX_ANALOG_INDEX_1, 0.000f);
+            _doosan.Controllers[0].SetAnalogOutput(GpioCtrlboxAnalogIndex.GPIO_CTRLBOX_ANALOG_INDEX_2, 0.000f);
+            #endregion
+
+
+            #region 
+            foreach (Nextys_DcDcConverter dcDcConverter in _nextys.DcDcConverters)
+            {
+                //if (item.Control != null)
+                //{
+                //    if (!item.Control.IsConnected)
+                //    {
+                //        item.Control = new NextysModbus(item.Serial.PortName, item.Serial.BaudRate, item.Serial.Parity, item.Serial.StopBit, item.Serial.Handshake, item.Serial.ReadTimeout, item.Serial.WriteTimeout, item.Serial.MonitoringInterval, 0x01);
+                //        item.Control.Connect();
+                //    }
+                //}
+
+                // Disable Output
+                dcDcConverter.OutputDisable();
+
+                // Set values
+                dcDcConverter._minOutputVoltage = (int)(4.500f * 1000);
+                dcDcConverter._maxOutputVoltage = (int)(24.000f * 1000);
+                dcDcConverter.SetNominalOutputVoltage((int)(4.500f * 1000));
+
+                dcDcConverter._minOutputCurrent = (int)(1.000f * 1000);
+                dcDcConverter._maxOutputCurrent = (int)(1.2500f * 1000);
+                dcDcConverter.SetMaximalOutputCurrent((int)(1.250f * 1000));
+            }
+            #endregion
         }
         #endregion
     }

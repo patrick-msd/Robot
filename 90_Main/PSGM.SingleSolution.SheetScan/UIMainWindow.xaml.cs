@@ -5,14 +5,11 @@ using PSGM.Lib.Control.Doosan;
 using PSGM.Lib.Control.RobotElectronics;
 using PSGM.Lib.Motion;
 using PSGM.Lib.PowerSupply;
+using PSGM.Lib.Vision.Intel;
 using PSGM.Lib.Vision.SVSVistek;
-using PSGM.Vision.Intel.RealSense;
 using PSGMRobotDoosanControl;
-using SendGrid;
-using SendGrid.Helpers.Mail;
 using Serilog;
-using Serilog.Core;
-using Serilog.Sinks.RichTextBox.Themes;
+using Serilog.Sinks.Grafana.Loki;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,7 +28,7 @@ namespace PSGM.SingleSolution.SheetScan
         private Nextys_Container? _nextys;
         private Doosan_Container? _doosan;
         private SVSVistek_Container? _svsVistek;
-
+        private Intel_Container? _intel;
         private RealSense _realSense = new RealSense();
         #endregion
 
@@ -46,14 +43,13 @@ namespace PSGM.SingleSolution.SheetScan
         CancellationTokenSource _cancellationTokenSourceCheck;
         CancellationToken _tokenCheck;
 
-        Task[] _taskWorker;
-        CancellationTokenSource[] _cancellationTokenSourceWorker;
-        CancellationToken[] _tokenWorker;
+        Task[] _taskWorkflow;
+        CancellationTokenSource[] _cancellationTokenSourceWorkflow;
+        CancellationToken[] _tokenWorkflow;
 
         Task _taskPicture;
         CancellationTokenSource _cancellationTokenSourcePicture;
         CancellationToken _tokenPicture;
-
         #endregion
 
         #region Robot definitions ...
@@ -131,31 +127,51 @@ namespace PSGM.SingleSolution.SheetScan
 
             Title = Globals.ApplicationTitle + " - V" + Globals.ApplicationVersion.ToString();
 
+#if DEBUG
             Serilog.Log.Logger = new LoggerConfiguration()
                                 .MinimumLevel.Verbose()
-                                .WriteTo.Sink((ILogEventSink)Serilog.Log.Logger)
-                                //.WriteTo.Debug(outputTemplate: Globals.LokiOutputTemplate)
-                                //.WriteTo.GrafanaLoki(Globals.LokiUri, labels: Globals.LokiLabels)
+                                .WriteTo.Debug(outputTemplate: Globals.LokiOutputTemplate)
+                                .WriteTo.GrafanaLoki(Globals.LokiUri, labels: Globals.LokiLabels)
                                 //.WriteTo.GrafanaLoki(Globals.LokiUri, labels: Globals.LokiLabels, textFormatter: new ExpressionTemplate("{ {@t, @mt, @l:u3}, @i, @x, @p} }\n"))
-                                .WriteTo.RichTextBox(rtbLogger, outputTemplate: Globals.LokiOutputTemplate, syncRoot: _syncRoot, theme: RichTextBoxConsoleTheme.Colored)
                                 .Enrich.WithThreadId()
                                 .Enrich.WithThreadName()
                                 .CreateLogger();
+#else
+            Serilog.Log.Logger = new LoggerConfiguration()
+                                .MinimumLevel.Verbose()
+                                .WriteTo.GrafanaLoki(Globals.LokiUri, labels: Globals.LokiLabels)
+                                .Enrich.WithThreadId()
+                                .Enrich.WithThreadName()
+                                .CreateLogger();
+#endif
 
             Serilog.Log.Information("Start main window ...");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            #region Inizialize variables ...
+            #region Initialize global variables ...
+            Serilog.Log.Information("Initialize global variables ...");
+
             _robotElectronics = Globals.Machine.Control.RobotElectronics;
             _nanotec = Globals.Machine.Motion.Nanotec;
             _nextys = Globals.Machine.PowerSupply.Nextys;
             _doosan = Globals.Machine.Robot.Doosan;
+            _intel = Globals.Machine.Vision.Intel;
             _svsVistek = Globals.Machine.Vision.SVSVistek;
+
+            _timer = new Stopwatch();
             #endregion
 
-            #region Inizialize threads and tasks ...
+            #region Initialize Gui elements ...
+            Serilog.Log.Information("Initialize Gui elements ...");
+
+            Slider.Value = 25;
+            #endregion
+
+            #region Initialize threads and tasks ...
+            Serilog.Log.Information("Initialize threads and tasks ...");
+
             _thread = new Thread(new ThreadStart(delegate () { }));
 
             _taskMain = new Task(() => { });
@@ -166,24 +182,26 @@ namespace PSGM.SingleSolution.SheetScan
             _cancellationTokenSourceCheck = new CancellationTokenSource();
             _tokenCheck = _cancellationTokenSourceCheck.Token;
 
-            //_taskWorker = new Task(() => { });
-            //_cancellationTokenSourceWorker = new CancellationTokenSource();
-            //_tokenWorker = _cancellationTokenSourceWorker.Token;
+            _taskWorkflow = new Task[_svsVistek.Cameras.Count];
+            _cancellationTokenSourceWorkflow = new CancellationTokenSource[_svsVistek.Cameras.Count];
+            _tokenWorkflow = new CancellationToken[_svsVistek.Cameras.Count];
 
-            _taskWorker = new Task[_svsVistek.Cameras.Count];
-            _cancellationTokenSourceWorker = new CancellationTokenSource[_svsVistek.Cameras.Count];
-            _tokenWorker = new CancellationToken[_svsVistek.Cameras.Count];
-
-            for (int i = 0; i < _taskWorker.Count(); i++)
+            for (int i = 0; i < _taskWorkflow.Count(); i++)
             {
-                _taskWorker[i] = new Task(() => { });
-                _cancellationTokenSourceWorker[i] = new CancellationTokenSource();
-                _tokenWorker[i] = _cancellationTokenSourceWorker[i].Token;
+                _taskWorkflow[i] = new Task(() => { });
+                _cancellationTokenSourceWorkflow[i] = new CancellationTokenSource();
+                _tokenWorkflow[i] = _cancellationTokenSourceWorkflow[i].Token;
             }
 
             _taskPicture = new Task(() => { });
             _cancellationTokenSourcePicture = new CancellationTokenSource();
             _tokenPicture = _cancellationTokenSourcePicture.Token;
+            #endregion
+
+            #region Set startup values for harware devices ...
+            Serilog.Log.Information("Initialize Gui elements ...");
+
+            Slider.Value = 25;
             #endregion
 
 
@@ -202,7 +220,7 @@ namespace PSGM.SingleSolution.SheetScan
             Serilog.Log.Debug("Serial number: {0}", _realSense.Device.Info[CameraInfo.SerialNumber]);
             Serilog.Log.Debug("Firmware version: {0}", _realSense.Device.Info[CameraInfo.FirmwareVersion]);
 
-            // Initialize Senosors            
+            // Initialize Sensors            
             _realSense.InitializeStreamingProfileDepthSensor(0);
             _realSense.InitializeStreamingProfileColorSensor(0);
             //_realSense.InitializeStreamingProfileOfBothSensors(0, 0);
@@ -218,79 +236,13 @@ namespace PSGM.SingleSolution.SheetScan
             _realSense._updateColor += MonitoringColor;
             _realSense._updateDepth += MonitoringDepth;
             _realSense._updateDepthColorized += MonitoringDepthColorized;
-
-
-
-
-            _timer = new Stopwatch();
-
-
-
-
-
-            SetEndeffectors();
-
-
-
-
-
-            _doosan.Controllers[0].SetAnalogOutput(GpioCtrlboxAnalogIndex.GPIO_CTRLBOX_ANALOG_INDEX_1, 0.000f);
-            _doosan.Controllers[0].SetAnalogOutput(GpioCtrlboxAnalogIndex.GPIO_CTRLBOX_ANALOG_INDEX_2, 0.000f);
-
-
-            foreach (Nextys_DcDcConverter dcDcConverter in _nextys.DcDcConverters)
-            {
-                //if (item.Control != null)
-                //{
-                //    if (!item.Control.IsConnected)
-                //    {
-                //        item.Control = new NextysModbus(item.Serial.PortName, item.Serial.BaudRate, item.Serial.Parity, item.Serial.StopBit, item.Serial.Handshake, item.Serial.ReadTimeout, item.Serial.WriteTimeout, item.Serial.MonitoringInterval, 0x01);
-                //        item.Control.Connect();
-                //    }
-                //}
-
-                // Disable Output
-                dcDcConverter.OutputDisable();
-
-                // Set values
-                dcDcConverter._minOutputVoltage = (int)(4.500f * 1000);
-                dcDcConverter._maxOutputVoltage = (int)(24.000f * 1000);
-                dcDcConverter.SetNominalOutputVoltage((int)(4.500f * 1000));
-
-                dcDcConverter._minOutputCurrent = (int)(1.000f * 1000);
-                dcDcConverter._maxOutputCurrent = (int)(1.2500f * 1000);
-                dcDcConverter.SetMaximalOutputCurrent((int)(1.250f * 1000));
-            }
-
-
-
-            Slider.Value = 25;
-
-
-
-            #region Sendgrid
-            var apiKey = "SheetScanner";
-            var client = new SendGridClient(apiKey);
-            var from = new EmailAddress("heja@msd.tirol", "Heja");
-            var subject = "Information";
-            var to = new EmailAddress("it@msd.tirol", "Patrick Schönegger");
-            var plainTextContent = "Scan started ...";
-            var htmlContent = "<strong>from Heja</strong>";
-            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-            var response = client.SendEmailAsync(msg);
-
-            //var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
-            //var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-            //var response = await client.SendEmailAsync(msg);
-
-            #endregion
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             #region Close hardware connections
             #region Close control devices
-            Serilog.Log.Information("Cotnrol: Close devices and clean up variabels ...");
+            Serilog.Log.Information("Control: Close devices and clean up variables ...");
 
             try
             {
@@ -309,7 +261,7 @@ namespace PSGM.SingleSolution.SheetScan
             #endregion
 
             #region Close motion devices
-            Serilog.Log.Information("Motion: Close devices and clean up variabels ...");
+            Serilog.Log.Information("Motion: Close devices and clean up variables ...");
 
             try
             {
@@ -1405,35 +1357,35 @@ namespace PSGM.SingleSolution.SheetScan
 
             if (FistStartRight)
             {
-                if (_taskWorker[0].Status == TaskStatus.Running)
+                if (_taskWorkflow[0].Status == TaskStatus.Running)
                 {
                     Serilog.Log.Information("Another thread is already running ...");
                 }
                 else
                 {
-                    _cancellationTokenSourceWorker[0] = new CancellationTokenSource();
-                    _tokenWorker[0] = _cancellationTokenSourceWorker[0].Token;
+                    _cancellationTokenSourceWorkflow[0] = new CancellationTokenSource();
+                    _tokenWorkflow[0] = _cancellationTokenSourceWorkflow[0].Token;
 
                     Thread.Sleep(25);
 
-                    _taskWorker[0] = Task.Run(() => Worker(0), _tokenWorker[0]);
+                    _taskWorkflow[0] = Task.Run(() => Worker(0), _tokenWorkflow[0]);
                 }
             }
 
             if (FistStartLeft)
             {
-                if (_taskWorker[1].Status == TaskStatus.Running)
+                if (_taskWorkflow[1].Status == TaskStatus.Running)
                 {
                     Serilog.Log.Information("Another thread is already running ...");
                 }
                 else
                 {
-                    _cancellationTokenSourceWorker[1] = new CancellationTokenSource();
-                    _tokenWorker[1] = _cancellationTokenSourceWorker[1].Token;
+                    _cancellationTokenSourceWorkflow[1] = new CancellationTokenSource();
+                    _tokenWorkflow[1] = _cancellationTokenSourceWorkflow[1].Token;
 
                     Thread.Sleep(25);
 
-                    _taskWorker[1] = Task.Run(() => Worker(1), _tokenWorker[1]);
+                    _taskWorkflow[1] = Task.Run(() => Worker(1), _tokenWorkflow[1]);
                 }
             }
             #endregion

@@ -7,7 +7,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
-namespace PSGM.Vision.Intel.RealSense
+namespace PSGM.Lib.Vision.Intel
 {
     public partial class RealSense
     {

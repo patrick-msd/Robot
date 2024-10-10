@@ -177,20 +177,20 @@ namespace PSGM.SingleSolution.SheetScan
 
 
             #region 
-            for (int i = 0; i < _taskWorker.Count(); i++)
+            for (int i = 0; i < _taskWorkflow.Count(); i++)
             {
-                if (_taskWorker[i].Status == TaskStatus.Running)
+                if (_taskWorkflow[i].Status == TaskStatus.Running)
                 {
                     Serilog.Log.Information("Another thread is already running ...");
                 }
                 else
                 {
-                    _cancellationTokenSourceWorker[i] = new CancellationTokenSource();
-                    _tokenWorker[i] = _cancellationTokenSourceWorker[i].Token;
+                    _cancellationTokenSourceWorkflow[i] = new CancellationTokenSource();
+                    _tokenWorkflow[i] = _cancellationTokenSourceWorkflow[i].Token;
 
                     Thread.Sleep(25);
 
-                    _taskWorker[i] = Task.Run(() => Worker(i), _tokenWorker[i]);
+                    _taskWorkflow[i] = Task.Run(() => Worker(i), _tokenWorkflow[i]);
                 }
             }
             #endregion
@@ -230,7 +230,7 @@ namespace PSGM.SingleSolution.SheetScan
 
                                 this.Dispatcher.Invoke((Action)(() =>
                                 {
-                                    foreach (var item in _cancellationTokenSourceWorker)
+                                    foreach (var item in _cancellationTokenSourceWorkflow)
                                     {
                                         item.Cancel();
                                     }
