@@ -12,6 +12,7 @@ namespace PSGM.SingleSolution.SheetScan
 {
     public static class Globals
     {
+        public static Guid ApplicationId { get; set; } = Guid.Empty;
         public static string? ApplicationPath { get; set; } = string.Empty;
         public static string? ApplicationTitle { get; set; } = string.Empty;
         public static Version? ApplicationVersion { get; set; } = null;
@@ -19,9 +20,9 @@ namespace PSGM.SingleSolution.SheetScan
         public static List<LokiLabel>? LokiLabels { get; set; } = null;
         public static string? LokiUri { get; set; } = string.Empty;
         public static string? LokiOutputTemplate { get; set; } = string.Empty;
-
-        public static Guid ApplicationId { get; set; } = Guid.Empty;
+  
         public static Guid ComputerId { get; set; } = Guid.Empty;
+
         public static Guid MachineId { get; set; } = Guid.Empty;
 
         public static Guid OrganizationId { get; set; } = Guid.Empty;

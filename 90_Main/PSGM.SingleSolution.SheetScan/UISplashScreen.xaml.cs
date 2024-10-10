@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Nlc;
 using PSGM.Helper;
 using PSGM.Model.DbBackend;
 using PSGM.Model.DbJob;
@@ -12,16 +13,14 @@ using RC.Lib.Control.RobotElectronics;
 using RC.Lib.Motion;
 using RC.Lib.PowerSupply;
 using RC.Lib.Vision.SVSVistek;
+using RCRobotDoosanControl;
 using Serilog;
 using Serilog.Debugging;
 using Serilog.Sinks.Grafana.Loki;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Threading;
+using System.IO.Ports;
 using System.Windows;
 
 namespace PSGM.SingleSolution.SheetScan
@@ -55,7 +54,6 @@ namespace PSGM.SingleSolution.SheetScan
 
         // Global database
         DbMachine_Machine? _dbMachine_Machine;
-        List<DbMain_Project>? _dbMain_Projects;
         #endregion
 
         public UISplashScreen()
@@ -78,7 +76,7 @@ namespace PSGM.SingleSolution.SheetScan
             // Calculate percentage and set progress bar
             Log.Information("Initialize and calculate percentage and set progress bar ...");
             _statePercentageValue = 0;
-            _statePercentageCount = 14;
+            _statePercentageCount = 22;
 
             pgbLoading.Minimum = _statePercentageValue;
             pgbLoading.Maximum = _statePercentageCount;
@@ -117,136 +115,114 @@ namespace PSGM.SingleSolution.SheetScan
         void WorkerSplashScreen_Function(object sender, DoWorkEventArgs e)
         {
             // Step #1
-            UpdateUI("Initialize global variables ...");
+            UpdateUI("Application: Initialize global variables ...");
             InitializeGlobalVariables();
             Thread.Sleep(125);
 
             // Step #2
-            UpdateUI("Initialize local variables ...");
+            UpdateUI("Application: Initialize local variables ...");
             InitializeLocalVariables();
             Thread.Sleep(125);
 
             // Step #3
-            UpdateUI("Read application configuration file ...");
+            UpdateUI("Application: Read application configuration file ...");
             ReadApplicationConfigurationFile();
             Thread.Sleep(125);
 
             // Step #4
-            UpdateUI("User login ...");
+            UpdateUI("Application: User login ...");
             UserLogin();
             Thread.Sleep(125);
 
             // Step #5
-            UpdateUI("Get machine ID and Project ID...");
+            UpdateUI("Application: Get machine id and project id...");
             GetMachineIdAndProjectId();
             Thread.Sleep(125);
 
             // Step #6
-            UpdateUI("Get backend configuration ...");
+            UpdateUI("Application: Get backend configuration ...");
             GetBackendConfiguration();
             Thread.Sleep(125);
 
             // Step #7
-            UpdateUI("Initialize logging ...");
+            UpdateUI("Application: Initialize logging ...");
             InitializeLogging();
             Thread.Sleep(125);
 
             // Step #8
-            UpdateUI("Connect to all backend databases ...");
+            UpdateUI("Application: Connect to all backend databases ...");
             ConnectToAllBackendDatabases();
             Thread.Sleep(125);
 
             // Step #9
-            UpdateUI("Connect to all backend servers ...");
+            UpdateUI("Application: Connect to all backend servers ...");
             ConnectToAllBackendServers();
             Thread.Sleep(125);
 
             // Step #10
-            UpdateUI("Connect to all backend storages ...");
+            UpdateUI("Application: Connect to all backend storages ...");
             ConnectToAllBackendStorages();
             Thread.Sleep(125);
 
-
-
-
-
-
-
-
-
-            #region Get Project Id ...
-            Log.Information("Get Project Id ...");
-
-            Globals.ProjectId = new Guid("79A0FD7A-5D68-4095-A309-F4E92426E657");
-            #endregion
-
-
-
-
-
-
-
-
-
-
-
-            // Step #2
-            UpdateUI("Initialize variables ...");
-            InitializeVariables();
+            // Step #11
+            UpdateUI("Application: Initialize machine and device variables ...");
+            InitializeMachineAndDeviceVariables();
             Thread.Sleep(125);
 
-
-            // Step #4
+            // Step #12
             UpdateUI("Control: Initialize and connect devices (USB) ...");
             ControlInitializeAndConnect();
             Thread.Sleep(125);
 
-            // Step #5
+            // Step #13
             UpdateUI("Motion: Initialize and connect bus devices (USB-to-CAN, USB-to-Serial, PICe, ...) ...");
             MotionBusDeviceInitializeAndConnect();
             Thread.Sleep(125);
 
-            // Step #6
+            // Step #14
             UpdateUI("Motion: Discover devices on the bus (CAN, ...) ...");
             MotionDevicesOnTheBusDiscovery();
             Thread.Sleep(125);
 
-            // Step #7
+            // Step #15
             UpdateUI("Motion: Connect to the devices on the bus ...");
             MotionDevicesOnTheBusInitializeAndConnect();
             Thread.Sleep(125);
 
-            // Step #8
+            // Step #16
             UpdateUI("Power Supply: Initialize and connect devices (COM) ...");
             PowerSupplyInitializeAndConnect();
             Thread.Sleep(125);
 
-            // Step #9
+            // Step #17
             UpdateUI("Robot: Initialize and connect devices (Ethernet) ...");
             RobotInitializeAndConnect();
             Thread.Sleep(125);
 
-            // Step #10
+            // Step #18
             UpdateUI("Camera: Initialize SDKs ...");
             CameraInitializeSdk();
             Thread.Sleep(125);
 
-            // Step #11
+
+
+
+            // Step #19
             UpdateUI("Camera: Discover cameras ...");
             CameraDiscovery();
             Thread.Sleep(125);
 
-            // Step #12
+            // Step #20
             UpdateUI("Camera: Initialize and connect to cameras (Ethernet) ...");
             CameraInitializeAndConnect();
             Thread.Sleep(125);
 
-            // Step #13
+            // Step #21
             UpdateUI("Camera: Start acquision of the cameras ...");
             CameraStartAcquision();
             Thread.Sleep(125);
 
-            // Step #14
+            // Step #22
             UpdateUI("Finish splashcreen and open main application ...");
             Thread.Sleep(125);
         }
@@ -294,7 +270,19 @@ namespace PSGM.SingleSolution.SheetScan
 
         private void InitializeGlobalVariables()
         {
-            Globals.ComputerId = PSGM.Helper.ComputerInfo.GetComputerUUID();
+            // Allready initialized in App.xaml.cs
+            //Globals.ApplicationId = Guid.Empty;
+            //Globals.ApplicationPath = string.Empty;
+            //Globals.ApplicationTitle = string.Empty;
+            //Globals.ApplicationVersion = null;
+
+            Globals.LokiLabels = new List<LokiLabel>();
+            Globals.LokiUri = string.Empty;
+            Globals.LokiOutputTemplate = string.Empty;
+
+            Globals.ComputerId = ComputerInfo.GetComputerUUID();
+
+            Globals.MachineId = Guid.Empty;
 
             Globals.OrganizationId = Guid.Empty;
             Globals.UserId = Guid.Empty;
@@ -302,15 +290,6 @@ namespace PSGM.SingleSolution.SheetScan
             Globals.ProjectId = Guid.Empty;
             Globals.DirectoryId = Guid.Empty;
             Globals.UnitId = Guid.Empty;
-
-            Globals.Machine = new Globals_Machine()
-            {
-                Control = null,
-                Motion = null,
-                PowerSupply = null,
-                Robot = null,
-                Vision = null
-            };
 
             Globals.ConfigFile = new ConfigFile();
 
@@ -322,6 +301,22 @@ namespace PSGM.SingleSolution.SheetScan
             Globals.DbStorageData_Context = new DbStorage_Context();
             Globals.DbStorageDataRaw_Context = new DbStorage_Context();
             Globals.DbUser_Context = new DbUser_Context();
+
+            Globals.StorageMain = null;
+            Globals.StorageDataRaw = null;
+            Globals.StorageDataRawThumbnail = null;
+            Globals.StorageData = null;
+            Globals.StorageDataThumbnail = null;
+            Globals.StorageTranscription = null;
+
+            Globals.Machine = new Globals_Machine()
+            {
+                Control = null,
+                Motion = null,
+                PowerSupply = null,
+                Robot = null,
+                Vision = null
+            };
         }
 
         private void InitializeLocalVariables()
@@ -335,7 +330,6 @@ namespace PSGM.SingleSolution.SheetScan
             _svsVistek = new SVSVistek_Container();
 
             _dbMachine_Machine = new DbMachine_Machine();
-            _dbMain_Projects = new List<DbMain_Project>();
         }
 
         private void ReadApplicationConfigurationFile()
@@ -369,6 +363,19 @@ namespace PSGM.SingleSolution.SheetScan
                                                                                     .Include(p => p.Machine)
                                                                                         .ThenInclude(p => p.ProjectLinks)
                                                                                             .ThenInclude(p => p.Project)
+                                                                                    .Include(p => p.Machine)
+                                                                                        .ThenInclude(p => p.DeviceGroups)
+                                                                                            .ThenInclude(p => p.Devices)
+                                                                                                .ThenInclude(p => p.Interfaces_Serial)
+                                                                                    .Include(p => p.Machine)
+                                                                                        .ThenInclude(p => p.DeviceGroups)
+                                                                                            .ThenInclude(p => p.Devices)
+                                                                                                .ThenInclude(p => p.Interfaces_Can)
+                                                                                                    .ThenInclude(p => p.Interface_CanDevices)
+                                                                                    .Include(p => p.Machine)
+                                                                                        .ThenInclude(p => p.DeviceGroups)
+                                                                                            .ThenInclude(p => p.Devices)
+                                                                                                .ThenInclude(p => p.Interfaces_Ethernet)
                                                                                     .ToList();
 
             if (machine is null)
@@ -394,6 +401,7 @@ namespace PSGM.SingleSolution.SheetScan
             else
             {
                 Globals.MachineId = machine[0].Machine.Id;
+                _dbMachine_Machine = machine[0].Machine;
 
                 if (machine[0].Machine.ProjectLinks is null)
                 {
@@ -509,131 +517,131 @@ namespace PSGM.SingleSolution.SheetScan
         {
             // ToDo: Check on all database connections if there are more than one cluster and if the cluster is available
 
-            //#region Machine database
-            //Log.Information($"Connect to machine database ...");
+            #region Machine database
+            Log.Information($"Connect to machine database ...");
 
-            //List<DbBackend_Backend> backendsMachine = _backend.Where(p => p.BackendType == BackendType.Machine).ToList();
-            //if (backendsMachine.Count > 0)
-            //{
-            //    DbBackend_Backend backendMachine = backendsMachine[0];
+            List<DbBackend_Backend> backendsMachine = _backend.Where(p => p.BackendType == BackendType.Machine).ToList();
+            if (backendsMachine.Count > 0)
+            {
+                DbBackend_Backend backendMachine = backendsMachine[0];
 
-            //    Globals.DbMachine_Context.DatabaseType = backendMachine.DatabaseClusters.ToList()[0].DatabaseType;
-            //    Globals.DbMachine_Context.DatabaseConnectionString = backendMachine.DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
+                Globals.DbMachine_Context.DatabaseType = backendMachine.DatabaseClusters.ToList()[0].DatabaseType;
+                Globals.DbMachine_Context.DatabaseConnectionString = backendMachine.DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
 
-            //    Globals.DbMachine_Context.DatabaseSessionParameter_UserId = Globals.UserId;
-            //    Globals.DbMachine_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
-            //    Globals.DbMachine_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
-            //}
-            //else
-            //{
-            //    Log.Error("No machine database found in backend ...");
+                Globals.DbMachine_Context.DatabaseSessionParameter_UserId = Globals.UserId;
+                Globals.DbMachine_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
+                Globals.DbMachine_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
+            }
+            else
+            {
+                Log.Error("No machine database found in backend ...");
 
-            //    MessageBoxResult result = MessageBox.Show("No machine database found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show("No machine database found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
-            //    _closeApplication = true;
-            //    return;
-            //}
-            //#endregion
+                _closeApplication = true;
+                return;
+            }
+            #endregion
 
-            //#region Main database
-            //Log.Information($"Connect to main database ...");
+            #region Main database
+            Log.Information($"Connect to main database ...");
 
-            //List<DbBackend_Backend> backendsMain = _backend.Where(p => p.BackendType == BackendType.Main).ToList();
-            //if (backendsMain.Count > 0)
-            //{
-            //    DbBackend_Backend backendMain = backendsMain[0];
-            //    Globals.DbMain_Context.DatabaseType = backendMain.DatabaseClusters.ToList()[0].DatabaseType;
-            //    Globals.DbMain_Context.DatabaseConnectionString = backendMain.DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
+            List<DbBackend_Backend> backendsMain = _backend.Where(p => p.BackendType == BackendType.Main).ToList();
+            if (backendsMain.Count > 0)
+            {
+                DbBackend_Backend backendMain = backendsMain[0];
+                Globals.DbMain_Context.DatabaseType = backendMain.DatabaseClusters.ToList()[0].DatabaseType;
+                Globals.DbMain_Context.DatabaseConnectionString = backendMain.DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
 
-            //    Globals.DbMain_Context.DatabaseSessionParameter_UserId = Globals.UserId;
-            //    Globals.DbMain_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
-            //    Globals.DbMain_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
-            //}
-            //else
-            //{
-            //    Log.Error("No main database found in backend ...");
+                Globals.DbMain_Context.DatabaseSessionParameter_UserId = Globals.UserId;
+                Globals.DbMain_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
+                Globals.DbMain_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
+            }
+            else
+            {
+                Log.Error("No main database found in backend ...");
 
-            //    MessageBoxResult result = MessageBox.Show("No main database found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show("No main database found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
-            //    _closeApplication = true;
-            //    return;
-            //}
-            //#endregion
+                _closeApplication = true;
+                return;
+            }
+            #endregion
 
-            //#region Storage data database
-            //Log.Information($"Connect to storage data databases ...");
+            #region Storage data database
+            Log.Information($"Connect to storage data database ...");
 
-            //List<DbBackend_Backend> backendsStorageData = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.Data).Count() > 0).ToList();
-            //if (backendsStorageData.Count > 0)
-            //{
-            //    DbBackend_Backend backendStorageData = backendsStorageData[0];
-            //    Globals.DbStorageData_Context.DatabaseType = backendStorageData.DatabaseClusters.ToList()[0].DatabaseType;
-            //    Globals.DbStorageData_Context.DatabaseConnectionString = backendStorageData.DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
+            List<DbBackend_Backend> backendsStorageData = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.Data).Count() > 0).ToList();
+            if (backendsStorageData.Count > 0)
+            {
+                DbBackend_Backend backendStorageData = backendsStorageData[0];
+                Globals.DbStorageData_Context.DatabaseType = backendStorageData.DatabaseClusters.ToList()[0].DatabaseType;
+                Globals.DbStorageData_Context.DatabaseConnectionString = backendStorageData.DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
 
-            //    Globals.DbStorageData_Context.DatabaseSessionParameter_UserId = Globals.UserId;
-            //    Globals.DbStorageData_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
-            //    Globals.DbStorageData_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
-            //}
-            //else
-            //{
-            //    Log.Error("No storage data database found in backend ...");
+                Globals.DbStorageData_Context.DatabaseSessionParameter_UserId = Globals.UserId;
+                Globals.DbStorageData_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
+                Globals.DbStorageData_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
+            }
+            else
+            {
+                Log.Error("No storage data database found in backend ...");
 
-            //    MessageBoxResult result = MessageBox.Show("No storage data database found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show("No storage data database found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
-            //    _closeApplication = true;
-            //    return;
-            //}
-            //#endregion
+                _closeApplication = true;
+                return;
+            }
+            #endregion
 
-            //#region Storage data raw database
-            //Log.Information($"Connect to storage data databases ...");
+            #region Storage data raw database
+            Log.Information($"Connect to storage data raw database ...");
 
-            //List<DbBackend_Backend> backendsStorageDataRaw = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.DataRaw).Count() > 0).ToList();
-            //if (backendsStorageDataRaw.Count > 0)
-            //{
-            //    DbBackend_Backend backendStorageDataRaw = backendsStorageDataRaw[0];
-            //    Globals.DbStorageData_Context.DatabaseType = backendStorageDataRaw.DatabaseClusters.ToList()[0].DatabaseType;
-            //    Globals.DbStorageData_Context.DatabaseConnectionString = backendStorageDataRaw.DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
+            List<DbBackend_Backend> backendsStorageDataRaw = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.DataRaw).Count() > 0).ToList();
+            if (backendsStorageDataRaw.Count > 0)
+            {
+                DbBackend_Backend backendStorageDataRaw = backendsStorageDataRaw[0];
+                Globals.DbStorageData_Context.DatabaseType = backendStorageDataRaw.DatabaseClusters.ToList()[0].DatabaseType;
+                Globals.DbStorageData_Context.DatabaseConnectionString = backendStorageDataRaw.DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
 
-            //    Globals.DbStorageData_Context.DatabaseSessionParameter_UserId = Globals.UserId;
-            //    Globals.DbStorageData_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
-            //    Globals.DbStorageData_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
-            //}
-            //else
-            //{
-            //    Log.Error("No storage data raw database found in backend ...");
+                Globals.DbStorageData_Context.DatabaseSessionParameter_UserId = Globals.UserId;
+                Globals.DbStorageData_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
+                Globals.DbStorageData_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
+            }
+            else
+            {
+                Log.Error("No storage data raw database found in backend ...");
 
-            //    MessageBoxResult result = MessageBox.Show("No storage data raw database found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show("No storage data raw database found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
-            //    _closeApplication = true;
-            //    return;
-            //}
-            //#endregion
+                _closeApplication = true;
+                return;
+            }
+            #endregion
 
-            //#region Transcription database
-            //Log.Information($"Connect to storage data databases ...");
+            #region Transcription database
+            Log.Information($"Connect to transcription database ...");
 
-            //List<DbBackend_Backend> backendsTranscription = _backend.Where(p => p.BackendType == BackendType.Transcription).ToList();
-            //if (backendsTranscription.Count > 0)
-            //{
-            //    DbBackend_Backend backendTranscription = backendsTranscription[0];
-            //    Globals.DbStorageData_Context.DatabaseType = backendTranscription.DatabaseClusters.ToList()[0].DatabaseType;
-            //    Globals.DbStorageData_Context.DatabaseConnectionString = backendTranscription.DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
+            List<DbBackend_Backend> backendsTranscription = _backend.Where(p => p.BackendType == BackendType.Transcription).ToList();
+            if (backendsTranscription.Count > 0)
+            {
+                DbBackend_Backend backendTranscription = backendsTranscription[0];
+                Globals.DbStorageData_Context.DatabaseType = backendTranscription.DatabaseClusters.ToList()[0].DatabaseType;
+                Globals.DbStorageData_Context.DatabaseConnectionString = backendTranscription.DatabaseClusters.ToList()[0].GetDatabaseConnection(true);
 
-            //    Globals.DbStorageData_Context.DatabaseSessionParameter_UserId = Globals.UserId;
-            //    Globals.DbStorageData_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
-            //    Globals.DbStorageData_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
-            //}
-            //else
-            //{
-            //    Log.Error("No transcription database found in backend ...");
+                Globals.DbStorageData_Context.DatabaseSessionParameter_UserId = Globals.UserId;
+                Globals.DbStorageData_Context.DatabaseSessionParameter_ComputerId = Globals.ComputerId;
+                Globals.DbStorageData_Context.DatabaseSessionParameter_ApplicationId = Globals.ApplicationId;
+            }
+            else
+            {
+                Log.Error("No transcription database found in backend ...");
 
-            //    MessageBoxResult result = MessageBox.Show("No transcription database found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show("No transcription database found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
-            //    _closeApplication = true;
-            //    return;
-            //}
-            //#endregion
+                _closeApplication = true;
+                return;
+            }
+            #endregion
         }
 
         private void ConnectToAllBackendServers()
@@ -641,959 +649,868 @@ namespace PSGM.SingleSolution.SheetScan
             // ToDo: ...
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         private void ConnectToAllBackendStorages()
         {
-            //#region Storage main
-            //Log.Information($"Connect to main storage ...");
+            // ToDo: Check on all database connections if there are more than one cluster and if the cluster is available
 
-            //List<DbBackend_Backend> backendsMain = _backend.Where(p => p.BackendType == BackendType.Main).ToList();
-            //if (backendsMain.Count > 0)
-            //{
-            //    DbBackend_Backend backendMain = backendsMain[0];
+            #region Storage main
+            Log.Information($"Connect to main storage ...");
 
-            //    Globals.StorageMain = new S3_Client(backendMain.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendMain.StorageClusters.ToList()[0].StorageS3AccessKey, backendMain.StorageClusters.ToList()[0].StorageS3SecretKey, backendMain.StorageClusters.ToList()[0].StorageS3Secure, backendMain.StorageClusters.ToList()[0].StorageS3Region, backendMain.StorageClusters.ToList()[0].StorageS3BucketName);
-            //    Globals.StorageMain.InitializeMinIoClient();
-            //}
-            //else
-            //{
-            //    Log.Error("No main storage found in backend ...");
-
-            //    MessageBoxResult result = MessageBox.Show("No main storage found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-            //    _closeApplication = true;
-            //    return;
-            //}
-            //#endregion
-
-            //#region Storage data
-            //Log.Information($"Connect to data storage ...");
-
-            ////List<DbBackend_Backend> backendStorageData = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.Data).Count() > 0).ToList();
-
-
-            //#endregion
-
-            //#region Storage data thumbnail
-            //Log.Information($"Connect to data thumbnail storage ...");
-
-            ////List<DbBackend_Backend> backendStorageData = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.Data).Count() > 0).ToList();
-
-
-            //#endregion
-
-            //#region Storage data raw
-            //Log.Information($"Connect to data raw storage ...");
-
-            ////List<DbBackend_Backend> backendStorageDataRaw = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.DataRaw).Count() > 0).ToList();
-
-            //#endregion
-
-            //#region Storage data raw thumbnail
-            //Log.Information($"Connect to data raw thumbnail storage ...");
-
-            ////List<DbBackend_Backend> backendStorageData = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.Data).Count() > 0).ToList();
-
-            //#endregion
-
-            //#region Storage transcription
-            //Log.Information($"Connect to transcription storage ...");
-            ////List<DbBackend_Backend> backendMain = _backend.Where(p => p.BackendType == BackendType.Main).ToList();
-
-
-            //#endregion
-
-
-            //Globals.Storage = new Globals_Storage();
-            //Globals.Storage.S3 = new List<Globals_Storage_S3>();
-
-            //foreach (var item in _dbMain_Projects[0].ProjectParameter.Storages)
-            //{
-            //    Globals.Storage.S3.Add(new Globals_Storage_S3()
-            //    {
-            //        Endpoint = item.StorageS3Endpoint,
-            //        AccessKey = item.StorageS3AccessKey,
-            //        SecretKey = item.StorageS3SecretKey,
-            //        Secure = item.StorageS3Secure,
-            //        Region = item.StorageS3Region,
-
-            //        BucketName = item.StorageS3BucketName,
-            //    });
-            //}
-
-            //// Initialize the client with access credentials.
-            //foreach (var item in Globals.Storage.S3)
-            //{
-            //    item.InitilizeMinIoClient();
-            //}
-        }
-
-
-
-
-        private void LoadDataFromDatabase()
-        {
-            List<DbMachine_Computer> computers = Globals.DbMachine_Context.Computers.Where(p => p.Id == Globals.ComputerId)
-                                                                                    .Include(p => p.Machine)
-                                                                                    .Include(p => p.Machine.DeviceGroups)
-                                                                                        .ThenInclude(p => p.Devices)
-                                                                                            .ThenInclude(p => p.Interfaces_Can)
-                                                                                                .ThenInclude(p => p.Interface_CanDevices)
-                                                                                    .Include(p => p.Machine.DeviceGroups)
-                                                                                        .ThenInclude(p => p.Devices)
-                                                                                                .ThenInclude(p => p.Interfaces_Ethernet)
-                                                                                    .Include(p => p.Machine.DeviceGroups)
-                                                                                        .ThenInclude(p => p.Devices)
-                                                                                                .ThenInclude(p => p.Interfaces_Serial)
-                                                                                    .Include(p => p.Machine.LocationLinks)
-                                                                                        .ThenInclude(p => p.Location)
-                                                                                            .ThenInclude(p => p.AddressLink)
-                                                                                                .ThenInclude(p => p.Address)
-                                                                                    //.Include(p => p.Machine.Project)
-                                                                                    .ToList();
-
-            if (computers.Count <= 0 || computers.Count > 1)
+            List<DbBackend_Backend> backendsMain = _backend.Where(p => p.BackendType == BackendType.Main).ToList();
+            if (backendsMain.Count > 0)
             {
-                Log.Error("More than one computer found in database ...");
+                DbBackend_Backend backendMain = backendsMain[0];
 
-                MessageBoxResult result = MessageBox.Show("More than one computer found in database!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-                _closeApplication = true;
-            }
-            else if (computers[0].Machine is not null)
-            {
-                Log.Error("No machine found in database for this computer ...");
-
-                MessageBoxResult result = MessageBox.Show("No machine found in database for this computer!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-                _closeApplication = true;
+                Globals.StorageMain = new S3_Client(backendMain.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendMain.StorageClusters.ToList()[0].StorageS3AccessKey, backendMain.StorageClusters.ToList()[0].StorageS3SecretKey, backendMain.StorageClusters.ToList()[0].StorageS3Secure, backendMain.StorageClusters.ToList()[0].StorageS3Region, backendMain.StorageClusters.ToList()[0].StorageS3BucketName);
+                Globals.StorageMain.InitializeMinIoClient();
             }
             else
             {
-                _dbMachine_Machine = computers[0].Machine;
+                Log.Error("No main storage found in backend ...");
 
-                //_dbMain_Projects = Globals.DbMain_Context.Projects.Where(p => p.mac.Machines_ExtString.Contains(Globals.Machine.MachineId.ToString()))
-                //                                                    .Include(p => p.ProjectParameter)
-                //                                                        .ThenInclude(p => p.Storages)
-                //                                                    .Include(p => p.Organization)
-                //                                                    .Include(p => p.Contributors)
-                //                                                    .ToList();
+                MessageBoxResult result = MessageBox.Show("No main storage found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
-
-                //if (_dbMain_Projects != null && _dbMachine_Machine != null)
-                //{
-                //    if (_dbMain_Projects.Count() == 1 && _dbMachine_Machine.Count() == 1)
-                //    {
-                //        MessageBoxResult result = MessageBox.Show($"Should the data for this device and the project \"{_dbMain_Projects[0].Name}\" from the organization \"{_dbMain_Projects[0].Organization.Name}\" be loaded from database?", "Info", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-                //        if (result == MessageBoxResult.Yes)
-                //        {
-                //            Log.Debug("Entities loaded from database ...");
-
-                //            Globals.Machine.ProjectIdInUse = _dbMain_Projects[0].Id;
-                //            Globals.Machine.OrganizationIdInUse = _dbMain_Projects[0].Organization.Id;
-                //            //Globals.Machine.DirectoryIdInUse = _dbMain_Projects[0].ExtUsers[0].UserId;
-                //            //Globals.Machine.UserInUse = _dbMain_Projects[0].ExtUsers[0].UserId;
-                //            //Globals.Machine.SoftwareInUse = _dbMain_Projects[0].ExtSoftware[0].SoftwareId;
-                //        }
-                //        else
-                //        {
-                //            Log.Error("User canceled loading form database ...");
-
-                //            _closeApplication = true;
-                //        }
-                //    }
-                //    else
-                //    {
-                //        Log.Error($"No project/machine or too much projects/machines are found in database \"{_dbMain_Projects.Count()}\" ...");
-
-                //        //Globals.Machine.ProjectInUse = _dbMain_Projects[0].ProjectId;
-                //        //Globals.Machine.OrganizationInUse = _dbMain_Projects[0].Organization.OrganizationId;
-                //        //Globals.Machine.DirectoryIdInUse = _dbMain_Projects[0].ExtUsers[0].UserId;
-                //        //Globals.Machine.UserInUse = _dbMain_Projects[0].ExtUsers[0].UserId;
-                //        //Globals.Machine.SoftwareInUse = _dbMain_Projects[0].ExtSoftware[0].SoftwareId;
-                //    }
-                //}
-                //else
-                //{
-                //    Log.Error("No project or machine found in database NULL ...");
-
-                //    MessageBoxResult result = MessageBox.Show("No project or machine found in database!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-                //    _closeApplication = true;
-                //}
+                _closeApplication = true;
+                return;
             }
+            #endregion
+
+            #region Storage data
+            Log.Information($"Connect to data storage ...");
+
+            List<DbBackend_Backend> backendsStorageData = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.Data).Count() > 0).ToList();
+            if (backendsStorageData.Count > 0)
+            {
+                DbBackend_Backend backendStorageData = backendsStorageData[0];
+
+                Globals.StorageData = new S3_Client(backendStorageData.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendStorageData.StorageClusters.ToList()[0].StorageS3AccessKey, backendStorageData.StorageClusters.ToList()[0].StorageS3SecretKey, backendStorageData.StorageClusters.ToList()[0].StorageS3Secure, backendStorageData.StorageClusters.ToList()[0].StorageS3Region, backendStorageData.StorageClusters.ToList()[0].StorageS3BucketName);
+                Globals.StorageData.InitializeMinIoClient();
+            }
+            else
+            {
+                Log.Error("No data storage found in backend ...");
+
+                MessageBoxResult result = MessageBox.Show("No main storage found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                _closeApplication = true;
+                return;
+            }
+            #endregion
+
+            #region Storage data thumbnail
+            Log.Information($"Connect to data thumbnail storage ...");
+
+            List<DbBackend_Backend> backendsStorageDataThumbnail = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.DataThumbnail).Count() > 0).ToList();
+            if (backendsStorageDataThumbnail.Count > 0)
+            {
+                DbBackend_Backend backendStorageDataThumbnail = backendsStorageDataThumbnail[0];
+
+                Globals.StorageDataThumbnail = new S3_Client(backendStorageDataThumbnail.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendStorageDataThumbnail.StorageClusters.ToList()[0].StorageS3AccessKey, backendStorageDataThumbnail.StorageClusters.ToList()[0].StorageS3SecretKey, backendStorageDataThumbnail.StorageClusters.ToList()[0].StorageS3Secure, backendStorageDataThumbnail.StorageClusters.ToList()[0].StorageS3Region, backendStorageDataThumbnail.StorageClusters.ToList()[0].StorageS3BucketName);
+                Globals.StorageDataThumbnail.InitializeMinIoClient();
+            }
+            else
+            {
+                Log.Error("No data thumbnail storage found in backend ...");
+
+                MessageBoxResult result = MessageBox.Show("No main storage found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                _closeApplication = true;
+                return;
+            }
+            #endregion
+
+            #region Storage data raw
+            Log.Information($"Connect to data raw storage ...");
+
+            List<DbBackend_Backend> backendsStorageDataRaw = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.Data).Count() > 0).ToList();
+            if (backendsStorageDataRaw.Count > 0)
+            {
+                DbBackend_Backend backendStorageDataRaw = backendsStorageDataRaw[0];
+
+                Globals.StorageDataRaw = new S3_Client(backendStorageDataRaw.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendStorageDataRaw.StorageClusters.ToList()[0].StorageS3AccessKey, backendStorageDataRaw.StorageClusters.ToList()[0].StorageS3SecretKey, backendStorageDataRaw.StorageClusters.ToList()[0].StorageS3Secure, backendStorageDataRaw.StorageClusters.ToList()[0].StorageS3Region, backendStorageDataRaw.StorageClusters.ToList()[0].StorageS3BucketName);
+                Globals.StorageDataRaw.InitializeMinIoClient();
+            }
+            else
+            {
+                Log.Error("No data raw storage found in backend ...");
+
+                MessageBoxResult result = MessageBox.Show("No main storage found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                _closeApplication = true;
+                return;
+            }
+            #endregion
+
+            #region Storage data raw thumbnail
+            Log.Information($"Connect to data raw thumbnail storage ...");
+
+            List<DbBackend_Backend> backendsStorageDataRawThumbnail = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.DataThumbnail).Count() > 0).ToList();
+            if (backendsStorageDataRawThumbnail.Count > 0)
+            {
+                DbBackend_Backend backendStorageDataRawThumbnail = backendsStorageDataRawThumbnail[0];
+
+                Globals.StorageDataRawThumbnail = new S3_Client(backendStorageDataRawThumbnail.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendStorageDataRawThumbnail.StorageClusters.ToList()[0].StorageS3AccessKey, backendStorageDataRawThumbnail.StorageClusters.ToList()[0].StorageS3SecretKey, backendStorageDataRawThumbnail.StorageClusters.ToList()[0].StorageS3Secure, backendStorageDataRawThumbnail.StorageClusters.ToList()[0].StorageS3Region, backendStorageDataRawThumbnail.StorageClusters.ToList()[0].StorageS3BucketName);
+                Globals.StorageDataRawThumbnail.InitializeMinIoClient();
+            }
+            else
+            {
+                Log.Error("No data raw thumbnail storage found in backend ...");
+
+                MessageBoxResult result = MessageBox.Show("No main storage found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                _closeApplication = true;
+                return;
+            }
+            #endregion
+
+            #region Storage data transcription
+            Log.Information($"Connect to transcription storage ...");
+
+            List<DbBackend_Backend> backendsStorageTranscription = _backend.Where(p => p.BackendType == BackendType.Storage).ToList().Where(p => p.StorageClusters.Where(p => p.StorageClass == StorageClass.DataThumbnail).Count() > 0).ToList();
+            if (backendsStorageTranscription.Count > 0)
+            {
+                DbBackend_Backend backendStorageTranscription = backendsStorageTranscription[0];
+
+                Globals.StorageTranscription = new S3_Client(backendStorageTranscription.StorageClusters.ToList()[0].GetStorageS3Endpoint(true), backendStorageTranscription.StorageClusters.ToList()[0].StorageS3AccessKey, backendStorageTranscription.StorageClusters.ToList()[0].StorageS3SecretKey, backendStorageTranscription.StorageClusters.ToList()[0].StorageS3Secure, backendStorageTranscription.StorageClusters.ToList()[0].StorageS3Region, backendStorageTranscription.StorageClusters.ToList()[0].StorageS3BucketName);
+                Globals.StorageTranscription.InitializeMinIoClient();
+            }
+            else
+            {
+                Log.Error("No transcription storage found in backend ...");
+
+                MessageBoxResult result = MessageBox.Show("No main storage found in backend!\nClose Application!!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                _closeApplication = true;
+                return;
+            }
+            #endregion
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        private void InitializeVariables()
+        private void InitializeMachineAndDeviceVariables()
         {
-            //#region Initialize global devices ...
-            //Log.Debug("Initialize global devices ...");
+            #region Initialize devices ...
+            Log.Debug("Initialize devices ...");
 
-            //Log.Debug("Initialize global devices (Control - Robot Electronics) ...");
-            //Log.Debug("Initialize global devices (Motion - Nanotec) ...");
-            //Log.Debug("Initialize global devices (Power Supply - Nextys) ...");
-            //Log.Debug("Initialize global devices (Robot - Doosan) ...");
-            //Log.Debug("Initialize global devices (Vision - SvS-Vistek) ...");
+            Log.Debug("Initialize devices (Control - Robot Electronics) ...");
+            Log.Debug("Initialize devices (Motion - Nanotec) ...");
+            Log.Debug("Initialize devices (Power Supply - Nextys) ...");
+            Log.Debug("Initialize devices (Robot - Doosan) ...");
+            Log.Debug("Initialize devices (Vision - Intel) ...");
+            Log.Debug("Initialize devices (Vision - Sony) ...");
+            Log.Debug("Initialize devices (Vision - SvS-Vistek) ...");
 
-            //if (Globals.Machine == null)
-            //{
-            //    Globals.Machine = new Globals_Machine()
-            //    {
-            //        Control = new Globals_Machine.Globals_Machine_Control()
-            //        {
-            //            RobotElectronics = null
-            //        },
+            if (Globals.Machine == null)
+            {
+                Globals.Machine = new Globals_Machine()
+                {
+                    Control = new Globals_Machine.Globals_Machine_Control()
+                    {
+                        RobotElectronics = null
+                    },
 
-            //        Motion = new Globals_Machine.Globals_Machine_Motion()
-            //        {
-            //            Nanotec = null
-            //        },
+                    Motion = new Globals_Machine.Globals_Machine_Motion()
+                    {
+                        Nanotec = null
+                    },
 
-            //        PowerSupply = new Globals_Machine.Globals_Machine_PowerSupply()
-            //        {
-            //            Nextys = null
-            //        },
+                    PowerSupply = new Globals_Machine.Globals_Machine_PowerSupply()
+                    {
+                        Nextys = null
+                    },
 
-            //        Robot = new Globals_Machine.Globals_Machine_Robot()
-            //        {
-            //            Doosan = null
-            //        },
+                    Robot = new Globals_Machine.Globals_Machine_Robot()
+                    {
+                        Doosan = null
+                    },
 
-            //        Vision = new Globals_Machine.Globals_Machine_Vision()
-            //        {
-            //            SVSVistek = null
-            //        }
-            //    };
-            //}
-            //#endregion
+                    Vision = new Globals_Machine.Globals_Machine_Vision()
+                    {
+                        SVSVistek = null
+                    }
+                };
+            }
+            #endregion
 
-            //#region Initialize class and interfaces
-            //Log.Debug("Initialize classes and interfaces ...");
-            //int devicesCount = 0;
-            //int interfaceCount = 0;
+            #region Initialize class and interfaces
+            Log.Debug("Initialize classes and interfaces ...");
+            int devicesCount = 0;
+            int interfaceCount = 0;
 
-            //List<DbMachine_Device> devicesList = new List<DbMachine_Device>();
+            List<DbMachine_Device> devicesList = new List<DbMachine_Device>();
 
-            //List<DbMachine_Device> devicesAll = _dbMachine_Machine[0].DeviceGroups.SelectMany(p => p.Devices).ToList();
+            List<DbMachine_Device> devicesAll = _dbMachine_Machine.DeviceGroups.SelectMany(p => p.Devices).ToList();
 
-            //#region Control - Robot Electronics ...
-            //Log.Debug("Initialize class and devices (Control - Robot Electronics) ...");
-            //devicesCount = devicesAll.Where(i => i.DeviceManufacturer == DeviceManufacturer.RobotElectronics).ToList().Count();
-            //if (devicesCount > 0)
-            //{
-            //    Globals.Machine.Control = new Globals_Machine.Globals_Machine_Control();
-            //    Globals.Machine.Control.RobotElectronics = new RobotElectronics_Container();
-            //}
-            //else
-            //{
-            //    Log.Error("No device found in database ...");
-            //}
-            //#endregion
+            #region Control - Robot Electronics ...
+            Log.Debug("Initialize class and devices (Control - Robot Electronics) ...");
+            devicesCount = devicesAll.Where(i => i.DeviceManufacturer == DeviceManufacturer.RobotElectronics).ToList().Count();
+            if (devicesCount > 0)
+            {
+                Globals.Machine.Control = new Globals_Machine.Globals_Machine_Control();
+                Globals.Machine.Control.RobotElectronics = new RobotElectronics_Container();
+            }
+            else
+            {
+                Log.Error("No device found in database ...");
+            }
+            #endregion
 
-            //#region Motion - Nanotec ...
-            //Log.Debug("Initialize class and devices (Motion - Nanotec) ...");
-            //interfaceCount = devicesAll.Where(p => p.DeviceManufacturer == DeviceManufacturer.IXXAT).ToList().Count();
-            //devicesList = devicesAll.Where(p => p.DeviceManufacturer == DeviceManufacturer.IXXAT).ToList();
+            #region Motion - Nanotec ...
+            Log.Debug("Initialize class and devices (Motion - Nanotec) ...");
+            interfaceCount = devicesAll.Where(p => p.DeviceManufacturer == DeviceManufacturer.IXXAT).ToList().Count();
+            devicesList = devicesAll.Where(p => p.DeviceManufacturer == DeviceManufacturer.IXXAT).ToList();
 
-            //if (interfaceCount > 0)
-            //{
-            //    Globals.Machine.Motion = new Globals_Machine.Globals_Machine_Motion();
-            //    Globals.Machine.Motion.Nanotec = new List<Nanotec_Container>();
+            if (interfaceCount > 0)
+            {
+                Globals.Machine.Motion = new Globals_Machine.Globals_Machine_Motion();
+                Globals.Machine.Motion.Nanotec = new List<Nanotec_Container>();
 
-            //    // Initialize devices on bus
-            //    foreach (DbMachine_Device item in devicesList)
-            //    {
-            //        if (item.Interfaces_Can.Interface_CanDevices.Count() > 0)
-            //        {
-            //            Globals.Machine.Motion.Nanotec.Add(new Nanotec_Container()
-            //            {
-            //                IdDb = item.Id,
-            //                MotionController = new List<Nanotec_MotionController>()
-            //            });
-            //        }
-            //        else
-            //        {
-            //            Log.Error("No CAN device found in database ...");
+                // Initialize devices on bus
+                foreach (DbMachine_Device item in devicesList)
+                {
+                    if (item.Interfaces_Can.Interface_CanDevices.Count() > 0)
+                    {
+                        Globals.Machine.Motion.Nanotec.Add(new Nanotec_Container()
+                        {
+                            IdDb = item.Id,
+                            MotionController = new List<Nanotec_MotionController>()
+                        });
+                    }
+                    else
+                    {
+                        Log.Error("No CAN device found in database ...");
 
-            //            Globals.Machine.Motion.Nanotec.Add(new Nanotec_Container()
-            //            {
-            //                IdDb = item.Id,
-            //                MotionController = null
-            //            });
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    Log.Error("No device found in database ...");
-            //}
-            //#endregion
+                        Globals.Machine.Motion.Nanotec.Add(new Nanotec_Container()
+                        {
+                            IdDb = item.Id,
+                            MotionController = null
+                        });
+                    }
+                }
+            }
+            else
+            {
+                Log.Error("No device found in database ...");
+            }
+            #endregion
 
-            //#region Power Supply - Nextys ...
-            //Log.Debug("Initialize class and devices (Power Supply - Nextys) ...");
-            //devicesCount = devicesAll.Where(i => i.DeviceManufacturer == DeviceManufacturer.Nextys).ToList().Count();
-            //if (devicesCount > 0)
-            //{
-            //    Globals.Machine.PowerSupply = new Globals_Machine.Globals_Machine_PowerSupply();
-            //    Globals.Machine.PowerSupply.Nextys = new Nextys_Container();
-            //}
-            //else
-            //{
-            //    Log.Error("No device found in database ...");
-            //}
-            //#endregion
+            #region Power Supply - Nextys ...
+            Log.Debug("Initialize class and devices (Power Supply - Nextys) ...");
+            devicesCount = devicesAll.Where(i => i.DeviceManufacturer == DeviceManufacturer.Nextys).ToList().Count();
+            if (devicesCount > 0)
+            {
+                Globals.Machine.PowerSupply = new Globals_Machine.Globals_Machine_PowerSupply();
+                Globals.Machine.PowerSupply.Nextys = new Nextys_Container();
+            }
+            else
+            {
+                Log.Error("No device found in database ...");
+            }
+            #endregion
 
-            //#region Robot - Doosan ...
-            //Log.Debug("Initialize class and devices (Robot - Doosan) ...");
-            //devicesCount = devicesAll.Where(i => i.DeviceManufacturer == DeviceManufacturer.Doosan).ToList().Count();
-            //if (devicesCount > 0)
-            //{
-            //    Globals.Machine.Robot = new Globals_Machine.Globals_Machine_Robot();
-            //    Globals.Machine.Robot.Doosan = new Doosan_Container();
-            //}
-            //else
-            //{
-            //    Log.Error("No device found in database ...");
-            //}
-            //#endregion
+            #region Robot - Doosan ...
+            Log.Debug("Initialize class and devices (Robot - Doosan) ...");
+            devicesCount = devicesAll.Where(i => i.DeviceManufacturer == DeviceManufacturer.Doosan).ToList().Count();
+            if (devicesCount > 0)
+            {
+                Globals.Machine.Robot = new Globals_Machine.Globals_Machine_Robot();
+                Globals.Machine.Robot.Doosan = new Doosan_Container();
+            }
+            else
+            {
+                Log.Error("No device found in database ...");
+            }
+            #endregion
 
-            //#region Vision - SVSVistek ...
-            //Log.Debug("Initialize class and devices (Vision - SVSVistek) ...");
-            //devicesCount = devicesAll.Where(i => i.DeviceManufacturer == DeviceManufacturer.SVSVistek).ToList().Count();
-            //if (devicesCount > 0)
-            //{
-            //    Globals.Machine.Vision = new Globals_Machine.Globals_Machine_Vision();
-            //    Globals.Machine.Vision.SVSVistek = new SVSVistek_Container();
-            //}
-            //else
-            //{
-            //    Log.Error("No device found in database ...");
-            //}
-            //#endregion
-            //#endregion
+            #region Vision - SVSVistek ...
+            Log.Debug("Initialize class and devices (Vision - SVSVistek) ...");
+            devicesCount = devicesAll.Where(i => i.DeviceManufacturer == DeviceManufacturer.SVSVistek).ToList().Count();
+            if (devicesCount > 0)
+            {
+                Globals.Machine.Vision = new Globals_Machine.Globals_Machine_Vision();
+                Globals.Machine.Vision.SVSVistek = new SVSVistek_Container();
+            }
+            else
+            {
+                Log.Error("No device found in database ...");
+            }
+            #endregion
+            #endregion
 
-            //#region Link variables to get shorter variable names ...
-            //Log.Debug("Link variables to get shorter variable names ...");
+            #region Link variables to get shorter variable names ...
+            Log.Debug("Link variables to get shorter variable names ...");
 
-            //Log.Debug("Link variables to get shorter variable names (Control - Robot Electronics) ...");
-            //if (Globals.Machine.Control != null)
-            //{
-            //    if (Globals.Machine.Control.RobotElectronics != null)
-            //    {
-            //        _robotElectronics = Globals.Machine.Control.RobotElectronics;
-            //    }
-            //}
+            Log.Debug("Link variables to get shorter variable names (Control - Robot Electronics) ...");
+            if (Globals.Machine.Control != null)
+            {
+                if (Globals.Machine.Control.RobotElectronics != null)
+                {
+                    _robotElectronics = Globals.Machine.Control.RobotElectronics;
+                }
+            }
 
-            //Log.Debug("Link variables to get shorter variable names (Motion - Nanotec) ...");
-            //if (Globals.Machine.Motion != null)
-            //{
-            //    if (Globals.Machine.Motion.Nanotec != null)
-            //    {
-            //        _nanotec = Globals.Machine.Motion.Nanotec;
-            //    }
-            //}
+            Log.Debug("Link variables to get shorter variable names (Motion - Nanotec) ...");
+            if (Globals.Machine.Motion != null)
+            {
+                if (Globals.Machine.Motion.Nanotec != null)
+                {
+                    _nanotec = Globals.Machine.Motion.Nanotec;
+                }
+            }
 
-            //Log.Debug("Link variables to get shorter variable names (Power Supply - Nextys) ...");
-            //if (Globals.Machine.PowerSupply != null)
-            //{
-            //    if (Globals.Machine.PowerSupply.Nextys != null)
-            //    {
-            //        _nextys = Globals.Machine.PowerSupply.Nextys;
-            //    }
-            //}
+            Log.Debug("Link variables to get shorter variable names (Power Supply - Nextys) ...");
+            if (Globals.Machine.PowerSupply != null)
+            {
+                if (Globals.Machine.PowerSupply.Nextys != null)
+                {
+                    _nextys = Globals.Machine.PowerSupply.Nextys;
+                }
+            }
 
-            //Log.Debug("Link variables to get shorter variable names (Robot - Doosan) ...");
-            //if (Globals.Machine.Robot != null)
-            //{
-            //    if (Globals.Machine.Robot.Doosan != null)
-            //    {
-            //        _doosan = Globals.Machine.Robot.Doosan;
-            //    }
-            //}
+            Log.Debug("Link variables to get shorter variable names (Robot - Doosan) ...");
+            if (Globals.Machine.Robot != null)
+            {
+                if (Globals.Machine.Robot.Doosan != null)
+                {
+                    _doosan = Globals.Machine.Robot.Doosan;
+                }
+            }
 
-            //Log.Debug("Link variables to get shorter variable names (Vision - SVSVistek) ...");
-            //if (Globals.Machine.Vision != null)
-            //{
-            //    if (Globals.Machine.Vision.SVSVistek != null)
-            //    {
-            //        _svsVistek = Globals.Machine.Vision.SVSVistek;
-            //    }
-            //}
-            //#endregion
-        }
-
-        private void InitializeStorage()
-        {
-
+            Log.Debug("Link variables to get shorter variable names (Vision - SVSVistek) ...");
+            if (Globals.Machine.Vision != null)
+            {
+                if (Globals.Machine.Vision.SVSVistek != null)
+                {
+                    _svsVistek = Globals.Machine.Vision.SVSVistek;
+                }
+            }
+            #endregion
         }
 
         private void ControlInitializeAndConnect()
         {
-            //Log.Debug("Initialize and connect Nextys (Power Supplies) ...");
+            Log.Debug("Initialize and connect Nextsys (Power Supplies) ...");
 
-            //if (_robotElectronics.Controllers != null)
-            //{
-            //    List<DbMachine_Device> devicesAll = _dbMachine_Machine[0].DeviceGroups.SelectMany(p => p.Devices)
-            //                                            .Where(p => p.DeviceManufacturer == DeviceManufacturer.RobotElectronics && p.DeviceType == DeviceType.DS2408)
-            //                                            .ToList()
-            //                                            .OrderBy(p => p.Interfaces_Ethernet.IpAddress)
-            //                                            .ToList();
+            if (_robotElectronics.Controllers != null)
+            {
+                List<DbMachine_Device> devicesAll = _dbMachine_Machine.DeviceGroups.SelectMany(p => p.Devices)
+                                                                                    .Where(p => p.DeviceManufacturer == DeviceManufacturer.RobotElectronics && p.DeviceType == DeviceType.DS2408)
+                                                                                    .ToList()
+                                                                                    .OrderBy(p => p.Interfaces_Ethernet.IpAddress)
+                                                                                    .ToList();
 
-            //    foreach (DbMachine_Device device in devicesAll)
-            //    {
-            //        try
-            //        {
-            //            List<RobotElectronics_Controller> controller;
+                foreach (DbMachine_Device device in devicesAll)
+                {
+                    try
+                    {
+                        List<RobotElectronics_Controller> controller;
 
-            //            if (device.InitializeAtSplashscreen)
-            //            {
-            //                //Log.Debug($"Inizialize device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
-            //                DbMachine_Interface_Ethernet? ethernet = device.Interfaces_Ethernet;
-            //                _robotElectronics.Controllers.Add(new RobotElectronics_Controller(ethernet.IpAddress, ethernet.Port, ethernet.Timeout, 500));
+                        if (device.InitializeAtSplashScreen)
+                        {
+                            //Log.Debug($"Inizialize device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                            DbMachine_Interface_Ethernet? ethernet = device.Interfaces_Ethernet;
+                            _robotElectronics.Controllers.Add(new RobotElectronics_Controller(ethernet.IpAddress, ethernet.Port, ethernet.Timeout, 500));
 
-            //                // Link Hardware with DbContext
-            //                _robotElectronics.Controllers.Last().IdDb = device.Id;
-            //            }
+                            // Link Hardware with DbContext
+                            _robotElectronics.Controllers.Last().IdDb = device.Id;
+                        }
 
-            //            controller = _robotElectronics.Controllers.Where(p => p.IdDb == device.Id).ToList();
+                        controller = _robotElectronics.Controllers.Where(p => p.IdDb == device.Id).ToList();
 
-            //            if (device.ConnectAtSplashscreen && controller.Count > 0)
-            //            {
-            //                //Log.Debug($"Connect to device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
-            //                controller[0].Connect();
-            //            }
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            //Log.Error($"Couldn't initialize/connect to device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
-            //            break;
-            //        }
-            //    }
-            //}
+                        if (device.ConnectAtSplashScreen && controller.Count > 0)
+                        {
+                            //Log.Debug($"Connect to device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                            controller[0].Connect();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //Log.Error($"Couldn't initialize/connect to device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                        break;
+                    }
+                }
+            }
         }
 
         private void MotionBusDeviceInitializeAndConnect()
         {
-            //Log.Debug("Initialize and connect bus devices ...");
+            Log.Debug("Initialize and connect bus devices ...");
 
-            //if (_nanotec != null)
-            //{
-            //    foreach (Nanotec_Container busInteface in _nanotec)
-            //    {
-            //        List<DbMachine_Device> devicesAll = _dbMachine_Machine[0].DeviceGroups.SelectMany(p => p.Devices)
-            //                                                                                .Where(p => p.Id == busInteface.IdDb)
-            //                                                                                .OrderBy(p => p.Id)
-            //                                                                                .ToList();
+            if (_nanotec != null)
+            {
+                foreach (Nanotec_Container busInteface in _nanotec)
+                {
+                    List<DbMachine_Device> devicesAll = _dbMachine_Machine.DeviceGroups.SelectMany(p => p.Devices)
+                                                                                        .Where(p => p.Id == busInteface.IdDb)
+                                                                                        .OrderBy(p => p.Id)
+                                                                                        .ToList();
 
-            //        if (devicesAll.Count == 1)
-            //        {
-            //            // Set the logging level
-            //            busInteface.SetLoggingLevel(Nlc.LogLevel.Info);
+                    if (devicesAll.Count == 1)
+                    {
+                        // Set the logging level
+                        busInteface.SetLoggingLevel(Nlc.LogLevel.Info);
 
-            //            #region Get and list all hardware available, and print out available hardware ...
-            //            // Get and list all hardware available
-            //            busInteface.DiscoverBusHardwareDevices();
+                        #region Get and list all hardware available, and print out available hardware ...
+                        // Get and list all hardware available
+                        busInteface.DiscoverBusHardwareDevices();
 
-            //            if (busInteface.BusHardwareVector.Count() <= 0)
-            //            {
-            //                Log.Error("No bus device found!");
-            //                return;
-            //            }
+                        if (busInteface.BusHardwareVector.Count() <= 0)
+                        {
+                            Log.Error("No bus device found!");
+                            return;
+                        }
 
-            //            busInteface.SetBusHardwareDevice(devicesAll[0].DeviceManufacturer.ToString(), devicesAll[0].Serialnumber);
+                        busInteface.SetBusHardwareDevice(devicesAll[0].DeviceManufacturer.ToString(), devicesAll[0].SerialNumber);
 
-            //            if (busInteface.BusHardwareId == null)
-            //            {
-            //                Log.Information("No or invalid bus hardware selection!");
-            //            }
-            //            #endregion
+                        if (busInteface.BusHardwareId == null)
+                        {
+                            Log.Information("No or invalid bus hardware selection!");
+                        }
+                        #endregion
 
-            //            #region Create bus hardware and open the hardware itself ... 
-            //            if (busInteface.BusHardwareId != null)
-            //            {
-            //                // Create bus hardware options for opening the hardware
-            //                busInteface.CreateBusHardwareOptions();
+                        #region Create bus hardware and open the hardware itself ... 
+                        if (busInteface.BusHardwareId != null)
+                        {
+                            // Create bus hardware options for opening the hardware
+                            busInteface.CreateBusHardwareOptions();
 
-            //                // Now able to open the hardware itself
-            //                busInteface.OpenBusHardware();
-            //            }
-            //            #endregion
-            //        }
-            //        else
-            //        {
-            //            // ToDo: ...
-            //        }
-            //    }
-            //}
+                            // Now able to open the hardware itself
+                            busInteface.OpenBusHardware();
+                        }
+                        #endregion
+                    }
+                    else
+                    {
+                        // ToDo: ...
+                    }
+                }
+            }
         }
 
         private void MotionDevicesOnTheBusDiscovery()
         {
-            //Log.Debug("Discover devices on the bus ...");
+            Log.Debug("Discover devices on the bus ...");
 
-            //if (_nanotec != null)
-            //{
-            //    foreach (Nanotec_Container busInteface in _nanotec)
-            //    {
-            //        List<DbMachine_Device> devicesAll = _dbMachine_Machine[0].DeviceGroups.SelectMany(p => p.Devices)
-            //                                                            .Where(p => p.Id == busInteface.IdDb)
-            //                                                            .OrderBy(p => p.Id)
-            //                                                            .ToList();
+            if (_nanotec != null)
+            {
+                foreach (Nanotec_Container busInteface in _nanotec)
+                {
+                    List<DbMachine_Device> devicesAll = _dbMachine_Machine.DeviceGroups.SelectMany(p => p.Devices)
+                                                                        .Where(p => p.Id == busInteface.IdDb)
+                                                                        .OrderBy(p => p.Id)
+                                                                        .ToList();
 
-            //        if (devicesAll.Count == 1)
-            //        {
-            //            #region Scan for devices, and print out available devices ...
-            //            Log.Information("Scanning for devices...");
+                    if (devicesAll.Count == 1)
+                    {
+                        #region Scan for devices, and print out available devices ...
+                        Log.Information("Scanning for devices...");
 
-            //            // Scan the whole bus for devices (in case the bus supports scanning)
-            //            busInteface.ScanBusForDevices();
+                        // Scan the whole bus for devices (in case the bus supports scanning)
+                        busInteface.ScanBusForDevices();
 
-            //            if (busInteface.BusDeviceVector.Count == 0)
-            //            {
-            //                MessageBoxResult result = MessageBox.Show("No devices found. ...", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
-            //                Log.Error("No bus devices found!");
-            //                return;
-            //            }
+                        if (busInteface.BusDeviceVector.Count == 0)
+                        {
+                            MessageBoxResult result = MessageBox.Show("No devices found. ...", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                            Log.Error("No bus devices found!");
+                            return;
+                        }
 
-            //            // Print out all available bus devices
-            //            foreach (Nlc.DeviceId id in busInteface.BusDeviceVector)
-            //            {
-            //                Log.Debug($"Found bus device with ID: {id.getDeviceId()} Device name: {id.getDescription()} Bus Hardware: {id.getBusHardwareId().getName()}");
-            //            }
-            //            #endregion
-            //        }
-            //        else
-            //        {
-            //            // ToDo: ...
-            //        }
-            //    }
-            //}
+                        // Print out all available bus devices
+                        foreach (Nlc.DeviceId id in busInteface.BusDeviceVector)
+                        {
+                            Log.Debug($"Found bus device with ID: {id.getDeviceId()} Device name: {id.getDescription()} Bus Hardware: {id.getBusHardwareId().getName()}");
+                        }
+                        #endregion
+                    }
+                    else
+                    {
+                        // ToDo: ...
+                    }
+                }
+            }
         }
 
         private void MotionDevicesOnTheBusInitializeAndConnect()
         {
-            //Log.Debug("Initialize and connect devices on the bus ...");
+            Log.Debug("Initialize and connect devices on the bus ...");
 
-            //if (_nanotec != null)
-            //{
-            //    foreach (Nanotec_Container item in _nanotec)
-            //    {
-            //        List<DbMachine_Device> devicesAll = _dbMachine_Machine[0].DeviceGroups.SelectMany(p => p.Devices)
-            //                                                   .Where(p => p.Id == item.IdDb)
-            //                                                   .OrderBy(p => p.Id)
-            //                                                   .ToList();
+            if (_nanotec != null)
+            {
+                foreach (Nanotec_Container item in _nanotec)
+                {
+                    List<DbMachine_Device> devicesAll = _dbMachine_Machine.DeviceGroups.SelectMany(p => p.Devices)
+                                                               .Where(p => p.Id == item.IdDb)
+                                                               .OrderBy(p => p.Id)
+                                                               .ToList();
 
-            //        if (devicesAll.Count == 1)
-            //        {
-            //            var canDeviceOrderBy = devicesAll[0].Interfaces_Can.Interface_CanDevices.OrderBy(p => p.CanDeviceId).ToList();
+                    if (devicesAll.Count == 1)
+                    {
+                        var canDeviceOrderBy = devicesAll[0].Interfaces_Can.Interface_CanDevices.OrderBy(p => p.CanDeviceId).ToList();
 
-            //            try
-            //            {
-            //                foreach (DbMachine_Interface_CanDevice device in canDeviceOrderBy)
-            //                {
-            //                    // Check if can device was found at device discovery
-            //                    List<DeviceId> canDevice = item.BusDeviceVector.Where(p => p.getDeviceId() == device.CanDeviceId).ToList();
+                        try
+                        {
+                            foreach (DbMachine_Interface_CanDevice device in canDeviceOrderBy)
+                            {
+                                // Check if can device was found at device discovery
+                                List<DeviceId> canDevice = item.BusDeviceVector.Where(p => p.getDeviceId() == device.CanDeviceId).ToList();
 
-            //                    if (canDevice.Count == 1)
-            //                    {
-            //                        if (devicesAll[0].InitializeAtSplashscreen)
-            //                        {
-            //                            item.AddMotionController(device.CanDeviceId, device.Id);
+                                if (canDevice.Count == 1)
+                                {
+                                    if (devicesAll[0].InitializeAtSplashScreen)
+                                    {
+                                        item.AddMotionController(device.CanDeviceId, device.Id);
 
-            //                            item.DeviceConnect(device.CanDeviceId);
-            //                        }
+                                        item.DeviceConnect(device.CanDeviceId);
+                                    }
 
-            //                        if (devicesAll[0].AutoStartAtSplashscreen)
-            //                        {
-            //                            // No autostart for motion controllers at the moment ...
-            //                        }
-            //                    }
-            //                    else
-            //                    {
-            //                        // ToDo: ...
-            //                        //Log.Error($"To many or to less devices for Id {busDeviceId} found!");
-            //                    }
-            //                }
-            //            }
-            //            catch (Exception ex)
-            //            {
-            //                //Log.Error($"Couldn't initialize/connect to device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
-            //                break;
-            //            }
-            //        }
-            //        else
-            //        {
-            //            // ToDo: ...
-            //        }
-            //    }
-            //}
+                                    if (devicesAll[0].AutoStartAtSplashScreen)
+                                    {
+                                        // No autostart for motion controllers at the moment ...
+                                    }
+                                }
+                                else
+                                {
+                                    // ToDo: ...
+                                    //Log.Error($"To many or to less devices for Id {busDeviceId} found!");
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            //Log.Error($"Couldn't initialize/connect to device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        // ToDo: ...
+                    }
+                }
+            }
         }
 
         private void PowerSupplyInitializeAndConnect()
         {
-            //Log.Debug("Initialize and connect Nextys (Power Supplies) ...");
+            Log.Debug("Initialize and connect Nextys (Power Supplies) ...");
 
-            //if (_nextys.DcDcConverters != null)
-            //{
-            //    List<DbMachine_Device> devicesAll = _dbMachine_Machine[0].DeviceGroups.SelectMany(p => p.Devices)
-            //                                                            .Where(p => p.DeviceManufacturer == DeviceManufacturer.Nextys && p.DeviceType == DeviceType.NDW240)
-            //                                                            .ToList()
-            //                                                            .OrderBy(p => p.Interfaces_Serial.PortName)
-            //                                                            .ToList();
+            if (_nextys.DcDcConverters != null)
+            {
+                List<DbMachine_Device> devicesAll = _dbMachine_Machine.DeviceGroups.SelectMany(p => p.Devices)
+                                                                        .Where(p => p.DeviceManufacturer == DeviceManufacturer.Nextys && p.DeviceType == DeviceType.NDW240)
+                                                                        .ToList()
+                                                                        .OrderBy(p => p.Interfaces_Serial.PortName)
+                                                                        .ToList();
 
-            //    foreach (DbMachine_Device device in devicesAll)
-            //    {
-            //        try
-            //        {
-            //            List<Nextys_DcDcConverter> dcDcConverter;
+                foreach (DbMachine_Device device in devicesAll)
+                {
+                    try
+                    {
+                        List<Nextys_DcDcConverter> dcDcConverter;
 
-            //            if (device.InitializeAtSplashscreen)
-            //            {
-            //                //Log.Debug($"Inizialize device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
-            //                DbMachine_Interface_Serial? serial = device.Interfaces_Serial;
-            //                _nextys.DcDcConverters.Add(new Nextys_DcDcConverter(serial.PortName, serial.BaudRate, (Parity)serial.Parity, (System.IO.Ports.StopBits)serial.StopBits, (Handshake)serial.Handshake, serial.ReadTimeout, serial.WriteTimeout, serial.MonitoringInterval, 0x01));
+                        if (device.InitializeAtSplashScreen)
+                        {
+                            //Log.Debug($"Inizialize device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                            DbMachine_Interface_Serial? serial = device.Interfaces_Serial;
+                            _nextys.DcDcConverters.Add(new Nextys_DcDcConverter(serial.PortName, serial.BaudRate, (Parity)serial.Parity, (System.IO.Ports.StopBits)serial.StopBits, (Handshake)serial.Handshake, serial.ReadTimeout, serial.WriteTimeout, serial.MonitoringInterval, 0x01));
 
-            //                // Link Hardware with DbContext
-            //                _nextys.DcDcConverters.Last().IdDb = device.Id;
-            //            }
+                            // Link Hardware with DbContext
+                            _nextys.DcDcConverters.Last().IdDb = device.Id;
+                        }
 
-            //            dcDcConverter = _nextys.DcDcConverters.Where(p => p.IdDb == device.Id).ToList();
+                        dcDcConverter = _nextys.DcDcConverters.Where(p => p.IdDb == device.Id).ToList();
 
-            //            if (device.ConnectAtSplashscreen && dcDcConverter.Count == 1)
-            //            {
-            //                //Log.Debug($"Connect to device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
-            //                dcDcConverter[0].Connect();
-            //            }
-            //            else
-            //            {
-            //                // ToDo: ...
-            //            }
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            //Log.Error($"Couldn't initialize/connect to device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
-            //            break;
-            //        }
-            //    }
-            //}
+                        if (device.ConnectAtSplashScreen && dcDcConverter.Count == 1)
+                        {
+                            //Log.Debug($"Connect to device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                            dcDcConverter[0].Connect();
+                        }
+                        else
+                        {
+                            // ToDo: ...
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //Log.Error($"Couldn't initialize/connect to device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                        break;
+                    }
+                }
+            }
         }
 
         private void RobotInitializeAndConnect()
         {
-            //Log.Debug("Initialize and connect SVS-Vistek (Cameras) ...");
+            Log.Debug("Initialize and connect SVS-Vistek (Cameras) ...");
 
-            //if (_doosan.Controllers != null)
-            //{
-            //    List<DbMachine_Device> devicesAll = _dbMachine_Machine[0].DeviceGroups.SelectMany(p => p.Devices)
-            //                                                                            .Where(p => p.DeviceManufacturer == DeviceManufacturer.Doosan && p.DeviceType == DeviceType.M0609)
-            //                                                                            .ToList()
-            //                                                                            .OrderBy(p => p.Interfaces_Ethernet.IpAddress)
-            //                                                                            .ToList();
+            if (_doosan.Controllers != null)
+            {
+                List<DbMachine_Device> devicesAll = _dbMachine_Machine.DeviceGroups.SelectMany(p => p.Devices)
+                                                                                        .Where(p => p.DeviceManufacturer == DeviceManufacturer.Doosan && p.DeviceType == DeviceType.M0609)
+                                                                                        .ToList()
+                                                                                        .OrderBy(p => p.Interfaces_Ethernet.IpAddress)
+                                                                                        .ToList();
 
-            //    foreach (DbMachine_Device device in devicesAll)
-            //    {
-            //        try
-            //        {
-            //            List<Doosan_Controller> controller = new List<Doosan_Controller>();
+                foreach (DbMachine_Device device in devicesAll)
+                {
+                    try
+                    {
+                        List<Doosan_Controller> controller = new List<Doosan_Controller>();
 
-            //            if (device.InitializeAtSplashscreen)
-            //            {
-            //                //Log.Debug($"Inizialize device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
-            //                DbMachine_Interface_Ethernet? ethernet = device.Interfaces_Ethernet;
-            //                _doosan.Controllers.Add(new Doosan_Controller());
+                        if (device.InitializeAtSplashScreen)
+                        {
+                            //Log.Debug($"Inizialize device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                            DbMachine_Interface_Ethernet? ethernet = device.Interfaces_Ethernet;
+                            _doosan.Controllers.Add(new Doosan_Controller());
 
-            //                // Link Hardware with DbContext
-            //                _doosan.Controllers.Last().IdDb = device.Id;
-            //            }
+                            // Link Hardware with DbContext
+                            _doosan.Controllers.Last().IdDb = device.Id;
+                        }
 
-            //            controller = _doosan.Controllers.Where(p => p.IdDb == device.Id).ToList();
+                        controller = _doosan.Controllers.Where(p => p.IdDb == device.Id).ToList();
 
-            //            if (device.ConnectAtSplashscreen && controller.Count == 1)
-            //            {
-            //                //Log.Debug($"Define C# callback function´s for robot {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
-            //                //RCRobotDoosanControl.Doosan.MyDelegate myDelegate = Globals.MyCallback;
+                        if (device.ConnectAtSplashScreen && controller.Count == 1)
+                        {
+                            //Log.Debug($"Define C# callback function´s for robot {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                            //RCRobotDoosanControl.Doosan.MyDelegate myDelegate = Globals.MyCallback;
 
-            //                //_Doosan.ControlDeviceConfigs[i].Control.SetupCallbackk(myDelegate);
+                            //_Doosan.ControlDeviceConfigs[i].Control.SetupCallbackk(myDelegate);
 
-            //                //// Define C# callback functions
-            //                //RCRobotDoosanControl.Doosan.ProgressDelegate progressDelegate = Globals.UpdateProgress;
-            //                //RCRobotDoosanControl.Doosan.StatusDelegate statusDelegate = Globals.UpdateStatus;
+                            //// Define C# callback functions
+                            //RCRobotDoosanControl.Doosan.ProgressDelegate progressDelegate = Globals.UpdateProgress;
+                            //RCRobotDoosanControl.Doosan.StatusDelegate statusDelegate = Globals.UpdateStatus;
 
-            //                // Pass the delegates to the C++/CLI DLL
-            //                //_Doosan.ControlDeviceConfigs[i].Control.SetupCallback(progressDelegate, statusDelegate);
+                            // Pass the delegates to the C++/CLI DLL
+                            //_Doosan.ControlDeviceConfigs[i].Control.SetupCallback(progressDelegate, statusDelegate);
 
-            //                //_Doosan.ControlDeviceConfigs[i].Control._robterId = i;
+                            //_Doosan.ControlDeviceConfigs[i].Control._robterId = i;
 
-            //                //_Doosan.ControlDeviceConfigs[i].Control.ManagedTOnTpInitializingCompletedCBHandler1 += Globals.OnTpInitializingCompleted1;
+                            //_Doosan.ControlDeviceConfigs[i].Control.ManagedTOnTpInitializingCompletedCBHandler1 += Globals.OnTpInitializingCompleted1;
 
-            //                //_Doosan.ControlDeviceConfigs[i].Control.ManagedTOnTpInitializingCompletedCBHandler2 += Globals.OnTpInitializingCompleted2;
+                            //_Doosan.ControlDeviceConfigs[i].Control.ManagedTOnTpInitializingCompletedCBHandler2 += Globals.OnTpInitializingCompleted2;
 
-            //                ////Register the callback
-            //                //controller[0].ManagedTOnHommingCompletedCBHandler += Events.OnHommingCompleted;
-            //                //////_robot.ManagedTOnMonitoringDataCBHandler += OnMonitoringDataCB1;
-            //                //////_robot.ManagedTOnMonitoringDataExCBHandler += OnMonitoringDataExCB1;
-            //                //////_robot.ManagedTOnMonitoringCtrlIOCBHandler += OnMonitoringCtrlIOCB1;
-            //                //////_robot.ManagedTOnMonitoringCtrlIOExCBHandler += OnMonitoringCtrlIOExCB1;
-            //                //////_robot.ManagedTOnMonitoringStateCBHandler += OnMonitoringStateCB1;
-            //                //////_robot.ManagedTOnMonitoringAccessControlCBHandler += OnMonitoingAccessControlCB1;
-            //                //controller[0].ManagedTOnTpInitializingCompletedCBHandler += Events.OnTpInitializingCompleted;
-            //                //////_robot.ManagedTOnLogAlarmCBHandler += OnLogAlarm1;
-            //                //////_robot.ManagedTOnProgramStoppedCBHandler += OnProgramStopped1;
-            //                //controller[0].ManagedTOnDisconnectedCBHandler += Events.OnDisconnected;
-            //                controller[0].RegisterEvents();
-            //                Thread.Sleep(250);
+                            ////Register the callback
+                            //controller[0].ManagedTOnHommingCompletedCBHandler += Events.OnHommingCompleted;
+                            //////_robot.ManagedTOnMonitoringDataCBHandler += OnMonitoringDataCB1;
+                            //////_robot.ManagedTOnMonitoringDataExCBHandler += OnMonitoringDataExCB1;
+                            //////_robot.ManagedTOnMonitoringCtrlIOCBHandler += OnMonitoringCtrlIOCB1;
+                            //////_robot.ManagedTOnMonitoringCtrlIOExCBHandler += OnMonitoringCtrlIOExCB1;
+                            //////_robot.ManagedTOnMonitoringStateCBHandler += OnMonitoringStateCB1;
+                            //////_robot.ManagedTOnMonitoringAccessControlCBHandler += OnMonitoingAccessControlCB1;
+                            //controller[0].ManagedTOnTpInitializingCompletedCBHandler += Events.OnTpInitializingCompleted;
+                            //////_robot.ManagedTOnLogAlarmCBHandler += OnLogAlarm1;
+                            //////_robot.ManagedTOnProgramStoppedCBHandler += OnProgramStopped1;
+                            //controller[0].ManagedTOnDisconnectedCBHandler += Events.OnDisconnected;
+                            controller[0].RegisterEvents();
+                            Thread.Sleep(250);
 
-            //                //Log.Debug($"Open connection for robot {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
-            //                controller[0].OpenConnection(device.Interfaces_Ethernet.IpAddress, device.Interfaces_Ethernet.Port);
-            //                Log.Information($"Connect to Robot: {device.Interfaces_Ethernet.IpAddress}:{device.Interfaces_Ethernet.Port}");
-            //                Thread.Sleep(250);
+                            //Log.Debug($"Open connection for robot {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                            controller[0].OpenConnection(device.Interfaces_Ethernet.IpAddress, device.Interfaces_Ethernet.Port);
+                            Log.Information($"Connect to Robot: {device.Interfaces_Ethernet.IpAddress}:{device.Interfaces_Ethernet.Port}");
+                            Thread.Sleep(250);
 
-            //                //Log.Debug($"Get information of robot {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                            //Log.Debug($"Get information of robot {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
 
-            //                // Change monitoring data version
-            //                SystemVersion systemVersion = controller[0].GetSystemVersion();
-            //                Log.Information("System Version: " + systemVersion._szController);
-            //                controller[0].SetupMonitoringVersion(1);
-            //                controller[0].SetRobotControl(RobotControl.CONTROL_SERVO_ON);
+                            // Change monitoring data version
+                            SystemVersion systemVersion = controller[0].GetSystemVersion();
+                            Log.Information("System Version: " + systemVersion._szController);
+                            controller[0].SetupMonitoringVersion(1);
+                            controller[0].SetRobotControl(RobotControl.CONTROL_SERVO_ON);
 
-            //                Log.Information("Library Version: " + controller[0].GetLibraryVersion());
-            //                Thread.Sleep(250);
+                            Log.Information("Library Version: " + controller[0].GetLibraryVersion());
+                            Thread.Sleep(250);
 
-            //                // Wait for robot state change
-            //                //while ((controller[0].GetRobotState() != RobotState.STATE_STANDBY) || !controller[0].HasControlAuthority)
-            //                //{
-            //                //    Thread.Sleep(250);
-            //                //}
+                            // Wait for robot state change
+                            //while ((controller[0].GetRobotState() != RobotState.STATE_STANDBY) || !controller[0].HasControlAuthority)
+                            //{
+                            //    Thread.Sleep(250);
+                            //}
 
-            //                // Manual mode setting
-            //                controller[0].SetRobotMode(RobotMode.ROBOT_MODE_MANUAL);
-            //                controller[0].SetRobotSystem(RobotSystem.ROBOT_SYSTEM_REAL);
+                            // Manual mode setting
+                            controller[0].SetRobotMode(RobotMode.ROBOT_MODE_MANUAL);
+                            controller[0].SetRobotSystem(RobotSystem.ROBOT_SYSTEM_REAL);
 
-            //                Thread.Sleep(250);
+                            Thread.Sleep(250);
 
 
-            //                //_Doosan.ControlDeviceConfigs[i].SetAxisDirection(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
+                            //_Doosan.ControlDeviceConfigs[i].SetAxisDirection(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 
-            //                //_robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_10, true);
+                            //_robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_10, true);
 
-            //            }
-            //            else
-            //            {
-            //                // ToDo: ...
-            //            }
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            //Log.Error($"Couldn't initialize/connect to device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
-            //            break;
-            //        }
-            //    }
-            //}
+                        }
+                        else
+                        {
+                            // ToDo: ...
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //Log.Error($"Couldn't initialize/connect to device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                        break;
+                    }
+                }
+            }
         }
 
         private void CameraInitializeSdk()
         {
-            //Log.Debug("Initialize SVSVistek (Vision) SDK ...");
+            Log.Debug("Initialize SVSVistek (Vision) SDK ...");
 
-            //if (_svsVistek != null)
-            //{
-            //    _svsVistek.InitSDK();
-            //}
+            if (_svsVistek != null)
+            {
+                _svsVistek.InitSDK();
+            }
         }
 
         private void CameraDiscovery()
         {
-            //Log.Debug("Discover SVS-Vistek cameras ...");
-            //_svsVistek.DeviceDiscovery();
+            Log.Debug("Discover SVS-Vistek cameras ...");
+            _svsVistek.DeviceDiscovery();
 
-            //if (_svsVistek.DeviceInfoList != null)
-            //{
-            //    foreach (SVSVistek_DeviceInfo cam in _svsVistek.DeviceInfoList)
-            //    {
-            //        Log.Debug("Camera Name:" + cam.DeviceInfo.displayName + " Model:" + cam.DeviceInfo.model + " Serialnumber:" + cam.DeviceInfo.serialNumber + " found.");
-            //    }
-            //}
-            //else
-            //{
-            //    Log.Error("No camera found!");
-            //}
+            if (_svsVistek.DeviceInfoList != null)
+            {
+                foreach (SVSVistek_DeviceInfo cam in _svsVistek.DeviceInfoList)
+                {
+                    Log.Debug("Camera Name:" + cam.DeviceInfo.displayName + " Model:" + cam.DeviceInfo.model + " Serialnumber:" + cam.DeviceInfo.serialNumber + " found.");
+                }
+            }
+            else
+            {
+                Log.Error("No camera found!");
+            }
         }
 
         private void CameraInitializeAndConnect()
         {
-            //Log.Debug("Initialize and connect SVS-Vistek (Cameras) ...");
+            Log.Debug("Initialize and connect SVS-Vistek (Cameras) ...");
 
-            //if (_svsVistek.Cameras != null)
-            //{
-            //    List<DbMachine_Device> devicesAll = _dbMachine_Machine[0].DeviceGroups.SelectMany(p => p.Devices)
-            //                                                            .Where(p => p.DeviceManufacturer == DeviceManufacturer.SVSVistek && p.DeviceType == DeviceType.HR455CXGE)
-            //                                                            .ToList()
-            //                                                            .OrderBy(p => p.Interfaces_Ethernet.IpAddress)
-            //                                                            .ToList();
+            if (_svsVistek.Cameras != null)
+            {
+                List<DbMachine_Device> devicesAll = _dbMachine_Machine.DeviceGroups.SelectMany(p => p.Devices)
+                                                                        .Where(p => p.DeviceManufacturer == DeviceManufacturer.SVSVistek && p.DeviceType == DeviceType.HR455CXGE)
+                                                                        .ToList()
+                                                                        .OrderBy(p => p.Interfaces_Ethernet.IpAddress)
+                                                                        .ToList();
 
-            //    List<SVSVistek_DeviceInfo> deviceInfo = null;
+                List<SVSVistek_DeviceInfo> deviceInfo = null;
 
-            //    foreach (DbMachine_Device device in devicesAll)
-            //    {
-            //        try
-            //        {
-            //            deviceInfo = _svsVistek.DeviceInfoList.Where(p => p.DeviceInfo.serialNumber == device.Serialnumber).ToList();
+                foreach (DbMachine_Device device in devicesAll)
+                {
+                    try
+                    {
+                        deviceInfo = _svsVistek.DeviceInfoList.Where(p => p.DeviceInfo.serialNumber == device.SerialNumber).ToList();
 
-            //            if (deviceInfo.Count == 1)
-            //            {
-            //                List<SVSVistek_Camera> cam = new List<SVSVistek_Camera>();
+                        if (deviceInfo.Count == 1)
+                        {
+                            List<SVSVistek_Camera> cam = new List<SVSVistek_Camera>();
 
-            //                if (device.InitializeAtSplashscreen)
-            //                {
-            //                    //Log.Debug($"Inizialize device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
-            //                    DbMachine_Interface_Ethernet? ethernet = device.Interfaces_Ethernet;
-            //                    _svsVistek.Cameras.Add(new SVSVistek_Camera(deviceInfo[0]));
+                            if (device.InitializeAtSplashScreen)
+                            {
+                                //Log.Debug($"Inizialize device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                                DbMachine_Interface_Ethernet? ethernet = device.Interfaces_Ethernet;
+                                _svsVistek.Cameras.Add(new SVSVistek_Camera(deviceInfo[0]));
 
-            //                    // Link Hardware with DbContext
-            //                    _svsVistek.Cameras.Last().IdDb = device.Id;
-            //                }
+                                // Link Hardware with DbContext
+                                _svsVistek.Cameras.Last().IdDb = device.Id;
+                            }
 
-            //                cam = _svsVistek.Cameras.Where(p => p.IdDb == device.Id).ToList();
+                            cam = _svsVistek.Cameras.Where(p => p.IdDb == device.Id).ToList();
 
-            //                if (device.ConnectAtSplashscreen && cam.Count == 1)
-            //                {
-            //                    //Log.Debug($"Open connection for camera {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
-            //                    cam[0].OpenConnection();
+                            if (device.ConnectAtSplashScreen && cam.Count == 1)
+                            {
+                                //Log.Debug($"Open connection for camera {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                                cam[0].OpenConnection();
 
-            //                    Thread.Sleep(125);
+                                Thread.Sleep(125);
 
-            //                    //Log.Debug($"Initialize camera {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
-            //                    SVSVistek_Camera_Config config = SVSVistek_Camera_Config.ToJson(device.ConfigurationString);
+                                //Log.Debug($"Initialize camera {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                                SVSVistek_Camera_Config config = SVSVistek_Camera_Config.ToJson(device.ConfigurationString);
 
-            //                    // ToDO: cam.DeviceReset();
-            //                    //Thread.Sleep(5000);
+                                // ToDO: cam.DeviceReset();
+                                //Thread.Sleep(5000);
 
-            //                    // ToDo: All settings from DB 
-            //                    cam[0].SetFan(config.DevieControl.FanControl);
+                                // ToDo: All settings from DB 
+                                cam[0].SetFan(config.DevieControl.FanControl);
 
-            //                    cam[0].SetSensorPixelSize(config.ImageFormatControl.SensorPixelSize);
-            //                    cam[0].SetPixelFormat(config.ImageFormatControl.PixelFormat);
-            //                    cam[0].SetOffsetX(config.ImageFormatControl.XOffset);
-            //                    cam[0].SetOffsetY(config.ImageFormatControl.YOffset);
-            //                    cam[0].SetWidth(config.ImageFormatControl.Width);
-            //                    cam[0].SetHeight(config.ImageFormatControl.Height);
+                                cam[0].SetSensorPixelSize(config.ImageFormatControl.SensorPixelSize);
+                                cam[0].SetPixelFormat(config.ImageFormatControl.PixelFormat);
+                                cam[0].SetOffsetX(config.ImageFormatControl.XOffset);
+                                cam[0].SetOffsetY(config.ImageFormatControl.YOffset);
+                                cam[0].SetWidth(config.ImageFormatControl.Width);
+                                cam[0].SetHeight(config.ImageFormatControl.Height);
 
-            //                    cam[0].SetExposureTime(config.AcquisitionControl.ExposureTime);
+                                cam[0].SetExposureTime(config.AcquisitionControl.ExposureTime);
 
-            //                    cam[0].SetGain(config.AnalogControl.Gain);
-            //                    cam[0].SetWhiteBalance(config.AnalogControl.BalanceWhiteRatioRed, config.AnalogControl.BalanceWhiteRatioGreen, config.AnalogControl.BalanceWhiteRatioBlue);
-            //                }
-            //                else
-            //                {
-            //                    // ToDo: ...
-            //                }
-            //            }
-            //            else
-            //            {
-            //                // ToDo: ...
-            //            }
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            //Log.Error($"Couldn't initialize/connect to device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
-            //            break;
-            //        }
-            //    }
-            //}
+                                cam[0].SetGain(config.AnalogControl.Gain);
+                                cam[0].SetWhiteBalance(config.AnalogControl.BalanceWhiteRatioRed, config.AnalogControl.BalanceWhiteRatioGreen, config.AnalogControl.BalanceWhiteRatioBlue);
+                            }
+                            else
+                            {
+                                // ToDo: ...
+                            }
+                        }
+                        else
+                        {
+                            // ToDo: ...
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //Log.Error($"Couldn't initialize/connect to device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                        break;
+                    }
+                }
+            }
         }
         private void CameraStartAcquision()
         {
-            //Log.Debug("Start acquision for the cameras ...");
+            Log.Debug("Start acquision for the cameras ...");
 
-            //if (_svsVistek.Cameras != null)
-            //{
-            //    List<DbMachine_Device> devicesAll = _dbMachine_Machine[0].DeviceGroups.SelectMany(p => p.Devices)
-            //                                                            .Where(p => p.DeviceManufacturer == DeviceManufacturer.SVSVistek && p.DeviceType == DeviceType.HR455CXGE)
-            //                                                            .ToList()
-            //                                                            .OrderBy(p => p.Interfaces_Ethernet.IpAddress)
-            //                                                            .ToList();
+            if (_svsVistek.Cameras != null)
+            {
+                List<DbMachine_Device> devicesAll = _dbMachine_Machine.DeviceGroups.SelectMany(p => p.Devices)
+                                                                        .Where(p => p.DeviceManufacturer == DeviceManufacturer.SVSVistek && p.DeviceType == DeviceType.HR455CXGE)
+                                                                        .ToList()
+                                                                        .OrderBy(p => p.Interfaces_Ethernet.IpAddress)
+                                                                        .ToList();
 
-            //    List<SVSVistek_DeviceInfo> deviceInfo = null;
+                List<SVSVistek_DeviceInfo> deviceInfo = null;
 
-            //    foreach (DbMachine_Device device in devicesAll)
-            //    {
-            //        try
-            //        {
-            //            deviceInfo = _svsVistek.DeviceInfoList.Where(p => p.DeviceInfo.serialNumber == device.Serialnumber).ToList();
+                foreach (DbMachine_Device device in devicesAll)
+                {
+                    try
+                    {
+                        deviceInfo = _svsVistek.DeviceInfoList.Where(p => p.DeviceInfo.serialNumber == device.SerialNumber).ToList();
 
-            //            if (deviceInfo.Count == 1)
-            //            {
-            //                if (device.AutoStartAtSplashscreen)
-            //                {
-            //                    List<SVSVistek_Camera> cam = _svsVistek.Cameras.Where(p => p.DeviceInfo.DeviceInfo.serialNumber == device.Serialnumber).ToList();
+                        if (deviceInfo.Count == 1)
+                        {
+                            if (device.AutoStartAtSplashScreen)
+                            {
+                                List<SVSVistek_Camera> cam = _svsVistek.Cameras.Where(p => p.DeviceInfo.DeviceInfo.serialNumber == device.SerialNumber).ToList();
 
-            //                    if (deviceInfo.Count == 1)
-            //                    {
-            //                        //Log.Debug($"Start camera acquision {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
-            //                        cam[0].StartAcquisionContinuously();
+                                if (deviceInfo.Count == 1)
+                                {
+                                    //Log.Debug($"Start camera acquision {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                                    cam[0].StartAcquisionContinuously();
 
-            //                        Thread.Sleep(1250);
-            //                    }
-            //                    else
-            //                    {
-            //                        // ToDo: ...
-            //                    }
-            //                }
-            //            }
-            //            else
-            //            {
-            //                // ToDo: ...
-            //            }
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            //Log.Error($"Couldn't initialize/connect to device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
-            //            break;
-            //        }
-            //    }
-            //}
+                                    Thread.Sleep(1250);
+                                }
+                                else
+                                {
+                                    // ToDo: ...
+                                }
+                            }
+                        }
+                        else
+                        {
+                            // ToDo: ...
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //Log.Error($"Couldn't initialize/connect to device {device.ApplicationDeviceName} ({device.ApplicationDeviceLocation}) --> {device.DeviceManufacturer} ({device.DeviceType} - {device.DeviceName}) --> {device.DeviceSerialnumber} --> {device.Id}!");
+                        break;
+                    }
+                }
+            }
         }
         #endregion
     }
