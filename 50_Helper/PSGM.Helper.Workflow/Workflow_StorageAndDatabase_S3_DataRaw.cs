@@ -9,7 +9,7 @@ namespace PSGM.Helper.Workflow
     {
         public void Storage_S3AndDatabase_Save_DataRaw_V1_0_0(DbWorkflow_WorkflowItemLink workflowItemLink)
         {
-            ConfigurationSaveImageV1_0_0 configuration = workflowItemLink.GetSaveImageV1_0_0Configuration();
+            Configuration_SaveImageV1_0_0 configuration = workflowItemLink.GetSaveImageV1_0_0Configuration();
 
             #region Create folder for imageset on database DataRaw
             DbStorage_SubDirectory dbStorage_subDirectory = new DbStorage_SubDirectory()

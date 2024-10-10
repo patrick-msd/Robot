@@ -29,7 +29,7 @@ namespace PSGM.Sample.Model.DbMachine
                 ConnectAtSplashScreen = true,
                 AutoStartAtSplashScreen = true,
                 HomingAtSplashScreen = true,
-                
+
                 Interfaces_Can = null,
                 Interfaces_Ethernet = null,
                 Interfaces_Serial = new DbMachine_Interface_Serial()
@@ -45,7 +45,7 @@ namespace PSGM.Sample.Model.DbMachine
                     PortName = "COM101",
                     MonitoringInterval = 1000,
                     SerialPortRetrySending = 3,
-                    
+
                     //CreatedByUserIdExtAutoFill = Guid.Empty,
                     //CreatedDateTimeAutoFill = DateTime.Now,
                     //ModifiedByUserIdExtAutoFill = Guid.Empty,
@@ -65,6 +65,7 @@ namespace PSGM.Sample.Model.DbMachine
                 DeviceGroup = null,
                 DeviceGroupId = null
             };
+            device.SetConfigurationControlRobotElectronicsV1_0_0(new Configuration_Control_RobotElectronicsV1_0_0() { MinValue = 0.000f, MaxValue = 24000.000f, DefaultValue = 4500.000f });
 
             return device;
         }

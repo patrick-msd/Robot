@@ -111,94 +111,94 @@ namespace PSGM.Model.DbMain
 
         #region Not Mapped
         #region Save image
-        public void SetSaveImageConfigurationV1_0_0(ConfigurationSaveImageV1_0_0 configuration)
+        public void SetSaveImageConfigurationV1_0_0(Configuration_SaveImageV1_0_0 configuration)
         {
             Configuration = JsonConvert.SerializeObject(configuration);
         }
 
-        public ConfigurationSaveImageV1_0_0? GetSaveImageConfigurationV1_0_0()
+        public Configuration_SaveImageV1_0_0? GetSaveImageConfigurationV1_0_0()
         {
-            return JsonConvert.DeserializeObject<ConfigurationSaveImageV1_0_0>(Configuration);
+            return JsonConvert.DeserializeObject<Configuration_SaveImageV1_0_0>(Configuration);
         }
         #endregion
 
         #region Resize
-        public void SetResizeConfigurationV1_0_0(ConfigurationResizeV1_0_0 configuration)
+        public void SetResizeConfigurationV1_0_0(Configuration_ResizeV1_0_0 configuration)
         {
             Configuration = JsonConvert.SerializeObject(configuration);
         }
 
-        public ConfigurationResizeV1_0_0? GetResizeConfigurationV1_0_0()
+        public Configuration_ResizeV1_0_0? GetResizeConfigurationV1_0_0()
         {
-            return JsonConvert.DeserializeObject<ConfigurationResizeV1_0_0>(Configuration);
+            return JsonConvert.DeserializeObject<Configuration_ResizeV1_0_0>(Configuration);
         }
         #endregion
 
         #region Darktable
-        public void SetDarktableConfigurationV1_0_0(List<ConfigurationDarktableV1_0_0> configuration)
+        public void SetDarktableConfigurationV1_0_0(List<Configuration_DarktableV1_0_0> configuration)
         {
             Configuration = JsonConvert.SerializeObject(configuration);
         }
 
-        public List<ConfigurationDarktableV1_0_0>? GetDarktableConfigurationV1_0_0()
+        public List<Configuration_DarktableV1_0_0>? GetDarktableConfigurationV1_0_0()
         {
-            return JsonConvert.DeserializeObject<List<ConfigurationDarktableV1_0_0>>(Configuration);
+            return JsonConvert.DeserializeObject<List<Configuration_DarktableV1_0_0>>(Configuration);
         }
         #endregion
 
         #region Crop
-        public void SetCropConfigurationV1_0_0(List<ConfigurationCropV1_0_0> configuration)
+        public void SetCropConfigurationV1_0_0(List<Configuration_CropV1_0_0> configuration)
         {
             Configuration = JsonConvert.SerializeObject(configuration);
         }
 
-        public List<ConfigurationCropV1_0_0>? GetCropConfigurationV1_0_0()
+        public List<Configuration_CropV1_0_0>? GetCropConfigurationV1_0_0()
         {
-            return JsonConvert.DeserializeObject<List<ConfigurationCropV1_0_0>>(Configuration);
+            return JsonConvert.DeserializeObject<List<Configuration_CropV1_0_0>>(Configuration);
         }
         #endregion
 
         #region Rotate
-        public void SetRotateConfigurationV1_0_0(List<ConfigurationRotateV1_0_0> configuration)
+        public void SetRotateConfigurationV1_0_0(List<Configuration_RotateV1_0_0> configuration)
         {
             Configuration = JsonConvert.SerializeObject(configuration);
         }
 
-        public List<ConfigurationRotateV1_0_0>? GetRotateConfigurationV1_0_0()
+        public List<Configuration_RotateV1_0_0>? GetRotateConfigurationV1_0_0()
         {
-            return JsonConvert.DeserializeObject<List<ConfigurationRotateV1_0_0>>(Configuration);
+            return JsonConvert.DeserializeObject<List<Configuration_RotateV1_0_0>>(Configuration);
         }
 
-        public void SetRotateConfigurationV2_0_0(List<ConfigurationRotateV2_0_0> configuration)
+        public void SetRotateConfigurationV2_0_0(List<Configuration_RotateV2_0_0> configuration)
         {
             Configuration = JsonConvert.SerializeObject(configuration);
         }
 
-        public List<ConfigurationRotateV2_0_0>? GetRotateConfigurationV2_0_0()
+        public List<Configuration_RotateV2_0_0>? GetRotateConfigurationV2_0_0()
         {
-            return JsonConvert.DeserializeObject<List<ConfigurationRotateV2_0_0>>(Configuration);
+            return JsonConvert.DeserializeObject<List<Configuration_RotateV2_0_0>>(Configuration);
         }
         #endregion
 
         #region Sharpen
-        public void SetSharpenConfigurationV1_0_0(List<ConfigurationSharpenV1_0_0> configuration)
+        public void SetSharpenConfigurationV1_0_0(List<Configuration_SharpenV1_0_0> configuration)
         {
             Configuration = JsonConvert.SerializeObject(configuration);
         }
 
-        public List<ConfigurationSharpenV1_0_0>? GetSharpenConfigurationV1_0_0()
+        public List<Configuration_SharpenV1_0_0>? GetSharpenConfigurationV1_0_0()
         {
-            return JsonConvert.DeserializeObject<List<ConfigurationSharpenV1_0_0>>(Configuration);
+            return JsonConvert.DeserializeObject<List<Configuration_SharpenV1_0_0>>(Configuration);
         }
 
-        public void SetSharpenConfigurationV2_0_0(List<ConfigurationSharpenV2_0_0> configuration)
+        public void SetSharpenConfigurationV2_0_0(List<Configuration_SharpenV2_0_0> configuration)
         {
             Configuration = JsonConvert.SerializeObject(configuration);
         }
 
-        public List<ConfigurationSharpenV2_0_0>? GetSharpenConfigurationV2_0_0()
+        public List<Configuration_SharpenV2_0_0>? GetSharpenConfigurationV2_0_0()
         {
-            return JsonConvert.DeserializeObject<List<ConfigurationSharpenV2_0_0>>(Configuration);
+            return JsonConvert.DeserializeObject<List<Configuration_SharpenV2_0_0>>(Configuration);
         }
         #endregion
         #endregion

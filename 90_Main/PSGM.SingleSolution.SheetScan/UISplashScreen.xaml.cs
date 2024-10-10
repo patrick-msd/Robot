@@ -15,8 +15,8 @@ using PSGM.Model.DbSoftware;
 using PSGM.Model.DbStorage;
 using PSGM.Model.DbUser;
 using PSGMRobotDoosanControl;
-using SendGrid.Helpers.Mail;
 using SendGrid;
+using SendGrid.Helpers.Mail;
 using Serilog;
 using Serilog.Debugging;
 using Serilog.Sinks.Grafana.Loki;
@@ -1514,10 +1514,10 @@ namespace PSGM.SingleSolution.SheetScan
             if (_svsVistek.Cameras != null)
             {
                 List<DbMachine_Device> devicesAll = _dbMachine_Machine.DeviceGroups.SelectMany(p => p.Devices)
-                                                                        .Where(p => p.DeviceManufacturer == DeviceManufacturer.SVSVistek && p.DeviceType == DeviceType.HR455CXGE)
-                                                                        .ToList()
-                                                                        .OrderBy(p => p.Interfaces_Ethernet.IpAddress)
-                                                                        .ToList();
+                                                                                    .Where(p => p.DeviceManufacturer == DeviceManufacturer.SVSVistek && p.DeviceType == DeviceType.HR455CXGE)
+                                                                                    .ToList()
+                                                                                    .OrderBy(p => p.Interfaces_Ethernet.IpAddress)
+                                                                                    .ToList();
 
                 List<SVSVistek_DeviceInfo> deviceInfo = null;
 
@@ -1564,20 +1564,22 @@ namespace PSGM.SingleSolution.SheetScan
         {
             // Motoren setzen der Max und min werten 
 
-            // Nextys setzen der Max und min werten
 
-            // Doosan setzen der Max und min werten und Endefector
-            //SetEndeffectors();
 
 
 
             #region 
+            // Doosan setzen der Max und min werten und Endefector
+            //SetEndeffectors();
             _doosan.Controllers[0].SetAnalogOutput(GpioCtrlboxAnalogIndex.GPIO_CTRLBOX_ANALOG_INDEX_1, 0.000f);
             _doosan.Controllers[0].SetAnalogOutput(GpioCtrlboxAnalogIndex.GPIO_CTRLBOX_ANALOG_INDEX_2, 0.000f);
             #endregion
 
 
             #region 
+
+            // Nextys setzen der Max und min werten
+
             foreach (Nextys_DcDcConverter dcDcConverter in _nextys.DcDcConverters)
             {
                 //if (item.Control != null)

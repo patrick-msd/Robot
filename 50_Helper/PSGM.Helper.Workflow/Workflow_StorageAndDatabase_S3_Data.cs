@@ -13,7 +13,7 @@ namespace PSGM.Helper.Workflow
         public void Storage_S3AndDatabase_Save_Data_V1_0_0(DbWorkflow_WorkflowItemLink workflowItemLink)
         {
             Bitmap image;
-            ConfigurationSaveImageV1_0_0 configuration = workflowItemLink.GetSaveImageV1_0_0Configuration();
+            Configuration_SaveImageV1_0_0 configuration = workflowItemLink.GetSaveImageV1_0_0Configuration();
 
             // Folder for image set is not required for data, due to that it should only be one image or the suffix is used
 

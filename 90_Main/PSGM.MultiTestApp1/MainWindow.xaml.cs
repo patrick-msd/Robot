@@ -523,7 +523,7 @@ namespace PSGM.MultiTestApp1
                 //Workflow = null,
                 //WorkflowId = null
             };
-            dbWorkflowItemLink_Vision2D_SaveObjectToStorageAndDatabase_DataRaw.SetSaveImageV1_0_0Configuration(new ConfigurationSaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
+            dbWorkflowItemLink_Vision2D_SaveObjectToStorageAndDatabase_DataRaw.SetSaveImageV1_0_0Configuration(new Configuration_SaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
             #endregion
 
             #region HDR Image
@@ -572,7 +572,7 @@ namespace PSGM.MultiTestApp1
                 //Workflow = null,
                 //WorkflowId = null
             };
-            dbWorkflowItemLink_HDR_SaveObjectToStorageAndDatabase_Data_DataThumbnail.SetSaveImageV1_0_0Configuration(new ConfigurationSaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
+            dbWorkflowItemLink_HDR_SaveObjectToStorageAndDatabase_Data_DataThumbnail.SetSaveImageV1_0_0Configuration(new Configuration_SaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
             #endregion
 
             #region Darktable Image
@@ -598,16 +598,16 @@ namespace PSGM.MultiTestApp1
                 //Workflow = null,
                 //WorkflowId = null
             };
-            dbWorkflowItemLink_Darktable_CreateImage_Data.SetDarktableV1_0_0Configuration(new List<ConfigurationDarktableV1_0_0>()
+            dbWorkflowItemLink_Darktable_CreateImage_Data.SetDarktableV1_0_0Configuration(new List<Configuration_DarktableV1_0_0>()
             {
-                new ConfigurationDarktableV1_0_0()
+                new Configuration_DarktableV1_0_0()
                 {
                     CameraId = _dbMachineContext.Devices.Where(d => d.DeviceName == "Vision 2D Right").FirstOrDefault().Id,
                     DarktableExecutePath = "C:/Program Files/darktable/bin/darktable-cli.exe",
                     DarktableExecuteArgumetns = "\"INPUT_FILE_PATH\" \"SIDECAR_FILE_PATH\" \"Output_FILE_PATH\" --verbose --out-ext jpg",
                     DarktableSidecarFile = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<x:xmpmeta xmlns:x=\"adobe:ns:meta/\" x:xmptk=\"XMP Core 4.4.0-Exiv2\">\r\n <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\r\n  <rdf:Description rdf:about=\"\"\r\n    xmlns:exif=\"http://ns.adobe.com/exif/1.0/\"\r\n    xmlns:xmp=\"http://ns.adobe.com/xap/1.0/\"\r\n    xmlns:xmpMM=\"http://ns.adobe.com/xap/1.0/mm/\"\r\n    xmlns:darktable=\"http://darktable.sf.net/\"\r\n   exif:DateTimeOriginal=\"2024:04:12 10:50:30.000\"\r\n   xmp:Rating=\"1\"\r\n   xmpMM:DerivedFrom=\"fusion_mertens_8.jpg\"\r\n   darktable:import_timestamp=\"63848515846079968\"\r\n   darktable:change_timestamp=\"63848515852593962\"\r\n   darktable:export_timestamp=\"-1\"\r\n   darktable:print_timestamp=\"-1\"\r\n   darktable:xmp_version=\"5\"\r\n   darktable:raw_params=\"0\"\r\n   darktable:auto_presets_applied=\"1\"\r\n   darktable:history_end=\"7\"\r\n   darktable:iop_order_version=\"3\"\r\n   darktable:history_basic_hash=\"8921fe8edb66aeacff411f85c52c8f4a\"\r\n   darktable:history_current_hash=\"5746e8e023517a2df85554f13a0cb807\">\r\n   <darktable:masks_history>\r\n    <rdf:Seq/>\r\n   </darktable:masks_history>\r\n   <darktable:history>\r\n    <rdf:Seq>\r\n     <rdf:li\r\n      darktable:num=\"0\"\r\n      darktable:operation=\"gamma\"\r\n      darktable:enabled=\"1\"\r\n      darktable:modversion=\"1\"\r\n      darktable:params=\"0000000000000000\"\r\n      darktable:multi_name=\"\"\r\n      darktable:multi_name_hand_edited=\"0\"\r\n      darktable:multi_priority=\"0\"\r\n      darktable:blendop_version=\"13\"\r\n      darktable:blendop_params=\"gz11eJxjYIAACQYYOOHEgAZY0QWAgBGLGANDgz0Ej1Q+dcF/IADRAGpyHQU=\"/>\r\n     <rdf:li\r\n      darktable:num=\"1\"\r\n      darktable:operation=\"flip\"\r\n      darktable:enabled=\"1\"\r\n      darktable:modversion=\"2\"\r\n      darktable:params=\"ffffffff\"\r\n      darktable:multi_name=\"auto\"\r\n      darktable:multi_name_hand_edited=\"0\"\r\n      darktable:multi_priority=\"0\"\r\n      darktable:blendop_version=\"13\"\r\n      darktable:blendop_params=\"gz11eJxjYIAACQYYOOHEgAZY0QWAgBGLGANDgz0Ej1Q+dcF/IADRAGpyHQU=\"/>\r\n     <rdf:li\r\n      darktable:num=\"2\"\r\n      darktable:operation=\"colorin\"\r\n      darktable:enabled=\"1\"\r\n      darktable:modversion=\"7\"\r\n      darktable:params=\"gz48eJxjZBgFowABWAbaAaNgwAEAEDgABg==\"\r\n      darktable:multi_name=\"\"\r\n      darktable:multi_name_hand_edited=\"0\"\r\n      darktable:multi_priority=\"0\"\r\n      darktable:blendop_version=\"13\"\r\n      darktable:blendop_params=\"gz11eJxjYIAACQYYOOHEgAZY0QWAgBGLGANDgz0Ej1Q+dcF/IADRAGpyHQU=\"/>\r\n     <rdf:li\r\n      darktable:num=\"3\"\r\n      darktable:operation=\"colorout\"\r\n      darktable:enabled=\"1\"\r\n      darktable:modversion=\"5\"\r\n      darktable:params=\"gz35eJxjZBgFo4CBAQAEEAAC\"\r\n      darktable:multi_name=\"\"\r\n      darktable:multi_name_hand_edited=\"0\"\r\n      darktable:multi_priority=\"0\"\r\n      darktable:blendop_version=\"13\"\r\n      darktable:blendop_params=\"gz11eJxjYIAACQYYOOHEgAZY0QWAgBGLGANDgz0Ej1Q+dcF/IADRAGpyHQU=\"/>\r\n     <rdf:li\r\n      darktable:num=\"4\"\r\n      darktable:operation=\"ashift\"\r\n      darktable:enabled=\"1\"\r\n      darktable:modversion=\"5\"\r\n      darktable:params=\"gz18eJz7/3/zIQYU8MCRgaHBnoHhhBOEZmBghMqUr6mzt+iLtvr5v96eYRSMglFAEQAA/z4NDw==\"\r\n      darktable:multi_name=\"\"\r\n      darktable:multi_name_hand_edited=\"0\"\r\n      darktable:multi_priority=\"0\"\r\n      darktable:blendop_version=\"13\"\r\n      darktable:blendop_params=\"gz11eJxjYIAACQYYOOHEgAZY0QWAgBGLGANDgz0Ej1Q+dcF/IADRAGpyHQU=\"/>\r\n     <rdf:li\r\n      darktable:num=\"5\"\r\n      darktable:operation=\"crop\"\r\n      darktable:enabled=\"1\"\r\n      darktable:modversion=\"1\"\r\n      darktable:params=\"ead17a3d5832ee3d2b4f743f3c2c693f0000000000000000\"\r\n      darktable:multi_name=\"\"\r\n      darktable:multi_name_hand_edited=\"0\"\r\n      darktable:multi_priority=\"0\"\r\n      darktable:blendop_version=\"13\"\r\n      darktable:blendop_params=\"gz11eJxjYIAACQYYOOHEgAZY0QWAgBGLGANDgz0Ej1Q+dcF/IADRAGpyHQU=\"/>\r\n     <rdf:li\r\n      darktable:num=\"6\"\r\n      darktable:operation=\"sharpen\"\r\n      darktable:enabled=\"1\"\r\n      darktable:modversion=\"1\"\r\n      darktable:params=\"feffff3ffeffdf3f00000000\"\r\n      darktable:multi_name=\"\"\r\n      darktable:multi_name_hand_edited=\"0\"\r\n      darktable:multi_priority=\"0\"\r\n      darktable:blendop_version=\"13\"\r\n      darktable:blendop_params=\"gz10eJxjYGBgYAJiCQYYOOHEgAZY0QWAgBGLGANDgz0Ej1Q+dcF/IADRAG2yHQc=\"/>\r\n    </rdf:Seq>\r\n   </darktable:history>\r\n  </rdf:Description>\r\n </rdf:RDF>\r\n</x:xmpmeta>\r\n"
                 },
-                new ConfigurationDarktableV1_0_0()
+                new Configuration_DarktableV1_0_0()
                 {
                     CameraId = _dbMachineContext.Devices.Where(d => d.DeviceName == "Vision 2D Left").FirstOrDefault().Id,
                     DarktableExecutePath = "C:/Program Files/darktable/bin/darktable-cli.exe",
@@ -638,7 +638,7 @@ namespace PSGM.MultiTestApp1
                 //Workflow = null,
                 //WorkflowId = null
             };
-            dbWorkflowItemLink_Darktable_SaveObjectToStorageAndDatabase_Thumbnail.SetSaveImageV1_0_0Configuration(new ConfigurationSaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
+            dbWorkflowItemLink_Darktable_SaveObjectToStorageAndDatabase_Thumbnail.SetSaveImageV1_0_0Configuration(new Configuration_SaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
             #endregion
 
             #region Workflow 1 Image
@@ -664,9 +664,9 @@ namespace PSGM.MultiTestApp1
                 //Workflow = null,
                 //WorkflowId = null
             };
-            dbWorkflowItemLink_Workflow1_CropImage_Data.SetCropV1_0_0Configuration(new List<ConfigurationCropV1_0_0>()
+            dbWorkflowItemLink_Workflow1_CropImage_Data.SetCropV1_0_0Configuration(new List<Configuration_CropV1_0_0>()
             {
-                new ConfigurationCropV1_0_0()
+                new Configuration_CropV1_0_0()
                 {
                     CameraId = _dbMachineContext.Devices.Where(d => d.DeviceName == "Vision 2D Right").FirstOrDefault().Id,
 
@@ -678,7 +678,7 @@ namespace PSGM.MultiTestApp1
                     RowStart = 160,
                     RowEnd = 2850,
                 },
-                new ConfigurationCropV1_0_0()
+                new Configuration_CropV1_0_0()
                 {
                     CameraId = _dbMachineContext.Devices.Where(d => d.DeviceName == "Vision 2D Left").FirstOrDefault().Id,
 
@@ -714,15 +714,15 @@ namespace PSGM.MultiTestApp1
                 //Workflow = null,
                 //WorkflowId = null
             };
-            dbWorkflowItemLink_Workflow1_Rotate1Image_Data.SetRotateV1_0_0Configuration(new List<ConfigurationRotateV1_0_0>()
+            dbWorkflowItemLink_Workflow1_Rotate1Image_Data.SetRotateV1_0_0Configuration(new List<Configuration_RotateV1_0_0>()
             {
-                new ConfigurationRotateV1_0_0()
+                new Configuration_RotateV1_0_0()
                 {
                     CameraId = _dbMachineContext.Devices.Where(d => d.DeviceName == "Vision 2D Right").FirstOrDefault().Id,
 
                     Rotate = RotateFlags.Rotate90Clockwise
                 },
-                new ConfigurationRotateV1_0_0()
+                new Configuration_RotateV1_0_0()
                 {
                     CameraId = _dbMachineContext.Devices.Where(d => d.DeviceName == "Vision 2D Left").FirstOrDefault().Id,
 
@@ -752,15 +752,15 @@ namespace PSGM.MultiTestApp1
                 //Workflow = null,
                 //WorkflowId = null
             };
-            dbWorkflowItemLink_Workflow1_Rotate2Image_Data.SetRotateV2_0_0Configuration(new List<ConfigurationRotateV2_0_0>()
+            dbWorkflowItemLink_Workflow1_Rotate2Image_Data.SetRotateV2_0_0Configuration(new List<Configuration_RotateV2_0_0>()
             {
-                new ConfigurationRotateV2_0_0()
+                new Configuration_RotateV2_0_0()
                 {
                     CameraId = _dbMachineContext.Devices.Where(d => d.DeviceName == "Vision 2D Right").FirstOrDefault().Id,
 
                     angle = 90
                 },
-                new ConfigurationRotateV2_0_0()
+                new Configuration_RotateV2_0_0()
                 {
                     CameraId = _dbMachineContext.Devices.Where(d => d.DeviceName == "Vision 2D Left").FirstOrDefault().Id,
 
@@ -790,9 +790,9 @@ namespace PSGM.MultiTestApp1
                 //Workflow = null,
                 //WorkflowId = null
             };
-            dbWorkflowItemLink_Workflow1_Sharpen1Image_Data.SetSharpenV1_0_0Configuration(new List<ConfigurationSharpenV1_0_0>()
+            dbWorkflowItemLink_Workflow1_Sharpen1Image_Data.SetSharpenV1_0_0Configuration(new List<Configuration_SharpenV1_0_0>()
             {
-                new ConfigurationSharpenV1_0_0()
+                new Configuration_SharpenV1_0_0()
                 {
                     CameraId = _dbMachineContext.Devices.Where(d => d.DeviceName == "Vision 2D Right").FirstOrDefault().Id,
 
@@ -800,7 +800,7 @@ namespace PSGM.MultiTestApp1
                     //Filter = new float[,] { { 0, 0, 0 }, { 0, 1, 0 }, { 0, 0, 0 } }
                     //Filter = new float[,] { { -1, -1, -1 }, { -1, 9, -1 }, { -1, -1, -1 } }
                 },
-                new ConfigurationSharpenV1_0_0()
+                new Configuration_SharpenV1_0_0()
                 {
                     CameraId = _dbMachineContext.Devices.Where(d => d.DeviceName == "Vision 2D Left").FirstOrDefault().Id,
 
@@ -832,16 +832,16 @@ namespace PSGM.MultiTestApp1
                 //Workflow = null,
                 //WorkflowId = null
             };
-            dbWorkflowItemLink_Workflow1_Sharpen2Image_Data.SetSharpenV2_0_0Configuration(new List<ConfigurationSharpenV2_0_0>()
+            dbWorkflowItemLink_Workflow1_Sharpen2Image_Data.SetSharpenV2_0_0Configuration(new List<Configuration_SharpenV2_0_0>()
             {
-                 new ConfigurationSharpenV2_0_0()
+                 new Configuration_SharpenV2_0_0()
                 {
                     CameraId = _dbMachineContext.Devices.Where(d => d.DeviceName == "Vision 2D Right").FirstOrDefault().Id,
 
                     SigmaS = 2.000f,
                     SigmaR = 1.000f
                 },
-                new ConfigurationSharpenV2_0_0()
+                new Configuration_SharpenV2_0_0()
                 {
                     CameraId = _dbMachineContext.Devices.Where(d => d.DeviceName == "Vision 2D Left").FirstOrDefault().Id,
 
@@ -872,7 +872,7 @@ namespace PSGM.MultiTestApp1
                 //Workflow = null,
                 //WorkflowId = null
             };
-            dbWorkflowItemLink_Workflow1_SaveObjectToStorageAndDatabase_DataThumbnail.SetSaveImageV1_0_0Configuration(new ConfigurationSaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
+            dbWorkflowItemLink_Workflow1_SaveObjectToStorageAndDatabase_DataThumbnail.SetSaveImageV1_0_0Configuration(new Configuration_SaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
             #endregion
             #endregion
 

@@ -126,6 +126,29 @@ namespace PSGM.Model.DbMachine
         #endregion
 
         #region Not Mapped
+        #region Configuration Control RobotElectronics V1.0.0
+        public void SetConfigurationControlRobotElectronicsV1_0_0(Configuration_Control_RobotElectronicsV1_0_0 configuration)
+        {
+            ConfigurationString = JsonConvert.SerializeObject(configuration);
+        }
+
+        public Configuration_Control_RobotElectronicsV1_0_0? GetConfigurationControlRobotElectronicsV1_0_0()
+        {
+            return JsonConvert.DeserializeObject<Configuration_Control_RobotElectronicsV1_0_0>(ConfigurationString);
+        }
+        #endregion
+
+        #region Configuration Robot Doosan V1.0.0
+        public void SetConfigurationRobotDoosanV1_0_0(Configuration_Control_RobotElectronicsV1_0_0 configuration)
+        {
+            ConfigurationString = JsonConvert.SerializeObject(configuration);
+        }
+
+        public Configuration_Robot_DoosanV1_0_0? GetConfigurationRobotDoosanV1_0_0()
+        {
+            return JsonConvert.DeserializeObject<Configuration_Robot_DoosanV1_0_0>(ConfigurationString);
+        }
+        #endregion
         #endregion
     }
 }

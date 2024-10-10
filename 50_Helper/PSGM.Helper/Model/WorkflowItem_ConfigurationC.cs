@@ -2,7 +2,7 @@
 
 namespace PSGM.Helper
 {
-    public class ConfigurationSaveImageV1_0_0
+    public class Configuration_SaveImageV1_0_0
     {
         public int Quality { get; set; } = 100;
 
@@ -13,14 +13,14 @@ namespace PSGM.Helper
         public int ThumbnailQuality { get; set; } = 90;
     }
 
-    public class ConfigurationResizeV1_0_0
+    public class Configuration_ResizeV1_0_0
     {
         public int Width { get; set; } = 0;
 
         public int Height { get; set; } = 0;
     }
 
-    public class ConfigurationDarktableV1_0_0
+    public class Configuration_DarktableV1_0_0
     {
         public Guid CameraId { get; set; } = Guid.NewGuid();
 
@@ -31,7 +31,7 @@ namespace PSGM.Helper
         public string DarktableSidecarFile { get; set; } = string.Empty;
     }
 
-    public class ConfigurationCropV1_0_0
+    public class Configuration_CropV1_0_0
     {
         public Guid CameraId { get; set; } = Guid.NewGuid();
 
@@ -46,21 +46,21 @@ namespace PSGM.Helper
         public int ColumnEnd { get; set; } = 0;
     }
 
-    public class ConfigurationRotateV1_0_0
+    public class Configuration_RotateV1_0_0
     {
         public Guid CameraId { get; set; } = Guid.NewGuid();
 
         public RotateFlags Rotate { get; set; } = 0;
     }
 
-    public class ConfigurationRotateV2_0_0
+    public class Configuration_RotateV2_0_0
     {
         public Guid CameraId { get; set; } = Guid.NewGuid();
 
         public double angle { get; set; } = 0;
     }
 
-    public class ConfigurationSharpenV1_0_0
+    public class Configuration_SharpenV1_0_0
     {
         public Guid CameraId { get; set; } = Guid.NewGuid();
 
@@ -69,7 +69,7 @@ namespace PSGM.Helper
         MatType MatType { get; set; } = MatType.CV_8UC3;
     }
 
-    public class ConfigurationSharpenV2_0_0
+    public class Configuration_SharpenV2_0_0
     {
         public Guid CameraId { get; set; } = Guid.NewGuid();
 

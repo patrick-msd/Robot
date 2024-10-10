@@ -11,8 +11,8 @@ namespace PSGM.Helper.Workflow
     {
         public void Image_Darktable_V1_0_0(DbWorkflow_WorkflowItemLink workflowItemLink)
         {
-            ConfigurationDarktableV1_0_0? configuration = null;
-            List<ConfigurationDarktableV1_0_0> configurations = workflowItemLink.GetDarktableV1_0_0Configuration();
+            Configuration_DarktableV1_0_0? configuration = null;
+            List<Configuration_DarktableV1_0_0> configurations = workflowItemLink.GetDarktableV1_0_0Configuration();
 
             configuration = configurations.Where(p => p.CameraId == _image_Data.CameraDeviceId).FirstOrDefault();
 

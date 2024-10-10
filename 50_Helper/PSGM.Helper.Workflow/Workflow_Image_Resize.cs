@@ -8,7 +8,7 @@ namespace PSGM.Helper.Workflow
     {
         public void Image_Resize_V1_0_0(DbWorkflow_WorkflowItemLink workflowItemLink)
         {
-            ConfigurationResizeV1_0_0 configuration = workflowItemLink.GetResizeV1_0_0Configuration();
+            Configuration_ResizeV1_0_0 configuration = workflowItemLink.GetResizeV1_0_0Configuration();
 
             if (configuration != null)
             {

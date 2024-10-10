@@ -80,7 +80,7 @@ namespace PSGM.Sample.Model.DbStorage
                 WorkflowGroup = null,
                 WorkflowGroupId = null
             };
-            dbWorkflowItem_Vision2D_SaveObjectToStorageAndDatabase_DataRaw.SetSaveImageConfigurationV1_0_0(new ConfigurationSaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
+            dbWorkflowItem_Vision2D_SaveObjectToStorageAndDatabase_DataRaw.SetSaveImageConfigurationV1_0_0(new Configuration_SaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
             #endregion
 
             #region HDR Image
@@ -145,7 +145,7 @@ namespace PSGM.Sample.Model.DbStorage
                 WorkflowGroup = null,
                 WorkflowGroupId = null
             };
-            dbWorkflowItemLink_HDR_SaveObjectToStorageAndDatabase_Data_DataThumbnail.SetSaveImageConfigurationV1_0_0(new ConfigurationSaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
+            dbWorkflowItemLink_HDR_SaveObjectToStorageAndDatabase_Data_DataThumbnail.SetSaveImageConfigurationV1_0_0(new Configuration_SaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
             #endregion
 
             #region Darktable Image
@@ -227,7 +227,7 @@ namespace PSGM.Sample.Model.DbStorage
                 WorkflowGroup = null,
                 WorkflowGroupId = null
             };
-            dbWorkflowItemLink_Darktable_SaveObjectToStorageAndDatabase_DataThumbnail.SetSaveImageConfigurationV1_0_0(new ConfigurationSaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
+            dbWorkflowItemLink_Darktable_SaveObjectToStorageAndDatabase_DataThumbnail.SetSaveImageConfigurationV1_0_0(new Configuration_SaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
             #endregion
 
             #region Workflow 1 Image
@@ -509,7 +509,7 @@ namespace PSGM.Sample.Model.DbStorage
                 WorkflowGroup = null,
                 WorkflowGroupId = null
             };
-            dbWorkflowItemLink_Workflow1_SaveObjectToStorageAndDatabase_DataThumbnail.SetSaveImageConfigurationV1_0_0(new ConfigurationSaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
+            dbWorkflowItemLink_Workflow1_SaveObjectToStorageAndDatabase_DataThumbnail.SetSaveImageConfigurationV1_0_0(new Configuration_SaveImageV1_0_0() { Quality = 100, ThumbnailWidth = 512, ThumbnailHeight = 0, ThumbnailQuality = 90 });
             #endregion
 
             // ToDo: More Workflow Items ...

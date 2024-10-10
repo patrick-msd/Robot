@@ -7,8 +7,8 @@ namespace PSGM.Helper.Workflow
     {
         public void Image_Crop_V1_0_0(DbWorkflow_WorkflowItemLink workflowItemLink)
         {
-            ConfigurationCropV1_0_0? configuration = null;
-            List<ConfigurationCropV1_0_0> configurations = workflowItemLink.GetCropV1_0_0Configuration();
+            Configuration_CropV1_0_0? configuration = null;
+            List<Configuration_CropV1_0_0> configurations = workflowItemLink.GetCropV1_0_0Configuration();
 
             configuration = configurations.Where(p => p.CameraId == _image_Data.CameraDeviceId).FirstOrDefault();
 

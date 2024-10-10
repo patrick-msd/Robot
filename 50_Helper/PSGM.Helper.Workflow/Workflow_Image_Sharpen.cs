@@ -9,8 +9,8 @@ namespace PSGM.Helper.Workflow
     {
         public void Image_Sharpen_V1_0_0(DbWorkflow_WorkflowItemLink workflowItemLink)
         {
-            ConfigurationSharpenV1_0_0? configuration = null;
-            List<ConfigurationSharpenV1_0_0> configurations = workflowItemLink.GetSharpenV1_0_0Configuration();
+            Configuration_SharpenV1_0_0? configuration = null;
+            List<Configuration_SharpenV1_0_0> configurations = workflowItemLink.GetSharpenV1_0_0Configuration();
 
             configuration = configurations.Where(p => p.CameraId == _image_Data.CameraDeviceId).FirstOrDefault();
 
@@ -35,8 +35,8 @@ namespace PSGM.Helper.Workflow
 
         public void Image_Sharpen_V2_0_0(DbWorkflow_WorkflowItemLink workflowItemLink)
         {
-            ConfigurationSharpenV2_0_0? configuration = null;
-            List<ConfigurationSharpenV2_0_0> configurations = workflowItemLink.GetSharpenV2_0_0Configuration();
+            Configuration_SharpenV2_0_0? configuration = null;
+            List<Configuration_SharpenV2_0_0> configurations = workflowItemLink.GetSharpenV2_0_0Configuration();
 
             configuration = configurations.Where(p => p.CameraId == _image_Data.CameraDeviceId).FirstOrDefault();
 

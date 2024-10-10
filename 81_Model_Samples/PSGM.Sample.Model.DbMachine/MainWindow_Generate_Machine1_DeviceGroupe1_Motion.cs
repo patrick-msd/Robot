@@ -8,6 +8,12 @@ namespace PSGM.Sample.Model.DbMachine
         public DbMachine_Device Generate_Machine1_DeviceGroupe1_Motion()
         {
 
+
+            //device.SetConfigurationControlRobotElectronicsV1_0_0(new Configuration_Control_RobotElectronicsV1_0_0() { MinValue = 0.000f, MaxValue = 24000.000f, DefaultValue = 4500.000f });
+
+
+
+
             DbMachine_Device device = new DbMachine_Device()
             {
                 Id = new Guid(),

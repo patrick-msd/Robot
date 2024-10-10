@@ -9,6 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="50_Helper\**" />
+    <Compile Remove="Events\**" />
+    <Compile Remove="Files\**" />
+    <EmbeddedResource Remove="50_Helper\**" />
+    <EmbeddedResource Remove="Events\**" />
+    <EmbeddedResource Remove="Files\**" />
+    <None Remove="50_Helper\**" />
+    <None Remove="Events\**" />
+    <None Remove="Files\**" />
+    <Page Remove="50_Helper\**" />
+    <Page Remove="Events\**" />
+    <Page Remove="Files\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8">
       <TreatAsUsed>true</TreatAsUsed>
     </PackageReference>
@@ -42,12 +57,6 @@
     <ProjectReference Include="..\..\50_Helper\PSGM.Helper\PSGM.Helper.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DbBackend\PSGM.Model.DbBackend.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DbMachine\PSGM.Model.DbMachine.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="50_Helper\" />
-    <Folder Include="Events\" />
-    <Folder Include="Files\" />
   </ItemGroup>
 
 </Project>

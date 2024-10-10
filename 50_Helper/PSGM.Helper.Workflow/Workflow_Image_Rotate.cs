@@ -9,8 +9,8 @@ namespace PSGM.Helper.Workflow
     {
         public void Image_Rotate_V1_0_0(DbWorkflow_WorkflowItemLink workflowItemLink)
         {
-            ConfigurationRotateV1_0_0? configuration = null;
-            List<ConfigurationRotateV1_0_0> configurations = workflowItemLink.GetRotateV1_0_0Configuration();
+            Configuration_RotateV1_0_0? configuration = null;
+            List<Configuration_RotateV1_0_0> configurations = workflowItemLink.GetRotateV1_0_0Configuration();
 
             configuration = configurations.Where(p => p.CameraId == _image_Data.CameraDeviceId).FirstOrDefault();
 
@@ -27,8 +27,8 @@ namespace PSGM.Helper.Workflow
 
         public void Image_Rotate_V2_0_0(DbWorkflow_WorkflowItemLink workflowItemLink)
         {
-            ConfigurationRotateV2_0_0? configuration = null;
-            List<ConfigurationRotateV2_0_0> configurations = workflowItemLink.GetRotateV2_0_0Configuration();
+            Configuration_RotateV2_0_0? configuration = null;
+            List<Configuration_RotateV2_0_0> configurations = workflowItemLink.GetRotateV2_0_0Configuration();
 
             configuration = configurations.Where(p => p.CameraId == _image_Data.CameraDeviceId).FirstOrDefault();
 
