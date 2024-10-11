@@ -45,7 +45,7 @@ namespace PSGM.Vision.Intel.Sample
                 }
                 else
                 {
-                    _arg = new string[] { "CreateAndSaveConfigFile" };
+                    //_arg = new string[] { "CreateAndSaveConfigFile" };
                 }
             }
             #endregion
@@ -68,6 +68,8 @@ namespace PSGM.Vision.Intel.Sample
                 };
 
                 Globals.ConfigFile.WriteToFile(Directory.GetCurrentDirectory() + "\\ConfigFile.json");
+
+                Current.Shutdown();
             }
             #endregion
         }

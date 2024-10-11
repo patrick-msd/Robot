@@ -64,7 +64,7 @@ namespace PSGM.Vision.Intel.Sample
             // Calculate percentage and set progress bar
             Log.Information("Initialize and calculate percentage and set progress bar ...");
             _statePercentageValue = 0;
-            _statePercentageCount = 28;
+            _statePercentageCount = 19;
 
             pgbLoading.Minimum = _statePercentageValue;
             pgbLoading.Maximum = _statePercentageCount;
@@ -167,38 +167,32 @@ namespace PSGM.Vision.Intel.Sample
             LoadProjectWorkflow();
             Thread.Sleep(125);
 
-            // Step #20
+            // Step #14
             UpdateUI("Camera: Initialize SDKs ...");
             CameraInitializeSdk();
             Thread.Sleep(125);
 
-            // Step #21
+            // Step #15
             UpdateUI("Camera: Discover cameras ...");
             CameraDiscovery();
             Thread.Sleep(125);
 
-            // Step #22
+            // Step #16
             UpdateUI("Camera: Initialize and connect to cameras (Ethernet) ...");
             CameraInitializeAndConnect();
             Thread.Sleep(125);
 
-            // Step #23
+            // Step #17
             UpdateUI("Camera: Start acquisition of the cameras ...");
             CameraStartAcquisition();
             Thread.Sleep(125);
 
-
-
-
-
-
-
-            // Step #27
+            // Step #18
             UpdateUI("Camera: Set default or startup values for devices ...");
             SetDefaultOrStartupValuesForCameras();
             Thread.Sleep(125);
 
-            // Step #28
+            // Step #19
             UpdateUI("Finish splash screen and open main application ...");
             Thread.Sleep(125);
         }
@@ -566,7 +560,7 @@ namespace PSGM.Vision.Intel.Sample
             List<DbMachine_Device> devicesAll = _dbMachine_Machine.DeviceGroups.SelectMany(p => p.Devices).ToList();
 
             #region Vision - Intel ...
-            Log.Debug("Initialize class and devices (Vision - SVSVistek) ...");
+            Log.Debug("Initialize class and devices (Vision - Intel) ...");
             devicesCount = devicesAll.Where(i => i.DeviceManufacturer == DeviceManufacturer.Intel).ToList().Count();
             if (devicesCount > 0)
             {
