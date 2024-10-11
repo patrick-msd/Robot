@@ -1612,7 +1612,6 @@ namespace PSGM.SingleSolution.SheetScan
             foreach (var robot in _doosan.Controllers)
             {
                 Configuration_Robot_DoosanV1_0_0? config = _dbMachine_Machine.DeviceGroups.SelectMany(p => p.Devices)
-                                                                                            .Where(p => p.DeviceManufacturer == DeviceManufacturer.Doosan && p.DeviceType == DeviceType.M0609)
                                                                                             .Where(p => p.Id == robot.IdDb)
                                                                                             .FirstOrDefault().GetConfigurationRobotDoosanV1_0_0();
 
