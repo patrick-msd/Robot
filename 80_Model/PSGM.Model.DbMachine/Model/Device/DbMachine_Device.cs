@@ -139,7 +139,7 @@ namespace PSGM.Model.DbMachine
         #endregion
 
         #region Configuration Robot Doosan V1.0.0
-        public void SetConfigurationRobotDoosanV1_0_0(Configuration_Control_RobotElectronicsV1_0_0 configuration)
+        public void SetConfigurationRobotDoosanV1_0_0(Configuration_Robot_DoosanV1_0_0 configuration)
         {
             ConfigurationString = JsonConvert.SerializeObject(configuration);
         }

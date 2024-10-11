@@ -35,10 +35,10 @@ namespace PSGM.Model.DbMachine
         [Display(Name = "DeviceGroupeType")]
         public DeviceGroupeType DeviceGroupeType { get; set; } = DeviceGroupeType.Undefined;
 
-        [Column("Configuration")]
-        [Display(Name = "Configuration")]
+        [Column("ConfigurationString")]
+        [Display(Name = "ConfigurationString")]
         [StringLength(65536, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string Configuration { get; set; } = string.Empty;
+        public string ConfigurationString { get; set; } = string.Empty;
 
         #region Audit details for faster file audit information
         [Required]

@@ -1,4 +1,5 @@
-﻿using PSGM.Helper;
+﻿using Newtonsoft.Json;
+using PSGM.Helper;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -61,10 +62,10 @@ namespace PSGM.Model.DbMachine
         [StringLength(1024, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
         public string SerialNumber { get; set; } = string.Empty;
 
-        [Column("Configuration")]
-        [Display(Name = "Configuration")]
+        [Column("ConfigurationString")]
+        [Display(Name = "ConfigurationString")]
         [StringLength(65536, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 3)]
-        public string Configuration { get; set; } = string.Empty;
+        public string ConfigurationString { get; set; } = string.Empty;
 
         [Column("Timeout")]
         [Display(Name = "Timeout")]
@@ -117,6 +118,17 @@ namespace PSGM.Model.DbMachine
         #endregion
 
         #region Not Mapped
+        #region Configuration Motion Nanotec V1.0.0
+        public void SetConfigurationMotionNanotecV1_0_0(Configuration_Motion_NanotecV1_0_0 configuration)
+        {
+            ConfigurationString = JsonConvert.SerializeObject(configuration);
+        }
+
+        public Configuration_Motion_NanotecV1_0_0? GetConfigurationMotionNanotecV1_0_0()
+        {
+            return JsonConvert.DeserializeObject<Configuration_Motion_NanotecV1_0_0>(ConfigurationString);
+        }
+        #endregion
         #endregion
     }
 }

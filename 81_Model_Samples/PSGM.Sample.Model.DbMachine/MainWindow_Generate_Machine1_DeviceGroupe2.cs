@@ -17,7 +17,7 @@ namespace PSGM.Sample.Model.DbMachine
                 Location = string.Empty,
 
                 DeviceGroupeType = DeviceGroupeType.MainFrame,
-                Configuration = string.Empty,
+                ConfigurationString = string.Empty,
 
                 Devices = new List<DbMachine_Device>()
                 {

@@ -31,7 +31,7 @@ namespace PSGM.Sample.Model.DbMachine
                 SerialNumber = "HW630322",
                 ConfigurationString = string.Empty,
                 AttachmentsString = string.Empty,
-                
+
                 InitializeAtSplashScreen = true,
                 ConnectAtSplashScreen = true,
                 AutoStartAtSplashScreen = true,
@@ -58,7 +58,7 @@ namespace PSGM.Sample.Model.DbMachine
                             DeviceUrl = "https://www.nanotec.com/eu/de/produkte/1891-pd2-c4118l1804-e-08",
 
                             SerialNumber = "B959903 22/23-0020",
-                            Configuration = string.Empty,
+                            ConfigurationString = string.Empty,
                             Timeout = 1000,
 
                             InitializeAtSplashScreen = true,
@@ -93,7 +93,7 @@ namespace PSGM.Sample.Model.DbMachine
                             DeviceUrl = "https://www.nanotec.com/eu/de/produkte/1891-pd2-c4118l1804-e-08",
 
                             SerialNumber = "B959903 22/23-0012",
-                            Configuration = string.Empty,
+                            ConfigurationString = string.Empty,
                             Timeout = 1000,
 
                             InitializeAtSplashScreen = true,
@@ -128,7 +128,7 @@ namespace PSGM.Sample.Model.DbMachine
                             DeviceUrl = "https://www.nanotec.com/eu/de/produkte/1891-pd2-c4118l1804-e-08",
 
                             SerialNumber = "B959903 22/23-0019",
-                            Configuration = string.Empty,
+                            ConfigurationString = string.Empty,
                             Timeout = 1000,
 
                             InitializeAtSplashScreen = true,
@@ -163,7 +163,7 @@ namespace PSGM.Sample.Model.DbMachine
                             DeviceUrl = "https://www.nanotec.com/eu/de/produkte/1891-pd2-c4118l1804-e-08",
 
                             SerialNumber = "B959903 22/23-0016",
-                            Configuration = string.Empty,
+                            ConfigurationString = string.Empty,
                             Timeout = 1000,
 
                             InitializeAtSplashScreen = true,
@@ -198,9 +198,9 @@ namespace PSGM.Sample.Model.DbMachine
                             DeviceUrl = "https://www.nanotec.com/eu/en/products/1758-cl3-e-1-0f, https://www.nanotec.com/eu/de/produkte/1857-sc3518m1204-b",
 
                             SerialNumber = "B956654 02/23-0115, ???",
-                            Configuration = string.Empty,
+                            ConfigurationString = string.Empty,
                             Timeout = 1000,
-                            
+
                             InitializeAtSplashScreen = true,
                             ConnectAtSplashScreen = true,
                             AutoStartAtSplashScreen = true,
@@ -219,7 +219,7 @@ namespace PSGM.Sample.Model.DbMachine
                         new DbMachine_Interface_CanDevice()
                         {
                             Id = new Guid(),
-                            
+
                             CanDeviceId = 12,
 
                             DeviceName = "Sheet cradel Right - Downholder Left",
@@ -233,7 +233,7 @@ namespace PSGM.Sample.Model.DbMachine
                             DeviceUrl = "https://www.nanotec.com/eu/en/products/1758-cl3-e-1-0f, https://www.nanotec.com/eu/de/produkte/1857-sc3518m1204-b",
 
                             SerialNumber = "B956654 02/23-0076, ???",
-                            Configuration = string.Empty,
+                            ConfigurationString = string.Empty,
                             Timeout = 1000,
 
                             InitializeAtSplashScreen = true,
@@ -268,7 +268,7 @@ namespace PSGM.Sample.Model.DbMachine
                             DeviceUrl = "https://www.nanotec.com/eu/en/products/1758-cl3-e-1-0f, https://www.nanotec.com/eu/de/produkte/1857-sc3518m1204-b",
 
                             SerialNumber = "B956654 02/23-0150, ???",
-                            Configuration = string.Empty,
+                            ConfigurationString = string.Empty,
                             Timeout = 1000,
 
                             InitializeAtSplashScreen = true,
@@ -303,9 +303,9 @@ namespace PSGM.Sample.Model.DbMachine
                             DeviceUrl = "https://www.nanotec.com/eu/en/products/1758-cl3-e-1-0f, https://www.nanotec.com/eu/de/produkte/1857-sc3518m1204-b",
 
                             SerialNumber = "B956654 02/23-0081, ???",
-                            Configuration = string.Empty,
+                            ConfigurationString = string.Empty,
                             Timeout = 1000,
-                            
+
                             InitializeAtSplashScreen = true,
                             ConnectAtSplashScreen = true,
                             AutoStartAtSplashScreen = true,
@@ -336,9 +336,9 @@ namespace PSGM.Sample.Model.DbMachine
                             DeviceManufacturer = DeviceManufacturer.Nanotec,
                             DeviceType = DeviceType.LGA421L18_B_UKGI_064,
                             DeviceUrl = "https://www.nanotec.com/eu/de/produkte/2475-lga421l18-b-ukgi-064",
-                            
+
                             SerialNumber = "B956654 02/23-0079",
-                            Configuration = string.Empty,
+                            ConfigurationString = string.Empty,
                             Timeout = 1000,
 
                             InitializeAtSplashScreen = true,
@@ -359,7 +359,7 @@ namespace PSGM.Sample.Model.DbMachine
                 },
                 Interfaces_Ethernet = null,
                 Interfaces_Serial = null,
-                
+
                 //CreatedByUserIdExtAutoFill = Guid.Empty,
                 //CreatedDateTimeAutoFill = DateTime.Now,
                 //ModifiedByUserIdExtAutoFill = Guid.Empty,
@@ -369,6 +369,53 @@ namespace PSGM.Sample.Model.DbMachine
                 DeviceGroup = null,
                 DeviceGroupId = null,
             };
+
+            Configuration_Motion_NanotecV1_0_0 config = new Configuration_Motion_NanotecV1_0_0()
+            {
+                MinPositionRange = 0.000f,
+                MaxPositionRange = 0.000f,
+
+                DefaultTargetPosition = 0.000f,
+
+                MinPositionRangeLimit = 0.000f,
+                MaxPositionRangeLimit = 0.000f,
+
+                MinPositionLimit = 0.000f,
+                MaxPositionLimit = 0.000f,
+
+                HomeOffset = 0.000f,
+                Polarity = 0.000f,
+
+                MotorProfileType = 0.000f,
+
+                ProfileVelocity = 0.000f,
+                ProfileAcceleration = 0.000f,
+
+                EndVelocity = 0.000f,
+
+                ProfileDeceleration = 0.000f,
+
+                QuickStopDeceleration = 0.000f,
+
+                MaxAcceleration = 0.000f,
+                MaxDeceleration = 0.000f,
+
+                BeginAccelerationJerk = 0.000f,
+                BeginDecelerationJerk = 0.000f,
+
+                EndAccelerationJerk = 0.000f,
+                EndDecelerationJerk = 0.000f,
+
+                JerkLimit = 0.000f,
+
+                PositionWindow = 0.000f,
+                PositionWindowTime = 0.000f,
+
+                FollowingErrorWindow = 0.000f,
+                FollowingErrorTimeOut = 0.000f
+            };
+
+            device.Interfaces_Can.Interface_CanDevices.ToList()[0].SetConfigurationMotionNanotecV1_0_0(config);
 
             return device;
         }
