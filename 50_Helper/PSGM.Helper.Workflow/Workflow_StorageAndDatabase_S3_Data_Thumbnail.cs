@@ -1,5 +1,6 @@
 ﻿using Minio.DataModel.Args;
 using OpenCvSharp;
+using PSGM.Helper.Vision;
 using PSGM.Lib.ExifData;
 using PSGM.Model.DbStorage;
 using PSGM.Model.DbWorkflow;

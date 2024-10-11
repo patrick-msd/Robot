@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8rGraGspknU=",
+  "dgSpecHash": "W51Eba+uL1k=",
   "success": true,
   "projectFilePath": "C:\\Git\\MSD\\Robot\\80_Model\\PSGM.Model.DbMain\\PSGM.Model.DbMain.csproj",
   "expectedPackageFiles": [
@@ -56,7 +56,9 @@
     "C:\\Users\\msdit\\.nuget\\packages\\npgsql\\8.0.4\\npgsql.8.0.4.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\8.0.8\\npgsql.entityframeworkcore.postgresql.8.0.8.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\opencvsharp4\\4.10.0.20240616\\opencvsharp4.4.10.0.20240616.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\serilog\\4.0.1\\serilog.4.0.1.nupkg.sha512",
+    "C:\\Users\\msdit\\.nuget\\packages\\opencvsharp4.extensions\\4.10.0.20240616\\opencvsharp4.extensions.4.10.0.20240616.nupkg.sha512",
+    "C:\\Users\\msdit\\.nuget\\packages\\opencvsharp4.wpfextensions\\4.10.0.20240616\\opencvsharp4.wpfextensions.4.10.0.20240616.nupkg.sha512",
+    "C:\\Users\\msdit\\.nuget\\packages\\serilog\\4.0.2\\serilog.4.0.2.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.6\\sqlitepclraw.bundle_e_sqlite3.2.1.6.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\sqlitepclraw.core\\2.1.6\\sqlitepclraw.core.2.1.6.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.6\\sqlitepclraw.lib.e_sqlite3.2.1.6.nupkg.sha512",
@@ -71,7 +73,7 @@
     "C:\\Users\\msdit\\.nuget\\packages\\system.composition.typedparts\\6.0.0\\system.composition.typedparts.6.0.0.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.1\\system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",
-    "C:\\Users\\msdit\\.nuget\\packages\\system.drawing.common\\8.0.8\\system.drawing.common.8.0.8.nupkg.sha512",
+    "C:\\Users\\msdit\\.nuget\\packages\\system.drawing.common\\8.0.10\\system.drawing.common.8.0.10.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\system.formats.asn1\\5.0.0\\system.formats.asn1.5.0.0.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.35.0\\system.identitymodel.tokens.jwt.6.35.0.nupkg.sha512",
     "C:\\Users\\msdit\\.nuget\\packages\\system.io.filesystem.accesscontrol\\5.0.0\\system.io.filesystem.accesscontrol.5.0.0.nupkg.sha512",

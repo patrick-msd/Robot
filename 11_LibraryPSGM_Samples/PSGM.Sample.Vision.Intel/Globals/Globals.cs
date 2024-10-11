@@ -2,6 +2,7 @@
 using PSGM.Model.DbBackend;
 using PSGM.Model.DbMachine;
 using PSGM.Model.DbMain;
+using Serilog.Sinks.Grafana.Loki;
 using System;
 using System.Collections.Generic;
 
