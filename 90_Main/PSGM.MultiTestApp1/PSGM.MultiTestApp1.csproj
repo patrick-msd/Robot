@@ -9,25 +9,36 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="50_Helper\**" />
+    <Compile Remove="Events\**" />
+    <EmbeddedResource Remove="50_Helper\**" />
+    <EmbeddedResource Remove="Events\**" />
+    <None Remove="50_Helper\**" />
+    <None Remove="Events\**" />
+    <Page Remove="50_Helper\**" />
+    <Page Remove="Events\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Minio" Version="6.0.3" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.8" />
     <PackageReference Include="SendGrid" Version="9.29.3" />
-    <PackageReference Include="Serilog" Version="4.0.1" />
+    <PackageReference Include="Serilog" Version="4.0.2" />
     <PackageReference Include="Serilog.Enrichers.Thread" Version="4.0.0" />
     <PackageReference Include="Serilog.Sinks.Debug" Version="3.0.0" />
     <PackageReference Include="Serilog.Sinks.Grafana.Loki" Version="8.3.0" />
     <PackageReference Include="Serilog.Sinks.RichTextBoxEx.Wpf" Version="1.1.0.1" />
-    <PackageReference Include="System.Drawing.Common" Version="8.0.8" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.10" />
     <PackageReference Include="System.IO.Ports" Version="8.0.0" />
     <PackageReference Include="System.Management" Version="8.0.0" />
   </ItemGroup>
@@ -40,15 +51,8 @@
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DBMachine\PSGM.Model.DbMachine.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DBMain\PSGM.Model.DbMain.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DBSoftware\PSGM.Model.DbSoftware.csproj" />
-    <ProjectReference Include="..\..\80_Model\PSGM.Model.DbStorageStructure\PSGM.Model.DbStorageStructure.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DBStorage\PSGM.Model.DbStorage.csproj" />
     <ProjectReference Include="..\..\80_Model\PSGM.Model.DBUser\PSGM.Model.DbUser.csproj" />
-    <ProjectReference Include="..\..\80_Model\PSGM.Model.DBWorkflow\PSGM.Model.DbWorkflow.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="50_Helper\" />
-    <Folder Include="Events\" />
   </ItemGroup>
 
 </Project>

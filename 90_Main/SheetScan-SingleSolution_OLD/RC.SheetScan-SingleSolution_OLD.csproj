@@ -12,6 +12,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="50_Helper\**" />
+    <EmbeddedResource Remove="50_Helper\**" />
+    <None Remove="50_Helper\**" />
+    <Page Remove="50_Helper\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.Control.RobotElectronics\PSGM.Lib.Control.RobotElectronics.csproj" />
     <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.Motion.Nanotec\PSGM.Lib.Motion.Nanotec.csproj" />
     <ProjectReference Include="..\..\10_LibraryPSGM\PSGM.Lib.PowerSupply.Nextys\PSGM.Lib.PowerSupply.Nextys.csproj" />
@@ -66,10 +73,6 @@
     <Page Update="UISplashScreen.xaml">
       <SubType>Designer</SubType>
     </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="50_Helper\" />
   </ItemGroup>
 
   <ItemGroup>

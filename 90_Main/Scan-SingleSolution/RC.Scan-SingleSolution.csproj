@@ -10,14 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\10_LibraryRC\RC.Motion.Nanotec.MotionController\RC.Lib.Motion.Nanotec.csproj" />
-    <ProjectReference Include="..\..\10_LibraryRC\RC.PowerSupply.Nextys.DcDcConverter\RC.Lib.PowerSupply.Nextys.csproj" />
-    <ProjectReference Include="..\..\10_LibraryRC\RC.Robot.Doosan.Control\RC.Robot.Doosan.Control.vcxproj" />
-    <ProjectReference Include="..\..\10_LibraryRC\RC.Vision.Intel.RealSense\RC.Vision.Intel.RealSense.csproj" />
-    <ProjectReference Include="..\..\10_LibraryRC\RC.Vision.SVSVistek.Camera\RC.Lib.Vision.SVSVistek.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Serilog" Version="4.0.1" />
     <PackageReference Include="Serilog.Enrichers.Thread" Version="4.0.0" />
     <PackageReference Include="Serilog.Sinks.Debug" Version="3.0.0" />

@@ -28,7 +28,7 @@ namespace PSGM.SingleSolution.SheetScan
         private Nextys_Container? _nextys;
         private Doosan_Container? _doosan;
         private SVSVistek_Container? _svsVistek;
-        private Intel_Container? _intel;
+        //private Intel_Container? _intel;
         private RealSense _realSense = new RealSense();
         #endregion
 
@@ -157,7 +157,7 @@ namespace PSGM.SingleSolution.SheetScan
             _nanotec = Globals.Machine.Motion.Nanotec;
             _nextys = Globals.Machine.PowerSupply.Nextys;
             _doosan = Globals.Machine.Robot.Doosan;
-            _intel = Globals.Machine.Vision.Intel;
+            //_intel = Globals.Machine.Vision.Intel;
             _svsVistek = Globals.Machine.Vision.SVSVistek;
 
             _timer = new Stopwatch();
@@ -167,6 +167,11 @@ namespace PSGM.SingleSolution.SheetScan
             Serilog.Log.Information("Initialize Gui elements ...");
 
             Slider.Value = 25;
+
+            foreach (var robot in _doosan.Controllers)
+            {
+                robot.ChangeOperationSpeed((float)Slider.Value);
+            }
             #endregion
 
             #region Initialize threads and tasks ...
@@ -198,11 +203,9 @@ namespace PSGM.SingleSolution.SheetScan
             _tokenPicture = _cancellationTokenSourcePicture.Token;
             #endregion
 
-            #region Set startup values for harware devices ...
-            Serilog.Log.Information("Initialize Gui elements ...");
 
-            Slider.Value = 25;
-            #endregion
+
+
 
 
 
@@ -370,66 +373,20 @@ namespace PSGM.SingleSolution.SheetScan
         }
 
         #region GUI functions ...
-        private void Button_Click2(object sender, RoutedEventArgs e)
+        private void Button_CancelThreads(object sender, RoutedEventArgs e)
         {
-            if (_taskMain.Status == TaskStatus.Running)
+            _cancellationTokenSourceMain.Cancel();
+            _cancellationTokenSourceCheck.Cancel();
+            _cancellationTokenSourcePicture.Cancel();
+            foreach (var token in _cancellationTokenSourceWorkflow)
             {
-                Serilog.Log.Information("Another thread is already running ...");
+                token.Cancel();
             }
-            else
-            {
-                _cancellationTokenSourceMain = new CancellationTokenSource();
-                _tokenMain = _cancellationTokenSourceMain.Token;
 
-                _taskMain = Task.Run(() =>
-                {
-                    Serilog.Log.Information("Start ...");
-
-                    float[] targetVel = new float[] { 500.000f, 125.000f };
-                    float[] targetVelSlow = new float[] { 10.000f, 5.000f };
-                    float[] targetVelFast = new float[] { 750.000f, 250.000f };
-                    float[] targetAcc = new float[] { 50.000f, 50.000f };
-                    float[] targetAccSlow = new float[] { 2.500f, 2.500f };
-                    float[] targetAccFast = new float[] { 500.000f, 250.000f };
-
-                    float targetTime = 0.0f;
-                    MoveMode moveMode = MoveMode.MOVE_MODE_ABSOLUTE;
-                    MoveReference moveReference = MoveReference.MOVE_REFERENCE_BASE;
-                    BlendingSpeedType blendingSpeedType = BlendingSpeedType.BLENDING_SPEED_TYPE_DUPLICATE;
-
-
-                    //_Robots.ControlDeviceConfigs[0].Control.SetRobotMode(RobotMode.ROBOT_MODE_AUTONOMOUS);
-
-                    //_poseCurrent = _Robots.ControlDeviceConfigs[0].Control.GetCurrentPosx()._fTargetPos;
-                    //_poseCurrent[4] = -90.000f;
-                    //_Robots.ControlDeviceConfigs[0].Control.MoveL(_poseCenterRobotLeft_Vertical, targetVel, targetAcc, targetTime, moveMode, moveReference, 0, blendingSpeedType);
-
-
-                    //_poseCurrent = _Robots.ControlDeviceConfigs[0].Control.GetCurrentPosx()._fTargetPos;
-                    //_poseCurrent[4] = 0.000f;
-                    //_Robots.ControlDeviceConfigs[0].Control.MoveL(_poseStartRobotLeft_Horitzontal, targetVel, targetAcc, targetTime, moveMode, moveReference, 0, blendingSpeedType);
-
-                    //_poseCurrent = _Robots.ControlDeviceConfigs[0].Control.GetCurrentPosx()._fTargetPos;
-                    //_poseCurrent[4] = 0.000f;
-                    //_Robots.ControlDeviceConfigs[0].Control.MoveL(_poseCenterRobotLeft_Vertical, targetVel, targetAcc, targetTime, moveMode, moveReference, 0, blendingSpeedType);
-                }, _tokenMain);
-            }
+            _doosan.Controllers[0].SetRobotMode(RobotMode.ROBOT_MODE_MANUAL);
         }
 
-        private void Button_Click3(object sender, RoutedEventArgs e)
-        {
-            if (_taskMain.Status == TaskStatus.Running || _taskMain.Status == TaskStatus.WaitingForActivation)
-            {
-                //_thread.Interrupt();
-                _cancellationTokenSourceMain.Cancel();
-                _cancellationTokenSourceCheck.Cancel();
-
-                //_Nanotec.MotionBusController.DeviceDisconnect(_deviceHandle);
-                _doosan.Controllers[0].SetRobotMode(RobotMode.ROBOT_MODE_MANUAL);
-            }
-        }
-
-        private void Button_Click_12(object sender, RoutedEventArgs e)
+        private void Button_SavePictures(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -448,7 +405,7 @@ namespace PSGM.SingleSolution.SheetScan
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Homing(object sender, RoutedEventArgs e)
         {
             int targetPosition = 0;
 
@@ -619,7 +576,7 @@ namespace PSGM.SingleSolution.SheetScan
             Serilog.Log.Debug("Finish - Homeing");
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Move1(object sender, RoutedEventArgs e)
         {
             if (_thread.IsAlive)
             {
@@ -699,7 +656,7 @@ namespace PSGM.SingleSolution.SheetScan
             }
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Button_Move2(object sender, RoutedEventArgs e)
         {
             if (_thread.IsAlive)
             {
@@ -777,7 +734,76 @@ namespace PSGM.SingleSolution.SheetScan
             }
         }
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
+        private void Button_Move3(object sender, RoutedEventArgs e)
+        {
+            if (_thread.IsAlive)
+            {
+                Serilog.Log.Information("Another thread is already running ...");
+            }
+            else
+            {
+                _thread = new Thread(new ThreadStart(delegate ()
+                {
+                    try
+                    {
+                        int targetPositionLeft = 0;
+                        int targetPositionRight = 0;
+
+                        int minPosRange = 0;
+                        int maxPosRange = 0;
+                        int minPos = -476750;
+                        int maxPos = 0;
+                        int homeOffset = 0;
+
+                        int polarityInverted = 0;
+                        int jerk = 0;
+
+                        int profileVelocity = 5000;
+                        int endVelocity = 0;
+                        int profileAccel = 1000;
+                        int profileDecel = 1000;
+                        int quickStopDecel = 5000;
+                        int maxDecel = 1000;
+                        int maxAccel = 1000;
+
+                        bool relative = false;
+
+                        int move = 1;
+
+                        Dispatcher.Invoke(() =>
+                        {
+                            targetPositionLeft = (int)Convert.ToDouble(txtSheetZ_Copy1.Text.Replace(".", ","));
+                            targetPositionRight = (int)Convert.ToDouble(txtSheetZ_Copy2.Text.Replace(".", ","));
+                        });
+
+                        Serilog.Log.Debug("");
+                        Serilog.Log.Debug("################################# Run - Position #################################");
+
+                        for (int i = 0; i <= 3; i++)
+                        {
+                            _nanotec[0].SetupRangePositioning(_nanotec[0].MotionController[i].DeviceHandle, relative, move, minPosRange, maxPosRange, minPos, maxPos, homeOffset, polarityInverted);
+
+                            _nanotec[0].SetAccelVelocityPositioning(_nanotec[0].MotionController[i].DeviceHandle, jerk, profileVelocity, endVelocity, profileAccel, profileDecel, quickStopDecel, maxDecel, maxAccel);
+                        }
+
+                        _nanotec[0].SetPositionASync(_nanotec[0].MotionController[1].DeviceHandle, targetPositionLeft);
+                        _nanotec[0].SetPositionASync(_nanotec[0].MotionController[2].DeviceHandle, targetPositionLeft);
+                        _nanotec[0].SetPositionASync(_nanotec[0].MotionController[0].DeviceHandle, targetPositionRight);
+                        _nanotec[0].SetPositionASync(_nanotec[0].MotionController[3].DeviceHandle, targetPositionRight);
+
+                        Serilog.Log.Debug("################################# Finished - Position #################################");
+                        Serilog.Log.Debug("");
+                    }
+                    catch (Exception ex)
+                    {
+                        Serilog.Log.Debug(ex.Message);
+                    }
+                }));
+                _thread.Start();
+            }
+        }
+
+        private void Button_Move4(object sender, RoutedEventArgs e)
         {
             if (_thread.IsAlive)
             {
@@ -847,76 +873,7 @@ namespace PSGM.SingleSolution.SheetScan
             }
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            if (_thread.IsAlive)
-            {
-                Serilog.Log.Information("Another thread is already running ...");
-            }
-            else
-            {
-                _thread = new Thread(new ThreadStart(delegate ()
-                {
-                    try
-                    {
-                        int targetPositionLeft = 0;
-                        int targetPositionRight = 0;
-
-                        int minPosRange = 0;
-                        int maxPosRange = 0;
-                        int minPos = -476750;
-                        int maxPos = 0;
-                        int homeOffset = 0;
-
-                        int polarityInverted = 0;
-                        int jerk = 0;
-
-                        int profileVelocity = 5000;
-                        int endVelocity = 0;
-                        int profileAccel = 1000;
-                        int profileDecel = 1000;
-                        int quickStopDecel = 5000;
-                        int maxDecel = 1000;
-                        int maxAccel = 1000;
-
-                        bool relative = false;
-
-                        int move = 1;
-
-                        Dispatcher.Invoke(() =>
-                        {
-                            targetPositionLeft = (int)Convert.ToDouble(txtSheetZ_Copy1.Text.Replace(".", ","));
-                            targetPositionRight = (int)Convert.ToDouble(txtSheetZ_Copy2.Text.Replace(".", ","));
-                        });
-
-                        Serilog.Log.Debug("");
-                        Serilog.Log.Debug("################################# Run - Position #################################");
-
-                        for (int i = 0; i <= 3; i++)
-                        {
-                            _nanotec[0].SetupRangePositioning(_nanotec[0].MotionController[i].DeviceHandle, relative, move, minPosRange, maxPosRange, minPos, maxPos, homeOffset, polarityInverted);
-
-                            _nanotec[0].SetAccelVelocityPositioning(_nanotec[0].MotionController[i].DeviceHandle, jerk, profileVelocity, endVelocity, profileAccel, profileDecel, quickStopDecel, maxDecel, maxAccel);
-                        }
-
-                        _nanotec[0].SetPositionASync(_nanotec[0].MotionController[1].DeviceHandle, targetPositionLeft);
-                        _nanotec[0].SetPositionASync(_nanotec[0].MotionController[2].DeviceHandle, targetPositionLeft);
-                        _nanotec[0].SetPositionASync(_nanotec[0].MotionController[0].DeviceHandle, targetPositionRight);
-                        _nanotec[0].SetPositionASync(_nanotec[0].MotionController[3].DeviceHandle, targetPositionRight);
-
-                        Serilog.Log.Debug("################################# Finished - Position #################################");
-                        Serilog.Log.Debug("");
-                    }
-                    catch (Exception ex)
-                    {
-                        Serilog.Log.Debug(ex.Message);
-                    }
-                }));
-                _thread.Start();
-            }
-        }
-
-        private void Button_Click_8(object sender, RoutedEventArgs e)
+        private void Button_OpenDownholder(object sender, RoutedEventArgs e)
         {
             if (_thread.IsAlive)
             {
@@ -983,7 +940,7 @@ namespace PSGM.SingleSolution.SheetScan
             }
         }
 
-        private void Button_Click_9(object sender, RoutedEventArgs e)
+        private void Button_CloseDownholder(object sender, RoutedEventArgs e)
         {
             if (_thread.IsAlive)
             {
@@ -1052,55 +1009,6 @@ namespace PSGM.SingleSolution.SheetScan
         #endregion
 
         #region Functions ...
-        void SetEndeffectors()
-        {
-            string Tool = "Tool1";
-            string TCP = "TCP1";
-
-            //float[] toolCenterPosition = { 0.000f, 0.000f, 125.000f, 0.000f, 0.000f, 0.000f };
-            float[] toolCenterPosition = { 0.000f, 0.000f, 90.000f, 0.000f, 0.000f, 0.000f };
-
-            float ToolWeight = 0.000f;
-
-            float[] ToolCenterOfGravitiy = { 0.000f, 0.000f, 0.000f };
-            float[] ToolInertiaValue = { 0.000f, 0.000f, 0.000f, 0.000f, 0.000f, 0.000f };
-
-            if (_doosan.Controllers.Count > 0)
-            {
-                for (int i = 0; i < _doosan.Controllers.Count; i++)
-                {
-                    RobotMode mode = _doosan.Controllers[i].GetRobotMode();
-
-                    Thread.Sleep(250);
-
-                    _doosan.Controllers[i].SetRobotMode(RobotMode.ROBOT_MODE_MANUAL);
-                    Thread.Sleep(250);
-
-                    _doosan.Controllers[i].AddTool(Tool, ToolWeight, ToolCenterOfGravitiy, ToolInertiaValue);
-                    Thread.Sleep(50);
-                    _doosan.Controllers[i].SetTool(Tool);
-
-
-                    _doosan.Controllers[i].AddTCP(TCP, toolCenterPosition);
-                    Thread.Sleep(50);
-                    _doosan.Controllers[i].SetTCP(TCP);
-
-                    Thread.Sleep(50);
-
-                    string asd = _doosan.Controllers[i].GetTool();
-                    string asdsa = _doosan.Controllers[i].GetTCP();
-
-
-                    Serilog.Log.Information("Robot \" Current Tool: " + _doosan.Controllers[i].GetTool());
-                    Serilog.Log.Information("Robot \" Current TCP: " + _doosan.Controllers[i].GetTCP());
-
-                    Thread.Sleep(250);
-
-                    _doosan.Controllers[i].SetRobotMode(mode);
-                }
-            }
-        }
-
         void SetupCradleMotors()
         {
             try
@@ -1244,11 +1152,6 @@ namespace PSGM.SingleSolution.SheetScan
         {
             rtbLogger.ScrollToEnd();
         }
-
-
-
-
-
 
         async Task Worker(int number)
         {

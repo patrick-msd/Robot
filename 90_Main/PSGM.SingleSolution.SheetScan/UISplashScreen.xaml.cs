@@ -79,7 +79,7 @@ namespace PSGM.SingleSolution.SheetScan
             // Calculate percentage and set progress bar
             Log.Information("Initialize and calculate percentage and set progress bar ...");
             _statePercentageValue = 0;
-            _statePercentageCount = 25;
+            _statePercentageCount = 28;
 
             pgbLoading.Minimum = _statePercentageValue;
             pgbLoading.Maximum = _statePercentageCount;

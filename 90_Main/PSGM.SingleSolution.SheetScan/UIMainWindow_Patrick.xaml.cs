@@ -1,12 +1,6 @@
-﻿using Emgu.CV;
-using Emgu.CV.Structure;
-using PSGM.Lib.Vision.SVSVistek;
+﻿using PSGM.Lib.Vision.SVSVistek;
 using PSGMRobotDoosanControl;
-using System;
 using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace PSGM.SingleSolution.SheetScan

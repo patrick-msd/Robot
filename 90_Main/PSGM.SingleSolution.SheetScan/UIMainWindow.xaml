@@ -10,7 +10,7 @@
         Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid Height="1000" Width="1750" HorizontalAlignment="Left" VerticalAlignment="Top">
         <Button Content="Main Programm&#xD;&#xA;Patrick" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Margin="10,138,0,0" Width="180" Click="Button_Click1"/>
-        <Button Content="Cancle Thread" HorizontalAlignment="Left" Height="36" Margin="12,565,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click3"/>
+        <Button Content="Cancel Threads" HorizontalAlignment="Left" Height="36" Margin="12,565,0,0" VerticalAlignment="Top" Width="180" Click="Button_CancelThreads"/>
         <RichTextBox x:Name="rtbLogger" Background="Black" Foreground="LightGray" FontFamily="Cascadia Mono, Consolas, Courier New, monospace" VerticalScrollBarVisibility="Visible" Margin="10,734,10,10" TextChanged="rtbLogger_TextChanged"/>
         <ProgressBar x:Name="pgbProgress" HorizontalAlignment="Left" Height="36" Margin="15,690,0,0" VerticalAlignment="Top" Width="1725"/>
         <Label x:Name="lblProgress" Content="1 / xXx" HorizontalAlignment="Left" Margin="783,695,0,0" VerticalAlignment="Top"/>
@@ -18,17 +18,17 @@
         <Label VerticalAlignment="Top" x:Name="lblSheetZ_Copy" Margin="10,176,0,0" HorizontalAlignment="Left" Content="Sheets:"/>
         <TextBox x:Name="txtSheetZ_Copy" Margin="64,182,0,0" Text="5000" VerticalAlignment="Top" Width="128" TextWrapping="Wrap" HorizontalAlignment="Left"/>
         <Label x:Name="lblSheetZ_Copy1" Content="Percentage: xXx%" HorizontalAlignment="Left" Margin="11,630,0,0" VerticalAlignment="Top" Height="28" Width="103"/>
-        <Button Content="Homing" HorizontalAlignment="Left" Height="36" Margin="10,219,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click"/>
-        <Button Content="Test Move #1" HorizontalAlignment="Left" Height="36" Margin="10,323,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_1"/>
-        <Button Content="Test Move #2" HorizontalAlignment="Left" Height="36" Margin="10,364,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_2"/>
-        <Button Content="Test Move #4" HorizontalAlignment="Left" Height="36" Margin="10,446,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_3"/>
+        <Button Content="Homing" HorizontalAlignment="Left" Height="36" Margin="10,219,0,0" VerticalAlignment="Top" Width="180" Click="Button_Homing"/>
+        <Button Content="Test Move #1" HorizontalAlignment="Left" Height="36" Margin="10,323,0,0" VerticalAlignment="Top" Width="180" Click="Button_Move1"/>
+        <Button Content="Test Move #2" HorizontalAlignment="Left" Height="36" Margin="10,364,0,0" VerticalAlignment="Top" Width="180" Click="Button_Move2"/>
+        <Button Content="Test Move #4" HorizontalAlignment="Left" Height="36" Margin="10,446,0,0" VerticalAlignment="Top" Width="180" Click="Button_Move4"/>
         <TextBox x:Name="txtSheetZ_Copy1" HorizontalAlignment="Left" Margin="10,487,0,0" TextWrapping="Wrap" Text="-100000" VerticalAlignment="Top" Width="85"/>
         <Label x:Name="lblSheetZ_Copy6" Content="Errors: 0 / Errors Solved: 0" HorizontalAlignment="Left" Margin="619,659,0,0" VerticalAlignment="Top" Width="187"/>
         <Label x:Name="lblSheetZ_Copy7" Content="Tim: 0.000s" HorizontalAlignment="Left" Margin="822,659,0,0" VerticalAlignment="Top" Width="179"/>
-        <Button Content="Test Move #3" HorizontalAlignment="Left" Height="36" Margin="10,405,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_4"/>
+        <Button Content="Test Move #3" HorizontalAlignment="Left" Height="36" Margin="10,405,0,0" VerticalAlignment="Top" Width="180" Click="Button_Move3"/>
         <Image x:Name="imgImage" Height="612" Margin="206,10,758,0" VerticalAlignment="Top"/>
-        <Button Content="Save Pictures (SVS-Vistek)" HorizontalAlignment="Left" Height="36" Margin="10,272,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_12"/>
-        <Button Content="Open Downholder" HorizontalAlignment="Left" Height="21" Margin="10,510,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_8"/>
+        <Button Content="Save Pictures (SVS-Vistek)" HorizontalAlignment="Left" Height="36" Margin="10,272,0,0" VerticalAlignment="Top" Width="180" Click="Button_SavePictures"/>
+        <Button Content="Open Downholder" HorizontalAlignment="Left" Height="21" Margin="10,510,0,0" VerticalAlignment="Top" Width="180" Click="Button_OpenDownholder"/>
         <TextBox x:Name="txtSheetZ_Copy2" HorizontalAlignment="Left" Margin="105,487,0,0" TextWrapping="Wrap" Text="-25000" VerticalAlignment="Top" Width="85"/>
         <Image x:Name="imgImage_Copy" Height="613" Margin="1360,10,16,0" VerticalAlignment="Top"/>
         <Image x:Name="imgImage_Copy1" Height="608" Margin="960,10,422,0" VerticalAlignment="Top"/>
@@ -39,7 +39,7 @@
         <Label VerticalAlignment="Top" x:Name="lblSheetZ_Copy2" Margin="12,606,0,0" HorizontalAlignment="Left" Content="Graphic code:"/>
         <TextBox x:Name="txtSheetZ_Copy3" Margin="95,612,0,0" VerticalAlignment="Top" Width="97" TextWrapping="Wrap" HorizontalAlignment="Left"/>
         <Button Content="Taker Picture" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Margin="10,89,0,0" Width="180" Click="Button_Click_5"/>
-        <Button Content="Close Downholder" HorizontalAlignment="Left" Height="21" Margin="10,536,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_9"/>
+        <Button Content="Close Downholder" HorizontalAlignment="Left" Height="21" Margin="10,536,0,0" VerticalAlignment="Top" Width="180" Click="Button_CloseDownholder"/>
         <CheckBox x:Name="chkCancle" Content="Cancle" HorizontalAlignment="Left" Margin="124,10,0,0" VerticalAlignment="Top" IsChecked="False"/>
         <CheckBox x:Name="chkIgnoreDoublepageSensor" Content="Ignore Doublepage Sensor" HorizontalAlignment="Left" Margin="15,30,0,0" VerticalAlignment="Top" IsChecked="False"/>
     </Grid>
