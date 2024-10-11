@@ -233,11 +233,26 @@ namespace PSGM.SingleSolution.SheetScan
             Thread.Sleep(125);
 
             // Step #24
-            UpdateUI("Camera: Set startup values for devices ...");
-            SetStartupValuesForDevices();
+            UpdateUI("Motion: Set default or startup values for devices ...");
+            SetDefaultOrStartupValuesForMotors();
             Thread.Sleep(125);
 
             // Step #25
+            UpdateUI("Power Supply: Set default or startup values for devices ...");
+            SetDefaultOrStartupValuesForPowerSupplies();
+            Thread.Sleep(125);
+
+            // Step #26
+            UpdateUI("Robot: Set default or startup values for devices ...");
+            SetDefaultOrStartupValuesForRobots();
+            Thread.Sleep(125);
+
+            // Step #27
+            UpdateUI("Camera: Set default or startup values for devices ...");
+            SetDefaultOrStartupValuesForCameras();
+            Thread.Sleep(125);
+
+            // Step #28
             UpdateUI("Finish splash screen and open main application ...");
             Thread.Sleep(125);
         }
@@ -1560,26 +1575,13 @@ namespace PSGM.SingleSolution.SheetScan
             }
         }
 
-        private void SetStartupValuesForDevices()
+        private void SetDefaultOrStartupValuesForMotors()
         {
-            // Motoren setzen der Max und min werten 
+            // ToDo: ...
+        }
 
-
-
-
-
-            #region 
-            // Doosan setzen der Max und min werten und Endefector
-            //SetEndeffectors();
-            _doosan.Controllers[0].SetAnalogOutput(GpioCtrlboxAnalogIndex.GPIO_CTRLBOX_ANALOG_INDEX_1, 0.000f);
-            _doosan.Controllers[0].SetAnalogOutput(GpioCtrlboxAnalogIndex.GPIO_CTRLBOX_ANALOG_INDEX_2, 0.000f);
-            #endregion
-
-
-            #region 
-
-            // Nextys setzen der Max und min werten
-
+        private void SetDefaultOrStartupValuesForPowerSupplies()
+        {
             foreach (Nextys_DcDcConverter dcDcConverter in _nextys.DcDcConverters)
             {
                 //if (item.Control != null)
@@ -1603,7 +1605,81 @@ namespace PSGM.SingleSolution.SheetScan
                 dcDcConverter._maxOutputCurrent = (int)(1.2500f * 1000);
                 dcDcConverter.SetMaximalOutputCurrent((int)(1.250f * 1000));
             }
-            #endregion
+        }
+
+        private void SetDefaultOrStartupValuesForRobots()
+        {
+            foreach (var robot in _doosan.Controllers)
+            {
+                Configuration_Robot_DoosanV1_0_0? config = _dbMachine_Machine.DeviceGroups.SelectMany(p => p.Devices)
+                                                                                            .Where(p => p.DeviceManufacturer == DeviceManufacturer.Doosan && p.DeviceType == DeviceType.M0609)
+                                                                                            .Where(p => p.Id == robot.IdDb)
+                                                                                            .FirstOrDefault().GetConfigurationRobotDoosanV1_0_0();
+
+                #region Set Speed and Acceleration
+                robot.SetRobotSpeedMode(MonitoringSpeed.SPEED_NORMAL_MODE);
+
+                robot.ChangeOperationSpeed(25.000f);
+                #endregion
+
+                #region Set End Effector
+                robot.SetEndEffector(config.Tools[0]);
+
+                //RobotMode mode = robot.GetRobotMode();
+
+                //robot.SetRobotMode(RobotMode.ROBOT_MODE_MANUAL);
+                //Thread.Sleep(250);
+
+                //robot.AddTool(tool.Name, tool.Weight, tool.GetCenterOfGravity(), tool.GetInertialValues());
+                //Thread.Sleep(125);
+                //robot.SetTool(tool.Name);
+
+
+                //robot.AddTCP(tool.Name, tool.GetCenterPositions());
+                //Thread.Sleep(125);
+                //robot.SetTCP(tool.Name);
+
+                //Thread.Sleep(125);
+
+                //Log.Information($"Robot {robot.IdDb}: \" Current Tool: " + robot.GetTool());
+                //Log.Information($"Robot {robot.IdDb}: \" Current TCP: " + robot.GetTCP());
+
+                //Thread.Sleep(250);
+
+                //robot.SetRobotMode(mode);
+                #endregion
+
+                #region Set Analog and Digital IO
+                robot.SetAnalogOutput(GpioCtrlboxAnalogIndex.GPIO_CTRLBOX_ANALOG_INDEX_1, config.AnalogOutput1);
+                robot.SetAnalogOutput(GpioCtrlboxAnalogIndex.GPIO_CTRLBOX_ANALOG_INDEX_2, config.AnalogOutput2);
+
+                // ToDo: Tool analog output
+
+                robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_1, config.DigitalOutput1);
+                robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_2, config.DigitalOutput2);
+                robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_3, config.DigitalOutput3);
+                robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_4, config.DigitalOutput4);
+                robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_5, config.DigitalOutput5);
+                robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_6, config.DigitalOutput6);
+                robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_7, config.DigitalOutput7);
+                robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_8, config.DigitalOutput8);
+                robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_9, config.DigitalOutput9);
+                robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_10, config.DigitalOutput10);
+                robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_11, config.DigitalOutput11);
+                robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_12, config.DigitalOutput12);
+                robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_13, config.DigitalOutput13);
+                robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_14, config.DigitalOutput14);
+                robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_15, config.DigitalOutput15);
+                robot.SetDigitalOutput(GpioCtrlboxDigitalIndex.GPIO_CTRLBOX_DIGITAL_INDEX_16, config.DigitalOutput16);
+
+                // ToDo: Tool digital output
+                #endregion
+            }
+        }
+
+        private void SetDefaultOrStartupValuesForCameras()
+        {
+            // ToDo: ...
         }
         #endregion
     }

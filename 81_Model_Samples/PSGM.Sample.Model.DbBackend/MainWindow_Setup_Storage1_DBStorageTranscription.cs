@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Minio;
 using Minio.DataModel;
 using Minio.DataModel.Args;
 using Minio.Exceptions;
 using PSGM.Helper;
+using PSGM.Lib.Storage;
 using PSGM.Model.DbBackend;
 using System.Diagnostics;
 
@@ -13,7 +13,7 @@ namespace PSGM.Sample.Model.DbBackend
     {
         public async void Setup_Storage_DBStorageTranscription(DbBackend_Project projects)
         {
-            IMinioClient minioClient;
+            StorageClient storageClient;
 
             List<DbBackend_Storage_Cluster> clusters = _dbBackend_Context.Storage_Cluster.Where(p => p.Backend.Project.ProjectId_Ext == projects.ProjectId_Ext)
                                                                                 .Include(p => p.StorageServers)
@@ -21,16 +21,12 @@ namespace PSGM.Sample.Model.DbBackend
 
             DbBackend_Storage_Cluster cluster = clusters.Where(p => p.StorageClass == StorageClass.DataTranscription).FirstOrDefault();
 
-            minioClient = new MinioClient().WithEndpoint(cluster.GetStorageS3Endpoint(true))
-                                            .WithCredentials(cluster.StorageS3AccessKey, cluster.StorageS3SecretKey)
-                                            .WithSSL(cluster.StorageS3Secure)
-                                            .WithRegion(cluster.StorageS3Region)
-                                            .Build();
+            storageClient = new StorageClient(cluster.GetStorageS3Endpoint(true), cluster.StorageS3AccessKey, cluster.StorageS3SecretKey, cluster.StorageS3Secure, cluster.StorageS3Region, cluster.StorageS3BucketName);
 
             #region List and remove all buckets
             try
             {
-                var list = await minioClient.ListBucketsAsync();
+                var list = await storageClient.ListBucketsAsync();
 
                 if (list.Buckets is not null)
                 {
@@ -38,19 +34,16 @@ namespace PSGM.Sample.Model.DbBackend
                     {
                         foreach (Bucket bucket in list.Buckets)
                         {
-                            //Log.Information("Bucket: " + bucket.Name + " " + bucket.CreationDateDateTime);
+                            List<Tuple<string, string>> objects1 = await storageClient.ListObjectsWithVersions(bucket.Name, null, true);
+                            storageClient.RemoveObjectsWithVersions(bucket.Name, objects1).Wait();
 
-                            List<Tuple<string, string>> objects1 = await ListObjectsWithVersions.Run(minioClient, bucket.Name, null, true);
+                            List<Tuple<string, string>> objects2 = await storageClient.ListObjectsWithVersions(bucket.Name, null, false);
+                            storageClient.RemoveObjectsWithVersions(bucket.Name, objects2).Wait();
 
-                            RemoveObjectsWithVersions.Run(minioClient, bucket.Name, objects1).Wait();
+                            List<string> objects3 = await storageClient.ListObjectsWithoutVersion(bucket.Name, null, false);
+                            storageClient.RemoveObjectsWithoutVersions(bucket.Name, objects3).Wait();
 
-                            List<Tuple<string, string>> objects2 = await ListObjectsWithVersions.Run(minioClient, bucket.Name, null, false);
-                            RemoveObjectsWithVersions.Run(minioClient, bucket.Name, objects2).Wait();
-
-                            List<string> objects3 = await ListObjectsWithoutVersion.Run(minioClient, bucket.Name, null, false);
-                            RemoveObjectsWithoutVersions.Run(minioClient, bucket.Name, objects3).Wait();
-
-                            RemoveBucket.Run(minioClient, bucket.Name).Wait();
+                            storageClient.RemoveBucket(bucket.Name).Wait();
                         }
                     }
                 }
@@ -64,7 +57,7 @@ namespace PSGM.Sample.Model.DbBackend
             #region Add project bucket
             try
             {
-                bool found = await minioClient.BucketExistsAsync(new BucketExistsArgs().WithBucket(projects.ProjectId_Ext.ToString()));
+                bool found = await storageClient.ExistsBucketAsync(new BucketExistsArgs().WithBucket(projects.ProjectId_Ext.ToString()));
 
                 if (found)
                 {
@@ -72,7 +65,7 @@ namespace PSGM.Sample.Model.DbBackend
                 }
                 else
                 {
-                    await MakeBucket.Run(minioClient, projects.ProjectId_Ext.ToString(), cluster.StorageS3Region);
+                    await storageClient.MakeBucket(projects.ProjectId_Ext.ToString(), cluster.StorageS3Region);
                 }
             }
             catch (MinioException ex)

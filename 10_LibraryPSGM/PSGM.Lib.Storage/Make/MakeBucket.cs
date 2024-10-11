@@ -1,17 +1,15 @@
-﻿using Minio;
-using Minio.DataModel.Args;
+﻿using Minio.DataModel.Args;
 using Serilog;
 
 namespace PSGM.Lib.Storage
 {
-    public static class MakeBucket
+    public partial class StorageClient
     {
-        // Make a bucket
-        public static async Task Run(IMinioClient minio, string bucketName = "my-bucket-name", string loc = "us-east-1")
+        public async Task MakeBucket(string bucketName = "my-bucket-name", string loc = "us-east-1")
         {
             try
             {
-                await minio.MakeBucketAsync(new MakeBucketArgs().WithBucket(bucketName).WithLocation(loc)).ConfigureAwait(false);
+                await _minioClient.MakeBucketAsync(new MakeBucketArgs().WithBucket(bucketName).WithLocation(loc));
 
 #if DEBUG
                 Log.Debug($"Created the bucket \"{bucketName}\" successfully");

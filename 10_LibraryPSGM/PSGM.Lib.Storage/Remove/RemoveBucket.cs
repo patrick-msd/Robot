@@ -1,17 +1,15 @@
-﻿using Minio;
-using Minio.DataModel.Args;
+﻿using Minio.DataModel.Args;
 using Serilog;
 
 namespace PSGM.Lib.Storage
 {
-    public static class RemoveBucket
+    public partial class StorageClient
     {
-        // Remove a bucket
-        public static async Task Run(IMinioClient minio, string bucketName = "my-bucket-name")
+        public async Task RemoveBucket(string bucketName = "my-bucket-name")
         {
             try
             {
-                await minio.RemoveBucketAsync(new RemoveBucketArgs().WithBucket(bucketName)).ConfigureAwait(false);
+                await _minioClient.RemoveBucketAsync(new RemoveBucketArgs().WithBucket(bucketName)).ConfigureAwait(false);
 
 #if DEBUG
                 Log.Debug($"Removed the bucket \"{bucketName}\" successfully");

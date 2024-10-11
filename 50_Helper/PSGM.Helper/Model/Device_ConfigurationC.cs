@@ -9,7 +9,7 @@
         public float DefaultValue { get; set; } = 0.000f;
     }
 
-    public class Configuration_Motor_NanotecV1_0_0
+    public class Configuration_Motion_NanotecV1_0_0
     {
         public float MinPositionRange { get; set; } = 0.000f;
         public float MaxPositionRange { get; set; } = 0.000f;
@@ -56,6 +56,8 @@
 
     public class Configuration_Robot_DoosanV1_0_0
     {
+        // ToDo: Accelaration, Decelaration, ...
+
         public float AnalogOutput1 { get; set; } = 0.000f;
         public float AnalogOutput2 { get; set; } = 0.000f;
         public float AnalogOutput3 { get; set; } = 0.000f;
@@ -73,22 +75,22 @@
         public float AnalogOutput15 { get; set; } = 0.000f;
         public float AnalogOutput16 { get; set; } = 0.000f;
 
-        public float FlangeAnalogOutput1 { get; set; } = 0.000f;
-        public float FlangeAnalogOutput2 { get; set; } = 0.000f;
-        public float FlangeAnalogOutput3 { get; set; } = 0.000f;
-        public float FlangeAnalogOutput4 { get; set; } = 0.000f;
-        public float FlangeAnalogOutput5 { get; set; } = 0.000f;
-        public float FlangeAnalogOutput6 { get; set; } = 0.000f;
-        public float FlangeAnalogOutput7 { get; set; } = 0.000f;
-        public float FlangeAnalogOutput8 { get; set; } = 0.000f;
-        public float FlangeAnalogOutput9 { get; set; } = 0.000f;
-        public float FlangeAnalogOutput10 { get; set; } = 0.000f;
-        public float FlangeAnalogOutput11 { get; set; } = 0.000f;
-        public float FlangeAnalogOutput12 { get; set; } = 0.000f;
-        public float FlangeAnalogOutput13 { get; set; } = 0.000f;
-        public float FlangeAnalogOutput14 { get; set; } = 0.000f;
-        public float FlangeAnalogOutput15 { get; set; } = 0.000f;
-        public float FlangeAnalogOutput16 { get; set; } = 0.000f;
+        public float ToolAnalogOutput1 { get; set; } = 0.000f;
+        public float ToolAnalogOutput2 { get; set; } = 0.000f;
+        public float ToolAnalogOutput3 { get; set; } = 0.000f;
+        public float ToolAnalogOutput4 { get; set; } = 0.000f;
+        public float ToolAnalogOutput5 { get; set; } = 0.000f;
+        public float ToolAnalogOutput6 { get; set; } = 0.000f;
+        public float ToolAnalogOutput7 { get; set; } = 0.000f;
+        public float ToolAnalogOutput8 { get; set; } = 0.000f;
+        public float ToolAnalogOutput9 { get; set; } = 0.000f;
+        public float ToolAnalogOutput10 { get; set; } = 0.000f;
+        public float ToolAnalogOutput11 { get; set; } = 0.000f;
+        public float ToolAnalogOutput12 { get; set; } = 0.000f;
+        public float ToolAnalogOutput13 { get; set; } = 0.000f;
+        public float ToolAnalogOutput14 { get; set; } = 0.000f;
+        public float ToolAnalogOutput15 { get; set; } = 0.000f;
+        public float ToolAnalogOutput16 { get; set; } = 0.000f;
 
         public bool DigitalOutput1 { get; set; } = false;
         public bool DigitalOutput2 { get; set; } = false;
@@ -107,48 +109,92 @@
         public bool DigitalOutput15 { get; set; } = false;
         public bool DigitalOutput16 { get; set; } = false;
 
-        public bool FlangeDigitalOutput1 { get; set; } = false;
-        public bool FlangeDigitalOutput2 { get; set; } = false;
-        public bool FlangeDigitalOutput3 { get; set; } = false;
-        public bool FlangeDigitalOutput4 { get; set; } = false;
-        public bool FlangeDigitalOutput5 { get; set; } = false;
-        public bool FlangeDigitalOutput6 { get; set; } = false;
-        public bool FlangeDigitalOutput7 { get; set; } = false;
-        public bool FlangeDigitalOutput8 { get; set; } = false;
-        public bool FlangeDigitalOutput9 { get; set; } = false;
-        public bool FlangeDigitalOutput10 { get; set; } = false;
-        public bool FlangeDigitalOutput11 { get; set; } = false;
-        public bool FlangeDigitalOutput12 { get; set; } = false;
-        public bool FlangeDigitalOutput13 { get; set; } = false;
-        public bool FlangeDigitalOutput14 { get; set; } = false;
-        public bool FlangeDigitalOutput15 { get; set; } = false;
-        public bool FlangeDigitalOutput16 { get; set; } = false;
+        public bool ToolDigitalOutput1 { get; set; } = false;
+        public bool ToolDigitalOutput2 { get; set; } = false;
+        public bool ToolDigitalOutput3 { get; set; } = false;
+        public bool ToolDigitalOutput4 { get; set; } = false;
+        public bool ToolDigitalOutput5 { get; set; } = false;
+        public bool ToolDigitalOutput6 { get; set; } = false;
+        public bool ToolDigitalOutput7 { get; set; } = false;
+        public bool ToolDigitalOutput8 { get; set; } = false;
+        public bool ToolDigitalOutput9 { get; set; } = false;
+        public bool ToolDigitalOutput10 { get; set; } = false;
+        public bool ToolDigitalOutput11 { get; set; } = false;
+        public bool ToolDigitalOutput12 { get; set; } = false;
+        public bool ToolDigitalOutput13 { get; set; } = false;
+        public bool ToolDigitalOutput14 { get; set; } = false;
+        public bool ToolDigitalOutput15 { get; set; } = false;
+        public bool ToolDigitalOutput16 { get; set; } = false;
 
-        List<Configuration_Robot_Doosan_EndEffectorV1_0_0> EndEffectors { get; set; } = new List<Configuration_Robot_Doosan_EndEffectorV1_0_0>();
+        public List<Configuration_Robot_Doosan_ToolV1_0_0> Tools { get; set; } = new List<Configuration_Robot_Doosan_ToolV1_0_0>();
     }
 
-    public class Configuration_Robot_Doosan_EndEffectorV1_0_0
+    public class Configuration_Robot_Doosan_ToolV1_0_0
     {
         public string Name { get; set; } = string.Empty;
 
-        public float CenterPositionX = 0.000f;
-        public float CenterPositionY = 0.000f;
-        public float CenterPositionZ = 0.000f;
-        public float CenterPositionA = 0.000f;
-        public float CenterPositionB = 0.000f;
-        public float CenterPositionC = 0.000f;
+        public float CenterPositionX { get; set; } = 0.000f;
+        public float CenterPositionY { get; set; } = 0.000f;
+        public float CenterPositionZ { get; set; } = 0.000f;
+        public float CenterPositionA { get; set; } = 0.000f;
+        public float CenterPositionB { get; set; } = 0.000f;
+        public float CenterPositionC { get; set; } = 0.000f;
 
-        float Weight = 0.000f;
+        public float Weight { get; set; } = 0.000f;
 
-        public float CenterOfGravityX = 0.000f;
-        public float CenterOfGravityY = 0.000f;
-        public float CenterOfGravityZ = 0.000f;
+        public float CenterOfGravityX { get; set; } = 0.000f;
+        public float CenterOfGravityY { get; set; } = 0.000f;
+        public float CenterOfGravityZ { get; set; } = 0.000f;
 
-        public float InertiaValueX = 0.000f;
-        public float InertiaValueY = 0.000f;
-        public float InertiaValueZ = 0.000f;
-        public float InertiaValueA = 0.000f;
-        public float InertiaValueB = 0.000f;
-        public float InertiaValueC = 0.000f;
+        public float InertialValueX { get; set; } = 0.000f;
+        public float InertialValueY { get; set; } = 0.000f;
+        public float InertialValueZ { get; set; } = 0.000f;
+        public float InertialValueA { get; set; } = 0.000f;
+        public float InertialValueB { get; set; } = 0.000f;
+        public float InertialValueC { get; set; } = 0.000f;
+
+        public void SetCenterPosition(float[] CenterPositions)
+        {
+            CenterPositionX = CenterPositions[0];
+            CenterPositionY = CenterPositions[1];
+            CenterPositionZ = CenterPositions[2];
+
+            CenterPositionA = CenterPositions[3];
+            CenterPositionB = CenterPositions[4];
+            CenterPositionC = CenterPositions[5];
+        }
+
+        public float[] GetCenterPositions()
+        {
+            return new float[] { CenterPositionX, CenterPositionY, CenterPositionZ, CenterPositionA, CenterPositionB, CenterPositionC };
+        }
+
+        public void SetCenterOfGravity(float[] CenterOfGravity)
+        {
+            CenterOfGravityX = CenterOfGravity[0];
+            CenterOfGravityY = CenterOfGravity[1];
+            CenterOfGravityZ = CenterOfGravity[2];
+        }
+
+        public float[] GetCenterOfGravity()
+        {
+            return new float[] { CenterOfGravityX, CenterOfGravityY, CenterOfGravityZ };
+        }
+
+        public void SetInertialValues(float[] InertialValues)
+        {
+            InertialValueX = InertialValues[0];
+            InertialValueY = InertialValues[1];
+            InertialValueZ = InertialValues[2];
+
+            InertialValueA = InertialValues[3];
+            InertialValueB = InertialValues[4];
+            InertialValueC = InertialValues[5];
+        }
+
+        public float[] GetInertialValues()
+        {
+            return new float[] { InertialValueX, InertialValueY, InertialValueZ, InertialValueA, InertialValueB, InertialValueC };
+        }
     }
 }

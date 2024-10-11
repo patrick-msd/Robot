@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\50_Helper\PSGM.Helper\PSGM.Helper.csproj" />
     <ProjectReference Include="..\PSGM.Lib.Robot.Doosan.CPP\PSGM.Robot.Doosan.Control.CPP.vcxproj" />
   </ItemGroup>
 

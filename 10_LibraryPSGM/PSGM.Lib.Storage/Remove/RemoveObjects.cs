@@ -1,13 +1,11 @@
-﻿using Minio;
-using Minio.DataModel.Args;
+﻿using Minio.DataModel.Args;
 using Serilog;
 
 namespace PSGM.Lib.Storage
 {
-    public static class RemoveObjectsWithoutVersions
+    public partial class StorageClient
     {
-        // Remove a list of objects from a bucket
-        public static async Task Run(IMinioClient minio, string bucketName = "my-bucket-name", List<string> objectsList = null)
+        public async Task RemoveObjectsWithoutVersions(string bucketName = "my-bucket-name", List<string> objectsList = null)
         {
             try
             {
@@ -16,7 +14,7 @@ namespace PSGM.Lib.Storage
                     var objArgs = new RemoveObjectsArgs().WithBucket(bucketName)
                                                             .WithObjects(objectsList);
 
-                    foreach (var objDeleteError in await minio.RemoveObjectsAsync(objArgs).ConfigureAwait(false))
+                    foreach (var objDeleteError in await _minioClient.RemoveObjectsAsync(objArgs).ConfigureAwait(false))
                     {
 #if DEBUG
                         Log.Debug($"Object: {objDeleteError.Key}");
@@ -37,12 +35,8 @@ namespace PSGM.Lib.Storage
                 Log.Error($"S3 Remove Objects -  Exception: {ex}");
             }
         }
-    }
 
-    public static class RemoveObjectsWithVersions
-    {
-        // Remove a list of objects from a bucket
-        public static async Task Run(IMinioClient minio, string bucketName = "my-bucket-name", List<Tuple<string, string>> objectsVersionsList = null)
+        public async Task RemoveObjectsWithVersions(string bucketName = "my-bucket-name", List<Tuple<string, string>> objectsVersionsList = null)
         {
             try
             {
@@ -51,7 +45,7 @@ namespace PSGM.Lib.Storage
                     var objVersionsArgs = new RemoveObjectsArgs().WithBucket(bucketName)
                                                                     .WithObjectsVersions(objectsVersionsList);
 
-                    foreach (var objVerDeleteError in await minio.RemoveObjectsAsync(objVersionsArgs).ConfigureAwait(false))
+                    foreach (var objVerDeleteError in await _minioClient.RemoveObjectsAsync(objVersionsArgs).ConfigureAwait(false))
                     {
 #if DEBUG
                         Log.Error($"Object: {objVerDeleteError.Key} Object Version: {objVerDeleteError.VersionId}");

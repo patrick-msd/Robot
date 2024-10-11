@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Minio;
-using Minio.DataModel;
 using Minio.DataModel.Args;
 using Minio.Exceptions;
 using PSGM.Helper;
+using PSGM.Lib.Storage;
 using PSGM.Model.DbBackend;
 using System.Diagnostics;
 
@@ -13,7 +12,7 @@ namespace PSGM.Sample.Model.DbBackend
     {
         public async void Setup_Storage_DBStorageMain(DbBackend_Project projects)
         {
-            IMinioClient minioClient;
+            StorageClient storageClient;
 
             List<DbBackend_Storage_Cluster> clusters = _dbBackend_Context.Storage_Cluster.Where(p => p.Backend.Project.ProjectId_Ext == projects.ProjectId_Ext)
                                                                                 .Include(p => p.StorageServers)
@@ -21,11 +20,7 @@ namespace PSGM.Sample.Model.DbBackend
 
             DbBackend_Storage_Cluster cluster = clusters.Where(p => p.StorageClass == StorageClass.DataMain).FirstOrDefault();
 
-            minioClient = new MinioClient().WithEndpoint(cluster.GetStorageS3Endpoint(true))
-                                            .WithCredentials(cluster.StorageS3AccessKey, cluster.StorageS3SecretKey)
-                                            .WithSSL(cluster.StorageS3Secure)
-                                            .WithRegion(cluster.StorageS3Region)
-                                            .Build();
+            storageClient = new StorageClient(cluster.GetStorageS3Endpoint(true), cluster.StorageS3AccessKey, cluster.StorageS3SecretKey, cluster.StorageS3Secure, cluster.StorageS3Region, cluster.StorageS3BucketName);
 
             //#region List and remove all buckets
             //try
@@ -64,7 +59,7 @@ namespace PSGM.Sample.Model.DbBackend
             #region Add project bucket
             try
             {
-                bool found = await minioClient.BucketExistsAsync(new BucketExistsArgs().WithBucket(projects.ProjectId_Ext.ToString()));
+                bool found = await storageClient.ExistsBucketAsync(new BucketExistsArgs().WithBucket(projects.ProjectId_Ext.ToString()));
 
                 if (found)
                 {
@@ -72,7 +67,7 @@ namespace PSGM.Sample.Model.DbBackend
                 }
                 else
                 {
-                    await MakeBucket.Run(minioClient, projects.ProjectId_Ext.ToString(), cluster.StorageS3Region);
+                    await storageClient.MakeBucket(projects.ProjectId_Ext.ToString(), cluster.StorageS3Region);
                 }
             }
             catch (MinioException ex)

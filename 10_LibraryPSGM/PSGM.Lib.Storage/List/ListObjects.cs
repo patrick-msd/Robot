@@ -1,13 +1,12 @@
-﻿using Minio;
-using Minio.DataModel.Args;
+﻿using Minio.DataModel.Args;
 using Serilog;
 
 namespace PSGM.Lib.Storage
 {
-    public static class ListObjectsWithoutVersion
+    public partial class StorageClient
     {
-        // List objects matching optional prefix in a specified bucket.
-        public static async Task<List<string>> Run(IMinioClient minio, string bucketName = "my-bucket-name", string prefix = null, bool recursive = true)
+
+        public async Task<List<string>> ListObjectsWithoutVersion(string bucketName = "my-bucket-name", string prefix = null, bool recursive = true)
         {
             List<string> list = new List<string>();
 
@@ -18,7 +17,7 @@ namespace PSGM.Lib.Storage
                                                     .WithRecursive(recursive)
                                                     .WithVersions(false);
 
-                await foreach (var item in minio.ListObjectsEnumAsync(listArgs).ConfigureAwait(false))
+                await foreach (var item in _minioClient.ListObjectsEnumAsync(listArgs).ConfigureAwait(false))
                 {
                     list.Add(item.Key);
 #if DEBUG
@@ -37,12 +36,8 @@ namespace PSGM.Lib.Storage
 
             return list;
         }
-    }
 
-    public static class ListObjectsWithVersions
-    {
-        // List objects matching optional prefix in a specified bucket.
-        public static async Task<List<Tuple<string, string>>> Run(IMinioClient minio, string bucketName = "my-bucket-name", string prefix = null, bool recursive = true)
+        public async Task<List<Tuple<string, string>>> ListObjectsWithVersions(string bucketName = "my-bucket-name", string prefix = null, bool recursive = true)
         {
             List<Tuple<string, string>> list = new List<Tuple<string, string>>();
 
@@ -53,7 +48,7 @@ namespace PSGM.Lib.Storage
                                                     .WithRecursive(recursive)
                                                     .WithVersions(true);
 
-                await foreach (var item in minio.ListObjectsEnumAsync(listArgs).ConfigureAwait(false))
+                await foreach (var item in _minioClient.ListObjectsEnumAsync(listArgs).ConfigureAwait(false))
                 {
                     list.Add(Tuple.Create(item.Key, item.VersionId));
 #if DEBUG
